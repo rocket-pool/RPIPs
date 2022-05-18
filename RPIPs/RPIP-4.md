@@ -81,13 +81,15 @@ Snapshot.org is a web3-native platform for token voting and provides several pre
 
 ### Quadratic Voting
 
-Quadratic voting is widely used as a more fair way of capturing community sentiment than 1-to-1 token voting. This method lessens the effects of vote buying on outcomes while being relatively simple to understand and engineer. The algorithm used here also includes a `0.5` factor for additional power flattening.
+Quadratic voting is widely used as a more fair way of capturing community sentiment than 1-to-1 token voting. This method lessens the effects of vote buying on outcomes while being relatively simple to understand and engineer.
 
 ### RPL Stake and Weight
 
 RPL votes are weighted based on age of the node so as to prevent short-term nodes from being created and destroyed for the purposes of vote-buying, which would add unnecessary instability to the protocol.
 
 RPL is required to be staked for voting so as to prevent vote-buying by participants unaffiliated with the protocol's operations. 
+
+The algorithm used for calculating power uses a square root and a `0.5` factor for flattening the power contributed by any single node. This helps prevent large node operators from obtaining dominance over the voting process.
 
 ### RPL to rETH Vote Weighting
 
