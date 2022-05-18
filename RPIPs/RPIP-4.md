@@ -37,21 +37,13 @@ The snapshot vote will run for [14] days and requires a [50.1%] majority to be s
 
 ### Snapshot Vote Strategy
 
-### rETH Voting
+#### RPL Voting 
 
-All votes are recorded into a `rEthResults` map which utilizes an Ethereum address as the index (`address`). The `result` map's values include:
+All RPL votes are recorded into a `results` map which requires a Rocket Pool node address as the index (`address`). The `results` map's values include:
 - a boolean `vote` which indicates a vote of "yea" for `true` or "nay" for `false`
 - an integer `power` which contains the ultimate voting power of that node
 
-`power` for `rEthResults` is determined via the following equation for quadratic voting:
-
-`power = (int) √rEth` where `rEth` is the amount of rETH contained in `address` and the result truncated into an integer.
-
-#### RPL Voting 
-
-All RPL votes are recorded into a `rplResults` map which requires a Rocket Pool node address as the index (`address`) and is otherwise structured similarly to the RPL `rEthResults` map.
-
-`power` for `rplResults` is determined in accordance with the following equation: 
+`power` for `results` is determined in accordance with the following equation for quadratic voting: 
 
 `power = (int) √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
 
@@ -59,7 +51,7 @@ All RPL votes are recorded into a `rplResults` map which requires a Rocket Pool 
 
 `weight = min( (registrationDate - currentDate) / 100, 1)`
 
-Total vote power for `rplResults` is summed into `rplResultsPower`
+Total vote power for `results` is summed into `rplTotalPower`
 
 #### Outcome
 
@@ -67,9 +59,8 @@ All `power` values from the `rEthResults` map are summed into two integers based
 
 These are combined based on the following equations:
 
-`yea = .75 * rplYeaPower / rplResultsPower + .25 * rEthYeaPower / rEthResultsPower`
-
-`nay = .75 * rplNayPower / rplResultsPower + .25 * rEthNayPower / rEthResultsPower`
+`yea = rplYeaPower / rplTotalPower`
+`nay = .rplNayPower / rplTotalPower`
 
 If `yea` is greater than `nay`, the proposal passes. Otherwise, it fails.
 
@@ -89,9 +80,9 @@ RPL votes are weighted based on age of the node so as to prevent short-term node
 
 RPL is required to be staked for voting so as to prevent vote-buying by participants unaffiliated with the protocol's operations. 
 
-### RPL to rETH Vote Weighting
+### RPL vs rETH Voting
 
-RPL is given a higher proportion of voting power because vote-buying is guarded against via staking and node creation is more sybil-resistant.
+RPL is used in isolation -- not in conjunction with rETH -- because vote-buying is guarded against via staking and node creation is more sybil-resistant. 
 
 ## Security Considerations
 
