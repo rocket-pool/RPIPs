@@ -53,7 +53,7 @@ All RPL votes are recorded into a `rplResults` map which requires a Rocket Pool 
 
 `power` for `rplResults` is determined in accordance with the following equation: 
 
-`power = (int) √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
+`power = (int) 0.5 * √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
 
 `weight` for is determined from the age of the node via:
 
@@ -81,7 +81,7 @@ Snapshot.org is a web3-native platform for token voting and provides several pre
 
 ### Quadratic Voting
 
-Quadratic voting is widely used as a more fair way of capturing community sentiment than 1-to-1 token voting. This method lessens the effects of vote buying on outcomes while being relatively simple to understand and engineer. 
+Quadratic voting is widely used as a more fair way of capturing community sentiment than 1-to-1 token voting. This method lessens the effects of vote buying on outcomes while being relatively simple to understand and engineer. The algorithm used here also includes a `0.5` factor for additional power flattening.
 
 ### RPL Stake and Weight
 
