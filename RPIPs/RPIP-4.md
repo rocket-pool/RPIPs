@@ -45,7 +45,7 @@ All RPL votes are recorded into a `results` map which requires a Rocket Pool nod
 
 `power` for `results` is determined in accordance with the following equation for voting: 
 
-`power = (int) √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
+`power = (int) 0.5 * √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
 
 `weight` for is determined from the age of the node via:
 
@@ -75,6 +75,8 @@ Snapshot.org is a web3-native platform for token voting and provides several pre
 RPL votes are weighted based on age of the node so as to prevent short-term nodes from being created and destroyed for the purposes of vote-buying, which would add unnecessary instability to the protocol.
 
 RPL is required to be staked for voting so as to prevent vote-buying by participants unaffiliated with the protocol's operations.
+
+The algorithm used for calculating power uses a square root and a `0.5` factor for flattening the power contributed by any single node. This helps prevent large node operators from obtaining dominance over the voting process.
 
 ### RPL vs rETH Voting
 
