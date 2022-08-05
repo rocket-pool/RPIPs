@@ -3,7 +3,7 @@ rpip: 8
 title: LEB8s
 description: A new Lower ETH Bond size of minipool with 8 ETH from the node operator
 author: Valdorff (@Valdorff)
-discussions-to: TODO - get URL from forum
+discussions-to: https://dao.rocketpool.net/t/leb8-discussion-thread/899
 status: Draft
 type: Protocol
 category: Core
