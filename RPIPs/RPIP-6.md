@@ -1,5 +1,6 @@
 ---
-rpip: TBA
+rpip: 6
+title: Unethbonded Minipools
 author: Ken Smith (@htimsk) <shtimseht@gmail.com>
 status: Draft
 type: Protocol
