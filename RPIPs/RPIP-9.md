@@ -29,6 +29,7 @@ No backwards incompatibility. The current limit is 2000 ETH so even if the depos
 
 ## Test Cases
 This is a very low risk change. The deposit pool limit setting has already been used during deployment to ensure a phased rollout. The deposit pool limit has been increased to 5K ETH on the Goerli testnet already but we can construct the transaction payload and execute against Goerli to ensure it has the desired effect.
+A post verification check will be performed after deployment - we will query the Protocol DAO contract for the value and check Rocket Scan.
 
 ## Reference Implementation
 Not applicable.
