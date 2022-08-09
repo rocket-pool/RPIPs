@@ -4,7 +4,7 @@ title: Increase Deposit Pool Limit
 description: Increase the Rocket Pool Deposit Pool Limit to 5K ETH
 author: Ken Smith (@htimsk), Darren Langley (@darrenlangley)
 discussions-to: https://dao.rocketpool.net/t/proposal-to-increase-the-deposit-pool-dp-limit/817
-status: Draft
+status: Review 
 type: Protocol
 category Core
 created: 2022-08-09
