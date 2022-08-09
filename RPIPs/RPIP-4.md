@@ -57,7 +57,7 @@ All RPL votes are recorded into a `results` map which requires a Rocket Pool nod
 
 `weight` for is determined from the age of the node via:
 
-`weight = min( (registrationDate - currentDate) / 100, 1)`
+`weight = min( (currentDate - registrationDate) / 100, 1)` where `currentDate` is the date of the snapshot in UTC and `registrationDate` is the date on which the node was registered in UTC.
 
 Any delegated vote `power` is summed with the voter's own `power` to achieve the final vote power for a single voter.
 
