@@ -13,6 +13,7 @@ Simlar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.
 | 6    | Unethbonded Minipools            | Protocol (Core) | Drat   | 2022-05-17         |
 | 7    | Withdrawal Address Escrow        | Protocol (RPRC) | Draft  | 2022-05-17         |
 | 8    | LEB8s                            | Protocol (Core) | Draft  | 2022-08-05         |
+| 9    | Increase Deposit Pool Limit      | Procotol (Core) | Draft  | 2022-08-09         |
 
 This index is manually maintained for now. \
 Please update the table whenever you add a new RPIP or update the status of an RPIP.
