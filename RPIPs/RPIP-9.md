@@ -1,12 +1,12 @@
 ---
-rpip: RPIP-9 
+rpip: 9 
 title: Increase Deposit Pool Limit 
 description: Increase the Rocket Pool Deposit Pool Limit to 5K ETH
 author: Ken Smith (@htimsk), Darren Langley (@darrenlangley)
 discussions-to: https://dao.rocketpool.net/t/proposal-to-increase-the-deposit-pool-dp-limit/817
-status: Review 
+status: Final
 type: Protocol
-category Core
+category: Core
 created: 2022-08-09
 ---
 
@@ -14,13 +14,13 @@ created: 2022-08-09
 This proposal simply increases the Protocol DAO setting that controls the limit on the amount of waiting ETH that can be present in the deposit pool.
 
 ## Motivation
-Increasing the deposit pool limit will allow for more efficient and larger deposits by Institutional, DAO, and private whale depositors into the deposit pool. As an example, to reach our unofficial goal of becoming 22% of the amount of ETH staked on the beacon chain (2.8M ETH) we would require 690 full deposit pool deposits at the current setting. (2.8M - 100K / 2 / 2K max deposit). Increasing the limit to 5k would allow us to accomplish the same in only 270 transactions.
+Increasing the deposit pool limit will allow for more efficient and larger deposits by Institutional, DAO, and private whale depositors into the deposit pool. As an example, to reach our unofficial goal of becoming 22% of the amount of ETH staked on the beacon chain (2.8M ETH) we would require 650 full deposit pool deposits at the current setting. We're at 200k ETH, so we'd need to another 2.6M. Since each deposited ETH is matched with an NO ETH,  `(2.8M - 200K) Total ETH * (1 depositor ETH / 2 Total ETH) * (1 max deposit / 2K depositor ETH) = 650 max deposits`. Increasing the limit to 5k would allow us to accomplish the same in only 260 full deposit pool deposits.
 
 ## Specification
 The Core team will execute bootstrapSettingUint on the RocketDAOProtocol contract updating the `deposit.pool.maximum` pDAO setting to 5000 ether (5000000000000000000000).   
 
 ## Rationale
-This proposal is to increase the deposit pool limit to 5,000 ETH from the current setting of 2,000 ETH. The max limit was designed to restrict the amount of the regular ETH left unstated, thus nonproductive at generating returns. Increasing the deposit pool limit does present a small potential reduction risk on the rETH APR but only occurs when the deposit pool has a positive balance.
+This proposal is to increase the deposit pool limit to 5,000 ETH from the current setting of 2,000 ETH. The max limit was designed to restrict the amount of the regular ETH left unstaked, thus nonproductive at generating returns. Increasing the deposit pool limit does present a small potential reduction risk on the rETH APR (by `ETH_in_DP/rETH_TVL_in_ETH`) but only occurs when the deposit pool has a positive balance (would currently represent ~5% reduction with a full 5k DP). This is acceptable and further mitigated by modeling that suggests plentiful NO supply, which would make a full DP unlikely.
 
 The proposal was discussed and the impact assessed in the [Proposal to increase the deposit pool dp limit](https://dao.rocketpool.net/t/proposal-to-increase-the-deposit-pool-dp-limit/817) DAO forum post.
 
