@@ -37,6 +37,14 @@ The snapshot vote will run for [14] days and requires a [50.1%] majority to be s
 
 ### Snapshot Vote Strategy
 
+#### Eligibility
+
+To be eligible for vote participation, the RPL must be staked in the Rocket Pool protocol for at least 24 hours prior to the vote. 
+
+#### Delegation
+
+Eligible RPL voting power may instead be delegated to another wallet. All delegated RPL voting power is added to the total voting power of the voting wallet according to the formula below.
+
 #### RPL Voting 
 
 All RPL votes are recorded into a `results` map which requires a Rocket Pool node address as the index (`address`). The `results` map's values include:
@@ -51,7 +59,9 @@ All RPL votes are recorded into a `results` map which requires a Rocket Pool nod
 
 `weight = min( (registrationDate - currentDate) / 100, 1)`
 
-Total vote power for `results` is summed into `rplTotalPower`
+Any delegated vote `power` is summed with the voter's own `power` to achieve the final vote power for a single voter.
+
+Total vote power for `results` is summed into `rplTotalPower`.
 
 #### Outcome
 
@@ -80,7 +90,7 @@ The algorithm used for calculating power uses a square root and a `0.5` factor f
 
 ### RPL vs rETH Voting
 
-RPL is used in isolation -- not in conjunction with rETH -- because vote-buying is guarded against via staking and node creation is more sybil-resistant. 
+RPL is used in isolation -- not in conjunction with rETH -- because vote-buying is guarded against via staking and node creation is more sybil-resistant. While sybil-resistance is not guaranteed with this RPL-only method, it was chosen as the best compromise among the various options. 
 
 ## Security Considerations
 
