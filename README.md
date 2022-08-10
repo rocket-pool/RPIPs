@@ -15,6 +15,7 @@ Simlar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.
 | 8    | LEB8s                                    | Protocol (Core) | Draft  | 2022-08-05         |
 | 9    | Increase Deposit Pool Limit              | Procotol (Core) | Final  | 2022-08-09         |
 | 10   | Initial pDAO Budget Allocation           | Meta            | Draft  | 2022-08-09         |
+| 11   | Incentives Management Committee Charter  | Meta            | Draft  | 2022-08-09         |
 
 This index is manually maintained for now. \
 Please update the table whenever you add a new RPIP or update the status of an RPIP.
