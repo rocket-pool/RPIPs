@@ -1,6 +1,6 @@
 ---
 rpip: 10
-title: Initial pDAO Budget Allocation
+title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895

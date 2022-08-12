@@ -51,6 +51,13 @@ following:
   and/or Discord.
 - The initial nominated members SHALL be accepted by a separate snapshot vote from the one for this
   RPIP.
+- The IMC Treasurer SHALL publish a budget detailing planned incentive spending one week before the 
+  start of the next rewards period.
+  - If the pDAO starts a vote between the release of the budget and the start of the next rewards 
+  period which limits the IMC, the IMC SHALL NOT spend funds (to the extent possible) in the new
+  rewards period until the vote has been resolved.
+  - A vote SHALL be considered to "limit the IMC" if it: prevents or decreases disbursement of funds
+  to the IMC, takes back existing funds from the IMC, or modifies the IMC membership.
 
 ## Rationale
 The main goal is to establish a starting liquidity budget and provide for a quick initial state
