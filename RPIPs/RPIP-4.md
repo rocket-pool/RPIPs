@@ -30,10 +30,11 @@ All Rocket Pool governance proposals must first be posted as a new topic on the 
 A favorable forum poll which is live for at least [7] days and a corresponding RPIP document are necessary for snapshot voting to be scheduled. Once the requirements have been met, one of the following parties will create a snapshot vote and publicize it:
 
 - Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd)
-- Mike Leach AKA Wander (RPIP Editor, Founder - Bamboo Financial Technologies)
-- [others?]
+- Rocket Pool DAO Leadership Council (address 0x123WESHOULDMAKETHIS or rpdao.eth)
 
-The snapshot vote will run for [14] days and requires a [50.1%] majority to be successful.
+Given that the snapshot voting system is considered relatively insecure (see Security Considerations below), the RP DAO Leadership Council may exercise veto power over any proposal by refusing to bring it forward for consideration.
+
+The snapshot vote will run for [14] days and requires a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum will be reduced by [25%] permanently unless governance action dictates otherwise.
 
 ### Snapshot Vote Strategy
 
@@ -48,31 +49,25 @@ Eligible RPL voting power may instead be delegated to another wallet. All delega
 #### RPL Voting 
 
 All RPL votes are recorded into a `results` map which requires a Rocket Pool node address as the index (`address`). The `results` map's values include:
-- a boolean `vote` which indicates a vote of "yea" for `true` or "nay" for `false`
+- an integer `vote` which indicates the chosen vote option
+    + generally, `0` corresponds to "yea", `1` corresponds to "nay", and `2` corresponds to "abstain", though polls may use these options to instead include more specific choices, with the only limit being the maximum integer value
 - an integer `power` which contains the ultimate voting power of that node
 
-`power` for `results` is determined in accordance with the following equation for voting: 
+`results.power` for is determined in accordance with the following equation for voting: 
 
-`power = (int) 0.5 * √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
+`results.power = (int) 0.5 * √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
 
 `weight` for is determined from the age of the node via:
 
 `weight = min( (currentDate - registrationDate) / 100, 1)` where `currentDate` is the date of the snapshot in UTC and `registrationDate` is the date on which the node was registered in UTC.
 
-Any delegated vote `power` is summed with the voter's own `power` to achieve the final vote power for a single voter.
+Any delegated vote `results.power` is summed with the voter's own `results.power` to achieve the final vote power for a single voter. Addresses which delegate their vote power are not included in the `results` map.
 
-Total vote power for `results` is summed into `rplTotalPower`.
+Total vote power for each of the poll choices indicated in each `results.vote` entry is summed into an `rplTotalPower` array containing the total sum of power for each of the poll choices, with the index of each entry mapping to the integer corresponding to the vote choice. This is used to compute the outcome as described below.
 
 #### Outcome
 
-All `power` values from the `rEthResults` map are summed into two integers based on each vote, `rEthYeaPower` and `rEthNayPower`, and all `power` values from the `rplResults` map are summed into two integers based on each vote, `rplYeaPower` and `rplNayPower`.
-
-These are combined based on the following equations:
-
-`yea = rplYeaPower / rplTotalPower`
-`nay = .rplNayPower / rplTotalPower`
-
-If `yea` is greater than `nay`, the proposal passes. Otherwise, it fails.
+The `rplTotalPower` array is searched for the maximum value. The index of this maximum value corresponds to the winning proposal. If the winning choice corresponds to "abstain", however, then the proposal corresponding to the index of the second highest value is declared as the winner instead.
 
 ## Rationale
 
@@ -96,7 +91,7 @@ RPL is used in isolation -- not in conjunction with rETH -- because vote-buying 
 
 As with any token-based voting mechanism, even voting with a power-flattening algorithm such as the one used here allows large actors to influence the outcome of votes. Although this risk is significantly lower with this strategy vs 1-to-1 token votes, it is possible that a large actor may create a proposal which harms the security of the protocol and force it to be adopted via this mechanism.
 
-[ TBD: analysis of RPL supply distribution and the potential attack vectors - how much RPL would need to be purchased to outweigh all other voters? How many people have that much Ethereum?]
+As of 08-13-2022, the full quorum is computed at. To singlehandedly pass a governance proposal, an individual or collective would need to amass at least 50.1% of total voting power. Assuming the full quorum of roughly 4,000 voting power participation opposes them and all other votes abstain, a single actor would need to stake just 640,000 RPL across 10 nodes for at least 100 days to reach this threshold. This is well within reach of known protocol participants today as well as many outside actors. **Therefore, this system should be considered insecure and attackable.** The Rocket Pool community and the RP DAO Leadership Council must remain diligent in both its analysis of and participation in proposal votes to prevent governance attacks.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
