@@ -55,11 +55,7 @@ All RPL votes are recorded into a `results` map which requires a Rocket Pool nod
 
 `results.power` for is determined in accordance with the following equation for voting: 
 
-`results.power = (int) 0.5 * √rpl * weight`, where `rpl` is the amount of RPL staked in that node, `weight` is the result of the weight calculation (see below), and the result is truncated into an integer.
-
-`weight` for is determined from the age of the node via:
-
-`weight = min( (currentDate - registrationDate) / 100, 1)` where `currentDate` is the date of the snapshot in UTC and `registrationDate` is the date on which the node was registered in UTC.
+`results.power = (int) √rpl`, where `rpl` is the amount of RPL staked in that node, with the result truncated into an integer for simplicity.
 
 Any delegated vote `results.power` is summed with the voter's own `results.power` to achieve the final vote power for a single voter. Addresses which delegate their vote power are not included in the `results` map.
 
