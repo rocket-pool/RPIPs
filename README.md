@@ -8,7 +8,7 @@ Simlar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.
 | 1    | RPIP Purpose and Guidelines              | Meta            | Living | 2022-05-17         |
 | 2    | Rocket Pool Design Specification         | Informational   | Draft  | 2022-05-17         |
 | 3    | SaaS Provider Standard                   | Protocol (RPRC) | Draft  | 2022-05-17         |
-| 4    | Community Resolutions and Voting         | Meta            | Draft  | 2022-05-17         |
+| 4    | Community Resolutions and Voting         | Meta            | Review | 2022-05-17         |
 | 5    | Protocol Governance                      | Informational   | Living | 2022-05-17         |
 | 6    | Unethbonded Minipools                    | Protocol (Core) | Drat   | 2022-05-17         |
 | 7    | Withdrawal Address Escrow                | Protocol (RPRC) | Draft  | 2022-05-17         |
