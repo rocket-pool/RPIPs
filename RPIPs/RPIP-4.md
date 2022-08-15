@@ -14,7 +14,7 @@ The Rocket Pool community at large agrees to use Snapshot voting for governance 
 The Snapshot voting mechanism uses staked and weighted RPL token voting.
 
 ## Motivation
-Governance in Rocket Pool is currently ad hoc, and there is no way for the community to adopt proposals. We must adopt a governance mechanism, even if imperfect, before any governance actions can be taken legitimately, such as but not limited to spending pDAO funds.
+Governance in Rocket Pool is currently ad hoc, and there is no way for the community to adopt proposals. We must adopt a governance mechanism, even if imperfect, before any governance actions can be taken legitimately, such as spending pDAO funds.
 
 ## Implementation
   
@@ -32,12 +32,7 @@ Topics SHOULD approximate community sentiment by including a poll with the follo
 [/poll]
 ```
 
-A favorable forum poll which is live for at least [7] days and a corresponding RPIP document are necessary for snapshot voting to be scheduled. Once the requirements have been met, one of the following parties will create a snapshot vote and publicize it:
-
-- Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd)
-- [Rocket Pool DAO Leadership Council (address 0x123WESHOULDMAKETHIS or rpdao.eth)]
-
-Given that the snapshot voting system is considered relatively insecure (see Security Considerations below), the RP DAO Leadership Council may exercise veto power over any proposal by refusing to bring it forward for consideration.
+A favorable forum poll which is live for at least [7] days and a corresponding RPIP document are necessary for snapshot voting to be scheduled. Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability SHOULD create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
 
 The snapshot vote will run for [14] days and requires a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum will be reduced by [25%] permanently unless governance action dictates otherwise.
 
@@ -74,11 +69,13 @@ The `rplTotalPower` array is searched for the maximum value. The index of this m
 #### Vetoing
 Given that the snapshot voting system is not comfortably secure (see Security Considerations below), there are two safeguard vetoes in place.
 
-The first veto consists of the Snapshot Council refusing to bring a vote forward for consideration. This is a soft veto because potential changes can be implemented by the pDAO guardian regardless of vote. Another veto consists of the pDAO guardian refusing to implement a passed proposal.
+The first veto consists of those with the power to bring forward a vote (see Implementation above) refusing to bring such a vote forward for consideration. Although potential changes can be technically implemented by the pDAO guardian regardless of vote, the pDAO guardian MUST NOT do so and any such action is considered illegitimate.
 
-Veto powers SHALL NOT be used lightly, and SHALL be reserved for cases of vote manipulation, malicious action, or proposals that would result in extreme damage.
+A second, more absolute veto consists of the pDAO guardian refusing to implement a passed proposal.
 
-When a veto power is excercised, the entity excercising a veto SHALL publish a Veto Explanation Document that describes why this step was necessary. If possible, the report SHOULD also suggest potential similar-but-non-damaging votes that could be considered.
+Veto powers SHALL NOT be used lightly, and SHALL be reserved for cases of vote manipulation, malicious action, or proposals that would result in clear damage to the Rocket Pool project.
+
+When a veto power is excercised, the entity excercising a veto SHALL publish a Veto Explanation Document that describes why this step was taken. If possible, the report SHOULD also suggest potential similar-but-non-damaging votes that could be considered.
 
 ## Rationale
 
@@ -100,7 +97,7 @@ RPL is used in isolation -- not in conjunction with rETH -- because vote-buying 
 
 As with any token-based voting mechanism, even voting with a power-flattening algorithm such as the one used here allows large actors to influence the outcome of votes. Although this risk is significantly lower with this strategy vs 1-to-1 token votes, it is possible that a large actor may create a proposal which harms the security of the protocol and force it to be adopted via this mechanism.
 
-As of 08-13-2022, the full quorum is computed at 4000 vote power. To singlehandedly pass a governance proposal, an individual or collective would need to amass at least 50.1% of total voting power. Assuming the full quorum of roughly 4,000 voting power participation opposes them and all other votes abstain, a single actor would need to stake just 640,000 RPL across 10 nodes for at least 100 days to reach this threshold. This is well within reach of known protocol participants today as well as many outside actors. **Therefore, this system should be considered insecure and attackable.** The Rocket Pool community and the RP DAO Leadership Council must remain diligent in both its analysis of and participation in proposal votes to prevent governance attacks.
+As of 08-13-2022, the full quorum is computed at 4000 vote power. To singlehandedly pass a governance proposal, an individual or collective would need to amass at least 50.1% of total voting power. Assuming the full quorum of roughly 4,000 voting power participation opposes them and all other votes abstain, a single actor would need to stake just 640,000 RPL across 10 nodes for at least 100 days to reach this threshold. This is well within reach of known protocol participants today as well as many outside actors. **Therefore, this system should be considered insecure and attackable.** The Rocket Pool community and any who c must remain diligent in both its analysis of and participation in proposal votes to prevent governance attacks.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
