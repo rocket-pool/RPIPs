@@ -21,7 +21,7 @@ Governance in Rocket Pool is currently ad hoc, and there is no way for the commu
 All Rocket Pool governance proposals MUST have an associated post on the governance forums at dao.rocketpool.net.
 Promising community sentiment and a corresponding RPIP document are REQUIRED for snapshot voting to be scheduled.
 
-Topics SHOULD approximate community sentiment by including a poll with the following format which MUST be live for at least [7] days:
+Topics SHOULD approximate community sentiment by including a poll with the following format which MUST be live for at least 7 days:
 
 ```
 [poll type=regular results=always chartType=bar]
@@ -34,7 +34,7 @@ Topics SHOULD approximate community sentiment by including a poll with the follo
 
 Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability MUST create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
 
-The snapshot vote SHALL run for at least [7] days -- with [14] days being RECOMMENDED -- and SHALL REQUIRE a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum SHALL be reduced by [25%] permanently unless governance action dictates otherwise.
+The snapshot vote SHALL run for at least 7 days -- with 14 days being RECOMMENDED -- and SHALL REQUIRE a 15% voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum SHALL be reduced by 25% permanently unless governance action dictates otherwise.
 
 ### Snapshot Vote Strategy
 
