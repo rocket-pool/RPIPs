@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/withdrawal-address-splitter-contrac
 status: Draft
 type: Protocol
 category: RPRC
-created: 2022-16-04
+created: 2022-04-16
 ---
 
 ## Abstract
