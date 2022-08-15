@@ -34,7 +34,7 @@ Topics SHOULD approximate community sentiment by including a poll with the follo
 
 Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability MUST create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
 
-The snapshot vote will run for [14] days and requires a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum will be reduced by [25%] permanently unless governance action dictates otherwise.
+The snapshot vote SHALL run for at least [7] days -- with [14] days being RECOMMENDED -- and SHALL REQUIRE a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum SHALL be reduced by [25%] permanently unless governance action dictates otherwise.
 
 ### Snapshot Vote Strategy
 
@@ -69,9 +69,9 @@ The `rplTotalPower` array is searched for the maximum value. The index of this m
 #### Vetoing
 Given that the snapshot voting system is not comfortably secure (see Security Considerations below), there are two safeguard vetoes in place.
 
-The first veto consists of those with the power to bring forward a vote (see Implementation above) refusing to bring such a vote forward for consideration. Although potential changes can be technically implemented by the pDAO guardian regardless of vote, the pDAO guardian MUST NOT do so and any such action is considered illegitimate.
+The first veto consists of those with the power to bring forward a vote (see Implementation above) refusing to bring such a vote forward for consideration. Although potential changes can be technically implemented by the implementer (oDAO or  pDAO guardian depending on the proposal) regardless of vote, the implementer MUST NOT do so and any such action is considered illegitimate.
 
-A second, more absolute veto consists of the pDAO guardian refusing to implement a passed proposal.
+A second, more absolute veto consists of the implementer refusing to implement a passed proposal.
 
 Veto powers SHALL NOT be used lightly and SHALL be reserved for cases of vote manipulation, malicious action, or proposals that would result in clear damage to the Rocket Pool project.
 
@@ -97,7 +97,7 @@ RPL is used in isolation -- not in conjunction with rETH -- because vote-buying 
 
 As with any token-based voting mechanism, even voting with a power-flattening algorithm such as the one used here allows large actors to influence the outcome of votes. Although this risk is significantly lower with this strategy vs 1-to-1 token votes, it is possible that a large actor may create a proposal which harms the security of the protocol and force it to be adopted via this mechanism.
 
-As of 08-13-2022, the full quorum is computed at 4000 vote power. To singlehandedly pass a governance proposal, an individual or collective would need to amass at least 50.1% of total voting power. Assuming the full quorum of roughly 4,000 voting power participation opposes them and all other votes abstain, a single actor would need to stake just 640,000 RPL across 10 nodes for at least 100 days to reach this threshold. This is well within reach of known protocol participants today as well as many outside actors. **Therefore, this system should be considered insecure and attackable.** The Rocket Pool community, especially those who can bring a vote forward, must remain diligent in both their analysis of and participation in proposal votes to prevent governance attacks.
+As of 08-13-2022, the full quorum is computed at 4000 vote power. To singlehandedly pass a governance proposal, an individual or collective would need to amass at least 50.1% of total voting power. Assuming the full quorum of roughly 4,000 voting power participation opposes them and all other votes abstain, a single actor would need to stake just 640,000 RPL across 10 nodes to reach this threshold. This is well within reach of known protocol participants today as well as many outside actors. **Therefore, this system should be considered insecure and attackable.** The Rocket Pool community, especially those who can bring a vote forward, must remain diligent in both their analysis of and participation in proposal votes to prevent governance attacks.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
