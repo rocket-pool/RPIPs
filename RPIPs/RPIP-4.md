@@ -21,7 +21,7 @@ Governance in Rocket Pool is currently ad hoc, and there is no way for the commu
 All Rocket Pool governance proposals MUST have an associated post on the governance forums at dao.rocketpool.net.
 Promising community sentiment and a corresponding RPIP document are REQUIRED for snapshot voting to be scheduled.
 
-Topics SHOULD approximate community sentiment by including a poll with the following format which is live for at least [7] days:
+Topics SHOULD approximate community sentiment by including a poll with the following format which MUST be live for at least [7] days:
 
 ```
 [poll type=regular results=always chartType=bar]
@@ -32,7 +32,7 @@ Topics SHOULD approximate community sentiment by including a poll with the follo
 [/poll]
 ```
 
-A favorable forum poll which is live for at least [7] days and a corresponding RPIP document are necessary for snapshot voting to be scheduled. Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability SHOULD create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
+Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability MUST create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
 
 The snapshot vote will run for [14] days and requires a [15%] voting power quorum to be successful. In the case where no quorum has been met for three of the last four polls, the needed quorum will be reduced by [25%] permanently unless governance action dictates otherwise.
 
@@ -73,7 +73,7 @@ The first veto consists of those with the power to bring forward a vote (see Imp
 
 A second, more absolute veto consists of the pDAO guardian refusing to implement a passed proposal.
 
-Veto powers SHALL NOT be used lightly, and SHALL be reserved for cases of vote manipulation, malicious action, or proposals that would result in clear damage to the Rocket Pool project.
+Veto powers SHALL NOT be used lightly and SHALL be reserved for cases of vote manipulation, malicious action, or proposals that would result in clear damage to the Rocket Pool project.
 
 When a veto power is excercised, the entity excercising a veto SHALL publish a Veto Explanation Document that describes why this step was taken. If possible, the report SHOULD also suggest potential similar-but-non-damaging votes that could be considered.
 
