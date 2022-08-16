@@ -95,7 +95,9 @@ update this RPIP:
    to "Review" 
 3. The vote procedure SHALL be followed as if this were an entirely new RPIP. This includes making
    forum posts, appropriate wait times, quorums, etcetera, as detailed elsewhere.
-4. After the vote is concluded:
+4. If criteria for a vote are not met, the status SHALL be changed to "No Vote Taken" and the PR
+   SHALL be closed.
+5. If there was a vote, then after the vote is concluded:
    1. If the vote passed, the status SHALL be changed to "Living" and the PR SHALL be merged
    2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed 
 
