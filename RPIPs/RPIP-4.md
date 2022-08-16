@@ -36,7 +36,7 @@ Topics SHOULD approximate community sentiment by including a poll with the follo
 
 Once the requirements have been met, either 1) Darren Langley AKA langers (General Manager - Rocket Pool Pty Ltd) or 2) a party he entrusts with this ability MUST create a snapshot vote and publicize it as soon as reasonably possible unless exercizing their veto power (see Vetoing below). 
 
-The snapshot vote SHALL run for at least 7 days -- with 14 days being RECOMMENDED -- and SHALL REQUIRE a minimum 15% voting power quorum to be successful. Proposals MAY specify a higher quorum. In the case where no quorum has been met for three of the last four polls, the needed quorum SHALL be reduced by 25% permanently unless governance action dictates otherwise.
+The snapshot vote SHALL run for at least 7 days -- with 14 days being RECOMMENDED -- and SHALL REQUIRE a minimum 15% voting power quorum to be successful. Proposals MAY specify a higher quorum. In the case where no quorum has been met for three of the last four polls, the needed minimum quorum SHALL be reduced by 25% permanently unless governance action dictates otherwise.
 
 ### Snapshot Vote Strategy
 
