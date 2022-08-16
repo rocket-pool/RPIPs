@@ -126,10 +126,10 @@ Images, diagrams and auxiliary files should be included in a subdirectory of the
 
 The current RPIP editors are
 
-    Mike Leach (GH: VVander | Discord: @Wander#4793) <mike@bamboofin.tech>
-    Darren Langley (GH: darrenlangley | Discord: @langers#3774)
-    Valdorff (Discord: @Val#5027)
-    Ken (GH: htimsk | Discord: Ken#5954)
+    Mike Leach (GH: VVander | Discord: Wander#4793)
+    Darren Langley (GH: darrenlangley | Discord: langers#3774)
+    Valdorff (Discord: Val#5027)
+    Ken Smith (GH: htimsk | Discord: Ken#5954)
 
 ## RPIP Editor Responsibilities
 
