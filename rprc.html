@@ -1,0 +1,7 @@
+---
+layout: page
+title: RPRC
+---
+
+{% assign rpips=site.pages|where:"type","Protocol"|where:"category","RPRC" %}
+{% include rpiptable.html rpips=rpips %}
