@@ -3,7 +3,7 @@ rpip: 4
 title: Community Resolutions and Voting
 author: Mike Leach (@VVander) <mike@bamboofin.tech>
 discussions-to: https://dao.rocketpool.net/t/snapshot-voting/400
-status: Review
+status: Draft
 type: Meta
 created: 2022-03-21
 ---
