@@ -19,3 +19,20 @@ Simlar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.
 
 This index is manually maintained for now. \
 Please update the table whenever you add a new RPIP or update the status of an RPIP.
+
+
+## Local Development
+
+1. Fork the repo
+1. Clone it locally
+1. Install dependencies: `bundle install`
+1. Start the local server: `bundle exec jekyll serve`
+1. Go to <http://localhost:4400/> to view changes
+
+To build the site use `bundle exec jekyll build`.
+
+Resources:
+
+- [Jekyll Docs](https://jekyllrb.com/docs/)
+- [Liquid Syntax](https://shopify.github.io/liquid/basics/introduction/)
+

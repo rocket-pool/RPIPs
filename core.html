@@ -1,0 +1,7 @@
+---
+layout: page
+title: Core
+---
+
+{% assign rpips=site.pages|where:"type","Protocol"|where:"category","Core" %}
+{% include rpiptable.html rpips=rpips %}
