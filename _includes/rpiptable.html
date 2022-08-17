@@ -15,8 +15,8 @@
     <table class="rpiptable">
       <thead>
         {% if status == "Last Call" %}
-          <tr>
-          <th class="rpipnum">Number</th><th class="date">Review ends</th><th class="title">Title</th><th class="author">Author</th></tr>
+          <!-- <tr>
+          <th class="rpipnum">Number</th><th class="date">Review ends</th><th class="title">Title</th><th class="author">Author</th></tr> -->
         {% else %}
           <tr><th class="rpipnum">Number</th><th class="title">Title</th><th class="author">Author</th></tr>
         {% endif %}
@@ -25,7 +25,7 @@
         <tr>
           <td class="rpipnum"><a href="{{page.url|relative_url}}">{{page.rpip|xml_escape}}</a></td>
           {% if status == "Last Call" and page.last-call-deadline != undefined %}
-            <td class="date">{{ page.last-call-deadline | xml_escape }}</td>
+            <!-- <td class="date">{{ page.last-call-deadline | xml_escape }}</td> -->
           {% endif %}
           <td class="title">{{page.title|xml_escape}}</td>
           <td class="author">{% include authorlist.html authors=page.author %}</td>

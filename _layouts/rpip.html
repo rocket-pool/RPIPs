@@ -11,9 +11,9 @@ layout: default
     📖 This RPIP is in the review stage. It is subject to changes and feedback is appreciated.
   </div>
 {% elsif page.status == "Last Call" %}
-  <div class="lastcall">
+  <!-- <div class="lastcall">
     📢 This RPIP is in the last call for review stage. The authors wish to finalize the RPIP and appreciate feedback.
-  </div>
+  </div> -->
 {% elsif page.status == "Stagnant" %}
   <div class="stagnant">
     🚧 This RPIP had no activity for at least 6 months.
@@ -37,7 +37,7 @@ layout: default
     {% endif %}
     <tr><th>Status</th><td>{{ page.status | xml_escape }}
     {% if page.last-call-deadline != undefined %}
-      <tr><th>Last Call Deadline</th><td>{{ page.last-call-deadline | xml_escape }}</td></tr>
+      <!-- <tr><th>Last Call Deadline</th><td>{{ page.last-call-deadline | xml_escape }}</td></tr> -->
     {% endif %}
     </td></tr>
     <tr><th>Type</th><td>{{ page.type | xml_escape }}</td></tr>
@@ -69,7 +69,7 @@ layout: default
   IEEE specification for reference formatting:
   https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
   {% endcomment %}
-  <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Ethereum Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: https://eips.ethereum.org/EIPS/eip-{{ page.eip | xml_escape }}.</p>
+  <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Ethereum Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPS/rpip-{{ page.rpip | xml_escape }}.</p>
 </div>
 {% comment %}
 Article schema specification:
