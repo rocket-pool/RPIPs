@@ -18,7 +18,7 @@ description: >-
   Rocket Pool Improvement Proposals (RPIPs) describe standards for the Rocket Pool
   platform, including core protocol specifications, client APIs, and contract
   standards.
-url: "https://rpips.netlify.app/"
+url: "https://rpips.netlify.app"
 github_username:  rocket-pool
 repository: https://github.com/rocket-pool/RPIPs/
 
