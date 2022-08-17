@@ -128,7 +128,7 @@ The current RPIP editors are
 
     Mike Leach (GH: VVander | Discord: Wander#4793)
     Darren Langley (GH: darrenlangley | Discord: langers#3774)
-    Valdorff (Discord: Val#5027)
+    Valdorff (GH Valdorff | Discord: Val#5027)
     Ken Smith (GH: htimsk | Discord: Ken#5954)
 
 ## RPIP Editor Responsibilities
