@@ -4,7 +4,7 @@ title: Incentive Management Committee Charter
 description: Describes what the Incentives Management Committee is for and how it will execute
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Draft
+status: Final
 type: Meta
 created: 2022-08-09
 requires: 10

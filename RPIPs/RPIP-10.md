@@ -4,7 +4,7 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Draft # (To become Living)
+status: Living
 type: Meta
 created: 2022-08-09
 ---
@@ -66,7 +66,9 @@ Committee Governance section.
     majority for signatures.
   - The above means 3 of 5 is the absolute minimum requirement possible for a multisig.
   - Existing MC members MAY vote to remove a member with a 2/3 or greater supermajority.
-    - Note that this _cannot_ be done if it would violate the above multisig requirements. 
+    - Note that this _cannot_ be done if it would violate the above multisig requirements.
+  - The MC SHALL have one or more stated goals; where possible, they SHOULD be measurable enough for
+  the community to judge how well the goals are being met.
 - The pDAO MAY vote to change the membership of the MC at any time.
 - There SHOULD be a pDAO review of MC membership within 6 months of the MC's creation.
 
@@ -81,6 +83,24 @@ Committee Governance section.
   - The MC SHALL receive feedback following those reports.
   - The MC SHOULD respond to this feedback and respect the will of the broader pDAO.
 
+### Updating this RPIP
+This is a "Living" RPIP, so that it can be kept up to date with changes to the pDAO budget or budget
+procedures. There SHALL NOT be any merged updates (beyond correcting errata and add non-normative
+clarifications) unless they are accepted by pDAO vote. The following process SHALL be followed to
+update this RPIP:
+
+1. An author SHALL make edits as desired and create a pull request; the status in the PR SHALL be
+   "Draft"
+2. An RPIP editor SHALL review it. If there are no structural issues, the status shall be changed
+   to "Review" 
+3. The vote procedure SHALL be followed as if this were an entirely new RPIP. This includes making
+   forum posts, appropriate wait times, quorums, etcetera, as detailed elsewhere.
+4. If criteria for a vote are not met, the status SHALL be changed to "No Vote Taken" and the PR
+   SHALL be closed.
+5. If there was a vote, then after the vote is concluded:
+   1. If the vote passed, the status SHALL be changed to "Living" and the PR SHALL be merged
+   2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed 
+
 ## Rationale
 The main goal is to establish a starting budget and provide for a quick initial state where funds
 can be allocated and spent.
@@ -94,6 +114,9 @@ as quickly as possible. The liquidity bucket amounts to 67.5k RPL, or 1,087 ETH 
 annually. For a theoretical run of 1 reward period (28 days), this gives  ~83.6 ETH or ~140,200 USD
 to work with. In light of parallel discussions about tokenomics changes, this amount serves as a
 conservative starting point.
+
+In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
+https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
 ## Historical budget splits
 | Date         | Split                                                                                            |
