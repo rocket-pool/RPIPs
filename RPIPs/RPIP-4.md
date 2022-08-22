@@ -52,7 +52,7 @@ Eligible RPL voting power MAY instead be delegated to another wallet. All delega
 
 All RPL votes are recorded into a `results` map which requires a Rocket Pool node address as the index (`address`). The `results` map's values SHALL include:
 - an integer `vote` which indicates the chosen vote option
-    + Generally, the following mapping SHOULD be used: `1` corresponds to "yea", `2` corresponds to "nay", and `3` corresponds to "abstain"
+    + Generally, the following mapping SHOULD be used: `1` corresponds to "For", `2` corresponds to "Against", and `3` corresponds to "Abstain"
     + For a case with truly mutually exclusive options, an alternative mapping MAY be used, with the only limit being the maximum integer value
 - an integer `power` which contains the ultimate voting power of that node
 
