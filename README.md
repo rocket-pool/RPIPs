@@ -1,6 +1,6 @@
 # Rocket Pool Improvement Proposals (RPIPs)
 
-Simlar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.com/ethereum/EIPs), this repository contains Rocket Pool Improvement Proposals (RPIPs). Currently, it's in a draft form, as this process is not yet officially adopted by Rocket Pool.
+Similar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.com/ethereum/EIPs), this repository contains Rocket Pool Improvement Proposals (RPIPs). Currently, it's in a draft form, as this process is not yet officially adopted by Rocket Pool.
 
 For easy viewing of existing RPIPs, please see the [RPIP dashboard](https://rpips.rocketpool.net/).
 Note that, for now, the dashboard must be manually rebuilt and published when the repo changes.
