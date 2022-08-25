@@ -53,20 +53,22 @@ Eligible RPL voting power MAY instead be delegated to another wallet. All delega
 All RPL votes are recorded into a `results` map which requires a Rocket Pool node address as the index (`address`). The `results` map's values SHALL include:
 - an integer `vote` which indicates the chosen vote option
     + Generally, the following mapping SHOULD be used: `1` corresponds to "For", `2` corresponds to "Against", and `3` corresponds to "Abstain"
-    + For a case with truly mutually exclusive options, an alternative mapping MAY be used, with the only limit being the maximum integer value
+    + An alternative mapping MAY be used, with the only limit being the maximum integer value, but using this option MUST be specified by an RPIP.
 - an integer `power` which contains the ultimate voting power of that node
 
 `results.power` is determined in accordance with the following equation for voting: 
 
-`results.power = (int) √rpl`, where `rpl` is the amount of RPL staked in that node, with the result truncated into an integer for simplicity.
+`results.power = √rpl`, where `rpl` is the amount of RPL staked in that node, with the result truncated into an integer for simplicity.
 
-Any delegated vote `results.power` is summed with the voter's own `results.power` to achieve the final vote power for a single voter. Addresses which delegate their vote power are not included in the `results` map, but if a address that delegates its power instead votes directly, the address' `results.power` is no longer contributed towards the delegated address' power and is instead counted for the original address only.
+Any delegated vote `results.power` is summed with the voter's own `results.power` to achieve the final vote power for a single voter. Addresses which delegate their vote power are not included in the `results` map, but if an address that delegates its power instead votes directly, the address' `results.power` is no longer contributed towards the delegated address' power and is instead counted for the original address only.
 
 Total vote power for each of the poll choices indicated in each `results.vote` entry is summed into an `rplTotalPower` array containing the total sum of power for each of the poll choices, with the index of each entry mapping to the integer corresponding to the vote choice. This is used to compute the outcome as described below.
 
 #### Outcome
 
-The `rplTotalPower` array is searched for the maximum value. The index of this maximum value corresponds to the winning proposal. If the winning choice corresponds to "abstain", however, then the proposal corresponding to the index of the second highest value is declared as the winner instead.
+The `rplTotalPower` array is searched for the maximum value. The index of this maximum value corresponds to the vote outcome. If the winning choice corresponds to "Abstain", however, then the index of the second highest value is the vote outcome instead.
+
+A different vote outcome calculation MAY be used, e.g. ranked or single choice votes among multiple options, but this MUST be specified via an adopted RPIP.
 
 #### Vetoing
 Given that the snapshot voting system is not comfortably secure (see Security Considerations below), there are two safeguard vetoes in place.
@@ -83,13 +85,13 @@ When a veto power is excercised, the entity excercising a veto SHALL publish a V
 
 ### Snapshot.org
 
-Snapshot.org is a web3-native platform for token voting and provides several pre-strategies for accomplishing this, such as 1-to-1 voting and qudratic voting. This platform also provides the capability to create custom voting strategies, which is necessary for Rocket Pool to include staked RPL, for example. The Snapshot.org platform is widely used and does not require fees.
+Snapshot.org is a web3-native platform for token voting and provides several pre-strategies for accomplishing this, such as 1-to-1 voting and quadratic voting. This platform also provides the capability to create custom voting strategies, which is necessary for Rocket Pool to include staked RPL, for example. The Snapshot.org platform is widely used and does not require fees.
 
 ### RPL Stake and Weight
 
 RPL is required to be effectively staked for voting to prevent vote-buying by participants unaffiliated with the protocol's operations.
 
-The algorithm used for calculating power uses a square root and a `0.5` factor for flattening the power contributed by any single node. This helps prevent large node operators from obtaining dominance over the voting process.
+The algorithm used for calculating power uses a square root for flattening the power contributed by any single node. This helps prevent large node operators from obtaining dominance over the voting process.
 
 ### RPL vs rETH Voting
 
