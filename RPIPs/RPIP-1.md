@@ -3,7 +3,7 @@ rpip: 1
 title: RPIP Purpose and Guidelines
 status: Living
 type: Meta
-author: Mike Leach (GH: VVander | Discord: Wander#4793)
+author: Mike Leach (GH: VVander | Discord: Wander#4793), Valdorff (GH: Valdorff | Discord: Val#5027)
 discussions-to: https://dao.rocketpool.net/t/rpip-1-formalizing-protocol-changes/367
 created: 2022-03-17
 ---
@@ -111,7 +111,7 @@ The `author` header lists the names, email addresses or usernames of the authors
 
     Random J. User (GH: githubname | Discord: discordname) <address@dom.ain>
 
-Although authors are not required to provide a GitHub username or email address, at least one author must use a GitHub username in order to get notified on change requests and to approve or reject them.
+Authors are not required to provide a GitHub username, Discord tag, or email; however, at least one author must provide a GitHub username in order to get notified on change requests and to approve or reject them.
 
 ## Linking to External Resources
 
