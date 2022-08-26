@@ -101,6 +101,10 @@ Each RPIP must begin with an RFC 822 style header preamble, preceded and followe
 
 `withdrawal-reason`: An optional sentence explaining why the RPIP was withdrawn.
 
+`vote-date`: If this RPIP had a concluded vote, when that happened in yyyy-mm-dd format. For a Living RPIP that has had a successful vote, this should be the date when the last "Passed" vote concluded.
+
+`vote-result`: If this RPIP had a concluded vote, the result of the ("Failed" or "Passed"). For a Living RPIP that has had a successful vote, this should remain "Passed".
+
 Headers that permit lists must separate elements with commas.
 
 Headers requiring dates will always do so in the format of ISO 8601 (yyyy-mm-dd).
