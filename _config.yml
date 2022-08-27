@@ -47,7 +47,7 @@ permalink: /:slug
 defaults:
   -
     scope:
-      path: "RPIPS"
+      path: "RPIPs"
     values:
       layout: "rpip"
 
