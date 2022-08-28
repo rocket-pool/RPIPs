@@ -119,6 +119,7 @@ In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-
 https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
 ## Historical budget splits
+
 | Date         | Split                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------------|
 | 2022-08-09   | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20%           |
