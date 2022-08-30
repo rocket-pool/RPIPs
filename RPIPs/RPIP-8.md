@@ -12,7 +12,7 @@ created: 2022-08-05
 
 ## Abstract
 This proposal:
-- Creates a new type of minipool that is launched with 8 Node Operator
+- Creates a new type of minipool that is launched with 8 Node Operator ETH
 - Sets commission for new minipools to 14% on matched Protocol ETH
 - Establishes that effective RPL stake is calculated as 10-150% of matched Protocol ETH on a
   per-node basis
