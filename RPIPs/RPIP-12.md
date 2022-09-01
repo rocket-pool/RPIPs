@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2022-08-31
-requires: 8
+requires: 8, 13
 ---
 
 ## Abstract
@@ -25,6 +25,7 @@ Atlas will implement the following high-level features:
 - Scale assignments with deposit size
 - SaaS
 - Minor cleanup
+- Removal of total effective RPL stake
 
 ## Specification
 
@@ -66,17 +67,22 @@ rETH. More NOs will be earning rewards, and some of those rewards will be split 
   - The total queue length
 
 ### SaaS
+Please see [RPIP-13](RPIP-13.md). Note that a vote on RPIP-12 (this RPIP) includes RPIP-13, since that
+is one of the several features specified.
+
+### Removal of total effective RPL stake
+With the redstone upgrade replacing the old reward system, we no longer require the total effective RPL
+stake value. It also removes the requirement for the blocker we currently have on creating/finalising
+minipools while network is "not in consensus". It is a low effort change to simplify the protocol
+reducing gas and improving UX with the following changes:
+
+- Total effective RPL stake SHALL be removed from oracle DAO submissions
+- All total effective RPL stake calculations and checks SHALL be removed from the smart contracts
 
 ### Minor cleanup
 - The Full deposit option SHALL be removed
 - Existing queued Half and Full deposit minipools SHALL be assigned before assigning any minipools
   that are created after the Atlas smart contract is in effect
-
-### Removal of total effective RPL stake
-With the redstone upgrade replacing the old reward system, we no longer require the total effective RPL stake value. It also removes the requirement for the blocker we currently have on creating/finalising minipools while network is "not in consensus". It is a low effort change to simplify the protocol reducing gas and improving UX with the following changes:
-
-- Total effective RPL stake SHALL be removed from oracle DAO submissions
-- All total effective RPL stake calculations and checks SHALL be removed from the smart contracts
 
 ## Implementation
 
@@ -135,8 +141,6 @@ See also the discussion at https://dao.rocketpool.net/t/leb8-discussion-thread/8
 
 ### SaaS
 
-### Minor cleanup
-
 ### Removal of total effective RPL stake
 - Remove `_effectiveRplStake` argument from `rocketNetworkPrices.submitPrices` and `rocketNetworkPrices.executePrices` methods
 - Remove `inConsensus` method from `rocketNetworkPrices`
@@ -145,6 +149,8 @@ See also the discussion at https://dao.rocketpool.net/t/leb8-discussion-thread/8
 - Remove calls to `updateTotalEffectiveRPLStake` in methods `slashRPL`, `withdrawRPL`, `_stakeRPL` in `rocketNodeStaking`
 - Remove `calculateTotalEffectiveRPLStake` and `getTotalEffectiveRPLStake` in `rocketNodeStaking`
 - Update smartnode software to no longer calculate and submit the value for `_effectiveRplStake`
+
+### Minor cleanup
 
 ## Security Considerations
 
