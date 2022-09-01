@@ -56,7 +56,7 @@ rETH. More NOs will be earning rewards, and some of those rewards will be split 
   - The total space available in the deposit pool
   - The total capacity available in the minipool queue
 
-### Scale assingments with deposit size
+### Scale assignments with deposit size
 - The number of scaling assignments SHALL be the minimum of:
   - 90
   - The number of minipools that can be assigned using the deposit
@@ -131,7 +131,7 @@ See also the discussion at https://dao.rocketpool.net/t/leb8-discussion-thread/8
 
 ### Include queue capacity in maximum deposit size
 
-### Scale assingments with deposit size
+### Scale assignments with deposit size
 
 ### SaaS
 
