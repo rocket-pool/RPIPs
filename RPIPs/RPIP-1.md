@@ -3,7 +3,7 @@ rpip: 1
 title: RPIP Purpose and Guidelines
 status: Living
 type: Meta
-author: Mike Leach (@Wander) <mike@bamboofin.tech>
+author: Mike Leach (GH: VVander | Discord: Wander#4793), Valdorff (GH: Valdorff | Discord: Val#5027)
 discussions-to: https://dao.rocketpool.net/t/rpip-1-formalizing-protocol-changes/367
 created: 2022-03-17
 ---
@@ -14,7 +14,10 @@ RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document p
 
 Only RPIPs in the "Finalized" state are eligible for adoption and must be reviewed by editors before marked as "Finalized". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the following editors:
 
-Mike Leach (@VVander) <mike@bamboofin.tech>
+Mike Leach (GH: VVander | Discord: Wander#4793)
+Darren Langley (GH: darrenlangley | Discord: langers#3774)
+Valdorff (GH Valdorff | Discord: Val#5027)
+Ken Smith (GH: htimsk | Discord: Ken#5954)
 
 **The RPIP author is responsible for building consensus within the community and documenting dissenting opinions.**
 
@@ -98,6 +101,10 @@ Each RPIP must begin with an RFC 822 style header preamble, preceded and followe
 
 `withdrawal-reason`: An optional sentence explaining why the RPIP was withdrawn.
 
+`vote-date`: If this RPIP had a concluded vote, when that happened in yyyy-mm-dd format. For a Living RPIP that has had a successful vote, this should be the date when the last "Passed" vote concluded.
+
+`vote-result`: If this RPIP had a concluded vote, the result of the ("Failed" or "Passed"). For a Living RPIP that has had a successful vote, this should remain "Passed".
+
 Headers that permit lists must separate elements with commas.
 
 Headers requiring dates will always do so in the format of ISO 8601 (yyyy-mm-dd).
@@ -106,9 +113,9 @@ Headers requiring dates will always do so in the format of ISO 8601 (yyyy-mm-dd)
 
 The `author` header lists the names, email addresses or usernames of the authors/owners of the RPIP. Those who prefer anonymity may use a username only, or a first name and a username. The format of the `author` header value is:
 
-    Random J. User (@username) <address@dom.ain>
+    Random J. User (GH: githubname | Discord: discordname) <address@dom.ain>
 
-Although authors are not required to provide a GitHub username or email address, at least one author must use a GitHub username in order to get notified on change requests and to approve or reject them.
+Authors are not required to provide a GitHub username, Discord tag, or email; however, at least one author must provide a GitHub username in order to get notified on change requests and to approve or reject them.
 
 ## Linking to External Resources
 
