@@ -20,8 +20,9 @@ the Specification, Implementation, and Security Consideration sections.
 
 Atlas will implement the following high-level features:
 - LEB8s
-- Scaling assignments with deposit size
-- Efficiently using queue ETH
+- Use queue ETH
+- Include queue capacity in maximum deposit size
+- Scale assignments with deposit size
 - SaaS
 - Minor cleanup
 
@@ -31,9 +32,45 @@ Atlas will implement the following high-level features:
 Please see [RPIP-8](RPIP-8.md). Note that a vote on RPIP-12 (this RPIP) includes RPIP-8, since that
 is one of the several features specified.
 
+### Use queue ETH
 
+Right now the minipool queue holds a fair amount of idle ETH. Instead, that ETH could be used to 
+start validators and earn rewards
+- When a minipool is created
+  - The minimum beacon chain deposit (1 ETH) SHALL be made
+  - All remaining ETH SHALL be used to pair against the queue
+  - The protocol MUST be able to calculate the amount of ETH in use from the queue; this ETH SHALL
+    not be included in the ETH balance used for calculating `RocketTokenRETH.getEthValue` or
+    `RocketTokenRETH.getRethValue` 
 
-### 
+Notes:
+- This means that more validators will be started than would otherwise be possible given the minted
+rETH. More NOs will be earning rewards, and some of those rewards will be split to rETH holders.
+  - The effect is similar, but directionally opposite to a full deposit pool; rather than being a
+    small drag on rETH apr, this will provide a small boost.
+- As a benefit, this means that all minipools in the queue will need 31 ETH to launch, regardless
+  of how many ETH were deposited. This fact can simplify several pieces of code.
+
+### Include queue capacity in maximum deposit size
+- The maximum deposit size SHALL be the sum of:
+  - The total space available in the deposit pool
+  - The total capacity available in the minipool queue
+
+### Scale assingments with deposit size
+- The number of scaling assignments SHALL be the minimum of:
+  - 90
+  - The number of minipools that can be assigned using the deposit
+- The number of socialized assignments SHALL be 2
+- The total number of assingments from a deposit SHALL be the minimum of:
+  - Scaling assignments + socialized assignments
+  - The total queue length
+
+### SaaS
+
+### Minor cleanup
+- The Full deposit option SHALL be removed
+- Existing queued Half and Full deposit minipools SHALL be assigned before assigning any minipools
+  that are created after the Atlas smart contract is in effect
 
 ## Implementation
 
@@ -83,6 +120,16 @@ is one of the several features specified.
     these queues anymore, so this is simply a way to empty the legacy queues.
 
 See also the discussion at https://dao.rocketpool.net/t/leb8-discussion-thread/899.
+
+### Use queue ETH
+
+### Include queue capacity in maximum deposit size
+
+### Scale assingments with deposit size
+
+### SaaS
+
+### Minor cleanup
 
 ## Security Considerations
 
