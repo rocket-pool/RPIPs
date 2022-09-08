@@ -11,7 +11,10 @@ created: 2022-08-07
 
 ## Abstract
 
-Currently, the pDAO guardian is held solely by Rocket Pool Pty Ltd. In an effort to increase security, this proposal suggets a temporary reassignment of the pDAO guardianship to a multi-sig controlled by the oDAO members until the pDAO is designed and developed more thoroughly.
+Currently, the pDAO guardian is held solely by Rocket Pool Pty Ltd. In an effort to increase security, this proposal suggests a temporary reassignment of the pDAO guardianship to a multi-sig controlled by the oDAO members until the pDAO is designed and developed more thoroughly.
+
+## Specification
+A 8/14 multi-sig wallet consisting of the current (2022-08-07) oDAO members SHALL be created, and the pDAO guardian ownership SHALL be immediately but temporarily transferred to this wallet.
 
 ## Rationale
 This is explicitly proposed as a temporary measure because there is no broad agreement yet on a better design for the pDAO guardian. 
