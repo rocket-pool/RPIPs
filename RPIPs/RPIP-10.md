@@ -101,9 +101,9 @@ Committee Governance section.
     - An identity statement explaining as much or as little of who they are as they wish to share.
       This MAY provide verification to the degree the nominee desires.
     - A contribution statement explaining their contributions to RP.
-    - If this is not provided, the nominee shall be removed from consideration. If this results in
-      insufficient nominees to fill the spots, the Management Committee Selection process fails and
-      must be restarted from the beginning.
+    - If any of the above four statements is not provided, the nominee shall be removed from
+      consideration. If this results in insufficient nominees to fill the spots, the Management
+      Committee Selection process fails and must be restarted from the beginning.
   - The nominee MAY also provide any additional information they deem helpful.
   - An organizer SHALL provide some basic hard metrics for all candidates; this SHOULD include:
     - Account ages of RP-related accounts.
