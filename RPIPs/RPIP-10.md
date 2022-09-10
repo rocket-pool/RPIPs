@@ -84,6 +84,9 @@ Committee Governance section.
   - The MC SHOULD respond to this feedback and respect the will of the broader pDAO.
 
 ### Management Committee Selection
+This process SHALL be followed when committees are newly formed, as well as when all or part of a
+committee's membership is to be replaced (eg, due to term limits or a vote).
+
 - Nominations
   - A nomination thread for the MC SHALL be posted on the forum for at least 5 days.
     - Any member of the community MAY nominate any member (including themselves).
