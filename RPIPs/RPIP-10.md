@@ -83,6 +83,47 @@ Committee Governance section.
   - The MC SHALL receive feedback following those reports.
   - The MC SHOULD respond to this feedback and respect the will of the broader pDAO.
 
+### Management Committee Selection
+This process SHALL be followed when committees are newly formed, as well as when all or part of a
+committee's membership is to be replaced (eg, due to term limits or a vote).
+
+- Nominations
+  - A nomination thread for the MC SHALL be posted on the forum for at least 5 days.
+    - Any member of the community MAY nominate any member (including themselves).
+    - Any nominated member MAY ask to be removed from consideration.
+    - A final list of nominees (except those that asked to be removed) SHALL be created and posted
+      as a comment in this thread.
+    - If this results in insufficient nominees to fill the spots, the Management Committee Selection
+      process fails and must be restarted from the beginning.
+- Nominee information sharing
+  - Within 3 days of the final list being posted, each nominee SHALL provide the following:
+    - An alignment statement explaining why they are motivated to act according to the MC charter.
+    - A conflict statement explaining any other entanglements that could be perceived as motivation
+      to act against the MC charter or the protocol. This includes entanglements with other crypto,
+      other LSD providers, etc.
+    - An identity statement explaining as much or as little of who they are as they wish to share.
+      This MAY provide verification to the degree the nominee desires.
+    - A contribution statement explaining their contributions to RP.
+    - If any of the above four statements is not provided, the nominee shall be removed from
+      consideration. If this results in insufficient nominees to fill the spots, the Management
+      Committee Selection process fails and must be restarted from the beginning.
+  - The nominee MAY also provide any additional information they deem helpful.
+  - An organizer SHALL provide some basic hard metrics for all candidates; this SHOULD include:
+    - Account ages of RP-related accounts.
+    - Activity metrics for RP-related accounts (this MAY include items like: number of posts, how
+      often their posts are liked, number of git commits, etc).
+- Membership selection
+  - The information from "Nominee info sharing" SHALL be compiled and made available on a forum post.
+  - Once that post is available, a Snapshot “Weighted” vote SHALL be made.
+  - Voters MAY split their vote however they wish. If the voter has no specific split they wish to
+    follow, it is RECOMMENDED that they evenly split their weight among their top N candidates,
+    where N is the desired number of members on the committee.
+  - If quorum is not met, the Management Committee Selection process fails and MUST be restarted
+    from the beginning.
+  - The selected membership SHALL be the nominees with the highest N vote weights, where N is the
+    desired number of selections. In the event of a tie, the pDAO treasurer SHALL randomly select
+    which of those nominees are selected.
+
 ### Updating this RPIP
 This is a "Living" RPIP, so that it can be kept up to date with changes to the pDAO budget or budget
 procedures. There SHALL NOT be any merged updates (beyond correcting errata and add non-normative
