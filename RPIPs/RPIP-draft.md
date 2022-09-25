@@ -41,7 +41,7 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 - The GMC MAY give retrospective awards for work completed prior to the first call for applications, or for work that was started prior to the first call for applications. Such applications MAY be submitted on behalf of others rather than being self-nominated. In any given award period, no more than 50% of the awarded RPL SHALL go to retroactive awards.
 - The GMC SHALL announce its proposed winners prior to the final day of even-numbered months. Each award SHALL individually be subject to snapshot voting as soon as is practical thereafter.
 - Funds for grants and bounties SHALL only be considered approved upon the successful passage of the snapshot vote.
-- The one exception to the aforementioned timeline SHALL be during the first award period. Because the timeline for successful passage of this RPIP, and subsequent selection of the GMC, is unwknown, it is not the intent of this RPIP to make the GMC wait for an even
+
 
 ### Assessment of Awards
 - Recipients of Grants SHALL update the GMC in a publicly-available document about their progress on at least a monthly basis.
