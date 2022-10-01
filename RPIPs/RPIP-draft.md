@@ -29,16 +29,16 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 ### Awards process
 - The GMC SHALL publish an open call for grant, bounty, and retrospective award applications by the first of the month of the first month after the successful creation of the scoring rubric (see below), with deadlines for application falling on the 15th of that month. Subsequent calls for applications SHALL occur every other month thereafter, following the same 1st of the month/15th of the month deadline schema.
 - The GMC SHALL score applications and announce proposed recipients by the final day of the month after the successful creation of the scoring rubric. Subsequent announcements of proposed recipients SHALL occur every other month thereafter, following the same final day of the month deadline schema.
-- Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to select winning grants and bounties. The rubric(s) SHALL be publicly posted and the community SHALL be solicited in their development. The GMC MAY choose to develop separate rubrics for grants, bounties, and retrospective awards.
+- Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to select winning grants and bounties. The rubric(s) SHALL be publicly posted and anyone so interested in participating SHALL be solicited in their development. The GMC MAY choose to develop separate rubrics for grants, bounties, and retrospective awards.
 - The GMC MAY give retrospective awards for previously-completed work. Such applications MAY be submitted on behalf of others rather than being self-nominated. In any given award period, no more than 50% of the awarded RPL SHALL go to retroactive awards.
-- Any member of the community MAY file an RPIP disputing a grant, bounty, or retrospective award within two weeks of the announcement of recipients. Such an RPIP SHALL be subject to a snapshot vote.
+- Anyone MAY file an RPIP disputing a grant, bounty, or retrospective award within two weeks of the announcement of recipients. Such an RPIP SHALL be subject to a snapshot vote.
 - Funds for grants and bounties SHALL only be considered approved upon either the completion of the two week waiting period without any objecting RPIPs, or the failure of any objecting RPIP snapshot votes.
 
 
 ### Assessment of Awards
 - Recipients of Grants SHALL update the GMC in a publicly-available document about their progress on at least a monthly basis.
-- If a majority of the GMC agrees that a grant recipient is failing to provide the specified services to the protocol in a timely manner (as documented in the original application and in subsequent monthly updates), the GMC SHALL publicly announce such a decision and cease any future payments. This decision MAY be disputed by any member of the community through the creation of an RPIP within two weeks of the GMC's announcement. The RPIP SHALL be subject to a snapshot vote.
-- Any group or individual MAY submit a publicly-available document to the GMC claiming successful completion of the bounty. The GMC SHALL discuss all such applications. If a majority of the GMC agrees then the GMC SHALL announce the award of the bounty. Any community member MAY dispute the awarding of the bounty through the creation of an RPIP within two weeks of the GMC's announcement. The RPIP SHALL be subject to a snapshot vote.
+- If a majority of the GMC agrees that a grant recipient is failing to provide the specified services to the protocol in a timely manner (as documented in the original application and in subsequent monthly updates), the GMC SHALL publicly announce such a decision and cease any future payments. This decision MAY be disputed by anyone through the creation of an RPIP within two weeks of the GMC's announcement. The RPIP SHALL be subject to a snapshot vote.
+- Any group or individual MAY submit a publicly-available document to the GMC claiming successful completion of the bounty. The GMC SHALL discuss all such applications. If a majority of the GMC agrees then the GMC SHALL announce the award of the bounty. Anyone MAY dispute the awarding of the bounty through the creation of an RPIP within two weeks of the GMC's announcement. The RPIP SHALL be subject to a snapshot vote.
 
 ### Conflicts of Interest
 - The GMC SHALL abide by the following processes to minimize conflicts of interest:
@@ -47,12 +47,15 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 
 
 ## Selection and Governance
-In addition to the "Management Committee Governance" section of RPIP-10, the GMC will abide by the following:
-- The GMC SHALL contain a minimum of seven individuals. The GMC SHOULD be composed of a mix of core team and community members but SHALL at any point in time have a majority of the membership be community members.
-- Individuals that receive a salary from Rocket Pool, Ltd. or who are members of the oDAO SHALL NOT be considered community members for the purpose of this RPIP.
+In addition to the "Management Committee Governance" and "Management Committee Selection" sections of RPIP-10, the GMC will abide by the following:
+- The GMC SHALL contain a minimum of seven individuals.
+- The GMC SHOULD be composed of a mix of core team and community members, and SHALL at any point in time have a majority of the membership be community members.
+- Individuals that receive a salary from Rocket Pool Pty to work full-time on Rocket Pool or who are members of the oDAO SHALL NOT be considered community members for the purpose of this RPIP.
+- During committee selection, ignore all remaining vote weight for non-community members if that group (non-community members) would become the majority with one more selected nominee.
+- For the initial selection process, 7 members SHALL be selected.
 
 ## Rationale
-The community has long desired a process by which some portion of pDAO funds could be used to reward past community member contributions and incentivize future such contributions. Discussion has been ongoing for at least the past six months on Discord and the forums about what such a grants and bounties award process might look like and who would comprise the selecting committee. At one point consideration was given to having the initial committee comprised of Rocket Scientists plus one team member. In the time since, the Incentives Management Committee has created a precedent for a procedure by which such a Management Committee’s membership might be selected. This RPIP follows that precedent.
+The community has long desired a process by which some portion of pDAO funds could be used to reward past contributions and incentivize future such contributions. Discussion has been ongoing for at least the past six months on Discord and the forums about what such a grants and bounties award process might look like and who would comprise the selecting committee. At one point consideration was given to having the initial committee comprised of Rocket Scientists plus one team member. In the time since, the Incentives Management Committee has created a precedent for a procedure by which such a Management Committee’s membership might be selected. This RPIP follows that precedent.
 
 
 ## Copyright
