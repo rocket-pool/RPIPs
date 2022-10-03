@@ -1,5 +1,5 @@
 ---
-rpip: 
+rpip: 15
 title: Creation of Grants and Bounties Management Committee
 description: Describes the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: Calurduran (@dafuerstman), Valdorff (@Valdorff)
