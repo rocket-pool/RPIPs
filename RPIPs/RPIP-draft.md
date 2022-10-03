@@ -43,7 +43,8 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 ### Conflicts of Interest
 - The GMC SHALL abide by the following processes to minimize conflicts of interest:
     - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any retrospective award for which they are nominated. They MAY participate in related snapshot voting, if any.
-    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any grants during the application period for which they are an applicant. They MAY participate in related snapshot voting, if any. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants. 
+    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any grants during the application period for which they are an applicant. They MAY participate in related snapshot voting, if any. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants.
+    - Any GMC member who claims successful completion of a bounty SHALL NOT vote on or participate in GMC discussion about their bounty application. They MAY participate in related snapshot voting, if any.
 
 
 ## Selection and Governance
