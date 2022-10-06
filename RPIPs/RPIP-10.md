@@ -4,7 +4,7 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Living
+status: Draft
 type: Meta
 created: 2022-08-09
 ---
@@ -159,11 +159,20 @@ conservative starting point.
 In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
 https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
+## Current membership
+
+| Last change | Role/Committee | Member(s) | Notes/Resources |
+|---|---|---|---|
+| 2022-08-24 | pDAO Treasurer | jasper_the_friendly_ghost#7591 | Serving in interim role, per RPIP-10 (this RPIP) <br/> Accounting: [google sheet](https://docs.google.com/spreadsheets/d/1b8ZtXBzh2TkwrdyGYMPtjZNPB4jzErhp0z29rwb2ByQ/edit#gid=700052134) |
+| 2022-08-25 | IMC | RP team 1, RP team 2, jasper_the_friendly_ghost#7591, Marceau#9498, Val#5027, rhett#7084, uisce.eth#7707, DaserDog.eth#2764, Denum.eth#3446 | Accounting: [google sheet](https://docs.google.com/spreadsheets/d/1jLGkoiSjNr1UgG1spAH9ppBfrk_FqjJXg9CIw35nLCA/edit#gid=1883313121) <br/> Wallet: [gnosis safe](https://gnosis-safe.io/app/eth:0xb867EA3bBC909954d737019FEf5AB25dFDb38CB9/balances) Dashboard: [dune](https://dune.com/rp_community/imc) <br/> Treasurer: Val (as of 2022-08-27) |
+
+
 ## Historical budget splits
 
 | Date         | Split                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------------|
 | 2022-08-09   | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20%           |
+
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
