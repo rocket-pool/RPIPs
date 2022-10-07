@@ -166,6 +166,7 @@ https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 | 2022-08-24 | pDAO Treasurer | jasper_the_friendly_ghost#7591 | Serving in interim role, per RPIP-10 (this RPIP) <br/> Accounting: [google sheet](https://docs.google.com/spreadsheets/d/1b8ZtXBzh2TkwrdyGYMPtjZNPB4jzErhp0z29rwb2ByQ/edit#gid=700052134) |
 | 2022-08-25 | IMC | RP team 1, RP team 2, jasper_the_friendly_ghost#7591, Marceau#9498, Val#5027, rhett#7084, uisce.eth#7707, DaserDog.eth#2764, Denum.eth#3446 | Accounting: [google sheet](https://docs.google.com/spreadsheets/d/1jLGkoiSjNr1UgG1spAH9ppBfrk_FqjJXg9CIw35nLCA/edit#gid=1883313121) <br/> Wallet: [gnosis safe](https://gnosis-safe.io/app/eth:0xb867EA3bBC909954d737019FEf5AB25dFDb38CB9/balances) Dashboard: [dune](https://dune.com/rp_community/imc) <br/> Treasurer: Val (as of 2022-08-27) |
 
+Note: archive copies of the accounting spreadsheets are kept in [assets/rpip-10](./../assets/rpip-10)
 
 ## Historical budget splits
 
