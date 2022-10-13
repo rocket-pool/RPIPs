@@ -21,7 +21,7 @@ Governance in Rocket Pool is currently ad hoc, and there is no way for the commu
 ### Poll Procedure
   
 All Rocket Pool governance proposals MUST have an associated post on the governance forums at dao.rocketpool.net.
-Promising community sentiment and a corresponding RPIP document are REQUIRED for snapshot voting to be scheduled.
+Promising community sentiment and a corresponding RPIP document (successfully past the Review stage) are REQUIRED for snapshot voting to be scheduled.
 
 Topics SHOULD approximate community sentiment by including a poll with the following format which MUST be live for at least 7 days:
 
