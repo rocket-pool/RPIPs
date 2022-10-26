@@ -4,7 +4,7 @@ title: LEB8s
 description: A new Lower ETH Bond size of minipool with 8 ETH from the node operator
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/leb8-discussion-thread/899
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2022-08-05
@@ -14,8 +14,9 @@ created: 2022-08-05
 This proposal:
 - Creates a new type of minipool that is launched with 8 Node Operator ETH
 - Sets commission for new minipools to 14% on matched Protocol ETH
-- Establishes that effective RPL stake is calculated as 10-150% of matched Protocol ETH on a
-  per-node basis
+- Establishes that minimum RPL stake to launch a minipool or receive RPL rewards is 10% of matched
+  protocol ETH on a per-node basis
+- \<Line to be added based on "max effective" stake vote\>
 - Creates a process by which currently existing minipools can be converted
 
 ## Motivation
@@ -47,13 +48,40 @@ We believe all parties are "winning" with this new option.
   - For a node with a single half deposit or full deposit minipool, this would mean 1.6 ETH in 
     staked RPL value
   - For a node with a single LEB8 minipool, this would mean 2.4 ETH in staked RPL value
-- RPL between 10% of matched Protocol ETH and 150% of matched protocol ETH (inclusive) SHALL be
-  considered effectively staked (e.g. for RPL rewards and governance)
+- Nodes MUST have RPL valued at 10% or more of matched Protocol ETH to qualify for RPL rewards
+- \<Line to be added based on "max effective" stake vote\>
+- Effectively staked RPL SHALL be used when calculating RPL rewards and voting power 
 - There SHALL be a method to migrate from an existing half or full deposit minipool to an LEB8
   - Node operators that migrate SHALL receive an ETH credit that can be used towards starting more
     minipools; that credit SHALL NOT be directly able to be withdrawn
   - Migration from higher commission minipools SHOULD be prioritized if there is any kind of queue
     for migration
+
+### Max effective stake vote
+There SHALL be a snapshot vote to define max effective stake.
+The snapshot SHOULD be titled "Max Effective Stake" and SHOULD use "Single choice voting" with the
+following options:
+**NOTE: We are planning to go down to 2 options, by choosing one of the first two**
+- Scale with Protocol ETH
+- Flat total collateral per validator
+- Scale with NO ETH; don't get too close to minimum
+- Abstain
+
+The snapshot SHOULD provide the following table as context:
+
+| **Option Name**                                   | **Formula for max effective RPL stake**                       | **Minipool16** | **LEB8** | **Hypothetical LEB4** | **Hypothetical LEB2** |
+|---------------------------------------------------|---------------------------------------------------------------|----------------|----------|-----------------------|-----------------------|
+| Scale with Protocol ETH                           | `1.5*Protocol_ETH`                                            | 1.6-24         | 2.4-36   | 2.8-42                | 3-45                  |
+| Flat total collateral per validator               | `40 - Node_Operator_ETH`                                      | 1.6-24         | 2.4-32   | 2.8-36                | 3-38                  |
+| Scale with NO ETH; don't get too close to minimum | The larger of:<br>`(1.5*Node_Operator_ETH, .3* Protocol_ETH)` | 1.6-24         | 2.4-12   | 2.8-6                 | 3-6                   |
+
+The Snapshot SHOULD link to <https://dao.rocketpool.net/t/max-collateral-for-lebs/1166?u=valdorff>
+as an argument in favor of "Scale with NO ETH; don't get too close to minimum" and (LINK TBD) as an
+argument in favor of (TBD).
+
+After the conclusion of the snapshot, the "Max effective stake vote" SHALL be removed and the
+"Specification"/"Abstract" sections SHALL be updated to reflect the chosen option. This edit SHALL
+be made, even if the RPIP is already in a "Final" state.
 
 ## Rationale
 Based on the `NO supply growth` model in the 
@@ -87,6 +115,19 @@ while align the self-interest of those NOs with the health of the protocol. Almo
 current minipools have a 20% commission, so this is a significant impact on commission in the near
 term. Since this is close to 15%, folks that didn't believe commission needed to change at all were
 also able to pragmatically agree.
+
+The community decided most of the design of LEB8s prior to snapshot voting.
+One thing that was mentioned in the
+[discussion document](../assets/rpip-8/2022-08-03%20LEB%20Discord%20Discussion%20Summary.pdf) as a
+next step was determining the definition of "effective". Max effective RPL staked had a number of
+viewpoints. Most parties involved wanted to make the transition to LEB8s with the minimum possible
+overall impact on the protocol; however, different parties had different perspectives on what that
+meant. Scaling preferences ranged from protocol ETH, to NO ETH, to fixed per validator. See
+discussion on the [forum](https://dao.rocketpool.net/t/max-collateral-for-lebs/1166?u=valdorff)
+and in a rawer form on
+[discord](https://discord.com/channels/405159462932971535/774497904559783947/1033959349715996702)
+both in the thread that links to and in the #governance channel starting at that point. This will be
+resolved by Snapshot vote, with this RPIP explicitly saying it should be updated after the vote.
 
 ### Future changes
 We want to _explicitly_ address that the paramaters in this proposal were chosen as best we could, 
