@@ -4,7 +4,7 @@ title: LEB8s
 description: A new Lower ETH Bond size of minipool with 8 ETH from the node operator
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/leb8-discussion-thread/899
-status: Review
+status: Final
 type: Protocol
 category: Core
 created: 2022-08-05
