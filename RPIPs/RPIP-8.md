@@ -94,13 +94,9 @@ Here's a table showing how the proposed strategies look for the minipool sizes t
 | Scale with Protocol ETH          | 1.5*Protocol_ETH             | 1.6-24                                | 2.4-36                                |
 
 
-Note that while this vote is meant to establish our design moving forward, there are other ideas
-being actively pursued. As with the rest of RP - the DAO may vote for further changes in the future
-as it sees fit.
+Note that while this vote is meant to establish our design moving forward, there are other ideas being actively pursued. As with the rest of RP - the DAO may vote for further changes in the future as it sees fit.
 
-This vote uses _approval voting_. This means you can vote for one or more options, with each
-selection getting your full voting power. The intent is for voters to select all choices that they
-approve of (if multiple), instead of limiting them to their top preference.
+This vote uses _approval voting_. This means you can vote for one or more options, with each selection getting your full voting power. The intent is for voters to select all choices that they approve of (if multiple), instead of limiting them to their top preference.
 
 ### Further Reading
 - Full LEB proposal: [RPIP-8](https://github.com/Valdorff/RPIPs/blob/max_collateral_leb8/RPIPs/RPIP-8.md)
@@ -164,7 +160,7 @@ overall impact on the protocol; however, different parties had different perspec
 meant. Scaling preferences ranged from protocol ETH, to NO ETH, to fixed per validator. See the
 discussion on the
 [forum thread proposing primarily NO ETH scaling](https://dao.rocketpool.net/t/max-collateral-for-lebs/1166?u=valdorff), 
-the [forum thread proposing primarily Protocol ETH scaling](TBD),
+the [forum thread proposing primarily Protocol ETH scaling](https://dao.rocketpool.net/t/an-argument-in-favor-of-protocol-eth/1208),
 and in a rawer form on
 [discord](https://discord.com/channels/405159462932971535/774497904559783947/1033959349715996702)
 both in the thread that links to and in the #governance channel starting at that point. This will be
