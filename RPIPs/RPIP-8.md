@@ -98,10 +98,14 @@ Note that while this vote is meant to establish our design moving forward, there
 being actively pursued. As with the rest of RP - the DAO may vote for further changes in the future
 as it sees fit.
 
+This vote uses _approval voting_. This means you can vote for one or more options, with each
+selection getting your full voting power. The intent is for voters to select all choices that they
+approve of (if multiple), instead of limiting them to their top preference.
+
 ### Further Reading
 - Full LEB proposal: [RPIP-8](https://github.com/Valdorff/RPIPs/blob/max_collateral_leb8/RPIPs/RPIP-8.md)
 - [An NO ETH centered proposal, with reasoning](https://dao.rocketpool.net/t/max-collateral-for-lebs/1166?u=valdorff)
-- [A protocol ETH centered proposal, with reasoning](LINK)
+- [A protocol ETH centered proposal, with reasoning](https://dao.rocketpool.net/t/an-argument-in-favor-of-protocol-eth/1208)
 - A flat number of ETH per validator is proposed here as a compromise position between the above two
 ```
 
