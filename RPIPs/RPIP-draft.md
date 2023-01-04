@@ -34,8 +34,9 @@ See also:
 - Rocket Pool will consider the impacts of its choices on Ethereum, both immediately and long term
 - Rocket Pool will prefer to damage itself before endangering the stability of Ethereum
   - Rocket Pool will willingly limit its dominance within staked Ethereum
-- Rocket Pool will act to give its NOs autonomy to make meaningful choices and to leave the RP
-  system if they find it unsatisfactory
+- Rocket Pool will give its NOs autonomy to make meaningful choices and to leave the RP system if
+  they find it unsatisfactory (eg, we currently allow exiting without pre-conditions, and minipool
+  upgrades are opt-in)
 
 ### Definitions
 - RP Dominance - the percentage of staked ETH that is in the Rocket Pool Ecosystem. This counts both
@@ -43,10 +44,14 @@ Node Operator ETH (which backs NO share) and user ETH (which backs rETH share).
 - Hard limit - turn off the ability to take on more stake (eg, prevent rETH minting)
 - Soft limit - discourage taking on more stake and/or encourage more stake elsewhere. For example:
   - Introduce a significant fee to mint rETH
+  - Introduce a significant fee to create minipools
   - Decrease marketing budget
   - Decrease incentives budget
-  - Use pDAO funds to provide liquidity or marketing for a competing "as good" or "healthier"
-    staking protocol
+  - All the above free up money; this can be used to:
+    - Create pDAO value - eg, hold assets in treasur
+    - Return value to existing shareholders - eg, burn RPL
+    - Further encourage healthy staking - eg, use pDAO funds to provide liquidity or marketing for a
+      competing "as good" or "healthier" staking protocol
 
 Staking category definitions:
 - Healthier staking - a method of staking that is healthier for Ethereum than RP; for example, solo
@@ -79,25 +84,28 @@ In the interest of concreteness, we'll categorize some existing players as they 
   there any checks or balances?
 - Suceptibility to governance attack - how expensive would it be to buy enough vote power to pass an
   arbitrary proposal? how about bribe existing players?
+- One consideration: if there aren't healthy competitors and we're dominant, we could spin/fork off
+  a competitor. This is technically quite possible. That said, it would be _extremely_ challenging
+  to cut ties fully enough to make this healthy. Be careful if considereing this path!
 - Beware of security theater or governance theater -- just because something claims to X, doesn't
   mean it achieves X!
 
 
 ### Examples
 Scenario: "Healthier staking" and "As good staking" represents ≥2/3 of all staking
-- RP SHOULD soft limit starting at 15% RP dominance, and do so more aggressively at greater RP
+- RP SHOULD soft limit starting at 16% RP dominance, and do so more aggressively at greater RP
   dominance
-  - Eg: introduce a 3% fee to mint rETH, rising by 5% per percentage point of RP dominance
-  - Eg: redirect 15% of pDAO income to supporting small permissionless protocols at 15% RP
-    dominance, redirect 30% at 16% RP dominance, etc.
+  - Eg: introduce a 3% fee to mint rETH, rising by 2% per percentage point of RP dominance
+  - Eg: redirect 10% of pDAO income to supporting small permissionless protocols, rising by 10% per
+    percentage point of RP dominance
 - RP SHOULD hard limit at 22% RP dominance
 
 Scenario: "Unhealthy staking" represents ≥1/2 of all staking
-- RP SHOULD soft limit starting at 20% RP dominance, and do so more aggressively at greater RP
+- RP SHOULD soft limit starting at 22% RP dominance, and do so more aggressively at greater RP
   dominance
-  - Eg: introduce a 3% fee to mint rETH, rising by 5% per percentage point of RP dominance
-  - Eg: redirect 15% of pDAO income to supporting small permissionless protocols at 15% RP
-    dominance, redirect 30% at 16% RP dominance, etc.
+  - Eg: introduce a 3% fee to mint rETH, rising by 2% per percentage point of RP dominance
+  - Eg: redirect 10% of pDAO income to supporting small permissionless protocols, rising by 10% per
+    percentage point of RP dominance
 - RP SHOULD hard limit at 33% RP dominance
 - The focus in this scenario should be to grow ourselves, then grow healthy alternatives ASAP
 
