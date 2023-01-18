@@ -23,11 +23,11 @@ The settings will be changed to:
   - allows supply side to be paired more rapidly to minimize unproductive protocol ETH
 
 We believe Atlas will increase the supply rate, as we will be more efficient at minting rETH per
-unit of Node Operator investment. After withdrawals we expect a large one-time increase in supply,
-and we'd like to ensure we have sufficient demand such that none of that supply is "lost" to
+unit of Node Operator investment. After withdrawals, we expect a significant one-time increase in
+supply, and we'd like to ensure we have sufficient demand such that none of that supply is "lost" to
 competing options. The large one-time increase will be driven by migrations internally from
-minipools with 16 ETH bonds to LEBs, and externally from solo validator migrations and folks that
-have funds freeing up that were locked on CEXes.
+minipools with 16 ETH bonds to LEBs, and externally from solo validator migrations and folks with
+funds freeing up that were locked on CEXes.
 
 ## Specification
 - The pDAO guardian SHALL set `network.reth.collateral.target` pDAO setting to .001 ether (10000000000000000)
@@ -37,7 +37,7 @@ have funds freeing up that were locked on CEXes.
   - the value from the arbitrage SHALL be given to rETH holders 
 
 ## Rationale
-Some level of `network.reth.collateral.target` is desireable to allow:
+Some level of `network.reth.collateral.target` is desirable to allow:
 - NO voluntary exit arbitrage when there is a discount
 - to allow arb bots to burn rETH for ETH to help restore supply/demand balance (as opposed to using
   that ETH to start more minipools, which further imbalances supply/demand)
@@ -45,10 +45,10 @@ Some level of `network.reth.collateral.target` is desireable to allow:
 
 The first only needs 32 ETH for the former to support any possible minipool size. The second just
 needs "enough" space to do the arb as rewards come in; note that the largest single reward seen so
-far (smoothing pool interval 3) was under 0.1% of rETH TVL, so the chosen size should be plenty.
+far (smoothing pool interval 3) was under 0.1% of rETH TVL, so the chosen size should be sufficient.
 Finally, the last purpose can get arbitrarily large. Here we look to balance the use of arb with a
-potential griefing method by repeated minipool creation/exiting; by selecting a relatively low value
-we limit the potential downside of such griefing.
+potential griefing method by repeated minipool creation and exiting; by selecting a relatively low
+value we limit the potential downside of such griefing.
 
 --
 
