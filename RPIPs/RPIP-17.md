@@ -1,8 +1,8 @@
 ---
-rpip: 
+rpip: 17
 title: Self-limiting Rocket Pool
 author: Valdorff (@Valdorff)
-status: Draft
+status: Final
 type: Meta
 discussions-to: https://dao.rocketpool.net/t/self-limiting-principles/1396/17
 created: 2022-10-15
