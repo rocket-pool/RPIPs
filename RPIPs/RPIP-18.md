@@ -1,9 +1,9 @@
 ---
-rpip: 
+rpip: 18
 title: Updating of Grants Management Committee
-description: Provides updates to RPIP-15, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
+description: Replaces RPIP-15, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: Calurduran (@dafuerstman), Valdorff (@Valdorff)
-discussions-to:
+discussions-to: https://dao.rocketpool.net/t/rpip-modifying-operations-of-gmc/1448
 status: Draft
 type: Meta
 created: 2023-01-23
@@ -20,9 +20,9 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 ## Specification
 - The GMC’s chief mission SHALL be to distribute Grants and Bounties, retrospectively and prospectively, in order to harness the community’s talent to further the goals of the protocol.
 - The GMC SHALL abide by the following definitions for grants, bounties, and retrospective awards:
-    - Grant : A proposal submitted by an individual or group that proposes some action with an estimate of cost and payment schedule. Grants are a set amount broken up and paid over a set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is awarded to the entity that submitted the proposal if the grant is approved.
-    - Bounty : A proposal submitted by an individual or group that proposes a payment for an achieved result of a specific task/project. The bounty proposal should establish the desired outcome, state an award compensation amount with a payment schedule, and describe how interested parties can compete in the selection process for the bounty. The entity that submitted the proposal may or may not be the person(s) awarded the bounty contract.
-    - Retrospective Award: A proposal submitted by an individual or group that proposes a payment for a previously-achieved result. The retrospective award should detail the work that was completed and the positive impacts for the protocol that would merit such an award. The entity that submitted the retrospective award proposal MAY or MAY NOT be the person(s) awarded a retrospective award for the work documented in the proposal.
+    - Grant : A proposal submitted by an individual or group that proposes some action with an estimate of cost and payment schedule. Grants SHALL be a set amount broken up and paid over a set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is awarded to the entity that submitted the proposal if the grant is approved.
+    - Bounty : A proposal submitted by an individual or group that proposes a payment for an achieved result of a specific task/project. The bounty proposal SHOULD establish the desired outcome, state an award compensation amount with a payment schedule, and describe how interested parties can compete in the selection process for the bounty. The entity that submitted the proposal MAY or MAY NOT be the person(s) awarded the bounty contract.
+    - Retrospective Award: A proposal submitted by an individual or group that proposes a payment for a previously-achieved result. The retrospective award SHOULD detail the work that was completed and the positive impacts for the protocol that would merit such an award. The entity that submitted the retrospective award proposal MAY or MAY NOT be the person(s) awarded a retrospective award for the work documented in the proposal.
 
 
 ## Operations
@@ -42,7 +42,7 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 
 ### Conflicts of Interest
 - The GMC SHALL abide by the following processes to minimize conflicts of interest:
-    - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any retrospective award for which they are nominated. They may participate in the ratifying snapshot vote.
+    - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any retrospective award for which they are nominated. They MAY participate in the ratifying snapshot vote.
     - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any grants during the application period for which they are an applicant. They may participate in the ratifying snapshot vote. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants.
 
 
