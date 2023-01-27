@@ -30,8 +30,10 @@ minipools with 16 ETH bonds to LEBs, and externally from solo validator migratio
 funds freeing up that were locked on CEXes.
 
 ## Specification
-- The pDAO guardian SHALL set `network.reth.collateral.target` pDAO setting to .001 ether (10000000000000000)
-- The pDAO guardian SHALL set `deposit.pool.maximum` pDAO setting to 5000 ether (5000000000000000000000)
+- The pDAO guardian SHALL set `network.reth.collateral.target` pDAO setting to .01 ether (10000000000000000)
+  - For context, this changes the target to 1% from the current 10% (.1 ether) 
+- The pDAO guardian SHALL set `deposit.pool.maximum` pDAO setting to 18000 ether (18000000000000000000000)
+  - For context this changes the deposit pool size to 18k ETH from 5k ETH
 - The pDAO guardian SHOULD carry out the above actions 10 days before Ethereum withdrawals are expected to go live
 - The oDAO and RP dev team SHOULD work together to arbitrage the price difference when the maximum is increased
   - the value from the arbitrage SHALL be given to rETH holders 
