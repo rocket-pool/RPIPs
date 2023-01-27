@@ -4,7 +4,7 @@ title: Updating of Grants Management Committee
 description: Replaces RPIP-15, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: Calurduran (@dafuerstman), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/rpip-modifying-operations-of-gmc/1448
-status: Draft
+status: Final
 type: Meta
 created: 2023-01-23
 ---
