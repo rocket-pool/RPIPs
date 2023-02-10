@@ -49,7 +49,6 @@ The Rocket Pool community has always strongly contributed to developing a Rocket
 ## Selection and Governance
 In addition to the "Management Committee Governance" and "Management Committee Selection" sections of RPIP-10, the GMC will abide by the following:
 - The GMC SHALL contain nine individuals, except in cases of vacancies.
-- The procedure for filling vacancies SHALL be as follows unless and until it is changed by a future RPIP or an amendment to RPIP-10: if a vacancy occurs within six months of the previous election, the next highest vote recipient from the previous election shall be offered the seat, with the GMC going down the list of nominees until the position is filled. If it has been more than six months since the most recent election, a new election shall be held to fill any vacancies.
 - Upon approval of this RPIP, immediate elections following the guidelines of RPIP-10 SHALL take place for any new or vacant seats. These elections SHALL supercede the rules for filling vacancies in the previous bullet.
 
 
