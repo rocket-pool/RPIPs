@@ -4,7 +4,7 @@ title: Change Protocol Settings for Atlas
 description: Increase deposit pool maximum and decrease ETH held in the rETH contract
 author: Ken Smith (@htimsk), Valdorff (@Valdorff), Darren Langley (@darrenlangley)
 discussions-to: https://dao.rocketpool.net/t/proposed-protocol-settings-for-atlas-release/1367
-status: Draft
+status: Final
 type: Protocol
 category: Core
 created: 2023-01-17
