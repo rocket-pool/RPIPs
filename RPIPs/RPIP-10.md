@@ -131,6 +131,7 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
   - MCs SHALL be fully re-selected between 10-14 months from their last full selection.
     - MCs SHOULD be re-selected approximately yearly.
     - Selection timing MAY consider convenience (holiday timing, conventions, etc).
+    - Selection timing MAY consider efficiency (aligning multiple elections).
   - If a vacancy occurs within six months of the previous selection, the next highest vote recipient
     from the previous election SHALL be offered the seat, with the MC going down the list of
     vote-receiving nominees until the position is filled.
@@ -139,6 +140,7 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
   - If a vacancy occurs more than six months since the most recent selection, there SHALL be a
     selection for _only_ the vacant seats. Note that these seats SHALL be subject to the
     schedule used by the MC for full reselection.
+  - Members MAY be re-selected freely; no term limit is specified.
 
 ### Updating this RPIP
 This is a "Living" RPIP, so that it can be kept up to date with changes to the pDAO budget or budget
