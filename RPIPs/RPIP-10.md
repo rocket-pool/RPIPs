@@ -135,6 +135,8 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
   - If a vacancy occurs within six months of the previous selection, the next highest vote recipient
     from the previous election SHALL be offered the seat, with the MC going down the list of
     vote-receiving nominees until the position is filled.
+    - The offered seat SHOULD be accepted or rejected within 1 week; if it is rejected, or there is
+    no response, the MC SHALL continue down the list.
   - If at any time more than half of an MC is composed of non-elected members (ignoring any backup
     signer), the MC SHALL be fully re-selected as soon as practical.
   - If a vacancy occurs more than six months since the most recent selection, there SHALL be a
