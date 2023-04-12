@@ -69,8 +69,12 @@ Committee Governance section.
     - Note that this _cannot_ be done if it would violate the above multisig requirements.
   - The MC SHALL have one or more stated goals; where possible, they SHOULD be measurable enough for
   the community to judge how well the goals are being met.
-- The pDAO MAY vote to change the membership of the MC at any time.
-- There SHOULD be a pDAO review of MC membership within 6 months of the MC's creation.
+- MC members MAY appoint one backup signer from the core dev team, by a majority vote.
+  - A backup signer, if any, SHALL NOT vote, unless publicly asked to do so by two or more MC
+    members.
+  - MC members MAY choose to remove a backup signer by majority vote.
+  - There SHALL NOT be more than one backup signer on an MC.
+- The pDAO MAY vote to change the membership of the MC at any time, via a full selection.
 
 #### Management Committee Treasurer
 - The MC SHALL appoint one of their number as MC treasurer.
@@ -123,6 +127,22 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
   - The selected membership SHALL be the nominees with the highest N vote weights, where N is the
     desired number of selections. In the event of a tie, the pDAO treasurer SHALL randomly select
     which of those nominees are selected.
+- Terms and Vacancies
+  - MCs SHALL be fully re-selected between 10-14 months from their last full selection.
+    - MCs SHOULD be re-selected approximately yearly.
+    - Selection timing MAY consider convenience (holiday timing, conventions, etc).
+    - Selection timing MAY consider efficiency (aligning multiple elections).
+  - If a vacancy occurs within six months of the previous selection, the next highest vote recipient
+    from the previous election SHALL be offered the seat, with the MC going down the list of
+    vote-receiving nominees until the position is filled.
+    - The offered seat SHOULD be accepted or rejected within 1 week; if it is rejected, or there is
+    no response, the MC SHALL continue down the list.
+  - If at any time more than half of an MC is composed of non-elected members (ignoring any backup
+    signer), the MC SHALL be fully re-selected as soon as practical.
+  - If a vacancy occurs more than six months since the most recent selection, there SHALL be a
+    selection for _only_ the vacant seats. Note that these seats SHALL be subject to the
+    schedule used by the MC for full reselection.
+  - Members MAY be re-selected freely; no term limit is specified.
 
 ### Updating this RPIP
 This is a "Living" RPIP, so that it can be kept up to date with changes to the pDAO budget or budget
