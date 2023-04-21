@@ -4,7 +4,7 @@ title: oDAO Health Clarity
 description: Short and long term improvements for oDAO health clarity
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/make-odao-health-clearer/1658/6
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2023-04-17
