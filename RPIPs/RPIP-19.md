@@ -51,12 +51,13 @@ after trees are reliably fast enough in the watchtower such that this approach d
 experience significantly.
 
 Each oDAO node figures out its own index (similar code already exists). On an even rewards period,
-nodes with even indices submitBalances right away but only submitPrices after waiting 30 minutes.
-On an odd update, nodes with odd indices submitBalances right away but only submitPrices after
-waiting X minutes. Nodes should do the work immediately and hold off on voting, to avoid unnecessary
-delay when submitting after their 30-minute wait. Note: consensus currently requires more than half
-of votes, so this approach will often mean we need to hit the 10-minute wait before consensus is
-possible.
+nodes with even indices submitRewardSnapshot right away, and nodes with odd indices should only
+submitRewardSnapshot after waiting 30 minutes. On an odd rewards period, nodes with odd indices
+submitRewardSnapshot right away, and nodes with even indices should only submitRewardSnapshot after
+waiting 30 minutes. Nodes should do the work immediately and hold off on voting, to avoid
+unnecessary delay when submitting after their 30-minute wait. Note: consensus currently requires
+more than half of votes, so this approach will often mean we need to hit the 30-minute wait before
+consensus is possible.
 
 It should be explicitly noted that isolated failures are not cause for alarm, and there are simply
 not many data points. The oDAO may wish to conduct an internal test with a member that didn't submit
@@ -71,19 +72,21 @@ are nearly-identically checked twice when hitting the execution threshold.
 #### submitPrices()
 - Change > to >= in `require(_block > getPricesBlock(), "Network prices for an equal or higher block are set");`
   - Update message to say "for a higher block"
-- Change `updatePrices(_block, _rplPrice);` to `if (_block != getPricesBlock()) {updatePrices(_block, _rplPrice);}`
+- After emitting `PricesSubmitted`, return early if this is a vote on something already executed
+  - `if (_block == getPricesBlock()) { return; }`
 
 #### submitBalances()
 - Change > to >= in `require(_block > getBalancesBlock(), "Network balances for an equal or higher block are set");`
   - Update message to say "for a higher block"
-- Change `updateBalances(_block, _totalEth, _stakingEth, _rethSupply);` to `if (_block != getBalancesBlock()) {updateBalances(_block, _totalEth, _stakingEth, _rethSupply);}`
+- After emitting `BalancesSubmitted`, return early if this is a vote on something already executed
+  - `if (_block == getBalancesBlock()) { return; }`
 
 ### submitRewardSnapshot()
 - Change == to <= in `require(_submission.rewardIndex == getRewardIndex(), "Can only submit snapshot for next period");`
-  - fix message to "Can only submit snapshot for periods up to next" 
-- Change > to >= `require(_submission.intervalsPassed > 0, "Invalid number of intervals passed");`
+  - fix message to "Can only submit snapshot for periods up to next"
 - Change >= to == in `if (calcBase.mul(submissionCount).div(rocketDAONodeTrusted.getMemberCount()) >= rocketDAOProtocolSettingsNetwork.getNodeConsensusThreshold())`
-- Change `_executeRewardSnapshot(_submission);` to `if (_submission.rewardIndex == getRewardIndex()) {_executeRewardSnapshot(_submission);}`
+- After emitting `RewardSnapshotSubmitted`, return early if this is a vote on something already executed
+  - `if (_submission.rewardIndex != getRewardIndex()) { return; }`
 
 ## Security Considerations
 For the watchtower-side interventions, security is not being changed.
