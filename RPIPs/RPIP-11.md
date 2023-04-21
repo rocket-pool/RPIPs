@@ -11,7 +11,7 @@ requires: 10
 ---
 
 ## \>\> NOTICE <<
-This RPIP has been superseded by [RPIP-draft](RPIP-draft.md).
+This RPIP has been superseded by [RPIP-20](RPIP-20.md).
 
 ## Abstract
 There is broad agreement on the need for liquidity incentives that @knoshua outlines in the
