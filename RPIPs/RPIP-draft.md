@@ -1,5 +1,5 @@
 ---
-rpip: draft
+rpip: 20
 title: Updated Incentive Management Committee Charter
 description: Supersedes RPIP-11; describes what the Incentives Management Committee is for and how it will execute
 author: Valdorff (@Valdorff)
