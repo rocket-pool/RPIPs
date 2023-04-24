@@ -42,7 +42,7 @@ indices submitBalances right away but only submitPrices after waiting X minutes.
 nodes with odd indices submitBalances right away but only submitPrices after waiting 10 minutes.
 Nodes should do the work immediately and hold off on voting, to avoid unnecessary delay when
 submitting after their 10-minute wait. Note: consensus currently requires more than half of votes,
-so this approach often means we must hit the 10-minute wait before consensus is possible.
+so this approach will often mean we must hit the 10-minute wait before consensus is possible.
 
 ### Subcommittee for reward snapshot duty
 This change can be implemented now; however, trees currently take a long time and the subcommittee
@@ -65,9 +65,6 @@ in the active subcommittee.
 
 ### Voting past consensus
 This change requires a smart contract release.
-
-It's near-certain that there is a more gas-optimal intervention here; in particular, some conditions
-are nearly identically checked twice when hitting the execution threshold.
 
 #### submitPrices()
 - Change > to >= in `require(_block > getPricesBlock(), "Network prices for an equal or higher block are set");`
