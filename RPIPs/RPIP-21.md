@@ -1,5 +1,5 @@
 ---
-rpip: not_yet_numbered
+rpip: 21
 title: Fix oDAO Vote Edge Case
 description: Fix an edge case where the oDAO can pass proposals below consensus threshold
 author: Valdorff (@Valdorff)
