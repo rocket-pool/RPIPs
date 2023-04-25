@@ -4,7 +4,7 @@ title: Fix oDAO Vote Edge Case
 description: Fix an edge case where the oDAO can pass proposals below consensus threshold
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/avoid-odao-vote-edge-case/1657
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2023-04-14
