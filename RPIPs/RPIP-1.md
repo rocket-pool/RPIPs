@@ -30,7 +30,7 @@ There are three types of RPIP:
 
 - A **Protocol RPIP** describes any change that affects the core Rocket Pool protocol as is currently defined via the smart contract implementations. Protocol RPIPs consist of a design specification and an implementation. Furthermore, Protocol RPIPs can be broken down into the following categories:
     - **Core**: improvements relevant to core protocol design.
-    - **RPRC**: application-level standards and conventions, including non-core contract standards such as RPRC-3.
+    - **RPRC**: application-level standards and conventions, including non-core contract standards such as [RPRC-3](RPIP-3.md).
 
 - A **Meta RPIP** describes a process surrounding Rocket Pool or proposes a change to (or an event in) a process. They may propose an implementation, but not to Rocket Pool’s codebase. Examples include procedures, guidelines, changes to the decision-making process (i.e. governance).
 
@@ -118,7 +118,7 @@ Links to external resources **SHOULD NOT** be included. External resources may d
 
 ## Linking to other RPIPs
 
-References to other RPIPs should follow the format `RPIP-N` where `N` is the RPIP number you are referring to. Each RPIP that is referenced in an RPIP **MUST** be accompanied by a relative markdown link the first time it is referenced, and **MAY** be accompanied by a link on subsequent references. For example, you would link to this RPIP with `[RPIP-1](/RPIP/rpip-1)`.
+References to other RPIPs should follow the format `RPIP-N` where `N` is the RPIP number you are referring to. Each RPIP that is referenced in an RPIP **MUST** be accompanied by a relative markdown link the first time it is referenced, and **MAY** be accompanied by a link on subsequent references. For example, you would link to this RPIP with `[RPIP-1](RPIP-1.md)`.
 
 ## Auxiliary Files
 
