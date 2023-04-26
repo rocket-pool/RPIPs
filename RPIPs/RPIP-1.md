@@ -22,7 +22,7 @@ Only RPIPs in the "Finalized" state are eligible for adoption and must be review
 
 ## RPIP Rationale
 
-We intend RPIPs to be the primary mechanisms for proposing new features, for collecting community technical input, and for documenting the design decisions of Rocket Pool. Because the RPIP are maintained as text files in a versioned repository, their revision history is the historical record of the feature proposal.
+We intend RPIPs to be the primary mechanisms for proposing new features, for collecting community technical input, and for documenting the design decisions of Rocket Pool. Because the RPIPs are maintained as text files in a versioned repository, their revision history is the historical record of the feature proposal.
 
 ## RPIP Types
 
