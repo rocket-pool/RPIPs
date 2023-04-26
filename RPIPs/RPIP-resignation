@@ -1,0 +1,71 @@
+---
+rpip: draft
+title: RPIP Editor Resignation: Wander 
+description: Wander's closing statement as an RPIP Editor
+author: Mike Leach (@VVander)
+discussions-to:
+status: Final
+type: Informational
+created: 2023-04-25
+---
+
+# RPIP Editor Resignation: Wander
+
+## Introduction
+
+As of today, I've decided to step down as an RPIP editor. Ever since my initial work to kickstart this process, I've been very pleased with how the community has used it to become more organized and effective, but unfortunately, I can no longer directly participate in it as an editor.
+
+The first and most predictably boring reason is that I am no longer just an unemployed software engineer with a passion for Rocket Pool. Today, I'm the CTO of a fast-growing startup, and my list of responsibilities is growing quickly as NodeSet's work accelerates and our team expands. These responsibilities are my first priority, so it's becoming harder to spend the time I feel is appropriate on RPIP editing in the end, and this community deserves a dedicated and attentive editing team.
+
+The other reason is related to how the RPIP process has evolved and is therefore worth mentioning for the record. Put simply, despite how useful I believe RPIPs are to community organization, this process has become something other than what I originally envisioned, and it doesn't appear to be moving in the direction I hoped it would.
+
+That said, I want to note that, although I have serious concerns about the approach being taken with editing RPIPs, the other editors generally do not share these feelings. However, I'll let them speak to their points of view and stick to my own here. In the end, I think it's best that RPIP editors are aligned so that the process works as effectively as possible, and while my departure will exacerbate our current need for more help, it will reunify the editing team philosophically.
+
+## RPIP Process Concerns
+
+### Rigor and Usefulness
+
+I initially proposed the RPIP process as a way for Rocket Pool researchers to communicate and exchange ideas, and so I imagined it following in the tradition of technical standards processes like EIPs, PEPs, and RFCs. While there are many examples of those processes failing, they do generally represent a commendable level of rigor that I believe RPIPs do not consistently match. It's my view that techincal specification documents should be explicit in their instructions for software conformity, but it's become increasingly common over time for RPIPs to be finalized without meeting this criterion, instead relying on vague ideas or even instructions directed at humans.
+
+At a high level, it feels like authors and editors are creating RPIPs first to fulfill community expectations for process requirements, yet the purpose of this process is being lost along the way. In this case, we may be better off without RPIPs, as this represents little additional value versus simple documentation.
+
+Ethereum's developers rely upon an extremely rigorous process where it often takes years for an important EIP to be finalized, yet proposals for core updates to Rocket Pool frequently breeze through the editing process to reach a final state within days or even hours depiste clearly needing refinement. Something is rotten in the state of Denmark.
+
+### RPIPs and pDAO Governance
+
+I believe this lack of rigor ultimately stems from another trend I now view as problematic: the adoption of RPIPs for pDAO governance. This has lead to legalistic debates around RPIPs as laws, but the editing process isn't designed to handle that type of debate.
+
+I'll be the first to admit that this stems from my poor example as the author of [RPIP-4](RPIP-4.md), so I want to explicitly apologize for unintentionally setting this precedent there. I originally authored that document under the belief that the community needed a specification for governance tooling, but it included a small section which has been the source of endless debate and [the cause of much heartache for me as the author](https://dao.rocketpool.net/t/governance-process-fixes). The "Poll Procedure" section of RPIP-4 includes direct instructions to humans, which is an explicit statement of governance. Today, I see this document as needing significantly more editing, but my focus on the immediate practical concern of kickstarting a voting process blinded me to the long-term problems. In retrospect, it would have been better to split this section out into its own "Meta" RPIP and reworded it to describe the voting process instead of instructing or specifiying it in legal-esque fashion. Otherwise, the original document could be classified as an RPRC instead, since the calculations presented there represent just one of many possible voting methods which could be built using the Rocket Pool protocol's interfaces.
+
+Although I didn't expect it at the time, this mistake laid the foundation for using RPIPs as "pDAO laws", and the RPIP process is now explicitly used as a standard component of pDAO governance. Later on, I even wrote [RPIP-14](RPIP-14.md) in a continuation of this approach, although I regard this as a mistake today as well.
+
+To be fair, this dual approach is not unique to Rocket Pool and is even relatively common in the crypto space, but we must also note the issues present in other projects with this approach as well (Arbitrum's recent drama with [AIP-01](https://forum.arbitrum.foundation/t/aip-1-arbitrum-improvement-proposal-framework/30) serves as a good example). In contrast, Ethereum has no governance, and the EIP process is purely a technical one for researchers to communicate highly specific proposals for Ethereum standards. After more experience, I now believe that governance processes are best kept separated from a technical standards process for multiple reasons, and I'll outline the two most prominent ones below.
+
+### RPIP Editing Becomes Political
+
+The first reason is that this approach creates potential for contention around the RPIP editing process and editors. As a group, editors simply have too much power over the pDAO right now with a defacto veto over any proposal via a refusal to finalize an RPIP. If this is intended and accepted by the community, so be it, but this is unusual and feels dissonant with the community's focus on decentralization. 
+
+In order to not disrupt the governance process, there's been a bias amongst RPIP editors -- myself included -- to not "get in the way" of an RPIP. This respect for authorial intent and procedural neutrality preserves the fairness and openess we all value, but this leads to the issue I outlined above, where editors finalize documents that may benefit from more scrutiny. And what would happen if an editor decided it was important to "get in the way", either because of honest concerns or an opposition to the idea itself?
+
+This isn't just theory, either. In one recent example, I had reservations about the incompleteness of a particular document (though I supported the idea itself), yet after outlining my concerns to the author, they refused to adjust the document to address them. Ultimately, I felt that a refusal to finalize the document would cause more harm to Rocket Pool as a whole than simply "getting out of the way", but I also couldn't give this document my editor's stamp of approval in good conscience, either. In this case, I saw the cowardly option as the best path, and I allowed another editor to finalize the document instead with no changes.
+
+In the end, there is no good solution to this issue while keeping RPIPs connected to pDAO governance. To prevent this kind of situation, we would have to amend the editing process to be more formal and burdensome, perhaps through some committee-like approach where the editing team as a whole makes decisions and individual editors may dissent when appropriate. Even in this case, though, there's still too much power for editors to collude to veto, so perhaps we could add a separate process for appeals, as well. These tacked-on solutions are just a slow descent into bureaucratic hell, however. We originally just needed a way for researchers and developers to communicate technical concepts, but now we've created a monster.
+
+### Technical Processes Have Different Needs Than Political Processes
+
+The second reason I believe that using RPIPs as pDAO laws is a poor approach relates to the real differences in needs between technical and political editing. In my view, technical documents need editors with niche expertise and broad power to enforce standards, but political documents are ideally more approachable and should be edited through political consensus. The former is best accomplished by individual subject-matter experts with high standards, while the latter is better suited to committees and judiciaries and appeals and voting processes. In short, we should distinguish between the ideal technocratic versus bureaucratic processes.
+
+With our current process, we see this clash becoming more frequent. Supposedly "Final" RPIPs are now regularly ammended or overwritten later, reflecting the need for flexible governance but undermining the supposed finality of standards documents. In my opinion, the type of legalism demonstrated in documents like [RPIP-10](RPIP-10.md) and [RPIP-11](RPIP-11.md) and their subsequent updates would be better suited to its own process where less technically inclined editors can be involved. In contrast, technical editors should not feel real or imagined pressure to "get out of the way" for documents like [RPIP-19](RPIP-19.md) which propose specific core protocol changes. It's already been hard to find enough technically proficient editors, so lowering the barrier to participation through separating these processes may help with throughput, as well.
+
+### Future Development
+
+Ultimately, it may be too late for the pDAO to undo this without taking a step backwards in governance efficiency. If the community generally unifies around a push for changes here, perhaps it could be done, but I recognize the difficulty inherent in this suggestion. I encourage the community to consider it, though I won't be spearheading this effort, of course.
+
+## Conclusion
+
+Although I see problems with our current approach and the direction that this process is heading, I want to reiterate how proud I am of my early involvement in the pDAO and RPIP processes, as they helped organize the robust community involvement Rocket Pool has always enjoyed. Even with the concerns I've laid out here, we've able to accomplish important community initiatives such as rETH liquidity incentives and the introduction of grants and bounties, which are unquestionably important to the maturation of the project as a whole.
+
+It's been an honor to participate and give back to a project I love in this way, and I'm appreciative of the other editors' continued service as I step down. I hope that the community will resolve the concerns I've outlined and form a stronger RPIP process in the end which ultimately benefits Rocket Pool, but regardless, I'll still be here as a less-involved community member, cheering from the sidelines.
+
+All the best,
+-Wander
