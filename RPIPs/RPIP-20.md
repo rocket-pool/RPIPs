@@ -1,17 +1,14 @@
 ---
-rpip: 11
-title: (superseded) Incentive Management Committee Charter
-description: Describes what the Incentives Management Committee is for and how it will execute
-author: jasperthefriendlyghost, Valdorff (@Valdorff)
-discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Final
+rpip: 20
+title: Updated Incentive Management Committee Charter
+description: Supersedes RPIP-11; describes what the Incentives Management Committee is for and how it will execute
+author: Valdorff (@Valdorff)
+discussions-to: https://dao.rocketpool.net/t/add-an-rpl-related-goal-to-imc-charter/1656/
+status: Review
 type: Meta
-created: 2022-08-09
+created: 2023-04-17
 requires: 10
 ---
-
-## \>\> NOTICE <<
-This RPIP has been superseded by [RPIP-20](RPIP-20.md).
 
 ## Abstract
 There is broad agreement on the need for liquidity incentives that @knoshua outlines in the
@@ -29,6 +26,9 @@ that the protocol lost its only variable way to influence rETH demand.
 The protocol is billed as a Liquid Staking Solution and thus the protocol has an obligation to hold
 certain values. These principles will help build confidence that Rocket Pool aims to truly be liquid.
 
+In addition to the initial goals captured in RPIP-11, this update captures a secondary need for RPL
+liquidity, especially for security.
+
 ## Specification
 
 ### Guiding Principles
@@ -44,6 +44,9 @@ certain values. These principles will help build confidence that Rocket Pool aim
   incentives.
   - The IMC SHOULD NOT, however, add incentives that would serve _only_ to boost demand with
     marginal benefit from added liquidity.
+- As a lesser goal, the IMC SHOULD support RPL/ETH TWAP oracle safety
+- As a lesser goal, the IMC MAY act to improve accessibility of RPL; efforts for this goal SHOULD
+  NOT exceed 10% of resources
 - The IMC SHOULD be sensitive to market actions and adjust emissions accordingly to reasonably 
   maintain the aforementioned principles in adverse markets.
 
