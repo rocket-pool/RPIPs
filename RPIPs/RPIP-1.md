@@ -12,12 +12,7 @@ created: 2022-03-17
 
 RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](https://github.com/VVander/RPIPs/blob/main/RPIPs/RPIP-template.md).
 
-Only RPIPs in the "Finalized" state are eligible for adoption and must be reviewed by editors before marked as "Finalized". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the following editors:
-
-Mike Leach (GH: VVander | Discord: Wander#4793)
-Darren Langley (GH: darrenlangley | Discord: langers#3774)
-Valdorff (GH Valdorff | Discord: Val#5027)
-Ken Smith (GH: htimsk | Discord: Ken#5954)
+Only RPIPs in the "Finalized" state are eligible for adoption and must be reviewed by editors before marked as "Finalized". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the [editors](#rpip-editors).
 
 **The RPIP author is responsible for building consensus within the community and documenting dissenting opinions.**
 
@@ -133,10 +128,10 @@ Images, diagrams and auxiliary files should be included in a subdirectory of the
 
 The current RPIP editors are
 
-    Mike Leach (GH: VVander | Discord: Wander#4793)
     Darren Langley (GH: darrenlangley | Discord: langers#3774)
     Valdorff (GH Valdorff | Discord: Val#5027)
     Ken Smith (GH: htimsk | Discord: Ken#5954)
+    Ramana Kumar (GH: xrchz | Discord: ramana#2626)
 
 ## RPIP Editor Responsibilities
 
