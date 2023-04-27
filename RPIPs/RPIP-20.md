@@ -4,7 +4,7 @@ title: Updated Incentive Management Committee Charter
 description: Supersedes RPIP-11; describes what the Incentives Management Committee is for and how it will execute
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/add-an-rpl-related-goal-to-imc-charter/1656/
-status: Review
+status: Final
 type: Meta
 created: 2023-04-17
 requires: 10
