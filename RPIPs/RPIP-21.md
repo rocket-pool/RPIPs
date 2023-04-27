@@ -21,7 +21,8 @@ issue is and is not.
 - A set of duties get the current member count when calculating if consensus has been met
 - This pattern means that if members vote (increment the numerator) then leave (decrement the
   denominator), they can have an outsized impact on a vote
-- Duties where this applies includes votes on network balances, network prices, penalties, and scrubs
+- Duties where this applies includes votes on network balances, network prices, penalties,
+  and minipool scrubs (`voteScrub` for new minipools and `voteCancelReduction` for bond reductions)
 
 ## What the issue is not
 - This importantly does NOT apply to upgrade proposals
