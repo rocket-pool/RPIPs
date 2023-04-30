@@ -53,7 +53,7 @@ liquidity, especially for security.
 ### Governance
 In addition to the "Management Committee Governance" section of RPIP-10, the IMC will follow the
 following:
-- Initial whitelisted member addresses SHALL be nominated through an informal method on the forum
+- Initial allowlisted member addresses SHALL be nominated through an informal method on the forum
   and/or Discord.
 - The initial nominated members SHALL be accepted by a separate snapshot vote from the one for this
   RPIP.
