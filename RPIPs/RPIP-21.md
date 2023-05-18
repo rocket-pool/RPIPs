@@ -4,7 +4,7 @@ title: Understanding oDAO Vote Edge Case
 description: Understanding the edge case where the oDAO can pass certain votes below consensus
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/avoid-odao-vote-edge-case/1657
-status: Review
+status: Final
 type: Informational
 created: 2023-04-14
 ---
