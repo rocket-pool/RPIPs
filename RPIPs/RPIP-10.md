@@ -4,7 +4,7 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Living
+status: Draft
 type: Meta
 created: 2022-08-09
 ---
@@ -26,14 +26,14 @@ changes to how the funds should be directed.
   - Incentives (e.g., LP bonuses) - 50%
   - Grants and Bounties - 30%
   - Reserve Treasury - 20%
-- The pDAO SHALL NOT directly spend funds.
-  - Funds SHALL be spent by a Management Committee (hereafter MC)
 - Where a matching MC exists (eg, the "Incentives Management Committee" for the "Incentives"
   category), incoming funds SHALL be disbursed to the matching MC as quickly as practicable.
   - When possible, automation SHOULD be used to facilitate and expedite disbursements.
-- Where no matching MC exists, funds SHALL stay in the same accounting category indefinitely.
+- Where no matching MC exists, funds SHALL stay in the same category indefinitely.
   - Upon creation of a matching MC, these funds SHALL be disbursed to the newly created MC as
   quickly as practicable.  
+  - Funds SHALL NOT be spent from an accounting category directly.
+  - Funds MAY be clawed back from an accounting category to the Reserve Treasury by vote.
 - The pDAO MAY vote to change the split and/or to move existing funds; this includes retrieving
   funds from an MC, or sending funds to an MC.
 - MCs MAY accept funds from sources other than the pDAO.
@@ -42,19 +42,16 @@ changes to how the funds should be directed.
   from pDAO-sourced funds to enable this.
   - If not explicitly stated, the pDAO MAY move these funds. In such a case, the MC's treasurer MAY
   track these funds together with pDAO-sources funds.
-- There SHALL NOT be a "Reserve Treasury Management Committee"; this means those funds cannot be
-  accessed without a vote to reallocate them to a new category with an MC.
+- There SHALL NOT be a "Reserve Treasury Management Committee".
+  - Funds MAY be reallocated by voting on a desired amount and category.
+  - Funds MAY be spent directly by voting on a desired expense.
+    - This SHOULD be rare; it is RECOMMENDED that the vast majority of expenses be delegated to MCS.
 - There SHALL be a pDAO Treasurer appointed via pDAO vote within 3 months; until such a pDAO
   Treasurer is appointed, jasperthefriendlyghost will serve as interim pDAO Treasurer.
   - The pDAO treasurer SHOULD post an update within one week of the end of each rewards period,
-  which details the following for each category: starting funds, income, spend, final funds
-  - The pDAO MAY vote to change the pDAO Treasurer at any time
-- Current reserves SHALL NOT be used except to pay for the pre-existing Bankless agreement until
-  Bankless is fully paid (or an arrangement has been made with them to ensure that we can meet our
-  obligations regardless of market fluctuations)
-  - Once Bankless is fully paid (or an arrangement has been made with them to ensure that we
-  can meet our obligations regardless of market fluctuations), all remaining reserves SHALL be split
-  in accordance to the currently prevailing split for incoming funds
+  which details the following for each category: starting funds, income, spend, final funds.
+  - The pDAO MAY vote to change the pDAO Treasurer at any time.
+
 
 ### Management Committee Governance
 The following apply to all MCs, except where their charter explicitly deviates from this Management
@@ -179,11 +176,17 @@ conservative starting point.
 In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
 https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
+6/1: Changes are being made to support inflation changes. A significant one allows the pDAO to vote
+directly for expenses from Reserve Treasury -- this is done specifically with Protocol Development
+Funding in mind. The budget split is being updated to be roughly steady given the initial proposed
+inflation step.
+
 ## Historical budget splits
 
-| Date         | Split                                                                                            |
-|--------------|--------------------------------------------------------------------------------------------------|
-| 2022-08-09   | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20%           |
+| Date       | Split                                                                                  |
+|------------|----------------------------------------------------------------------------------------|
+| 2022-08-09 | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
+| Date TBD   | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
