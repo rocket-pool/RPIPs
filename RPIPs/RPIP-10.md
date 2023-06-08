@@ -45,6 +45,8 @@ changes to how the funds should be directed.
 - There SHALL NOT be a "Reserve Treasury Management Committee".
   - Funds MAY be reallocated by voting on a desired amount and category.
   - Funds MAY be spent directly by voting on a desired expense.
+    - The expense SHALL have a description in the [rpip-10 assets](../assets/rpip-10) directory
+    - The expense SHALL be recorded below, in the [direct expenses](#direct-expenses) section
     - This SHOULD be rare; it is RECOMMENDED that the vast majority of expenses be delegated to MCS.
 - There SHALL be a pDAO Treasurer appointed via pDAO vote within 3 months; until such a pDAO
   Treasurer is appointed, jasperthefriendlyghost will serve as interim pDAO Treasurer.
@@ -187,6 +189,13 @@ inflation step.
 |------------|----------------------------------------------------------------------------------------|
 | 2022-08-09 | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
 | Date TBD   | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
+
+
+## Direct expenses
+| Date        | Amount  | Summary                                    | Link to full description                    |
+|-------------|---------|--------------------------------------------|---------------------------------------------|
+| ~2022-07-01 | 3585    | 3 months initial dev funding               | [expense_1](../assets/rpip-10/expense_1.md) |
+| TBD         | 0-3745  | Additional dev funding with seat reduction | [expense_1](../assets/rpip-10/expense_1.md) |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

@@ -16,10 +16,8 @@ definition document that will serve (a) the pDAO itself in answering "what's the
 in a given situation, and (b) the greater community in understanding "what should we expect" and
 "what shouldn't we expect" from the pDAO.
 
-## Motivation
-TODO: Is this section useful?
-
 ## Specification
+- Superseding this RPIP requires a 2/3 or greater supermajority pDAO vote
 
 ### pDAO Values
 1. The pDAO SHALL serve the RP community at large; this comprises rETH holders, NOs, and RPL holders
@@ -31,12 +29,6 @@ TODO: Is this section useful?
 1. The pDAO SHALL prioritize protocol safety
 1. The pDAO SHOULD prioritize decentralization
 1. The pDAO SHOULD prioritize permissionlessness
-
-## Rationale
-TODO: Is this section useful?
-
-## Security Considerations
-TODO: Is this section useful?
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
