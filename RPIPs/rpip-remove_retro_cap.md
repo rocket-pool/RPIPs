@@ -1,35 +1,124 @@
 ---
-rpip: <to be assigned>
-title: Remove retrospective awards cap
-description: Remove retrospective award cap outlined in RPIP-18
-author: ShfRyn (@ShfRyn)
+rpip: TBD
+title: Updating of Grants Management Committee
+description: Replaces RPIP-18, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
+author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/amendment-for-retrospective-award-cap/1767
 status: Draft
-type: Protocol
-category (*only required for Protocol ): Core
+type: Meta
 created: 2023-06-14
 ---
 
-## Abstract
 
-RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details of the mechanics of awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord Governance channel. Based on that previous work, we would like to suggest an outline for a Grants and Bounties Management Committee (hereafter GMC), including guiding principles and governance. Please see RPIP-10 for governance details that apply to all Management Committees. This RPIP supercedes RPIP-15, with changes to the committee size (enlarged to 9), the frequency of award rounds (from every-other-month to quarterly), and the removal of the requirement that a majority of the committee be made up of non-team, non-oDAO members.
+## Abstract
+RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details of the mechanics of
+awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord
+Governance channel. Based on that previous work, we would like to suggest an outline for a Grants
+and Bounties Management Committee (hereafter GMC), including guiding principles and governance.
+Please see RPIP-10 for governance details that apply to all Management Committees.
+
+The GMC was created in RPIP-15.\
+RPIP-18 superceded RPIP-15, with changes to the committee size (enlarged to 9), the frequency of
+award rounds (from every-other-month to quarterly), and the removal of the requirement that a
+majority of the committee be made up of non-team, non-oDAO members.\
+This RPIP supercedes RPIP-18: it removes the 50% retrospective award cap, adds a GMC administrator,
+and reworks the awards process to a rolling process instead of a quarterly one.
 
 ## Motivation
+The Rocket Pool community has always strongly contributed to developing a Rocket Pool ecosystem.
+From marketing outreach, to developing online tools, the community has self-organized and satisfied
+their own needs. The community has previously voted to allocate a portion of the pDAO budget to
+reward such past contributions and to incentivize future ones in the form of grants and bounties.
+Having an established transparent framework for the awarding of such funds will reinforce confidence
+in the protocol as well as further incentivize and reward community involvement. With this proposal,
+Rocket Pool will further develop its rich ecosystem: rewarding contributions and enhancing the
+Rocket Pool experience for every member.
 
-In addition to the goals captured in RPIP-18, the 50% retrospective award cap has inadvertently created a bottleneck in the GMC's ability to distribute funds efficiently. The majority of submissions fall into the retrospective award category, causing a significant backlog. Removing the cap would allow the GMC to address the backlog and honor the contributions of community members who have made significant contributions to the protocol.
+The motivation for the update in this RPIP is that:
+- The 50% retrospective award cap has inadvertently created a bottleneck in the GMC's ability to
+  distribute funds efficiently. The majority of submissions fall into the retrospective award
+  category, causing a significant backlog. Removing the cap would allow the GMC to address the
+  backlog and honor the contributions of community members who have made significant contributions
+  to the protocol.
 
 ## Specification
+- The GMC’s chief mission SHALL be to distribute Grants and Bounties, retrospectively and
+  prospectively, in order to harness the community’s talent to further the goals of the protocol.
+- The GMC SHALL abide by the following definitions for grants, bounties, and retrospective awards:
+    - Grant : A proposal submitted by an individual or group that proposes some action with an
+      estimate of cost and payment schedule. Grants SHALL be a set amount broken up and paid over a
+      set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is
+      awarded to the entity that submitted the proposal if the grant is approved.
+    - Bounty : A proposal submitted by an individual or group that proposes a payment for an
+      achieved result of a specific task/project. The bounty proposal SHOULD establish the desired
+      outcome, state an award compensation amount with a payment schedule, and describe how
+      interested parties can compete in the selection process for the bounty. The entity that
+      submitted the proposal MAY or MAY NOT be the person(s) awarded the bounty contract.
+    - Retrospective Award: A proposal submitted by an individual or group that proposes a payment
+      for a previously-achieved result. The retrospective award SHOULD detail the work that was
+      completed and the positive impacts for the protocol that would merit such an award. The entity
+      that submitted the retrospective award proposal MAY or MAY NOT be the person(s) awarded a
+      retrospective award for the work documented in the proposal.
+
 
 ### Operations
+#### Awards process
+- The GMC SHALL publish an open call for grant, bounty, and retrospective award applications by the
+  first of the month of the first month after the successful creation of the scoring rubric (see
+  below), with deadlines for application falling on the 15th of that month. Subsequent calls for
+  applications SHALL occur at the start of every quarter - January, April, July, and October,
+  following the same 1st of the month/15th of the month deadline schema.
+- The GMC SHALL score applications and announce proposed recipients by the final day of the month
+  after the successful creation of the scoring rubric. Subsequent announcements of proposed
+  recipients SHALL occur every quarter - January, April, July, and October, following the same final
+  day of the month deadline schema.
+- Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to
+  select winning grants and bounties. The rubric(s) SHALL be publicly posted and anyone so
+  interested in participating SHALL be solicited in their development. The GMC MAY choose to develop
+  separate rubrics for grants, bounties, and retrospective awards.
+- The GMC MAY give retrospective awards for previously-completed work. Such applications MAY be
+  submitted on behalf of others rather than being self-nominated.
+- Anyone MAY file an RPIP disputing a grant, bounty, or retrospective award within two weeks of the
+  announcement of recipients. Such an RPIP SHALL be subject to a snapshot vote.
+- Funds for grants and bounties SHALL only be considered approved upon either the completion of the 
+  two-week waiting period without any objecting RPIPs, or the failure of any objecting RPIP snapshot
+  votes.
 
-This proposal SHALL remove the retrospective awards cap outlined in RPIP-18 to alleviate the challenges faced by the GMC.
+
+#### Assessment of Awards
+- Recipients of Grants SHALL update the GMC in a publicly-available document about their progress on
+  at least a monthly basis.
+- If a majority of the GMC agrees that a grant recipient is failing to provide the specified
+  services to the protocol in a timely manner (as documented in the original application and in
+  subsequent monthly updates), the GMC SHALL publicly announce such a decision and cease any future
+  payments. This decision MAY be disputed by anyone through the creation of an RPIP within two weeks
+  of the GMC's announcement. The RPIP SHALL be subject to a snapshot vote.
+- Any group or individual MAY submit a publicly-available document to the GMC claiming successful
+  completion of the bounty. The GMC SHALL discuss all such applications. If a majority of the GMC
+  agrees then the GMC SHALL announce the award of the bounty. Anyone MAY dispute the awarding of the
+  bounty through the creation of an RPIP within two weeks of the GMC's announcement. The RPIP SHALL
+  be subject to a snapshot vote.
+
+#### Conflicts of Interest
+- The GMC SHALL abide by the following processes to minimize conflicts of interest:
+    - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any
+      retrospective award for which they are nominated. They MAY participate in the ratifying
+      snapshot vote.
+    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or
+      participating in GMC discussions about any grants during the application period for which they
+      are an applicant. They may participate in the ratifying snapshot vote. They may also score,
+      vote, and participate in discussions in future rounds during which their grant is ongoing,
+      provided they have not submitted an application during that round for any new grants.
 
 ## Rationale
+The community has long desired a process by which some portion of pDAO funds could be used to reward
+past contributions and incentivize future such contributions. Discussion has been ongoing for at
+least the past six months on Discord and the forums about what such a grants and bounties award
+process might look like and who would comprise the selecting committee. At one point consideration
+was given to having the initial committee comprised of Rocket Scientists plus one team member. In
+the time since, the Incentives Management Committee has created a precedent for a procedure by which
+such a Management Committee’s membership might be selected. This RPIP follows that precedent.
 
-In addition to the goals captured in RPIP-18, the cap was initially implemented to promote interest in grants and encourage new contributions. However, it has resulted in a backlog that limits the GMC's ability to distribute funds effectively. Removing the cap would address this issue and provide the GMC with the flexibility to allocate funds and pay back retroactive awards promptly.
-
-Without taking steps to ensure the timely payment of retroactive awards, the backlog could continue to grow, making it increasingly difficult and time-consuming to address.
 
 ## Copyright
-
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
