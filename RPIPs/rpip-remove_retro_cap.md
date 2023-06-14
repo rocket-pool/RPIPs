@@ -15,10 +15,14 @@ RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details o
 awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord
 Governance channel. Based on that previous work, we would like to suggest an outline for a Grants
 and Bounties Management Committee (hereafter GMC), including guiding principles and governance.
-Please see RPIP-10 for governance details that apply to all Management Committees. This RPIP
-supercedes RPIP-15, with changes to the committee size (enlarged to 9), the frequency of award
-rounds (from every-other-month to quarterly), and the removal of the requirement that a majority of
-the committee be made up of non-team, non-oDAO members.
+Please see RPIP-10 for governance details that apply to all Management Committees.
+
+The GMC was created in RPIP-15.\
+RPIP-18 superceded RPIP-15, with changes to the committee size (enlarged to 9), the frequency of
+award rounds (from every-other-month to quarterly), and the removal of the requirement that a
+majority of the committee be made up of non-team, non-oDAO members.\
+This RPIP supercedes RPIP-18: it removes the 50% retrospective award cap, adds a GMC administrator,
+and reworks the awards process to a rolling process instead of a quarterly one.
 
 ## Motivation
 The Rocket Pool community has always strongly contributed to developing a Rocket Pool ecosystem.
@@ -29,6 +33,13 @@ Having an established transparent framework for the awarding of such funds will 
 in the protocol as well as further incentivize and reward community involvement. With this proposal,
 Rocket Pool will further develop its rich ecosystem: rewarding contributions and enhancing the
 Rocket Pool experience for every member.
+
+The motivation for the update in this RPIP is that:
+- The 50% retrospective award cap has inadvertently created a bottleneck in the GMC's ability to
+  distribute funds efficiently. The majority of submissions fall into the retrospective award
+  category, causing a significant backlog. Removing the cap would allow the GMC to address the
+  backlog and honor the contributions of community members who have made significant contributions
+  to the protocol.
 
 ## Specification
 - The GMC’s chief mission SHALL be to distribute Grants and Bounties, retrospectively and
@@ -66,12 +77,12 @@ Rocket Pool experience for every member.
   interested in participating SHALL be solicited in their development. The GMC MAY choose to develop
   separate rubrics for grants, bounties, and retrospective awards.
 - The GMC MAY give retrospective awards for previously-completed work. Such applications MAY be
-  submitted on behalf of others rather than being self-nominated. In any given award period, no more
-  than 50% of the awarded RPL SHALL go to retroactive awards.
+  submitted on behalf of others rather than being self-nominated.
 - Anyone MAY file an RPIP disputing a grant, bounty, or retrospective award within two weeks of the
   announcement of recipients. Such an RPIP SHALL be subject to a snapshot vote.
 - Funds for grants and bounties SHALL only be considered approved upon either the completion of the 
-  two week waiting period without any objecting RPIPs, or the failure of any objecting RPIP snapshot votes.
+  two-week waiting period without any objecting RPIPs, or the failure of any objecting RPIP snapshot
+  votes.
 
 
 #### Assessment of Awards
@@ -98,16 +109,6 @@ Rocket Pool experience for every member.
       are an applicant. They may participate in the ratifying snapshot vote. They may also score,
       vote, and participate in discussions in future rounds during which their grant is ongoing,
       provided they have not submitted an application during that round for any new grants.
-
-
-### Selection and Governance
-In addition to the "Management Committee Governance" and "Management Committee Selection" sections
-of RPIP-10, the GMC will abide by the following:
-- The GMC SHALL contain nine individuals, except in cases of vacancies.
-- Upon approval of this RPIP, immediate elections following the guidelines of RPIP-10 SHALL take
-  place for any new or vacant seats. These elections SHALL supercede the rules for filling vacancies
-  in the previous bullet.
-
 
 ## Rationale
 The community has long desired a process by which some portion of pDAO funds could be used to reward
