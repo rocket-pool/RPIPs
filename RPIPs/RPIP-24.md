@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 24
 title: oDAO Charter
 description: Describes what the oDAO is for and how it will operate
 author: Valdorff (@Valdorff)

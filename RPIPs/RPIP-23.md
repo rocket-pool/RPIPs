@@ -1,5 +1,5 @@
 ---
-rpip: 
+rpip: 23
 title: pDAO Charter
 description: Describes what the pDAO is for and how it will operate
 author: Valdorff (@Valdorff)

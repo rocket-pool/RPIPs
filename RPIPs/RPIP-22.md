@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 22
 title: Initial starting point "oDAO charter draft and more"
 description: An initial draft version of 3 documents as shared by the oDAO
 author: Valdorff (@Valdorff)

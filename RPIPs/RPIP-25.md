@@ -1,5 +1,5 @@
 ---
-rpip: 10
+rpip: 25
 title: RPL Inflation Allocation
 description: Describes the planned usage of RPL inflation
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
