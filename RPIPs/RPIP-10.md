@@ -47,7 +47,7 @@ changes to how the funds should be directed.
   - Funds MAY be spent directly by voting on a desired expense.
     - The expense SHALL have a description in the [rpip-10 assets](../assets/rpip-10) directory
     - The expense SHALL be recorded below, in the [direct expenses](#direct-expenses) section
-    - This SHOULD be rare; it is RECOMMENDED that the vast majority of expenses be delegated to MCS.
+    - This SHOULD be rare; it is RECOMMENDED that the vast majority of expenses be delegated to MCs.
 - There SHALL be a pDAO Treasurer appointed via pDAO vote within 3 months; until such a pDAO
   Treasurer is appointed, jasperthefriendlyghost will serve as interim pDAO Treasurer.
   - The pDAO treasurer SHOULD post an update within one week of the end of each rewards period,
@@ -178,10 +178,10 @@ conservative starting point.
 In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
 https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
-6/1: Changes are being made to support inflation changes. A significant one allows the pDAO to vote
-directly for expenses from Reserve Treasury -- this is done specifically with Protocol Development
-Funding in mind. The budget split is being updated to be roughly steady given the initial proposed
-inflation step.
+6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
+significant one allows the pDAO to vote directly for expenses from Reserve Treasury -- this is done
+specifically with Protocol Development Funding in mind. The budget split is being updated to be
+roughly steady given the initial proposed inflation step.
 
 ## Historical budget splits
 

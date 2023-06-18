@@ -8,7 +8,7 @@ This expense has two parts:
   - If the dev team are still above 1 seat after 84 days, no bonus will be sent
 
 ## Rationale
-Funding for the team at the current number of seats is based on making up for inflation changes.\
+Funding for the team at the current number of seats is based on making up for inflation changes.
 
 | Period   | RPL to team before changes | RPL to team with inflation changes | Amount to make up |
 |----------|----------------------------|------------------------------------|-------------------|
