@@ -69,7 +69,7 @@ update this RPIP:
        1. The pDAO based long-term inflation numbers on 13 seats
        2. The pDAO recommend ~11-15 members as effective for their duties and well-rewarded 
     2. The same rough ballpark as the Arbitrum security council per seat, but a bit higher
-    3. Decrease pay over time to help align with the goals of removing duties and eventually
+    3. Decreasing pay over time to help align with the goals of removing duties and eventually
      eliminating the oDAO
 
 ## Historical Inflation Allocation

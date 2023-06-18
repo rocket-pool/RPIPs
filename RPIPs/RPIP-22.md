@@ -121,7 +121,7 @@ The intent is to have an interlinked vote, such that support for each document c
     1. Other researched groups included the security multisigs for Aave, Balancer, Hop, Stakewise and Aura; as well as the oracle networks for Maker, Stakewise, and Lido.
 1. We’re targeting
     1. The same rough ballpark as the Arbitrum security council, but a bit higher
-    1. Potentially decrease pay over time (for simplicity) or as duties are removed
+    1. Potentially decreasing pay over time (for simplicity) or as duties are removed
     1. When considering different options, money soon should be valued more than money later
         1. Partly due to the time value of money
         1. Partly because we’re actively working to eliminate duties/pay

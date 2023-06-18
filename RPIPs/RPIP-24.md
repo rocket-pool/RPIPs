@@ -44,7 +44,7 @@ in a given situation, and (b) the greater community in understanding "what shoul
         1. These guidelines SHOULD include diversity to serve protocol safety
         1. These guidelines SHOULD highly value communication
     1. The pDAO MAY nominate a new member or suggest the kicking of an existing member via snapshot vote; if such a vote passes:
-        1. The oDAO SHALL internally vote on the membership change, and execute the change if the members.quorum threshold is reached
+        1. The oDAO SHALL internally vote on the membership change, and execute the change if threshold for membership change reached
         1. The oDAO SHALL post a statement with rationale for the decision
 
 ### Current oDAO Responsibilities
@@ -58,7 +58,7 @@ in a given situation, and (b) the greater community in understanding "what shoul
     1. Balance updates
     1. RPL price updates
     1. Reward tree generation and submission (this responsibility REQUIRES the ability to generate
-       the current and previous interval's trees)
+       the current and previous intervals' trees)
 1. oDAO members SHOULD effectively fulfill support duties, including:
     1. Scrub checks for new minipools
     1. Scrub checks for bond reductions
