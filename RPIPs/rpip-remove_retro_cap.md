@@ -3,14 +3,14 @@ rpip: TBD
 title: Updating of Grants Management Committee
 description: Replaces RPIP-18, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
-discussions-to: https://dao.rocketpool.net/t/amendment-for-retrospective-award-cap/1767
+discussions-to: https://dao.rocketpool.net/t/amendment-for-retrospective-award-cap/1767, https://dao.rocketpool.net/t/rolling-awards-period-proposal/1819, https://dao.rocketpool.net/t/gmc-administrator-role-call-for-feedback/1820
 status: Draft
 type: Meta
 created: 2023-06-14
 ---
 
-
 ## Abstract
+
 RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details of the mechanics of
 awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord
 Governance channel. Based on that previous work, we would like to suggest an outline for a Grants
@@ -25,6 +25,7 @@ This RPIP supercedes RPIP-18: it removes the 50% retrospective award cap, adds a
 and reworks the awards process to a rolling process instead of a quarterly one.
 
 ## Motivation
+
 The Rocket Pool community has always strongly contributed to developing a Rocket Pool ecosystem.
 From marketing outreach, to developing online tools, the community has self-organized and satisfied
 their own needs. The community has previously voted to allocate a portion of the pDAO budget to
@@ -35,43 +36,40 @@ Rocket Pool will further develop its rich ecosystem: rewarding contributions and
 Rocket Pool experience for every member.
 
 The motivation for the update in this RPIP is that:
+
 - The 50% retrospective award cap has inadvertently created a bottleneck in the GMC's ability to
   distribute funds efficiently. The majority of submissions fall into the retrospective award
   category, causing a significant backlog. Removing the cap would allow the GMC to address the
   backlog and honor the contributions of community members who have made significant contributions
   to the protocol.
+- The rigidity of the current awards schedule limits the opportunity for adjustments and modifications, leading to decisions that are often too final. Consequently, there seems to be an imbalance favoring retrospective awards over grants. The implementation of an ongoing awards period, allows for more flexibility and adaptability in the decision-making process. By adopting a rolling awards system, the GMC can achieve enhanced efficiency and provide greater value to the recipients.
+- Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process. The administrator would be included in the multisignature wallet alongside the other committee members.
 
 ## Specification
+
 - The GMC’s chief mission SHALL be to distribute Grants and Bounties, retrospectively and
   prospectively, in order to harness the community’s talent to further the goals of the protocol.
 - The GMC SHALL abide by the following definitions for grants, bounties, and retrospective awards:
-    - Grant : A proposal submitted by an individual or group that proposes some action with an
-      estimate of cost and payment schedule. Grants SHALL be a set amount broken up and paid over a
-      set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is
-      awarded to the entity that submitted the proposal if the grant is approved.
-    - Bounty : A proposal submitted by an individual or group that proposes a payment for an
-      achieved result of a specific task/project. The bounty proposal SHOULD establish the desired
-      outcome, state an award compensation amount with a payment schedule, and describe how
-      interested parties can compete in the selection process for the bounty. The entity that
-      submitted the proposal MAY or MAY NOT be the person(s) awarded the bounty contract.
-    - Retrospective Award: A proposal submitted by an individual or group that proposes a payment
-      for a previously-achieved result. The retrospective award SHOULD detail the work that was
-      completed and the positive impacts for the protocol that would merit such an award. The entity
-      that submitted the retrospective award proposal MAY or MAY NOT be the person(s) awarded a
-      retrospective award for the work documented in the proposal.
-
+  - Grant : A proposal submitted by an individual or group that proposes some action with an
+    estimate of cost and payment schedule. Grants SHALL be a set amount broken up and paid over a
+    set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is
+    awarded to the entity that submitted the proposal if the grant is approved.
+  - Bounty : A proposal submitted by an individual or group that proposes a payment for an
+    achieved result of a specific task/project. The bounty proposal SHOULD establish the desired
+    outcome, state an award compensation amount with a payment schedule, and describe how
+    interested parties can compete in the selection process for the bounty. The entity that
+    submitted the proposal MAY or MAY NOT be the person(s) awarded the bounty contract.
+  - Retrospective Award: A proposal submitted by an individual or group that proposes a payment
+    for a previously-achieved result. The retrospective award SHOULD detail the work that was
+    completed and the positive impacts for the protocol that would merit such an award. The entity
+    that submitted the retrospective award proposal MAY or MAY NOT be the person(s) awarded a
+    retrospective award for the work documented in the proposal.
 
 ### Operations
+
 #### Awards process
-- The GMC SHALL publish an open call for grant, bounty, and retrospective award applications by the
-  first of the month of the first month after the successful creation of the scoring rubric (see
-  below), with deadlines for application falling on the 15th of that month. Subsequent calls for
-  applications SHALL occur at the start of every quarter - January, April, July, and October,
-  following the same 1st of the month/15th of the month deadline schema.
-- The GMC SHALL score applications and announce proposed recipients by the final day of the month
-  after the successful creation of the scoring rubric. Subsequent announcements of proposed
-  recipients SHALL occur every quarter - January, April, July, and October, following the same final
-  day of the month deadline schema.
+
+- Community members can submit grant, bounty, and retrospective award applications at any time. On the last Sunday of each month, the GMC provides comments and makes decisions on these applications, including support, funding, and approval or rejection. The GMC administrator contacts the awardee to share detailed decision notes and rationale. If the awardee appeals the decision, the GMC addresses their feedback at next month's discussion meeting. On the last Sunday of the following month, the GMC may revise its decision. If the appeal is denied, the applicant must restart the application process.
 - Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to
   select winning grants and bounties. The rubric(s) SHALL be publicly posted and anyone so
   interested in participating SHALL be solicited in their development. The GMC MAY choose to develop
@@ -80,12 +78,12 @@ The motivation for the update in this RPIP is that:
   submitted on behalf of others rather than being self-nominated.
 - Anyone MAY file an RPIP disputing a grant, bounty, or retrospective award within two weeks of the
   announcement of recipients. Such an RPIP SHALL be subject to a snapshot vote.
-- Funds for grants and bounties SHALL only be considered approved upon either the completion of the 
+- Funds for grants and bounties SHALL only be considered approved upon either the completion of the
   two-week waiting period without any objecting RPIPs, or the failure of any objecting RPIP snapshot
   votes.
 
-
 #### Assessment of Awards
+
 - Recipients of Grants SHALL update the GMC in a publicly-available document about their progress on
   at least a monthly basis.
 - If a majority of the GMC agrees that a grant recipient is failing to provide the specified
@@ -100,17 +98,75 @@ The motivation for the update in this RPIP is that:
   be subject to a snapshot vote.
 
 #### Conflicts of Interest
+
 - The GMC SHALL abide by the following processes to minimize conflicts of interest:
-    - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any
-      retrospective award for which they are nominated. They MAY participate in the ratifying
-      snapshot vote.
-    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or
-      participating in GMC discussions about any grants during the application period for which they
-      are an applicant. They may participate in the ratifying snapshot vote. They may also score,
-      vote, and participate in discussions in future rounds during which their grant is ongoing,
-      provided they have not submitted an application during that round for any new grants.
+  - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any
+    retrospective award for which they are nominated. They MAY participate in the ratifying
+    snapshot vote.
+  - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or
+    participating in GMC discussions about any grants during the application period for which they
+    are an applicant. They may participate in the ratifying snapshot vote. They may also score,
+    vote, and participate in discussions in future rounds during which their grant is ongoing,
+    provided they have not submitted an application during that round for any new grants.
+
+#### Expanded GMC Administrator Role
+
+The expanded GMC Administrator role's responsibilities will include: meeting coordinator, awards facilitator, spokesperson, grants and bounties liaison, accountant, and governance author.
+
+The administrator will follow an internal handbook that they manage for their processes. It can be reviewed and revised by the GMC at any time.
+
+##### Hiring Process
+
+###### Job Posting
+
+- The GMC will publish an open job posting for a part-time GMC Administrator position. The posting will include the position's title, responsibilities, qualifications, expected time commitment, and compensation.
+- The job posting will be accessible to the public, allowing interested candidates to submit their applications within a designated 7-day window.
+
+##### Application Review and Interview
+
+- The Grants and Management Committee (GMC) will review the received applications within 14 days of the application window closing.
+- The GMC will conduct interviews with shortlisted candidates to assess their suitability for the role.
+  - The interviews may include a combination of virtual or in-person meetings, skill assessments, and reference checks.
+
+##### Decision-Making
+
+- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection.
+- The decision will be based on the candidate's qualifications, experience, alignment with the organization's values, and their ability to fulfill the position's responsibilities effectively.
+- The decision will come within 14 days of the application window closing.
+
+##### Transition and Renewal of Administrator's Term:
+
+To ensure a smooth transition and maintain operational continuity, the committee will assess the administrator's term one month prior to its end. At that point, the committee will have two options:
+
+- Term Extension: The committee may choose to extend the current administrator's term by one year, provided they have been performing effectively and meeting the organization's expectations. This allows for continuity in their role and provides stability within the position.
+- Hiring Process Initiation: Alternatively, the committee may decide to initiate the hiring process outlined below, seeking potential applicants for the position. This proactive approach ensures a seamless transition if a new candidate is selected.
+
+##### Contingency Plan for GMC Administrator Removal and Replacement
+
+###### Consensus Vote for Removal
+
+- Any committee member can formally request a vote to remove the current GMC administrator by bringing the matter to the attention of the committee.
+  - The request will initiate a consensus vote among the committee members, where they will collectively decide on the removal. A majority vote of greater than 50% is required for removal.
+
+###### Committee Member Replacement
+
+- Once the decision to remove the administrator has been made, a backup committee member will be assigned to assume the administrator's responsibilities temporarily during the hiring process.
+- The backup committee member will ensure the smooth functioning of the administrator's duties until a replacement is hired.
+
+###### Replacement Hiring Process
+
+- Upon the initiation of the replacement hiring process, the GMC will promptly begin the recruitment procedure outlined in the standard hiring process mentioned above.
+- The job posting for the administrator position will be updated to indicate the urgency of the situation and the need for an emergency replacement.
+- The GMC will expedite the review and interview process to select a suitable replacement candidate as quickly as possible.
+
+The emergency replacement hiring process is meant to address urgent situations, ensuring continuity within the GMC. The regular hiring process may follow a different timeline and procedure.
+
+##### Multisignature Safe Privileges
+
+To enable transaction initiation and execution within the multisignature safe, it is necessary to include the GMC Administrator as a participant. The GMC places utmost importance on timely payments, requiring the implementation of a meticulously organized system tailored specifically to meet these deadlines.
 
 ## Rationale
+
 The community has long desired a process by which some portion of pDAO funds could be used to reward
 past contributions and incentivize future such contributions. Discussion has been ongoing for at
 least the past six months on Discord and the forums about what such a grants and bounties award
@@ -119,6 +175,6 @@ was given to having the initial committee comprised of Rocket Scientists plus on
 the time since, the Incentives Management Committee has created a precedent for a procedure by which
 such a Management Committee’s membership might be selected. This RPIP follows that precedent.
 
-
 ## Copyright
+
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
