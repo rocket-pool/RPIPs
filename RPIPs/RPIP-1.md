@@ -10,7 +10,7 @@ created: 2022-03-17
 
 ## Summary: What is an RPIP?
 
-RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](https://github.com/VVander/RPIPs/blob/main/RPIPs/RPIP-template.md).
+RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](../rpip-template.md).
 
 Only RPIPs in the "Finalized" state are eligible for adoption and must be reviewed by editors before marked as "Finalized". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the [editors](#rpip-editors).
 
