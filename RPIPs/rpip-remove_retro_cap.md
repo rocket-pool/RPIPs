@@ -43,7 +43,7 @@ The motivation for the update in this RPIP is that:
   backlog and honor the contributions of community members who have made significant contributions
   to the protocol.
 - The rigidity of the current awards schedule limits the opportunity for adjustments and modifications, leading to decisions that are often too final. Consequently, there seems to be an imbalance favoring retrospective awards over grants. The implementation of an ongoing awards period, allows for more flexibility and adaptability in the decision-making process. By adopting a rolling awards system, the GMC can achieve enhanced efficiency and provide greater value to the recipients.
-- Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process. The administrator would be included in the multisignature wallet alongside the other committee members.
+- Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process.
 
 ## Specification
 
@@ -69,7 +69,14 @@ The motivation for the update in this RPIP is that:
 
 #### Awards process
 
-- Community members can submit grant, bounty, and retrospective award applications at any time. On the last Sunday of each month, the GMC provides comments and makes decisions on these applications, including support, funding, and approval or rejection. The GMC administrator contacts the awardee to share detailed decision notes and rationale. If the awardee appeals the decision, the GMC addresses their feedback at next month's discussion meeting. On the last Sunday of the following month, the GMC may revise its decision. If the appeal is denied, the applicant must restart the application process.
+- Community members can submit grant, bounty, and retrospective award applications at any time
+  - Submissions received before the second Sunday of the month will be reviewed that month; if received after that, they will be queued for next month
+- The GMC will meet on or around the second Sunday of the month to make preliminary decisions and provide comments
+- The GMC administrator will contact the submitter and:
+  - Share preliminary decision and rationale
+  - Work with submitter on edits, if desired
+- The GMC will meet on or around the last Sunday of the month to make final approval/rejection decisions and provide comments
+- Submitters are free to resubmit applications in later months if desired
 - Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to
   select winning grants and bounties. The rubric(s) SHALL be publicly posted and anyone so
   interested in participating SHALL be solicited in their development. The GMC MAY choose to develop
@@ -124,13 +131,14 @@ The administrator will follow an internal handbook that they manage for their pr
 
 ##### Application Review and Interview
 
-- The Grants and Management Committee (GMC) will review the received applications within 14 days of the application window closing.
+- The Grants and Management Committee (GMC) will review the received applications once the application window closes.
 - The GMC will conduct interviews with shortlisted candidates to assess their suitability for the role.
   - The interviews may include a combination of virtual or in-person meetings, skill assessments, and reference checks.
 
 ##### Decision-Making
 
-- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection.
+- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection. The decision will be made through a single choice vote, where each member of the GMC selects their preferred candidate from the pool of applicants. The candidate who receives more than 50% of the votes cast by the GMC members will be selected. In the event that nobody meets the threshold (no candidate receives more than 50% of the votes), or if multiple candidates receive an equal number of votes, The GMC has 7 days to engage in further discussions to reevaluate the candidates, review their qualifications, and reconsider their merits. 
+
 - The decision will be based on the candidate's qualifications, experience, alignment with the organization's values, and their ability to fulfill the position's responsibilities effectively.
 - The decision will come within 14 days of the application window closing.
 
@@ -150,20 +158,13 @@ To ensure a smooth transition and maintain operational continuity, the committee
 
 ###### Committee Member Replacement
 
-- Once the decision to remove the administrator has been made, a backup committee member will be assigned to assume the administrator's responsibilities temporarily during the hiring process.
+- If the GMC Administrator role is vacant at any time, a backup committee member will be assigned to assume the administrator's responsibilities temporarily during the hiring process. The backup will receive compensation equivalent to the administrator's compensation during the time the backup serves.
 - The backup committee member will ensure the smooth functioning of the administrator's duties until a replacement is hired.
 
 ###### Replacement Hiring Process
 
 - Upon the initiation of the replacement hiring process, the GMC will promptly begin the recruitment procedure outlined in the standard hiring process mentioned above.
 - The job posting for the administrator position will be updated to indicate the urgency of the situation and the need for an emergency replacement.
-- The GMC will expedite the review and interview process to select a suitable replacement candidate as quickly as possible.
-
-The emergency replacement hiring process is meant to address urgent situations, ensuring continuity within the GMC. The regular hiring process may follow a different timeline and procedure.
-
-##### Multisignature Safe Privileges
-
-To enable transaction initiation and execution within the multisignature safe, it is necessary to include the GMC Administrator as a participant. The GMC places utmost importance on timely payments, requiring the implementation of a meticulously organized system tailored specifically to meet these deadlines.
 
 ## Rationale
 
