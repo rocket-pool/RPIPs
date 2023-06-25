@@ -27,6 +27,7 @@ in a given situation, and (b) the greater community in understanding "what shoul
     1. Be informed and engage in public discourse about governance, or;
     1. Delegate their voting power to someone that is informed and engaged
 1. The pDAO SHALL prioritize protocol safety
+1. The pDAO SHOULD prioritize the health of the Ethereum network
 1. The pDAO SHOULD prioritize decentralization
 1. The pDAO SHOULD prioritize permissionlessness
 
