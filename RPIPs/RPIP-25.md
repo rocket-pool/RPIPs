@@ -4,7 +4,7 @@ title: RPL Inflation Allocation
 description: Describes the planned usage of RPL inflation
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
-status: Draft
+status: Review
 type: Meta
 created: 2023-06-02
 ---

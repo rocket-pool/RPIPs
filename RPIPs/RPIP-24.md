@@ -4,7 +4,7 @@ title: oDAO Charter
 description: Describes what the oDAO is for and how it will operate
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
-status: Draft
+status: Review
 type: Meta
 created: 2023-06-02
 ---
