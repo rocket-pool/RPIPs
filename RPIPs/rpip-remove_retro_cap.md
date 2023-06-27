@@ -118,7 +118,7 @@ The motivation for the update in this RPIP is that:
 
 #### Expanded GMC Administrator Role
 
-The expanded GMC Administrator role's responsibilities will include: meeting coordinator, awards facilitator, spokesperson, grants and bounties liaison, accountant, and governance author.
+The expanded GMC Administrator role's responsibilities will include: meeting coordinator, awards facilitator, spokesperson, grants and bounties liaison, treasurer, and governance author.
 
 The administrator will follow an internal handbook that they manage for their processes. It can be reviewed and revised by the GMC at any time.
 
@@ -126,7 +126,7 @@ The administrator will follow an internal handbook that they manage for their pr
 
 ###### Job Posting
 
-- The GMC will publish an open job posting for a part-time GMC Administrator position. The posting will include the position's title, responsibilities, qualifications, expected time commitment, and compensation.
+- The GMC will publish an open job posting for a part-time GMC Administrator position with a 1-year term. The posting will include the position's title, responsibilities, qualifications, expected time commitment, and compensation.
 - The job posting will be accessible to the public, allowing interested candidates to submit their applications within a designated 7-day window.
 
 ##### Application Review and Interview
@@ -137,7 +137,7 @@ The administrator will follow an internal handbook that they manage for their pr
 
 ##### Decision-Making
 
-- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection. The decision will be made through a single choice vote, where each member of the GMC selects their preferred candidate from the pool of applicants. The candidate who receives more than 50% of the votes cast by the GMC members will be selected. In the event that nobody meets the threshold (no candidate receives more than 50% of the votes), or if multiple candidates receive an equal number of votes, The GMC has 7 days to engage in further discussions to reevaluate the candidates, review their qualifications, and reconsider their merits. 
+- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection. The decision will be made through a single choice vote, where each member of the GMC selects their preferred candidate from the pool of applicants. The candidate who receives more than 50% of the votes cast by the GMC members will be selected. In the event that nobody meets the threshold (no candidate receives more than 50% of the votes), or if multiple candidates receive an equal number of votes, The GMC has 7 days to engage in further discussions to reevaluate the candidates, review their qualifications, and reconsider their merits. Within 7 days they will hold another single choice vote to choose their preferred candiate. This 7 day discussion process repeats itself until a candidate is sucessfully chosen.
 
 - The decision will be based on the candidate's qualifications, experience, alignment with the organization's values, and their ability to fulfill the position's responsibilities effectively.
 - The decision will come within 14 days of the application window closing.
@@ -158,7 +158,7 @@ To ensure a smooth transition and maintain operational continuity, the committee
 
 ###### Committee Member Replacement
 
-- If the GMC Administrator role is vacant at any time, a backup committee member will be assigned to assume the administrator's responsibilities temporarily during the hiring process. The backup will receive compensation equivalent to the administrator's compensation during the time the backup serves.
+- If the GMC Administrator role is vacant at any time, the GMC has seven days to discuss and assign a current GMC member to act as a backup and to assume the administrator's responsibilities temporarily during the hiring process. The backup will receive compensation equivalent to the administrator's compensation during the time the backup serves.
 - The backup committee member will ensure the smooth functioning of the administrator's duties until a replacement is hired.
 
 ###### Replacement Hiring Process
