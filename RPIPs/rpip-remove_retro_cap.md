@@ -158,7 +158,7 @@ To ensure a smooth transition and maintain operational continuity, the committee
 
 ###### Committee Member Replacement
 
-- If the GMC Administrator role is vacant at any time, the GMC has seven days to discuss and assign a current GMC member to act as a backup and to assume the administrator's responsibilities temporarily during the hiring process. The backup will receive compensation equivalent to the administrator's compensation during the time the backup serves.
+- If the GMC Administrator role is vacant at any time, the GMC SHALL, within at most 3 days, select a current GMC member to act as interim administrator during the hiring process. This selection is based on a vote, with the highest vote receiver being selected. In the event of a tie, the pDAO treasurer will cast the tie breaking vote. The backup will receive compensation equivalent to the administrator's compensation during the time the backup serves.
 - The backup committee member will ensure the smooth functioning of the administrator's duties until a replacement is hired.
 
 ###### Replacement Hiring Process
