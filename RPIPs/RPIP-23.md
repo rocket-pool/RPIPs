@@ -4,7 +4,7 @@ title: pDAO Charter
 description: Describes what the pDAO is for and how it will operate
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
-status: Draft
+status: Final
 type: Meta
 created: 2023-06-02
 ---
@@ -27,6 +27,7 @@ in a given situation, and (b) the greater community in understanding "what shoul
     1. Be informed and engage in public discourse about governance, or;
     1. Delegate their voting power to someone that is informed and engaged
 1. The pDAO SHALL prioritize protocol safety
+1. The pDAO SHOULD prioritize the health of the Ethereum network
 1. The pDAO SHOULD prioritize decentralization
 1. The pDAO SHOULD prioritize permissionlessness
 
