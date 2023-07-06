@@ -52,7 +52,7 @@ The motivation for the update in this RPIP is that:
 - The GMC SHALL abide by the following definitions for grants, bounties, and retrospective awards:
   - Grant : A proposal submitted by an individual or group that proposes some action with an
     estimate of cost and payment schedule. Grants SHALL be a set amount broken up and paid over a
-    set period. This might be X RPL paid over 13 inflation cycles (13x 28 days). This contract is
+    set period. This might be X RPL paid over 12 months. This contract is
     awarded to the entity that submitted the proposal if the grant is approved.
   - Bounty : A proposal submitted by an individual or group that proposes a payment for an
     achieved result of a specific task/project. The bounty proposal SHOULD establish the desired
