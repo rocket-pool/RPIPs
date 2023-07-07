@@ -75,6 +75,7 @@ The motivation for the update in this RPIP is that:
 - The GMC administrator will contact the submitter and:
   - Share preliminary decision and rationale
   - Work with submitter on edits, if desired
+  - Assign individual commitee members for verification, if work is specialized
 - The GMC will meet on or around the last Sunday of the month to make final approval/rejection decisions and provide comments
 - Submitters are free to resubmit applications in later months if desired
 - Prior to the first call for applications, the GMC SHALL develop one or more rubrics by which to
@@ -115,6 +116,7 @@ The motivation for the update in this RPIP is that:
     are an applicant. They may participate in the ratifying snapshot vote. They may also score,
     vote, and participate in discussions in future rounds during which their grant is ongoing,
     provided they have not submitted an application during that round for any new grants.
+  - Any GMC member who submits a bounty is not eligible to claim that bounty's reward.
 
 #### Expanded GMC Administrator Role
 
@@ -127,7 +129,7 @@ The administrator will follow an internal handbook that they manage for their pr
 ###### Job Posting
 
 - The GMC will publish an open job posting for a part-time GMC Administrator position with a 1-year term. The posting will include the position's title, responsibilities, qualifications, expected time commitment, and compensation.
-- The job posting will be accessible to the public, allowing interested candidates to submit their applications within a designated 7-day window.
+- The job posting will be accessible to the public, allowing interested candidates to submit their applications within a designated 14-day window.
 
 ##### Application Review and Interview
 
@@ -137,7 +139,7 @@ The administrator will follow an internal handbook that they manage for their pr
 
 ##### Decision-Making
 
-- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection. The decision will be made through a single choice vote, where each member of the GMC selects their preferred candidate from the pool of applicants. The candidate who receives more than 50% of the votes cast by the GMC members will be selected. In the event that nobody meets the threshold (no candidate receives more than 50% of the votes), or if multiple candidates receive an equal number of votes, The GMC has 7 days to engage in further discussions to reevaluate the candidates, review their qualifications, and reconsider their merits. Within 7 days they will hold another single choice vote to choose their preferred candiate. This 7 day discussion process repeats itself until a candidate is sucessfully chosen.
+- After the interviews and evaluations are complete, the GMC will deliberate and make a decision regarding the candidate selection. The decision will be made through a single choice vote, where each member of the GMC selects their preferred candidate from the pool of applicants. The candidate who receives more than 50% of the votes cast by the GMC members will be selected. In the event that nobody meets the threshold (no candidate receives more than 50% of the votes), or if multiple candidates receive an equal number of votes, The GMC has 7 days to engage in further discussions to reevaluate the candidates, review their qualifications, and reconsider their merits. Within 7 days they will hold another single choice vote to choose their preferred candiate. This 7 day discussion process repeats itself until a candidate is successfully chosen.
 
 - The decision will be based on the candidate's qualifications, experience, alignment with the organization's values, and their ability to fulfill the position's responsibilities effectively.
 - The decision will come within 14 days of the application window closing.
