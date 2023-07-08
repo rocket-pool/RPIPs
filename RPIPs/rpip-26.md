@@ -116,7 +116,7 @@ The motivation for the update in this RPIP is that:
     are an applicant. They may participate in the ratifying snapshot vote. They may also score,
     vote, and participate in discussions in future rounds during which their grant is ongoing,
     provided they have not submitted an application during that round for any new grants.
-  - Any GMC member who submits a bounty is not eligible to claim that bounty's reward.
+  - Any GMC member who submits a bounty SHALL not complete that bounty.
 
 #### Expanded GMC Administrator Role
 
