@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget
 status: Draft
 type: Meta
 created: 2022-08-09
+vote-to: https://vote.rocketpool.net/#/proposal/0xe68b5986b1861102485752846379e0c0fcface6d44bb19046b063d79617b1ec0
+vote-date: 2023-03-10
+vote-result: Passed
 ---
 
 
@@ -185,11 +188,16 @@ roughly steady given the initial proposed inflation step.
 
 ## Historical budget splits
 
-| Date       | Split                                                                                  |
-|------------|----------------------------------------------------------------------------------------|
-| 2022-08-09 | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
-| Date TBD   | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
+| Date                                | Split                                                                                  |
+|-------------------------------------|----------------------------------------------------------------------------------------|
+| 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
+| Date TBD                            | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
+## Historical membership
+| Date        | Member      |
+|-------------|-------------|
+| before vote | Jasper      |
+| 2022-10-30  | vacalaranja |
 
 ## Direct expenses
 | Date | Amount     | Summary                                    | Link to full description                    |

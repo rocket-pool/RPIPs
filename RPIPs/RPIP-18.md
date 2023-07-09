@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/rpip-modifying-operations-of-gmc/14
 status: Final
 type: Meta
 created: 2023-01-23
+vote-to: https://vote.rocketpool.net/#/proposal/0x75ca9e35555150c713e332d585b9fdf7185c9cf4222ad705459b30cf6d6bb7fb
+vote-date: 2023-02-12
+vote-result: Passed
 ---
 
 
@@ -55,6 +58,12 @@ In addition to the "Management Committee Governance" and "Management Committee S
 ## Rationale
 The community has long desired a process by which some portion of pDAO funds could be used to reward past contributions and incentivize future such contributions. Discussion has been ongoing for at least the past six months on Discord and the forums about what such a grants and bounties award process might look like and who would comprise the selecting committee. At one point consideration was given to having the initial committee comprised of Rocket Scientists plus one team member. In the time since, the Incentives Management Committee has created a precedent for a procedure by which such a Management Committee’s membership might be selected. This RPIP follows that precedent.
 
+## Historical membership
+| Date        | Members                                                                                  |
+|-------------|------------------------------------------------------------------------------------------|
+| ~2022-08-25 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, objectObject                        |
+| 2023-03-10  | jcrtp, waqwaqattack, Ken, mentor, objectObject, fornax, ShfRyn, Kevster, dondochaka      |
+| 2023-06-10  | jcrtp, waqwaqattack, Ken, mentor, objectObject, fornax, Kevster, dondochaka, rplmaxi.eth |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

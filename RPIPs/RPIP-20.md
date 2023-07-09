@@ -8,7 +8,11 @@ status: Final
 type: Meta
 created: 2023-04-17
 requires: 10
+votes-to: https://vote.rocketpool.net/#/proposal/0x78fb23da34837170bb182f21fb57e4a023f7c52c1379751e824a348467f96a65
+vote-date: 2023-05-16
+vote-status: Passed
 ---
+
 
 ## Abstract
 There is broad agreement on the need for liquidity incentives that @knoshua outlines in the
@@ -74,6 +78,13 @@ possible. The liquidity bucket amounts to 67.5k RPL, or 1,087 ETH at market pric
 theoretical run of 1 reward period (28 days), this gives  ~83.6 ETH or ~140,200 USD to work with. In
 light of parallel discussions about tokenomics changes, this amount serves as a conservative
 starting point.
+
+## Historical membership
+| Date       | Members                                                                               |
+|------------|---------------------------------------------------------------------------------------|
+| 2022-08-25 | Darcius, Langers, Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum            |
+| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth |
+
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

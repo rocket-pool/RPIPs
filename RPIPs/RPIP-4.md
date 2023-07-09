@@ -6,6 +6,9 @@ discussions-to: https://dao.rocketpool.net/t/snapshot-voting/400
 status: Finalized
 type: Meta
 created: 2022-03-21
+vote-to: https://vote.rocketpool.net/#/proposal/0x5117a6c5d33957821008338e7e628e5cf00c46602530c1545864eabf9fe1ec20
+vote-date: 2022-09-06
+vote-result: Passed
 ---
 
 ## Abstract
