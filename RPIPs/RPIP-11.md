@@ -76,10 +76,10 @@ light of parallel discussions about tokenomics changes, this amount serves as a 
 starting point.
 
 ## Historical membership
-| Date       | Members                                                                               |
-|------------|---------------------------------------------------------------------------------------|
-| 2022-08-25 | Darcius, Langers, Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum            |
-| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth |
+| Date       | Members                                                                                                                      | Comment                                                      |
+|------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| 2022-08-25 | RP Team 1 (operated by langers), RP Team 2 (operated by Darcius), Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum   | Full committee selected informally and ratified by pDAO vote |
+| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth                                        | Full committee selected by pDAO vote                         |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
