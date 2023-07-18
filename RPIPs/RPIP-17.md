@@ -6,6 +6,9 @@ status: Final
 type: Meta
 discussions-to: https://dao.rocketpool.net/t/self-limiting-principles/1396/17
 created: 2022-10-15
+vote-to: https://vote.rocketpool.net/#/proposal/0x9e093dea49dee9d1b3e43dbb6e0d8735149c5fde6ef703620970129b81d0f7f8
+vote-date: 2023-02-12
+vote-result: Passed
 ---
  
 ## Abstract

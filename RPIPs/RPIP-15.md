@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/grants-and-bounties-rpip/1064
 status: Final
 type: Meta
 created: 2022-09-18
+vote-to: https://vote.rocketpool.net/#/proposal/0x7cc60bb1bbc5f0fc061e65e1f5fc4ca23adbe9b353c6edece2ec6860b4101860
+vote-date: 2022-10-11
+vote-result: Passed
 ---
 
 ## \>\> NOTICE <<
@@ -60,6 +63,11 @@ In addition to the "Management Committee Governance" and "Management Committee S
 ## Rationale
 The community has long desired a process by which some portion of pDAO funds could be used to reward past contributions and incentivize future such contributions. Discussion has been ongoing for at least the past six months on Discord and the forums about what such a grants and bounties award process might look like and who would comprise the selecting committee. At one point consideration was given to having the initial committee comprised of Rocket Scientists plus one team member. In the time since, the Incentives Management Committee has created a precedent for a procedure by which such a Management Committee’s membership might be selected. This RPIP follows that precedent.
 
+## Historical membership
+| Date       | Members                                                                                  | Comment                                                                             |
+|------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| 2022-10-30 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, Wander                              | Full committee selected by pDAO vote                                                |
+| 2022-11-07 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, objectObject                        | Wander steps down; objectObject selected on basis of previous vote result           |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

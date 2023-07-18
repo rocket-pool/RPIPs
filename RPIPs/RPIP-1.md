@@ -96,6 +96,8 @@ Each RPIP must begin with an RFC 822 style header preamble, preceded and followe
 
 `withdrawal-reason`: An optional sentence explaining why the RPIP was withdrawn.
 
+`vote-to`: If this RPIP had a concluded vote, the url pointing to the vote on vote.rocketpool.net. For a Living RPIP that has had a successful vote, this should be the address of the last "Passed" vote.
+
 `vote-date`: If this RPIP had a concluded vote, when that happened in yyyy-mm-dd format. For a Living RPIP that has had a successful vote, this should be the date when the last "Passed" vote concluded.
 
 `vote-result`: If this RPIP had a concluded vote, the result of the ("Failed" or "Passed"). For a Living RPIP that has had a successful vote, this should remain "Passed".

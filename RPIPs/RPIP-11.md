@@ -8,6 +8,9 @@ status: Final
 type: Meta
 created: 2022-08-09
 requires: 10
+vote-to: https://vote.rocketpool.net/#/proposal/0x22a49c5384815358512fc8092da06f8f7e129fec6613a38f916ee8b17703014c
+vote-date: 2022-08-25
+vote-result: Passed
 ---
 
 ## \>\> NOTICE <<
@@ -71,6 +74,12 @@ possible. The liquidity bucket amounts to 67.5k RPL, or 1,087 ETH at market pric
 theoretical run of 1 reward period (28 days), this gives  ~83.6 ETH or ~140,200 USD to work with. In
 light of parallel discussions about tokenomics changes, this amount serves as a conservative
 starting point.
+
+## Historical membership
+| Date       | Members                                                                                                                      | Comment                                                      |
+|------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| 2022-08-25 | RP Team 1 (operated by langers), RP Team 2 (operated by Darcius), Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum   | Full committee selected informally and ratified by pDAO vote |
+| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth                                        | Full committee selected by pDAO vote                         |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
