@@ -1,7 +1,7 @@
 ---
 rpip: <to be assigned>
 title: GMC Grants, Bounties, Retrospective Awards Ledger
-description: This file records, current grants, current bounties, current retrospective awards, past grants, past bounties, and past retrospective awards.
+description: This file records current grants, current bounties, current retrospective awards, past grants, past bounties, and past retrospective awards.
 author: ShfRyn (@ShfRyn)
 discussions-to: N/A
 status: Draft
