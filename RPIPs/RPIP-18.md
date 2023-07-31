@@ -65,6 +65,7 @@ The community has long desired a process by which some portion of pDAO funds cou
 | 2022-11-07 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, objectObject                        | Wander steps down; objectObject selected on basis of previous vote result           |
 | 2023-03-10 | jcrtp, waqwaqattack, Ken, mentor, objectObject, fornax, ShfRyn, Kevster, dondochaka      | Slots increase to 9; invis, calurduran step down; 4 members selected by pDAO vote   |
 | 2023-06-10 | jcrtp, waqwaqattack, Ken, mentor, objectObject, fornax, Kevster, dondochaka, rplmaxi.eth | ShfRyn steps down; per RPIP-10 vacancy rules, rplmaxi.eth joins based on last vote  |
+| 2023-07-31 | jcrtp, waqwaqattack, Ken, mentor, objectObject, fornax, dondochaka, rplmaxi.eth, anisoptera.eth | Kevster steps down; anisoptera.eth joins based on last vote  |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
