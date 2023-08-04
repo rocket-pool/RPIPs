@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
 status: Final
 type: Meta
 created: 2023-06-02
+vote-to: https://vote.rocketpool.net/#/proposal/0x07b38bcbd949923ba7d72f5832bca22e0a9354bce303602c802edf1046eb68fe
+vote-date: 2023-07-17
+vote-result: Passed
 ---
 
 ## Abstract
