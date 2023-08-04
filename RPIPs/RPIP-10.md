@@ -4,11 +4,11 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthefriendlyghost, Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Draft
+status: Living
 type: Meta
 created: 2022-08-09
-vote-to: https://vote.rocketpool.net/#/proposal/0xe68b5986b1861102485752846379e0c0fcface6d44bb19046b063d79617b1ec0
-vote-date: 2023-03-10
+vote-to: https://vote.rocketpool.net/#/proposal/0x510383ca82a0096fa670a260692cf7a4097e199ce4f731dc4efd97a21f19f988
+vote-date: 2023-07-17
 vote-result: Passed
 ---
 
@@ -191,7 +191,7 @@ roughly steady given the initial proposed inflation step.
 | Date                                | Split                                                                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------|
 | 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
-| Date TBD                            | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
+| 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
 ## Historical membership
 | Date       | Member      | Comment                                                             |
