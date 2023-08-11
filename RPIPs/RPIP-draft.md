@@ -12,10 +12,10 @@ created: 2023-08-11
 
 ## Abstract
 
-Right now, if an NO falls below the minimum (value of RPL staked <10% of borrowed ETH), they add a
-new minipool to that node unless they stake enough to reach the minimum AND cover the new minipool.
-Unless, of course, they make a new node. This means that we're creating an incentive to make Sybil
-nodes.
+Right now, if an NO falls below the minimum (value of RPL staked <10% of borrowed ETH), they can't 
+add a new minipool to that node unless they stake enough to reach the minimum AND cover the new
+minipool. Unless, of course, they make a new node. This means that we're creating an incentive to
+make Sybil nodes.
 
 This proposal suggests adding the ability to do a combined minipool deposit AND RPL stake. This
 would allow creating a new minipool even when under the minimum and remove the incentive to create
