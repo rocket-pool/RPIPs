@@ -107,14 +107,14 @@ Dr Doofus, Epineph, Erowind, ewan.eth, feyo.eth, firegogo, Freek, FUINY7, fullwa
 halzen.eth, harpocryptes, Hollywood_Squares, ib1gymnast, Intelligent Investoor, invis, ivelin.eth,
 james, Ken, knoshua, L3O, lilac, Ludi, luominx, lutro, mattkunke.eth, Ments, MetalSeed, mfilipe,
 Mig, mikeylikesit, Myguy, NeverAnIsland, NickS, noahscape, NonFungibleYokem, notyou, occam,
-philcares.eth, Pieter, pk3268, quant, rocket__1, RocketDoc.eth, rocknet, Rudes.eth, sadcuzz.eth,
-Saint Rat, SANTINO33, sckuzzle, señor, slipstream, sneaky.eth, SNG, Snocones, socash, sonax,
-StableScarab, takezo, Team Berebere, teamRick, techcapo, uisce, Wander, Waq, woodenship.eth,
+philcares.eth, Pieter, pk3268, quant, ramana, rocket__1, RocketDoc.eth, rocknet, Rudes.eth,
+sadcuzz.eth, Saint Rat, SANTINO33, sckuzzle, señor, slipstream, sneaky.eth, SNG, Snocones, socash,
+sonax, StableScarab, takezo, Team Berebere, teamRick, techcapo, uisce, Wander, Waq, woodenship.eth,
 wowsuchname.eth, Xero.eth, yeehaw0x, Yorick, ZQQLANDER
 
 Some folks here chatted up a storm, reviewed models, and contributed their own models/essays. Some
 folks came out of lurking just long enough to provide their perspective. Many were in between. All
-are appreciated. It's stunning that we had 90 people participate in an early research thread.
+are appreciated. It's stunning that we had over 90 people participate in an early research thread.
 
 <3 RP community.
 
