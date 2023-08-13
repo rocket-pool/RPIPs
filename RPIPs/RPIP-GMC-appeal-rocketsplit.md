@@ -27,9 +27,9 @@ After talking to @jclapis in the GMC Public Channel, it became clear that the te
 
 These features don't make custom marriages contracts (one ETH provider and one RPL provider) or a frontend for such contracts obsolete.
 
-The community has already shown some interest in marriage contracts, but many users are not comfortable with modifying parameters of the arangement and deploying the contracts. Making them accessible and customizable through a frontend would add value.
+The community has already shown some interest in marriage contracts, but many users are not comfortable with modifying parameters of the arangement and deploying the contracts. Making them accessible and customizable through a frontend would add value. Please see the [grant application](https://dao.rocketpool.net/t/july-2023-gmc-call-for-grant-applications-deadline-is-july-15th/1934/4) or the [backup pdf](../assets//rpip-GMC-appeal-rocketsplit/July%202023%20Grant%20Applications.pdf) for more information on the application.
 
-The application was submitted on July 6 and asked for 500 RPL without specifying a $ amount. At the time, this translated to §19,000 and the GMC used $30/RPL for the July rewards.
+The application was submitted on July 6 and asked for 500 RPL without specifying a $ amount. At the time, this translated to $19,000 and the GMC used $30/RPL for the July rewards.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
