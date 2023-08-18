@@ -25,7 +25,8 @@ to be staked, such that the NO moves towards the minimum overall.
 ## Specification
 
 - There SHALL be a function that allows an atomic RPL stake and minipool ETH deposit
-- This function SHALL succeed if the staked RPL is 110% of the amount needed for this minipool
+- This function SHALL succeed if the staked RPL meets of the amount that would be needed for this
+  minipool on a fresh node
   - Note that this means the minipool MAY be created even if the overall node's RPL stake is below
     the minimum needed (eg, for RPL rewards) 
 
@@ -36,12 +37,10 @@ to be staked, such that the NO moves towards the minimum overall.
 - `RocketNodeDeposit.deposit` now calls `RocketNodeDeposit.deposit_with_RPL` with rpl_to_stake=0
 - In `RocketNodeDeposit.deposit_with_RPL`
   - `require(msg.value == _bondAmount, "Invalid value");`
-  - `force_minimum_met == (rocketNetworkPrices.getRPLPrice() * rpl_to_stake > rocketDAOProtocolSettingsNode.getForceMinimumPerMinipoolStake() * (32-_bondAmount))`
+  - `rpl_requirement_met == (rocketNetworkPrices.getRPLPrice() * rpl_to_stake > rocketDAOProtocolSettingsNode.getMinimumPerMinipoolStake() * (32-_bondAmount))`
   - Pass along rpl_requirement_met as needed such that the deposit will succeed if EITHER:
-    - `force_minimum_met` is true
+    - `rpl_requirement_met` is true
     - There's enough RPL to be above minimum once the new minipool is added (the current check)
-- Implement `rocketDAOProtocolSettingsNode.getForceMinimumPerMinipoolStake()` as
-  - Start `node.per.minipool.stake.force_minimum` at 0.11 (10% more than `node.per.minipool.stake.minimum`)
 
 ## Copyright
 
