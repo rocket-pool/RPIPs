@@ -1,14 +1,13 @@
 ---
-rpip: <to be assigned>
+rpip: 29
 title: GMC Grants, Bounties, Retrospective Awards Ledger
 description: This file records current grants, current bounties, current retrospective awards, past grants, past bounties, and past retrospective awards.
 author: ShfRyn (@ShfRyn)
 discussions-to: N/A
-status: Draft
+status: Living
 type: Informational
-category (*only required for Protocol ): <Core or RPRC>
 created: 2023-07-19
-requires (*optional): RPIP-18, RPIP-26
+requires: RPIP-18, RPIP-26
 ---
 
 ## Abstract
@@ -17,7 +16,7 @@ This file records current grants, current bounties, current retrospective awards
 
 ## Motivation
 
-This RPIP allows the community to view available bounties, as well as check the status' of other current awards and past awards.
+This RPIP allows the community to view available bounties, as well as check the status of other current awards and past awards.
 
 ## Specification
 
