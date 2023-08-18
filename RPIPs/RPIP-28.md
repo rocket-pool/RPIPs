@@ -1,5 +1,5 @@
 ---
-rpip: draft
+rpip: 28
 title: Deposits Under the Minimum
 description: Allow minipool deposits that include an appropriate RPL stake, even when under the "minimum" RPL threshold 
 author: Valdorff (@Valdorff)
