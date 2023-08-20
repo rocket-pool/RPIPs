@@ -4,7 +4,7 @@ title: Fund Rocket Split (GA032303)
 description: Appeals GMC decision on GA032303 and funds Rocket Split
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/appeal-of-july-2023-gmc-results-rocket-split-ga032303/2085
-status: Review
+status: Final
 type: Meta
 created: 2023-08-12
 ---
