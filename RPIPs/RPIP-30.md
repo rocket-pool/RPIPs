@@ -85,7 +85,22 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 - Except for not including "withdrawing" RPL, there SHALL NOT be any changes to voting power based
   on this RPIP
 
-## Additional Considerations
+## Additional Context
+
+### Showing node weight's subcomponents in the sublinear region
+Some folks expressed a preference for seeing a few constituent terms that create the node_weight
+formula to better understand it, so we're including that here:
+- `node_weight = diminishing_reward_term + weight_at_15pETH + offset_to_align_functions`
+- `diminishing_reward_term = 2*borrowed_eth*ln(100*(staked_rpl_value_in_eth / borrowed_eth) - 13)`
+- `weight_at_15pETH = 100*0.15*borrowed_eth`
+- `offset_to_align_functions = 1.3863*borrowed_eth`
+
+Essentially, rewards scale with the node's `borrowed_eth` with diminishing effectiveness based on
+higher collateralization (in terms of RPL value per borrowed ETH). Additional math is there to
+create a smooth transition from the preceding linear region in terms of both total rewards and
+marginal APR (the amount of rewards you get for the next unit of RPL).
+
+### RPL yield sensitivity
 A significant concern from some community members was that it may cause some folks to downgrade
 their expectations of RPL and decide to sell. The author does not share this view and believes that
 aligning spending with protocol goals improves what we should expect from both the protocol and the
@@ -99,6 +114,7 @@ that only up to ~4k ETH worth of RPL is sensitive to yield and in a range where 
 their yield by selling. Note that this does _not_ include the effect of RPL buying that is attracted
 from (a) holders sensitive to yield in a range where they could improve their yield by buying or (b)
 new joiners that are attracted by the greater incentives due to the now-higher spend on rETH supply.
+
 
 ## Acknowledgements
 I'd like to explicitly acknowledge the many folks that participated in research discussion on this
