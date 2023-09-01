@@ -1,5 +1,5 @@
 ---
-rpip: draft
+rpip: 30
 title: RPL Staking Rework
 description: Modifies RPL staking rewards to better align with protocol goals
 author: Valdorff (@Valdorff)
