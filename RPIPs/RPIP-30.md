@@ -51,11 +51,11 @@ Definition: X=1 is the first reward snapshot after (a) the end of the vote and (
 implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 - The new rewards rules SHALL be phased in such that, for reward snapshot X:
-  - For periods X=1 to X=5: a nodes' share of rewards is
+  - For periods X=1 to X=5: a node's share of rewards is
     `(X/6)*proposed_method_share + ((6-x)/6)*current_method_share`
   - For periods X>5, they SHALL  simply be `proposed_method_share`
-  - `current_method_share` SHALL determine share of NO rewards among NOs according to the latest tree
-    spec when the vote is passed
+  - `current_method_share` SHALL initially determine share of NO rewards among NOs according to the
+    latest tree spec when the vote is passed
   - `proposed_method_share` SHALL be defined as:
     - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
     - If staked RPL value in ETH is <10% borrowed ETH
@@ -65,6 +65,9 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
     - If staked RPL value in ETH is > 15% borrowed ETH
       - `node_weight = (13.6137 + 2 * ln(100 * (staked_rpl_value_in_eth / borrowed_eth) - 13)) * borrowed_eth`
       - This value MAY be approximated if necessary
+  - During the phase period, tree specs MUST specify how to calculate `current_method_share`,
+    `proposed_method_share`, and how to combine them
+    - The tree specs SHALL follow existing processes for release and modification
 - The next significant smart contract upgrades SHALL update the withdrawal process
   - Withdrawals SHALL be a 2-step process
     - A user MAY set some amount of RPL to "withdrawing"
