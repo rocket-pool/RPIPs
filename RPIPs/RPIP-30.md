@@ -47,43 +47,56 @@ the protocol goal of attracting minipool creation (and rETH supplying).
 
 ## Specification
 
-Definition: X=1 is the first reward snapshot after (a) the end of the vote and (b) the
+### Definitions
+- `proposed_method_share` SHALL be defined as:
+  - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
+  - If staked RPL value in ETH is <10% borrowed ETH
+    - `node_weight=0`
+  - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
+    - `node_weight=100 * staked_rpl_value_in_eth`
+  - If staked RPL value in ETH is > 15% borrowed ETH
+    - `node_weight = (13.6137 + 2 * ln(100 * (staked_rpl_value_in_eth / borrowed_eth) - 13)) * borrowed_eth`
+    - This value MAY be approximated if necessary
+- `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
+  active rewards tree spec whent the vote is passed
+- "Staked" RPL SHALL be defined as RPL that is locked within the protocol and counted by the
+  protocol for all usage (vote weight, minipool creation, RPL rewards, etc)
+- "Unstaking" RPL SHALL be defined as RPL that is locked within the protocol but _not_ counted by
+  the protocol for usage
+- "Unstakable" RPL SHALL be defined as RPL that is within the protocol, but can be freely withdrawn
+- "Unstaked" RPL SHALL be defined as RPL that is not within the protocol
+- X=1 is the first reward snapshot after (a) the end of the vote and (b) the
 implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
-- The new rewards rules SHALL be phased in such that, for reward snapshot X:
-  - For periods X=1 to X=5: a node's share of rewards is
-    `(X/6)*proposed_method_share + ((6-x)/6)*current_method_share`
-  - For periods X>5, they SHALL  simply be `proposed_method_share`
-  - `current_method_share` SHALL initially determine share of NO rewards among NOs according to the
-    latest tree spec when the vote is passed
-  - `proposed_method_share` SHALL be defined as:
-    - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
-    - If staked RPL value in ETH is <10% borrowed ETH
-      - `node_weight=0`
-    - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
-      - `node_weight=100 * staked_rpl_value_in_eth`
-    - If staked RPL value in ETH is > 15% borrowed ETH
-      - `node_weight = (13.6137 + 2 * ln(100 * (staked_rpl_value_in_eth / borrowed_eth) - 13)) * borrowed_eth`
-      - This value MAY be approximated if necessary
-  - During the phase period, tree specs MUST specify how to calculate `current_method_share`,
-    `proposed_method_share`, and how to combine them
-    - The tree specs SHALL follow existing processes for release and modification
-- The next significant smart contract upgrades SHALL update the withdrawal process
-  - Withdrawals SHALL be a 2-step process
-    - A user MAY set some amount of RPL to "withdrawing"
-    - Once RPL has been in the withdrawing state for 28 days, it MAY be withdrawn from the protocol
-      - All "withdrawing" RPL MUST be withdrawn at one time
-      - The 28-day value SHOULD be a pDAO-controlled setting that starts at 28 days
-    - There SHALL only be a single time stored for "withdrawing" RPL; this means that if a user sets
-      additional RPL to withdrawing after some RPL is already "withdrawing", they must wait for 28
-      days after the later action
-    - "Withdrawing" RPL SHALL NOT be eligible for RPL rewards or voting power
-  - If this smart contract upgrade has not yet happened, the pDAO SHALL update the withdrawal
-    threshold as follows:
-    - Within the two weeks after X=3 rewards go out, set `node.per.minipool.stake.maximum` to 1.0
-    - Within the two weeks after X=6 rewards go out, set `node.per.minipool.stake.maximum` to 0.6
-- Except for not including "withdrawing" RPL, there SHALL NOT be any changes to voting power based
-  on this RPIP
+### Final states
+- For periods X>5, a node's share of reward SHALL be `proposed_method_share`
+- The rewards tree specs SHALL follow pre-existing processes for release and modification
+- The next significant smart contract upgrades SHALL update the RPL withdrawal process to be a
+  2-step process
+  - A user MAY set any amount of "Staked" RPL beyond the value of 15% of the node's borrowed ETH to
+    "Unstaking"
+  - Once RPL has been "Unstaking" for 28 days, it becomes "Unstakable"
+    - "Unstakable" RPL MAY be withdrawn from the protocol at any time (at which point it becomes
+      "Unstaked") 
+    - All "Unstakable" RPL MUST be withdrawn at one time
+    - The 28-day value SHOULD be a pDAO-controlled setting that starts at 28 days
+  - There SHALL only be a single time stored for "Unstaking" RPL; this means that if a user sets
+    additional RPL to "Unstaking" after some RPL is already "Unstaking", they must wait for 28
+    days after the later action
+    - If there is "Unstakable" RPL when a user sets additional RPL to "Unstaking", it SHOULD be
+      withdrawn from the protocol
+- Voting power calculations SHALL NOT be changed based on this RPIP (though do note that they SHALL
+  only count "Staked" RPL)
+
+### Transitioning towards final states
+- For periods X=1 to X=5: a node's share of rewards is `(X/6)*proposed_method_share + ((6-x)/6)*current_method_share`
+  - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
+    `proposed_method_share`, and how to combine them to get a node's share of rewards
+  - The rewards tree specs SHALL follow pre-existing processes for release and modification
+- If the 2-step withdrawal process described above has not yet been implemented, partial steps SHALL
+  be taken to reduce withdrawal limits
+  - Within the two weeks after X=3 rewards go out, set `node.per.minipool.stake.maximum` to 1.0
+  - Within the two weeks after X=6 rewards go out, set `node.per.minipool.stake.maximum` to 0.6
 
 ## Additional Context
 
