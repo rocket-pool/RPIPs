@@ -58,13 +58,14 @@ the protocol goal of attracting minipool creation (and rETH supplying).
     - `node_weight = (13.6137 + 2 * ln(100 * (staked_rpl_value_in_eth / borrowed_eth) - 13)) * borrowed_eth`
     - This value MAY be approximated if necessary
 - `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
-  active rewards tree spec whent the vote is passed
+  active rewards tree spec when the vote is passed
 - "Staked" RPL SHALL be defined as RPL that is locked within the protocol and counted by the
   protocol for all usage (vote weight, minipool creation, RPL rewards, etc)
 - "Unstaking" RPL SHALL be defined as RPL that is locked within the protocol but _not_ counted by
   the protocol for usage
-- "Unstakable" RPL SHALL be defined as RPL that is within the protocol, but can be freely withdrawn
-- "Unstaked" RPL SHALL be defined as RPL that is not within the protocol
+- "Unstaked" RPL SHALL be defined as RPL that is not within the protocol or is within the protocol
+  but able to be withdrawn (RPL rewards from past periods, RPL that entered "Unstaking" a long
+  enough time ago)
 - X=1 is the first reward snapshot after (a) the end of the vote and (b) the
 implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
@@ -75,18 +76,16 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
   2-step process
   - A user MAY set any amount of "Staked" RPL beyond the value of 15% of the node's borrowed ETH to
     "Unstaking"
-  - Once RPL has been "Unstaking" for 28 days, it becomes "Unstakable"
-    - "Unstakable" RPL MAY be withdrawn from the protocol at any time (at which point it becomes
-      "Unstaked") 
-    - All "Unstakable" RPL MUST be withdrawn at one time
-    - The 28-day value SHOULD be a pDAO-controlled setting that starts at 28 days
+  - Once RPL has been "Unstaking" for `unstaking_period` days, it can be withdrawn
+    - All RPL that was "Unstaking" MUST be withdrawn at one time
+    - `unstaking_period` SHOULD be a pDAO-controlled setting initialized to 28 days
   - There SHALL only be a single time stored for "Unstaking" RPL; this means that if a user sets
-    additional RPL to "Unstaking" after some RPL is already "Unstaking", they must wait for 28
-    days after the later action
-    - If there is "Unstakable" RPL when a user sets additional RPL to "Unstaking", it SHOULD be
-      withdrawn from the protocol
+    additional RPL to "Unstaking" after some RPL is already "Unstaking", they must wait for
+    `unstaking_period` before any is available to withdraw
+    - All RPL that was already "Unstaking" for `unstaking_period` SHOULD be withdrawn when a user
+      sets additional RPL to "Unstaking"
 - Voting power calculations SHALL NOT be changed based on this RPIP (though do note that they SHALL
-  only count "Staked" RPL)
+  NOT count "Unstaking" RPL)
 
 ### Transitioning towards final states
 - For periods X=1 to X=5: a node's share of rewards is `(X/6)*proposed_method_share + ((6-x)/6)*current_method_share`
@@ -95,8 +94,13 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
   - The rewards tree specs SHALL follow pre-existing processes for release and modification
 - If the 2-step withdrawal process described above has not yet been implemented, partial steps SHALL
   be taken to reduce withdrawal limits
-  - Within the two weeks after X=3 rewards go out, set `node.per.minipool.stake.maximum` to 1.0
-  - Within the two weeks after X=6 rewards go out, set `node.per.minipool.stake.maximum` to 0.6
+  - Within two weeks after X=3 rewards go out, set withdrawal limit to 100% of a node's bonded ETH
+  - Within two weeks after X=6 rewards go out, set withdrawal limit to 60% of a node's bonded ETH
+
+## Implementation thoughts
+- For the withdrawal limit in transition, `node.per.minipool.stake.maximum` can be modified to
+  achieve the desired limit. Note that this may require a change to the reward tree spec, for
+  example `current_method_share` could use a constant rather than accessing this variable.
 
 ## Additional Context
 
