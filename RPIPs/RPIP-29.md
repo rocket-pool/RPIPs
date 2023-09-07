@@ -122,6 +122,7 @@ This file SHALL be updated monthly in tandem with the GMC treasury update DAO po
 
 | Retrospective Award Code | Award Title | Date of Award | Awardee(s) | Total Awarded Amount | Recipient(s) | Etherscan TX |
 | ------------------------ | ----------- | ------------- | ---------- | -------------------- | ------------ | ------------ |
+|                          |             |               |            |                      |              |              |
 
 ## Copyright
 
