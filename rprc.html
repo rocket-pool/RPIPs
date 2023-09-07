@@ -3,5 +3,5 @@ layout: page
 title: RPRC
 ---
 
-{% assign rpips=site.pages|where:"type","Protocol"|where:"category","RPRC" %}
+{% assign rpips=site.pages|where:"type","Protocol"|where:"category","RPRC"| sort: "rpip" %}
 {% include rpiptable.html rpips=rpips %}
