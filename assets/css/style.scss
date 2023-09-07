@@ -63,6 +63,12 @@ main.page-content {
   border: solid 1px #ff6700;
 }
 
+.living {
+  @extend .status;
+  background-color: #f0f7fb;
+  border: solid 1px #3498db;
+}
+
 .withdrawn {
   @extend .status;
   background-color: #f9e7e5;
