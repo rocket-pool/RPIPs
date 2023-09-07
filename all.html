@@ -3,5 +3,5 @@ layout: page
 title: All
 ---
 
-{% assign rpips=site.pages| sort: "rpip" %}
+{% assign rpips=site.pages| sort: "rpip" | reverse %}
 {% include rpiptable.html rpips=rpips %}

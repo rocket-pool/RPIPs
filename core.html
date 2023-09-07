@@ -3,5 +3,5 @@ layout: page
 title: Core
 ---
 
-{% assign rpips=site.pages|where:"type","Protocol"|where:"category","Core"| sort: "rpip" %}
+{% assign rpips=site.pages|where:"type","Protocol"|where:"category","Core"| sort: "rpip" | reverse %}
 {% include rpiptable.html rpips=rpips %}

@@ -3,5 +3,5 @@ layout: page
 title: Protocol
 ---
 
-{% assign rpips=site.pages|where:"type","Protocol"| sort: "rpip" %}
+{% assign rpips=site.pages|where:"type","Protocol"| sort: "rpip" | reverse %}
 {% include rpiptable.html rpips=rpips %}
