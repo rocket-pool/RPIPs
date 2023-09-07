@@ -194,12 +194,14 @@ roughly steady given the initial proposed inflation step.
 | 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
 ## Historical membership
+
 | Date       | Member      | Comment                                                             |
 |------------|-------------|---------------------------------------------------------------------|
 | 2022-08-24 | Jasper      | Appointed as interim treasurer in RPIP-10 and ratified by pDAO vote |
 | 2022-10-30 | vacalaranja | Selected by pDAO vote                                               |
 
 ## Direct expenses
+
 | Date | Amount     | Summary                                    | Link to full description                    |
 |------|------------|--------------------------------------------|---------------------------------------------|
 | TBD  | 3584 RPL   | 3 months initial dev funding               | [expense_1](../assets/rpip-10/expense_1.md) |
