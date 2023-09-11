@@ -3,5 +3,5 @@ layout: page
 title: Meta
 ---
 
-{% assign rpips=site.pages|where:"type","Meta" %}
+{% assign rpips=site.pages|where:"type","Meta" | sort: "rpip" | reverse  %}
 {% include rpiptable.html rpips=rpips %}

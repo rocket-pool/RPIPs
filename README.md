@@ -1,6 +1,6 @@
 # Rocket Pool Improvement Proposals (RPIPs)
 
-Similar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.com/ethereum/EIPs), this repository contains Rocket Pool Improvement Proposals (RPIPs). Currently, it's in a draft form, as this process is not yet officially adopted by Rocket Pool.
+Similar to the [Ethereum Improvement Proposals (EIPs) repository](https://github.com/ethereum/EIPs), this repository contains Rocket Pool Improvement Proposals (RPIPs).
 
 For easy viewing of existing RPIPs, please see the [RPIP dashboard](https://rpips.rocketpool.net/).
 Note that, for now, the dashboard must be manually rebuilt and published when the repo changes.
@@ -17,6 +17,9 @@ Follow these steps to setup a local server:
 1. Go to <http://localhost:4400/> to view changes
 
 To build the site use `bundle exec jekyll build`.
+
+Notes:
+* You want Ruby version 2.7 rather than 3+
 
 Resources:
 
