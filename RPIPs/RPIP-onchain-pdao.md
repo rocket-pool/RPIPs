@@ -18,7 +18,7 @@ parameters" and spend treasury funds.
 
 ## Motivation
 
-The pDAO has two primary roles within Rocket Pool. The first is having control over certain parameters which define how
+The pDAO has two primary powers within Rocket Pool. The first is having control over certain parameters which define how
 the protocol operates. e.g. Enabling or disabling deposits or setting the rate of inflation. The second role is spending
 treasury funds; A portion of RPL inflation is sent to a contract which the pDAO has the power to spend.
 
@@ -52,7 +52,7 @@ $$
 
 $$
 R_{n} = \begin{cases}
-0 & S_{n} < RPL_{min} \\
+0 & S_{n} < RPL_{m} \\
 min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
 \end{cases}
 $$
@@ -68,9 +68,10 @@ $$
 Where:
 
 * $P_{x}$ is the voting power for $x$.
-* $S_{x}$ is RPL staked by node $x$.
-* $N_{x}$ is the amount of ETH a node operator $x$ has contributed.
-* $U_{x}$ is the amount of ETH a node operator $x$ has taken from the deposit pool.
+* $S_{x}$ is RPL staked on the node $x$.
+* $N_{x}$ is the amount of bonded ETH on a node (the amount a node operator $x$ has contributed).
+* $U_{x}$ is the amount of borrowed ETH on a node (the amount of ETH a node operator $x$ has taken from the deposit
+  pool).
 * $d_{x}$ is the node which $x$ has delegated to.
 * $r$ is the current market rate of RPL in ETH.
 * $N$ is the number of nodes in the node set.
@@ -104,6 +105,9 @@ the [Parameter Table](#parameter-table).
 Future protocol upgrades MAY introduce new settings to this set which SHALL be set to a reasonable default value that
 can then be updated by the pDAO via a proposal. Future upgrade proposals SHALL include a list of new parameters, their
 default values and whether or not they are modifiable by the Security Council.
+
+When parameters are added or removed, the [Parameter Table](#parameter-table) in this RPIP SHOULD be updated to reflect
+them.
 
 To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
 executes `proposalSetting*` with the desired parameters. Refer to [Proposing](#proposing) for details.
@@ -213,7 +217,8 @@ Security Council members MAY raise a proposal to make a parameter change at any 
 percent of members vote in favour of the proposal, it is immediately affected.
 
 Security Council membership is a serious role and the pDAO SHOULD develop strong entry requirements and processes for
-routinely flushing stale members. The development of these requirements and processes is left for a future RPIP.
+routinely flushing stale members. The development of these requirements and processes is left for a future RPIP. To
+begin with, the current pDAO guardian SHALL be the sole member.
 
 ### Voting Options and Quorum
 
@@ -244,9 +249,9 @@ recency-biased binary search.
 
 The following values SHALL be snapshot each time they are changed on chain:
 
-* RPL staked by a node operator ($S_{x}$)
-* ETH deposited by a node operator ($N_{x}$)
-* ETH taken from the deposit pool by a node operator ($U_{x}$)
+* RPL staked on a node ($S_{x}$)
+* Bonded ETH ($N_{x}$)
+* Borrowed ETH ($U_{x}$)
 * Delegate of a node operator ($d_{x}$)
 * Price of RPL against ETH ($r$)
 * The number of registered nodes ($N$)
@@ -267,7 +272,7 @@ protocol against the proposal.
 
 If a proposal is not defeated after `proposal.vote.delay.time` has passed, the proposer MAY unlock their RPL bond and
 the proposal SHALL enter the voting period. The quorum required for the proposal to pass is set to `proposal.quorum`
-percent of $P$. And it's veto quorum is set to `proposal.veto.quorum` percent of $P$.
+percent of $P$. And its veto quorum is set to `proposal.veto.quorum` percent of $P$.
 
 If a proposal is challenged, the proposer MAY respond to the challenge by providing a new pollard where the root node
 is the challenged index and a merkle proof from the challenged index back to the proposal root. A proposer will be
@@ -298,7 +303,7 @@ root. Claiming this index will return the proposal bond.
 
 Any node MAY challenge a proposal by supplying an index into the merkle-sum tree that they are alleging is incorrect.
 The challenger MUST have at least `proposal.challenge.bond` unlocked effective RPL stake. And this amount of the
-challenger's RPL SHALL BE locked until the proposal is defeated.
+challenger's RPL SHALL BE locked until the proposal is defeated, or until the bond is lost.
 
 The index which is alleged to be incorrect MUST be an index of a node in one of the pollards that the proposer has
 submitted. Either the initial pollard submitted with the proposal, or any subsequent response pollards to a challenge.
@@ -450,7 +455,7 @@ Below is a comprehensive list of protocol parameters the pDAO SHALL have control
 |                                    | proposal.max.block.age                    | uint256 | The maximum number of blocks old a proposal can be submitted for                                                  |
 |                                    | proposal.security.quorum                  | uint256 | The minimum number of security council votes required to execute a security proposal                              |
 
-A * designates this parameter as being modifiable by the Security Council.
+A * designates this parameter as being modifiable by the Security Council without a delay.
 
 ## Copyright
 
