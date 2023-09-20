@@ -97,7 +97,7 @@ Proposals MUST be one of the following types:
 
 A parameter change proposal SHALL comprise one or more setting paths and their new values. Upon successful execution,
 the
-protocol setting/s SHALL be updated to the supplied value/s.
+protocol setting(s) SHALL be updated to the supplied value(s).
 
 The protocol settings which SHALL be configurable by this proposal type are listed in
 the [Parameter Table](#parameter-table).
@@ -258,21 +258,25 @@ The following values SHALL be snapshot each time they are changed on chain:
 
 ### Proposing
 
-Any node with a non-zero voting power MAY raise a proposal at any time provided they have
-waited `proposal.cooldown.period` since their last proposal. Node operators MUST have an effective RPL stake (minus any
-already locked RPL) greater than the proposal bond (as defined by the `proposal.bond` parameter) at the time of
-proposing. This bond amount SHALL be locked during the course of the proposal. Locked RPL SHALL act the same way as
-regular staked RPL for the purposes of rewards, voting and collateral requirements. A node operator MUST NOT be able to
-withdraw RPL if their staked RPL minus locked RPL is lower than the maximum collateral threshold (currently 150%).
+Any node with a non-zero voting power MAY raise a proposal at any time provided they have waited longer than the
+proposal cooldown period since their last proposal. RPL equal to the proposal bond SHALL be locked for the duration of
+the proposal process. In order to be eligible to propose, node MUST have an effective RPL stake (minus any
+already locked RPL) greater than the proposal bond. Locked RPL SHALL act the same way as regular staked RPL for the
+purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
+withdrawing RPL.
 
 As part of a proposal submission, a node operator MUST provide a merkle pollard across a merkle-sum tree of delegated
 voting power at a block that is at most `proposal.max.block.age` blocks old. From this pollard the protocol SHALL
 calculate the total protocol voting power $P$. The root of this pollard alongside the sum SHALL be stored by the
 protocol against the proposal.
 
-If a proposal is not defeated after `proposal.vote.delay.time` has passed, the proposer MAY unlock their RPL bond and
-the proposal SHALL enter the voting period. The quorum required for the proposal to pass is set to `proposal.quorum`
-percent of $P$. And its veto quorum is set to `proposal.veto.quorum` percent of $P$.
+If a proposal is not defeated after `proposal.vote.delay.time` has passed, the proposal enters the "voting" stage.
+During this stage, node operators MAY vote on the proposal as
+per [Voting Options and Quorum](#voting-options-and-quorum). The quorum required for the proposal to pass is set
+to `proposal.quorum` percent of $P$. And its veto quorum is set to `proposal.veto.quorum` percent of $P$. Once the
+voting stage has completed and so long as the proposal was not vetoed, the proposer MAY unlock their RPL bond. If a
+proposal is vetoed, the bond is burned by sending it to the common Ethereum burn address 
+[0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000).
 
 If a proposal is challenged, the proposer MAY respond to the challenge by providing a new pollard where the root node
 is the challenged index and a merkle proof from the challenged index back to the proposal root. A proposer will be
