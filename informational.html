@@ -3,5 +3,5 @@ layout: page
 title: Informational
 ---
 
-{% assign rpips=site.pages|where:"type","Informational" %}
+{% assign rpips=site.pages|where:"type","Informational"| sort: "rpip" | reverse %}
 {% include rpiptable.html rpips=rpips %}

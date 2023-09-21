@@ -18,6 +18,10 @@ layout: default
   <div class="stagnant">
     🚧 This RPIP had no activity for at least 6 months.
   </div>
+{% elsif page.status == "Living" %}
+  <div class="living">
+    ⚙️ This RPIP is intended to be maintained on an on-going basis.
+  </div>
 {% elsif page.status == "Withdrawn" %}
   <div class="withdrawn">
     🛑 This RPIP has been withdrawn.
@@ -69,7 +73,7 @@ layout: default
   IEEE specification for reference formatting:
   https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
   {% endcomment %}
-  <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Ethereum Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
+  <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Rocket Pool Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
 </div>
 {% comment %}
 Article schema specification:
