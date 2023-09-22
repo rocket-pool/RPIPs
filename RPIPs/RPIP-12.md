@@ -2,7 +2,7 @@
 rpip: 12
 title: Atlas Update
 description: Describes the features that will be included in the upcoming Atlas update.
-author: Valdorff (Valdorff), Kane Wallmann (kanewallmann)
+author: Valdorff (@Valdorff), Kane Wallmann (@kanewallmann)
 discussions-to: TODO
 status: Draft
 type: Protocol
