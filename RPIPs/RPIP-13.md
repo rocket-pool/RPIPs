@@ -2,7 +2,7 @@
 rpip: 13
 title: Supernodes (SaaS)
 description: A native Staking-as-a-Service platform
-author: Kane Wallmann <@kanewallmann>
+author: Kane Wallmann (kanewallmann) <@kanewallmann>
 discussions-to: TODO
 status: Draft
 type: Protocol
