@@ -3,7 +3,7 @@ rpip: 2
 title: Rocket Pool Design Specification
 status: Draft
 type: Informational
-author: 'Mike Leach (@Wander | <mike@bamboofin.tech> | Discord: wander1)'
+author: 'Mike Leach (@Wander | <mike@bamboofin.tech> | GH: VVander)'
 discussions-to: https://dao.rocketpool.net/t/rpip-2-formalizing-protocol-changes/367
 created: 2022-03-17
 ---
