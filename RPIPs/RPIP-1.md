@@ -3,7 +3,7 @@ rpip: 1
 title: RPIP Purpose and Guidelines
 status: Living
 type: Meta
-author: 'Mike Leach (@Wander | <mike@bamboofin.tech> | GH: VVander), Valdorff (GH: Valdorff)'
+author: Mike Leach (VVander), Valdorff (Valdorff)
 discussions-to: https://dao.rocketpool.net/t/rpip-1-formalizing-protocol-changes/367
 created: 2022-03-17
 ---
