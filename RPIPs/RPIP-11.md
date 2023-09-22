@@ -2,7 +2,7 @@
 rpip: 11
 title: (superseded) Incentive Management Committee Charter
 description: Describes what the Incentives Management Committee is for and how it will execute
-author: jasperthegovghost (jasperthefriendlyghost), Valdorff (Valdorff)
+author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
 status: Final
 type: Meta
