@@ -2,7 +2,7 @@
 rpip: 25
 title: RPL Inflation Allocation
 description: Describes the planned usage of RPL inflation
-author: jasperthefriendlyghost, Valdorff (@Valdorff)
+author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
 status: Final
 type: Meta
