@@ -35,29 +35,56 @@ layout: default
   </h1>
   <h3>{{ page.description | xml_escape }}</h3>
   <table>
+    <!-- Display expected entries -->
+	<tr><th>RPIP</th><td>{{ page.rpip | xml_escape }}</td></tr>
     <tr><th>Author</th><td>{% include authorlist.html authors=page.author %}</td></tr>
-    {% if page["discussions-to"] != undefined %}
-      <tr><th>Discussions-To</th><td><a href="{{ page["discussions-to"] | uri_escape }}">{{ page["discussions-to"] | xml_escape }}</a></td></tr>
+    <tr><th>Status</th><td>{{ page.status | xml_escape }}</td></tr>
+	{% if page["withdrawal-reason"] != undefined %}
+      <tr><th>Withdrawal reason</th><td>{{ page["withdrawal-reason"] | xml_escape }}</td></tr>
     {% endif %}
-    <tr><th>Status</th><td>{{ page.status | xml_escape }}
-    {% if page.last-call-deadline != undefined %}
-      <!-- <tr><th>Last Call Deadline</th><td>{{ page.last-call-deadline | xml_escape }}</td></tr> -->
-    {% endif %}
-    </td></tr>
     <tr><th>Type</th><td>{{ page.type | xml_escape }}</td></tr>
-    {% if page.category != undefined %}
+	{% if page.category != undefined %}
       <tr><th>Category</th><td>{{ page.category | xml_escape }}</td></tr>
+    {% endif %}
+    {% if page.requires != undefined %}
+	  <tr><th>Requires</th><td>{% include rpipnums.html rpips=page.requires %}</td></tr>
     {% endif %}
     <tr><th>Created</th><td>{{ page.created | xml_escape }}</td></tr>
     {% if page.updated != undefined %}
     <tr><th>Updated</th><td>{{ page.updated | xml_escape }}</td></tr>
     {% endif %}
-    {% if page.requires != undefined %}
-      <tr><th>Requires</th><td>{% include rpipnums.html rpips=page.requires %}</td></tr>
+    {% if page["discussions-to"] != undefined %}
+      <tr><th>Discussion</th><td><a href="{{ page["discussions-to"] | uri_escape }}">{{ page["discussions-to"] | xml_escape }}</a></td></tr>
     {% endif %}
-    {% if page["withdrawal-reason"] != undefined %}
-      <tr><th>Withdrawal reason</th><td>{{ page["withdrawal-reason"] | xml_escape }}</td></tr>
-    {% endif %}
+	
+    {% for element in page %} <!-- Catch anything we aren't expecting and display below -->
+		{% case element[0] %}
+		
+		<!-- Ignore expected -->
+		{% when "rpip" %}
+		{% when "description" %}
+		{% when "author" %}
+		{% when "status" %}
+		{% when "type" %}
+		{% when "category" %}
+		{% when "created" %}
+		{% when "updated" %}
+		{% when "discussions-to" %}
+		{% when "requires" %}
+		
+		<!-- Ignore built-in -->
+		{% when "layout" %}
+		{% when "title" %}
+		{% when "content" %}
+		{% when "dir" %}
+		{% when "name" %}
+		{% when "url" %}
+		{% when "path" %}
+		
+		{% else %}
+	      <tr><th>{{ element[0] | capitalize }}</th><td>{{ element[1] | xml_escape }}</td></tr>
+		{% endcase %}
+    {% endfor %}
   </table>
 
   <div class="toc">
