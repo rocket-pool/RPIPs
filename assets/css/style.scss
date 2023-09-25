@@ -30,7 +30,7 @@ main.page-content {
   }
 }
 
-.status {
+.status-box {
   border-radius: 6px;
   line-height: 18px;
   overflow: hidden;
@@ -40,37 +40,37 @@ main.page-content {
 }
 
 .draft {
-  @extend .status;
+  @extend .status-box;
   background-color: #fffbea;
   border: solid 1px #f1c40f;
 }
 
 .review {
-  @extend .status;
+  @extend .status-box;
   background-color: #f0f7fb;
   border: solid 1px #3498db;
 }
 
 .lastcall {
-  @extend .status;
+  @extend .status-box;
   background-color: #e7f6f0;
   border: solid 1px #27ae60;
 }
 
 .stagnant {
-  @extend .status;
+  @extend .status-box;
   background-color: #ffdead;
   border: solid 1px #ff6700;
 }
 
 .living {
-  @extend .status;
+  @extend .status-box;
   background-color: #f0f7fb;
   border: solid 1px #3498db;
 }
 
 .withdrawn {
-  @extend .status;
+  @extend .status-box;
   background-color: #f9e7e5;
   border: solid 1px #c0392b;
 }

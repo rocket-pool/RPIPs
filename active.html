@@ -1,0 +1,12 @@
+---
+layout: page
+title: Active
+---
+
+<h2>Living</h2>
+{% assign rpips=site.pages|where:"status","Living"| sort: "rpip" | reverse %}
+{% include rpiptable_full.html rpips=rpips type_col=true %}
+
+<h2>Final</h2>
+{% assign rpips=site.pages|where:"status","Final"| sort: "rpip" | reverse %}
+{% include rpiptable_full.html rpips=rpips type_col=true %}
