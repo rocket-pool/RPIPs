@@ -58,11 +58,11 @@ min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
 $$
 
 $$
-m_{n} = \frac{N_{n} \times 10 \\%}{r}
+m_{n} = \frac{U_{n} \times 10 \\%}{r}
 $$
 
 $$
-M_{n} = \frac{U_{n} \times 150 \\%}{r}
+M_{n} = \frac{N_{n} \times 150 \\%}{r}
 $$
 
 Where:
@@ -275,7 +275,7 @@ During this stage, node operators MAY vote on the proposal as
 per [Voting Options and Quorum](#voting-options-and-quorum). The quorum required for the proposal to pass is set
 to `proposal.quorum` percent of $P$. And its veto quorum is set to `proposal.veto.quorum` percent of $P$. Once the
 voting stage has completed and so long as the proposal was not vetoed, the proposer MAY unlock their RPL bond. If a
-proposal is vetoed, the bond is burned by sending it to the common Ethereum burn address 
+proposal is vetoed, the bond is burned by sending it to the common Ethereum burn address
 [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000).
 
 If a proposal is challenged, the proposer MAY respond to the challenge by providing a new pollard where the root node
@@ -447,13 +447,13 @@ Below is a comprehensive list of protocol parameters the pDAO SHALL have control
 |                                    |                                           |         |                                                                                                                   |
 | rocketDAOProtocolSettingsRewards   | rpl.rewards.claim.period.time             | uint256 | The period of time between reward tree submissions                                                                |
 |                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsProposals | proposal.cooldown.time                    | uint256 | The cooldown time between submitting new proposals                                                                |
-|                                    | proposal.vote.time                        | uint256 | How long a proposal can be voted on before expiring                                                               |
-|                                    | proposal.vote.delay.time                  | uint256 | How long before a proposal can be voted on after its created                                                      |
-|                                    | proposal.execute.time                     | uint256 | How long after a succesful proposal can it be executed before it expires                                          |
+| rocketDAOProtocolSettingsProposals | proposal.cooldown.time                    | uint256 | The cooldown time between submitting new proposals (in blocks)                                                    |
+|                                    | proposal.vote.time                        | uint256 | How long a proposal can be voted on before expiring (in blocks)                                                   |
+|                                    | proposal.vote.delay.time                  | uint256 | How long before a proposal can be voted on after its created (in blocks)                                          |
+|                                    | proposal.execute.time                     | uint256 | How long after a successful proposal can it be executed before it expires (in blocks)                             |
 |                                    | proposal.bond                             | uint256 | How much RPL is locked when creating a proposal                                                                   |
 |                                    | proposal.challenge.bond                   | uint256 | How much RPL is locked when challenging a proposal                                                                |
-|                                    | proposal.challenge.period                 | uint256 | How long a proposer has to respond to a challenge before the proposal is defeated                                 |
+|                                    | proposal.challenge.period                 | uint256 | How long a proposer has to respond to a challenge before the proposal is defeated (in seconds)                    |
 |                                    | proposal.quorum                           | uint256 | The minimum amount of voting power a proposal needs to succeed                                                    |
 |                                    | proposal.veto.quorum                      | uint256 | The amount of voting power vetoing a proposal require to veto it                                                  |
 |                                    | proposal.max.block.age                    | uint256 | The maximum number of blocks old a proposal can be submitted for                                                  |
