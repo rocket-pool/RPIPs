@@ -3,7 +3,7 @@
 
   <div class="wrapper">
     <a href="{{ "/" | relative_url }}">
-      <img src="assets/logo-small.png" style="margin-top:20px;"/>
+      <img src="{{ "/assets/logo-small.png" | relative_url }}" style="margin-top:20px;"/>
     </a>
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
     {%- assign default_paths = site.pages | map: "path" -%}
