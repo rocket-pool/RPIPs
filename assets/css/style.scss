@@ -107,6 +107,13 @@
   padding-top: 20px;
   float: left;
   
+  @media (max-width: 1100px) {
+    float: none;
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  
 }
 
 .rpip-sidebar::-webkit-scrollbar{
@@ -115,6 +122,10 @@
 
 .home {
   margin-left: 400px;
+  
+  @media (max-width: 1100px) {
+    margin-left: 0px;
+  }
 }
 
 .page-content {
