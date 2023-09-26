@@ -26,6 +26,7 @@ header_pages:
  - all.html
  - recent.html
  - active.html
+ - by_type.html
  - about_rpips.html
 
 # Build settings

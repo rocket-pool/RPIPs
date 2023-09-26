@@ -1,6 +1,12 @@
 ---
 layout: page
 title: RPRC
+sub-nav:
+ - core.html
+ - informational.html
+ - meta.html
+ - protocol.html
+ - rprc.html
 ---
 
 {% assign rpips=site.pages|where:"type","Protocol"|where:"category","RPRC"| sort: "rpip" | reverse %}
