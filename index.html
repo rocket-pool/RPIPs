@@ -3,7 +3,9 @@ layout: page
 title: Home
 ---
 
-<i>First time visitor? Not sure what an RPIP is? Check out the <a href="about_rpips">About RPIPs</a> page.</i>
+<div class=living>
+ℹ️ <i> First time visitor? Not sure what an RPIP is? Check out the <a href="about_rpips">About RPIPs</a> page.</i>
+</div> 
 
 {% assign rpips=site.pages| sort: "rpip" | reverse %}
 {% include rpiptable_full.html rpips=rpips status_col=true type_col=true%}
