@@ -4,7 +4,33 @@ layout: default
 
 <div>
   <div class="rpip-sidebar">    
-    <table>
+    {% if page.status == "Draft" %}
+      <div class="draft">
+        ⚠️ This RPIP is not recommended for general use or implementation as it is likely to change.
+      </div>
+    {% elsif page.status == "Review" %}
+      <div class="review">
+        📖 This RPIP is in the review stage. It is subject to changes and feedback is appreciated.
+      </div>
+    {% elsif page.status == "Last Call" %}
+      <!-- <div class="lastcall">
+        📢 This RPIP is in the last call for review stage. The authors wish to finalize the RPIP and appreciate feedback.
+      </div> -->
+    {% elsif page.status == "Stagnant" %}
+      <div class="stagnant">
+        🚧 This RPIP had no activity for at least 6 months.
+      </div>
+    {% elsif page.status == "Living" %}
+      <div class="living">
+        ⚙️ This RPIP is intended to be maintained on an on-going basis.
+      </div>
+    {% elsif page.status == "Withdrawn" %}
+      <div class="withdrawn">
+        🛑 This RPIP has been withdrawn.
+      </div>
+    {% endif %}
+  
+    <table style="table-layout: fixed">
       <!-- Display expected entries -->
     <tr><th>RPIP</th><td>{{ page.rpip | xml_escape }}</td></tr>
       <tr><th>Author</th><td>{% include authorlist.html authors=page.author %}</td></tr>
@@ -24,10 +50,11 @@ layout: default
       <tr><th>Updated</th><td>{{ page.updated | xml_escape }}</td></tr>
       {% endif %}
       {% if page["discussions-to"] != undefined %}
-        <tr><th>Discussion</th><td><a href="{{ page["discussions-to"] | uri_escape }}">{{ page["discussions-to"] | xml_escape }}</a></td></tr>
+        <tr><th>Discussion</th><td><a href="{{ page["discussions-to"] | uri_escape }}">Link</a></td></tr>
       {% endif %}
     
-      {% for element in page %} <!-- Catch anything we aren't expecting and display below -->
+      <!-- Catch anything we aren't expecting and display below -->
+      {% for element in page %} 
       {% case element[0] %}
       
       <!-- Ignore expected -->
@@ -64,32 +91,6 @@ layout: default
     
   </div>
   <div class="home">
-    {% if page.status == "Draft" %}
-      <div class="draft">
-        ⚠️ This RPIP is not recommended for general use or implementation as it is likely to change.
-      </div>
-    {% elsif page.status == "Review" %}
-      <div class="review">
-        📖 This RPIP is in the review stage. It is subject to changes and feedback is appreciated.
-      </div>
-    {% elsif page.status == "Last Call" %}
-      <!-- <div class="lastcall">
-        📢 This RPIP is in the last call for review stage. The authors wish to finalize the RPIP and appreciate feedback.
-      </div> -->
-    {% elsif page.status == "Stagnant" %}
-      <div class="stagnant">
-        🚧 This RPIP had no activity for at least 6 months.
-      </div>
-    {% elsif page.status == "Living" %}
-      <div class="living">
-        ⚙️ This RPIP is intended to be maintained on an on-going basis.
-      </div>
-    {% elsif page.status == "Withdrawn" %}
-      <div class="withdrawn">
-        🛑 This RPIP has been withdrawn.
-      </div>
-    {% endif %}
-  
     <h1 class="page-heading">
       RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}
       <a href="{{site.github.repository_url}}/blob/master/{{page.path}}"><svg role="img" aria-label="Source" xmlns="https://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><title>Source</title><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg></a>
