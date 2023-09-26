@@ -24,14 +24,15 @@ While the primary aim of this feature is to facilitate single depositor scenario
 
 ## Other Related RPIPs 
 - [**RPIP-3** - SaaS Provider Standard](./RPIP-3.md) 
-- [**RPIP-7** - Withdrawal Address Escrow](./RPIP-7.md) 
+- [**RPIP-7** - Withdrawal Address Escrow](./RPIP-7.md)
+- [RPIP-TBD - RPL Withdrawal Address](./RPIP-rpl-withdrawal-address.md)
+  - If the `RPL withdrawal address` RPIP is ratified, note that withdrawal address in this RPIP's Specification refers to the "primary withdrawal address". In this case, this line should be removed and the wording updated in the Specification.
 
 ## Specification
-- As a withdrawal address, I MUST be able to fund the corresponding node with ETH that is accounted for separately from the node's funds. 
-- As a node operator, I MUST NOT be able to withdraw the funds supplied by the withdrawal address.
-- As a node operator, I MUST be able to fund new minipools using the withdrawal address supplied ETH.
-- As a withdrawal address, I MUST be able to withdraw unused withdrawal address supplied ETH.
-- As a withdrawal address, if I change my withdrawal address, the above MUST hold true for the new address only (the old address loses this ability).
+- As the owner of a node's withdrawal address, I MUST be able to fund the corresponding node with ETH that is accounted for separately from the node's funds
+- As the owner of a node's withdrawal address, I MUST be able to withdraw unused withdrawal address supplied ETH
+- As a node operator, I MUST NOT be able to withdraw the funds supplied by the withdrawal address
+- As a node operator, I MUST be able to fund new minipools using the withdrawal address supplied ETH 
 
 ## Backwards Compatibility
 The specification as written is backwards compatible with the current deposit process. The behaviour is as current for node operators who do not use the new functionality. 
