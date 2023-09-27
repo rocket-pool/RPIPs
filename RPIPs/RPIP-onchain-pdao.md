@@ -191,12 +191,14 @@ Refer to [Proposing](#proposing) for details.
 The purpose of the proposal type is to control the set of members of the "Security Council". The following actions are
 possible:
 
-1. **Add Member:** Adds a new member to the Security Council.
+1. **Invite Member:** Invites a new member to the Security Council.
 2. **Remove Member:** Removes an existing member from the Security Council.
 3. **Disband:** Removes all members from the Security Council. Effectively disabling it.
 
 The pDAO also has control over how many members are required for quorum. This is adjusted with a parameter change of the
 parameter `proposal.security.quorum`.
+
+Invited members must accept the invitation to join before they are counted as part of the security council.
 
 To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
 executes one of the following:
