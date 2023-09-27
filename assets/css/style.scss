@@ -68,6 +68,11 @@
   font-size: 1em;
 }
 
+.toc h2{
+  margin-bottom: 6px;
+  border-bottom: 1px solid #d8dee4;
+}
+
 .subnav {
   line-height: $base-line-height * $base-font-size * 2.25;
   position: relative;
@@ -160,7 +165,7 @@
   position: sticky;
   top: 0; /* Stay at the top */
   overflow-x: hidden;
-  padding-top: 10px;
+  padding-top: 17px;
   float: left;
   
   @media (max-width: 1100px) {
@@ -172,12 +177,25 @@
 }
   
 .rpip-preamble {
+  table-layout: fixed;
+  margin-bottom: 16px;
+}
+
+table th {
+  padding: 8px 12px;
+}
+
+table td {
+  padding: 8px 12px;
 }
 
 .rpip-preamble th {
-  width: auto;
-  min-width: 90px;
+  width: 90px;
 }
+
+.rpip-preamble td {
+}
+
 
 .rpip-sidebar::-webkit-scrollbar{
   display: none;
@@ -191,6 +209,7 @@
 
 .rpip-content {
   margin-left: 400px;
+  margin-top: -20px;
   
   @media (max-width: 1100px) {
     margin-left: 0px;
