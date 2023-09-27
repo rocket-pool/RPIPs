@@ -216,6 +216,11 @@ highlighted in the [Parameter Table](#parameter-table) with a *.
 Security Council members MAY raise a proposal to make a parameter change at any time. If `proposal.security.quorum`
 percent of members vote in favour of the proposal, it is immediately affected.
 
+Security Council members MAY leave the council on their own accord. This is a two-step process. They MUST first send
+a transaction indicating their desire to leave. They MUST then wait a time specified by a pDAO controllable parameter.
+They MUST then send a second transaction to action the request. The second transaction must be sent after the notice
+period and before the request expires. Both these periods are pDAO controllable parameters.
+
 Security Council membership is a serious role and the pDAO SHOULD develop strong entry requirements and processes for
 routinely flushing stale members. The development of these requirements and processes is left for a future RPIP. To
 begin with, the current pDAO guardian SHALL be the sole member.
@@ -407,57 +412,61 @@ potential threats.
 
 Below is a comprehensive list of protocol parameters the pDAO SHALL have control over.
 
-| Setting Contract                   | Setting Path                              | Type    | Description                                                                                                       |
-|------------------------------------|-------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------|
-| rocketDAOProtocolSettingsDeposit   | deposit.enabled*                          | bool    | Enables/disables ETH deposits for rETH                                                                            |
-|                                    | deposit.assign.enabled*                   | bool    | Enables/disables the assignment of ETH to the minipool queue                                                      |
-|                                    | deposit.minimum                           | uint256 | The minimum ETH amount that can be deposited                                                                      |
-|                                    | deposit.pool.maximum                      | uint256 | The maximum amount of ETH that can be present in the deposit pool before no more deposits are accepted            |
-|                                    | deposit.assign.maximum                    | uint256 | The absolute maximum number of minipools that can be assigned ETH during a single deposit                         |
-|                                    | deposit.assign.socialised.maximum         | uint256 | The number of minipools that will be assigned ETH during a deposit regardless of the deposit size                 |
-|                                    | deposit.fee                               | uint256 | The deposit fee applied to deposits                                                                               |
-|                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsMinipool  | minipool.submit.withdrawable.enabled*     | bool    | Not relevant since we redesigned withdrawals to exclude the oDAO                                                  |
-|                                    | minipool.bond.reduction.enabled*          | bool    | Enables/disabled minipool bond reductions                                                                         |
-|                                    | minipool.launch.timeout                   | uint256 | The time before a minipool will be scrubbed                                                                       |
-|                                    | minipool.maximum.count                    | uint256 | The maximum number of minipools the protocol will allow                                                           |
-|                                    | minipool.user.distribute.window.start     | uint256 | The time a user must wait before being able to distribute a minipool                                              |
-|                                    | minipool.user.distribute.window.length    | uint256 | The time a user has to distribute a minipool after waiting the start length                                       |
-|                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsNetwork   | network.consensus.threshold               | uint256 | The number of oDAO members that have to submit for a price/balances update to take affect express as a percentage |
-|                                    | network.submit.balances.enabled*          | bool    | Enables/disables balances submissions                                                                             |
-|                                    | network.submit.balances.frequency         | uint256 | How long between network balance submissions                                                                      |
-|                                    | network.submit.prices.enabled*            | bool    | Enables/disables prices submissions                                                                               |
-|                                    | network.submit.prices.frequency           | uint256 | How long between price submissions                                                                                |
-|                                    | network.node.fee.minimum                  | uint256 | The node fee minimum                                                                                              |
-|                                    | network.node.fee.target                   | uint256 | The node fee target                                                                                               |
-|                                    | network.node.fee.maximum                  | uint256 | The node fee maximum                                                                                              |
-|                                    | network.node.fee.demand.range             | uint256 | The node fee demand range                                                                                         |
-|                                    | network.reth.collateral.target            | uint256 | The target amount of ETH that is held by the protocol to satisfy rETH burns                                       |
-|                                    | network.penalty.threshold                 | uint256 | The number of oDAO members that have to vote for a penalty expressed as a percentage                              |
-|                                    | network.penalty.per.rate                  | uint256 | The amount a node operator is penalised for each penalty as a percentage                                          |
-|                                    | network.submit.rewards.enabled            | bool    | Enables/disable reward tress submission                                                                           |
-|                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsNode      | node.registration.enabled*                | bool    | Enables/disables node registration                                                                                |
-|                                    | node.smoothing.pool.registration.enabled* | bool    | Enables/disables smoothing pool registration                                                                      |
-|                                    | node.deposit.enabled*                     | bool    | Enables/disables creation of new minipools via a node deposit                                                     |
-|                                    | node.vacant.minipools.enabled*            | bool    | Enables/disables the create of vacant minipools for solo staker migration                                         |
-|                                    | node.per.minipool.stake.minimum           | uint256 | The minimum amount of RPL that must be staked by a node operator to receive rewards                               |
-|                                    | node.per.minipool.stake.maximum           | uint256 | The maximum amount of RPL that can be staked by a node operator to receive rewards                                |
-|                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsRewards   | rpl.rewards.claim.period.time             | uint256 | The period of time between reward tree submissions                                                                |
-|                                    |                                           |         |                                                                                                                   |
-| rocketDAOProtocolSettingsProposals | proposal.cooldown.time                    | uint256 | The cooldown time between submitting new proposals (in blocks)                                                    |
-|                                    | proposal.vote.time                        | uint256 | How long a proposal can be voted on before expiring (in blocks)                                                   |
-|                                    | proposal.vote.delay.time                  | uint256 | How long before a proposal can be voted on after its created (in blocks)                                          |
-|                                    | proposal.execute.time                     | uint256 | How long after a successful proposal can it be executed before it expires (in blocks)                             |
-|                                    | proposal.bond                             | uint256 | How much RPL is locked when creating a proposal                                                                   |
-|                                    | proposal.challenge.bond                   | uint256 | How much RPL is locked when challenging a proposal                                                                |
-|                                    | proposal.challenge.period                 | uint256 | How long a proposer has to respond to a challenge before the proposal is defeated (in seconds)                    |
-|                                    | proposal.quorum                           | uint256 | The minimum amount of voting power a proposal needs to succeed                                                    |
-|                                    | proposal.veto.quorum                      | uint256 | The amount of voting power vetoing a proposal require to veto it                                                  |
-|                                    | proposal.max.block.age                    | uint256 | The maximum number of blocks old a proposal can be submitted for                                                  |
-|                                    | proposal.security.quorum                  | uint256 | The minimum number of security council votes required to execute a security proposal                              |
+| Setting Contract                   | Setting Path                              | Type    | Description                                                                                                                        |
+|------------------------------------|-------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------------------------|
+| rocketDAOProtocolSettingsDeposit   | deposit.enabled*                          | bool    | Enables/disables ETH deposits for rETH                                                                                             |
+|                                    | deposit.assign.enabled*                   | bool    | Enables/disables the assignment of ETH to the minipool queue                                                                       |
+|                                    | deposit.minimum                           | uint256 | The minimum ETH amount that can be deposited                                                                                       |
+|                                    | deposit.pool.maximum                      | uint256 | The maximum amount of ETH that can be present in the deposit pool before no more deposits are accepted                             |
+|                                    | deposit.assign.maximum                    | uint256 | The absolute maximum number of minipools that can be assigned ETH during a single deposit                                          |
+|                                    | deposit.assign.socialised.maximum         | uint256 | The number of minipools that will be assigned ETH during a deposit regardless of the deposit size                                  |
+|                                    | deposit.fee                               | uint256 | The deposit fee applied to deposits                                                                                                |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsMinipool  | minipool.submit.withdrawable.enabled*     | bool    | Not relevant since we redesigned withdrawals to exclude the oDAO                                                                   |
+|                                    | minipool.bond.reduction.enabled*          | bool    | Enables/disabled minipool bond reductions                                                                                          |
+|                                    | minipool.launch.timeout                   | uint256 | The time before a minipool will be scrubbed                                                                                        |
+|                                    | minipool.maximum.count                    | uint256 | The maximum number of minipools the protocol will allow                                                                            |
+|                                    | minipool.user.distribute.window.start     | uint256 | The time a user must wait before being able to distribute a minipool                                                               |
+|                                    | minipool.user.distribute.window.length    | uint256 | The time a user has to distribute a minipool after waiting the start length                                                        |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsNetwork   | network.consensus.threshold               | uint256 | The number of oDAO members that have to submit for a price/balances update to take affect express as a percentage                  |
+|                                    | network.submit.balances.enabled*          | bool    | Enables/disables balances submissions                                                                                              |
+|                                    | network.submit.balances.frequency         | uint256 | How long between network balance submissions                                                                                       |
+|                                    | network.submit.prices.enabled*            | bool    | Enables/disables prices submissions                                                                                                |
+|                                    | network.submit.prices.frequency           | uint256 | How long between price submissions                                                                                                 |
+|                                    | network.node.fee.minimum                  | uint256 | The node fee minimum                                                                                                               |
+|                                    | network.node.fee.target                   | uint256 | The node fee target                                                                                                                |
+|                                    | network.node.fee.maximum                  | uint256 | The node fee maximum                                                                                                               |
+|                                    | network.node.fee.demand.range             | uint256 | The node fee demand range                                                                                                          |
+|                                    | network.reth.collateral.target            | uint256 | The target amount of ETH that is held by the protocol to satisfy rETH burns                                                        |
+|                                    | network.penalty.threshold                 | uint256 | The number of oDAO members that have to vote for a penalty expressed as a percentage                                               |
+|                                    | network.penalty.per.rate                  | uint256 | The amount a node operator is penalised for each penalty as a percentage                                                           |
+|                                    | network.submit.rewards.enabled            | bool    | Enables/disable reward tress submission                                                                                            |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsNode      | node.registration.enabled*                | bool    | Enables/disables node registration                                                                                                 |
+|                                    | node.smoothing.pool.registration.enabled* | bool    | Enables/disables smoothing pool registration                                                                                       |
+|                                    | node.deposit.enabled*                     | bool    | Enables/disables creation of new minipools via a node deposit                                                                      |
+|                                    | node.vacant.minipools.enabled*            | bool    | Enables/disables the create of vacant minipools for solo staker migration                                                          |
+|                                    | node.per.minipool.stake.minimum           | uint256 | The minimum amount of RPL that must be staked by a node operator to receive rewards                                                |
+|                                    | node.per.minipool.stake.maximum           | uint256 | The maximum amount of RPL that can be staked by a node operator to receive rewards                                                 |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsRewards   | rpl.rewards.claim.period.time             | uint256 | The period of time between reward tree submissions                                                                                 |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsProposals | proposal.vote.time                        | uint256 | How long a proposal can be voted on before expiring (in seconds)                                                                   |
+|                                    | proposal.vote.delay.time                  | uint256 | How long before a proposal can be voted on after its created (in seconds)                                                          |
+|                                    | proposal.execute.time                     | uint256 | How long after a successful proposal can it be executed before it expires (in seconds)                                             |
+|                                    | proposal.bond                             | uint256 | How much RPL is locked when creating a proposal                                                                                    |
+|                                    | proposal.challenge.bond                   | uint256 | How much RPL is locked when challenging a proposal                                                                                 |
+|                                    | proposal.challenge.period                 | uint256 | How long a proposer has to respond to a challenge before the proposal is defeated (in seconds)                                     |
+|                                    | proposal.quorum                           | uint256 | The minimum amount of voting power a proposal needs to succeed                                                                     |
+|                                    | proposal.veto.quorum                      | uint256 | The amount of voting power vetoing a proposal require to veto it                                                                   |
+|                                    | proposal.max.block.age                    | uint256 | The maximum number of blocks old a proposal can be submitted for                                                                   |
+|                                    |                                           |         |                                                                                                                                    |
+| rocketDAOProtocolSettingsSecurity  | security.members.quorum                   | uint256 | The quorum required for a security council proposal to pass                                                                        |
+|                                    | security.members.leave.time               | uint256 | If a security council member wishes to leave on their own, how much notice must they provide (in seconds)                          |
+|                                    | security.proposal.vote.time               | uint256 | How long a security council proposal can be voted on (in seconds)                                                                  |
+|                                    | security.proposal.execute.time            | uint256 | How long after the voting period before a security council proposal expires (in seconds)                                           |
+|                                    | security.proposal.action.time             | uint256 | Certain proposals have a secondary action (joining the security council), how long before they expire if not acted on (in seconds) |
 
 A * designates this parameter as being modifiable by the Security Council without a delay.
 
