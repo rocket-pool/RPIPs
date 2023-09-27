@@ -109,37 +109,6 @@ default values and whether or not they are modifiable by the Security Council.
 When parameters are added or removed, the [Parameter Table](#parameter-table) in this RPIP SHOULD be updated to reflect
 them.
 
-To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
-executes `proposalSetting*` with the desired parameters. Refer to [Proposing](#proposing) for details.
-
-The protocol SHALL provide a method on `RocketDAOProtocolProposals` for each setting type and for changing multiple
-settings at once. These methods are:
-
-| Type     | Method ABI                                                                                                     |
-|----------|----------------------------------------------------------------------------------------------------------------|
-| uint256  | `proposalSettingUint(string settingContractName, string settingPath, uint256 value)`                           |
-| bool     | `proposalSettingBool(string settingContractName, string settingPath, bool value)`                              |
-| address  | `proposalSettingAddress(string settingContractName, string settingPath, address value)`                        |
-| string   | `proposalSettingString(string settingContractName, string settingPath, string value)`                          |
-| bytes    | `proposalSettingBytes(string settingContractName, string settingPath, bytes value)`                            |
-| bytes32  | `proposalSettingBytes32(string settingContractName, string settingPath, bytes32 value)`                        |
-| int256   | `proposalSettingInt256(string settingContractName, string settingPath, int256 value)`                          |
-| multiple | `proposalSettingMulti(string[] settingContractName, string[] settingPath, SettingType[] types, bytes[] value)` |
-
-In the case of multiple, value is an array of values in ABI encoding. And `SettingType` is the following enum:
-
-```js
-enum SettingType {
-  UINT256 = 0,
-  BOOL = 1,
-  ADDRESS = 2,
-  STRING = 3,
-  BYTES = 4,
-  BYTES32 = 5,
-  INT256 = 6,
-}
-```
-
 #### Treasury Spend
 
 This proposal type deals with one-time spends of RPL from the protocol's treasury.
@@ -152,10 +121,6 @@ A proposal of this type comprises the following:
 
 Upon execution of a successful proposal of this type, the protocol SHALL send the provided amount of RPL from its
 treasury to the recipient.
-
-To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
-executes `proposalTreasuryOneTimeSpend(string invoiceID, address recipientAddress, uint256 amount)` with the desired
-parameters. Refer to [Proposing](#proposing) for details.
 
 #### Treasury Contract Change
 
@@ -177,15 +142,6 @@ A proposal of this type can perform one of these actions:
 2. **Cancel:** Prematurely cancels a contract.
 3. **Replace:** Cancels an existing contract and creates a new one in a single transaction.
 
-To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
-executes one of the following:
-
-1. `proposalTreasuryNewContract(string contractName, address recipientAddress, uint256 amountPerPeriod, uint256 startTime, uint256 numPeriods)`.
-2. `proposalTreasuryCancelContract(string contractName)`.
-3. `proposalTreasuryReplaceContract(string contractName, address recipientAddress, uint256 amountPerPeriod, uint256 startTime, uint256 numPeriods)`.
-
-Refer to [Proposing](#proposing) for details.
-
 #### Security Council Change
 
 The purpose of the proposal type is to control the set of members of the "Security Council". The following actions are
@@ -199,15 +155,6 @@ The pDAO also has control over how many members are required for quorum. This is
 parameter `proposal.security.quorum`.
 
 Invited members must accept the invitation to join before they are counted as part of the security council.
-
-To raise a proposal of this kind, a node operator MUST call `RocketDAOProtocolProposal.propose` with a `_payload` which
-executes one of the following:
-
-1. `securityCouncilAdd(address memberAddress)`.
-2. `securityCouncilRemove(address memberAddress)`.
-3. `securityCouncilDisband()`.
-
-Refer to [Proposing](#proposing) for details.
 
 ### Security Council
 
@@ -241,12 +188,6 @@ Each node operator who has a non-zero voting power MAY vote with one of the foll
 
 If the sum of voting power of votes exceeds the quorum threshold (as defined by the `proposal.quorum` parameter), the
 proposal SHALL be executed and its changes affected.
-
-To vote on a proposal, a node operator MUST call one of the following methods on `RocketProtocolPropose`:
-
-1. `vote(uint256 proposalID, bool support)` where `support` indicates for or against.
-2. `abstain(uint256 proposalID)` to abstain.
-3. `veto(uint256 proposalID)` to vote against and veto.
 
 ### Snapshotting
 
@@ -294,22 +235,6 @@ which, the proposal can be defeated.
 If a proposal is defeated, the proposer forfeits their bond which is divided proportionally amongst the challengers who
 contributed to the proposal's defeat.
 
-To raise a proposal, a node operator MUST
-call `propose(string proposalMessage, bytes _payload, uint32 blockNumber, Type.Node[] treeNodes)`
-on `RocketDAOProtocolProposals`. Where `proposalMessage` is an arbitrary string, `_payload` is an ABI encoded function
-call to `RocketDAOProtocolProposals`, `blockNumber` is the block number used to generate the merkle pollard,
-and `treeNodes` is the merkle pollard.
-
-To respond to a challenge, the proposer MUST
-call `submitRoot(uint256 proposalID, uint256 index, Types.Node[] witness, Types.Node[] nodes`
-on `RocketDAOProtocolVerifier`. Where `proposalID` is the proposal's ID, `index` is the challenged index, `witness` is
-the merkle proof and `nodes` is the new merkle pollard from the challenged index.
-
-To claim a refund for a proposal bond and rewards from any invalid challenges, the proposer MUST
-call `claimBondProposer(uint256 proposalID, uint256[] indices)` on `RocketDAOProtocolVerifier`. Where `proposalID` is
-the proposal's ID and `indices` is an array of indices that are being claimed. The index "1" refers to the proposal
-root. Claiming this index will return the proposal bond.
-
 ### Verifying
 
 Any node MAY challenge a proposal by supplying an index into the merkle-sum tree that they are alleging is incorrect.
@@ -337,18 +262,6 @@ that resulted in the defeat of the proposal share the reward. All other challeng
 If a challenger challenges a node, the proposer responds, and the proposal does not get defeated. The proposer SHALL be
 able to claim the challenge bonds from the invalid challenges.
 
-To challenge a proposal, the challenger MUST call `createChallenge(uint256 proposalID, uint256 index)`
-on `RocketDAOProtocolVerifier`. Where `proposalID` is the proposal's ID and `index` is the index which the challenger is
-alleging is incorrect.
-
-To defeat a proposal where a proposer has not responded to a challenge, the challenger MUST
-call `defeatProposal(uint256 proposalID, uint256 index)` on `RocketDAOProtocolVerifier`. Where `proposalID` is the
-proposal's ID and `index` is the index which has not been responded to in time.
-
-To claim a refund for a challenge bond and any rewards from defeating a proposal, the challenger MUST
-call `claimBondChallenger(uint256 proposalID, uint256[] indices)` on `RocketDAOProtocolVerifier`. Where `proposalID` is
-the proposal's ID and `indices` is an array of indices that are being claimed.
-
 ### Further Technical Information
 
 More in depth technical information about the merkle-sum tree and pollard generation can be
@@ -359,7 +272,7 @@ found [here](https://github.com/rocket-pool/rocketpool-research/blob/master/pDAO
 Recipients of recurring payments from the treasury MAY claim their payments at any time. Recurring payments occur
 without a transaction. Therefore, recipient MUST execute a transaction in order to receive their RPL from the treasury.
 
-Recipients of payments MAY call `RocketClaimDAO.claim()` at any time from the recipient address specified in the payment
+Recipients of payments MAY execute a claim at any time from the recipient address specified in the payment
 contract. The protocol SHALL calculate all payments up to that point in time and transfer the required RPL from its
 treasury to the recipient.
 
