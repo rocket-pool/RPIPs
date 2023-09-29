@@ -13,7 +13,7 @@ RPIPs with the 'Living' status. Living RPIPs may or may not have been ratified.
 
 <h2>Ratified</h2>
 
-RPIPs that have passed a DAO vote.
+RPIPs with the 'Final' status that have passed a DAO vote.
 
 {% assign rpips=site.pages|where:"vote-result","Passed" %}
 {% assign rpips=rpips|where:"status","Final"| sort: "rpip" | reverse %}
