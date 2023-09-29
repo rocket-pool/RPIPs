@@ -2,7 +2,7 @@
 rpip: 10
 title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
-author: jasperthefriendlyghost, Valdorff (@Valdorff)
+author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
 status: Living
 type: Meta
