@@ -24,7 +24,7 @@ repository: https://github.com/rocket-pool/RPIPs/
 
 header_pages:
  - all.html
- - recent.html
+ - proposed.html
  - active.html
  - by_type.html
  - about_rpips.html

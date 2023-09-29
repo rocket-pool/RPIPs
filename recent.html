@@ -1,7 +1,0 @@
----
-layout: page
-title: Recent Drafts
----
-
-{% assign rpips=site.pages|where:"status","Draft"| sort: "rpip" | reverse %}
-{% include rpiptable_full.html rpips=rpips type_col=true no_content_message="No Active Drafts at this time."%}
