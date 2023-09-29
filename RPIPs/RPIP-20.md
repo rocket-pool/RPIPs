@@ -8,9 +8,9 @@ status: Final
 type: Meta
 created: 2023-04-17
 requires: 10
-votes-to: https://vote.rocketpool.net/#/proposal/0x78fb23da34837170bb182f21fb57e4a023f7c52c1379751e824a348467f96a65
+vote-to: https://vote.rocketpool.net/#/proposal/0x78fb23da34837170bb182f21fb57e4a023f7c52c1379751e824a348467f96a65
 vote-date: 2023-05-16
-vote-status: Passed
+vote-result: Passed
 ---
 
 
