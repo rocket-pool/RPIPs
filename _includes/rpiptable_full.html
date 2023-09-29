@@ -50,15 +50,15 @@
   </thead>
   {% for page in rpips %}
     <tr>
-      <td class="rpipnum"><a href="{{page.url|relative_url}}">{{page.rpip|xml_escape}}</a></td>	
-	  {% if include.type_col %} 
-	    {% if page.category %}
+      <td class="rpipnum"><a href="{{page.url|relative_url}}">{{page.rpip|xml_escape}}</a></td> 
+    {% if include.type_col %} 
+      {% if page.category %}
         <td class="type">{{page.type|xml_escape}} - {{page.category|xml_escape}}</td>
-	    {% else %}
+      {% else %}
         <td class="type">{{page.type|xml_escape}}</td>
-	    {% endif %}
-	  {% endif %}
-	  {% if include.status_col %} <td class="status">{{page.status|xml_escape}}</td> {% endif %}
+      {% endif %}
+    {% endif %}
+    {% if include.status_col %} <td class="status">{{page.status|xml_escape}}</td> {% endif %}
       <td class="title"><a href="{{page.url|relative_url}}">{{page.title|xml_escape}}</a></td>
       <td class="author">{% include authorlist.html authors=page.author %}</td>
     </tr>
