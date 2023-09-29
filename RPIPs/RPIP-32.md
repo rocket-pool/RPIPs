@@ -1,5 +1,5 @@
 ---
-rpip: TO BE ASSIGNED
+rpip: 32
 title: Stake ETH on behalf of node
 description: Enables an address to provide ETH to a node, allowing the node to make deposits using the provided ETH.
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann)
@@ -22,20 +22,20 @@ This supports a variety of situations were the node operator is not directly pro
 
 While the primary aim of this feature is to facilitate single depositor scenarios, it's worth noting that multiple independent depositors can also leverage this capability by creating smart contracts layered on top.
 
-## Other Related RPIPs 
-- [**RPIP-3** - SaaS Provider Standard](./RPIP-3.md) 
+## Other Related RPIPs
+- [**RPIP-3** - SaaS Provider Standard](./RPIP-3.md)
 - [**RPIP-7** - Withdrawal Address Escrow](./RPIP-7.md)
-- [RPIP-TBD - RPL Withdrawal Address](./RPIP-rpl-withdrawal-address.md)
+- [RPIP-TBD - RPL Withdrawal Address](./RPIP-31.md)
   - If the `RPL withdrawal address` RPIP is ratified, note that withdrawal address in this RPIP's Specification refers to the "primary withdrawal address". In this case, this line should be removed and the wording updated in the Specification.
 
 ## Specification
 - As the owner of a node's withdrawal address, I MUST be able to fund the corresponding node with ETH that is accounted for separately from the node's funds
 - As the owner of a node's withdrawal address, I MUST be able to withdraw unused withdrawal address supplied ETH
 - As a node operator, I MUST NOT be able to withdraw the funds supplied by the withdrawal address
-- As a node operator, I MUST be able to fund new minipools using the withdrawal address supplied ETH 
+- As a node operator, I MUST be able to fund new minipools using the withdrawal address supplied ETH
 
 ## Backwards Compatibility
-The specification as written is backwards compatible with the current deposit process. The behaviour is as current for node operators who do not use the new functionality. 
+The specification as written is backwards compatible with the current deposit process. The behaviour is as current for node operators who do not use the new functionality.
 
 ## Security Considerations
 The specification operates under the assumption that the ETH owner is synonymous with the withdrawal address owner. This aligns with the existing trust assumptions within the protocol and serves as a protective measure to guarantee that only the rightful owner can access these funds.
