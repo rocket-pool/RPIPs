@@ -1,0 +1,24 @@
+---
+layout: page
+title: Proposed RPIPs
+nav-title: Proposed
+---
+
+Non-Informational RPIPs with 'Final' or 'Draft' status that have not yet been ratified by a Rocket Pool DAO.
+
+{% assign rpips_draft=site.pages|where:"status", "Draft" %}
+{% assign rpips_final=site.pages|where:"status", "Final" %}
+{% assign rpips = rpips_draft | concat: rpips_final %}
+{% assign rpip_out = "" | split: ',' %}
+
+{% for item in rpips %}
+  {% if item.vote-result %}
+  {% elsif item.type == "Informational" %}
+  {% else %}
+    {% assign rpip_out = rpip_out | push: item %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign rpip_out=rpip_out | sort: "rpip" | reverse %}
+{% include rpiptable_full.html rpips=rpip_out type_col=true status_col=true no_content_message="No proposed RPIPs at this time."%}

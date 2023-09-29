@@ -2,78 +2,124 @@
 layout: default
 ---
 
-{% if page.status == "Draft" %}
-  <div class="draft">
-    ⚠️ This RPIP is not recommended for general use or implementation as it is likely to change.
+<div>
+  <div class="rpip-sidebar">
+    {% if page.status == "Draft" %}
+      <div class="draft">
+        ⚠️ This RPIP is not recommended for general use or implementation as it is likely to change.
+      </div>
+    {% elsif page.status == "Review" %}
+      <div class="review">
+        📖 This RPIP is in the review stage. It is subject to changes and feedback is appreciated.
+      </div>
+    {% elsif page.status == "Last Call" %}
+      <!-- <div class="lastcall">
+        📢 This RPIP is in the last call for review stage. The authors wish to finalize the RPIP and appreciate feedback.
+      </div> -->
+    {% elsif page.status == "Stagnant" %}
+      <div class="stagnant">
+        🚧 This RPIP had no activity for at least 6 months.
+      </div>
+    {% elsif page.status == "Living" %}
+      <div class="living">
+        ⚙️ This RPIP is intended to be maintained on an on-going basis.
+      </div>
+    {% elsif page.status == "Withdrawn" %}
+      <div class="withdrawn">
+        🛑 This RPIP has been withdrawn.
+      </div>
+    {% endif %}
+  
+    <table class="rpip-preamble">
+      <!-- Display expected entries -->
+      <tr><th>RPIP</th><td>{{ page.rpip | xml_escape }}</td></tr>
+      <tr><th>Author</th><td>{% include authorlist.html authors=page.author %}</td></tr>
+      <tr><th>Status</th><td>{{ page.status | xml_escape }}</td></tr>
+      {% if page["withdrawal-reason"] != undefined %}
+        <tr><th>Withdrawal reason</th><td>{{ page["withdrawal-reason"] | xml_escape }}</td></tr>
+      {% endif %}
+        <tr><th>Type</th><td>{{ page.type | xml_escape }}</td></tr>
+      {% if page.category != undefined %}
+        <tr><th>Category</th><td>{{ page.category | xml_escape }}</td></tr>
+      {% endif %}
+      {% if page.requires != undefined %}
+        <tr><th>Requires</th><td>{% include rpipnums.html rpips=page.requires %}</td></tr>
+      {% endif %}
+        <tr><th>Created</th><td>{{ page.created | xml_escape }}</td></tr>
+      {% if page.updated != undefined %}
+        <tr><th>Updated</th><td>{{ page.updated | xml_escape }}</td></tr>
+      {% endif %}
+      {% if page["discussions-to"] != undefined %}
+        <tr><th>Discussion</th><td><a href="{{ page["discussions-to"] | uri_escape }}">Link</a></td></tr>
+      {% endif %}
+      {% if page["vote-to"] != undefined %}
+        <tr><th>Vote</th><td><a href="{{ page["vote-to"] | uri_escape }}">Link</a></td></tr>
+      {% endif %}
+      {% if page["vote-date"] != undefined %}
+        <tr><th>Vote Date</th><td>{{ page.vote-date | xml_escape }}</td></tr>
+      {% endif %}
+      {% if page["vote-result"] != undefined %}
+        <tr><th>Vote Result</th><td>{{ page.vote-result | uri_escape }}</td></tr>
+      {% endif %}
+    
+      <!-- Catch anything we aren't expecting and display below -->
+      {% for element in page %} 
+      {% case element[0] %}
+      
+      <!-- Ignore expected -->
+      {% when "rpip" %}
+      {% when "description" %}
+      {% when "author" %}
+      {% when "status" %}
+      {% when "type" %}
+      {% when "category" %}
+      {% when "created" %}
+      {% when "updated" %}
+      {% when "discussions-to" %}
+      {% when "requires" %}
+      {% when "vote-to" %} 
+      {% when "vote-date" %} 
+      {% when "vote-result" %} 
+      
+      <!-- Ignore built-in -->
+      {% when "layout" %}
+      {% when "title" %}
+      {% when "content" %}
+      {% when "dir" %}
+      {% when "name" %}
+      {% when "url" %}
+      {% when "path" %}
+      
+      {% else %}
+          <tr><th>{{ element[0] | capitalize }}</th><td>{{ element[1] | xml_escape }}</td></tr>
+      {% endcase %}
+      {% endfor %}
+    </table>
+    
+    <div class="toc">
+      <h2>Contents</h2>
+      {% include toc.html html=content sanitize=true h_max=4 %}
+    </div>
+    
   </div>
-{% elsif page.status == "Review" %}
-  <div class="review">
-    📖 This RPIP is in the review stage. It is subject to changes and feedback is appreciated.
-  </div>
-{% elsif page.status == "Last Call" %}
-  <!-- <div class="lastcall">
-    📢 This RPIP is in the last call for review stage. The authors wish to finalize the RPIP and appreciate feedback.
-  </div> -->
-{% elsif page.status == "Stagnant" %}
-  <div class="stagnant">
-    🚧 This RPIP had no activity for at least 6 months.
-  </div>
-{% elsif page.status == "Living" %}
-  <div class="living">
-    ⚙️ This RPIP is intended to be maintained on an on-going basis.
-  </div>
-{% elsif page.status == "Withdrawn" %}
-  <div class="withdrawn">
-    🛑 This RPIP has been withdrawn.
-  </div>
-{% endif %}
+  <div class="rpip-content">
+    <h1>
+      RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}
+      <a href="{{site.github.repository_url}}/blob/master/{{page.path}}"><svg role="img" aria-label="Source" xmlns="https://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><title>Source</title><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg></a>
+    </h1>
+    <big class="rpip-description">{{ page.description | xml_escape }}</big>
 
-<div class="home">
-  <h1 class="page-heading">
-    RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}
-    <a href="{{site.github.repository_url}}/blob/master/{{page.path}}"><svg role="img" aria-label="Source" xmlns="https://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><title>Source</title><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg></a>
-  </h1>
-  <h3>{{ page.description | xml_escape }}</h3>
-  <table>
-    <tr><th>Author</th><td>{% include authorlist.html authors=page.author %}</td></tr>
-    {% if page["discussions-to"] != undefined %}
-      <tr><th>Discussions-To</th><td><a href="{{ page["discussions-to"] | uri_escape }}">{{ page["discussions-to"] | xml_escape }}</a></td></tr>
-    {% endif %}
-    <tr><th>Status</th><td>{{ page.status | xml_escape }}
-    {% if page.last-call-deadline != undefined %}
-      <!-- <tr><th>Last Call Deadline</th><td>{{ page.last-call-deadline | xml_escape }}</td></tr> -->
-    {% endif %}
-    </td></tr>
-    <tr><th>Type</th><td>{{ page.type | xml_escape }}</td></tr>
-    {% if page.category != undefined %}
-      <tr><th>Category</th><td>{{ page.category | xml_escape }}</td></tr>
-    {% endif %}
-    <tr><th>Created</th><td>{{ page.created | xml_escape }}</td></tr>
-    {% if page.updated != undefined %}
-    <tr><th>Updated</th><td>{{ page.updated | xml_escape }}</td></tr>
-    {% endif %}
-    {% if page.requires != undefined %}
-      <tr><th>Requires</th><td>{% include rpipnums.html rpips=page.requires %}</td></tr>
-    {% endif %}
-    {% if page["withdrawal-reason"] != undefined %}
-      <tr><th>Withdrawal reason</th><td>{{ page["withdrawal-reason"] | xml_escape }}</td></tr>
-    {% endif %}
-  </table>
 
-  <div class="toc">
-    <h2>Table of Contents</h2>
-    {% include toc.html html=content sanitize=true h_max=3 %}
+    {% include anchor_headings.html html=content anchorClass="anchor-link" beforeHeading=true %}
+
+    <h2>Citation</h2>
+    <p>Please cite this document as:</p>
+    {% comment %}
+    IEEE specification for reference formatting:
+    https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
+    {% endcomment %}
+    <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Rocket Pool Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
   </div>
-
-  {% include anchor_headings.html html=content anchorClass="anchor-link" beforeHeading=true %}
-
-  <h2>Citation</h2>
-  <p>Please cite this document as:</p>
-  {% comment %}
-  IEEE specification for reference formatting:
-  https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
-  {% endcomment %}
-  <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Rocket Pool Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
 </div>
 {% comment %}
 Article schema specification:
@@ -96,3 +142,4 @@ https://schema.org/TechArticle
     "copyrightYear": "{{ page.created | date: "%Y" }}"
   }
 </script>
+</div>

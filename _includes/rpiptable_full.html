@@ -1,0 +1,70 @@
+<style type="text/css">
+
+  .rpiptable{
+    table-layout: fixed;
+    margin-top: 10px;
+  }
+
+  .rpiptable .title {
+    width: 67%;
+  }
+  
+  .rpiptable .author {
+    width: 33%;
+  }
+  
+  .rpiptable .type {
+    width: 8em;
+  }
+
+  .rpiptable .status {
+    width: 3em;
+  }
+  .rpiptable .rpipnum {
+    width: 2em;
+  }
+  
+  @media (max-width: 800px){
+    .rpiptable .type {
+      display: none;
+    }
+    
+    .rpiptable .author {
+      display: none;
+    }
+  }
+  
+</style>
+
+{% assign rpips = include.rpips|where:"layout", "rpip" %%}
+{% assign count = rpips|size %}
+{% if count > 0 %}
+<table class="rpiptable">
+  <thead>
+      <tr>
+        <th class="rpipnum">RPIP</th>
+        {% if include.type_col %} <th class="type">Type</th> {% endif %}
+        {% if include.status_col %} <th class="status">Status</th> {% endif %}
+        <th class="title">Title</th>
+        <th class="author">Author</th>
+      </tr>
+  </thead>
+  {% for page in rpips %}
+    <tr>
+      <td class="rpipnum"><a href="{{page.url|relative_url}}">{{page.rpip|xml_escape}}</a></td> 
+    {% if include.type_col %} 
+      {% if page.category %}
+        <td class="type">{{page.type|xml_escape}} - {{page.category|xml_escape}}</td>
+      {% else %}
+        <td class="type">{{page.type|xml_escape}}</td>
+      {% endif %}
+    {% endif %}
+    {% if include.status_col %} <td class="status">{{page.status|xml_escape}}</td> {% endif %}
+      <td class="title"><a href="{{page.url|relative_url}}">{{page.title|xml_escape}}</a></td>
+      <td class="author">{% include authorlist.html authors=page.author %}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<i>{{include.no_content_message}}</i>
+{% endif %}

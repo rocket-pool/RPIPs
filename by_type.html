@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Protocol
+title: Core
+nav-title: RPIPs By Type
 sub-nav:
  - core.html
  - informational.html
@@ -9,5 +10,5 @@ sub-nav:
  - rprc.html
 ---
 
-{% assign rpips=site.pages|where:"type","Protocol"| sort: "rpip" | reverse %}
+{% assign rpips=site.pages|where:"type","Protocol"|where:"category","Core"| sort: "rpip" | reverse %}
 {% include rpiptable.html rpips=rpips %}
