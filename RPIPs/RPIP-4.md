@@ -43,9 +43,13 @@ The snapshot vote SHALL run for at least 7 days -- with 14 days being RECOMMENDE
 
 ### Snapshot Vote Strategy
 
+Eligibility, delegation state, and vote power are all determined based on a snapshot when a vote is created.
+
+The value of RPL used will be the price according to the protocol; at this time, that is embodied in `RocketNetworkPrices.getRPLPrice()`.
+
 #### Eligibility
 
-To be eligible for vote participation, the RPL must be effectively staked in the Rocket Pool protocol as reported by `getNodeEffectiveRPLStake()`.
+A node is eligible to receive vote power if the RPL staked on it is ≥10% of the value of the node's borrowed ETH. For nodes eligible to receive vote power, RPL staked on a node contributes to vote power up to 150% of the value of the node's bonded ETH.
 
 #### Delegation
 
@@ -92,7 +96,7 @@ Snapshot.org is a web3-native platform for token voting and provides several pre
 
 ### RPL Stake and Weight
 
-RPL is required to be effectively staked for voting to prevent vote-buying by participants unaffiliated with the protocol's operations.
+The RPL eligibility requirements help prevent vote-buying by participants unaffiliated with the protocol’s operations.
 
 The algorithm used for calculating power uses a square root for flattening the power contributed by any single node. This helps prevent large node operators from obtaining dominance over the voting process.
 
