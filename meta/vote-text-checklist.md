@@ -7,5 +7,6 @@
   - [ ] A clear and concrete explanation of the possible outcomes of the voting process.
   - [ ] Links to relevant resources or further context.
   - [ ] A link to a relevant discussion thread on the Rocket Pool forums.
+- [ ] Ensure that all URLs point to the intended destinations.
 - [ ] The issue of framing bias has been considered and mitigated where possible.
 - [ ] RPIP Editors have reviewed vote text.
