@@ -8,7 +8,7 @@ status: Final
 type: Meta
 created: 2023-06-14
 vote-to: https://vote.rocketpool.net/#/proposal/0xc1ece070feeb44115dbfd79827e10e35d86c93043e807369e54ec2d62a4fcace
-vote-date: 2023-08-04
+vote-date: 2023-08-18
 vote-result: Passed
 ---
 
