@@ -3,10 +3,13 @@ rpip: 26
 title: Updating of Grants Management Committee
 description: Replaces RPIP-18, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
-discussions-to: https://dao.rocketpool.net/t/amendment-for-retrospective-award-cap/1767, https://dao.rocketpool.net/t/rolling-awards-period-proposal/1819, https://dao.rocketpool.net/t/gmc-administrator-role-call-for-feedback/1820
+discussions-to: https://dao.rocketpool.net/t/updating-of-grants-management-committee/1968
 status: Final
 type: Meta
 created: 2023-06-14
+vote-to: https://vote.rocketpool.net/#/proposal/0xc1ece070feeb44115dbfd79827e10e35d86c93043e807369e54ec2d62a4fcace
+vote-date: 2023-08-18
+vote-result: Passed
 ---
 
 ## Abstract

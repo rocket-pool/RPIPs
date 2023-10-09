@@ -3,7 +3,7 @@ rpip: 32
 title: Stake ETH on behalf of node
 description: Enables an address to provide ETH to a node, allowing the node to make deposits using the provided ETH.
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann)
-discussions-to: tbd
+discussions-to: https://dao.rocketpool.net/t/rpip-32-stake-eth-on-behalf-of-node/2252
 status: Draft
 type: Protocol
 category: Core
