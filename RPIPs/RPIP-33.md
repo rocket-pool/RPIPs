@@ -1,5 +1,5 @@
 ---
-rpip: <to be assigned>
+rpip: 33
 title: Implementation of an On-Chain pDAO
 description: To replace the current proposal execution process in the pDAO governance system with a trustless on-chain version.
 author: 'Kane Wallmann (@kanewallmann)'
