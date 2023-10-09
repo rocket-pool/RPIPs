@@ -1,10 +1,10 @@
 ---
 rpip: 11
-title: (superseded) Incentive Management Committee Charter
+title: Incentive Management Committee Charter
 description: Describes what the Incentives Management Committee is for and how it will execute
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Final
+status: Obsolete
 type: Meta
 created: 2022-08-09
 requires: 10
@@ -14,7 +14,7 @@ vote-result: Passed
 ---
 
 ## \>\> NOTICE <<
-This RPIP has been superseded by [RPIP-20](RPIP-20.md).
+This RPIP has been made obsolete by the passage of [RPIP-20](RPIP-20.md).
 
 ## Abstract
 There is broad agreement on the need for liquidity incentives that @knoshua outlines in the

@@ -4,7 +4,7 @@ title: Updating of Grants Management Committee
 description: Replaces RPIP-15, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: Calurduran (@dafuerstman), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/rpip-modifying-operations-of-gmc/1448
-status: Final
+status: Obsolete
 type: Meta
 created: 2023-01-23
 vote-to: https://vote.rocketpool.net/#/proposal/0x75ca9e35555150c713e332d585b9fdf7185c9cf4222ad705459b30cf6d6bb7fb
@@ -12,6 +12,8 @@ vote-date: 2023-02-12
 vote-result: Passed
 ---
 
+## \>\> NOTICE <<
+This RPIP has been made obsolete by the passage of [RPIP-26](RPIP-26.md).
 
 ## Abstract
 RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details of the mechanics of awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord Governance channel. Based on that previous work, we would like to suggest an outline for a Grants and Bounties Management Committee (hereafter GMC), including guiding principles and governance. Please see RPIP-10 for governance details that apply to all Management Committees. This RPIP supercedes RPIP-15, with changes to the committee size (enlarged to 9), the frequency of award rounds (from every-other-month to quarterly), and the removal of the requirement that a majority of the committee be made up of non-team, non-oDAO members.
