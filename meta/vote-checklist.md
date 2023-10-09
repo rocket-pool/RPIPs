@@ -13,3 +13,4 @@
 - [ ] Vote text has been completed for this vote.
 - [ ] The Vote Text checklist has been completed for the final iteration of the vote text.
 - [ ] Think about this vote for five minutes by the clock. Attempt to confirm that what you're doing makes sense.
+- [ ] Obtain confirmation from a relevant party of Rocket Pool Ltd that they intend to post the vote. 

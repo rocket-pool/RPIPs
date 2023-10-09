@@ -25,6 +25,7 @@
   - [ ] Check that the ideas within the RPIP make technical sense.
   - [ ] Check that the RPIP title accurately describes the RPIP content.
   - [ ] Check the RPIP for language, markup, and code style.
+    - [ ] Run through grammarly or similar to help identify grammar and spelling issues.
 - [ ] Ensure that the RPIP author has confirmed the RPIP is ready to be finalized.
 - [ ] Ensure that the RPIP editors have confirmed the RPIP is ready to be finalized.
 
