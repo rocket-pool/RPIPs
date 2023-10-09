@@ -40,7 +40,7 @@ identifies that node. This section refers to a node by its index into the global
 The voting power function for members of the pDAO SHALL be formally defined as:
 
 $$
-P_{n} = \sum_{i=0}^{N-1} \begin{cases}
+P_{n} = \sum_{i=1}^{N} \begin{cases}
 p_{i} & d_{i} = n \\
 0 & else \\
 \end{cases}
@@ -79,7 +79,7 @@ Where:
 Total voting power can be expressed as the following:
 
 $$
-P = \sum_{i=0}^{N-1} P_{i}
+P = \sum_{i=1}^{N} P_{i}
 $$
 
 This formula is not new to this proposal, it is just defined here formally.
