@@ -52,7 +52,7 @@ $$
 
 $$
 R_{n} = \begin{cases}
-0 & S_{n} < M_{n} \\
+0 & S_{n} < m_{n} \\
 min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
 \end{cases}
 $$
