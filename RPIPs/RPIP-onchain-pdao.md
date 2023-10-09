@@ -67,12 +67,12 @@ $$
 
 Where:
 
-* $P_{x}$ is the voting power for $x$.
-* $S_{x}$ is RPL staked on the node $x$.
-* $N_{x}$ is the amount of bonded ETH on a node (the amount a node operator $x$ has contributed).
-* $U_{x}$ is the amount of borrowed ETH on a node (the amount of ETH a node operator $x$ has taken from the deposit
+* $P_{n}$ is the voting power for $n$.
+* $S_{n}$ is RPL staked on the node $n$.
+* $N_{n}$ is the amount of bonded ETH on a node (the amount a node operator $n$ has contributed).
+* $U_{n}$ is the amount of borrowed ETH on a node (the amount of ETH a node operator $n$ has taken from the deposit
   pool).
-* $d_{x}$ is the node which $x$ has delegated to.
+* $d_{n}$ is the node which $n$ has delegated to.
 * $r$ is the current market rate of RPL in ETH.
 * $N$ is the number of nodes in the node set.
 
