@@ -143,7 +143,7 @@ This section provides templates and examples for effective interaction with the 
 #### VOP Definition Template
 ```
 ### <VOP CODE>
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** 
 * **Description:** 
@@ -162,7 +162,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 ```
 
 ##### VOP-EXAMPLE-EXAMPLE
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Voted Operational Process Example  
 * **Description:** An example Voted Operational Process  
@@ -250,7 +250,7 @@ Should unintentional changes or ambiguities arise from these modifications, RPIP
 The included processes are listed below, along with their VOP definitions. A PR has been prepared [TODO prepare and link PR :D] that will implement these changes. It will be merged by the RPIP Editors if this RPIP is ratified.
 
 ### VOP-GMC-MEMBERSELECT
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Grants Management Committee Selection
 * **Description:** An election to fill the membership slots of the GMC.
@@ -265,7 +265,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 * **Other Requirements:**  See RPIP-10 - Management Committee Selection for full requirements.
 
 ### VOP-GMC-ADMINSELECT
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Grants Management Committee Administrator Selection  
 * **Description:** Selection of a GMC Administrator by the GMC members.
@@ -279,7 +279,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 * **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
 
 ### VOP-GMC-ADMINREMOVE
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Grants Management Committee Administrator Removal  
 * **Description:** Removal of the GMC Administrator by the GMC members.
@@ -291,7 +291,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 * **Other Requirements:** No other requirements.
 
 ### VOP-IMC-MEMBERSELECT
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Incentives Management Committee Selection
 * **Description:** An election to fill the membership slots of the IMC.
@@ -306,7 +306,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 * **Other Requirements:** See RPIP-10 - Management Committee Selection for full requirements.
 
 ### VOP-ODAO-MEMBERSUGGEST
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** oDAO Membership Suggestion
 * **Description:** A vote by the pDAO to suggest the addition or removal of a node to or from the oDAO.
@@ -319,7 +319,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 
 
 ### VOP-ODAO-MEMBERCHANGE
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** oDAO Membership Change
 * **Description:** A vote by the oDAO to add or remove a node to or from the oDAO.
@@ -334,7 +334,7 @@ This is a voted operational process (VOP) definition, see RPIP-34 for more infor
 
 
 ### VOP-GMC-DISPUTE
-This is a voted operational process (VOP) definition, see RPIP-34 for more information.
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** Grant Decision Appeal
 * **Description:** A vote triggered by a member of the community to appeal a grant decision by the GMC.
