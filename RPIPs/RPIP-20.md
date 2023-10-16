@@ -13,12 +13,11 @@ vote-date: 2023-05-16
 vote-result: Passed
 ---
 
-
 ## Abstract
 There is broad agreement on the need for liquidity incentives that @knoshua outlines in the
 [Liquidity Incentives](https://dao.rocketpool.net/t/liquidity-incentives) forum post. We would like
 to suggest an outline for an Incentives Management Committee (hereafter IMC) outlining guiding
-principles and governance. Please see RPIP-10 for governance details that apply to all Management
+principles and governance. Please see [RPIP-10](https://rpips.rocketpool.net/RPIPs/RPIP-10) for governance details that apply to all Management
 Committees.
 
 ## Motivation
@@ -30,7 +29,7 @@ that the protocol lost its only variable way to influence rETH demand.
 The protocol is billed as a Liquid Staking Solution and thus the protocol has an obligation to hold
 certain values. These principles will help build confidence that Rocket Pool aims to truly be liquid.
 
-In addition to the initial goals captured in RPIP-11, this update captures a secondary need for RPL
+In addition to the initial goals captured in [RPIP-11](https://rpips.rocketpool.net/RPIPs/RPIP-11), this update captures a secondary need for RPL
 liquidity, especially for security.
 
 ## Specification
@@ -80,11 +79,11 @@ light of parallel discussions about tokenomics changes, this amount serves as a 
 starting point.
 
 ## Historical membership
-| Date       | Members                                                                                                                      | Comment                                                      |
-|------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| 2022-08-25 | RP Team 1 (operated by langers), RP Team 2 (operated by Darcius), Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum   | Full committee selected informally and ratified by pDAO vote |
-| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth                                        | Full committee selected by pDAO vote                         |
 
+| Date       | Members                                                                                                                      | Comment                                                                                                                                                                   |
+|------------|------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2022-08-25 | RP Team 1 (operated by langers), RP Team 2 (operated by Darcius), Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum   | Full committee selected informally and ratified by pDAO [vote](https://vote.rocketpool.net/#/proposal/0x32d5f196aba2dc68c31bfedc38db297dbd89fd9fff9e368e85b80b632f55eb8c) |
+| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth                                        | Full committee selected by pDAO [vote](https://vote.rocketpool.net/#/proposal/0x19504a2bc3ac5b2b4fe9f54ef08ca23656fb4f6e678d17adb68c82d3bdf369af)                         |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
