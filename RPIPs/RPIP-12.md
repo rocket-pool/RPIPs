@@ -4,7 +4,7 @@ title: Atlas Update
 description: Describes the features that will be included in the upcoming Atlas update.
 author: Valdorff (@Valdorff), Kane Wallmann (@kanewallmann)
 discussions-to: https://dao.rocketpool.net/t/atlas-discussion/997
-status: Final
+status: Stagnant
 type: Protocol
 category: Core
 created: 2022-08-31
