@@ -4,7 +4,7 @@ title: oDAO Charter
 description: Describes what the oDAO is for and how it will operate
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
-status: Final
+status: Living
 type: Meta
 created: 2023-06-02
 vote-to: https://vote.rocketpool.net/#/proposal/0x07b38bcbd949923ba7d72f5832bca22e0a9354bce303602c802edf1046eb68fe
@@ -13,7 +13,7 @@ vote-result: Passed
 ---
 
 ## Abstract
-There is broad agreement that the oDAO needs to be more clearly defined in terms of what they are
+There is broad agreement that the Oracle DAO (oDAO) needs to be more clearly defined in terms of what they are
 expected to do, and how they are expected to do it. This document is intended to be a foundational
 definition document that will serve (a) the oDAO itself in answering "what's the right thing to do"
 in a given situation, and (b) the greater community in understanding "what should we expect" and
@@ -22,8 +22,8 @@ in a given situation, and (b) the greater community in understanding "what shoul
 ## Specification
 
 ### oDAO Values
-1. The oDAO SHALL serve the RP community at large, which comprises rETH holders, NOs, and RPL holders, by upholding the values and responsibilities outlined in this charter
-1. The oDAO SHALL NOT actively govern the protocol; they SHALL act as caretakers serving the RP community at large
+1. The oDAO SHALL serve the Rocket Pool community at large, which comprises rETH holders, Node Operators, and RPL holders, by upholding the values and responsibilities outlined in this charter
+1. The oDAO SHALL NOT actively govern the protocol; they SHALL act as caretakers serving the Rocket Pool community at large
     1. While the oDAO possesses the ability to veto (by refusing to apply an upgrade or settings change) veto powers SHALL be reserved for cases of changes that were not voted for by the pDAO, vote manipulation, malicious action, or proposals that would result in clear damage to the Rocket Pool project
         1. When a veto power is exercised, the oDAO SHALL publish a Veto Explanation Document that describes why this step was taken. If possible, the report SHOULD also suggest potential similar-but-non-damaging votes that could be considered.
     1. Except for the narrow veto circumstances described above, the oDAO SHALL execute the proposals that are ratified by a pDAO vote
@@ -52,9 +52,9 @@ in a given situation, and (b) the greater community in understanding "what shoul
 
 ### Current oDAO Responsibilities
 1. oDAO members MUST be informed voters on protocol update proposals
-1. The oDAO SHOULD actively communicate with the RP community at large
+1. The oDAO SHOULD actively communicate with the Rocket Pool community at large
     1. It is RECOMMENDED that the oDAO explain their votes, including the reasoning and due diligence behind them
-    1. It is RECOMMENDED that the oDAO have forums where they can discuss with the RP community at large (examples could be live town hall meetings, quarterly Q&A forum threads, etc)
+    1. It is RECOMMENDED that the oDAO have forums where they can discuss with the Rocket Pool community at large (examples could be live town hall meetings, quarterly Q&A forum threads, etc)
     1. The oDAO MAY or MAY NOT be available for day-to-day discussions (eg, on discord)
     1. Communication MAY be done at member or group level
 1. oDAO members SHOULD effectively fulfill oracle duties, including:
