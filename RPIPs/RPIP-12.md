@@ -3,8 +3,8 @@ rpip: 12
 title: Atlas Update
 description: Describes the features that will be included in the upcoming Atlas update.
 author: Valdorff (@Valdorff), Kane Wallmann (@kanewallmann)
-discussions-to: TODO
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/atlas-discussion/997
+status: Final
 type: Protocol
 category: Core
 created: 2022-08-31
@@ -30,7 +30,7 @@ Atlas will implement the following high-level features:
 ## Specification
 
 ### LEB8s
-Please see [RPIP-8](RPIP-8.md). Note that a vote on RPIP-12 (this RPIP) includes RPIP-8, since that
+Please see [RPIP-8](https://rpips.rocketpool.net/RPIPs/RPIP-8). Note that a vote on RPIP-12 (this RPIP) includes RPIP-8, since that
 is one of the several features specified.
 
 ### Use queue ETH
@@ -67,7 +67,7 @@ rETH. More NOs will be earning rewards, and some of those rewards will be split 
   - The total queue length
 
 ### SaaS
-Please see [RPIP-13](RPIP-13.md). Note that a vote on RPIP-12 (this RPIP) includes RPIP-13, since that
+Please see [RPIP-13](https://rpips.rocketpool.net/RPIPs/RPIP-13). Note that a vote on RPIP-12 (this RPIP) includes RPIP-13, since that
 is one of the several features specified.
 
 ### Removal of total effective RPL stake
