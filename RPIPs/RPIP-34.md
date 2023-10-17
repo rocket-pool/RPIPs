@@ -70,8 +70,8 @@ This section describes what a VOP is, and when to use the VOP framework.
 
 
 #### VOP Elements
-* Code - A short, unique, human-readable string identifier that can be used to identify instances of this VOP. Should take the rough form of VOP-SUBJECT-ACTION
-* Name - A longer identifier in plain English. 
+* ID - A short, unique, human-readable string identifier that can be used to identify instances of this VOP. Should take the rough form of VOP-SUBJECT-ACTION
+* Name - A plain English identifer (aim for a handful of words)
 * Description - A description of this VOP.
 * Purpose - Why does this VOP definition exist?
 * Responsible Party - What party is responsible for ensuring this VOP takes place when it is triggered?
@@ -99,9 +99,9 @@ This section describes what a VOP is, and when to use the VOP framework.
 > VOP-GMC-MEMBERSELECT-1 is a single GMC membership selection, with a date, candidates, a vote, and results.
 
 * A VOP instance is an instantiation of a VOP definition.  
-* When a VOP instance is triggered, it SHALL be assigned the next free ID number by the responsible party.
-  * ID numbers are unique per VOP definition, start at 1, and increment by 1. 
-  * VOP IDs MUST be appended to the VOP code with a hyphen.
+* When a VOP instance is triggered, it SHALL be assigned the next free instance number by the responsible party.
+  * Instance numbers are unique per VOP definition, start at 1, and increment by 1. 
+  * A VOP instance number MUST be appended to the VOP ID with a hyphen, forming a unique ID code for that process instance. 
 
 ---
 
@@ -136,13 +136,127 @@ This section lists requirements and common rules that apply to all usage of the 
 
 ---
 
+### Backwards Compatibility
+
+Upon ratification of this RPIP, existing ratified RPIPs containing processes that would fall under the VOP framework will be modified to use the VOP framework. The explicit intention is to maintain the logic and rules of existing processes, and just change their presentation such that they integrate with the VOP framework.
+
+Should unintentional changes or ambiguities arise from these modifications, RPIP Editors MAY modify the relevant RPIPs to _restore logical parity only_ in the relevant RPIPs without necessitating a pDAO vote.
+
+The included processes are listed below, along with their VOP definitions. A PR has been prepared [TODO prepare and link PR :D] that will implement these changes. It will be merged by the RPIP Editors if this RPIP is ratified.
+
+#### VOP-GMC-MEMBERSELECT
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Grants Management Committee Selection
+* **Description:** An election to fill the membership slots of the GMC.
+* **Purpose:** Ensure that the pDAO has the opportunity to periodically vote on GMC membership.
+* **Responsible Party:** GMC Administrator > GMC Members > RPIP Editors
+* **Voting Group:** pDAO
+* **Vote Type:** Weighted (Snapshot)
+* **Trigger(s):** 
+  * Periodic approximately yearly (between 10-14 months).
+  * More than half of the GMC's membership has not been elected via vote.
+  * There are vacant seats on the GMC that cannot be filled without a vote.
+* **Other Requirements:**  See RPIP-10 - Management Committee Selection for full requirements.
+
+#### VOP-GMC-ADMINSELECT
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Grants Management Committee Administrator Selection  
+* **Description:** Selection of a GMC Administrator by the GMC members.
+* **Purpose:** Ensure that the GMC has an administrator.
+* **Responsible Party:** GMC Members > RPIP Editors
+* **Voting Group:** GMC Members
+* **Vote Type:** Single Choice Majority (Committee Internal)
+* **Trigger(s):** 
+  * OPTIONAL - Periodic yearly (12 months)
+  * The GMC Administrator role is unfilled
+* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+
+#### VOP-GMC-ADMINREMOVE
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Grants Management Committee Administrator Removal  
+* **Description:** Removal of the GMC Administrator by the GMC members.
+* **Purpose:** To ensure that an avenue exists to remove a current GMC Administrator.
+* **Responsible Party:** GMC Members
+* **Voting Group:** GMC Members
+* **Vote Type:** Single Choice Majority (Committee Internal)
+* **Trigger(s):** At will
+* **Other Requirements:** No other requirements.
+
+#### VOP-IMC-MEMBERSELECT
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Incentives Management Committee Selection
+* **Description:** An election to fill the membership slots of the IMC.
+* **Purpose:** Ensure that the pDAO has the opportunity to periodically vote on IMC membership.
+* **Responsible Party:** IMC Members > RPIP Editors
+* **Voting Group:** pDAO
+* **Vote Type:** Weighted (Snapshot)
+* **Trigger(s):** 
+  * Periodic approximately yearly (between 10-14 months).
+  * More than half of the IMC's membership has not been elected via vote.
+  * There are vacant seats on the IMC that cannot be filled without a vote.
+* **Other Requirements:** See RPIP-10 - Management Committee Selection for full requirements.
+
+#### VOP-ODAO-MEMBERSUGGEST
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** oDAO Membership Suggestion
+* **Description:** A vote by the pDAO to suggest the addition or removal of a node to or from the oDAO.
+* **Purpose:** To give the pDAO non-binding input into the oDAO member set.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** pDAO
+* **Vote Type:** Single Choice Plurality (Snapshot)
+* **Trigger(s):** At will
+* **Other Requirements:** No further requirements.
+
+
+#### VOP-ODAO-MEMBERCHANGE
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** oDAO Membership Change
+* **Description:** A vote by the oDAO to add or remove a node to or from the oDAO.
+* **Purpose:** To structure and record oDAO membership votes.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** oDAO
+* **Vote Type:** Single Choice Plurality (On-chain)
+* **Trigger(s):** 
+  * If an instance of VOP-ODAO-MEMBERSUGGEST has a positive outcome.
+  * At will
+* **Other Requirements:** No further requirements.
+
+
+#### VOP-GMC-DISPUTE
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Grant Decision Appeal
+* **Description:** A vote triggered by a member of the community to appeal a grant decision by the GMC.
+* **Purpose:** To allow the pDAO to override the GMC if it disagrees with a given grant decision.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** pDAO
+* **Vote Type:** Single Choice Plurality (Snapshot)
+* **Trigger(s):** Grant Announcement (within 2 weeks of announcement)
+* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+
+Optional:
+* pDAO charter changes
+* oDAO charter changes
+* pDAO Budget Split
+* Rocket Pool Inflation Allocation
+* GMC Internal Decisions
+* IMC Internal Decisions
+
+## Implementation
+
 ### VOP Templates and Examples
 This section provides templates and examples for effective interaction with the VOP framework.
 
 
 #### VOP Definition Template
 ```
-### <VOP CODE>
+### <VOP ID>
 This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
 * **Name:** 
@@ -180,10 +294,10 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 #### VOP Record Section Template
 
 ```
-| Code                   | Date       | Reference           | Outcome                                     |
+| ID                     | Date       | Reference           | Outcome                                     |
 |------------------------|------------|---------------------|---------------------------------------------|
-| VOP-CODE-1             | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
-| VOP-CODE-2             | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
+| VOP-ID-1               | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
+| VOP-ID-2               | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
 
 Note, table generators exist: https://www.tablesgenerator.com/markdown_tables#
 
@@ -191,7 +305,7 @@ Note, table generators exist: https://www.tablesgenerator.com/markdown_tables#
 
 ##### VOP Record Section Example
 
-| Code                   | Date       | Reference           | Outcome                                   |
+| ID                     | Date       | Reference           | Outcome                                   |
 |------------------------|------------|---------------------|-------------------------------------------|
 | VOP-EXAMPLE-EXAMPLE-1  | 2023-10-03 | [Link](example.com) | The example was ratified to wide acclaim. |
 
@@ -240,118 +354,6 @@ The inclusion of 'Other Requirements' does threaten to remove the value of stand
 ### Records
 
 Records in some form are valuable. Tables make the most sense, as they are fairly compact, and make good use of horizontal space once you have a reasonable amount of columns.
-
-## Backwards Compatibility
-
-Upon ratification of this RPIP, existing ratified RPIPs containing processes that would fall under the VOP framework will be modified to use the VOP framework. The explicit intention is to maintain the logic and rules of existing processes, and just change their presentation such that they integrate with the VOP framework.
-
-Should unintentional changes or ambiguities arise from these modifications, RPIP Editors MAY modify the relevant RPIPs to _restore logical parity only_ in the relevant RPIPs without necessitating a pDAO vote.
-
-The included processes are listed below, along with their VOP definitions. A PR has been prepared [TODO prepare and link PR :D] that will implement these changes. It will be merged by the RPIP Editors if this RPIP is ratified.
-
-### VOP-GMC-MEMBERSELECT
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** Grants Management Committee Selection
-* **Description:** An election to fill the membership slots of the GMC.
-* **Purpose:** Ensure that the pDAO has the opportunity to periodically vote on GMC membership.
-* **Responsible Party:** GMC Administrator > GMC Members > RPIP Editors
-* **Voting Group:** pDAO
-* **Vote Type:** Weighted (Snapshot)
-* **Trigger(s):** 
-  * Periodic approximately yearly (between 10-14 months).
-  * More than half of the GMC's membership has not been elected via vote.
-  * There are vacant seats on the GMC that cannot be filled without a vote.
-* **Other Requirements:**  See RPIP-10 - Management Committee Selection for full requirements.
-
-### VOP-GMC-ADMINSELECT
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** Grants Management Committee Administrator Selection  
-* **Description:** Selection of a GMC Administrator by the GMC members.
-* **Purpose:** Ensure that the GMC has an administrator.
-* **Responsible Party:** GMC Members > RPIP Editors
-* **Voting Group:** GMC Members
-* **Vote Type:** Single Choice Majority (Committee Internal)
-* **Trigger(s):** 
-  * OPTIONAL - Periodic yearly (12 months)
-  * The GMC Administrator role is unfilled
-* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
-
-### VOP-GMC-ADMINREMOVE
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** Grants Management Committee Administrator Removal  
-* **Description:** Removal of the GMC Administrator by the GMC members.
-* **Purpose:** To ensure that an avenue exists to remove a current GMC Administrator.
-* **Responsible Party:** GMC Members
-* **Voting Group:** GMC Members
-* **Vote Type:** Single Choice Majority (Committee Internal)
-* **Trigger(s):** At will
-* **Other Requirements:** No other requirements.
-
-### VOP-IMC-MEMBERSELECT
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** Incentives Management Committee Selection
-* **Description:** An election to fill the membership slots of the IMC.
-* **Purpose:** Ensure that the pDAO has the opportunity to periodically vote on IMC membership.
-* **Responsible Party:** IMC Members > RPIP Editors
-* **Voting Group:** pDAO
-* **Vote Type:** Weighted (Snapshot)
-* **Trigger(s):** 
-  * Periodic approximately yearly (between 10-14 months).
-  * More than half of the IMC's membership has not been elected via vote.
-  * There are vacant seats on the IMC that cannot be filled without a vote.
-* **Other Requirements:** See RPIP-10 - Management Committee Selection for full requirements.
-
-### VOP-ODAO-MEMBERSUGGEST
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** oDAO Membership Suggestion
-* **Description:** A vote by the pDAO to suggest the addition or removal of a node to or from the oDAO.
-* **Purpose:** To give the pDAO non-binding input into the oDAO member set.
-* **Responsible Party:** Rocket Pool Community
-* **Voting Group:** pDAO
-* **Vote Type:** Single Choice Plurality (Snapshot)
-* **Trigger(s):** At will
-* **Other Requirements:** No further requirements.
-
-
-### VOP-ODAO-MEMBERCHANGE
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** oDAO Membership Change
-* **Description:** A vote by the oDAO to add or remove a node to or from the oDAO.
-* **Purpose:** To structure and record oDAO membership votes.
-* **Responsible Party:** Rocket Pool Community
-* **Voting Group:** oDAO
-* **Vote Type:** Single Choice Plurality (On-chain)
-* **Trigger(s):** 
-  * If an instance of VOP-ODAO-MEMBERSUGGEST has a positive outcome.
-  * At will
-* **Other Requirements:** No further requirements.
-
-
-### VOP-GMC-DISPUTE
-This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
-
-* **Name:** Grant Decision Appeal
-* **Description:** A vote triggered by a member of the community to appeal a grant decision by the GMC.
-* **Purpose:** To allow the pDAO to override the GMC if it disagrees with a given grant decision.
-* **Responsible Party:** Rocket Pool Community
-* **Voting Group:** pDAO
-* **Vote Type:** Single Choice Plurality (Snapshot)
-* **Trigger(s):** Grant Announcement (within 2 weeks of announcement)
-* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
-
-Optional:
-* pDAO charter changes
-* oDAO charter changes
-* pDAO Budget Split
-* Rocket Pool Inflation Allocation
-* GMC Internal Decisions
-* IMC Internal Decisions
 
 ## Security Considerations
 
