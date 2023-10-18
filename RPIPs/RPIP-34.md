@@ -126,6 +126,9 @@ This section describes what a VOP is, and when to use the VOP framework.
 * The VOP overview SHOULD exist as a living, informational RPIP maintained by the RPIP Editors.
 * Whenever an RPIP is ratified, the RPIP Editors MUST update the VOP Overview RPIP to include an entry for any newly ratified VOPs.
   * The VOP overview entry SHOULD follow the template defined under the VOP Overview Entry Template heading of this specification.
+* The VOP overview SHOULD contain a section for 'obsolete' VOPs. 
+  * VOP overview entries MUST be moved to this section when their VOP is obsoleted.
+  * VOP records SHOULD be moved to this section when their VOP is obsoleted.
 
 ---
 
@@ -247,6 +250,17 @@ Optional:
 * Rocket Pool Inflation Allocation
 * GMC Internal Decisions
 * IMC Internal Decisions
+
+### Modified VOPs
+* An existing VOP definition MAY be modified using the regular RPIP proecss as part of an edit or replacement to an existing RPIP.
+* The VOP overview MUST be kept up to date with any modifications.
+* A brief note and hyperlinks to each previously ratified version of a VOP defintion MUST be included with the newly modified VOP definition. 
+
+### Obsolete VOPs
+* A VOP definition SHALL become obsolete if its containing RPIP is made obsolete and the VOP is not moved to a different RPIP.
+  * The VOP definition and VOP records MUST both be moved to the new RPIP.
+* Obsolete VOPs MAY NOT be instantiated. 
+* The records for obsolete VOPs MUST remain publicly accessible.
 
 ## Implementation
 
