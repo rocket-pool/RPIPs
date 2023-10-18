@@ -66,7 +66,7 @@ The following is the standardization process for all RPIPs in all tracks:
 
 **Living** - A special status for RPIP that are designed to be continually updated and not reach a state of finality. This includes most notably RPIP-1.
 
-**Obsolete** - An Obsolete RPIP has been replaced, superceded or removed as a result of the passage of another RPIP.
+**Obsolete** - An Obsolete RPIP has been replaced, superceded or removed.
 
 Only Final and Living RPIPs are eligible for official adoption.
 
