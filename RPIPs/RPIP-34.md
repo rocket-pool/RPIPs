@@ -215,7 +215,6 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 * **Trigger(s):** At will
 * **Other Requirements:** No further requirements.
 
-
 #### VOP-ODAO-MEMBERCHANGE
 This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
@@ -230,7 +229,6 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
   * At will
 * **Other Requirements:** No further requirements.
 
-
 #### VOP-GMC-DISPUTE
 This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
@@ -241,15 +239,45 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 * **Voting Group:** pDAO
 * **Vote Type:** Single Choice Plurality (Snapshot)
 * **Trigger(s):** Grant Announcement (within 2 weeks of announcement)
-* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+* **Other Requirements:** 
+  * See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+  * Promising community sentiment per RPIP-4.
 
-Optional:
-* pDAO charter changes
-* oDAO charter changes
-* pDAO Budget Split
-* Rocket Pool Inflation Allocation
-* GMC Internal Decisions
-* IMC Internal Decisions
+#### VOP-PDAOBUDGET-SPLITCHANGE
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Modify pDAO Budget Split 
+* **Description:** A vote triggered by a member of the community to change the split of the pDAO's share of the RPL inflation.
+* **Purpose:** To allow the pDAO to allocate its resources to achieve its desired goals.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** pDAO
+* **Vote Type:** Single Choice Plurality (Snapshot)
+* **Trigger(s):** At will
+* **Other Requirements:** Promising community sentiment per RPIP-4.
+
+#### VOP-PDAOBUDGET-REALLOCATE
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Reallocate pDAO Funds
+* **Description:** A vote triggered by a member of the community to reallocate funds between pDAO accounting categories or the pDAO reserve treasury.
+* **Purpose:** To allow the pDAO to reallocate its funds if desired.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** pDAO
+* **Vote Type:** Single Choice Plurality (Snapshot)
+* **Trigger(s):** At will
+* **Other Requirements:** Promising community sentiment per RPIP-4.
+
+#### VOP-PDAOBUDGET-TRANSFER
+This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
+
+* **Name:** Transfer pDAO Funds
+* **Description:** A vote triggered by a member of the community to transfer funds belonging to the pDAO.
+* **Purpose:** To allow the pDAO to redistribute funds between committees, or pay for expenses directly.
+* **Responsible Party:** Rocket Pool Community
+* **Voting Group:** pDAO
+* **Vote Type:** Single Choice Plurality (Snapshot)
+* **Trigger(s):** At will
+* **Other Requirements:** Promising community sentiment per RPIP-4.
 
 ### Modified VOPs
 * An existing VOP definition MAY be modified using the regular RPIP proecss as part of an edit or replacement to an existing RPIP.
