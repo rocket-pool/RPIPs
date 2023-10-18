@@ -61,7 +61,7 @@ This section describes what a VOP is, and when to use the VOP framework.
 ---
 
 ### VOP Usage - Definitions
-> The VOP-GMC-MEMBERSELECT definition describes how GMC elections take place.
+> The VOP-EMC-MEMBERSELECT definition describes how EMC (example management committee) elections take place.
 
 * A VOP definition contains the elements that make up a particular type of VOP.
 * A VOP definition MUST include the elements defined under the VOP Elements heading of this specification.
@@ -96,7 +96,7 @@ This section describes what a VOP is, and when to use the VOP framework.
 ---
 
 ### VOP Usage - Instances
-> VOP-GMC-MEMBERSELECT-1 is a single GMC membership selection, with a date, candidates, a vote, and results.
+> VOP-EMC-MEMBERSELECT-1 is a single EMC (example management committee) membership selection, with a date, candidates, a vote, and results.
 
 * A VOP instance is an instantiation of a VOP definition.  
 * When a VOP instance is triggered, it SHALL be assigned the next free instance number by the responsible party.
@@ -106,7 +106,7 @@ This section describes what a VOP is, and when to use the VOP framework.
 ---
 
 ### VOP Usage - Records
-> The outcome of the VOP-GMC-MEMBERSELECT-1 instance is recorded in the appropriate record VOP record section.
+> The outcome of the VOP-EMC-MEMBERSELECT-1 instance is recorded in the appropriate record VOP record section.
 
 * A VOP record entry contains the results of a concluded VOP instance.
 * A VOP record section MUST be included in the RPIP in which a VOP is defined.
@@ -120,7 +120,7 @@ This section describes what a VOP is, and when to use the VOP framework.
 ---
 
 ### VOP Usage - Overview
-> A Living informational RPIP that lists the currently defined VOPs and the RPIPs in which they are defined.
+> A Living informational RPIP that lists and summarizes currently defined VOPs such as VOP-EMC-MEMBERSELECT.
 
 * The VOP overview is a summary of defined VOPs within Rocket Pool.  
 * The VOP overview SHOULD exist as a living, informational RPIP maintained by the RPIP Editors.
@@ -275,12 +275,12 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
   *
 ```
 
-##### VOP-EXAMPLE-EXAMPLE
+##### VOP-EMC-MEMBERSELECT
 This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
 
-* **Name:** Voted Operational Process Example  
-* **Description:** An example Voted Operational Process  
-* **Purpose:** Demonstrate Voted Operational Process templates.  
+* **Name:** Example Management Committee Selection
+* **Description:** An election to fill the membership slots of the EMC.
+* **Purpose:** Ensure that the pDAO has the opportunity to periodically vote on EMC membership.
 * **Responsible Party:** RPIP Author  
 * **Voting Group:** RPIP Author  
 * **Vote Type:** Majority (Show of hands)  
@@ -296,8 +296,8 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 ```
 | ID                     | Date       | Reference           | Outcome                                     |
 |------------------------|------------|---------------------|---------------------------------------------|
-| VOP-ID-1               | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
-| VOP-ID-2               | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
+| VOP-SUBJECT-ACTION-1   | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
+| VOP-SUBJECT-ACTION-2   | YYYY-MM-DD | [Link](outcome link)| Brief description of VOP outcome for record |
 
 Note, table generators exist: https://www.tablesgenerator.com/markdown_tables#
 
@@ -305,9 +305,10 @@ Note, table generators exist: https://www.tablesgenerator.com/markdown_tables#
 
 ##### VOP Record Section Example
 
-| ID                     | Date       | Reference           | Outcome                                   |
-|------------------------|------------|---------------------|-------------------------------------------|
-| VOP-EXAMPLE-EXAMPLE-1  | 2023-10-03 | [Link](example.com) | The example was ratified to wide acclaim. |
+| ID                     | Date       | Reference           | Outcome                                         |
+|------------------------|------------|---------------------|-------------------------------------------------|
+| VOP-EMC-MEMBERSELECT-1 | 2023-10-03 | [Link](example.com) | The example was ratified to wide acclaim.       |
+| VOP-EMC-MEMBERSELECT-2 | 2024-10-03 | [Link](example.com) | The example was again ratified to wide acclaim. |
 
 ---
 
@@ -320,11 +321,13 @@ Voting Group: <VOTING GROUP>
 <VOP Extended Description>
 ```
 
-##### VOP-EXAMPLE-OVERVIEW
+##### VOP-EMC-MEMBERSELECT
 **Defined In:** [RPIP-34](RPIP-34.md)  
-**Voting Group:** pDAO  
+**Voting Group:** RPIP Author  
 
-This VOP is an example voter operational process that is intended to demonstrate how to define VOPs, describe VOPs, and record VOP instance outcomes. This VOP is just an example, so there's not very much to say in this overview! 
+This VOP describes the membership selection process to a fictional example committee within the Rocket Pool DAOs.
+
+Normally there would be some more detail in this overview. But this an example rather than a creative writing exercise. 
 
 The intention is for overviews such as this to exist in a single informational RPIP that lists all defined VOPs that exist in the Rocket Pool DAOs. These descriptors will allow newcomers to the Rocket Pool community to easily identify common processes that take place at a high-level, and learn more about any they are interested in.
 
