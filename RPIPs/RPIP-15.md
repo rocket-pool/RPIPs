@@ -1,10 +1,10 @@
 ---
 rpip: 15
-title: (superseded) Creation of Grants and Bounties Management Committee
+title: Creation of Grants and Bounties Management Committee
 description: Describes the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: Calurduran (@dafuerstman), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/grants-and-bounties-rpip/1064
-status: Final
+status: Obsolete
 type: Meta
 created: 2022-09-18
 vote-to: https://vote.rocketpool.net/#/proposal/0x7cc60bb1bbc5f0fc061e65e1f5fc4ca23adbe9b353c6edece2ec6860b4101860
@@ -13,7 +13,7 @@ vote-result: Passed
 ---
 
 ## \>\> NOTICE <<
-This RPIP has been superseded by [RPIP-18](RPIP-18.md).
+This RPIP has been made obsolete by the passage of [RPIP-18](RPIP-18.md).
 
 ## Abstract
 RPIP-10 sets aside 30% of the pDAO budget for Grants and Bounties. The details of the mechanics of awarding grants and bounties were discussed in a forum post and in the Grants thread on the Discord Governance channel. Based on that previous work, we would like to suggest an outline for a Grants and Bounties Management Committee (hereafter GMC), including guiding principles and governance. Please see RPIP-10 for governance details that apply to all Management Committees.
