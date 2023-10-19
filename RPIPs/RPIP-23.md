@@ -26,10 +26,10 @@ Superseding this RPIP requires a 2/3 or greater supermajority pDAO vote
 1. The pDAO SHALL serve the Rocket Pool community at large; this comprises rETH holders, Node Operators, and RPL holders
 1. The pDAO SHALL be defined as Node Operators, with power based on effectively staked RPL
 1. The pDAO SHALL actively govern the protocol in the interest of the Rocket Pool community at large
-1. The pDAO SHALL prioritize protocol safety
 1. pDAO members SHOULD either
     1. Be informed and engage in public discourse about governance, or;
     1. Delegate their voting power to someone that is informed and engaged
+1. The pDAO SHALL prioritize protocol safety
 1. The pDAO SHOULD prioritize the health of the Ethereum network
 1. The pDAO SHOULD prioritize decentralization
 1. The pDAO SHOULD prioritize permissionlessness
