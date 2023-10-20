@@ -202,11 +202,11 @@ roughly steady given the initial proposed inflation step.
 
 ## Direct expenses
 
-| Date       | Amount     | Summary                                                  | Link to full description                    |
-|------------|------------|----------------------------------------------------------|---------------------------------------------|
-| 2023-09-03 | 3584 RPL   | 3 months initial dev funding                             | [expense_1](../assets/rpip-10/expense_1.md) |
-| TBD        | 0-3909 RPL | Additional dev funding with seat reduction               | [expense_1](../assets/rpip-10/expense_1.md) |
-| TBD        | TBD        | Compensate for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
+| Date       | Amount     | Summary                                                      | Link to full description                    |
+|------------|------------|--------------------------------------------------------------|---------------------------------------------|
+| 2023-09-03 | 3584 RPL   | 3 months initial dev funding                                 | [expense_1](../assets/rpip-10/expense_1.md) |
+| TBD        | 4643.69    | Compensate IMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
+| TBD        | 2985.22    | Compensate GMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
