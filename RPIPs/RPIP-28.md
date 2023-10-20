@@ -3,7 +3,7 @@ rpip: 28
 title: Deposits Under the Minimum
 description: Allow minipool deposits that include an appropriate RPL stake, even when under the "minimum" RPL threshold 
 author: Valdorff (@Valdorff)
-discussions-to: https://dao.rocketpool.net/t/allow-minipool-deposits-while-under-min-rpl/2100/9
+discussions-to: https://dao.rocketpool.net/t/allow-minipool-deposits-while-under-min-rpl/2100
 status: Review
 type: Protocol
 category: Core
