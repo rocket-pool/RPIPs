@@ -4,7 +4,7 @@ title: RPL Staking Rework
 description: Modifies RPL staking rewards to better align with protocol goals
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/rpl-staking-rework-proposal/2090
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2023-08-11
