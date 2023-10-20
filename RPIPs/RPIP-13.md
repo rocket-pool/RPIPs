@@ -3,8 +3,8 @@ rpip: 13
 title: Supernodes (SaaS)
 description: A native Staking-as-a-Service platform
 author: Kane Wallmann (@kanewallmann)
-discussions-to: TODO
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/atlas-discussion/997
+status: Stagnant
 type: Protocol
 category: Core
 created: 2023-09-01

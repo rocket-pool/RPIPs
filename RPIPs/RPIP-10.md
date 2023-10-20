@@ -29,72 +29,71 @@ changes to how the funds should be directed.
   - Incentives (e.g., LP bonuses) - 50%
   - Grants and Bounties - 30%
   - Reserve Treasury - 20%
-- Where a matching MC exists (eg, the "Incentives Management Committee" for the "Incentives"
-  category), incoming funds SHALL be disbursed to the matching MC as quickly as practicable.
+- Where a matching Management Committee exists (eg, the "Incentives Management Committee" for the "Incentives"
+  category), incoming funds SHALL be disbursed to the matching Management Committee as quickly as practical.
   - When possible, automation SHOULD be used to facilitate and expedite disbursements.
-- Where no matching MC exists, funds SHALL stay in the same category indefinitely.
-  - Upon creation of a matching MC, these funds SHALL be disbursed to the newly created MC as
-  quickly as practicable.  
+- Where no matching Management Committee exists, funds SHALL stay in the same category indefinitely.
+  - Upon creation of a matching Management Committee, these funds SHALL be disbursed to the newly created Management Committee as
+  quickly as practical.  
   - Funds SHALL NOT be spent from an accounting category directly.
   - Funds MAY be clawed back from an accounting category to the Reserve Treasury by vote.
 - The pDAO MAY vote to change the split and/or to move existing funds; this includes retrieving
-  funds from an MC, or sending funds to an MC.
+  funds from an Management Committee, or sending funds to an Management Committee.
 - MCs MAY accept funds from sources other than the pDAO.
   - If explicitly requested by the source providing the funds, these funds SHALL NOT be removed by
-  the pDAO. In such a case, the MC's Treasurer SHALL track those funds separately
+  the pDAO. In such a case, the Management Committee's Treasurer SHALL track those funds separately
   from pDAO-sourced funds to enable this.
-  - If not explicitly stated, the pDAO MAY move these funds. In such a case, the MC's treasurer MAY
+  - If not explicitly stated, the pDAO MAY move these funds. In such a case, the Management Committee's treasurer MAY
   track these funds together with pDAO-sources funds.
 - There SHALL NOT be a "Reserve Treasury Management Committee".
   - Funds MAY be reallocated by voting on a desired amount and category.
   - Funds MAY be spent directly by voting on a desired expense.
-    - The expense SHALL have a description in the [rpip-10 assets](../assets/rpip-10) directory
+    - The expense SHALL have a description in the [rpip-10 assets](https://github.com/rocket-pool/RPIPs/tree/main/assets/rpip-10) directory
     - The expense SHALL be recorded below, in the [direct expenses](#direct-expenses) section
     - This SHOULD be rare; it is RECOMMENDED that the vast majority of expenses be delegated to MCs.
-- There SHALL be a pDAO Treasurer appointed via pDAO vote within 3 months; until such a pDAO
-  Treasurer is appointed, jasperthefriendlyghost will serve as interim pDAO Treasurer.
+- There SHALL be a pDAO Treasurer appointed via pDAO vote within 3 months.
   - The pDAO treasurer SHOULD post an update within one week of the end of each rewards period,
   which details the following for each category: starting funds, income, spend, final funds.
   - The pDAO MAY vote to change the pDAO Treasurer at any time.
 
 
 ### Management Committee Governance
-The following apply to all MCs, except where their charter explicitly deviates from this Management
+The following apply to all Management Committees, except where their charter explicitly deviates from this Management
 Committee Governance section.
-- MC members SHALL structure transactions and execute them from a multisig.
-  - The multisig MUST allow for successfully signing with at least 2 members missing. The MC MAY
+- Management Committee members SHALL structure transactions and execute them from a multisig.
+  - The multisig MUST allow for successfully signing with at least 2 members missing. The Management Committee MAY
     allow for more missing members when signing.
-  - The multisig SHALL require at least a majority in order to sign. The MC MAY require a larger
+  - The multisig SHALL require at least a majority in order to sign. The Management Committee MAY require a larger
     majority for signatures.
   - The above means 3 of 5 is the absolute minimum requirement possible for a multisig.
-  - Existing MC members MAY vote to remove a member with a 2/3 or greater supermajority.
+  - Existing Management Committee members MAY vote to remove a member with a 2/3 or greater supermajority.
     - Note that this _cannot_ be done if it would violate the above multisig requirements.
-  - The MC SHALL have one or more stated goals; where possible, they SHOULD be measurable enough for
+  - The Management Committee SHALL have one or more stated goals; where possible, they SHOULD be measurable enough for
   the community to judge how well the goals are being met.
-- MC members MAY appoint one backup signer from the core dev team, by a majority vote.
-  - A backup signer, if any, SHALL NOT vote, unless publicly asked to do so by two or more MC
+- Management Committee members MAY appoint one backup signer from the core dev team, by a majority vote.
+  - A backup signer, if any, SHALL NOT vote, unless publicly asked to do so by two or more Management Committee
     members.
-  - MC members MAY choose to remove a backup signer by majority vote.
-  - There SHALL NOT be more than one backup signer on an MC.
-- The pDAO MAY vote to change the membership of the MC at any time, via a full selection.
+  - Management Committee members MAY choose to remove a backup signer by majority vote.
+  - There SHALL NOT be more than one backup signer on an Management Committee.
+- The pDAO MAY vote to change the membership of the Management Committee at any time, via a full selection.
 
 #### Management Committee Treasurer
-- The MC SHALL appoint one of their number as MC treasurer.
-  - The MC MAY change the MC treasurer by a simple majority vote.
-- The MC Treasurer SHALL publish reports of how funds were used within one week of the end of each
+- The Management Committee SHALL appoint one of their number as Management Committee treasurer.
+  - The Management Committee MAY change the Management Committee treasurer by a simple majority vote.
+- The Management Committee Treasurer SHALL publish reports of how funds were used within one week of the end of each
   rewards period.
   - The report SHALL include: initial funds available, new income received, funds deployed
     (including locations, amounts, and justifications for each platform), final funds available,
-    and a list of the active MC members.
-  - The MC SHALL receive feedback following those reports.
-  - The MC SHOULD respond to this feedback and respect the will of the broader pDAO.
+    and a list of the active Management Committee members.
+  - The Management Committee SHALL receive feedback following those reports.
+  - The Management Committee SHOULD respond to this feedback and respect the will of the broader pDAO.
 
 ### Management Committee Selection
 This process SHALL be followed when committees are newly formed, as well as when all or part of a
 committee's membership is to be replaced (eg, due to term limits or a vote).
 
 - Nominations
-  - A nomination thread for the MC SHALL be posted on the forum for at least 5 days.
+  - A nomination thread for the Management Committee SHALL be posted on the forum for at least 5 days.
     - Any member of the community MAY nominate any member (including themselves).
     - Any nominated member MAY ask to be removed from consideration.
     - A final list of nominees (except those that asked to be removed) SHALL be created and posted
@@ -103,9 +102,9 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
       process fails and must be restarted from the beginning.
 - Nominee information sharing
   - Within 3 days of the final list being posted, each nominee SHALL provide the following:
-    - An alignment statement explaining why they are motivated to act according to the MC charter.
+    - An alignment statement explaining why they are motivated to act according to the Management Committee charter.
     - A conflict statement explaining any other entanglements that could be perceived as motivation
-      to act against the MC charter or the protocol. This includes entanglements with other crypto,
+      to act against the Management Committee charter or the protocol. This includes entanglements with other crypto,
       other LSD providers, etc.
     - An identity statement explaining as much or as little of who they are as they wish to share.
       This MAY provide verification to the degree the nominee desires.
@@ -135,15 +134,15 @@ committee's membership is to be replaced (eg, due to term limits or a vote).
     - Selection timing MAY consider convenience (holiday timing, conventions, etc).
     - Selection timing MAY consider efficiency (aligning multiple elections).
   - If a vacancy occurs within six months of the previous selection, the next highest vote recipient
-    from the previous election SHALL be offered the seat, with the MC going down the list of
+    from the previous election SHALL be offered the seat, with the Management Committee going down the list of
     vote-receiving nominees until the position is filled.
     - The offered seat SHOULD be accepted or rejected within 1 week; if it is rejected, or there is
-    no response, the MC SHALL continue down the list.
-  - If at any time more than half of an MC is composed of non-elected members (ignoring any backup
-    signer), the MC SHALL be fully re-selected as soon as practical.
+    no response, the Management Committee SHALL continue down the list.
+  - If at any time more than half of an Management Committee is composed of non-elected members (ignoring any backup
+    signer), the Management Committee SHALL be fully re-selected as soon as practical.
   - If a vacancy occurs more than six months since the most recent selection, there SHALL be a
     selection for _only_ the vacant seats. Note that these seats SHALL be subject to the
-    schedule used by the MC for full reselection.
+    schedule used by the Management Committee for full reselection.
   - Members MAY be re-selected freely; no term limit is specified.
 
 ### Updating this RPIP
@@ -181,7 +180,7 @@ conservative starting point.
 In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
 https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
 
-6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
+6/1: Adjustments are being made here to support inflation changes per [RPIP-25](https://rpips.rocketpool.net/RPIPs/RPIP-25). A
 significant one allows the pDAO to vote directly for expenses from Reserve Treasury -- this is done
 specifically with Protocol Development Funding in mind. The budget split is being updated to be
 roughly steady given the initial proposed inflation step.
