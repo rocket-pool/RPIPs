@@ -70,14 +70,18 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
     - The tree specs SHALL follow existing processes for release and modification
 - The next significant smart contract upgrades SHALL update the withdrawal process
   - Withdrawals SHALL be a 2-step process
-    - A user MAY set some amount of RPL to "withdrawing"
+    - If the value of RPL staked exceeds 15% of the node's borrowed ETH, any amount of that excess
+      MAY be set to "withdrawing"
     - Once RPL has been in the withdrawing state for 28 days, it MAY be withdrawn from the protocol
       - All "withdrawing" RPL MUST be withdrawn at one time
       - The 28-day value SHOULD be a pDAO-controlled setting that starts at 28 days
     - There SHALL only be a single time stored for "withdrawing" RPL; this means that if a user sets
       additional RPL to withdrawing after some RPL is already "withdrawing", they must wait for 28
       days after the later action
-    - "Withdrawing" RPL SHALL NOT be eligible for RPL rewards or voting power
+    - "Withdrawing" RPL SHALL NOT be eligible for RPL rewards
+    - "Withdrawing" RPL SHALL NOT be eligible for voting power
+    - "Withdrawing" RPL SHALL NOT count as staked when determining how much RPL can be set
+      "withdrawing"
   - If this smart contract upgrade has not yet happened, the pDAO SHALL update the withdrawal
     threshold as follows:
     - Within the two weeks after X=3 rewards go out, set `node.per.minipool.stake.maximum` to 1.0
