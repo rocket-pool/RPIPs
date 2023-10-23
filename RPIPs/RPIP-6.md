@@ -2,7 +2,7 @@
 rpip: 6
 title: Unethbonded Minipools
 author: Ken Smith (@htimsk) <shtimseht@gmail.com>
-status: Draft
+status: Stagnant
 type: Protocol
 category: Core
 discussions-to: https://dao.rocketpool.net/t/unethbonded-ueb-minipools/447 

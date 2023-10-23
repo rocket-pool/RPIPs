@@ -62,11 +62,11 @@ Status: not yet voted
 
 #### Table summarizing options
 Extended to include hypothetical LEB4s.
-| **Option Name**                  | **Max effective RPL stake ** | **Minipool16<br>**(min-max effective) | **LEB8**<br>(min-max effective)       | **Hypothetical LEB4**<br>(min-max effective)       |
-|----------------------------------|------------------------------|---------------------------------------|---------------------------------------|----------------------------------------------------|
-| Scale with NO ETH                | `1.5*NO_ETH`                 | 1.6-24                                | 2.4-12                                | 2.8-6                                              |
-| Flat number of ETH per validator | `24`                         | 1.6-24                                | 2.4-24                                | 2.8-24                                             |
-| Scale with Protocol ETH          | `1.5*Protocol_ETH`           | 1.6-24                                | 2.4-36                                | 2.8-42                                             |
+| **Option Name**                  | **Max effective RPL stake (in ETH)** | **Minipool16 (min-max effective value in ETH)** | **LEB8 (min-max effective value in ETH)**         | **Hypothetical LEB4 (min-max effective value in ETH)** |
+|----------------------------------|--------------------------------------|-------------------------------------------------|---------------------------------------------------|--------------------------------------------------------|
+| Scale with NO ETH                | `1.5*NO_ETH`                         | 1.6-24                                          | 2.4-12                                            | 2.8-6                                                  |
+| Flat number of ETH per validator | `24`                                 | 1.6-24                                          | 2.4-24                                            | 2.8-24                                                 |
+| Scale with Protocol ETH          | `1.5*Protocol_ETH`                   | 1.6-24                                          | 2.4-36                                            | 2.8-42                                                 |
 
 #### Suggested Snapshot
 ```
@@ -214,9 +214,6 @@ There are no issues with backwards compatibility.
 Please note that this is an _additional_ option, half deposit minipools (16 ETH) will continue to be
 available for folks that wish to minimize their exposure to RPL. Note that these will use the new
 14% commission from now on.
-
-## Test Cases
-TBD
 
 ## Security Considerations
 Per a [pre-existing model](../assets/rpip-8/Analysis%20of%20LEB%20Minipools.pdf) we have previously
