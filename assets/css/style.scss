@@ -12,7 +12,214 @@
   }
 }
 
+.rpip-sidebar h1{
+  margin-bottom: 0px;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.rpip-content h1 {
+  margin-bottom: 0px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+.rpip-description {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.rpip-content h2 {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  border-bottom: 1px solid #d8dee4;
+}
+
+.rpip-content h3 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.rpip-content h4{
+  margin-top: 8px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.rpip-content h5 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.rpip-content h6 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.toc h2{
+  margin-bottom: 6px;
+  border-bottom: 1px solid #d8dee4;
+}
+
+.subnav {
+  line-height: $base-line-height * $base-font-size * 2.25;
+  position: relative;
+  height: 0;
+
+  .nav-trigger {
+      display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    color: $text-color;
+    line-height: $base-line-height;
+
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  .trigger {
+      text-align: center;
+    }
+
+  @include media-query($on-palm) {
+    position: absolute;
+    top: 50px;
+    right: $spacing-unit / 2;
+    background-color: $background-color;
+    border: 1px solid $grey-color-light;
+    border-radius: 5px;
+    text-align: right;
+    height: auto;
+
+    label[for="subnav-trigger"] {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 36px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      padding-top: 10px;
+      text-align: center;
+
+      > svg {
+        fill: $grey-color-dark;
+      }
+    }
+    
+    .trigger {
+      text-align: right;
+    }
+
+    input ~ .trigger {
+      clear: both;
+      display: none;
+    }
+
+    input:checked ~ .trigger {
+      display: block;
+      padding-bottom: 5px;
+    }
+
+    .page-link {
+      display: block;
+      padding: 5px 10px;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+      margin-left: 20px;
+    }
+  }
+}
+
+.rpip-sidebar {
+  max-height: 100vh;
+  width: 360px;
+  position: sticky;
+  top: 0; /* Stay at the top */
+  overflow-x: hidden;
+  padding-top: 17px;
+  float: left;
+  
+  @media (max-width: 1100px) {
+    float: none;
+    position: static;
+    width: auto;
+    height: auto;
+  }
+}
+  
+.rpip-preamble {
+  table-layout: fixed;
+  margin-bottom: 16px;
+}
+
+table th {
+  padding: 8px 12px;
+}
+
+table td {
+  padding: 8px 12px;
+}
+
+.rpip-preamble th {
+  width: 90px;
+}
+
+.rpip-preamble td {
+}
+
+
+.rpip-sidebar::-webkit-scrollbar{
+  display: none;
+}
+
+.toc {
+  @media (min-width: 1100px) {
+    padding-bottom: 20px;
+  }
+}
+
+.rpip-content {
+  margin-left: 400px;
+  margin-top: -20px;
+  
+  @media (max-width: 1100px) {
+    margin-left: 0px;
+  }
+}
+
 .page-content {
+  padding: $spacing-unit*1.5 0;
+  flex: 1;
+
   a.anchor-link {
     width: 16px;
     height: 16px;
@@ -30,47 +237,64 @@ main.page-content {
   }
 }
 
-.status {
+/*
+.footer-col-1 {
+  width: -webkit-calc(0% - (#{$spacing-unit} / 2));
+  width:         calc(0% - (#{$spacing-unit} / 2));
+}
+*/
+
+.footer-col-2 {
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width:         calc(50% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width:         calc(50% - (#{$spacing-unit} / 2));
+}
+
+.status-box {
   border-radius: 6px;
   line-height: 18px;
   overflow: hidden;
   padding: 12px;
   display: inline-block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .draft {
-  @extend .status;
+  @extend .status-box;
   background-color: #fffbea;
   border: solid 1px #f1c40f;
 }
 
 .review {
-  @extend .status;
+  @extend .status-box;
   background-color: #f0f7fb;
   border: solid 1px #3498db;
 }
 
 .lastcall {
-  @extend .status;
+  @extend .status-box;
   background-color: #e7f6f0;
   border: solid 1px #27ae60;
 }
 
 .stagnant {
-  @extend .status;
+  @extend .status-box;
   background-color: #ffdead;
   border: solid 1px #ff6700;
 }
 
 .living {
-  @extend .status;
+  @extend .status-box;
   background-color: #f0f7fb;
   border: solid 1px #3498db;
 }
 
 .withdrawn {
-  @extend .status;
+  @extend .status-box;
   background-color: #f9e7e5;
   border: solid 1px #c0392b;
 }

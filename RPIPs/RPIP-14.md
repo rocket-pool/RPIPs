@@ -2,9 +2,9 @@
 rpip: 14
 title: Temporary pDAO Guardian Reassignment
 description: Temporarily reassign pDAO guardian from dev team to oDAO
-author: 'Mike Leach AKA Wander (GH: VVander | Discord: Wander#4793)'
+author: Mike Leach (@VVander)
 discussions-to: https://dao.rocketpool.net/t/proposal-for-temporary-pdao-guardian-reassignment/1024
-status: Finalized
+status: Final
 type: Meta
 created: 2022-09-07
 ---

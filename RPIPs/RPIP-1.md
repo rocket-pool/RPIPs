@@ -3,7 +3,7 @@ rpip: 1
 title: RPIP Purpose and Guidelines
 status: Living
 type: Meta
-author: 'Mike Leach (GH: VVander | Discord: Wander#4793), Valdorff (GH: Valdorff | Discord: Val#5027)'
+author: Mike Leach (@VVander), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/rpip-1-formalizing-protocol-changes/367
 created: 2022-03-17
 ---
@@ -12,7 +12,7 @@ created: 2022-03-17
 
 RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](../rpip-template.md).
 
-Only RPIPs in the "Finalized" state are eligible for adoption and must be reviewed by editors before marked as "Finalized". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the [editors](#rpip-editors).
+Only RPIPs in the "Final" state are eligible for adoption and must be reviewed by editors before marked as "Final". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the [editors](#rpip-editors).
 
 **The RPIP author is responsible for building consensus within the community and documenting dissenting opinions.**
 
@@ -65,6 +65,8 @@ The following is the standardization process for all RPIPs in all tracks:
 **Withdrawn** - The RPIP Author(s) have withdrawn the proposed RPIP. This state has finality and can no longer be resurrected using this RPIP number. If the idea is pursued at later date it is considered a new proposal.
 
 **Living** - A special status for RPIP that are designed to be continually updated and not reach a state of finality. This includes most notably RPIP-1.
+
+**Obsolete** - An Obsolete RPIP has been replaced, superseded or removed.
 
 Only Final and Living RPIPs are eligible for official adoption.
 

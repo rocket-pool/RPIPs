@@ -24,11 +24,10 @@ repository: https://github.com/rocket-pool/RPIPs/
 
 header_pages:
  - all.html
- - core.html
- - rprc.html
- - meta.html
- - informational.html
- - protocol.html
+ - proposed.html
+ - active.html
+ - by_type.html
+ - about_rpips.html
 
 # Build settings
 highlighter: rouge

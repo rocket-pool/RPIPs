@@ -1,10 +1,10 @@
 ---
 rpip: 3
 title: SaaS Provider Standard
-status: Draft
+status: Stagnant
 type: Protocol
 category: RPRC
-author: Mike Leach (@Wander) <mike@bamboofin.tech>
+author: Mike Leach (@VVander) <mike@bamboofin.tech>
 discussions-to: https://discord.com/channels/405159462932971535/937053845610180628/956263874733174884
 created: 2022-03-19
 ---

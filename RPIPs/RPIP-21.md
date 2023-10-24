@@ -11,7 +11,7 @@ created: 2023-04-14
 
 
 ## Abstract
-Issue 5.10 in https://rocketpool.net/files/consensys-diligence-atlas-v1.2.pdf provides a potential
+Issue 5.10 in the [Consensys Review of Atlas](https://github.com/rocket-pool/RPIPs/tree/main/assets/rpip-21/consensys-diligence-atlas-v1.2.pdf) provides a potential
 for oDAO votes to pass without a proper consensus. This issue was misunderstood by community members
 (including the author of this RPIP) and led to an RPIP that was based on the misunderstanding
 (readable in the git history for RPIP-21). This RPIP will now serve to be very clear about what the

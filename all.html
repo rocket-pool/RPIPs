@@ -1,7 +1,7 @@
 ---
 layout: page
-title: All
+title: All RPIPs
 ---
 
-{% assign rpips=site.pages| sort: "rpip" | reverse %}
-{% include rpiptable.html rpips=rpips %}
+{% assign rpips=site.pages| sort: "rpip" %}
+{% include rpiptable_full.html rpips=rpips status_col=true type_col=true%}

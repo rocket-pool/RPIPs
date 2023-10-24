@@ -4,7 +4,7 @@ title: Withdrawal Address Escrow
 description: A smart contract to govern Rocket Pool rewards and distribute RPL and ETH to separate parties.
 author: BrassLion (@BrassLion)
 discussions-to: https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
-status: Draft
+status: Stagnant
 type: Protocol
 category: RPRC
 created: 2022-04-16
