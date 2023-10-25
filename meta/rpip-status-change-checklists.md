@@ -16,10 +16,10 @@
 - [ ] Ensure that the RPIP author is content with the draft being published on the RPIPs portal in its current state.
 
 ## Finalize Checklist
+- [ ] Ensure that the finalization PR is the only open pull request modifying the RPIP in the official RPIP repository.
 - [ ] Ensure that the RPIP Draft Checklist has been completed for this RPIP.
 - [ ] Ensure that the RPIP preamble is present and correctly formatted for a finalized RPIP.
   - [ ] Check `status` is set to 'Final'
-- [ ] Ensure that the finalization PR is the only open pull request modifying the RPIP in the official RPIP repository.
 - [ ] Editor Responsibilities
   - [ ] Check that the RPIP is ready, sound and complete.
   - [ ] Check that the ideas within the RPIP make technical sense.
