@@ -44,27 +44,24 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
 - As a node operator, I MUST be able to confirm the RPL withdrawal address from the new target address before it takes effect, to ensure it is the correct address
 - As the owner of the RPL withdrawal address, I MUST be able to unset my RPL withdrawal address
 
-### Withdrawing Excess RPL
-- As the controller of the RPL withdrawn from a node, I MUST be able to call `RocketNodeStaking.withdrawRPL()` to withdraw excess RPL
+### Withdrawing RPL
+- As the controller of the RPL withdrawn from a node, I MUST be able to call withdraw RPL as allowed by the protocol
   - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
 
 ### Claiming RPL rewards
-- As the controller of the RPL for a node, I MUST be able to call `RocketMerkleDistributorMainnet.claim()` to trigger a claim of RPL rewards
+- As the controller of the RPL for a node, I MUST be able to trigger a claim of RPL rewards
   - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from one of: the node's primary withdrawal address, the current RPL withdrawal address, or the node's address
-- As the controller of the RPL for a node, I MUST be able to call `RocketMerkleDistributorMainnet.claimAndStake()` to trigger a claim of RPL rewards and restake a portion
+- As the controller of the RPL for a node, I MUST be able to trigger a claim of RPL rewards and restake a portion
   - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
 
 ### Staking RPL
-- As the controller of the RPL for a node, I MUST be able to call `RocketNodeStaking.stakeRPL()` to stake additional RPL
-  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
-  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
-- As the controller of the RPL for a node, I MUST be able to call `RocketNodeStaking.stakeRPLFor()` to stake additional RPL
-  - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or a specifically allowed address
+- As the controller of the RPL for a node, I MUST be able to stake additional RPL
+  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address, or a specifically allowed address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address, or a specifically allowed address
-- As the controller of the RPL for a node, I MUST be able to call `RocketNodeStaking.setStakeRPLForAllowed()` to control the allowed address list
+- As the controller of the RPL for a node, I MUST be able to control the list of specifically allowed RPL staking addresses
   - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
 
