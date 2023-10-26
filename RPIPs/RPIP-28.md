@@ -10,11 +10,11 @@ category: Core
 created: 2023-08-11
 ---
 
-## Abstract
+## Motivation and Abstract
 
 Right now, if an NO falls below the minimum (value of RPL staked <10% of borrowed ETH), they can't 
 add a new minipool to that node unless they stake enough to reach the minimum AND cover the new
-minipool. Unless, of course, they make a new node. This means that we're creating an incentive to
+minipool. Unless, of course, they make a new node. This means that an incentive currently exists to
 make sock puppet nodes.
 
 This proposal suggests adding the ability to do a combined minipool deposit AND RPL stake. This
@@ -23,11 +23,9 @@ create sock puppet nodes.
 
 ## Specification
 
-- There SHALL be a function that allows an atomic RPL stake and minipool ETH deposit
+- A function SHALL be added that allows an atomic RPL stake and minipool ETH deposit
 - This function SHALL succeed if the staked RPL meets the amount that would be needed for this
   minipool on a fresh node
-  - Note that this means the minipool MAY be created even if the overall node's RPL stake is below
-    the minimum needed (eg, for RPL rewards) 
 
 ## Reference Implementation
 
