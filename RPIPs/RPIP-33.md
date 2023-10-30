@@ -56,6 +56,7 @@ min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
 m_{n} = \frac{U_{n} \times 10 \%}{r}
 
 M_{n} = \frac{N_{n} \times 150 \%}{r}
+$$
 ```
 
 Where:
