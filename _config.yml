@@ -31,7 +31,7 @@ header_pages:
 
 # Build settings
 highlighter: rouge
-markdown: kramdown-parser-gfm
+markdown: GFM
 theme: minima
 kramdown:
   input: GFM
