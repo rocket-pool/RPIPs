@@ -71,7 +71,6 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 ### Final states
 - For periods X>5, a node's share of reward SHALL be `proposed_method_share`
-- The rewards tree specs SHALL follow pre-existing processes for release and modification
 - The next significant smart contract upgrades SHALL update the RPL withdrawal process to be a
   2-step process
   - A user MAY set any amount of "Staked" RPL beyond the value of 15% of the node's borrowed ETH to
@@ -94,7 +93,6 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
   $`\frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share`$
   - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
     `proposed_method_share`, and how to combine them to get a node's share of rewards
-  - The rewards tree specs SHALL follow pre-existing processes for release and modification
 - If the 2-step withdrawal process described above has not yet been implemented, partial steps SHALL
   be taken to reduce withdrawal limits
   - Within two weeks after X=3 rewards go out, set withdrawal limit to 100% of a node's bonded ETH
