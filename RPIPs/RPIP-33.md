@@ -46,22 +46,30 @@ p_{i} & d_{i} = n \\
 0 & else \\
 \end{cases}
 $$
+```
 
+```math
 $$
 p_{n} = \frac{\sqrt{R_{n}}}{2}
 $$
+```
 
+```math
 $$
 R_{n} = \begin{cases}
 0 & S_{n} < m_{n} \\
 min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
 \end{cases}
 $$
+```
 
+```math
 $$
 m_{n} = \frac{U_{n} \times 10 \%}{r}
 $$
+```
 
+```math
 $$
 M_{n} = \frac{N_{n} \times 150 \%}{r}
 $$
