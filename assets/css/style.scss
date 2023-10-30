@@ -237,6 +237,28 @@ main.page-content {
   }
 }
 
+pre
+{
+    border: 0px;
+    border-radius: 0px;
+    background-color: #00000000;
+}
+
+code
+{
+  background-color: #eef;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+
+code.language-math
+{
+    border: 0px;
+    border-radius: 0px;
+    background-color: #00000000;
+    display: flex;
+}
+
 /*
 .footer-col-1 {
   width: -webkit-calc(0% - (#{$spacing-unit} / 2));
