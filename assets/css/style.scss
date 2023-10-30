@@ -256,7 +256,12 @@ code.language-math
     border: 0px;
     border-radius: 0px;
     background-color: #00000000;
-    display: flex;
+}
+
+.MathJax_Display { 
+  display: inline-block!important; 
+  margin: 0em;
+
 }
 
 /*
