@@ -88,9 +88,11 @@ Where:
 
 Total voting power can be expressed as the following:
 
+```math
 $$
 P = \sum_{i=1}^{N} P_{i}
 $$
+```
 
 This formula is not new to this proposal, it is just defined here formally.
 
