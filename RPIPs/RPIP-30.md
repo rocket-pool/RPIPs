@@ -51,11 +51,11 @@ the protocol goal of attracting minipool creation (and rETH supplying).
 - `proposed_method_share` SHALL be defined as:
   - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
   - If staked RPL value in ETH is <10% borrowed ETH
-    - $node\_weight=0$
+    - $`node\_weight=0`$
   - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
-    $node\_weight=100 * staked\_rpl\_value\_in\_eth$
+    - $`node\_weight=100 * staked\_rpl\_value\_in\_eth`$
   - If staked RPL value in ETH is > 15% borrowed ETH
-    - $node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth$
+    - $`node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth`$
     - This value MAY be approximated if necessary
 - `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
   active rewards tree spec when the vote is passed
@@ -91,7 +91,7 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 ### Transitioning towards final states
 - For periods X=1 to X=5: a node's share of rewards is
-  $\frac{X}{6}*proposed\_method\_share + \frac{6-x}{6}*current\_method\_share$
+  $`\frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share`$
   - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
     `proposed_method_share`, and how to combine them to get a node's share of rewards
   - The rewards tree specs SHALL follow pre-existing processes for release and modification
@@ -110,10 +110,10 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 ### Showing node weight's subcomponents in the sublinear region
 Some folks expressed a preference for seeing a few constituent terms that create the node_weight
 formula to better understand it, so we're including that here:
-- $node\_weight = diminishing\_reward\_term + weight\_at\_15pETH + offset\_to\_align\_functions$
-- $diminishing\_reward\_term = 2*borrowed\_eth*\ln\left(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13\right)$
-- $weight\_at\_15pETH = 100*0.15*borrowed\_eth$
-- $offset\_to\_align\_functions = 1.3863*borrowed_eth$
+- $`node\_weight = diminishing\_reward\_term + weight\_at\_15pETH + offset\_to\_align\_functions`$
+- $`diminishing\_reward\_term = 2*borrowed\_eth*\ln\left(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13\right)`$
+- $`weight\_at\_15pETH = 100*0.15*borrowed\_eth`$
+- $`offset\_to\_align\_functions = 1.3863*borrowed\_eth`$
 
 Essentially, rewards scale with the node's `borrowed_eth` with diminishing effectiveness based on
 higher collateralization (in terms of RPL value per borrowed ETH). Additional math is there to
