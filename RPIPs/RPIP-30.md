@@ -10,7 +10,7 @@ category: Core
 created: 2023-08-11
 ---
 
-## Abstract
+## Motivation
 RPL inflation can be seen as protocol revenue that we steer to various places to achieve protocol
 goals. This proposal looks to better align spending with protocol goals, specifically with the
 portion of inflation (70%) that goes to Node Operators today.
@@ -51,11 +51,11 @@ the protocol goal of attracting minipool creation (and rETH supplying).
 - `proposed_method_share` SHALL be defined as:
   - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
   - If staked RPL value in ETH is <10% borrowed ETH
-    - `node_weight=0`
+    - $node\_weight=0$
   - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
-    - `node_weight=100 * staked_rpl_value_in_eth`
+    $node\_weight=100 * staked\_rpl\_value\_in\_eth$
   - If staked RPL value in ETH is > 15% borrowed ETH
-    - `node_weight = (13.6137 + 2 * ln(100 * (staked_rpl_value_in_eth / borrowed_eth) - 13)) * borrowed_eth`
+    - $node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth$
     - This value MAY be approximated if necessary
 - `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
   active rewards tree spec when the vote is passed
@@ -90,7 +90,8 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
   NOT count "Unstaking" RPL)
 
 ### Transitioning towards final states
-- For periods X=1 to X=5: a node's share of rewards is `(X/6)*proposed_method_share + ((6-x)/6)*current_method_share`
+- For periods X=1 to X=5: a node's share of rewards is
+  $\frac{X}{6}*proposed\_method\_share + \frac{6-x}{6}*current\_method\_share$
   - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
     `proposed_method_share`, and how to combine them to get a node's share of rewards
   - The rewards tree specs SHALL follow pre-existing processes for release and modification
@@ -109,10 +110,10 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 ### Showing node weight's subcomponents in the sublinear region
 Some folks expressed a preference for seeing a few constituent terms that create the node_weight
 formula to better understand it, so we're including that here:
-- `node_weight = diminishing_reward_term + weight_at_15pETH + offset_to_align_functions`
-- `diminishing_reward_term = 2*borrowed_eth*ln(100*(staked_rpl_value_in_eth / borrowed_eth) - 13)`
-- `weight_at_15pETH = 100*0.15*borrowed_eth`
-- `offset_to_align_functions = 1.3863*borrowed_eth`
+- $node\_weight = diminishing\_reward\_term + weight\_at\_15pETH + offset\_to\_align\_functions$
+- $diminishing\_reward\_term = 2*borrowed\_eth*\ln\left(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13\right)$
+- $weight\_at\_15pETH = 100*0.15*borrowed\_eth$
+- $offset\_to\_align\_functions = 1.3863*borrowed_eth$
 
 Essentially, rewards scale with the node's `borrowed_eth` with diminishing effectiveness based on
 higher collateralization (in terms of RPL value per borrowed ETH). Additional math is there to
@@ -134,6 +135,21 @@ their yield by selling. Note that this does _not_ include the effect of RPL buyi
 from (a) holders sensitive to yield in a range where they could improve their yield by buying or (b)
 new joiners that are attracted by the greater incentives due to the now-higher spend on rETH supply.
 
+### Withdrawal friction
+
+The premise of the 2-step withdrawal system is to reduce volatility, both in general (where there’s
+no temptation to trade a quick spike), and especially in the case of a bank run (where people try to
+exit to sell before others exit to sell). The thought was very much inspired by Cosmos unbonding
+times. The position also partly came about as a compromise between folks that would like to see no
+lockup beyond the minimum and folks that would like higher lockups (eg, 100% bonded ETH); adding
+friction to exiting presented a midpoint between being fully liquid and being fully locked.
+
+While the `unstaking_period` is set to a rewards period or longer, it also helps avoid gaming
+staking rewards (eg, have RPL earning yield in Defi, then move it over in time for the rewards
+snapshot). In order to keep a realistic option of lowering `unstaking_period` beyond that, the
+"withdrawal cooldown after last RPL stake" feature is set to zero, but not entirely removed -- while
+there's no current plan to do so, this method keeps open the path of lowering `unstaking_period`
+(alongside an increase in withdrawal cooldown to resist gaming). 
 
 ## Acknowledgements
 I'd like to explicitly acknowledge the many folks that participated in research discussion on this
