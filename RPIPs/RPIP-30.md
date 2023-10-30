@@ -84,6 +84,8 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
     `unstaking_period` before any is available to withdraw
     - All RPL that was already "Unstaking" for `unstaking_period` SHOULD be withdrawn when a user
       sets additional RPL to "Unstaking"
+  - The withdrawal cooldown after last RPL stake (currently one reward period, prior to this RPIP)
+    SHALL be changed to use a pDAO-controlled setting initialized to 0 days 
 - Voting power calculations SHALL NOT be changed based on this RPIP (though do note that they SHALL
   NOT count "Unstaking" RPL)
 
