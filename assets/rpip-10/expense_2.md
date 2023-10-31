@@ -5,6 +5,9 @@ This expense has two parts:
 ## Rationale
 There was a mismatch between the actual budget (in RPIP) and the intent (in vote text) as explained
 in <https://dao.rocketpool.net/t/intended-vs-actual-budget-mismatch-in-rpip-10/2053?u=valdorff>.
+To get the amounts we "intended" as we shifted from 15% of inflation to 22% of inflation, we can
+calculate `new_share = (old_share*.15)/.22`. For the IMC, this gets us 34%, instead of the 27% we've
+been using. For the GMC, this gets us 20.5% instead of the 16% we've been using.
 
 This expense compensates the difference during periods affected before the budget was updated.
 
