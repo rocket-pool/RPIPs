@@ -3,31 +3,32 @@ rpip: 28
 title: Deposits Under the Minimum
 description: Allow minipool deposits that include an appropriate RPL stake, even when under the "minimum" RPL threshold 
 author: Valdorff (@Valdorff)
-discussions-to: 
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/allow-minipool-deposits-while-under-min-rpl/2100
+status: Final
 type: Protocol
 category: Core
 created: 2023-08-11
 ---
 
 ## Abstract
+This proposal removes an incentive to create sock-puppet nodes by adding the ability to do a
+combined minipool deposit AND RPL stake. This would allow creating a new minipool even when under
+the minimum.
 
+## Motivation
 Right now, if an NO falls below the minimum (value of RPL staked <10% of borrowed ETH), they can't 
 add a new minipool to that node unless they stake enough to reach the minimum AND cover the new
-minipool. Unless, of course, they make a new node. This means that we're creating an incentive to
+minipool. Unless, of course, they make a new node. This means that an incentive currently exists to
 make sock puppet nodes.
 
-This proposal suggests adding the ability to do a combined minipool deposit AND RPL stake. This
-would allow creating a new minipool even when under the minimum, and thus remove an incentive to
-create sock puppet nodes.
+The proposed atomic method allows users that prioritize convenience or otherwise wish to remain on
+one node an easy method to accomplish that goal, while still being able to add minipools. 
 
 ## Specification
 
-- There SHALL be a function that allows an atomic RPL stake and minipool ETH deposit
+- A function SHALL be added that allows an atomic RPL stake and minipool ETH deposit
 - This function SHALL succeed if the staked RPL meets the amount that would be needed for this
   minipool on a fresh node
-  - Note that this means the minipool MAY be created even if the overall node's RPL stake is below
-    the minimum needed (eg, for RPL rewards) 
 
 ## Reference Implementation
 
