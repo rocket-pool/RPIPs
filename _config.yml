@@ -31,9 +31,9 @@ header_pages:
 
 # Build settings
 highlighter: rouge
-markdown: kramdown
+markdown: GFM
 theme: minima
-kramdown:
+GFM:
   parse_block_html: false
   # This is the default, but be explicit as some RPIPs depend on it
   auto_ids: true
