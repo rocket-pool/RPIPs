@@ -80,7 +80,7 @@ RPIPs should be written in markdown format.
 
 **RPIP Header Preamble**
 
-Each RPIP must begin with an RFC 822 style header preamble, preceded and followed by three hyphens (---). This header is also termed “front matter” by Jekyll. The headers must appear in the following order.
+Each RPIP must begin with a header preamble, preceded and followed by three hyphens (---). This header is also termed “front matter” by Jekyll. The headers must appear in the following order.
 
 `rpip`: RPIP number (this is determined by the RPIP editor)
 
