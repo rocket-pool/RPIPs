@@ -4,7 +4,7 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Draft
+status: Living
 type: Meta
 created: 2022-08-09
 vote-to: https://vote.rocketpool.net/#/proposal/0x510383ca82a0096fa670a260692cf7a4097e199ce4f731dc4efd97a21f19f988
@@ -187,11 +187,10 @@ roughly steady given the initial proposed inflation step.
 
 ## Historical budget splits
 
-| Date                                | Split                                                                                      |
-|-------------------------------------|--------------------------------------------------------------------------------------------|
-| 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20%     |
-| 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57%     |
-| TBD                                 | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 20.5%, Reserve Treasury - 29.5% |
+| Date                                | Split                                                                                  |
+|-------------------------------------|----------------------------------------------------------------------------------------|
+| 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
+| 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
 ## Historical membership
 
@@ -202,11 +201,10 @@ roughly steady given the initial proposed inflation step.
 
 ## Direct expenses
 
-| Date       | Amount     | Summary                                                      | Link to full description                    |
-|------------|------------|--------------------------------------------------------------|---------------------------------------------|
-| 2023-09-03 | 3584 RPL   | 3 months initial dev funding                                 | [expense_1](../assets/rpip-10/expense_1.md) |
-| TBD        | 4643.69    | Compensate IMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
-| TBD        | 2985.22    | Compensate GMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
+| Date | Amount     | Summary                                    | Link to full description                    |
+|------|------------|--------------------------------------------|---------------------------------------------|
+| TBD  | 3584 RPL   | 3 months initial dev funding               | [expense_1](../assets/rpip-10/expense_1.md) |
+| TBD  | 0-3909 RPL | Additional dev funding with seat reduction | [expense_1](../assets/rpip-10/expense_1.md) |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
