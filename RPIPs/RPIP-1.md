@@ -90,7 +90,7 @@ Each RPIP must begin with a header preamble, preceded and followed by three hyph
 
 `discussions-to`: The url pointing to the official discussion thread on dao.rocketpool.net
 
-`status`: Draft, Review, Final, Stagnant, Withdrawn, Living
+`status`: Draft, Review, Final, Stagnant, Withdrawn, Living, Obsolete
 
 `type`: One of Protocol, Meta, or Informational. If Protocol, please include the category (`Core` or `RPRC`).
 
