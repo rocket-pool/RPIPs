@@ -56,11 +56,9 @@ The following is the standardization process for all RPIPs in all tracks:
 
 **Draft** - The first tracked stage of an RPIP in development. A Draft RPIP is merged by an RPIP Editor into the RPIP repository once properly formatted.
 
-**Review** - Reached once an RPIP Author marks an RPIP as ready for Review.
-
 **Final** - A Final RPIP exists in a state of finality and should only be updated to correct errata and add non-normative clarifications.
 
-**Stagnant** - Any RPIP in Draft or Review which is inactive for too long is moved to Stagnant. An RPIP may be resurrected by simply requesting this from an editor.
+**Stagnant** - Any RPIP with Draft status which is inactive for too long is moved to Stagnant. An RPIP may be resurrected by simply requesting this from an editor.
 
 **Withdrawn** - The RPIP Author(s) have withdrawn the proposed RPIP. This state has finality and can no longer be resurrected using this RPIP number. If the idea is pursued at later date it is considered a new proposal.
 
@@ -90,7 +88,7 @@ Each RPIP must begin with an RFC 822 style header preamble, preceded and followe
 
 `discussions-to`: The url pointing to the official discussion thread on dao.rocketpool.net
 
-`status`: Draft, Review, Final, Stagnant, Withdrawn, Living
+`status`: Draft, Final, Stagnant, Withdrawn, Living, Obsolete
 
 `type`: One of Protocol, Meta, or Informational. If Protocol, please include the category (`Core` or `RPRC`).
 
