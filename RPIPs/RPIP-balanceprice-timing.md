@@ -27,7 +27,9 @@ Furthermore, the coupling of the rewards period to this interval means that the 
 ## Specification
 
 - As the oDAO watchtower, I MUST be able to read the next time-based balance submission interval from the Rocket Pool protocol
+- *Balance submission default interval time will be `86400 secs` (225 epochs)*
 - As the oDAO watchtower, I MUST be able to read the next time-based RPL price submission interval from the Rocket Pool protocol  
+- *Price submission default interval time will be set to `86400 secs` (225 epochs)*
 
 ## Backwards Compatibility
 There is a slim chance that DeFi protocols that rely on the rETH exchange rate calculation may be affected, as the timing will change. That said, it is unlikely that DeFi protocols are reliant on the specific timing. Going forward, it makes DeFi integrations more intuitive because the rETH exchange rate changes more consistently.
