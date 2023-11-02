@@ -30,7 +30,7 @@ Furthermore, the coupling of the rewards period to this interval means that the 
 - As the oDAO watchtower, I MUST be able to read the next time-based RPL price submission interval from the Rocket Pool protocol  
 
 ## Backwards Compatibility
-There is a slim chance that DeFi protocols that rely on the rETH exchange rate calculation may be affected, as the timing will change. That said, it is unlikely that DeFi protocols are reliant on the specific timing. Going forward, it makes DeFi integrataions more intuitive because the rETH exchange rate changes more consistently.
+There is a slim chance that DeFi protocols that rely on the rETH exchange rate calculation may be affected, as the timing will change. That said, it is unlikely that DeFi protocols are reliant on the specific timing. Going forward, it makes DeFi integrations more intuitive because the rETH exchange rate changes more consistently.
 
 ## Security Considerations
 A full audit process will cover any security considerations but there are no known considerations.

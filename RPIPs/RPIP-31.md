@@ -56,6 +56,7 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
 - As the controller of the RPL for a node, I MUST be able to trigger a claim of RPL rewards and restake a portion
   - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
+- *If a node operator is in the smoothing pool a claim of RPL will also distribute ETH rewards*
 
 ### Staking RPL
 - As the controller of the RPL for a node, I MUST be able to stake additional RPL
