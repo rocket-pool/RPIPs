@@ -174,6 +174,7 @@ While the full social authorities for the company are hard to capture due to the
         * stake.rocketpool.net (user-facing staking site)
         * delegates.rocketpool.net (delegate profiles)
 * Trademarks
+* Sanctioning of the [bug bounty program](https://immunefi.com/bounty/rocketpool/).
 
 ##### Software Pipeline
 
