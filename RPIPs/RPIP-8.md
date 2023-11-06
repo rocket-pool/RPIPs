@@ -50,7 +50,7 @@ We believe all parties are "winning" with this new option.
   - For a node with a single LEB8 minipool, this would mean 2.4 ETH in staked RPL value.
 - Nodes MUST have RPL valued at 10% or more of matched Protocol ETH to qualify for RPL rewards.
 - \<Line to be added based on "max effective" stake vote\>
-- Effectively staked RPL SHALL be used when calculating RPL rewards and voting power. 
+- Effectively staked RPL SHALL be used when calculating RPL rewards. 
 - There SHALL be a method to migrate from an existing half or full-deposit minipool to an LEB8.
   - Node operators that migrate SHALL receive an ETH credit that can be used towards starting more
     minipools; that credit SHALL NOT be directly able to be withdrawn.

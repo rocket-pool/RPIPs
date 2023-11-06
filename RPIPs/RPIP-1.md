@@ -10,7 +10,7 @@ created: 2022-03-17
 
 ## Summary: What is an RPIP?
 
-RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](../rpip-template.md).
+RPIP stands for Rocket Pool Improvement Proposal. An RPIP is a design document providing information to the Rocket Pool community or describing a new feature for Rocket Pool or its processes or environment. The precise format for RPIPs is detailed below, and [a template is located here](https://github.com/rocket-pool/RPIPs/blob/main/rpip-template.md).
 
 Only RPIPs in the "Final" state are eligible for adoption and must be reviewed by editors before marked as "Final". If you want to contribute to an existing "Draft" RPIP, coordinate with the original author(s) to submit a PR. If you want to work on a new RPIP, contact any of the [editors](#rpip-editors).
 
@@ -80,7 +80,7 @@ RPIPs should be written in markdown format.
 
 **RPIP Header Preamble**
 
-Each RPIP must begin with an RFC 822 style header preamble, preceded and followed by three hyphens (---). This header is also termed “front matter” by Jekyll. The headers must appear in the following order.
+Each RPIP must begin with a header preamble, preceded and followed by three hyphens (---). This header is also termed “front matter” by Jekyll. The headers must appear in the following order.
 
 `rpip`: RPIP number (this is determined by the RPIP editor)
 
@@ -90,7 +90,7 @@ Each RPIP must begin with an RFC 822 style header preamble, preceded and followe
 
 `discussions-to`: The url pointing to the official discussion thread on dao.rocketpool.net
 
-`status`: Draft, Review, Final, Stagnant, Withdrawn, Living
+`status`: Draft, Review, Final, Stagnant, Withdrawn, Living, Obsolete
 
 `type`: One of Protocol, Meta, or Informational. If Protocol, please include the category (`Core` or `RPRC`).
 

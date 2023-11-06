@@ -28,18 +28,43 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
 
 ## Specification
 - The withdrawal address that has existed to date SHALL be known as the primary withdrawal address
+
+### Defaults
+- The RPL withdrawal address SHALL be initialized as unset for new node operators
+- The RPL withdrawal address SHALL be initialized as unset for existing node operators
+  
+### Rewards & Withdrawn RPL
 - If a node's RPL withdrawal address is set, all RPL rewards and withdrawn RPL will go to the RPL withdrawal address
 - If a node's RPL withdrawal address is unset, all RPL rewards and withdrawn RPL will go to the primary withdrawal address
+
+### Setting the Address
 - As a node operator, I MUST be able to set an RPL withdrawal address so that I can direct my RPL bond/rewards
   - If a node's RPL withdrawal address is unset, the change MUST come from the node's primary withdrawal address
   - If a node's RPL withdrawal address is set, the change MUST come from the current RPL withdrawal address
 - As a node operator, I MUST be able to confirm the RPL withdrawal address from the new target address before it takes effect, to ensure it is the correct address
 - As the owner of the RPL withdrawal address, I MUST be able to unset my RPL withdrawal address
-- As the controller of the RPL withdrawn from a node, I MUST be able to call `RocketNodeStaking.withdrawRPL()` to withdraw excess RPL
+
+### Withdrawing RPL
+- As the controller of the RPL withdrawn from a node, I MUST be able to call withdraw RPL as allowed by the protocol
   - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
-- The RPL withdrawal address SHALL be initialized as unset for new node operators
-- The RPL withdrawal address SHALL be initialized as unset for existing node operators
+
+### Claiming RPL rewards
+- As the controller of the RPL for a node, I MUST be able to trigger a claim of RPL rewards
+  - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
+  - If a node's RPL withdrawal address is set, the call MUST come from one of: the node's primary withdrawal address, the current RPL withdrawal address, or the node's address
+- As the controller of the RPL for a node, I MUST be able to trigger a claim of RPL rewards and restake a portion
+  - If a node's RPL withdrawal address is unset, the call MUST come from one of: the node's primary withdrawal address, or the node's address
+  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
+- *If a node operator is in the smoothing pool a claim of RPL will also distribute ETH rewards*
+
+### Staking RPL
+- As the controller of the RPL for a node, I MUST be able to stake additional RPL
+  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address, or a specifically allowed address
+  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address, or a specifically allowed address
+- As the controller of the RPL for a node, I MUST be able to control the list of specifically allowed RPL staking addresses
+  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
+  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
 
 ## Backwards Compatibility
 The specification as written is backwards compatible with the current withdrawal address. The behaviour is as current for node operators who do not use the new functionality.
