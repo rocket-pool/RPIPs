@@ -285,7 +285,7 @@ At the time of writing, the ‘owners’ of each pathway are:
 * oDAO settings pathway - oDAO
 * oDAO upgrade pathway - oDAO
     
-![](https://hackmd.io/_uploads/Sk9xOtQbp.png)
+![](../assets/rpip-x/RocketPoolOnchainGovernancePathways.png)
     
 Usage of the oDAO pathways to do anything requires a majority vote from oDAO members. While a delay is imposed post-proposal-prior-to-vote, there is no post-vote-prior-to-execution time lock present in the Rocket Pool protocol at the time of writing.
 
