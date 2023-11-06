@@ -164,7 +164,7 @@ Rocket Pool Pty Ltd is the legal entity that created and deployed the Rocket Poo
 
 ##### Authorities
 
-As founder of the protocol, Rocket Pool Pty Ltd has broad implied authority, in areas where the pDAO has not claimed or revoked them. This includes the authority to declare work by the community as officially associated with Rocket Pool. An example of this is the sanctioning of the [bug bounty program](https://immunefi.com/bounty/rocketpool/).
+As founder of the protocol, Rocket Pool Pty Ltd has broad implied authority in areas where the pDAO has not claimed or revoked it. 
 
 While the full social authorities for the company are hard to capture due to the difference granted to the organization, the following categories are backed up by potential court proceedings:
 
