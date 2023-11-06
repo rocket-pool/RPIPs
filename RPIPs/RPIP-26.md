@@ -171,6 +171,10 @@ To ensure a smooth transition and maintain operational continuity, the committee
 - Upon the initiation of the replacement hiring process, the GMC will promptly begin the recruitment procedure outlined in the standard hiring process mentioned above.
 - The job posting for the administrator position will be updated to indicate the urgency of the situation and the need for an emergency replacement.
 
+## Membership
+
+Current and historic membership is recorded in [RPIP-35](RPIP-35#grants-management-committee).
+
 ## Rationale
 
 The community has long desired a process by which some portion of pDAO funds could be used to reward
