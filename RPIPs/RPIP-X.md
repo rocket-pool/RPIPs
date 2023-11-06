@@ -83,12 +83,12 @@ OracleDAO governance is defined as successful on-chain governance proposals vote
 
 ##### Authorities
 
-* oDAO has the authority to veto changes approved by the pDAO if they have reason to believe the changes meet any of the following criteria according to [[RPIP-24](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-24.md#odao-values)]:
+* oDAO has the authority to veto changes approved by the pDAO if they have reason to believe the changes meet any of the following criteria according to [[RPIP-24](RPIP-24.md#odao-values)]:
   * Malicious
   * Not voted by the pDAO
   * A result of vote manipulation in the pDAO
   * Would result in clear damage to the Rocket Pool project
-* The oDAO has the authority to maintain its own membership. [[RPIP-24](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-24.md#odao-values)]
+* The oDAO has the authority to maintain its own membership. [[RPIP-24](RPIP-24.md#odao-values)]
 
 #### Guardian
 
@@ -186,7 +186,7 @@ The powers and authorities above can be quite broad-reaching but may cover up so
 
 ##### Description
 
-RPIP Editors are tasked with ensuring RPIP documents are finalized and correctly formatted before voting. The position is apolitical, with RPIP Editors not making value judgments in their duties, but rather evaluating based on completeness and format. [[RPIP-1](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-1.md#rpip-editor-responsibilities)]
+RPIP Editors are tasked with ensuring RPIP documents are finalized and correctly formatted before voting. The position is apolitical, with RPIP Editors not making value judgments in their duties, but rather evaluating based on completeness and format. [[RPIP-1](RPIP-1.md#rpip-editor-responsibilities)]
 
 ##### Powers
 
@@ -205,7 +205,7 @@ RPIP Editors are tasked with ensuring RPIP documents are finalized and correctly
 
 ##### Description
 
-The Grants Management Committee exists to distribute grants and bounties, retrospectively and prospectively, to further the goals of the Rocket Pool protocol. Bound by [[RPIP-26](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-26.md)], this committee must consist of nine members.
+The Grants Management Committee exists to distribute grants and bounties, retrospectively and prospectively, to further the goals of the Rocket Pool protocol. Bound by [[RPIP-26](RPIP-26.md)], this committee must consist of nine members.
 
 ##### Powers
 
@@ -215,7 +215,7 @@ The Grants Management Committee exists to distribute grants and bounties, retros
 ##### Authorities
 
 * The GMC has the authority to distribute its share of the pDAO’s budget on a rolling basis, in the form of grants, bounties, and retrospective awards.
-* The GMC has the authority to remove a GMC member with a vote of ⅔ of the committee so long as it does not violate the multisig requirements agreed by the pDAO [[RPIP-10](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-10.md#management-committee-governance)].
+* The GMC has the authority to remove a GMC member with a vote of ⅔ of the committee so long as it does not violate the multisig requirements agreed by the pDAO [[RPIP-10](RPIP-10.md#management-committee-governance)].
 * The GMC has the authority to select a GMC Administrator for the committee, through a majority vote of current GMC members.
 * The GMC has the authority to select an interim GMC Administrator in the event of a vacancy.
 * The GMC has the authority to remove the GMC Administrator through a majority vote.
@@ -224,7 +224,7 @@ The Grants Management Committee exists to distribute grants and bounties, retros
 
 ##### Description
 
-The Grants Management Council Administrator is responsible for overseeing and facilitating GMC operations, specifically the rolling awards process introduced by [[RPIP-26](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-26.md#expanded-gmc-administrator-role)]. The GMC Admin is expected to perform various tasks supporting the efficiency of the GMC such as meeting coordinator, awards facilitator, spokesperson, grants and bounties liaison, treasurer, and governance author.
+The Grants Management Council Administrator is responsible for overseeing and facilitating GMC operations, specifically the rolling awards process introduced by [[RPIP-26](RPIP-26.md#expanded-gmc-administrator-role)]. The GMC Admin is expected to perform various tasks supporting the efficiency of the GMC such as meeting coordinator, awards facilitator, spokesperson, grants and bounties liaison, treasurer, and governance author.
 
 ##### Powers
 
@@ -239,7 +239,7 @@ The Grants Management Council Administrator is responsible for overseeing and fa
 
 ##### Description
 
-The Incentives Management Committee oversees funds and liquidity incentives for Rocket Pool. Primarily its goal is to support rETH liquidity with a secondary focus on RPL liquidity. [[RPIP-20](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-20.md)]
+The Incentives Management Committee oversees funds and liquidity incentives for Rocket Pool. Primarily its goal is to support rETH liquidity with a secondary focus on RPL liquidity. [[RPIP-20](RPIP-20.md)]
 
 ##### Powers
 
@@ -248,15 +248,15 @@ The Incentives Management Committee oversees funds and liquidity incentives for 
 
 ##### Authorities
 
-* The IMC has the authority to distribute funds for supporting rETH liquidity up to the annual allocation determined in [[RPIP-20](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-20.md#guiding-principles)].
-* The IMC has the authority to distribute funds for supporting RPL liquidity up to 10% of the annual allocation determined in [[RPIP-20](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-20.md#guiding-principles)].
-* The IMC has the authority to remove an IMC member with a vote of ⅔ of the committee so long as it does not violate the multisig requirements agreed upon by the pDAO. [[RPIP-10](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-10.md#management-committee-governance)]
+* The IMC has the authority to distribute funds for supporting rETH liquidity up to the annual allocation determined in [[RPIP-20](RPIP-20.md)].
+* The IMC has the authority to distribute funds for supporting RPL liquidity up to 10% of the annual allocation determined in [[RPIP-20](RPIP-20.md)].
+* The IMC has the authority to remove an IMC member with a vote of ⅔ of the committee so long as it does not violate the multisig requirements agreed upon by the pDAO. [[RPIP-10](RPIP-10.md)]
 
 #### pDAO Treasurer
 
 ##### Description
 
-pDAO Treasurer is a position appointed by [[RPIP-10](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-10.md)] that is responsible for reporting on pDAO expenditures.
+pDAO Treasurer is a position appointed by [[RPIP-10](RPIP-10.md)] that is responsible for reporting on pDAO expenditures.
 
 ##### Powers
 
@@ -265,8 +265,8 @@ The pDAO Treasurer has no direct, on-chain power over the Rocket Pool protocol.
 ##### Authorities
 
 * The pDAO Treasurer has the authority to classify expenditures to the greater community.
-* The pDAO Treasurer has the authority to cast the tie-breaking vote in an interim GMC Administrator election. [[RPIP-26](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-26.md)]
-* The pDAO Treasurer has the authority to randomly select from tied candidates in committee member elections. [[RPIP-10](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-10.md#management-committee-selection)]
+* The pDAO Treasurer has the authority to cast the tie-breaking vote in an interim GMC Administrator election. [[RPIP-26](RPIP-26.md)]
+* The pDAO Treasurer has the authority to randomly select from tied candidates in committee member elections. [[RPIP-10](RPIP-10.md)]
     
 #### Appendix
     
@@ -297,12 +297,12 @@ A list of all contracts considered part of the Rocket Pool protocol is stored in
     
 ## References
  
-[RPIP-1](https://rpips.rocketpool.net/RPIPs/RPIP-1)  
-[RPIP-4](https://rpips.rocketpool.net/RPIPs/RPIP-4)  
-[RPIP-10](https://rpips.rocketpool.net/RPIPs/RPIP-10)  
-[RPIP-20](https://rpips.rocketpool.net/RPIPs/RPIP-20)  
-[RPIP-24](https://rpips.rocketpool.net/RPIPs/RPIP-24)  
-[RPIP-26](https://rpips.rocketpool.net/RPIPs/RPIP-26)  
+[RPIP-1](RPIP-1.md)  
+[RPIP-4](RPIP-4.md)  
+[RPIP-10](RPIP-10.md)  
+[RPIP-20](RPIP-20.md)  
+[RPIP-24](RPIP-24.md)  
+[RPIP-26](RPIP-26.md)  
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
