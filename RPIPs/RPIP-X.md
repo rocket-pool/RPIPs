@@ -303,3 +303,6 @@ A list of all contracts considered part of the Rocket Pool protocol is stored in
 [RPIP-20](https://rpips.rocketpool.net/RPIPs/RPIP-20)  
 [RPIP-24](https://rpips.rocketpool.net/RPIPs/RPIP-24)  
 [RPIP-26](https://rpips.rocketpool.net/RPIPs/RPIP-26)  
+
+## Copyright
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
