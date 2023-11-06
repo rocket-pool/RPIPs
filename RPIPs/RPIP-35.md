@@ -3,8 +3,7 @@ rpip: 35
 title: Committee Membership Record
 description: This RPIP records active committees within the Rocket Pool DAO, alongside their current and historic membership.
 author: LongForWisdom (@LongForWisdom)
-discussions-to: <URL>
-status: Draft
+status: Living
 type: Informational
 created: 2023-11-03
 requires: 10
