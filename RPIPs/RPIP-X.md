@@ -11,7 +11,7 @@ created: 2023-11-07
 
 ## Abstract
     
-This RPIP serves as a guide to understanding the governance processes of the Rocket Pool protocol. It provides an overview of the powers and authorities held by various governance actors, including the oDAO, pDAO, established committees, and other relevant roles. The aim is to improve transparency and efficiency in Rocket Pool’s decision-making process by clearly delineating these roles and responsibilities.
+This RPIP serves as a guide to understanding the governance processes of the Rocket Pool protocol. It provides an overview of the powers and authorities held by various governance actors, including the oDAO, pDAO, established committees, and other relevant roles. 
 
 ## Motivation
     
