@@ -166,7 +166,7 @@ Rocket Pool Pty Ltd is the legal entity that created and deployed the Rocket Poo
 
 As founder of the protocol, Rocket Pool Pty Ltd has broad implied authority in areas where the pDAO has not claimed or revoked it. 
 
-While the full social authorities for the company are hard to capture due to the difference granted to the organization, the following categories are backed up by potential court proceedings:
+While the full social authorities for the company are hard to capture due to the autonomy granted to the organization, the following categories are backed up by potential court proceedings:
 
 * Domain names
     * Important domains include:
