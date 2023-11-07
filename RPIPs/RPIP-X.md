@@ -6,7 +6,7 @@ author: LongForWisdom (@LongForWisdom), Payton Rose (@prose11), Patrick_J (@patr
 discussions-to: https://dao.rocketpool.net/t/rocket-pool-powers-and-authorities/2176
 status: Draft
 type: Informational
-created: 2023-10-18
+created: 2023-11-07
 ---
 
 ## Abstract
