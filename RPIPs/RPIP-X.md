@@ -181,7 +181,6 @@ While the full social authorities for the company are hard to capture due to the
 The powers and authorities above can be quite broad-reaching but may cover up some important explicit procedures of trust carried by Rocket Pool Pty Ltd.
 
 - Rocket Pool Pty Ltd verifies updates to the [Smartnode Repository](https://github.com/rocket-pool/smartnode) and releases them with the expectation that node operators will manually update to new releases.
-- Following this [guideline](https://dao.rocketpool.net/t/meta-proposal-for-a-watchtower-and-rewards-tree-change-process/1267), Rocket Pool Pty Ltd can push changes for technical adoption that may or may not follow the standard process for RPIP Governance. 
 
 #### RPIP Editors
 
