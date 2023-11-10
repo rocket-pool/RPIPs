@@ -197,10 +197,7 @@ for the duration of the proposal process. In order to be eligible to propose, no
 for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
 withdrawing RPL.
 
-By default, locking RPL for any purpose will be disabled. Node operator's will opt-in to performing governance activities
-by enabling the locking of RPL from their node or primary withdrawal address. On the condition that 
-[RPIP-31: RPL Withdrawal Address](./RPIP-31.md) is ratified and implemented, if the RPL withdrawal address is set then, 
-you will only be able to enable or disable RPL locking using this address.
+By default, locking RPL for any purpose will be disabled. Node operator's will opt-in to performing governance activities by enabling the locking of RPL from their node or primary withdrawal address. On the condition that [RPIP-31: RPL Withdrawal Address](./RPIP-31.md) is ratified and implemented, if the RPL withdrawal address is set then, you will only be able to enable or disable RPL locking using this address.
 
 As part of a proposal submission, a node operator MUST provide a Merkle pollard across a Merkle-sum tree of delegated
 voting power at a block that is at most `proposal.max.block.age` blocks old. From this pollard the protocol SHALL
