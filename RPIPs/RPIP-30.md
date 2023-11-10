@@ -55,7 +55,7 @@ the protocol goal of attracting minipool creation (and rETH supplying).
   - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
     - $`node\_weight=100 * staked\_rpl\_value\_in\_eth`$
   - If staked RPL value in ETH is > 15% borrowed ETH
-    - $`node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth`$
+    - `$node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth$`
     - This value MAY be approximated if necessary
 - `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
   active rewards tree spec when the vote is passed
