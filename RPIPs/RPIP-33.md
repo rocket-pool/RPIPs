@@ -50,28 +50,19 @@ $$
 
 ```math
 $$
-p_{n} = \frac{\sqrt{R_{n}}}{2}
+p_{n} = {\sqrt{R_{n}}}
 $$
 ```
 
 ```math
 $$
-R_{n} = \begin{cases}
-0 & S_{n} < m_{n} \\
-min(S_{n}, M_{n}) & S_{n} \geq m_{n} \\
-\end{cases}
+R_{n} = min(S_{n}, M_{n})
 $$
 ```
 
 ```math
 $$
-m_{n} = \frac{U_{n} \times 10 \%}{r}
-$$
-```
-
-```math
-$$
-M_{n} = \frac{N_{n} \times 150 \%}{r}
+M_{n} = \frac{N_{n} \times 1.5}{r}
 $$
 ```
 
@@ -79,9 +70,9 @@ Where:
 
 * $P_{n}$ is the voting power for $n$.
 * $S_{n}$ is RPL staked on the node $n$.
+* $R_{n}$ is the maximum vote weight
+* $M_{n}$ is the maximum RPL staked that is counted towards voting
 * $N_{n}$ is the amount of bonded ETH on a node (the amount a node operator $n$ has contributed).
-* $U_{n}$ is the amount of borrowed ETH on a node (the amount of ETH a node operator $n$ has taken from the deposit
-  pool).
 * $d_{n}$ is the node which $n$ has delegated to.
 * $r$ is the current market rate of RPL in ETH.
 * $N$ is the number of nodes in the node set.
@@ -94,9 +85,7 @@ P = \sum_{i=1}^{N} P_{i}
 $$
 ```
 
-This formula is not new to this proposal, it is just defined here formally.
-
-### Proposals
+### Proposal Types
 
 Proposals MUST be one of the following types:
 
@@ -154,6 +143,13 @@ A proposal of this type can perform one of these actions:
 2. **Cancel:** Prematurely cancels a contract.
 3. **Replace:** Cancels an existing contract and creates a new one in a single transaction.
 
+Recipients of recurring payments from the treasury MAY claim their payments at any time. Recurring payments occur
+without a transaction. Therefore, recipient MUST execute a transaction in order to receive their RPL from the treasury.
+
+Recipients of payments MAY execute a claim at any time from the recipient address specified in the payment
+contract. The protocol SHALL calculate all payments up to that point in time and transfer the required RPL from its
+treasury to the recipient.
+
 #### Security Council Change
 
 The purpose of the proposal type is to control the set of members of the "Security Council". The following actions are
@@ -186,22 +182,11 @@ Security Council membership is a serious role and the pDAO SHOULD develop strong
 routinely flushing stale members. The development of these requirements and processes is left for a future RPIP. To
 begin with, the current pDAO guardian SHALL be the sole member.
 
-### Voting Options and Quorum
+### Proposal Voting Process
 
-Each node operator who has a non-zero voting power MAY vote with one of the following options:
+![Proposal Voting Process](../assets/rpip-33/timeline.png)
 
-1. **Abstain:** The voter's voting power is contributed to quorum but is neither for nor against the proposal.
-2. **For:** The voter votes in favour of the proposal being executed.
-3. **Against:** The voter votes against the proposal being executed.
-4. **Veto:** The voter votes against the proposal as well as indicating they deem the proposal as spam or malicious. If
-   the veto quorum (as defined by the `proposal.veto.quorum parameter`) is met, the proposal is immediately defeated and
-   the proposer loses their bond. This is to dissuade spam, low quality proposals, or proposals that have not gone
-   through off-chain processes first.
-
-If the sum of voting power of votes exceeds the quorum threshold (as defined by the `proposal.quorum` parameter), the
-proposal SHALL be executed and its changes affected.
-
-### Snapshotting
+#### Snapshotting
 
 In order to calculate voting power $P_{n}$ at any given block, the protocol SHALL maintain an on-chain array of changes
 to all input variables to the voting power function. The value at a past block can then be looked up via a
@@ -211,35 +196,25 @@ The following values SHALL be snapshot each time they are changed on chain:
 
 * RPL staked on a node ($S_{x}$)
 * Bonded ETH ($N_{x}$)
-* Borrowed ETH ($U_{x}$)
 * Delegate of a node operator ($d_{x}$)
 * Price of RPL against ETH ($r$)
 * The number of registered nodes ($N$)
 
-### Proposing
+#### Proposing
 
-Any node with a non-zero voting power MAY raise a proposal at any time provided they have waited longer than the
-proposal cooldown period since their last proposal. RPL equal to the proposal bond SHALL be locked for the duration of
-the proposal process. In order to be eligible to propose, node MUST have an effective RPL stake (minus any
-already locked RPL) greater than the proposal bond. Locked RPL SHALL act the same way as regular staked RPL for the
-purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
+Any node with a non-zero voting power MAY raise a proposal at any time. RPL equal to the proposal bond SHALL be locked 
+for the duration of the proposal process. In order to be eligible to propose, node MUST have an RPL stake 
+(minus any already locked RPL) greater than the proposal bond. Locked RPL SHALL act the same way as regular staked RPL 
+for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
 withdrawing RPL.
 
-As part of a proposal submission, a node operator MUST provide a merkle pollard across a merkle-sum tree of delegated
+As part of a proposal submission, a node operator MUST provide a Merkle pollard across a Merkle-sum tree of delegated
 voting power at a block that is at most `proposal.max.block.age` blocks old. From this pollard the protocol SHALL
 calculate the total protocol voting power $P$. The root of this pollard alongside the sum SHALL be stored by the
 protocol against the proposal.
 
-If a proposal is not defeated after `proposal.vote.delay.time` has passed, the proposal enters the "voting" stage.
-During this stage, node operators MAY vote on the proposal as
-per [Voting Options and Quorum](#voting-options-and-quorum). The quorum required for the proposal to pass is set
-to `proposal.quorum` percent of $P$. And its veto quorum is set to `proposal.veto.quorum` percent of $P$. Once the
-voting stage has completed and so long as the proposal was not vetoed, the proposer MAY unlock their RPL bond. If a
-proposal is vetoed, the bond is burned by sending it to the common Ethereum burn address
-[0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000).
-
 If a proposal is challenged, the proposer MAY respond to the challenge by providing a new pollard where the root node
-is the challenged index and a merkle proof from the challenged index back to the proposal root. A proposer will be
+is the challenged index and a Merkle proof from the challenged index back to the proposal root. A proposer will be
 unable to respond if the response requires submitting a pollard containing leaf nodes where the leaf nodes do not match
 the actual values on chain. In this way, they are forced to not respond for `proposal.challenge.period` time. After
 which, the proposal can be defeated.
@@ -247,10 +222,10 @@ which, the proposal can be defeated.
 If a proposal is defeated, the proposer forfeits their bond which is divided proportionally amongst the challengers who
 contributed to the proposal's defeat.
 
-### Verifying
+#### Challenging 
 
-Any node MAY challenge a proposal by supplying an index into the merkle-sum tree that they are alleging is incorrect.
-The challenger MUST have at least `proposal.challenge.bond` unlocked effective RPL stake. And this amount of the
+Any node MAY challenge a proposal by supplying an index into the Merkle-sum tree that they are alleging is incorrect.
+The challenger MUST have at least `proposal.challenge.bond` unlocked RPL stake. And this amount of the
 challenger's RPL SHALL BE locked until the proposal is defeated, or until the bond is lost.
 
 The index which is alleged to be incorrect MUST be an index of a node in one of the pollards that the proposer has
@@ -258,7 +233,7 @@ submitted. Either the initial pollard submitted with the proposal, or any subseq
 
 If the initial pollard submitted by the proposer is invalid, they will be unable to respond to challenges which require
 the proposer to provide information that is known on chain. It will take a few rounds of challenges and responses to
-reach the last layer of the merkle-sum tree. After which, the proposer will no longer be able to respond to challenges.
+reach the last layer of the Merkle-sum tree. After which, the proposer will no longer be able to respond to challenges.
 
 After `proposal.challenge.period` has passed and the proposer has not responded to the challenge, any one MAY
 defeat the proposal. If a proposal is defeated, it SHALL NOT enter the voting period. And SHALL NOT be executed.
@@ -274,23 +249,42 @@ that resulted in the defeat of the proposal share the reward. All other challeng
 If a challenger challenges a node, the proposer responds, and the proposal does not get defeated. The proposer SHALL be
 able to claim the challenge bonds from the invalid challenges.
 
+#### Voting
+
+If a proposal is not defeated after `proposal.vote.delay.time` has passed, the proposal enters the voting stages.
+
+During the voting stages, delegates and node operators MAY vote on the proposal. Each node operator who has a non-zero voting power MAY vote with one of the following options:
+
+1. **Abstain:** The voter's voting power is contributed to quorum but is neither for nor against the proposal.
+2. **For:** The voter votes in favour of the proposal being executed.
+3. **Against:** The voter votes against the proposal being executed.
+4. **Veto:** The voter votes against the proposal as well as indicating they deem the proposal as spam or malicious. If
+   the veto quorum (as defined by the `proposal.veto.quorum parameter`) is met, the proposal is immediately defeated and
+   the proposer loses their bond. This is to dissuade spam, low quality proposals, or proposals that have not gone
+   through off-chain processes first.
+
+In the first voting stage, voting delegates, and node operators who have not delegated (effectively delegated to themselves), cast their vote by providing a Merkle proof of their voting power (relative to the submitted proposal root). Once the first stage has passed, voting enters the second voting stage. Node operators who have delegated their vote, get the opportunity to override their delegate's vote, if they disagree.
+
+The quorum required for the proposal to pass is set to `proposal.quorum` percent of $P$. Once the voting stages have passed, a proposal is successful if **For** votes are greater than **Against**.
+
+#### Veto
+
+Voters may deem a proposal to be spam or particularly dangerous. They have the option to cast a **Veto** vote. The veto quorum is set to `proposal.veto.quorum` percent of $P$. If a proposal is vetoed, the proposer's bond is burned by sending it to the common Ethereum burn address [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000).
+
+#### Execution
+
+Once both voting periods have passed and the proposal is successful, the proposal can be executed and the change (defined by the payload) is applied to the Rocket Pool protocol. 
+
+After the proposal has passed the voting periods, the proposer MAY unlock their RPL bond, unless the proposal was defeated by a challenge or vetoed.
+
 ### Further Technical Information
 
-More in depth technical information about the merkle-sum tree and pollard generation can be
+More in depth technical information about the Merkle-sum tree and pollard generation can be
 found [here](https://github.com/rocket-pool/rocketpool-research/blob/master/pDAO%20Replacement/pDAO.md#technical-information).
-
-### Claiming Payments
-
-Recipients of recurring payments from the treasury MAY claim their payments at any time. Recurring payments occur
-without a transaction. Therefore, recipient MUST execute a transaction in order to receive their RPL from the treasury.
-
-Recipients of payments MAY execute a claim at any time from the recipient address specified in the payment
-contract. The protocol SHALL calculate all payments up to that point in time and transfer the required RPL from its
-treasury to the recipient.
 
 ## Rationale
 
-The purpose of the merkle sum tree is to overcome a limitation in the EVM of being able to iterate over each node in the
+The purpose of the Merkle sum tree is to overcome a limitation in the EVM of being able to iterate over each node in the
 node set and accumulate the sum of all voting power at a given block. This would require iterating over thousands of
 storage slots which would quickly exceed the gas limit of a single Ethereum block.
 
