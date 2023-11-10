@@ -45,3 +45,18 @@ All RPIPs must contain a section that discusses the security implications/consid
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+## Notes - Remove Before Submitting
+Any LaTeX code should be delimted using 
+
+For blocks
+```math
+$$
+
+LaTeX goes here
+
+$$
+```
+
+Inline
+$ LaTeX goes here $
