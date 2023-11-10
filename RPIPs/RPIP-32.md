@@ -29,10 +29,11 @@ While the primary aim of this feature is to facilitate single depositor scenario
   - If the `RPL withdrawal address` RPIP is ratified, note that withdrawal address in this RPIP's Specification refers to the "primary withdrawal address". In this case, this line should be removed and the wording updated in the Specification.
 
 ## Specification
-- As the owner of a node's withdrawal address, I MUST be able to fund the corresponding node with ETH that is accounted for separately from the node's funds
-- As the owner of a node's withdrawal address, I MUST be able to withdraw unused withdrawal address supplied ETH
-- As a node operator, I MUST NOT be able to withdraw the funds supplied by the withdrawal address
-- As a node operator, I MUST be able to fund new minipools using the withdrawal address supplied ETH
+- As someone who wants to supply ETH to a node for staking, I MUST be able to fund a specific node with ETH from any address
+- As someone who wants to supply ETH to a node for staking, I want the supplied ETH to be accounted for separately from the node's own funds
+- As the owner of a node's withdrawal address, I MUST be able to withdraw unused supplied ETH
+- As a node operator, I MUST NOT be able to withdraw the ETH funds supplied by another address
+- As a node operator, I MUST be able to fund new minipools using the supplied ETH
 
 ## Backwards Compatibility
 The specification as written is backwards compatible with the current deposit process. The behaviour is as current for node operators who do not use the new functionality.
