@@ -147,7 +147,6 @@ possible:
 
 1. **Invite Member:** Invites a new member to the Security Council.
 2. **Remove Member:** Removes an existing member from the Security Council.
-3. **Disband:** Removes all members from the Security Council. Effectively disabling it.
 
 The pDAO also has control over how many members are required for quorum. This is adjusted with a parameter change of the
 parameter `proposal.security.quorum`.
@@ -197,6 +196,11 @@ for the duration of the proposal process. In order to be eligible to propose, no
 (minus any already locked RPL) greater than the proposal bond. Locked RPL SHALL act the same way as regular staked RPL 
 for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
 withdrawing RPL.
+
+By default, locking RPL for any purpose will be disabled. Node operator's will opt-in to performing governance activities
+by enabling the locking of RPL from their node or primary withdrawal address. On the condition that 
+[RPIP-31: RPL Withdrawal Address](./RPIP-31.md) is ratified and implemented, if the RPL withdrawal address is set then, 
+you will only be able to enable or disable RPL locking using this address.
 
 As part of a proposal submission, a node operator MUST provide a Merkle pollard across a Merkle-sum tree of delegated
 voting power at a block that is at most `proposal.max.block.age` blocks old. From this pollard the protocol SHALL
