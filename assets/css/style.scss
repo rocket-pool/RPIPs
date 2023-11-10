@@ -237,31 +237,12 @@ main.page-content {
   }
 }
 
-pre
+/* Doesn't work on firefox :( ) */
+pre:has(.language-math)
 {
     border: 0px;
     border-radius: 0px;
     background-color: #00000000;
-}
-
-code
-{
-  background-color: #eef;
-  border: 1px solid #e8e8e8;
-  border-radius: 3px;
-}
-
-code.language-math
-{
-    border: 0px;
-    border-radius: 0px;
-    background-color: #00000000;
-}
-
-.MathJax_Display { 
-  display: inline-block!important; 
-  margin: 0em;
-
 }
 
 /*
