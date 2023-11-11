@@ -21,7 +21,7 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 ### Prioritisation
 
-- Every 12 months, the Team MUST facilitate a prioritisation discussion with the pDAO.
+- Every 12 months, the Team MUST facilitate a prioritisation discussion with the Rocket Pool community.
 - pDAO SHOULD engage in the prioritisation discussion to ensure development team prioritises are aligned with pDAO expectations.
 - Team MUST summarise findings of prioritisation discussion and communicate them to the pDAO.
 
