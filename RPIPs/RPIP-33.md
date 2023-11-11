@@ -146,7 +146,9 @@ The purpose of the proposal type is to control the set of members of the "Securi
 possible:
 
 1. **Invite Member:** Invites a new member to the Security Council.
-2. **Remove Member:** Removes an existing member from the Security Council.
+2. **Remove Members:** Removes existing members from the Security Council.
+
+Note that the security council MAY be effectively disabled by removing all members.
 
 The pDAO also has control over how many members are required for quorum. This is adjusted with a parameter change of the
 parameter `security.members.quorum`.
