@@ -102,11 +102,11 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 ### Transitioning towards final states
 - For periods X=1 to X=5: a node's share of rewards is
-  ```math
-  $$
-  \frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share
-  $$
-  ```
+```math
+$$
+\frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share
+$$
+```
   - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
     `proposed_method_share`, and how to combine them to get a node's share of rewards
 - If the 2-step withdrawal process described above has not yet been implemented, partial steps SHALL
