@@ -46,10 +46,12 @@ All RPIPs must contain a section that discusses the security implications/consid
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
-## Notes - Remove Before Submitting
-Any LaTeX code should be delimted using 
+# LaTeX Notes - Remove Section Before Submitting
 
-For blocks
+LaTeX rendering between github and the rpips portal at rpips.rocketpool.net can differ. The following recommendations are made so that your equations will appear correctly on both:
+
+LaTeX blocks should be delimted using the below. This should display similarly on both github and the rpips portal.
+
 ```math
 $$
 
@@ -58,5 +60,6 @@ LaTeX goes here
 $$
 ```
 
-Inline
-$ LaTeX goes here $
+Inline LaTeX is buggy on the portal, and should be avoided. $ LaTeX goes here $ dollar-sign delimiters will work in some simple cases, but not universally.
+
+Note that the $` LaTeX goes here `$ dollar-backtick delimiters do not work on the portal, and should never be used. 
