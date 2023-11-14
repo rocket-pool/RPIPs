@@ -173,7 +173,7 @@ To ensure a smooth transition and maintain operational continuity, the committee
 
 ## Membership
 
-Current and historic membership is recorded in [RPIP-35](RPIP-35#grants-management-committee).
+Current and historic membership is recorded in [RPIP-36](RPIP-36#grants-management-committee).
 
 ## Rationale
 
