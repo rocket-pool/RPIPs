@@ -88,5 +88,7 @@ The general update process is suggested as:
 3. Use a [markdown table converter](https://www.tablesgenerator.com/markdown_tables#) to generate the required markdown and paste it into this RPIP.
 4. Update the link to the source google sheet with your copy of the google sheet (and ensure your sheet is set to public-view).
 
+The intention is for this RPIP to contain records about all active committees. For this reason, if any future committees are approved by the DAO, they should be added to this record by the RPIP editors.
+
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
