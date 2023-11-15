@@ -10,12 +10,12 @@ vote-to: https://vote.rocketpool.net/#/proposal/0x9e093dea49dee9d1b3e43dbb6e0d87
 vote-date: 2023-02-12
 vote-result: Passed
 ---
- 
+
 ## Abstract
 This proposal lays out a set of planned actions to take in response to both degree of dominance and
 the staking environment at the time. We believe it's best to capture our ethos early in a concrete
 form to make it last well into the future.
- 
+
 ## Motivation
 No entity within Ethereum should have the ability to severely damage the network itself. Despite our
 best attempts to be decentralized and secure, we _know_ that, like any entity, there will always be
@@ -51,7 +51,7 @@ Node Operator ETH (which backs NO share) and user ETH (which backs rETH share).
   - Decrease marketing budget
   - Decrease incentives budget
   - All the above free up money; this can be used to:
-    - Create pDAO value - eg, hold assets in treasur
+    - Create pDAO value - eg, hold assets in treasury
     - Return value to existing shareholders - eg, burn RPL
     - Further encourage healthy staking - eg, use pDAO funds to provide liquidity or marketing for a
       competing "as good" or "healthier" staking protocol
@@ -66,7 +66,7 @@ In the interest of concreteness, we'll categorize some existing players as they 
 - Healthier: solo staking
 - As good: Rocket Pool, Stakewise v3? (not yet live)
 - Not as good: Frax (permissioned NOs, misleading yield numbers using 2-token system)
-- Unhealthy: Coinbase (centralized, 13% of staked ETH), Lido (29% of staked ETH, permissioned NOs, 
+- Unhealthy: Coinbase (centralized, 13% of staked ETH), Lido (29% of staked ETH, permissioned NOs,
   explicitly aiming for winner take all), Kraken (centralized, 7.5% of staked ETH), Binance
   (centralized, 6.4% of staked ETH)
 
@@ -87,7 +87,7 @@ in rating as well, to ensure that we are not swayed too strongly by our communit
 - Hidden large entities: What methods can be used to detect large entities within the protocol if
   they try to avoid detection? What methods can be used to detect large entities operating
   **across** multiple protocols?†
-- Smart contract risk: This includes auditing, Lindy, etc. 
+- Smart contract risk: This includes auditing, Lindy, etc.
 - Centralization risk: Who can participate as a staker? Who can participate as a Node Operator? Who
   _does_ participate as an NO/staker? Are there entities or groups with extra powers? What are the
   bounds on those powers, how big are the groups, what are the incentives?
