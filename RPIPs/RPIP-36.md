@@ -44,7 +44,7 @@ Currently, there is no overview of the active committees within Rocket Pool, or 
 |--------------|---------------------------------------|----------------------------------------------------------------------------------------------|
 |   2023-04-26 | Darren Langley, Valdorff, Ken, Ramana | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
 |   2022-08-16 | Wander, Darren Langley, Valdorff, Ken | Editors added                                                                                |
-|   2022-05-18 | Wander                                | Initial commit                                                                               |
+|   2022-05-18 | Wander                                | Informal period                                                                              |
 
 ## pDAO Treasurer Role
 
