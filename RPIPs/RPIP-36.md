@@ -1,7 +1,7 @@
 ---
 rpip: 36
 title: Committee Membership Record
-description: This RPIP records active committees within the Rocket Pool DAO, alongside their current and historic membership.
+description: This RPIP records active committees and roles within the Rocket Pool DAO, alongside their current and historic membership.
 author: LongForWisdom (@LongForWisdom)
 status: Living
 type: Informational
@@ -11,19 +11,47 @@ requires: 10
 
 ## Abstract
 
-This informational RPIP lists the active committees in the Rocket Pool DAO, gives a brief overview their purpose, and provides links to further information. It also contains current and historic membership information for each of these committees.
+This informational RPIP lists the active committees and roles within the Rocket Pool DAO, gives a brief overview their purpose, and provides links to further information. It also contains current and historic membership information for each of these committees and roles.
 
 
 ## Motivation
 
 Currently, there is no overview of the active committees within Rocket Pool, or their purpose. Currently, users need to both know to look and know how to find the relevant RPIPs to find information that can be presented in a more user-friendly way. Further, historical membership is not being recorded in a structued way outside of the committees themselves.  
 
-## Committee Summary
+## Committees and Roles
 
-| Committee                             | Chief Mission                                                          | Date Established | Defining RPIPs                         | Multisig Addresses                                                                                                                                                                         | Public Documents                                                                                                                                                                                                                                                                         |
-|---------------------------------------|------------------------------------------------------------------------|------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Incentives Management Committee (IMC) | To support low slippage exchange between ETH and rETH                  | 2022-08-25       | [RPIP-20](RPIP-20), [RPIP-10](RPIP-10) | [Mainnet](https://app.safe.global/home?safe=eth:0xb867EA3bBC909954d737019FEf5AB25dFDb38CB9), [Arbitrum](https://app.safe.global/home?safe=arb1:0xd7102A3744c302f167c53621453516345bC460d7) | [Tracking Sheet](https://docs.google.com/spreadsheets/d/1jLGkoiSjNr1UgG1spAH9ppBfrk_FqjJXg9CIw35nLCA/edit#gid=1325210165)                                                                                                                                                                |
-| Grants Management Committee (GMC)     | To distribute funding to further the goals of the Rocket Pool protocol | 2022-10-11       | [RPIP-26](RPIP-26), [RPIP-10](RPIP-10) | [Mainnet](https://app.safe.global/home?safe=eth:0x6efD08303F42EDb68F2D6464BCdCA0824e1C813a)                                                                                                | [Tracking Sheet](https://docs.google.com/spreadsheets/d/1oxOioCXoVIqY4aFS9mEgHMgK18QLEfJcwlZk2-l6cfc/edit?usp=sharing), [Standard Operating Procedures](https://docs.google.com/document/d/1YNG0nhC04jDonO42hT_MZ0sQT-3EIU04HK9Fwrkzs30/edit#heading=h.s7ggzumy4f02), [Records](RPIP-29) |
+| Date Established | Committee / Role                      | Chief Mission                                                          | Defining RPIPs                         | Multisig Addresses                                                                                                                                                                         | Links / Resources                                                                                                                                                                                                                                                                                                                                                               |
+|------------------|---------------------------------------|------------------------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2022-03-17       | RPIP Editors                          | To manage and administer the RPIP process                              | [RPIP-1](RPIP-1)                       | N/A                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                             |
+| 2022-08-25       | pDAO Treasurer Role                   | To update the DAOs on pDAO budget spending                             | [RPIP-10](RPIP-10)                     | N/A                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                             |
+| 2022-08-25       | Incentives Management Committee (IMC) | To support low slippage exchange between ETH and rETH                  | [RPIP-20](RPIP-20), [RPIP-10](RPIP-10) | [Mainnet](https://app.safe.global/home?safe=eth:0xb867EA3bBC909954d737019FEf5AB25dFDb38CB9), [Arbitrum](https://app.safe.global/home?safe=arb1:0xd7102A3744c302f167c53621453516345bC460d7) | [Tracking Sheet](https://docs.google.com/spreadsheets/d/1jLGkoiSjNr1UgG1spAH9ppBfrk_FqjJXg9CIw35nLCA/edit#gid=1325210165), [Discord Thread](https://discord.com/channels/405159462932971535/929890788551323678)                                                                                                                                                                 |
+| 2022-10-11       | Grants Management Committee (GMC)     | To distribute funding to further the goals of the Rocket Pool protocol | [RPIP-26](RPIP-26), [RPIP-10](RPIP-10) | [Mainnet](https://app.safe.global/home?safe=eth:0x6efD08303F42EDb68F2D6464BCdCA0824e1C813a)                                                                                                | [Tracking Sheet](https://docs.google.com/spreadsheets/d/1oxOioCXoVIqY4aFS9mEgHMgK18QLEfJcwlZk2-l6cfc/edit?usp=sharing), [Standard Operating Procedures](https://docs.google.com/document/d/1YNG0nhC04jDonO42hT_MZ0sQT-3EIU04HK9Fwrkzs30/edit#heading=h.s7ggzumy4f02), [Records](RPIP-29), [Discord Thread](https://discord.com/channels/405159462932971535/1064611985523757067) |
+
+## RPIP Editors
+
+### Current Membership
+
+| Member Since | Members        | Comment                                                                                      |
+|--------------|----------------|----------------------------------------------------------------------------------------------|
+|   2022-08-16 | Darren Langley | Part of first batch of editors                                                               |
+|   2022-08-16 | Valdorff       | Part of first batch of editors                                                               |
+|   2022-08-16 | Ken            | Part of first batch of editors                                                               |
+|   2023-04-26 | Ramana         | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
+
+### Historic Membership
+
+| Date Changed | Members                               | Comment                                                                                      |
+|--------------|---------------------------------------|----------------------------------------------------------------------------------------------|
+|   2023-04-26 | Darren Langley, Valdorff, Ken, Ramana | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
+|   2022-08-16 | Wander, Darren Langley, Valdorff, Ken | Editors added                                                                                |
+|   2022-05-18 | Wander                                | Initial commit                                                                               |
+
+## pDAO Treasurer Role
+
+| Date Changed | Treasurer   | Comment                                                                                                                                                                                |
+|--------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   2022-08-25 | vacalaranja | Selected by [pDAO vote](https://vote.rocketpool.net/#/proposal/0x908efd03f7855e927ed8f1875037f25a6910ffdd2cb5a986928f587e1f4f2681)                                                     |
+|   2023-04-09 | Jasper      | Appointed as interim treasurer in RPIP-10 which was ratified by [pDAO vote](https://vote.rocketpool.net/#/proposal/0xbc81c06f58cfd393f5696488fdc464831c2435864a59f856157f12cb181d96c1) |
 
 ## Incentives Management Committee
 

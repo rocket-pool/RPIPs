@@ -192,12 +192,9 @@ roughly steady given the initial proposed inflation step.
 | 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
 | 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
 
-## Historical membership
+## pDAO Treasurer History
 
-| Date       | Member      | Comment                                                             |
-|------------|-------------|---------------------------------------------------------------------|
-| 2022-08-24 | Jasper      | Appointed as interim treasurer in RPIP-10 and ratified by pDAO vote |
-| 2022-10-30 | vacalaranja | Selected by pDAO vote                                               |
+Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-treasurer-role).
 
 ## Direct expenses
 
