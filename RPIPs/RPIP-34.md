@@ -56,7 +56,7 @@ This section describes what a VOP is, and when to use the VOP framework.
 ### Visual Aid for VOP Concepts
 
 
-![image](../assets/rpip-draft/vops-diagram.png) 
+![image](../assets/rpip-34/vops-diagram.png) 
 
 ---
 
