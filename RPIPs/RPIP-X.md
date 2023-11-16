@@ -42,7 +42,7 @@ Power in this document is used to refer to the raw capability to do something. T
 
 A principal or agent has the power to perform action X when every limitation to their role in performing action X is self-applied, rather than being applied by another party.
 
-To give an example, the oDAO has the power to make changes to the Rocket Pool Protocol due to the permissions trustedNodes (in aggregate) hold in the protocol contracts, and because the limitations to the oDAO ratified by the pDAO are self-applied by the oDAO.
+To give an example, the oDAO has the power to report any rETH price for protocol use. Reguardless of what independent users are seeing for price action in trading pools, the oDAO has the technical permissions needed to update rETH price to whatever they see fit.  
 
 Best expressed in the phrase: ‘Are we able to do X?’
 
@@ -50,11 +50,11 @@ Best expressed in the phrase: ‘Are we able to do X?’
 
 Authority in this document is used to refer to the right to do something. This refers to the implicit and explicit decisions made by the community at large as to ‘who do we want to do X’.
 
-Authorities are a bit complex in that they often stem from a string of decision-making powers, some implicit and some explicit. This document seeks to document what clear authorities exist based on approved governance actions and their ramifications, but may not be able to capture the full intricacy of who has the "right" to take an action.
+Authorities are a bit complex in that they often stem from a string of decision-making powers, some implicit and some explicit. This RPIP seeks to document what clear authorities exist based on approved governance actions and their ramifications, but may not be able to capture the full intricacy of who has the "right" to take an action.
 
 A principal or agent has the authority to do X if the Rocket Pool community has explicitly or implicitly agreed that that principal or agent is allowed or supposed to be doing X.
 
-To give an example, the pDAO has the authority to make changes to the Rocket Pool Protocol due to the shared understanding of the community that registeredNodes are the ‘principals’ of the Rocket Pool protocol.
+To give an example, the pDAO has the authority to make changes to the Rocket Pool Protocol due to the shared understanding of the community that legitimate pDAO votes represent the will of the organization and should be adhered to absent outside factors.
 
 Best expressed in the phrase: ‘Are we allowed to do X?’
 
