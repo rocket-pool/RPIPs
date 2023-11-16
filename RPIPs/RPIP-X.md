@@ -50,7 +50,7 @@ Best expressed in the phrase: ‘Are we able to do X?’
 
 Authority in this document is used to refer to the right to do something. This refers to the implicit and explicit decisions made by the community at large as to ‘who do we want to do X’.
 
-Authorities are a bit complex in that they often stem from a string of decision-making powers, some explicit and some explicit. This document seeks to document what clear authorities exist based on approved governance actions and their ramifications, but may not be able to capture the full intricacy of who has the "right" to take an action.
+Authorities are a bit complex in that they often stem from a string of decision-making powers, some implicit and some explicit. This document seeks to document what clear authorities exist based on approved governance actions and their ramifications, but may not be able to capture the full intricacy of who has the "right" to take an action.
 
 A principal or agent has the authority to do X if the Rocket Pool community has explicitly or implicitly agreed that that principal or agent is allowed or supposed to be doing X.
 
