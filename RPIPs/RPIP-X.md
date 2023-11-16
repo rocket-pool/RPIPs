@@ -76,7 +76,7 @@ OracleDAO governance is defined as successful on-chain governance proposals vote
   * The ability to set the Minipool penalty within the bounds of the maximum penalty.
 * The oDAO has the power to modify oDAO settings via the oDAO settings pathway.
 * The oDAO has the power to take actions that modify the membership of the oDAO.
-* The oDAO has the power to determine the split of RPL inflation via consensus on a rewards Merkle tree. [[GitHub](https://github.com/rocket-pool/rocketpool-research/blob/v6/Merkle%20Rewards%20System/rewards-calculation-spec.md)]
+* The oDAO has the power to determine the split of RPL inflation on a rewards Merkle tree. [[GitHub](https://github.com/rocket-pool/rocketpool-research/blob/v6/Merkle%20Rewards%20System/rewards-calculation-spec.md)]
 * The oDAO has the power to withdraw ETH at no cost from the deposit pool contract, via manipulation of the rETH exchange rate. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
 * The oDAO has the power to withdraw ETH at no cost from the rETH token contract via manipulation of the rETH exchange rate. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
 * The oDAO has the power to approve the canonical rewards Merkle tree at the end of each reward period. [[Etherscan](https://etherscan.io/address/0xA805d68b61956BC92d556F2bE6d18747adAeEe82#code#F1#L165)] This uses a separate governance pathway. 
