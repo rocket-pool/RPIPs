@@ -130,12 +130,7 @@ Images, diagrams and auxiliary files should be included in a subdirectory of the
 
 ## RPIP Editors
 
-The current RPIP editors are
-
-    Darren Langley (GH: darrenlangley | Discord: langers#3774)
-    Valdorff (GH Valdorff | Discord: Val#5027)
-    Ken Smith (GH: htimsk | Discord: Ken#5954)
-    Ramana Kumar (GH: xrchz | Discord: ramana#2626)
+Current and historic RPIP editors are recorded in [RPIP-36](RPIP-36#rpip-editors).
 
 ## RPIP Editor Responsibilities
 
