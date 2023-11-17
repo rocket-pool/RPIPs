@@ -177,10 +177,10 @@ annually. For a theoretical run of 1 reward period (28 days), this gives  ~83.6 
 to work with. In light of parallel discussions about tokenomics changes, this amount serves as a
 conservative starting point.
 
-In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
-https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
+In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see 
+[https://dao.rocketpool.net/t/pdao-budget-definition/644](https://dao.rocketpool.net/t/pdao-budget-definition/644) for more context.
 
-6/1: Adjustments are being made here to support inflation changes per [RPIP-25](https://rpips.rocketpool.net/RPIPs/RPIP-25). A
+6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
 significant one allows the pDAO to vote directly for expenses from Reserve Treasury -- this is done
 specifically with Protocol Development Funding in mind. The budget split is being updated to be
 roughly steady given the initial proposed inflation step.
@@ -193,12 +193,9 @@ roughly steady given the initial proposed inflation step.
 | 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57%     |
 | TBD                                 | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 20.5%, Reserve Treasury - 29.5% |
 
-## Historical membership
+## pDAO Treasurer History
 
-| Date       | Member      | Comment                                                             |
-|------------|-------------|---------------------------------------------------------------------|
-| 2022-08-24 | Jasper      | Appointed as interim treasurer in RPIP-10 and ratified by pDAO vote |
-| 2022-10-30 | vacalaranja | Selected by pDAO vote                                               |
+Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-treasurer-role).
 
 ## Direct expenses
 

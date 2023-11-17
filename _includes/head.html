@@ -34,17 +34,34 @@
       "@context": "https://schema.org"
     }
   </script>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   {%- feed_meta -%}
   
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$','$']]
+  <script type="text/javascript">
+    window.MathJax = {
+      loader: {
+        load: ['input/tex-base', 'output/chtml']
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+      },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: false,
+        processRefs: false
+      },
+      startup: {
+        ready() {
+          var CHTMLmath = MathJax._.output.chtml.Wrappers.math.CHTMLmath;
+          delete CHTMLmath.styles['mjx-container[jax="CHTML"][display="true"]'].margin;
+          MathJax.startup.defaultReady();
+        }
       }
-    });
+    };
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-nlrDrBTHxJJlDDX22AS33xYI1OJHnGMDhiYMSe2U0e0=" crossorigin="anonymous"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js" integrity="sha384-/1zmJ1mBdfKIOnwPxpdG6yaRrxP6qu3eVYm0cz2nOx+AcL4d3AqEFrwcqGZVVroG" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   
 </head>

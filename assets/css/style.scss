@@ -237,6 +237,15 @@ main.page-content {
   }
 }
 
+/* Doesn't work on firefox :( ) */
+pre:has(.language-math)
+{
+    border: 0px;
+    border-radius: 0px;
+    background-color: #00000000;
+    line-height: 0px;
+}
+
 /*
 .footer-col-1 {
   width: -webkit-calc(0% - (#{$spacing-unit} / 2));
