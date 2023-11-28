@@ -66,12 +66,6 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
   - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
 
-### Locking RPL
-- The ability to put RPL at risk via locking SHALL be initialised to disallowed
-- As the controller of the RPL for a node, I MUST be able to control whether RPL can be put at risk via locking, for example to participate in governance proposal/challenges
-  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
-  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
-
 ## Backwards Compatibility
 The specification as written is backwards compatible with the current withdrawal address. The behaviour is as current for node operators who do not use the new functionality.
 
