@@ -39,24 +39,32 @@ identifies that node. This section refers to a node by its index into the global
 
 The voting power function for members of the pDAO SHALL be formally defined as:
 
+```math
 $$
 P_{n} = \sum_{i=1}^{N} \begin{cases}
 p_{i} & d_{i} = n \\
 0 & else \\
 \end{cases}
 $$
+```
 
+```math
 $$
 p_{n} = {\sqrt{R_{n}}}
 $$
+```
 
+```math
 $$
 R_{n} = min(S_{n}, M_{n})
 $$
+```
 
+```math
 $$
 M_{n} = \frac{N_{n} \times 1.5}{r}
 $$
+```
 
 Where:
 
@@ -71,9 +79,11 @@ Where:
 
 Total voting power can be expressed as the following:
 
+```math
 $$
 P = \sum_{i=1}^{N} P_{i}
 $$
+```
 
 ### Proposal Types
 
@@ -146,11 +156,12 @@ The purpose of the proposal type is to control the set of members of the "Securi
 possible:
 
 1. **Invite Member:** Invites a new member to the Security Council.
-2. **Remove Member:** Removes an existing member from the Security Council.
-3. **Disband:** Removes all members from the Security Council. Effectively disabling it.
+2. **Remove Members:** Removes existing members from the Security Council.
+
+Note that the security council MAY be effectively disabled by removing all members.
 
 The pDAO also has control over how many members are required for quorum. This is adjusted with a parameter change of the
-parameter `proposal.security.quorum`.
+parameter `security.members.quorum`.
 
 Invited members must accept the invitation to join before they are counted as part of the security council.
 
@@ -160,7 +171,7 @@ The pDAO SHALL have control over a selection of members which form a "Security C
 power to make changes to certain parameters without requiring a delay. The parameters which are modifiable are
 highlighted in the [Parameter Table](#parameter-table) with a *.
 
-Security Council members MAY raise a proposal to make a parameter change at any time. If `proposal.security.quorum`
+Security Council members MAY raise a proposal to make a parameter change at any time. If `security.members.quorum`
 percent of members vote in favour of the proposal, it is immediately affected.
 
 Security Council members MAY leave the council on their own accord. This is a two-step process. They MUST first send
@@ -197,6 +208,8 @@ for the duration of the proposal process. In order to be eligible to propose, no
 (minus any already locked RPL) greater than the proposal bond. Locked RPL SHALL act the same way as regular staked RPL 
 for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for
 withdrawing RPL.
+
+By default, locking RPL for any purpose defined in this RPIP, will be disabled. Node operator's will opt-in to performing governance activities by enabling the locking of RPL from their node or primary withdrawal address. On the condition that [RPIP-31: RPL Withdrawal Address](./RPIP-31.md) is ratified and implemented, if the RPL withdrawal address is set then, you will only be able to enable or disable RPL locking using this address.
 
 As part of a proposal submission, a node operator MUST provide a Merkle pollard across a Merkle-sum tree of delegated
 voting power at a block that is at most `proposal.max.block.age` blocks old. From this pollard the protocol SHALL
@@ -376,11 +389,11 @@ to prevent altering parameters which may result in inoperability of the protocol
 |                                    | proposal.veto.quorum                      | uint256 | The amount of voting power vetoing a proposal require to veto it                                                                                           | >= 51% & < 75%                                                       |
 |                                    | proposal.max.block.age                    | uint256 | The maximum time in the past (in blocks) a proposal can be submitted for                                                                                   | > 128 blocks & < 7200 blocks                                         |
 |                                    |                                           |         |                                                                                                                                                            |                                                                      |
-| rocketDAOProtocolSettingsSecurity  | members.quorum                            | uint256 | Member quorum threshold that must be met for proposals to pass (51%)                                                                                       | >= 51% & < 75%                                                       |
-|                                    | members.leave.time                        | uint256 | How long a member must give notice for before manually leaving the security council                                                                        | < 14 days                                                            |
-|                                    | proposal.vote.time                        | uint256 | How long a proposal can be voted on                                                                                                                        | >= 1 day                                                             |
-|                                    | proposal.execute.time                     | uint256 | How long a proposal can be executed after its voting period is finished                                                                                    | >= 1 day                                                             |
-|                                    | proposal.action.time                      | uint256 | Certain proposals require a secondary action to be run after the proposal is successful (joining, leaving etc). This is how long until that action expires | >= 1 day                                                             |
+| rocketDAOProtocolSettingsSecurity  | security.members.quorum                            | uint256 | Member quorum threshold that must be met for proposals to pass (51%)                                                                                       | >= 51% & < 75%                                                       |
+|                                    | security.members.leave.time                        | uint256 | How long a member must give notice for before manually leaving the security council                                                                        | < 14 days                                                            |
+|                                    | security.proposal.vote.time                        | uint256 | How long a proposal can be voted on                                                                                                                        | >= 1 day                                                             |
+|                                    | security.proposal.execute.time                     | uint256 | How long a proposal can be executed after its voting period is finished                                                                                    | >= 1 day                                                             |
+|                                    | security.proposal.action.time                      | uint256 | Certain proposals require a secondary action to be run after the proposal is successful (joining, leaving etc). This is how long until that action expires | >= 1 day                                                             |
 |                                    |                                           |         |                                                                                                                                                            |                                                                      |
 | rocketDAOProtocolSettingsAuction   | auction.lot.create.enabled*               | bool    | Enables or disables the ability to create auction lots                                                                                                     |                                                                      |
 |                                    | auction.lot.bidding.enabled*              | bool    | Enables or disables the ability for users to bid on auction lots                                                                                           |                                                                      |
