@@ -61,7 +61,7 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
 ### Staking RPL
 - As the controller of the RPL for a node, I MUST be able to stake additional RPL
   - If a node's RPL withdrawal address is unset, the call MUST come from the node's address, primary withdrawal address, or a specifically allowed address
-  - If a node's RPL withdrawal address is set, the call MUST come from the node's address, current RPL withdrawal address, or a specifically allowed address
+  - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address, or a specifically allowed address
 - As the controller of the RPL for a node, I MUST be able to control the list of specifically allowed RPL staking addresses
   - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address
