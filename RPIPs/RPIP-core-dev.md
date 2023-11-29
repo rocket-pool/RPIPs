@@ -1,7 +1,7 @@
 ---
 rpip: TBC 
-title: Protocol Development Funding
-description: Determines how protocol development will be funded
+title: Protocol Development
+description: Determines the process around core protocol development and funding
 author: Darren Langley (@langers)
 discussions-to: https://dao.rocketpool.net/t/dev-team-funding/2038
 status: Draft
@@ -21,19 +21,19 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 ### Prioritisation
 
-- Every 12 months, the Team MUST facilitate a prioritisation discussion with the Rocket Pool community.
+- Every 12 months, the Core Protocol Team MUST facilitate a prioritisation discussion with the Rocket Pool community.
 - pDAO SHOULD engage in the prioritisation discussion to ensure development team prioritises are aligned with pDAO expectations.
-- Team MUST summarise findings of prioritisation discussion and communicate them to the pDAO.
+- The Core Protocol Team MUST summarise findings of prioritisation discussion and communicate them to the pDAO.
 
 ### Roadmap
 
-- Team MUST define an indicative protocol roadmap or release schedule based on the prioritisation findings.
-- Team MUST provide quarterly updates on the roadmap.
+- The Core Protocol Team MUST define an indicative protocol roadmap or release schedule based on the prioritisation findings.
+- The Core Protocol Team MUST provide quarterly updates on the roadmap.
 - The protocol roadmap is expected to evolve over time, the Team SHOULD communicate these changes in the quarterly updates . 
 
 ### Governance
 
-- Team MUST draft Rocket Pool Improvement Proposals (RPIPs) for new protocol features.
+- The Core Protocol Team MUST draft Rocket Pool Improvement Proposals (RPIPs) for new protocol features.
 - pDAO SHOULD engage in discussion and co-development of the new protocol features.
 - pDAO MUST vote the inclusion of new protocol features.
 

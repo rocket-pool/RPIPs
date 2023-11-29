@@ -204,8 +204,6 @@ roughly steady given the initial proposed inflation step.
 | Date | Amount     | Summary                                    | Link to full description                    |
 |------|------------|--------------------------------------------|---------------------------------------------|
 | TBD  | 3584 RPL   | 3 months initial dev funding               | [expense_1](../assets/rpip-10/expense_1.md) |
-| ~~TBD~~  | ~~0-3909 RPL~~ | ~~Additional dev funding with seat reduction~~ | ~~[expense_1](../assets/rpip-10/expense_1.md)~~ |
-| TBD  | 53,202.12 RPL | Protocol development funding (periods 15-28) | [expense_X](../assets/rpip-10/expense_X.md) |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
