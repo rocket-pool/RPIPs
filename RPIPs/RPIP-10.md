@@ -7,8 +7,8 @@ discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget
 status: Living
 type: Meta
 created: 2022-08-09
-vote-to: https://vote.rocketpool.net/#/proposal/0x510383ca82a0096fa670a260692cf7a4097e199ce4f731dc4efd97a21f19f988
-vote-date: 2023-07-17
+vote-to: https://vote.rocketpool.net/#/proposal/0x1852d7ed18998036a9b7251a5d9aaaf0be5e9c9023bf5884d3623f83d9f13d3b
+vote-date: 2023-11-16
 vote-result: Passed
 ---
 
@@ -27,8 +27,8 @@ changes to how the funds should be directed.
 ## Specification
 - Incoming funds SHALL be tracked and apportioned per category with the following split:
   - Incentives (e.g., LP bonuses) - 50%
-  - Grants and Bounties - 30%
-  - Reserve Treasury - 20%
+  - Grants and Bounties - 20.5%
+  - Reserve Treasury - 29.5%
 - Where a matching Management Committee exists (eg, the "Incentives Management Committee" for the "Incentives"
   category), incoming funds SHALL be disbursed to the matching Management Committee as quickly as practical.
   - When possible, automation SHOULD be used to facilitate and expedite disbursements.
@@ -177,34 +177,33 @@ annually. For a theoretical run of 1 reward period (28 days), this gives  ~83.6 
 to work with. In light of parallel discussions about tokenomics changes, this amount serves as a
 conservative starting point.
 
-In addition to https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895, see 
-https://dao.rocketpool.net/t/pdao-budget-definition/644 for more context.
+In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see 
+[https://dao.rocketpool.net/t/pdao-budget-definition/644](https://dao.rocketpool.net/t/pdao-budget-definition/644) for more context.
 
-6/1: Adjustments are being made here to support inflation changes per [RPIP-25](https://rpips.rocketpool.net/RPIPs/RPIP-25). A
+6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
 significant one allows the pDAO to vote directly for expenses from Reserve Treasury -- this is done
 specifically with Protocol Development Funding in mind. The budget split is being updated to be
 roughly steady given the initial proposed inflation step.
 
 ## Historical budget splits
 
-| Date                                | Split                                                                                  |
-|-------------------------------------|----------------------------------------------------------------------------------------|
-| 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20% |
-| 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57% |
+| Date                                | Split                                                                                      |
+|-------------------------------------|--------------------------------------------------------------------------------------------|
+| 2022-08-09<br>(ratified 2022-08-24) | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 30%, Reserve Treasury - 20%     |
+| 2023-07-17                          | Incentives (e.g., LP bonuses) - 27%, Grants and Bounties - 16%, Reserve Treasury - 57%     |
+| 2023-11-16                          | Incentives (e.g., LP bonuses) - 50%, Grants and Bounties - 20.5%, Reserve Treasury - 29.5% |
 
-## Historical membership
+## pDAO Treasurer History
 
-| Date       | Member      | Comment                                                             |
-|------------|-------------|---------------------------------------------------------------------|
-| 2022-08-24 | Jasper      | Appointed as interim treasurer in RPIP-10 and ratified by pDAO vote |
-| 2022-10-30 | vacalaranja | Selected by pDAO vote                                               |
+Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-treasurer-role).
 
 ## Direct expenses
 
-| Date | Amount     | Summary                                    | Link to full description                    |
-|------|------------|--------------------------------------------|---------------------------------------------|
-| TBD  | 3584 RPL   | 3 months initial dev funding               | [expense_1](../assets/rpip-10/expense_1.md) |
-| TBD  | 0-3909 RPL | Additional dev funding with seat reduction | [expense_1](../assets/rpip-10/expense_1.md) |
+| Date       | Amount     | Summary                                                      | Link to full description                    |
+|------------|------------|--------------------------------------------------------------|---------------------------------------------|
+| 2023-09-03 | 3584 RPL   | 3 months initial dev funding                                 | [expense_1](../assets/rpip-10/expense_1.md) |
+| TBD        | 4643.69    | Compensate IMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
+| TBD        | 2985.22    | Compensate GMC for lower-than-intended split in past periods | [expense_2](../assets/rpip-10/expense_2.md) |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

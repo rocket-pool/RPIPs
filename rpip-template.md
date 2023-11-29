@@ -1,5 +1,5 @@
 ---
-rpip: <to be assigned>
+rpip: #<to be assigned>
 title: <The RPIP title is a few words, not a complete sentence>
 description: <Description is one full (short) sentence>
 author: <a comma separated list of the author's or authors' name + GitHub username (in parenthesis), or name and email (in angle brackets).  Example, FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
@@ -45,3 +45,21 @@ All RPIPs must contain a section that discusses the security implications/consid
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+# LaTeX Notes - Remove Section Before Submitting
+
+LaTeX rendering between github and the rpips portal at rpips.rocketpool.net can differ. The following recommendations are made so that your equations will appear correctly on both:
+
+LaTeX blocks should be delimted using the below. This should display similarly on both github and the rpips portal.
+
+```math
+$$
+
+LaTeX goes here
+
+$$
+```
+
+Inline LaTeX is buggy on the portal, and should be avoided. $ LaTeX goes here $ dollar-sign delimiters will work in some simple cases, but not universally.
+
+Note that the $` LaTeX goes here `$ dollar-backtick delimiters do not work on the portal, and should never be used. 
