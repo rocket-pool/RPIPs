@@ -29,7 +29,7 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 - The Core Protocol Team MUST define an indicative protocol roadmap or release schedule based on the prioritisation findings.
 - The Core Protocol Team MUST provide quarterly updates on the roadmap.
-- The protocol roadmap is expected to evolve over time, the Team SHOULD communicate these changes in the quarterly updates . 
+- The protocol roadmap is expected to evolve over time, the Core Protocol Team SHOULD communicate these changes in the quarterly updates. 
 
 ### Governance
 
@@ -41,7 +41,12 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 - Every 12 months, the pDAO MUST vote to agree a protocol development funding budget.
 - On a successful vote, the pDAO MUST pay a lump-sum payment from the pDAO reserve to cover protocol development costs for the upcoming 12 months.
-- Protocol development funding is initially set to 5% of RPL inflation
+- Protocol development funding is initially set to 5% of RPL inflation.
+
+### Process
+
+- The Core Protocol Team SHOULD engage in continuous process improvement.
+- The Protocol DAO (pDAO) SHOULD engage in providing feedback on the development process. 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
