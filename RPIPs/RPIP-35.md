@@ -4,7 +4,7 @@ title: Time-based Balance and RPL Price Submissions
 description: Changes Balance and RPL Price submissions to be time-based 
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann), Joe Clapis (@jcrtp)
 discussions-to: TBC
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2023-11-10
