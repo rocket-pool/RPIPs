@@ -35,7 +35,7 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 - The Core Protocol Team MUST draft Rocket Pool Improvement Proposals (RPIPs) for new protocol features.
 - pDAO SHOULD engage in discussion and co-development of the new protocol features.
-- pDAO MUST vote the inclusion of new protocol features.
+- In order for new protocol features to be included, they MUST be approved by a pDAO vote.
 
 ### Funding
 
