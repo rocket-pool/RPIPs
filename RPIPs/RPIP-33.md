@@ -4,7 +4,7 @@ title: Implementation of an On-Chain pDAO
 description: To replace the current proposal execution process in the pDAO governance system with a trustless on-chain version.
 author: 'Kane Wallmann (@kanewallmann)'
 discussions-to: https://dao.rocketpool.net/t/on-chain-pdao-replacement/1998
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2023-08-31
