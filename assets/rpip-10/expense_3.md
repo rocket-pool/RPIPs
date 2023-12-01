@@ -9,16 +9,17 @@ Calculates the amount of RPL inflation to be spent on protocol development, by c
 
 ```math
 $$
-P = S * (I^365-1) * D
+ProtocolFunding = StartSupply * (InflationPerDay^{365}-1) * DevelopmentPercentage
 $$
 ```
 
 Where:
 
-- `RPL_SUPPLY_START` is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 14 (2023-09-28). So the start supply will be calculated from the block after interval 14 (`18232826`). 
-- `RPL_INFLATION_PER_DAY` is the standard RPL inflation date rate that can be queried from the RPL token contract (`getInflationIntervalRate`).
+- $ProtocolFunding$ is the lump-sum payment of RPL to be paid for protocol development funding.
+- $StartSupply$ is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 14 (2023-09-28). So the start supply will be calculated from the block after interval 14 (`18232826`). 
+- $InflationPerDay$ is the standard RPL inflation day rate, queried from the RPL token contract (`getInflationIntervalRate`).
   https://etherscan.io/token/0xd33526068d116ce69f19a9ee46f0bd304f21a51f#readContract 
-- `DEV_FUNDING_PERCENTAGE_OF_INFLATION` is set at `5%` of RPL inflation.
+- $DevelopmentPercentage$ is set at `5%` of RPL inflation.
 
 Calculated as:
 
