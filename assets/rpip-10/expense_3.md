@@ -5,8 +5,6 @@ The amount will be paid in a lump-sum payment of: `49,420.55 RPL`, which is `5%`
 ### Calculation 
 Calculates the amount of RPL inflation to be spent on protocol development, by calculating the projected RPL inflation for 12 months and multiplying by the percentage of inflation allocated to protocol development.
 
-`RPL_SUPPLY_START * (RPL_INFLATION_PER_DAY^365-1) * DEV_FUNDING_PERCENTAGE_OF_INFLATION`
-
 ```math
 $$
 ProtocolFunding = StartSupply * (InflationPerDay^{365}-1) * DevelopmentPercentage
@@ -14,7 +12,6 @@ $$
 ```
 
 Where:
-
 - $ProtocolFunding$ is the lump-sum payment of RPL to be paid for protocol development funding.
 - $StartSupply$ is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 14 (2023-09-28). So the start supply will be calculated from the block after interval 14 (`18232826`). 
 - $InflationPerDay$ is the standard RPL inflation day rate, queried from the RPL token contract (`getInflationIntervalRate`).
