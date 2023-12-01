@@ -172,7 +172,7 @@ power to make changes to certain parameters without requiring a delay. The param
 highlighted in the [Parameter Table](#parameter-table) with a *.
 
 Security Council members MAY raise a proposal to make a parameter change at any time. If `security.members.quorum`
-percent of members vote in favour of the proposal, it is immediately affected.
+percent of members vote in favour of the proposal, it is immediately effected.
 
 Security Council members MAY leave the council on their own accord. This is a two-step process. They MUST first send
 a transaction indicating their desire to leave. They MUST then wait a time specified by a pDAO controllable parameter.
