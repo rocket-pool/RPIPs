@@ -21,7 +21,7 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 ### Prioritisation
 
-- Every 12 months, the Core Protocol Team MUST facilitate a prioritisation discussion with the Rocket Pool community.
+- Each year, the Core Protocol Team MUST facilitate a prioritisation discussion with the Rocket Pool community.
 - pDAO SHOULD engage in the prioritisation discussion to ensure development team prioritises are aligned with pDAO expectations.
 - The Core Protocol Team MUST summarise findings of prioritisation discussion and communicate them to the pDAO.
 
@@ -39,9 +39,9 @@ To ensure the long-term sustainability and continued innovation of the Rocket Po
 
 ### Funding
 
-- Every 12 months, the pDAO MUST vote to agree a protocol development funding budget.
-- On a successful vote, the pDAO MUST pay a lump-sum payment from the pDAO reserve to cover protocol development costs for the upcoming 12 months.
-- Protocol development funding is initially set to 5% of RPL inflation.
+- Each year, the pDAO MUST vote to agree a protocol development funding budget.
+- On a successful vote, the pDAO MUST pay a lump-sum payment from the pDAO reserve to cover protocol development costs for the upcoming year.
+- Protocol development funding is initially set to **5%** of RPL inflation.
 
 ### Process
 
