@@ -1,23 +1,29 @@
 This expense funds the protocol development team for 12 months.
 
-The amount will be paid in a lump-sum payment of: `53,172.97 RPL`.
+The amount will be paid in a lump-sum payment of: `49,420.55 RPL`, which is `5%` of RPL inflation over 12 months.
 
-### Breakdown
+### Calculation 
+Calculates the amount of RPL inflation to be spent on protocol development, by calculating the projected RPL inflation for 12 months and multiplying by the percentage of inflation allocated to protocol development.
 
-| Period      | Period Date |Inflation Total | Development Funding |
-| ----------- | ----------- |----------- | ----------- |
-| 15          | 26/10/2023  | 74,126.81   | 3,706.36  | 
-| 16          | 23/11/2023  | 74,405.23   | 3,720.26  |
-| 17          | 21/12/2023  | 74,684.24   | 3,734.21  |
-| 18          | 18/1/2024   | 74,964.29   | 3,748.21  |
-| 19          | 15/2/2024   | 75,245.40   | 3,762.27  |
-| 20          | 14/3/2024   | 75,527.55   | 3,776.38  |
-| 21          | 11/4/2024   | 75,810.77   | 3,790.54  | 
-| 22          | 9/5/2024    | 76,095.04   | 3,804.75  |
-| 23          | 6/6/2024    | 76,380.39   | 3,819.02  |
-| 24          | 4/7/2024    | 76,666.80   | 3,833.34  |
-| 25          | 1/8/2024    | 76,954.29   | 3,847.71  |
-| 26          | 29/8/2024   | 77,242.85   | 3,862.14  |
-| 27          | 26/9/2024   | 77,532.50   | 3,876.62  |
-| 28          | 24/10/2024  | 77,823.23   | 3,891.16  |
-| **Total**   |      **-**       | **1,063,459.39**  | **53,172.97** | 
+`RPL_SUPPLY_START * (RPL_INFLATION_PER_DAY^365-1) * DEV_FUNDING_PERCENTAGE_OF_INFLATION`
+
+```math
+$$
+P = S * (I^365-1) * D
+$$
+```
+
+Where:
+
+- `RPL_SUPPLY_START` is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 14 (2023-09-28). So the start supply will be calculated from the block after interval 14 (`18232826`). 
+- `RPL_INFLATION_PER_DAY` is the standard RPL inflation date rate that can be queried from the RPL token contract (`getInflationIntervalRate`).
+  https://etherscan.io/token/0xd33526068d116ce69f19a9ee46f0bd304f21a51f#readContract 
+- `DEV_FUNDING_PERCENTAGE_OF_INFLATION` is set at `5%` of RPL inflation.
+
+Calculated as:
+
+```python
+>>> 19768220.1920667*(1.000133680617113500**365-1)*0.05
+49420.55048018786
+```
+
