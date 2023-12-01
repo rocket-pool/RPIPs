@@ -3,10 +3,10 @@ This expense funds the core protocol development team from **2023-10-26** until 
 The core protocol development team have formed an indicative [roadmap](https://medium.com/rocket-pool/rocket-pool-houston-upgrade-fa2de86118ad) from community feedback. The roadmap will evolve as more research, analysis, and community direction is incorporated.
 
 The core protocol development team will provide quarterly updates on the roadmap progress before the following dates:
-1) 2024-01-26
-2) 2024-04-26
-3) 2024-07-26
-4) 2024-10-24
+- 2024-01-26
+- 2024-04-26
+- 2024-07-26
+- 2024-10-24
 
 The amount will be paid in a lump-sum payment of: `49,420.55 RPL`, which is `5%` of RPL inflation over that time.
 
