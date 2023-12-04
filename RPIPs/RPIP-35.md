@@ -4,7 +4,7 @@ title: Time-based Balance and RPL Price Submissions
 description: Changes Balance and RPL Price submissions to be time-based 
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann), Joe Clapis (@jcrtp)
 discussions-to: https://dao.rocketpool.net/t/rpip-35-time-based-balance-and-rpl-price-submissions/2419
-status: Review
+status: Final
 type: Protocol
 category: Core
 created: 2023-11-10
