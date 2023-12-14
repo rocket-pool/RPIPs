@@ -1,5 +1,5 @@
 ---
-rpip: TBC 
+rpip: 37 
 title: Protocol Development
 description: Determines the process around core protocol development and funding
 author: Darren Langley (@langers)
