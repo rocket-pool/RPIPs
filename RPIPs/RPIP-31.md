@@ -4,7 +4,7 @@ title: RPL Withdrawal Address
 description: Adds an additional withdrawal address that facilitates splitting ETH bond and rewards from RPL bond and rewards
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann)
 discussions-to: https://dao.rocketpool.net/t/rpip-31-rpl-withdrawal-address/2251
-status: Draft
+status: Final 
 type: Protocol
 category: Core
 created: 2023-09-05
