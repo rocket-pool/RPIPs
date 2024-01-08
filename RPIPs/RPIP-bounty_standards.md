@@ -20,16 +20,17 @@ The motivation section should describe the "why" of this RPIP. What problem does
 The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.
 
 ### Bounty Lifecycle
-<Diagram>
-[!..\assets\rpip-bountystandards\bounty-lifecycle.png]
 
-**Draft - Proposed** - Bounty is described and proposed to the GMC for adoption. Bounty is not yet eligible for adoption.
-**Draft - Defined** - Bounty is well defined and ready for completion by a bounty hunter with the relevant skillsets if adopted by the GMC. Bounty is now eligible for adoption.
-**Draft - Rejected** - Bounty was rejected by the GMC at this time. Bounty is not eligible for completion.
-**Open** - Bounty is adopted by the GMC for completion and listed on relevant frontends. Bounty is now eligible for completion.
-**Closed - Completed** - A Bounty has been fully completed and paid out by the GMC. Bounty is no longer eligible for completion.
-**Closed - Expired** - Bounty has met its expiration date. Bounty is no longer eligible for completion.
-**Closed - Withdrawn** - GMC has withdrawn the bounty. Bounty is no longer eligible for completion.
+![Bounty Lifecycle](..\assets\rpip-bountystandards\bounty-lifecycle.png)
+
+#### Statuses
+**Draft - Proposed** - Bounty is described and proposed to the GMC for adoption. Bounty is not yet eligible for adoption.  
+**Draft - Defined** - Bounty is well defined and ready for completion by a bounty hunter with the relevant skillsets if adopted by the GMC. Bounty is now eligible for adoption.  
+**Draft - Rejected** - Bounty was rejected by the GMC at this time. Bounty is not eligible for completion.  
+**Open** - Bounty is adopted by the GMC for completion and listed on relevant frontends. Bounty is now eligible for completion.  
+**Closed - Completed** - A Bounty has been fully completed and paid out by the GMC. Bounty is no longer eligible for completion.  
+**Closed - Expired** - Bounty has met its expiration date. Bounty is no longer eligible for completion.  
+**Closed - Withdrawn** - GMC has withdrawn the bounty. Bounty is no longer eligible for completion.  
 
 ### Bounty Proposal Guidelines
 * When a single proposal bounty proposal has parts that can only be completed by different groups, it should become multiple definitions. 
