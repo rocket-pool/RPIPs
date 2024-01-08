@@ -21,7 +21,7 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
 
 ### Bounty Lifecycle
 
-![bounty-lifecycle](..\assets\rpip-bountystandards\bounty-lifecycle.png)
+![bounty-lifecycle](../assets/rpip-bountystandards/bounty-lifecycle.png)
 
 #### Statuses
 **Draft - Proposed** - Bounty is described and proposed to the GMC for adoption. Bounty is not yet eligible for adoption.  
