@@ -22,8 +22,7 @@ TODO Write
 The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119. TODO Remove
 
 ### Bounty Lifecycle
-
-![bounty-lifecycle](../assets/rpip-bountystandards/bounty-lifecycle.png)
+![image](../assets/rpip-bounty_standards/bounty-lifecycle.png)
 
 #### Statuses
 **Draft - Proposed** - Bounty is described and proposed to the GMC for adoption. Bounty is not yet eligible for adoption.  
