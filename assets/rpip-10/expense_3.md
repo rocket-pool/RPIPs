@@ -1,4 +1,4 @@
-This expense funds the core protocol development team from **2023-10-26** until **2023-10-24** (inclusive).
+This expense funds the core protocol development team from **2023-10-26** until **2024-10-24** (inclusive).
 
 The core protocol development team have formed an indicative [roadmap](https://medium.com/rocket-pool/rocket-pool-houston-upgrade-fa2de86118ad) from community feedback. The roadmap will evolve as more research, analysis, and community direction is incorporated.
 
