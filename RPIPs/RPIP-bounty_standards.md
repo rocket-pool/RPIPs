@@ -16,7 +16,16 @@ TODO Write
 
 ## Motivation
 
-TODO Write
+This RPIP is primarily motivated by the desire to see bounties become a consistent and reliable mechanism for the completion of work at the Rocket Pool DAO. The existing bounty system has not been heavily adopted in comparison to the grant and retro frameworks. This is unfortunate, and I believe it represents a missed opportunity. 
+
+Bounties can serve as a much more balanced framework between service providers and the DAO. Grants tend to favour the service provider, and represent a greater risk for the DAO. Retros favour the DAO, and represent a greater risk to the service provider. Both of these have their place, but bounties provide a nice middle ground. The DAO is de-risked because it can approve work separately from provider, and providers are de-risked because the DAO has precommited to reward well-defined milestones.
+
+The current bounty mechanism fall short in that it is missing a layer of work between the proposal of a bounty and the presentation of a bounty to bounty hunters. This means bounties are written to the audience of the GMC (to convince them to adopt the bounty proposal) rather than to the audience of the bounty hunter (that actually needs to deliver the work). This results in bounties that are badly specified from the perspective of the bounty hunter, this increases risk and will prevent individuals and groups from doing this bounty work. This RPIP describes this intervening layer of work and clearly deliniates the difference between bounty proposals (for the GMC to consider) and bounty definitions (for bounty hunters to work on.)
+
+Another area in which the existing bounty mechanisms could be improved is that there is no explicit recognition that ideating, describing and defining an effective bounty can be a non-trivial amount of work, especially for bounties of larger values, or bounties that could have wide-reaching effects when delivered. This RPIP describes optional incentive levers that can be used by the GMC to reward different types of engagement with the bounty mechanisms. 
+
+Finally, in a somewhat speculative inclusion this RPIP describes the concept of bounty contacts, individuals that can help bounty hunters understand and deliver work that meets the goals of Rocket Pool. The motivation here is to try to fill the gap in tribal knowledge that may exist between crypto service providers and the long-standing rocket pool community. Service providers may misunderstand elements of the protocol, may be unaware of information that impacts the bounty and may be unfamiliar with the processes around the delivery of bounties. Having a knowledgable contact may help avoid bad outcomes due to this lack of knowledge.
+
 
 ## Specification
 The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119. TODO Remove
@@ -57,7 +66,7 @@ Bounty Incentive Levers are OPTIONAL incentives that the pDAO empowers the GMC t
 #### Lever Incentives
 * The incentive attached to each lever MAY be set by the GMC. 
 * Levers MAY have an absolute (fixed amount) component and/or a relative (percentage of total bounty payout) component. 
-* The payout of incentives for a given bounty MUST NOT reduce the bounty completion payout. 
+* The payout of incentives for a given bounty MUST NOT reduce the bounty hunters award payout. 
 * When incentive levers are modified by the GMC, incentives SHOULD be paid out in such a way that ambiguity favours incentive recipients.
 * The total cost of lever incentives is not fixed. The GMC SHOULD set lever incentives with caution when funds are limited. 
 
@@ -68,19 +77,19 @@ Bounty Incentive Levers are OPTIONAL incentives that the pDAO empowers the GMC t
 
 #### Lever A: Proposal Incentive
 The proposal incentive lever aims to influence the number of bounty proposals that are recieved by the GMC.
-* This incentive MUST be paid to the proposal author for a bounty proposal that is adopted by the GMC. 
+* This incentive SHOULD be paid to the proposal author for a bounty proposal that is adopted by the GMC. 
 * Individual incentive payouts for this lever MAY be reduced at the GMC's discretion based on proposal quality and completeness.
 * Bounty definitions do not need to be included for a proposer to recieve this incentive.
 
 #### Lever B: Definition Incentive
 The definition incentive lever aims to influence the quality and completeness of bounty definitions accompanying bounty proposals.
-* This incentive MUST be paid to the definiton author for bounty definitions provided alongside a bounty proposal that is adopted by the GMC. 
+* This incentive SHOULD be paid to the definiton author for bounty definitions provided alongside a bounty proposal that is adopted by the GMC. 
 * This incentive payout SHOULD be paid a maximum once per proposal, even if the bounty proposal is split into multiple definitions.
 * Individual incentive payouts for this lever MAY be reduced at the GMC's discretion based on definition quality and completeness.
 * This incentive SHOULD go to the proposal author unless an alternative is explicitly preapproved by the GMC adminitrator.
 
-#### Lever C: Completion Incentive
-The completion incentive lever aims to influence the quality and consistency of bounty work submitted by bounty hunters. It aims to do this by rewarding contacts that support, oversee and assist bounty hunters meet the requirements of open bounties. 
+#### Lever C: Support Incentive
+The support incentive lever aims to influence the quality and consistency of bounty work submitted by bounty hunters. It aims to do this by rewarding contacts that support, oversee and assist bounty hunters meet the requirements of open bounties. 
 * This incentive SHOULD be split equally between bounty contacts that meet the following conditions:
   1. The bounty MUST be completed to the satisfaction of the GMC.
   2. The contact MUST be publicly listed in the bounty definition of the completed bounty.
@@ -105,12 +114,28 @@ Initial guidelines and templates have been provided to the GMC where not already
 
 Links to the relevant documents are provided here for reference. These documents are not considered to be ratified by the pDAO, and can be modified by the GMC as required.
 
-* Bounty Proposal Template + Guidelines (TODO ADD LINK)
-* Bounty Definition Template + Guidelines (TODO ADD LINK)
+* [Bounty Proposal Template + Guidelines](https://github.com/rocketpoolgmc/rocketpool-gmc/blob/main/meta/bounty-proposal-template.md)
+* [Bounty Definition Template + Guidelines](https://github.com/rocketpoolgmc/rocketpool-gmc/blob/main/meta/bounty-definition-template.md)
 
 ## Rationale
 
-TODO Write
+### Proposals and Definitions
+Goals here were:
+* Split the work into something quick and reasonably simple for any community member to do quickly (the proposal) from the complicated part (clearly defining work, bounty structure, etc) in order to lower the barrier to entry while maintaining a baseline for quality. 
+* Split the work by audience: the proposal (primarily GMC) and the definition (primarily bounty hunter.)
+* Get a semi-consistent definition format that can feed into the bounty portal I've been developing.
+
+### Lifecycle and Statuses
+This is mostly just a comprehension aid, but may also help the GMC clearly communicate to the DAO what's going on with various bounties.
+
+### Incentives
+Goals here were:
+* Provide high optionality to the GMC. This feels like a bit of a cop out, but it is preferable than requiring additional votes in the future to tweak lever values, especially when as-yet we don't have any empirical data on how useful these levers each are.
+* Make incentives modular so that different parts of the process can be incentivized separately. 
+* The Support incentive for the contact is expected and intended to be at least partially a proxy for the author because the author determines who is listed as contacts on definitions they've authored. Authors that can see bounties through end-to-end as proposer, definer and contact are pretty valuable to the protocol, and it makes sense that they can collect all three incentives. The specification as-is allows optionality here as well though. Some authors may not want to fulfil this role and they can opt out easily. 
+* It's hard to know if relative or absolute incentives will work best. Makes sense to allow both + testing.
+* Initial lever recommendations are included so that I'm not pushing all of the hard incentive decisions onto the GMC. They represent my best guess as to what would benefit the protocol. None of these should be too huge, but they need to be large enough to affect behavior. Initially higher levers makes sense to kick-start the bounty mechanism because there is an element of self-reinforcement on both the proposal and completion sides that only works once it gets started. 
+* The requirement that contacts not be bad-mouthed by the bounty hunter is just to prevent contacts from failing to provide support when asked. 
 
 ## Backwards Compatibility
 Existing bounties have been given rough definitions already. Upon ratification of this RPIP, these rough definitions will be firmed up and their contents approved by the GMC.
