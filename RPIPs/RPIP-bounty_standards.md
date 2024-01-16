@@ -29,7 +29,7 @@ A high-level bounty idea that requires more work before it can be adopted by the
 
 **Bounty Definition**  
 
-A detailed and well defined bounty specification that can be adopted by the GMC and made available to bounty hunters. The goal of the bounty definition is to ensure that present the bounty deliverables to bounty hunters in a way that results in accurate, effective output taking place under terms fully understood by both parties. Bounty definitions may be delivered by community members alongside their bounty proposal or may be created by the GMC. Bounty definitions are the 'tick all the boxes' path for community members to get their bounty adopted by the GMC.
+A detailed and well defined bounty specification that can be adopted by the GMC and made available to bounty hunters. The goal of the bounty definition is to ensure that the bounty deliverables are presented to bounty hunters in a way that results in accurate and effective output taking place under terms fully understood by both parties. Bounty definitions may be delivered by community members alongside their bounty proposal or may be created by the GMC. Bounty definitions are the 'tick all the boxes' path for community members to get their bounty adopted by the GMC.
 
 **Bounty Hunter**  
 
