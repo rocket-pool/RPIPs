@@ -21,20 +21,38 @@ TODO Write
 ## Specification
 The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119. TODO Remove
 
+### Definitions
+
+**Bounty Proposal**  
+
+A high-level bounty idea that requires more work before it can be adopted by the GMC and made available to bounty hunters. The goal of the bounty proposal is to convince the GMC that this idea is worth the time and effort to adminster. Requirements for proposals are comparitively easy to meet, in order to encourage the community to submit their ideas. Bounty proposals are the 'quick and dirty' path for community members to suggest a bounty idea to the GMC.
+
+**Bounty Definition**  
+
+A detailed and well defined bounty specification that can be adopted by the GMC and made available to bounty hunters. The goal of the bounty definition is to ensure that present the bounty deliverables to bounty hunters in a way that results in accurate, effective output taking place under terms fully understood by both parties. Bounty definitions may be delivered by community members alongside their bounty proposal or may be created by the GMC. Bounty definitions are the 'tick all the boxes' path for community members to get their bounty adopted by the GMC.
+
+**Bounty Hunter**  
+
+A person or group that works to deliver the work specified by a well defined bounty.
+
+**Bounty Contact**  
+
+An individual that has expressed willingness to act as a point of contact with bounty hunters for a given bounty. This may be the bounty proposal author, a member of the GMC, or another Rocket Pool community member. The goal of the bounty contacts is to support and liase with bounty hunters so that they are better able to deliver the work specified in the bounty definition. Bounty contacts are listed in bounty definitions. 
+
 ### Bounty Lifecycle
 ![image](../assets/rpip-bounty_standards/bounty-lifecycle.png)
 
 #### Statuses
-**Draft - Proposed** - Bounty is described and proposed to the GMC for adoption. Bounty is not yet eligible for adoption.  
-**Draft - Defined** - Bounty is well defined and ready for completion by a bounty hunter with the relevant skillsets if adopted by the GMC. Bounty is now eligible for adoption.  
-**Draft - Rejected** - Bounty was rejected by the GMC at this time. Bounty is not eligible for completion.  
-**Open** - Bounty is adopted by the GMC for completion and listed on relevant frontends. Bounty is now eligible for completion.  
-**Closed - Completed** - A Bounty has been fully completed and paid out by the GMC. Bounty is no longer eligible for completion.  
-**Closed - Expired** - Bounty has met its expiration date. Bounty is no longer eligible for completion.  
-**Closed - Withdrawn** - GMC has withdrawn the bounty. Bounty is no longer eligible for completion.  
+**Draft - Proposed** - The bounty has been described and proposed to the GMC for adoption. The bounty is not yet eligible for adoption.  
+**Draft - Defined** - The bounty has been well defined and made ready for completion by a bounty hunter with the relevant skillsets if adopted by the GMC. The bounty is now eligible for adoption.  
+**Draft - Rejected** - The bounty has been rejected by the GMC at this time. The bounty is not eligible for completion.  
+**Open** - The bounty has been adopted by the GMC for completion and listed on relevant frontends. The bounty is now eligible for completion.  
+**Closed - Completed** - The bounty has been fully completed and paid out by the GMC. The bounty is no longer eligible for completion.  
+**Closed - Expired** - The bounty has met its expiration date. The bounty is no longer eligible for completion.  
+**Closed - Withdrawn** - The bounty has been withdrawn by the GMC. The bounty is no longer eligible for completion.  
 
 ### Bounty Incentive Levers
-Bounty Incentives Levers are OPTIONAL incentives that the pDAO empowers the GMC to use to incentivise the generation and successful completion of bounty proposals.
+Bounty Incentive Levers are OPTIONAL incentives that the pDAO empowers the GMC to use to incentivise the generation and successful completion of bounty proposals.
 
 #### Lever Incentives
 * The incentive attached to each lever MAY be set by the GMC. 
