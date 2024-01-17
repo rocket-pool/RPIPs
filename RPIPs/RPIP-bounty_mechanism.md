@@ -15,9 +15,13 @@ This RPIP covers a number of areas designed to improve the bounty mechanism oper
 
 ## Motivation
 This RPIP is motivated by the desire to see bounties become a consistent and reliable mechanism for the completion of work at the Rocket Pool DAO. The existing bounty system has not been heavily adopted in comparison to the grant and retro frameworks. This is unfortunate, and it represents a missed opportunity.
+
 Bounties can serve as a balanced framework between service providers and the DAO. Grants tend to favor the service provider and represent a greater risk for the DAO. Retros favor the DAO and represent a greater risk to the service provider. Both of these have their place, but bounties provide a nice middle ground. The DAO is de-risked because it can approve work separately from a provider. Providers are de-risked because the DAO has committed to rewarding well-defined milestones.
+
 The current bounty mechanism is missing a layer of work between the proposal of a bounty to the GMC and the presentation of a bounty to bounty hunters. Authors are not writing to the bounty hunter as their audience so the bounty hunter rarely has a well-specified bounty to work from.
+
 Currently, there is little recognition that creating an effective bounty is a non-trivial amount of work. This RPIP describes optional incentive levers that may be used by the GMC to encourage the community to propose bounties.
+
 There is a gap in tribal knowledge between members of the community and crypto service providers. Service providers may be unaware of information that could impact their bounty work. This issue can be mitigated by incentivizing the community to support bounty hunters as they work on a given bounty.
 
 ## Specification
@@ -54,26 +58,26 @@ Bounty Incentive Levers are OPTIONAL incentives that the pDAO empowers the GMC t
 #### Lever Incentives
 * The incentive attached to each lever MAY be set by the GMC.
 * Levers MAY have an absolute and/or a relative component.
-* Incentives for a given bounty MUST NOT reduce the bounty hunters award pay-out.
+* Incentives for a given bounty MUST NOT reduce the bounty hunters award payout.
 * When incentive levers are modified by the GMC, incentives SHOULD be paid out in such a way that ambiguity favors incentive recipients.
-* The total cost of lever incentives is not fixed. The GMC SHOULD set lever incentives with caution when funds are limited.
+* The total cost of lever incentives is not limited. The GMC SHOULD set lever incentives with caution.
 
-#### Pay-out
+#### Payout
 * Bounty incentives SHOULD be paid out of the GMC budget.
-* Incentive pay-outs SHOULD take place within the GMC's regular pay-out schedule.
-* Incentive pay-outs MUST be denominated in dollars and SHOULD be paid out in one of the GMC's accepted pay-out token options, selected by the recipient.
+* Incentive payouts SHOULD take place within the GMC's regular payout schedule.
+* Incentive payouts MUST be denominated in dollars and SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
 
 #### Lever A: Proposal Incentive
 The proposal incentive lever aims to influence the number of bounty proposals that are received by the GMC.
 * This incentive SHOULD be paid to the proposal author for a bounty proposal that is adopted by the GMC.
-* Individual incentive pay-outs for this lever MAY be reduced at the GMC's discretion based on proposal quality and completeness.
+* Individual incentive payouts for this lever MAY be reduced at the GMC's discretion based on proposal quality and completeness.
 * Bounty definitions do not need to be included for a proposer to receive this incentive.
 
 #### Lever B: Definition Incentive
 The definition incentive lever aims to influence the quality and completeness of bounty definitions accompanying bounty proposals.
 * This incentive SHOULD be paid to the definition author for bounty definitions provided alongside a bounty proposal that is adopted by the GMC.
-* This incentive pay-out SHOULD be paid a maximum of once per proposal, even if the bounty proposal is split into multiple definitions.
-* Individual incentive pay-outs for this lever MAY be reduced at the GMC's discretion based on definition quality and completeness.
+* This incentive payout SHOULD be paid a maximum of once per proposal, even if the bounty proposal is split into multiple definitions.
+* Individual incentive payouts for this lever MAY be reduced at the GMC's discretion based on definition quality and completeness.
 
 #### Lever C: Support Incentive
 The support incentive lever aims to influence the quality and consistency of bounty work submitted by bounty hunters. It aims to do this by rewarding contacts that support, oversee, and assist bounty hunters meet the requirements of open bounties.
@@ -84,7 +88,7 @@ The support incentive lever aims to influence the quality and consistency of bou
   4. The bounty hunter does not comment negatively on the contact when asked by the GMC.
 * Contacts SHOULD NOT assist the bounty hunter directly with the bounty work.
 * Contacts SHOULD assist bounty hunters via feedback, direction, and oversight upon request.
-* Individual incentive pay-outs for this lever MAY be reduced at the GMC's discretion for any reason. Reasoning must be publicly stated by the GMC.
+* Individual incentive payouts for this lever MAY be reduced at the GMC's discretion for any reason. Reasoning must be publicly stated by the GMC.
 
 #### Initial Lever Recommendations
 These are non-binding recommendations to the GMC for initial incentive lever settings. They are included as a starting point for discussions and are not intended to limit GMC decision-making.
