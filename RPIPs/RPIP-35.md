@@ -1,13 +1,13 @@
 ---
-rpip:
+rpip: 35
 title: Time-based Balance and RPL Price Submissions 
 description: Changes Balance and RPL Price submissions to be time-based 
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann), Joe Clapis (@jcrtp)
-discussions-to: TBC
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/rpip-35-time-based-balance-and-rpl-price-submissions/2419
+status: Final
 type: Protocol
 category: Core
-created: 2023-10-31
+created: 2023-11-10
 ---
 
 ## Abstract

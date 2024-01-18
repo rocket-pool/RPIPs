@@ -8,6 +8,9 @@ status: Final
 type: Protocol
 category: Core
 created: 2023-08-11
+vote-to: https://vote.rocketpool.net/#/proposal/0xc308b1a5b311105027f2f5007a93d4d077ae6d166dd3a3d0ee5bbc5af7660761
+vote-date: 2023-11-16
+vote-result: Passed
 ---
 
 ## Motivation
@@ -28,7 +31,7 @@ market impacts.
 ## Rationale
 **Please** see the proposal document on
 [Valdorff's github](https://github.com/Valdorff/rp-thoughts/tree/main/rpl_staking), or its backup
-printout [here](../assets/rpip-draft/rpl_staking_readme.pdf). It greatly expands on the context, 
+printout [here](../assets/rpip-30/rpl_staking_readme.pdf). It greatly expands on the context, 
 reasoning, and impacts for this proposal.
 
 As a very high level summary, the below pie charts show overall intended spend before and after this
@@ -36,7 +39,7 @@ proposal. Mechanically, the blue categories are RPL staked from 10-15% of borrow
 (incentivizing), RPL staked from 15-30% of borrowed ETH value (overshoot), and RPL staked above 30%
 of borrowed ETH value (speculation).
 
-| ![image](../assets/rpip-draft/overall_spend_pie_curr.png) | ![image](../assets/rpip-draft/overall_spend_pie_prop.png) |
+| ![image](../assets/rpip-30/overall_spend_pie_curr.png) | ![image](../assets/rpip-30/overall_spend_pie_prop.png) |
 |:---------------------------------------------------------:|:-------------------------------------:|
 
 The proposal focuses a lot more spend on incentivizing minipool creation, while still spending a
@@ -50,12 +53,24 @@ the protocol goal of attracting minipool creation (and rETH supplying).
 ### Definitions
 - `proposed_method_share` SHALL be defined as:
   - For one node, its `node_weight` divided by the sum of all `node_weight` across nodes
-  - If staked RPL value in ETH is <10% borrowed ETH
-    - $`node\_weight=0`$
-  - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH)
-    - $`node\_weight=100 * staked\_rpl\_value\_in\_eth`$
-  - If staked RPL value in ETH is > 15% borrowed ETH
-    - $`node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth`$
+  - If staked RPL value in ETH is <10% borrowed ETH, then:
+  ```math
+  $$
+    node\_weight=0
+  $$
+  ```
+  - If staked RPL value in ETH is (>= 10% borrowed ETH) and (<=15% borrowed ETH), then:
+  ```math
+  $$
+    node\_weight=100 * staked\_rpl\_value\_in\_eth
+  $$
+  ```
+  - If staked RPL value in ETH is > 15% borrowed ETH, then:
+  ```math
+  $$
+  node\_weight = (13.6137 + 2 * ln(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13)) * borrowed\_eth
+  $$
+  ```
     - This value MAY be approximated if necessary
 - `current_method_share` SHALL be defined as the share of rewards an NO receives using the latest
   active rewards tree spec when the vote is passed
@@ -90,7 +105,11 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 ### Transitioning towards final states
 - For periods X=1 to X=5: a node's share of rewards is
-  $`\frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share`$
+```math
+$$
+\frac{X}{6}*proposed\_method\_share + \frac{6-X}{6}*current\_method\_share
+$$
+```
   - For these periods, the rewards tree spec MUST specify how to calculate `current_method_share`,
     `proposed_method_share`, and how to combine them to get a node's share of rewards
 - If the 2-step withdrawal process described above has not yet been implemented, partial steps SHALL
@@ -108,10 +127,27 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 ### Showing node weight's subcomponents in the sublinear region
 Some folks expressed a preference for seeing a few constituent terms that create the node_weight
 formula to better understand it, so we're including that here:
-- $`node\_weight = diminishing\_reward\_term + weight\_at\_15pETH + offset\_to\_align\_functions`$
-- $`diminishing\_reward\_term = 2*borrowed\_eth*\ln\left(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13\right)`$
-- $`weight\_at\_15pETH = 100*0.15*borrowed\_eth`$
-- $`offset\_to\_align\_functions = 1.3863*borrowed\_eth`$
+
+```math
+$$
+node\_weight = diminishing\_reward\_term + weight\_at\_15pETH + offset\_to\_align\_functions
+$$
+```
+```math
+$$
+diminishing\_reward\_term = 2*borrowed\_eth*\ln\left(100*\frac{staked\_rpl\_value\_in\_eth}{borrowed\_eth} - 13\right)
+$$
+```
+```math
+$$
+weight\_at\_15pETH = 100*0.15*borrowed\_eth
+$$
+```
+```math
+$$
+offset\_to\_align\_functions = 1.3863*borrowed\_eth
+$$
+```
 
 Essentially, rewards scale with the node's `borrowed_eth` with diminishing effectiveness based on
 higher collateralization (in terms of RPL value per borrowed ETH). Additional math is there to
@@ -127,7 +163,7 @@ token.
 An analysis of possible fallout can be found in the `Which NOs are sensitive to RPL yield?` section
 of the research document on
 [Valdorff's github](https://github.com/Valdorff/rp-thoughts/blob/main/rpl_staking/research.md), or
-its backup printout [here](../assets/rpip-draft/rpl_staking_research.pdf). The key conclusion is
+its backup printout [here](../assets/rpip-30/rpl_staking_research.pdf). The key conclusion is
 that only up to ~4k ETH worth of RPL is sensitive to yield and in a range where they could improve
 their yield by selling. Note that this does _not_ include the effect of RPL buying that is attracted
 from (a) holders sensitive to yield in a range where they could improve their yield by buying or (b)
