@@ -4,7 +4,7 @@ title: RPL Withdrawal Address
 description: Adds an additional withdrawal address that facilitates splitting ETH bond and rewards from RPL bond and rewards
 author: Darren Langley (@langers), Kane Wallmann (@kanewallmann)
 discussions-to: https://dao.rocketpool.net/t/rpip-31-rpl-withdrawal-address/2251
-status: Draft
+status: Final 
 type: Protocol
 category: Core
 created: 2023-09-05
@@ -60,7 +60,7 @@ https://dao.rocketpool.net/t/withdrawal-address-splitter-contract/563
 
 ### Staking RPL
 - As the controller of the RPL for a node, I MUST be able to stake additional RPL
-  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address, or a specifically allowed address
+  - If a node's RPL withdrawal address is unset, the call MUST come from the node's address, primary withdrawal address, or a specifically allowed address
   - If a node's RPL withdrawal address is set, the call MUST come from the current RPL withdrawal address, or a specifically allowed address
 - As the controller of the RPL for a node, I MUST be able to control the list of specifically allowed RPL staking addresses
   - If a node's RPL withdrawal address is unset, the call MUST come from the node's address
