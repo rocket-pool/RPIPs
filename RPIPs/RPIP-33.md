@@ -39,24 +39,32 @@ identifies that node. This section refers to a node by its index into the global
 
 The voting power function for members of the pDAO SHALL be formally defined as:
 
+```math
 $$
 P_{n} = \sum_{i=1}^{N} \begin{cases}
 p_{i} & d_{i} = n \\
 0 & else \\
 \end{cases}
 $$
+```
 
+```math
 $$
 p_{n} = {\sqrt{R_{n}}}
 $$
+```
 
+```math
 $$
 R_{n} = min(S_{n}, M_{n})
 $$
+```
 
+```math
 $$
 M_{n} = \frac{N_{n} \times 1.5}{r}
 $$
+```
 
 Where:
 
@@ -71,9 +79,11 @@ Where:
 
 Total voting power can be expressed as the following:
 
+```math
 $$
 P = \sum_{i=1}^{N} P_{i}
 $$
+```
 
 ### Proposal Types
 
