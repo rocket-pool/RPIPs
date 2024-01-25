@@ -130,7 +130,7 @@ Images, diagrams and auxiliary files should be included in a subdirectory of the
 
 ## RPIP Editors
 
-Current and historic RPIP editors are recorded in [RPIP-36](RPIP-36#rpip-editors).
+Current and historic RPIP editors are recorded in [RPIP-36](RPIP-36.md#rpip-editors).
 
 ## RPIP Editor Responsibilities
 

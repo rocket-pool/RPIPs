@@ -195,7 +195,7 @@ roughly steady given the initial proposed inflation step.
 
 ## pDAO Treasurer History
 
-Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-treasurer-role).
+Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-treasurer-role).
 
 ## Direct expenses
 
