@@ -4,7 +4,7 @@ title: Protocol Development
 description: Determines the process around core protocol development and funding
 author: Darren Langley (@langers)
 discussions-to: https://dao.rocketpool.net/t/dev-team-funding/2038
-status: Draft
+status: Final 
 type: Meta
 created: 2023-10-31
 ---

@@ -75,11 +75,9 @@ theoretical run of 1 reward period (28 days), this gives  ~83.6 ETH or ~140,200 
 light of parallel discussions about tokenomics changes, this amount serves as a conservative
 starting point.
 
-## Historical membership
-| Date       | Members                                                                                                                      | Comment                                                      |
-|------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| 2022-08-25 | RP Team 1 (operated by langers), RP Team 2 (operated by Darcius), Jasper, Marceau, Valdorff, Rhett, Uisce, DaserDog, Denum   | Full committee selected informally and ratified by pDAO vote |
-| 2023-04-09 | Jasper, Valdorff, Langers, knoshua, Uisce, ramana, denum, NonFungibleYokem, phils.eth                                        | Full committee selected by pDAO vote                         |
+## Membership
+
+Current and historic membership is recorded in [RPIP-36](RPIP-36.md#incentives-management-committee).
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
