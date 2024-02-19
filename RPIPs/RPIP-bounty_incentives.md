@@ -12,7 +12,7 @@ requires: 26
 
 ## Abstract
 
-This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP instead these are left up to the GMC to manage on an ongoing basis and they would be paid out of the GMC's budget. To frame the debate and discussion on the initial lever values, some recommendations to the GMC have been included. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process. 
+This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. To frame the debate and discussion on the initial lever values, some recommendations to the GMC have been included. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process. 
 
 
 ## Motivation
@@ -111,13 +111,10 @@ Allows for experimentation and flexibility that combining the incentives would n
 It's hard to know if relative or absolute incentives will work best. Makes sense to allow both for experimentation purposes.
 
 **Initial lever recommendations**  
-These are included so that I'm not pushing all of the hard incentive decisions onto the GMC. They represent my best guess as to what would benefit the protocol. None of these should be too huge, but they need to be large enough to affect behavior. Initially, higher lever settings make sense to kick-start the bounty mechanism. There is an element of self-reinforcement on both the proposal and completion sides that only works once it gets started.
+These are included so that I'm not pushing all of the hard incentive decisions onto the GMC. They represent my best guess as to what would benefit the DAO. None of these should be too huge, but they need to be large enough to affect behavior. Initially, higher lever settings make sense to kick-start the bounty mechanism. There is an element of self-reinforcement on both the proposal and completion sides that only works once it gets started.
 
 **Reporting Requirement For Contacts**  
 The requirement that Bounty Hunters not report negatively on the Bounty Contacts is intended to prevent contacts from failing to provide support when asked because that's the whole thing we want to incentivize. However, 'SHOULD' is used intentionally here to cover the possibility of bounty hunters attempting to take advantage of this requirement.
-
-## Backwards Compatibility
-Existing bounties have been given rough definitions already. Upon ratification of this RPIP, these rough definitions will be firmed up and their contents approved by the GMC.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
