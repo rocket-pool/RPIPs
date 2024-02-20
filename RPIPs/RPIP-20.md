@@ -80,7 +80,7 @@ starting point.
 
 ## Membership
 
-Current and historic membership is recorded in [RPIP-36](RPIP-36#incentives-management-committee).
+Current and historic membership is recorded in [RPIP-36](RPIP-36.md#incentives-management-committee).
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

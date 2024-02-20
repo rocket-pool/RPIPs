@@ -195,7 +195,7 @@ roughly steady given the initial proposed inflation step.
 
 ## pDAO Treasurer History
 
-Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-treasurer-role).
+Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-treasurer-role).
 
 ## Direct expenses
 
@@ -205,7 +205,7 @@ Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36#pdao-trea
 | ~~TBD~~    | ~~0-3909 RPL~~ | ~~Additional dev funding with seat reduction~~                                     | ~~[expense_1](../assets/rpip-10/expense_1.md)~~ |
 | TBD        | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
 | TBD        | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
-| TBD        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2023-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
+| TBD        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
