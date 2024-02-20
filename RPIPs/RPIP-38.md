@@ -14,7 +14,7 @@ vote-result:
 
 
 ## Abstract
-This proposal looks to challenge the GMC decision on application BA082401, the funding of an integration with Eigenlayer.
+This proposal looks to challenge the GMC decision on application [BA082401](https://github.com/rocketpoolgmc/rocketpool-gmc/blob/main/bounties/BA082401.md), the funding of an integration with Eigenlayer.
 
 ## Specification
 The pDAO SHALL vote twice:
