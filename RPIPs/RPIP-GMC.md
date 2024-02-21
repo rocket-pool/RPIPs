@@ -48,7 +48,7 @@ RPIP-26 added:
 - Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process.
 
 The motivation for the update in this RPIP is that:
-- The current conflict of interest rules are too rigid and debilitating to the delibration process, the GMC has continually hit these periods where they are forced to emergency shuffle resources and potentially have a less informed / effective decision process as a result. By allowing committee members submitting grants to participate in other grant decisions, while allowing any member to declare a conflict of interest, we can restore much needed efficiency to the GMC without overly encumbering rules.
+- The existing conflict of interest regulations prove overly restrictive, hindering the deliberation process within the GMC. Periodically, the GMC faces emergencies necessitating resource reallocation, potentially compromising the effectiveness of decision-making. Permitting committee members who submit grants to also participate in other grant decisions, with the provision for any member to declare a conflict of interest, offers a pathway to restoring much-needed efficiency without imposing burdensome regulations.
 - The current schedule causes the discussion period to fluctuate between 9 and 16 days. This update allows a consistent 16-day discussion period, which leads to more time to research, negotiate, and discuss each award.
 - RPIP-26 superseded RPIP-18 but incorrectly left out the 'Selection and Governance' section. This update restores that missing section.
 
