@@ -24,7 +24,7 @@ award rounds (from every-other-month to quarterly), and the removal of the requi
 majority of the committee be made up of non-team, non-oDAO members.\
 RPIP-26 superceded RPIP-18, it removes the 50% retrospective award cap, adds a GMC administrator,
 and reworks the awards process to a rolling process instead of a quarterly one.\
-This RPIP supercedes RPIP-26: it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, and it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26.
+This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, and it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26.
 
 ## Motivation
 
@@ -48,9 +48,9 @@ RPIP-26 added:
 - Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process.
 
 The motivation for the update in this RPIP is that:
-- explanation of conflict of interest
-- explanation of schedule 
-- explanation of selection and governance
+- The current conflict of interest rules are too rigid and debilitating to the delibration process, the GMC has continually hit these periods where they are forced to emergency shuffle resources and potentially have a less informed / effective decision process as a result. By allowing committee members submitting grants to participate in other grant decisions, while allowing any member to declare a conflict of interest, we can restore much needed efficiency to the GMC without overly encumbering rules.
+- The current schedule causes the discussion period to fluctuate between 9 and 16 days. This update allows a consistent 16-day discussion period, which leads to more time to research, negotiate, and discuss each award.
+- RPIP-26 superseded RPIP-18 but incorrectly left out the 'Selection and Governance' section. This update restores that missing section.
 
 ## Specification
 
