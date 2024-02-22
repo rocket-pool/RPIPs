@@ -1,5 +1,5 @@
 ---
-rpip: #<to be assigned>
+rpip: 39
 title: Bounty Incentives
 description: Proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals.
 author: LongForWisdom (@LongForWisdom)
@@ -12,7 +12,7 @@ requires: 26
 
 ## Abstract
 
-This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. To frame the debate and discussion on the initial lever values, some recommendations to the GMC have been included. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process. 
+This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. To frame the debate and discussion on the initial lever values, some recommendations to the GMC have been included. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process.
 
 
 ## Motivation
@@ -20,7 +20,7 @@ This RPIP is motivated by the desire to see bounties become a consistent and rel
 
 Bounties can serve as a balanced framework between service providers and the DAO. Grants tend to favor the service provider and represent a greater risk for the DAO. Retros favor the DAO and represent a greater risk to the service provider. Both of these have their place, but bounties provide a nice middle ground. The DAO is de-risked because it can approve work separately from a provider. Providers are de-risked because the DAO has committed to rewarding well-defined milestones.
 
-Currently, there is little recognition that creating an effective and actionable bounty is a non-zero amount of work. Secondly, there is a natural gap in tribal knowledge between members of the Rocket Pool community and crypto service providers. This RPIP describes optional incentive levers that may be used by the GMC to encourage the community to both propose bounties and to support well-meaning service providers that lack some of that deep knowledge of the protocol and DAO. 
+Currently, there is little recognition that creating an effective and actionable bounty is a non-zero amount of work. Secondly, there is a natural gap in tribal knowledge between members of the Rocket Pool community and crypto service providers. This RPIP describes optional incentive levers that may be used by the GMC to encourage the community to both propose bounties and to support well-meaning service providers that lack some of that deep knowledge of the protocol and DAO.
 
 ## Specification
 
@@ -32,13 +32,13 @@ These definitions are descriptive and not prescriptive. They describe the stages
 A high-level bounty idea that requires more work before it can be adopted by the GMC. The goal of the bounty proposal is to convince the GMC that this idea is worth the effort and funding to pursue. Proposal requirements are easy to meet to encourage community engagement. Bounty proposals are the 'quick and dirty' path for community members to suggest a bounty idea to the GMC.
 
 **Proposal Author**  
-The author of a given Bounty Proposal. 
+The author of a given Bounty Proposal.
 
 **Bounty Definition**  
 A detailed and well-defined bounty specification that can be adopted by the GMC. The goal of the bounty definition is to communicate the content and terms of the bounty to bounty hunters. Community members may provide a bounty definition alongside their bounty proposal, it may be created by the GMC, or submitted by a separate community member. Bounty definitions are the 'tick all the boxes' path for community members to get their bounty adopted by the GMC.
 
 **Definition Author**  
-The author of a given Bounty Definition. May be the same individual or entity that proposed the bounty, but it doesn't have to be. 
+The author of a given Bounty Definition. May be the same individual or entity that proposed the bounty, but it doesn't have to be.
 
 **Bounty Hunter**  
 A person or group that works to deliver the work specified by a well-defined bounty.
@@ -102,11 +102,11 @@ These are non-binding recommendations to the GMC for initial incentive lever set
 This feels like a bit of a cop-out, but it is preferable to needing pDAO votes in the future to tweak lever values, especially when as yet we don't have any empirical data on how useful these levers each are.
 
 **Modular Incentives**  
-Allows for experimentation and flexibility that combining the incentives would not. Does increase complexity. 
+Allows for experimentation and flexibility that combining the incentives would not. Does increase complexity.
 
 **The Support Incentive**  
  It is expected and intended for this to at least partially be a proxy for the author because the author determines who is listed as a contact on the definitions they're writing. Authors who can see bounties through from end-to-end as proposer, definer, and contact are pretty valuable to the DAO, and it makes sense that they can collect all three incentives. The specification as-is allows optionality here as well though. Some authors may not want to fulfil this role and they can opt out easily.
- 
+
 **Relative vs Absolute**  
 It's hard to know if relative or absolute incentives will work best. Makes sense to allow both for experimentation purposes.
 
