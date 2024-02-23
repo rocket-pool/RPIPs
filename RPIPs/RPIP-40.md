@@ -1,5 +1,5 @@
 ---
-rpip: #<to be assigned>
+rpip: 40
 title: Updating of Grants Management Committee 2
 description: Replaces RPIP-26, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
