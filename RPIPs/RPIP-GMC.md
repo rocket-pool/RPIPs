@@ -3,7 +3,7 @@ rpip: #<to be assigned>
 title: Updating of Grants Management Committee 2
 description: Replaces RPIP-26, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
-discussions-to: https://dao.rocketpool.net/t/gmc-rpip-18-conflict-of-interest-community-feedback/1959, (second link)
+discussions-to: link tbd
 status: Draft
 type: Meta
 created: 2024-02-20
@@ -175,7 +175,6 @@ To ensure a smooth transition and maintain operational continuity, the committee
 In addition to the "Management Committee Governance" and "Management Committee Selection" sections of RPIP-10, the GMC will abide by the following:
 
 - The GMC SHALL contain nine individuals, except in cases of vacancies.
-- Upon approval of this RPIP, immediate elections following the guidelines of RPIP-10 SHALL take place for any new or vacant seats. These elections SHALL supercede the rules for filling vacancies in the previous bullet.
 
 ## Membership
 
