@@ -24,7 +24,7 @@ award rounds (from every-other-month to quarterly), and the removal of the requi
 majority of the committee be made up of non-team, non-oDAO members.\
 RPIP-26 superceded RPIP-18, it removes the 50% retrospective award cap, adds a GMC administrator,
 and reworks the awards process to a rolling process instead of a quarterly one.\
-This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, and it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26.
+This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26, adds additional clarify on GMC members participating in bounties.
 
 ## Motivation
 
@@ -51,6 +51,7 @@ The motivation for the update in this RPIP is that:
 - The existing conflict of interest regulations prove overly restrictive, hindering the deliberation process within the GMC. Periodically, the GMC faces emergencies necessitating resource reallocation, potentially compromising the effectiveness of decision-making. Permitting committee members who submit grants to also participate in other grant decisions, with the provision for any member to declare a conflict of interest, offers a pathway to restoring much-needed efficiency without imposing burdensome regulations.
 - The current schedule causes the discussion period to fluctuate between 9 and 16 days. This update allows a consistent 16-day discussion period, which leads to more time to research, negotiate, and discuss each award.
 - RPIP-26 superseded RPIP-18 but incorrectly left out the 'Selection and Governance' section. This update restores that missing section.
+- As the GMC has increased its facilitation of bounties, it has recognized the necessity for greater clarity regarding the bounty process. This clarity aims to mitigate potential conflicts of interest among GMC members who are interested in participating in bounty completion.
 
 ## Specification
 
@@ -77,8 +78,8 @@ The motivation for the update in this RPIP is that:
 #### Awards process
 
 - Community members can submit grant, bounty, and retrospective award applications at any time
-  - Submissions received before 10th of the month will be reviewed that month; if received after that, they will be queued for next month
-- The GMC will meet on or around the 10th of the month to make preliminary decisions and provide comments
+  - Submissions received before 7th of the month will be reviewed that month; if received after that, they will be queued for next month
+- The GMC will meet on or around the 7th of the month to make preliminary decisions and provide comments
 - The GMC administrator will contact the submitter and:
   - Share preliminary decision and rationale
   - Work with submitter on edits, if desired
@@ -119,7 +120,7 @@ The motivation for the update in this RPIP is that:
     retrospective award for which they are nominated. They MAY participate in the ratifying
     snapshot vote.
     - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any competing grants during the application period for which they are an applicant. ANY committee member or the GMC administrator may identify a grant as a competing grant. In such cases, committee members who have submitted a grant application for that period cannot vote or discuss that application. They may participate in the ratifying snapshot vote. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants.
-  - Any GMC member who submits a bounty SHALL not complete that bounty.
+  - Any GMC member who submits a bounty SHALL not complete that bounty. If a GMC member plans to complete a bounty, that SHALL be communicated to the GMC as early in the  process as possible.
 
 #### Expanded GMC Administrator Role
 
@@ -181,6 +182,8 @@ In addition to the "Management Committee Governance" and "Management Committee S
 Current and historic membership is recorded in [RPIP-36](RPIP-36.md#grants-management-committee).
 
 ## Rationale
+
+From RPIP-18:
 
 The community has long desired a process by which some portion of pDAO funds could be used to reward
 past contributions and incentivize future such contributions. Discussion has been ongoing for at
