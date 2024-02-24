@@ -24,7 +24,7 @@ award rounds (from every-other-month to quarterly), and the removal of the requi
 majority of the committee be made up of non-team, non-oDAO members.\
 RPIP-26 superceded RPIP-18, it removes the 50% retrospective award cap, adds a GMC administrator,
 and reworks the awards process to a rolling process instead of a quarterly one.\
-This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26, adds additional clarify on GMC members participating in bounties.
+This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it makes an adjustment to the application deadline within the schedule, it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26, and it adds additional clarify on GMC members participating in bounties.
 
 ## Motivation
 
