@@ -3,7 +3,7 @@ rpip: 39
 title: Bounty Incentives
 description: Proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals.
 author: LongForWisdom (@LongForWisdom)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-39-bounty-incentives/2753
 status: Draft
 type: Meta
 created: 2024-02-16
@@ -81,7 +81,7 @@ The support incentive lever aims to influence the quality and consistency of the
 * This incentive SHOULD be split equally between bounty support contacts listed on a bounty where the following conditions are met:
   1. The bounty MUST be completed (in full or in part) to the satisfaction of the GMC.
   2. The contact MUST be publicly listed in the bounty definition of the completed bounty.
-  3. The contact MUST NOT be affiliated with the completing bounty hunter.
+  3. The contact MUST NOT have a significant conflict of interest between Rocket Pool and the completing bounty hunter.
   4. The bounty hunter SHOULD NOT comment negatively on the contact when asked by the GMC.
 * Contacts SHOULD NOT assist the bounty hunter directly with the bounty work.
 * Contacts SHOULD assist bounty hunters via feedback, direction, and oversight _upon request_.
@@ -95,6 +95,17 @@ These are non-binding recommendations to the GMC for initial incentive lever set
 * Lever B SHOULD have a relative component, as higher-value bounties should be expected to have more detailed, more strict, and less ambiguous definitions.
 * Lever C SHOULD be a focus for experimentation. It is difficult to know how useful or effective it will be without empirical testing.
 * The sum of lever incentives SHOULD be less than 10% of the total bounty value under normal circumstances.
+
+### Current and Historic Settings
+
+| Date Changed | Lever A: Proposal Incentive | Lever B: Definition Incentive | Lever C: Support Incentive |
+|--------------|-----------------------------|-------------------------------|----------------------------|
+|   2024-02-16 (RPIP Written) | $0 + 0%                     | $0 + 0%                       | $0 + 0%                    |
+
+The above table may be generated using this [google sheet](https://docs.google.com/spreadsheets/d/18JWtUSD6Ej5h2lDLDNEljjWM61XdqqiYkRYTSk8awKA/edit#gid=0), which should be maintained in parallel. If you need to modify the sheet and do not have permissions then:
+1. Copy the sheet
+2. Set it to public read-only
+3. Replace this link with your updated sheet
 
 ## Rationale
 
