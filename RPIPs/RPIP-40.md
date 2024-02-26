@@ -22,7 +22,7 @@ The GMC was created in RPIP-15.\
 RPIP-18 superceded RPIP-15, with changes to the committee size (enlarged to 9), the frequency of
 award rounds (from every-other-month to quarterly), and the removal of the requirement that a
 majority of the committee be made up of non-team, non-oDAO members.\
-RPIP-26 superceded RPIP-18, it removes the 50% retrospective award cap, adds a GMC administrator,
+RPIP-26 superceded RPIP-18, it removes the 50% retrospective award cap, adds a GMC Administrator,
 and reworks the awards process to a rolling process instead of a quarterly one.\
 This RPIP supercedes RPIP-26, it revises the conflict of interest section to allow GMC members to participate in grants that have not been identified as competing grants, it adds additional clarify on GMC members participating in bounties, it makes an adjustment to the application deadline within the schedule, it restores the 'Selection and Governance' section that was incorrectly removed in RPIP-26.
 
@@ -80,7 +80,7 @@ The motivation for the update in this RPIP is that:
 - Community members can submit grant, bounty, and retrospective award applications at any time
   - Submissions received before 7th of the month will be reviewed that month; if received after that, they will be queued for next month
 - The GMC will meet on or around the 7th of the month to make preliminary decisions and provide comments
-- The GMC administrator will contact the submitter and:
+- The GMC Administrator will contact the submitter and:
   - Share preliminary decision and rationale
   - Work with submitter on edits, if desired
   - Assign individual commitee members for verification, if work is specialized
@@ -119,7 +119,7 @@ The motivation for the update in this RPIP is that:
   - Any GMC member SHALL NOT score, vote on, or participate in GMC discussions about any
     retrospective award for which they are nominated. They MAY participate in the ratifying
     snapshot vote.
-    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any competing grants during the application period for which they are an applicant. ANY committee member or the GMC administrator may identify a grant as a competing grant. In an environment where funds are judged to be limited, the GMC Administrator must identify all grants, retros and bounties as competing. If a grant is identified as competing, committee members who have submitted a grant application for that period cannot vote or discuss that application.  They may participate in the ratifying snapshot vote. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants.
+    - Any GMC member who submits a grant application SHALL abstain from scoring, voting on, or participating in GMC discussions about any competing grants during the application period for which they are an applicant. ANY committee member or the GMC Administrator may identify a grant as a competing grant. In an environment where funds are judged to be limited, the GMC Administrator must identify all grants, retros and bounties as competing. If a grant is identified as competing, committee members who have submitted a grant application for that period cannot vote or discuss that application.  They may participate in the ratifying snapshot vote. They may also score, vote, and participate in discussions in future rounds during which their grant is ongoing, provided they have not submitted an application during that round for any new grants.
   - Any GMC member who submits a bounty SHALL not complete that bounty. If a GMC member plans to complete a bounty, that SHALL be communicated to the GMC as early in the  process as possible.
 
 #### Expanded GMC Administrator Role
@@ -159,7 +159,7 @@ To ensure a smooth transition and maintain operational continuity, the committee
 
 ###### Consensus Vote for Removal
 
-- Any committee member can formally request a vote to remove the current GMC administrator by bringing the matter to the attention of the committee.
+- Any committee member can formally request a vote to remove the current GMC Administrator by bringing the matter to the attention of the committee.
   - The request will initiate a consensus vote among the committee members, where they will collectively decide on the removal. A majority vote of greater than 50% is required for removal.
 
 ###### Committee Member Replacement
