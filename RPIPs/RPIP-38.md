@@ -2,9 +2,9 @@
 rpip: 38
 title: Modify or Decline Eigenlayer Integration (BA082401)
 description: Appeals GMC decision on BA082401 and seeks the opinion of the pDAO
-author: patches (@patches)
+author: Patches (@jshufro)
 discussions-to: https://dao.rocketpool.net/t/eigenlayer-integration-bounty-challenge/2703
-status: Review
+status: Final
 type: Meta
 created: 2024-02-06
 vote-to:
@@ -14,7 +14,7 @@ vote-result:
 
 
 ## Abstract
-This proposal looks to challenge the GMC decision on application BA082401, the funding of an integration with Eigenlayer.
+This proposal looks to challenge the GMC decision on application [BA082401](https://github.com/rocketpoolgmc/rocketpool-gmc/blob/main/bounties/BA082401.md), the funding of an integration with Eigenlayer.
 
 ## Specification
 The pDAO SHALL vote twice:
