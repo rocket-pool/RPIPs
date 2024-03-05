@@ -4,7 +4,7 @@ title: Modify or Decline Eigenlayer Integration (BA082401)
 description: Appeals GMC decision on BA082401 and seeks the opinion of the pDAO
 author: Patches (@jshufro)
 discussions-to: https://dao.rocketpool.net/t/eigenlayer-integration-bounty-challenge/2703
-status: Review
+status: Final
 type: Meta
 created: 2024-02-06
 vote-to:
