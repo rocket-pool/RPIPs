@@ -12,7 +12,7 @@ requires: 26
 
 ## Abstract
 
-This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. To frame the debate and discussion on the initial lever values, some recommendations to the GMC have been included. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process.
+This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process.
 
 
 ## Motivation
@@ -26,22 +26,13 @@ Currently, there is little recognition that creating an effective and actionable
 
 ### Definitions
 
-These definitions are descriptive and not prescriptive. They describe the stages and roles that were assumed to exist when this RPIP was written. The GMC maintains the authority to modify or change these structures or roles in the future.  
+These definitions are descriptive and not prescriptive. The GMC maintains the authority to modify or change these structures or roles in the future.  
 
 **Bounty Proposal**  
 A high-level bounty idea that requires more work before it can be adopted by the GMC. The goal of the bounty proposal is to convince the GMC that this idea is worth the effort and funding to pursue. Proposal requirements are easy to meet to encourage community engagement. Bounty proposals are the 'quick and dirty' path for community members to suggest a bounty idea to the GMC.
 
-**Proposal Author**  
-The author of a given Bounty Proposal.
-
 **Bounty Definition**  
 A detailed and well-defined bounty specification that can be adopted by the GMC. The goal of the bounty definition is to communicate the content and terms of the bounty to bounty hunters. Community members may provide a bounty definition alongside their bounty proposal, it may be created by the GMC, or submitted by a separate community member. Bounty definitions are the 'tick all the boxes' path for community members to get their bounty adopted by the GMC.
-
-**Definition Author**  
-The author of a given Bounty Definition. May be the same individual or entity that proposed the bounty, but it doesn't have to be.
-
-**Bounty Hunter**  
-A person or group that works to deliver the work specified by a well-defined bounty.
 
 **Bounty Support Contact**  
 An individual who acts as a supporter and point of contact with bounty hunters for a given bounty. This may be the bounty proposal author, a member of the GMC, or another community member. The bounty support contact's goal is to support and liaise with bounty hunters so that they are better able to deliver the work specified in the bounty definition. Bounty contacts are listed in bounty definitions.
@@ -89,25 +80,23 @@ The support incentive lever aims to influence the quality and consistency of the
 
 \* Affiliated here is intended to cover financial or business relationships, familial relationships, friendships pre-dating rocketpool, etc. It should not extend to the bonds formed within the RP community. 
 
-### Initial Lever Recommendations
-These are non-binding recommendations to the GMC for initial incentive lever settings. They are included as a starting point for discussions and are not intended to limit GMC decision-making.
-* For the first few months, levers SHOULD be set to higher levels, to reach a meaningful number of open bounties quickly.
-* Lever A and B SHOULD NOT be zero unless unallocated GMC funds are low.
-* Lever B SHOULD be higher than Lever A to incentivize the directly-actionable definitions over the not-directly-actionable proposals.
-* Lever B SHOULD have a relative component, as higher-value bounties should be expected to have more detailed, more strict, and less ambiguous definitions.
-* Lever C SHOULD be a focus for experimentation. It is difficult to know how useful or effective it will be without empirical testing.
-* The sum of lever incentives SHOULD be less than 10% of the total bounty value under normal circumstances.
-
 ### Current and Historic Settings
 
 | Date Changed | Lever A: Proposal Incentive | Lever B: Definition Incentive | Lever C: Support Incentive |
 |--------------|-----------------------------|-------------------------------|----------------------------|
 |   2024-02-16 (RPIP Written) | $0 + 0%                     | $0 + 0%                       | $0 + 0%                    |
 
+<!--
+
+Commentary for Editors:
+
 The above table may be generated using this [google sheet](https://docs.google.com/spreadsheets/d/18JWtUSD6Ej5h2lDLDNEljjWM61XdqqiYkRYTSk8awKA/edit#gid=0), which should be maintained in parallel. If you need to modify the sheet and do not have permissions then:
 1. Copy the sheet
 2. Set it to public read-only
 3. Replace this link with your updated sheet
+4. Convert the new sheet to markdown using: https://www.tablesgenerator.com/markdown_tables or similar.
+
+-->
 
 ## Rationale
 
@@ -122,9 +111,6 @@ Allows for experimentation and flexibility that combining the incentives would n
 
 **Relative vs Absolute**  
 It's hard to know if relative or absolute incentives will work best. Makes sense to allow both for experimentation purposes.
-
-**Initial lever recommendations**  
-These are included so that I'm not pushing all of the hard incentive decisions onto the GMC. They represent my best guess as to what would benefit the DAO. None of these should be too huge, but they need to be large enough to affect behavior. Initially, higher lever settings make sense to kick-start the bounty mechanism. There is an element of self-reinforcement on both the proposal and completion sides that only works once it gets started.
 
 **Reporting Requirement For Contacts**  
 The requirement that Bounty Hunters not report negatively on the Bounty Contacts is intended to prevent contacts from failing to provide support when asked because that's the whole thing we want to incentivize. However, 'SHOULD' is used intentionally here to cover the possibility of bounty hunters attempting to take advantage of this requirement.
