@@ -68,7 +68,7 @@ The split of the total committee stipend SHOULD be determined by the voting memb
 The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members.
 * Stipends SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
   * Conversion from USD to dollar-stablecoin payout token SHOULD be priced 1:1. 
-  * Conversion from USD to any other payout token SHOULD be done using the 24-hour TWAP at time of payment. 
+  * Conversion from USD to any other payout token SHOULD be done using the market price at the time of payment transaction creation. 
 * Other committees MUST provide the GMC Administrator with the details of their stipend split each month. 
   * They MUST communicate payment addresses, stipend share in USD, and requested payment token for each of their members. 
   * They MUST meet any deadline or format requirements imposed by the GMC Administrator.
