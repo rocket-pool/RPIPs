@@ -34,13 +34,13 @@ This proposal also includes a small set of items for potential future use:
   - `increase_no_share_seal_count` SHALL be decremented by one upon using this power
   - The pDAO MAY change `increase_no_share_seal_count` via vote
 - The initial settings SHALL be:
-  - `node_operator_share`: 3%
+  - `node_operator_share`: 2.5%
   - `voter_share`: 1%
-  - `rpl_burn_share`: 10%
+  - `rpl_burn_share`: 10.5%
   - `pdao_treasury_share`: 0%
   - `odao_share`: 0%
   - `increase_no_share_seal_increment`: 0.5%
-  - `increase_no_share_seal_count`: 5
+  - `increase_no_share_seal_count`: 6
   - `allowlisted_controllers`: []
 
 ## Usage heuristics
