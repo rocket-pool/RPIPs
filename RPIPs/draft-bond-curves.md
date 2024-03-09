@@ -8,6 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
+requires: rpip-megapools, rpip-forced-exits
 ---
 
 ## Abstract
