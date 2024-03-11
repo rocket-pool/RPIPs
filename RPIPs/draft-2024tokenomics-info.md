@@ -33,6 +33,9 @@ The overall package is based on, but not exactly the same as the [early-March pr
 
 ## Knonw points that merit more discussion
 - Right now voter share is split up amongst potential voters based on amount of RPL eligible to vote. Should we be doing something based on active governance or actual vote power instead of count of RPL?
+  - Possible thought: require having a delegate set for eligibility
+  - Possible thought: setting a delegate expires after a time period (eg, 1 year)
+  - Possible thought: if a delegate has x% of vote power, prevent new delegations to them (revert with error)
 - 3-transaction deposits for greater queue efficiency
 - Cashing out credit as rETH
 - More thinking about current NOs moving to megapools while still attracting new NOs

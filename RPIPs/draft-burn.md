@@ -19,11 +19,7 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 - Node Operators SHALL NOT be required to stake RPL in order to create minipools
 - A share of revenue from borrowed ETH SHALL be directed to a smart contract (the burn contract) for the purpose of this burn (see [RPIP-uvc](draft-uvc.md))
 - Any user MAY call a function in the burn contract to get ETH from the burn contract in exchange for RPL
-- Any RPL exchanged this way SHALL burned by sending it to `0x000000000000000000000000000000000000dEaD`
-- There SHALL be a function that calculates RPL's `circulatingSupply`, which is defined as `totalSupply` minus the amount burned
-- The protocol SHOULD make efforts to base actions on `circulatingSupply` instead of `totalSupply`
-  - This SHOULD be automated when tractable
-  - This MAY be approximated manually
+- Any RPL exchanged this way SHALL burned using the RPL token's `burn` or `burnFrom` functions
 - The swap price SHALL be based on an on-chain oracle
 
 ## Implementation thoughts
