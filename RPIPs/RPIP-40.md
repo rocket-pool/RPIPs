@@ -4,10 +4,10 @@ title: Updating of Grants Management Committee 2
 description: Replaces RPIP-26, which described the guiding principles, selection of, operation of, and governance of the Grants and Bounties Management Committee.
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/gmc-updates-proposal/2750
-status: Draft
+status: Final
 type: Meta
 created: 2024-02-20
-requires (*optional): 18, 26
+requires: 18, 26
 ---
 
 ## Abstract
@@ -48,7 +48,7 @@ RPIP-26 added:
 - Given the identified weaknesses within the GMC and the increased demand necessitated by rolling awards, there is a need for an expanded role of the GMC Administrator. This role would involve overseeing and facilitating various GMC operations, specifically focusing on the new rolling awards process.
 
 The motivation for the update in this RPIP is that:
-- The existing conflict of interest regulations prove overly restrictive, hindering the deliberation process within the GMC. Periodically, the GMC faces emergencies necessitating resource reallocation, potentially compromising the effectiveness of decision-making. Permitting committee members who submit grants to also participate in other grant decisions, with the provision for any member to declare a conflict of interest, offers a pathway to restoring much-needed efficiency without imposing burdensome regulations. 
+- The existing conflict of interest regulations prove overly restrictive, hindering the deliberation process within the GMC. Periodically, the GMC faces emergencies necessitating resource reallocation, potentially compromising the effectiveness of decision-making. Permitting committee members who submit grants to also participate in other grant decisions, with the provision for any member to declare a conflict of interest, offers a pathway to restoring much-needed efficiency without imposing burdensome regulations.
 - As the GMC has increased its facilitation of bounties, it has recognized the necessity for greater clarity regarding the bounty process. This clarity aims to mitigate potential conflicts of interest among GMC members who are interested in participating in bounty completion.
 - The current schedule causes the discussion period to fluctuate between 9 and 16 days. This update allows a consistent 16-day discussion period, which leads to more time to research, negotiate, and discuss each award.
 - RPIP-26 superseded RPIP-18 but incorrectly left out the 'Selection and Governance' section. This update restores that missing section.
