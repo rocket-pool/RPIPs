@@ -12,7 +12,7 @@ requires: 26
 
 ## Abstract
 
-This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed levers. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. The pDAO may challenge lever value changes or payouts via the existing GMC challenge process.
+This RPIP proposes a set of optional incentive levers that can be used by the GMC to encourage bounty proposals. There are three proposed 'incentive levers', which are settings to incentivize different parts of the bounty process. One incentivizes bounty proposals, one incentivizes bounty definitions, and the last incentivizes an informal support role for individual bounties. Values for these incentive levers are not mandated by this RPIP. Instead, these are left up to the GMC to manage on an ongoing basis, and they would be paid out of the GMC's budget. The pDAO may challenge lever value changes or incentive payouts via the existing GMC challenge process.
 
 
 ## Motivation
@@ -40,18 +40,20 @@ An individual who acts as a supporter and point of contact with bounty hunters f
 ### Bounty Incentive Levers
 Bounty Incentive Levers are OPTIONAL incentives that the pDAO empowers the GMC to use to incentivize the generation and successful completion of bounty proposals.
 * The incentive attached to each lever MAY be set by the GMC.
-* Levers MAY have an absolute and/or a relative component.
+* Levers MAY have minimum and maximum values, which MAY be defined in absolute dollar amounts and/or as a percentage of the bounty hunter award payout.
 * Incentives for a given bounty MUST NOT reduce the bounty hunter award payout.
-* When incentive levers are modified by the GMC, incentives SHOULD be paid out in such a way that ambiguity favors incentive recipients.
 * The total cost of lever incentives is not limited. The GMC SHOULD set lever incentives with caution.
+* When incentive lever values are modified by the GMC:
+  * Consideration SHOULD be given to the expectations of incentive recipients. 
+  * Decreases in lever values SHOULD come into effect at the start of the next reward period. 
 
 #### Payout
-* Bounty incentives SHOULD be paid out of the GMC budget.
+* Bounty incentives MUST be paid out of the GMC budget.
 * Incentive payouts SHOULD take place within the GMC's regular payout schedule.
 * Incentive payouts MUST be denominated in dollars and SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
 
 #### pDAO Recourse
-The pDAO MAY use the existing challenge system that is used to challenge GMC decisions following the usual rules. This may take place either:
+The pDAO MAY use the existing committee challenge system to challenge GMC incentive decisions. This may take place either:
 * When a lever incentive setting is changed by the GMC.
 * When an incentive is announced to be paid out to a given proposer, definer, or support contact.
 
@@ -63,8 +65,8 @@ The proposal incentive lever aims to influence the number of bounty proposals th
 
 ### Lever B: Definition Incentive
 The definition incentive lever aims to influence the quality and completeness of the bounty definitions that accompany bounty proposals.
-* This incentive SHOULD be paid to the definition author for bounty definitions provided for a bounty that is adopted by the GMC.
-* This incentive payout SHOULD be paid a maximum of once per proposal, even if the bounty proposal is split into multiple definitions.
+* This incentive SHOULD be paid to the definition author for bounty definitions that are adopted by the GMC.
+* This incentive payout SHOULD be paid a maximum of once per bounty proposal, even if the bounty proposal is split into multiple bounty definitions.
 * Individual incentive payouts for this lever MAY be reduced at the GMC's discretion based on definition quality and completeness.
 
 ### Lever C: Support Incentive
@@ -78,19 +80,19 @@ The support incentive lever aims to influence the quality and consistency of the
 * Contacts SHOULD assist bounty hunters via feedback, direction, and oversight _upon request_.
 * Individual incentive payouts for this lever MAY be reduced at the GMC's discretion for any reason. Reasoning must be publicly stated by the GMC.
 
-\* Affiliated here is intended to cover financial or business relationships, familial relationships, friendships pre-dating rocketpool, etc. It should not extend to the bonds formed within the RP community. 
+\* Affiliated here is intended to cover financial or business relationships, familial relationships, friendships pre-dating Rocket Pool, etc. It should not extend to the bonds formed within the RP community. 
 
 ### Current and Historic Settings
 
-| Date Changed | Lever A: Proposal Incentive | Lever B: Definition Incentive | Lever C: Support Incentive |
-|--------------|-----------------------------|-------------------------------|----------------------------|
-|   2024-02-16 (RPIP Written) | $0 + 0%                     | $0 + 0%                       | $0 + 0%                    |
+| Date Changed              | Lever A - Minimum / Maximum | Lever B: Minimum / Maximum | Lever C: Minimum / Maximum |
+|---------------------------|-----------------------------|----------------------------|----------------------------|
+| 2024-02-16 (RPIP Written) | $0 / 0%                     | $0 / 0%                    | $0 / 0%                    |
 
 <!--
 
 Commentary for Editors:
 
-The above table may be generated using this [google sheet](https://docs.google.com/spreadsheets/d/18JWtUSD6Ej5h2lDLDNEljjWM61XdqqiYkRYTSk8awKA/edit#gid=0), which should be maintained in parallel. If you need to modify the sheet and do not have permissions then:
+The above table may be generated using this [google sheet](https://docs.google.com/spreadsheets/d/18JWtUSD6Ej5h2lDLDNEljjWM61XdqqiYkRYTSk8awKA/edit#gid=0), which should be maintained in parallel. If you need to modify the sheet and do not have permission then:
 1. Copy the sheet
 2. Set it to public read-only
 3. Replace this link with your updated sheet
@@ -114,6 +116,9 @@ It's hard to know if relative or absolute incentives will work best. Makes sense
 
 **Reporting Requirement For Contacts**  
 The requirement that Bounty Hunters not report negatively on the Bounty Contacts is intended to prevent contacts from failing to provide support when asked because that's the whole thing we want to incentivize. However, 'SHOULD' is used intentionally here to cover the possibility of bounty hunters attempting to take advantage of this requirement.
+
+**High Definition versus Low Definition**
+One of the feedback points that came up during the discussion of this RPIP was whether to define this structure in detail or leave these details primarily to the GMC. On balance, the author feels that a well-defined structural framework agreed upon by the pDAO is preferable to one that is fully flexible for the GMC. There is a great deal of flexibility built into the structure already. The inflexible parts should help to ensure that incentives are deployed transparently and consistently by the GMC in the long term, even as membership fluctuates.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
