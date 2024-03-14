@@ -76,8 +76,8 @@ The support incentive lever aims to influence the quality and consistency of the
   2. The contact MUST be publicly listed in the bounty definition of the completed bounty.
   3. The contact MUST NOT be affiliated* with the completing bounty hunter.
   4. The bounty hunter SHOULD NOT comment negatively on the contact when asked by the GMC.
-* Contacts SHOULD NOT assist the bounty hunter directly with the bounty work.
 * Contacts SHOULD assist bounty hunters via feedback, direction, and oversight _upon request_.
+* Contacts SHOULD NOT assist the bounty hunter directly with the bounty work.
 * Individual incentive payouts for this lever MAY be reduced at the GMC's discretion for any reason. Reasoning must be publicly stated by the GMC.
 
 \* Affiliated here is intended to cover financial or business relationships, familial relationships, friendships pre-dating Rocket Pool, etc. It should not extend to the bonds formed within the RP community. 
