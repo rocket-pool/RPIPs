@@ -1,7 +1,7 @@
 ---
-rpip: #<to be assigned>
+rpip: 41
 title: Committee Stipends
-description: Defines stipends for members of pDAO committees. 
+description: Defines stipends for members of pDAO committees.
 author: LongForWisdom (@LongForWisdom), Patrick_J
 discussions-to: <URL>
 status: Draft
@@ -12,20 +12,20 @@ requires: 10, 40
 
 ## Abstract
 
-This RPIP defines stipends for members of pDAO committees. The total stipend budget for a given committee is calculated based on the number of members for that committee, the target hours per month for that committee, and the global stipend rate which is the same for all committees. Committees may split their stipend budget amongst their members in any manner they choose. 
+This RPIP defines stipends for members of pDAO committees. The total stipend budget for a given committee is calculated based on the number of members for that committee, the target hours per month for that committee, and the global stipend rate which is the same for all committees. Committees may split their stipend budget amongst their members in any manner they choose.
 
 Stipends to the members of each committee are paid by the Grants Management Committee.
 
 ## Motivation
 This RPIP is primarily motivated by a desire to see the efforts being made by members of pDAO committees to be rewarded monetarily for the time they are committing to Rocket Pool as members of those committees. A secondary yet still important motivation is to help ensure that the pDAO continues to attract sufficient nominees for these committee membership roles in the future.
 
-Despite this motivation, there is also a desire to maintain a volunteer ethos among committee members. Compensation of any kind does threaten this ethos, however, it is hoped that by having financial compensation be closer to 'symbolic' than 'market rate' the pDAO can preserve this ethos. 
+Despite this motivation, there is also a desire to maintain a volunteer ethos among committee members. Compensation of any kind does threaten this ethos, however, it is hoped that by having financial compensation be closer to 'symbolic' than 'market rate' the pDAO can preserve this ethos.
 
 ## Specification
 
 ### Stipends
 * A monthly stipend budget SHALL be allocated to each pDAO committee as defined in RPIP-10.
-* This stipend SHOULD be dispersed to committee members based on their contributions to the committee over the previous month. 
+* This stipend SHOULD be dispersed to committee members based on their contributions to the committee over the previous month.
 * The stipend is denominated in USD.
 
 ### Formula and Input Parameters
@@ -48,13 +48,13 @@ $$
 
 #### Parameter Changes
 
-* The Target Hours input for a given committee MAY be adjusted via the internal vote of that committee. 
+* The Target Hours input for a given committee MAY be adjusted via the internal vote of that committee.
   * Increases to Target Hours MUST have a unanimous positive vote outcome, which MUST be posted publicly.
-  * Decreases to Target Hours MUST have a majority positive vote outcome, which MUST be posted publicly. 
+  * Decreases to Target Hours MUST have a majority positive vote outcome, which MUST be posted publicly.
   * Any Target Hours change is subject to pDAO challenge, and SHALL NOT be acted upon until 1 calendar month has passed after the decision has been announced.
 * Roles and responsibilities financially compensated through other mechanisms SHOULD be discounted when considering the Target Hours parameter.
-* The Target Member Count SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification. 
-* The Global Stipend Rate SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification. 
+* The Target Member Count SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification.
+* The Global Stipend Rate SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification.
 
 ### Current and Historic Parameter Values
 
@@ -87,17 +87,17 @@ The above tables may be generated using this [google sheet](https://docs.google.
 ### Payments
 
 #### Split
-The split of the committee stipend budget SHOULD be determined by the voting members of the committee in question. 
-* Each committee SHOULD be consistent in the method used to determine the payout split. 
+The split of the committee stipend budget SHOULD be determined by the voting members of the committee in question.
+* Each committee SHOULD be consistent in the method used to determine the payout split.
 * Roles and responsibilities financially compensated through other mechanisms SHOULD be discounted when the committee determines the stipend split.
 
 #### Distribution
 The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members.
 * Stipends SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
-  * Conversion from USD to dollar-stablecoin payout token SHOULD be priced 1:1. 
-  * Conversion from USD to any other payout token SHOULD be done using the market price at the time of payment transaction creation. 
-* Other committees MUST provide the GMC Administrator with the details of their stipend split each month. 
-  * They MUST communicate payment addresses, stipend share in USD, and requested payment token for each of their members. 
+  * Conversion from USD to dollar-stablecoin payout token SHOULD be priced 1:1.
+  * Conversion from USD to any other payout token SHOULD be done using the market price at the time of payment transaction creation.
+* Other committees MUST provide the GMC Administrator with the details of their stipend split each month.
+  * They MUST communicate payment addresses, stipend share in USD, and requested payment token for each of their members.
   * They MUST meet any deadline or format requirements imposed by the GMC Administrator.
 * Any undistributed funds for a given month are forfeited by that committee.
 
@@ -109,7 +109,7 @@ This feels like the default choice and has been central to the discussions in th
 
 **Global Stipend Rate versus Community Specific**  
 
-I chose a global rate due to the desire to not chase market rates and to maintain the volunteer ethos. The stipend is a reward for committing time to rocket pool in an 'official' capacity. On this basis, it shouldn't matter how committee members spend that time. 
+I chose a global rate due to the desire to not chase market rates and to maintain the volunteer ethos. The stipend is a reward for committing time to rocket pool in an 'official' capacity. On this basis, it shouldn't matter how committee members spend that time.
 
 **Target Hours Changes**  
 
@@ -117,7 +117,7 @@ This input may change regularly as the DAO evolves, and we want to avoid a pDAO 
 
 **pDAO Challenge**  
 
-Strictly, this does not exist as a thing outside of the GMC. But, the process resolves problems of this type effectively, and it deserves to be more widely adopted. It is not defined in this RPIP and should be understood to work in the same way as with the GMC. 
+Strictly, this does not exist as a thing outside of the GMC. But, the process resolves problems of this type effectively, and it deserves to be more widely adopted. It is not defined in this RPIP and should be understood to work in the same way as with the GMC.
 
 **Committee Managed Split**  
 
@@ -125,7 +125,7 @@ I have some misgivings over leaving this freedom to each committee because it wi
 
 **GMC Administration**  
 
-The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC. 
+The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
