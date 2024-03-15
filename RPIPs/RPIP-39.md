@@ -117,7 +117,7 @@ It's hard to know if relative or absolute incentives will work best. Makes sense
 **Reporting Requirement For Contacts**  
 The requirement that Bounty Hunters not report negatively on the Bounty Contacts is intended to prevent contacts from failing to provide support when asked because that's the whole thing we want to incentivize. However, 'SHOULD' is used intentionally here to cover the possibility of bounty hunters attempting to take advantage of this requirement.
 
-**High Definition versus Low Definition**
+**High Definition versus Low Definition**  
 One of the feedback points that came up during the discussion of this RPIP was whether to define this structure in detail or leave these details primarily to the GMC. On balance, the author feels that a well-defined structural framework agreed upon by the pDAO is preferable to one that is fully flexible for the GMC. There is a great deal of flexibility built into the structure already. The inflexible parts should help to ensure that incentives are deployed transparently and consistently by the GMC in the long term, even as membership fluctuates.
 
 ## Copyright
