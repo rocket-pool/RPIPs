@@ -12,7 +12,7 @@ requires: 10, 40
 
 ## Abstract
 
-This RPIP defines stipends for members of pDAO committees. The total stipend budget for a given committee is calculated based on the target number of members for that committee, the Target Hours for that committee, and the global stipend rate, which is the same for all committees. Committees may split their stipend budget amongst their members in any manner they choose. 
+This RPIP defines stipends for members of pDAO committees. The total stipend budget for a given committee is calculated based on the number of members for that committee, the target hours per month for that committee, and the global stipend rate which is the same for all committees. Committees may split their stipend budget amongst their members in any manner they choose. 
 
 Stipends to the members of each committee are paid by the Grants Management Committee.
 
@@ -25,15 +25,15 @@ Despite this motivation, there is also a desire to maintain a volunteer ethos am
 
 ### Stipends
 * A monthly stipend budget SHALL be allocated to each pDAO committee as defined in RPIP-10.
-* This stipend SHOULD be dispersed to voting committee members based on their contributions to the committee over the previous month. 
+* This stipend SHOULD be dispersed to committee members based on their contributions to the committee over the previous month. 
 * The stipend is denominated in USD.
 
 ### Formula and Input Parameters
 Three input parameters affect each committee's total stipend budget.
 
-$TargetHours$ - Target Hours. The amount of hours the pDAO hopes each member commits to committee work each month. This parameter may be different for each committee.  
+$MemberCount$ - Member Count. The number of members in the given committee. This input should reflect the current reality, rather than the ideal number of members.  
 
-$TargetCount$ - Target Member Count. The target number of members for the given committee. This parameter may be different for each committee.  
+$TargetHours$ - Target Hours. The amount of hours the pDAO hopes each member commits to committee work each month. This parameter may be different for each committee.  
 
 $TargetRate$ - Global Stipend Rate. The hourly rate for time committed to a committee. This parameter is shared across all committees.  
 
@@ -41,7 +41,7 @@ The committee stipend budget to be split amongst the committee members each mont
 ```math
 $$
 
-Committee Monthly Stipend Budget = TargetHours * TargetCount * TargetRate
+Committee Monthly Stipend Budget = MemberCount * TargetHours * TargetRate
 
 $$
 ```
@@ -52,6 +52,7 @@ $$
   * Increases to Target Hours MUST have a unanimous positive vote outcome, which MUST be posted publicly.
   * Decreases to Target Hours MUST have a majority positive vote outcome, which MUST be posted publicly. 
   * Any Target Hours change is subject to pDAO challenge, and SHALL NOT be acted upon until 1 calendar month has passed after the decision has been announced.
+* Roles and responsibilities financially compensated through other mechanisms SHOULD be discounted when considering the Target Hours parameter.
 * The Target Member Count SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification. 
 * The Global Stipend Rate SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification. 
 
@@ -63,13 +64,13 @@ $$
 
 #### Grants Management Committee
 
-| Date                       | Target Member Count | Target Member Hours | Total Monthly Stipend Budget |
+| Date                       | Target Member Count | Target Member Hours | Target Monthly Stipend Budget |
 |----------------------------|---------------------|---------------------|------------------------------|
 | 2024-03-04 (RPIP Authored) |                   9 |                  13 |                    $3,510.00 |
 
 #### Incentives Management Committee
 
-| Date                       | Target Member Count | Target Member Hours | Total Monthly Stipend Budget |
+| Date                       | Target Member Count | Target Member Hours | Target Monthly Stipend Budget |
 |----------------------------|---------------------|---------------------|------------------------------|
 | 2024-03-04 (RPIP Authored) |                   9 |                  13 |                    $3,510.00 |
 
