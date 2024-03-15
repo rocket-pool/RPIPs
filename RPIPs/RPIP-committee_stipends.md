@@ -89,7 +89,7 @@ The above tables may be generated using this [google sheet](https://docs.google.
 #### Split
 The split of the committee stipend budget SHOULD be determined by the voting members of the committee in question. 
 * Each committee SHOULD be consistent in the method used to determine the payout split. 
-* Roles that are compensated through other mechanisms SHOULD be discounted when the committee determines the stipend split.
+* Roles and responsibilities financially compensated through other mechanisms SHOULD be discounted when the committee determines the stipend split.
 
 #### Distribution
 The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members.
