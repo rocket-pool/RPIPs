@@ -8,7 +8,6 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
-requires: rpip-uvc
 ---
 
 ## Abstract
@@ -16,7 +15,6 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 
 
 ## Specification
-- Node Operators SHALL NOT be required to stake RPL in order to create minipools
 - A share of revenue from borrowed ETH SHALL be directed to a smart contract (the burn contract) for the purpose of this burn (see [RPIP-uvc](draft-uvc.md))
 - Any user MAY call a function in the burn contract to get ETH from the burn contract in exchange for RPL
 - Any RPL exchanged this way SHALL burned using the RPL token's `burn` or `burnFrom` functions
@@ -35,8 +33,12 @@ The way this works is that:
   - Increment bucket_block by one `bucket_period` (repeat as needed until `bucket_block` > `current_block`)
   - Put the distribution into filling
 - The contract will have `Unlocked + Unlocking + Filling` ETH in it
-- The contract will allow burning RPL against `Unlocked + (Unlocking*UnlockingRatio)` ETH
+- The contract will allow burning RPL against `Available = Unlocked + (Unlocking*UnlockingRatio)` ETH
   - `UnlockingRatio = 1 - ((bucket_block - current_block)/bucket_period)`
+- The swap price will be based on a long Uniswap TWAP
+  - For safety, the protocol should ensure we have enough protocol owned liquidity in that Uniswap ETH/RPL pool
+  - The swap price gives `rpl_to_eth_oracle_price * (1 + bonus_per_unlocked_eth * Available)` ETH per RPL
+  - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's not clear if this is necessary, but it seems prudent to include the tool. 
 
 Let's visualize what being able to burn looks like in practice using real RPL price data and a simulated 12-hour TWAP.
 ![twap.png](../assets/rpip-burn/twap.png)

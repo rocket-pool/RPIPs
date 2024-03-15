@@ -43,20 +43,33 @@ This proposal also includes a small set of items for potential future use:
   - `increase_no_share_seal_count`: 6
   - `allowlisted_controllers`: []
 
-## Usage heuristics
+### Specified heuristics
 - The security council SHOULD use their `increase_no_share_seal_increment` power if:
   - `increase_no_share_seal_count` > 0  
   - The security council deems that protocol growth is actively hindered by node operator supply; they may use information such as deposit pool state, rETH premium, etc to make this determination
 - The pDAO SHALL modify voter_share as follows:
   - If <40% of RPL is contributing vote power in RP, the pDAO SHALL initiate a vote to increase `voter_share` with the aim of getting above 40%
+    - It is SUGGESTED that `rpl_burn_share` is decreased by the same magnitude
   - If >85% of RPL is contributing vote power in RP, the pDAO SHALL initiate a vote to decrease `voter_share` with the aim of getting below 85%
-  - If 40-85% of RPL is contributing vote power in RP, the pDAO MUST NOT change `voter_share`
+    - It is SUGGESTED that `rpl_burn_share` is increased by the same magnitude
+  - If 40-85% of RPL is contributing vote power in RP, the pDAO MUST NOT change `voter_share` 
   - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing the voter_share heuristic SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+
+## Optional heuristics
+This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
+
+- Consider `node_operator_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional. At the same time, if we have significantly more supply than needed, we may freely decrease it. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
+- Consider `voter_share` as a requirement to function. If this is not high enough to attract governance security, the protocol is endangered. This has a [specified heuristic](#specified-heuristics) above to follow. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
+- Finally, consider `rpl_burn_share`. 
+  - If rETH demand has been robust enough to reach desired rETH TVL, `rpl_burn_share` can be increased (without other settings changes, this means at the cost of `reth_share`). This is one way to fulfill the soft limits described in [RPIP-17](./RPIP-17.md).
+  - If below desired rETH TVL due to lack of rETH demand, `rpl_burn_share` can be decreased. The surplus can either be directed to `reth_share` (without other settings changes) or to `pdao_treasury_share` (with a commensurate increase). Here voters should be considering how to most efficiently generate rETH demand given a fixed amount of funds.
+
+The premise here is that voters (who are all NOs and RPL holders) can operate fairly selfishly. They are strongly incentivized to keep node operation and rETH holding attractive -- these lead to strong TVL and thus capture a lot of value to RPL.
 
 ## Historic revenue share values
 | Date                         | Share Settings                                                                                                       |
 |------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| 2024-03-08<br>(ratified TBD) | `node_operator_share`: 3%, `voter_share`: 1%, `rpl_burn_share`: 10%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
+| 2024-03-08<br>(ratified TBD) | `node_operator_share`: 2.5%, `voter_share`: 1%, `rpl_burn_share`: 10.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
