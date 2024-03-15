@@ -3,7 +3,7 @@ rpip: 41
 title: Committee Stipends
 description: Defines stipends for members of pDAO committees.
 author: LongForWisdom (@LongForWisdom), Patrick_J
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-41-committee-stipends/2824
 status: Draft
 type: Meta
 created: 2024-03-04
