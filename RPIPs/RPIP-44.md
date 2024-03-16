@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 44
 title: Integrating Execution Layer Triggerable Exits
 description: Describes when EL triggerable exits will be used within RP
 author: Valdorff (@Valdorff)

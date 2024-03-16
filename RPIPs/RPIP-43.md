@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 43
 title: Megapools
 description: A single contract per node operator that can be used as an ethereum withdrawal address for multiple validators
 author: Valdorff (@Valdorff)

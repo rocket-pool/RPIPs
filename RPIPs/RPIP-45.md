@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 45
 title: RPL Burn
 description: Allow RPL holders to burn RPL in exchange for protocol ETH
 author: Valdorff (@Valdorff)
@@ -23,7 +23,7 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 ## Implementation thoughts
 There have been previous buy+burn mechanics susceptible to gaming. To that end, here's an example design that focuses on avoiding discontinuties by smoothly unlocking funds that are available for exchange.
 
-![burn.png](../assets/rpip-burn/burn.png)
+![burn.png](../assets/rpip-45/burn.png)
 
 The way this works is that:
 - New distributions go into the Filling bucket
@@ -41,7 +41,7 @@ The way this works is that:
   - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's not clear if this is necessary, but it seems prudent to include the tool. 
 
 Let's visualize what being able to burn looks like in practice using real RPL price data and a simulated 12-hour TWAP.
-![twap.png](../assets/rpip-burn/twap.png)
+![twap.png](../assets/rpip-45/twap.png)
 
 We'd expect to burn all our available ETH at the beginning of a downturn (and thereby reduce its severity since that's not market sold). We'd also expect to continue burning against new distributions while price is on a downward slope. On an upward slope, there will be no expected burning until after the top is reached and we turn around for a bit.
 

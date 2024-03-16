@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 42
 title: Bond Curves
 description: Allow smaller bonds to dramatically increase capital efficiency
 author: Valdorff (@Valdorff)
@@ -19,7 +19,7 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 - Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment 
 - Providing increased capital efficiency with greater bond to encourage an NO to stake as large nodes instead of many small nodes
 
-This work is based on prior work; a copy can be found [here](../assets/rpip-bond-curves/bond_curves.md).
+This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
 
 ## Specification
 - The protocol SHALL be able to penalize stake at the node level
