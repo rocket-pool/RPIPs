@@ -20,7 +20,12 @@ This proposal also includes a small set of items for potential future use:
 - An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
 
 ## Specification
-- There SHALL be the following defined shares with settings: `node_operator_share`, `voter_share`, `rpl_burn_share`, `pdao_treasury_share`, `odao_share`.
+- There SHALL be the following defined shares with settings: `node_operator_commission_share`, `voter_share`, `rpl_burn_share`, `pdao_treasury_share`, `odao_share`
+  - `node_operator_commission_share`: each NO receives this percentage of commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
+  - `voter_share`: each NO receives a share of revenue based on their vote-eligible staked RPL. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_on_node/total_vote_eligible_RPL`.
+  - `rpl_burn_share`: this share of revenue is used to buy and burn RPL per [RPIP-45](RPIP-45.md).
+  - `pdao_treasury_share`: this share of revenue is sent to the pDAO treasury in the vault
+  - `odao_share`: this share of revenue is sent to a splitter contract that anyone can distribute to oDAO members 
 - `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 - `reth_share` SHALL be defined as `100% - reth_commission`
 - Each share SHALL have an associated address, which can be used to distribute funds to the relevant party
@@ -29,12 +34,12 @@ This proposal also includes a small set of items for potential future use:
 - These settings MAY be updated by pDAO vote
 - These settings MAY be updated by an address in the `allowlisted_controllers` array
   - This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
-- The security council SHALL have a limited-use power to increase the `node_operator_share` by `increase_no_share_seal_increment` and decrease the `rpl_burn_share` by the same amount
+- The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `rpl_burn_share` by the same amount
   - This power SHALL be usable if `increase_no_share_seal_count` > 0
   - `increase_no_share_seal_count` SHALL be decremented by one upon using this power
   - The pDAO MAY change `increase_no_share_seal_count` via vote
 - The initial settings SHALL be:
-  - `node_operator_share`: 2.5%
+  - `node_operator_commission_share`: 2.5%
   - `voter_share`: 1%
   - `rpl_burn_share`: 10.5%
   - `pdao_treasury_share`: 0%
@@ -58,7 +63,7 @@ This proposal also includes a small set of items for potential future use:
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
 
-- Consider `node_operator_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional. At the same time, if we have significantly more supply than needed, we may freely decrease it. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
+- Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional. At the same time, if we have significantly more supply than needed, we may freely decrease it. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
 - Consider `voter_share` as a requirement to function. If this is not high enough to attract governance security, the protocol is endangered. This has a [specified heuristic](#specified-heuristics) above to follow. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
 - Finally, consider `rpl_burn_share`. 
   - If rETH demand has been robust enough to reach desired rETH TVL, `rpl_burn_share` can be increased (without other settings changes, this means at the cost of `reth_share`). This is one way to fulfill the soft limits described in [RPIP-17](./RPIP-17.md).
@@ -69,7 +74,7 @@ The premise here is that voters (who are all NOs and RPL holders) can operate fa
 ## Historic revenue share values
 | Date                         | Share Settings                                                                                                       |
 |------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| 2024-03-08<br>(ratified TBD) | `node_operator_share`: 2.5%, `voter_share`: 1%, `rpl_burn_share`: 10.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
+| 2024-03-08<br>(ratified TBD) | `node_operator_commission_share`: 2.5%, `voter_share`: 1%, `rpl_burn_share`: 10.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
