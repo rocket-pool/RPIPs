@@ -78,10 +78,7 @@ We'd love to get team feedback here, especially on ballpark timelines.
   - Simplicity is being favored more than these; however, this may be something to revisit, depending on the actual practice of governance observed
 
 ## Known points that merit more discussion
-- Right now voter share is split up amongst potential voters based on amount of RPL eligible to vote. Should we be doing something based on active governance or actual vote power instead of count of RPL?
-  - Possible thought: require having a delegate set for eligibility
-  - Possible thought: setting a delegate expires after a time period (eg, 1 year)
-  - Possible thought: if a delegate has x% of vote power, prevent new delegations to them (revert with error)
+- [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-buy_lp.md)
 - 3-transaction deposits for greater queue efficiency
 - RPL inflation
   - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
