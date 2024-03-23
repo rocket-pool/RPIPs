@@ -22,6 +22,7 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
 
 ## Specification
+- Node Operators SHALL NOT be required to stake RPL in order to create minipools
 - The protocol SHALL be able to penalize stake at the node level
 - Node Operators with <`base_mp_num` base minipools SHALL be able to make a base minpool
   - A base minipool SHALL have a `base_mp_bond` bond from the Node Operator
@@ -31,10 +32,16 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - It is NOT RECOMMENDED to exit base minipools unless all satellite minipools have been exited
   - A user MAY exit satellite minipools to allow for fund withdrawal 
   - The protocol MAY or MAY NOT provide a path to upgrade a satellite minipool to a base minipool (to allow for fund withdrawal)
-- The initial settings SHALL be:
+- Once [RPIP-43](RPIP-43.md) is implemented (or if it is implemented in the same release), the settings SHALL be:
   - `base_mp_num`: 2
   - `base_mp_bond`: 4 ETH
   - `satellite_mp_bond`: 1.5 ETH
+- If [RPIP-43](RPIP-43.md) is not already implemented (and if it is not implemented in the same release), the initial settings SHALL be:
+  - `base_mp_num`: 2
+  - `base_mp_bond`: 4 ETH
+  - `satellite_mp_bond`: 4 ETH
+  - If [RPIP-46](RPIP-46.md) is not already implemented (and if it is not implemented in the same release), rETH commission SHALL be set to 8%
+
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

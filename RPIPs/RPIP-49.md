@@ -15,13 +15,12 @@ This Info RPIP exists to explain an overall tokenomics proposal, the RPIPs it ha
 The overall package is based on, but not exactly the same as the [early-March proposal from Valdorff's github](../assets/rpip-49/readme.md). This proposal was a significant improvement based off of discussions with many people (thanks to 🏆samus🏆, sckuzzle, epineph, uisce, langers, NonFungibleYokem, MountainB, knoshua, luominx, ArtDemocrat and many others). This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus (see [the presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw) or its [powerpoint backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx)).
 
 ## Components currently being advocated for
-1. [Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that the ability to penalize at the node level is also specified in this RPIP.
+1. [Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that this RPIP also includes (a) the ability to penalize at the node level and (b) the removal of the RPL staking requirement to create minipools.
 2. [Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive gas for, eg, 1.5-ETH bond minipools.
 3. [Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
 4. [RPL Burn](RPIP-45.md) - this is the primary value capture mechanism being proposed.
 5. [UVC](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
 6. [Remove operator-gated upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
-7. [Lower minipool requirements](RPIP-48.md) - this (a) enables a new size of minipool with 4 ETH bond from the NO and (b) removes the RPL staking requirement to create minipools. If not released alongside UVC, rETH commisison is changed to make these new pools only slightly more productive than the current 8-ETH minipools.
 
 1 requires 2 and 3.
 4 and 5 require each other.
@@ -32,10 +31,10 @@ We have some thought experiment scenarios. For all of these, the premise is that
 We'd love to get team feedback here, especially on ballpark timelines.
 
 ### Scenario A (1 release):
-- Release 1: Components 1-7 at once.
+- Release 1: Components 1-6 at once.
 
 ### Scenario B (3 releases):
-- Release 1: Megapools, Remove operator-gated upgrades, Lower minipool requirements
+- Release 1: Megapools, Remove operator-gated upgrades
   - Allows ETH-only participants
   - Allows NOs to migrate to 4-ETH minipools for greater efficiency
   - Allows NOs to move to Megapools for greater efficiency
@@ -47,7 +46,7 @@ We'd love to get team feedback here, especially on ballpark timelines.
   - Dramatically improve capital efficiency 
 
 ### Scenario C (2 releases):
-- Release 1: Megapools, Remove operator-gated upgrades, Lower minipool requirements, RPL burn, UVC
+- Release 1: Megapools, Remove operator-gated upgrades, RPL burn, UVC
   - Allows ETH-only participants
   - Allows NOs to migrate to 4-ETH minipools for greater efficiency
   - Allows NOs to move to Megapools for greater efficiency
@@ -57,7 +56,7 @@ We'd love to get team feedback here, especially on ballpark timelines.
   - Dramatically improve capital efficiency 
 
 ### Scenario D (2 releases):
-- Release 1: Megapools, Remove operator-gated upgrades, Lower minipool requirements
+- Release 1: Megapools, Remove operator-gated upgrades
   - Allows ETH-only participants
   - Allows NOs to migrate to 4-ETH minipools for greater efficiency
   - Allows NOs to move to Megapools for greater efficiency
