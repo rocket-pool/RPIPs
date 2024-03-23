@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 48
 title: Lower Minipool Requirements
 description: Remove the RPL staking requirement; allow 4 ETH of NO bond
 author: Valdorff (@Valdorff)

@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 47
 title: Remove Operator-gated Upgrades
 description: Allow for the protocol to make protocol-wide decisions rather than relying on per-operator upgrades
 author: Valdorff (@Valdorff)

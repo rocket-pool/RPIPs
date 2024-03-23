@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 46
 title: Universal variable commission
 description: Allow the revenue from borrowed ETH to be split different ways
 author: Valdorff (@Valdorff)
