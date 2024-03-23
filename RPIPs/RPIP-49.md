@@ -71,7 +71,11 @@ We'd love to get team feedback here, especially on ballpark timelines.
 - Interim solutions - we can better consider these _after_ we've established a goal and a timeline.
 - MEV penalty improvements - this _is_ important, but the numbers we've seen previously suggest MEV theft has not been a pressing problem.
 - rETH protection - this is moderate priority and significant complexity. While I wish to see it, I don't think it's worth risking timeline on the [components above](#components-currently-being-advocated-for).
-- Reduce RPL inflation and remove RPL rewards - this would strongly push current NOs to switch to megapools following the new bond curve. This may not be immediately desirable. The settings to achieve this do not require smart contract changes, which also reduces the need for immediate advocacy.
+- Right now voter share is split up amongst potential voters based on amount of RPL eligible to vote. We could do something based on active governance or actual vote power instead of count of RPL?
+  - Possible thought: require having a delegate set for eligibility
+  - Possible thought: setting a delegate expires after a time period (eg, 1 year)
+  - Possible thought: if a delegate has x% of vote power, prevent new delegations to them (revert with error)
+  - Simplicity is being favored more than these; however, this may be something to revisit, depending on the actual practice of governance observed
 
 ## Known points that merit more discussion
 - Right now voter share is split up amongst potential voters based on amount of RPL eligible to vote. Should we be doing something based on active governance or actual vote power instead of count of RPL?
@@ -79,6 +83,10 @@ We'd love to get team feedback here, especially on ballpark timelines.
   - Possible thought: setting a delegate expires after a time period (eg, 1 year)
   - Possible thought: if a delegate has x% of vote power, prevent new delegations to them (revert with error)
 - 3-transaction deposits for greater queue efficiency
+- RPL inflation
+  - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
+  - Depending on release schedule, it might be useful to continue paying RPL rewards to legacy minipools. This would slow down a migration of NOs, and thus allow uptake of new NOs.
+  - Another possibility discussed is using RPL inflation to fulfill the role currently done by "voter share"
 - Cashing out credit as rETH
 - More thinking about current NOs moving to megapools while still attracting new NOs
   - One thought is to limit the current RPL rewards structure to legacy minipools. This could look like:
