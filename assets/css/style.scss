@@ -279,6 +279,30 @@ pre:has(.language-math)
   align-items: center;
 }
 
+$select-color: #f66b2b;
+$hover-color: #9c2c00;
+
+a {
+  color: $select-color;
+  &:visited {
+    color: $select-color;
+  }
+
+  &:hover {
+    color: $hover-color;
+    text-decoration: none;
+  }
+}
+
+a.page-link {
+  color: $select-color !important;
+}
+
+a.page-link:hover {
+  text-decoration: none;
+  color: $hover-color !important;
+}
+
 .status-box {
   border-radius: 6px;
   line-height: 18px;
