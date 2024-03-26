@@ -31,9 +31,9 @@ Despite this motivation, there is also a desire to maintain a volunteer ethos am
 ### Formula and Input Parameters
 Three input parameters affect each committee's total stipend budget.
 
-$MemberCount$ - Member Count. The number of members in the given committee. This input should reflect the current reality, rather than the ideal number of members.  
+$MemberCount$ - Member Count. The number of members in the given committee. This input SHOULD reflect the current reality, rather than the ideal number of members.  
 
-$TargetHours$ - Target Hours. The amount of hours the pDAO hopes each member commits to committee work each month. This parameter may be different for each committee.  
+$TargetHours$ - Target Hours. The amount of hours the pDAO hopes each member commits to committee work each month. This parameter MAY be different for each committee.  
 
 $TargetRate$ - Global Stipend Rate. The hourly rate for time committed to a committee. This parameter is shared across all committees.  
 
@@ -57,6 +57,9 @@ $$
 * The Global Stipend Rate SHALL be modified only by the pDAO via a voted modification to this RPIP and SHOULD follow the usual processes for such a modification.
 
 ### Current and Historic Parameter Values
+
+Future committees SHOULD be added to this RPIP and members SHOULD expect to receive a stipend for their hours at the same Global Stipend Rate. This SHOULD be done without a separate pDAO vote to modify this RPIP.
+
 
 | Date                       | Global Stipend Rate |
 |----------------------------|---------------------|
@@ -93,19 +96,21 @@ The split of the committee stipend budget SHOULD be determined by the voting mem
 
 #### Distribution
 The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members.
+* The GMC Administrator SHOULD determine the period for payouts and communicate this to each committee.
+  * By default this is assumed to be monthly, but MAY be increased to ease administrative burden if needed.
 * Stipends SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
   * Conversion from USD to dollar-stablecoin payout token SHOULD be priced 1:1.
   * Conversion from USD to any other payout token SHOULD be done using the market price at the time of payment transaction creation.
-* Other committees MUST provide the GMC Administrator with the details of their stipend split each month.
+* Other committees MUST provide the GMC Administrator with the details of their stipend split for each period.
   * They MUST communicate payment addresses, stipend share in USD, and requested payment token for each of their members.
   * They MUST meet any deadline or format requirements imposed by the GMC Administrator.
-* Any undistributed funds for a given month are forfeited by that committee.
+* Any undistributed funds for a given period are forfeited by that committee.
 
 ## Rationale
 
-**Monthly Distributions**  
+**Distribution Period**  
 
-This feels like the default choice and has been central to the discussions in the past. A quarterly distribution may be preferable. This would reduce administrative overhead. The author would appreciate feedback on this point.
+Monthly is assumed to be the default as it's been central to the discussions in the past. A quarterly distribution may be preferable as this would reduce administrative overhead. This is left up to the GMC Adminsitrator because the burden largely falls on them. 
 
 **Global Stipend Rate versus Community Specific**  
 
@@ -126,6 +131,9 @@ I have some misgivings over leaving this freedom to each committee because it wi
 **GMC Administration**  
 
 The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
+
+**RPIP Editors and pDAO Treasurer**
+Both of these positions are intentionally not included in this RPIP because at time of writing they do not fit into the committee framework. The author believes strongly that these positions should be elected and receive the same stipend rate. The author believes moderately that both of these roles should move under the committee framework in the future in order to solve this problem.  
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
