@@ -109,27 +109,21 @@ The Grants Management Committee is responsible for distributing the stipends for
 ## Rationale
 
 **Distribution Period**  
-
 Monthly is assumed to be the default as it's been central to the discussions in the past. A quarterly distribution may be preferable as this would reduce administrative overhead. This is left up to the GMC Administrator because the burden largely falls on them. 
 
 **Global Stipend Rate versus Community Specific**  
-
 I chose a global rate due to the desire to not chase market rates and to maintain the volunteer ethos. The stipend is a reward for committing time to rocket pool in an 'official' capacity. On this basis, it shouldn't matter how committee members spend that time.
 
 **Target Hours Changes**  
-
 This input may change regularly as the DAO evolves, and we want to avoid a pDAO vote each time. The committee members are best positioned to set this input, so they can change it via vote. The unanimous threshold is in place to protect committee members from an increase in expectations that they do not agree to.
 
 **pDAO Challenge**  
-
 Strictly, this does not exist as a thing outside of the GMC. But, the process resolves problems of this type effectively, and it deserves to be more widely adopted. It is not defined in this RPIP and should be understood to work in the same way as with the GMC.
 
 **Committee Managed Split**  
-
 I have some misgivings over leaving this freedom to each committee because it will mean inconsistent methods across different committees. But, I'm unconvinced that the pDAO mandating a specific method is preferable. The freedom to pick something that works is important, especially at this stage.
 
 **GMC Administration**  
-
 The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
 
 **RPIP Editors and pDAO Treasurer**  
