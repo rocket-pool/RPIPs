@@ -110,7 +110,7 @@ The Grants Management Committee is responsible for distributing the stipends for
 
 **Distribution Period**  
 
-Monthly is assumed to be the default as it's been central to the discussions in the past. A quarterly distribution may be preferable as this would reduce administrative overhead. This is left up to the GMC Adminsitrator because the burden largely falls on them. 
+Monthly is assumed to be the default as it's been central to the discussions in the past. A quarterly distribution may be preferable as this would reduce administrative overhead. This is left up to the GMC Administrator because the burden largely falls on them. 
 
 **Global Stipend Rate versus Community Specific**  
 
@@ -133,7 +133,7 @@ I have some misgivings over leaving this freedom to each committee because it wi
 The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
 
 **RPIP Editors and pDAO Treasurer**
-Both of these positions are intentionally not included in this RPIP because at time of writing they do not fit into the committee framework. The author believes strongly that these positions should be elected and receive the same stipend rate. The author believes moderately that both of these roles should move under the committee framework in the future in order to solve this problem.  
+Both of these positions are intentionally not included in this RPIP because, at the time of writing, they do not fit into the committee framework. The author believes strongly that these positions should be elected and receive the same stipend rate. The author believes moderately strongly that both of these roles should move under the committee framework in the future to solve this problem.  
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
