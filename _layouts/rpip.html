@@ -24,6 +24,10 @@ layout: default
       <div class="living">
         ⚙️ This RPIP is intended to be maintained on an on-going basis.
       </div>
+    {% elsif page.status == "Obsolete" %}
+      <div class="obsolete">
+        🛑 This RPIP has been marked obsolete and is no longer in force. It may have been replaced by a subsequent RPIP. 
+      </div>
     {% elsif page.status == "Withdrawn" %}
       <div class="withdrawn">
         🛑 This RPIP has been withdrawn.

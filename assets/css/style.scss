@@ -302,6 +302,12 @@ pre:has(.language-math)
   border: solid 1px #3498db;
 }
 
+.obsolete {
+  @extend .status-box;
+  background-color: #f9e7e5;
+  border: solid 1px #c0392b;
+}
+
 .withdrawn {
   @extend .status-box;
   background-color: #f9e7e5;
