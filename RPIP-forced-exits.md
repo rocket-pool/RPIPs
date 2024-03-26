@@ -57,7 +57,7 @@ A keeper-style mechanism incentivizes the regular calling of this function by us
 
 ### Forced Exits During Inactivity Leaking
 
-The Ethereum staking formula includes additional penalties for offline validators when large portions of the network are offline. This state of accelerated punishment is called "inactivity leaking". With the RP protocol forcing exits for validators under a 31.9 ETH balance, validators who are offline during an inactivity leaking scenario may be exited even if the validator is only offline for a brief period. In some extreme scenarios, a small number of missed attestations could cause a validator to be ejected from the network. This may be necessary, however, in order to protect the value of rETH during an unusual network state for Ethereum.
+The Ethereum staking formula includes additional penalties for offline validators when large portions of the network are offline. This state of accelerated punishment is called ["inactivity leaking"](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/#inactivity-leak). With the RP protocol forcing exits for validators under a 31.9 ETH balance, validators who are offline during an inactivity leaking scenario may be exited even if the validator is only offline for a brief period. In some extreme scenarios, a small number of missed attestations could cause a validator to be ejected from the network. This may be necessary, however, in order to protect the value of rETH during an unusual network state for Ethereum.
 
 ## Future Enhancements
 
