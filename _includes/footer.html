@@ -2,33 +2,21 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-    <!--
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">
-            {%- if site.author -%}
-              {{ site.author | escape }}
-            {%- else -%}
-              {{ site.title | escape }}
-            {%- endif -%}
-            </li>
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
-        </ul>
-      </div>
-      -->
-
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
+    <div class="flex-justify-v flex-align-center">
+      <h2 class="footer-heading">Rocket Pool Improvement Proposals</h2>
+      <div class="footer-link-container">
+        <a class="footer-link" href="https://rpips.rocketpool.net/">Portal</a>
+        <a class="footer-link" href="{{ site.repository }}">Repository</a>
+        <a class="footer-link" href="https://dao.rocketpool.net/c/governance/8">Governance Forum</a>
+        <a class="footer-link" href="https://discord.com/channels/405159462932971535/774497904559783947">Governance Chat</a>
       </div>
 
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
+      <h2 class="footer-heading">Rocket Pool</h2>
+      <div class="footer-link-container">
+        <a class="footer-link" href="https://rocketpool.net/">Website</a>
+        <a class="footer-link" href="https://dao.rocketpool.net/">Forum</a>
+        <a class="footer-link" href="https://discord.gg/rocketpool">Discord</a>
+        <a class="footer-link" href="https://twitter.com/Rocket_Pool">Twitter</a>
       </div>
     </div>
 
