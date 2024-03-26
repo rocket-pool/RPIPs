@@ -132,7 +132,7 @@ I have some misgivings over leaving this freedom to each committee because it wi
 
 The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
 
-**RPIP Editors and pDAO Treasurer**
+**RPIP Editors and pDAO Treasurer**  
 Both of these positions are intentionally not included in this RPIP because, at the time of writing, they do not fit into the committee framework. The author believes strongly that these positions should be elected and receive the same stipend rate. The author believes moderately strongly that both of these roles should move under the committee framework in the future to solve this problem.  
 
 ## Copyright
