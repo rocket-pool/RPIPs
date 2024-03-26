@@ -317,3 +317,15 @@ pre:has(.language-math)
 .category {
   margin-left: 25px;
 }
+
+.hide-low-width {
+  @media (max-width: 1100px) {
+  display: none;
+  }
+}
+
+.hide-full-width {
+  @media (min-width: 1100px) {
+    display: none;
+  }
+}
