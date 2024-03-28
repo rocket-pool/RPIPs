@@ -3,7 +3,7 @@ rpip: Unassigned
 title: Forcibly Exit Offline Validators
 description: Use EIP-7002 to exit validators which are offline for a significant period
 author: Mike Leach (GH: VVander | Discord: wander1)
-discussions-to: TBD
+discussions-to: https://dao.rocketpool.net/t/integrate-forced-exits-for-offline-nodes-via-keeper-mechanism/2885
 status: Draft
 type: Protocol
 category: Core
@@ -14,7 +14,7 @@ created: 2024-03-21
 
 ## Abstract
 
-This document proposes that the protocol utilize execution layer triggerable exits as defined in [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) to forcibly exit offline validators as a first step towards improving rETH's performance.
+This document proposes that the protocol utilize a keeper mechanism for [execution layer triggerable exits as defined in EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) to forcibly exit offline validators as a first step towards improving rETH’s minimum performance.
 
 ## Motivation
 
