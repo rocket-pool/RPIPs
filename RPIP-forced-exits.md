@@ -14,7 +14,7 @@ created: 2024-03-21
 
 ## Abstract
 
-I propose the protocol utilize execution layer triggerable exits as defined in [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) to forcibly exit offline validators as a first step towards improving rETH's performance.
+This document proposes that the protocol utilize execution layer triggerable exits as defined in [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) to forcibly exit offline validators as a first step towards improving rETH's performance.
 
 ## Motivation
 
@@ -61,7 +61,7 @@ The Ethereum staking formula includes additional penalties for offline validator
 
 ## Future Enhancements
 
-EIP-7002 broadens the design space for staking protocols such that several options for enhancement are available. Although this document only proposes a single, simple use-case, I also suggest further review and development for consideration in the future:
+EIP-7002 broadens the design space for staking protocols such that several options for enhancement are available. Although this document only proposes a single, simple use-case, the following is suggested further review and development for consideration in the future:
 
 - Develop or integrate an oracle such as for determining typical performance such that significantly underperforming validators may also be exited
 - Study and consider better values for the parameters introduced above to constrain additional losses where possible while keeping a user-friendly operator experience
