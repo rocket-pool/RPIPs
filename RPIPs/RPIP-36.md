@@ -33,10 +33,11 @@ Currently, there is no overview of the active committees within Rocket Pool, or 
 
 | Member Since | Members        | Comment                                                                                      |
 |--------------|----------------|----------------------------------------------------------------------------------------------|
+|   2023-04-26 | Ramana         | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
 |   2022-08-16 | Darren Langley | Part of first batch of editors                                                               |
 |   2022-08-16 | Valdorff       | Part of first batch of editors                                                               |
 |   2022-08-16 | Ken            | Part of first batch of editors                                                               |
-|   2023-04-26 | Ramana         | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
+
 
 ### Historic Membership
 
@@ -50,8 +51,8 @@ Currently, there is no overview of the active committees within Rocket Pool, or 
 
 | Date Changed | Treasurer   | Comment                                                                                                                                                                                |
 |--------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   2022-08-25 | vacalaranja | Selected by [pDAO vote](https://vote.rocketpool.net/#/proposal/0x908efd03f7855e927ed8f1875037f25a6910ffdd2cb5a986928f587e1f4f2681)                                                     |
-|   2023-04-09 | Jasper      | Appointed as interim treasurer in RPIP-10 which was ratified by [pDAO vote](https://vote.rocketpool.net/#/proposal/0xbc81c06f58cfd393f5696488fdc464831c2435864a59f856157f12cb181d96c1) |
+|   2022-10-31 | vacalaranja | Selected by [pDAO vote](https://vote.rocketpool.net/#/proposal/0x908efd03f7855e927ed8f1875037f25a6910ffdd2cb5a986928f587e1f4f2681)                                                     |
+|   2022-08-25 | Jasper      | Appointed as interim treasurer in RPIP-10 which was ratified by [pDAO vote](https://vote.rocketpool.net/#/proposal/0xbc81c06f58cfd393f5696488fdc464831c2435864a59f856157f12cb181d96c1) |
 
 ## Incentives Management Committee
 
@@ -108,6 +109,7 @@ Currently, there is no overview of the active committees within Rocket Pool, or 
 |   2022-11-07 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, objectObject                                         | objectObject promoted as [2022 GMC Full Selection](https://vote.rocketpool.net/#/proposal/0x8f166cb2c0adbb2066cdebf97a32e69dd3443efb61c154465a03aa37a2d76f60) runner-up after Wander steps down.                     |
 |   2022-10-30 | jcrtp, invis, waqwaqattack, calurduran, Ken, mentor, Wander                                               | [2022 GMC Full Selection](https://vote.rocketpool.net/#/proposal/0x8f166cb2c0adbb2066cdebf97a32e69dd3443efb61c154465a03aa37a2d76f60)                                                                                 |
 
+<!--
 
 ## RPIP Editor Notes
 
@@ -118,6 +120,8 @@ The general update process is suggested as:
 2. Update the contents of the google sheet with the membership changes.
 3. Use a [markdown table converter](https://www.tablesgenerator.com/markdown_tables#) to generate the required markdown and paste it into this RPIP.
 4. Update the link to the source google sheet with your copy of the google sheet (and ensure your sheet is set to public-view).
+
+-->
 
 The intention is for this RPIP to contain records about all active committees. For this reason, if any future committees are approved by the DAO, they should be added to this record by the RPIP editors.
 
