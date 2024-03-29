@@ -1,6 +1,6 @@
 ---
 rpip: 47
-title: Remove Operator-gated Upgrades
+title: Enable Forced Delegate Upgrades
 description: Allow for the protocol to make protocol-wide decisions rather than relying on per-operator upgrades
 author: Valdorff (@Valdorff)
 discussions-to: TBD
@@ -8,15 +8,18 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
+requires: 43
 ---
 
 ## Abstract
 Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backwards compatible with every past minipool delegate.
 
-This proposal suggests removing that choice in the future. Instead, a time lock will provide time for users to initiate withdrawals in a case where they are unwilling to operate under a new incoming set of rules.
+This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate.
 
 ## Specification
-- Contracts moving forward SHALL NOT require Node Operators to individually opt in to them
+- Megapool delegate contracts SHALL have an expiration block
+- When a new megapool delegate is released, its expiration block is set to "no expiration" and the previous delegate's expiration block is set to `delegate_upgrade_buffer`
+- Interactions with a megapool delegate after its expiration block SHALL revert
 - All protocol upgrades SHALL have a `default_upgrade_delay` delay between when they are passed and when they are executed
 - The security council SHALL have a limited-use power to use a shorter delay of `fast_upgrade_delay`
   - This power SHALL be usable if `fast_upgrade_seal_count` > 0 
@@ -36,6 +39,7 @@ This proposal suggests removing that choice in the future. Instead, a time lock 
     - The vote passes with a supermajority of `veto_supermajority` or more
     - The security council deem that veto appropriate
 - The initial settings SHALL be:
+  - `delegate_upgrade_buffer`: 4 months 
   - `default_upgrade_delay`: 3 weeks
   - `fast_upgrade_delay`: 3 days
   - `fast_upgrade_supermajority`: 75% of vote
