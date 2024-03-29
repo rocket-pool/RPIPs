@@ -4,7 +4,7 @@ title: Bounty Incentives
 description: Proposes to allow the Grants Management Committee to pay out incentives to community members engaging with the bounty system.
 author: LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/t/rpip-39-bounty-incentives/2753
-status: Draft
+status: Final
 type: Meta
 created: 2024-02-16
 requires: 26
@@ -26,7 +26,7 @@ Currently, there is little recognition that creating an effective and actionable
 ### Bounty Incentives
 * The pDAO empowers the Grants Management Committee (GMC) to incentivize the generation and successful completion of bounty proposals using their budget if they choose to do so.
 * The total funding allocated to incentives for a given bounty MUST NOT exceed 10% of the bounty reward payout.
-  * The total cost of lever incentives is not otherwise limited. The GMC SHOULD use bounty incentives with caution. 
+  * The total cost of bounty incentives is not otherwise limited. The GMC SHOULD use bounty incentives with caution. 
 * Incentives for a given bounty MUST NOT reduce the bounty hunter reward payout.
 * Bounty incentives SHOULD be allocated according to a consistent method which the GMC MUST communicate publicly.
 
