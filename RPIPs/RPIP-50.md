@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 50
 title: RPL Buy & LP
 description: Use ETH revenue to provide RPL/rETH liquidity
 author: Valdorff (@Valdorff)

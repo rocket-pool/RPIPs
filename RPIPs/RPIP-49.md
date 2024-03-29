@@ -23,7 +23,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
 6. [RPIP-47: Forced delegate upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
 
 ## Topics that need feedback, discussion, or fleshing out
-- [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-buy_lp.md)
+- [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md)
 - 3-transaction deposits for greater queue efficiency
 - The voter_share heuristic: as it's written, we would increase the share if less than 40% of RPL is vote-eligible and decrease the share if more than 85% of RPL is vote-eligible 
 - RPL inflation
