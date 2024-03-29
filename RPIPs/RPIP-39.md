@@ -48,7 +48,7 @@ The current and historic Bounty Incentive allocation methods should be added to 
 ## Rationale
 
 **High Definition versus Low Definition**  
-One of the feedback points that came up during the discussion of this RPIP was whether to define this structure in detail or leave these details primarily to the GMC. On balance, the author feels that a well-defined structural framework agreed upon by the pDAO is preferable to one that is fully flexible for the GMC. However, feedback from the community has indicated either the opposite position or no position on this issue. Given that a low-definition RPIP is less of an imposition than a high-definition one, the author opted for this version. If the GMC wishes to use a high-definition framework, they can define and communicate it themselves. 
+One of the feedback points that came up during the discussion of this RPIP was whether to define this structure in detail or leave these details primarily to the GMC. On balance, the author feels that a well-defined structural framework agreed upon by the pDAO is preferable to one that is fully flexible for the GMC. However, feedback from the community has indicated either the opposite position or no position on this issue. Given that a low-definition RPIP is less of an imposition than a high-definition one, the author opted for this version. If the GMC wishes to use a high-definition framework, they can define and communicate it themselves. The previous, high-definition version of this RPIP can be viewed [here](https://github.com/rocket-pool/RPIPs/blob/3730a0f794730bdeebc9208284728d03457f6131/RPIPs/RPIP-39.md).
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
