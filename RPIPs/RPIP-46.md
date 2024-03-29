@@ -39,8 +39,8 @@ This proposal also includes a small set of items for potential future use:
   - The pDAO MAY change `increase_no_share_seal_count` via vote
 - The initial settings SHALL be:
   - `node_operator_commission_share`: 2.5%
-  - `voter_share`: 1%
-  - `rpl_burn_share`: 10.5%
+  - `voter_share`: 5%
+  - `rpl_burn_share`: 6.5%
   - `pdao_treasury_share`: 0%
   - `odao_share`: 0%
   - `increase_no_share_seal_increment`: 0.5%
@@ -71,9 +71,9 @@ This section reflects some of the thinking at the time this RPIP was drafted. Th
 The premise here is that voters (who are all NOs and RPL holders) can operate fairly selfishly. They are strongly incentivized to keep node operation and rETH holding attractive -- these lead to strong TVL and thus capture a lot of value to RPL.
 
 ## Historic revenue share values
-| Date                         | Share Settings                                                                                                       |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| 2024-03-08<br>(ratified TBD) | `node_operator_commission_share`: 2.5%, `voter_share`: 1%, `rpl_burn_share`: 10.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
+| Date                         | Share Settings                                                                                                                 |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| 2024-03-08<br>(ratified TBD) | `node_operator_commission_share`: 2.5%, `voter_share`: 5%, `rpl_burn_share`: 6.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
