@@ -28,7 +28,6 @@ This proposal also includes a small set of items for potential future use:
   - `odao_share`: this share of revenue is sent to a splitter contract that anyone can distribute to oDAO members 
 - `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 - `reth_share` SHALL be defined as `100% - reth_commission`
-- Each share SHALL have an associated address, which can be used to distribute funds to the relevant party
 - Distributions of revenue from borrowed ETH MUST respect the defined shares
   - Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
 - These settings MAY be updated by pDAO vote
