@@ -25,9 +25,7 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
   - `target_pool`: <ADDRESS TBD>, a Balancer weighted pool with 90% RPL, 10% ETH, and a 0.5% swap fee
   - `lp_deposit_threshold`: 10 ETH
   - `lp_deposit_cooldown`: 25
-- The contract MUST be upgradable to allow:
-  - A new pool to be targeted
-  - A gradual migration from a previously targeted pool to the current target (eg, an "all-asset" withdrawal followed by an "all-asset" deposit plus a single-asset deposit)
+- The contract MUST be upgradable
 
 ## Thoughts
 - `lp_deposit_threshold` should be set high enough to prevent an undue gas burden, low enough to minimize common arbitrage, and high enough to keep the contract balance quite low most of the time
@@ -36,6 +34,10 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 - The deposit cooldown is set to prevent multiple distributions in quick succession purely to enable arbitrage
 - The pool is most vulnerable to value extraction attacks when `lp_deposit_threshold` is large relative to the pool size (ie, it significantly moves the price). It is recommended that the pDAO place a large amount of protocol-owned liquidity in the pool to begin with. This liquidity can be removed once the "Buy & LP" process has built up size sufficiently. 
 - Some resources for Balancer weighted pools: https://docs.balancer.fi/concepts/pools/weighted.html, https://docs.balancer.fi/reference/math/weighted-math.html, and https://balancer.fi/whitepaper.pdf. If using this solution, some math should be done to understand what size pool and threshold make sense to avoid significant value extraction.
+- The upgradable contract allows flexibility such as, but not limited to:
+  - A new pool could be targeted
+  - A gradual migration from a previously targeted pool to the current target (eg, an "all-asset" withdrawal followed by an "all-asset" deposit plus a single-asset deposit); this approach could reduce the amount of idle ETH by moving to a pool with greater RPL weight
+  - Gradually burning RPL from a pool (eg, a single-asset withdrawal followed by a burn); this approach could limit idle funds _and_ limit total protocol value buildup in the LP
 
 
 ## Copyright
