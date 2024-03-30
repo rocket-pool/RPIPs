@@ -22,14 +22,14 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
 
 ## Specification
-- The protocol SHALL be able to penalize stake at the node level
-- Minipool deposits SHALL be disabled
+- The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
+- Legacy minipool deposits SHOULD be disabled
 - Node Operators SHALL NOT be required to stake RPL in order to create validators within their megapool
 - Node Operators with <`base_num` base validators SHALL be able to make a base validator within their megapool
   - A base validator SHALL have a `base_bond` bond from the Node Operator
-  - If there is a node operator queue, base validators SHALL be given priority over satellite validators
 - Node Operators with >=`base_num` base validators SHALL be able to make a satellite validator
   - A satellite validator SHALL have a `satellite_bond` bond from the Node Operator
+- If there is a node operator queue, base validators SHALL be given priority over satellite validators
 - If a Node has satellite validators active while that Node has <`base_num` base validators active, funds SHALL NOT be withdrawable by the Node Operator
   - It is NOT RECOMMENDED to exit base validators unless all satellite validators have been exited
   - A user MAY exit satellite validaors to allow for fund withdrawal 
@@ -38,6 +38,19 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - `base_num`: 2
   - `base_bond`: 4 ETH
   - `satellite_bond`: 1.5 ETH
+
+## Penalizable offenses
+This portion of the RPIP SHALL be considered Living. It may be updated by DAO vote.
+
+| Offense   | Penalty              | Added      | Updated    |
+|-----------|----------------------|------------|------------|
+| MEV theft | theft size + 0.2 ETH | 2024-03-29 | 2024-03-29 |
+
+## Rationale
+- Bond sizes were chosen per [prior work](../assets/rpip-42/bond_curves.md).
+  - `base_bond` is chosen to "sufficiently" dissuade MEV theft as a strategy
+  - `satellite_bond` is chosen to sufficiently guard against slashing or abandonment risks
+- Base validators are given priority over satellite validators to promote decentralization. The premise is that anyone can get their first couple of validators in ahead of large stakers adding further share.
 
 
 ## Copyright

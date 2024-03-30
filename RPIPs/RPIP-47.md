@@ -17,7 +17,7 @@ Currently, Node Operators can choose to upgrade (or not) for their minipool dele
 This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate.
 
 ## Specification
-- Megapool delegate contracts SHALL have an expiration block
+- Megapool delegate contracts SHALL have an expiration block (ie, execution layer block)
 - When a new megapool delegate is released, its expiration block is set to "no expiration" and the previous delegate's expiration block is set to `delegate_upgrade_buffer`
 - Interactions with a megapool delegate after its expiration block SHALL revert
 - All protocol upgrades SHALL have a `default_upgrade_delay` delay between when they are passed and when they are executed

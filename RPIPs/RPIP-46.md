@@ -57,7 +57,7 @@ This proposal also includes a small set of items for potential future use:
   - If >85% of RPL is contributing vote power in RP, the pDAO SHALL initiate a vote to decrease `voter_share` with the aim of getting below 85%
     - It is SUGGESTED that `rpl_burn_share` is increased by the same magnitude
   - If 40-85% of RPL is contributing vote power in RP, the pDAO MUST NOT change `voter_share` 
-  - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing the voter_share heuristic SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+  - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this specified heuristic for `voter_share` SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.

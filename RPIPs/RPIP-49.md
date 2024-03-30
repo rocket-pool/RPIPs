@@ -15,8 +15,8 @@ This Info RPIP exists to explain an overall tokenomics proposal, the RPIPs it ha
 The overall package is based on, but not exactly the same as the [early-March proposal from Valdorff's github](../assets/rpip-49/readme.md). This proposal was a significant improvement based off of discussions with many people (thanks to 🏆samus🏆, sckuzzle, epineph, uisce, langers, NonFungibleYokem, MountainB, knoshua, luominx, ArtDemocrat and many others). This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus (see [the presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw) or its [powerpoint backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx)).
 
 ## Components currently being advocated for
-1. [RPIP-42: Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that this RPIP also includes (a) the ability to penalize at the node level and (b) the removal of the RPL staking requirement to create minipools.
-2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive gas for, eg, 1.5-ETH bond minipools.
+1. [RPIP-42: Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that this RPIP also includes (a) the ability to penalize at the node level and (b) the removal of the RPL staking requirement to create validators.
+2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive for, eg, 1.5-ETH bond validators.
 3. [RPIP-44: Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
 4. [RPIP-45: RPL Burn](RPIP-45.md) - this is the primary value capture mechanism being proposed.
 5. [RPIP-46: UVC](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
@@ -24,7 +24,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
 
 ## Topics that need feedback, discussion, or fleshing out
 - [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md)
-- 3-transaction deposits for greater queue efficiency
+- 3-transaction deposits for greater queue efficiency (see the 2nd bullet of [this section from the early-March proposal](../assets/rpip-49/readme_tier3.md#other-considerations>))
 - The voter_share heuristic: as it's written, we would increase the share if less than 40% of RPL is vote-eligible and decrease the share if more than 85% of RPL is vote-eligible 
 - RPL inflation
   - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
@@ -51,10 +51,10 @@ In order to avoid messy conditionals in the rest of the RPIPs, we will be operat
 - Release 1: Components 1-6 at once.
 
 ### Scenario B (3 releases):
-- Release 1: Megapools, Forced delegaet upgrades
+- Release 1: Megapools, Forced delegate upgrades
   - Allows ETH-only participants
   - Allows NOs to move to Megapools for greater efficiency
-  - Allow 4-ETH validators within Megapools
+  - Allow 4-ETH validators within Megapools for greater efficiency
 - Release 2: RPL burn, UVC
   - New RPL value capture comes online
   - Revenue steering controls come online
@@ -62,21 +62,20 @@ In order to avoid messy conditionals in the rest of the RPIPs, we will be operat
   - Dramatically improve capital efficiency 
 
 ### Scenario C (2 releases; currently assumed for all RPIPs):
-- Release 1: Megapools, Forced delegaet upgrades, RPL burn, UVC
+- Release 1: Megapools, Forced delegate upgrades, RPL burn, UVC
   - Allows ETH-only participants
-  - Allows NOs to migrate to 4-ETH minipools for greater efficiency
   - Allows NOs to move to Megapools for greater efficiency
+  - Allow 4-ETH validators within Megapools for greater efficiency
   - New RPL value capture comes online
   - Revenue steering controls come online
 - Release 2: Bond curves, Forced exits
   - Dramatically improve capital efficiency 
 
 ### Scenario D (2 releases):
-- Release 1: Megapools, Forced delegaet upgrades
+- Release 1: Megapools, Forced delegate upgrades
   - Allows ETH-only participants
-  - Allows NOs to migrate to 4-ETH minipools for greater efficiency
   - Allows NOs to move to Megapools for greater efficiency
-    - Note that this implies very high earnings for ETH-only minipools until Release 2
+  - Allow 4-ETH validators within Megapools for greater efficiency
 - Release 2: RPL burn, UVC, Bond curves, Forced exits
   - New RPL value capture comes online
   - Revenue steering controls come online
