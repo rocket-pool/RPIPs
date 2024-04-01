@@ -24,13 +24,15 @@ The overall package is based on, but not exactly the same as the [early-March pr
 
 ## Topics that need feedback, discussion, or fleshing out
 - [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md)
+  - Probably worth it to do some LP modeling to gain understanding, see [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1224125945191989349)
 - 3-transaction deposits for greater queue efficiency (see the 2nd bullet of [this section from the early-March proposal](../assets/rpip-49/readme_tier3.md#other-considerations>))
-- The voter_share heuristic: as it's written, we would increase the share if less than 40% of RPL is vote-eligible and decrease the share if more than 85% of RPL is vote-eligible 
+- The voter_share heuristic: as it's written, we would increase the share if less than 40% of RPL is vote-eligible and decrease the share if more than 85% of RPL is vote-eligible. There is a step of 10% written in.
 - RPL inflation
   - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
   - Depending on release schedule, it might be useful to continue paying RPL rewards to legacy minipools. This would slow down a migration of NOs, and thus allow uptake of new NOs.
   - Another possibility discussed is using RPL inflation to fulfill the role currently done by "voter share"
-- Cashing out credit as rETH
+- Cashing out credit as rETH (including using this as a way to exit queue if "stuck")
+- Unstaking RPL, right now this is only allowed (per RPIP-30) down to 15% borrowed ETH. It seems this should probably go to 0?? Needs discussion.
 - Interim solutions (note: we can better consider these _after_ we've established a rough goal and a timeline)
 
 ## Topics not being addressed in this rework

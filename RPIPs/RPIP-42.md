@@ -36,7 +36,8 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
 - The initial settings SHALL be:
   - `base_num`: 2
   - `base_bond`: 4 ETH
-  - `reduced_bond`: 1.5 ETH
+  - `reduced_bond`: 4 ETH
+- Once RPIP-44 is implemented, `reduced_bond` SHALL be updated to 1.5 ETH
 
 ## Penalizable offenses
 This portion of the RPIP SHALL be considered Living. It may be updated by DAO vote.

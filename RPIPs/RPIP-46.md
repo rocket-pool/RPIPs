@@ -29,6 +29,7 @@ This proposal also includes a small set of items for potential future use:
 - `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 - `reth_share` SHALL be defined as `100% - reth_commission`
 - Distributions of revenue from borrowed ETH MUST respect the defined shares
+  - If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
   - Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
 - These settings MAY be updated by pDAO vote
 - These settings MAY be updated by an address in the `allowlisted_controllers` array
@@ -46,17 +47,21 @@ This proposal also includes a small set of items for potential future use:
   - `increase_no_share_seal_increment`: 0.5%
   - `increase_no_share_seal_count`: 6
   - `allowlisted_controllers`: []
+  - `voter_share_relative_step`: 10%
 
 ### Specified heuristics
 - The security council SHOULD use their `increase_no_share_seal_increment` power if:
   - `increase_no_share_seal_count` > 0  
   - The security council deems that protocol growth is actively hindered by node operator supply; they may use information such as deposit pool state, rETH premium, etc to make this determination
 - The pDAO SHALL modify voter_share as follows:
-  - If <40% of RPL is contributing vote power in RP, the pDAO SHALL initiate a vote to increase `voter_share` with the aim of getting above 40%
+  - If <40% of RPL is contributing vote power in RP, the pDAO SHALL increase `voter_share` by `voter_share_relative_step`
     - It is SUGGESTED that `rpl_burn_share` is decreased by the same magnitude
-  - If >85% of RPL is contributing vote power in RP, the pDAO SHALL initiate a vote to decrease `voter_share` with the aim of getting below 85%
+    - The pDAO SHALL NOT increase `voter_share` if ≥40% of RPL is contributing vote power in RP
+      - It is RECOMMENDED that a smart-contract guard rail be enacted preventing this
+  - If >85% of RPL is contributing vote power in RP, the pDAO SHALL decrease `voter_share` by `voter_share_relative_step`
     - It is SUGGESTED that `rpl_burn_share` is increased by the same magnitude
-  - If 40-85% of RPL is contributing vote power in RP, the pDAO MUST NOT change `voter_share` 
+  - Example if `voter_share_relative_step` is 10% and current `voter_share` is 5%, the step size used would be `0.05*0.10=.005=0.5%`
+  - After any required vote per this heuristic, the pDAO SHALL wait between 4-6 weeks before initiating another required vote per this heuristic 
   - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this specified heuristic for `voter_share` SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 
 ## Optional heuristics

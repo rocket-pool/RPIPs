@@ -19,12 +19,15 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
   - Convert the ETH to rETH via native mint if possible, or using a specified `backup_reth_pool` 
   - Execute a single-asset deposit of `lp_deposit_threshold` to the `target_pool`
   - The caller SHALL receive a gas refund based on precalculated gas and the BASEFEE opcode
-  - If the function has been called in the last `lp_deposit_cooldown` blocks, it MUST revert
+  - If the function has been called in the last `lp_deposit_cooldown` blocks, it MUST revert 
 - The initial settings SHALL be:
   - `backup_reth_pool`: `0x1E19CF2D73a72Ef1332C882F20534B6519Be0276`, a Balancer rETH/ETH metastable pool
-  - `target_pool`: <ADDRESS TBD>, a Balancer weighted pool with 90% RPL, 10% ETH, and a 0.5% swap fee
+  - `target_pool`: <ADDRESS TBD>, a Balancer weighted pool with 90% RPL, 10% rETH, and a 0.5% swap fee
   - `lp_deposit_threshold`: 10 ETH
   - `lp_deposit_cooldown`: 25
+- The share of RPL owned by the DAO in this liquidity pool(s) SHALL NOT be counted for:
+  - Voting quorum
+  - "% of RPL is contributing vote power in RP" as used in [RPIP-46](RPIP-46.md)
 - The contract MUST be upgradable
 
 ## Thoughts
