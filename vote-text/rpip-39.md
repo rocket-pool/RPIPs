@@ -4,13 +4,11 @@
 RPIP-39 proposes to allow the Grants Management Committee to pay out incentives to community members engaging with the bounty system.
 
 * Incentives are limited to 10% of the total bounty reward amount.
-* A consistent allocation method for bounty incentives is left to the GMC to determine.
+* A consistent allocation method for bounty incentives is left to the GMC to determine and announce.
 * These incentives are paid out of the GMC's budget.
 * The pDAO may challenge individual payouts and changes to the incentive allocation method using the existing committee decision challenge system.
 
 ## Outcome If Vote Passes
-
-Description of the outcome if the vote passes, or the possible outcomes if there are multiple not-status-quo outcomes. Can use bullets.
 
 RPIP-39 will be ratified by the pDAO, empowering the GMC to spend up to 10% of a given bounty payout value on incentives connected to that bounty. 
 
