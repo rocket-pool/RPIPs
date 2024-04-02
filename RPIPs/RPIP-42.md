@@ -22,19 +22,35 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
 
 ## Specification
-- The protocol SHALL be able to penalize stake at the node level
-- Node Operators with <`base_mp_num` base minipools SHALL be able to make a base minpool
-  - A base minipool SHALL have a `base_mp_bond` bond from the Node Operator
-- Node Operators with >=`base_mp_num` base minipools SHALL be able to make a satellite minipool
-  - A satellite minipool SHALL have a `satellite_mp_bond` bond from the Node Operator
-- If a Node has satellite minipools active while that Node has <`base_mp_num` base minipools active, funds SHALL NOT be withdrawable by the Node Operator
-  - It is NOT RECOMMENDED to exit base minipools unless all satellite minipools have been exited
-  - A user MAY exit satellite minipools to allow for fund withdrawal 
-  - The protocol MAY or MAY NOT provide a path to upgrade a satellite minipool to a base minipool (to allow for fund withdrawal)
+- The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
+- Legacy minipool deposits SHOULD be disabled
+- Node Operators SHALL NOT be required to stake RPL in order to create validators within their megapool
+- When Node Operators create validators:
+  - If fewer than `base_num` validators already exist, the required `user_deposit` is `base_bond` per validator.
+  - If at least `base_num` validators already exist, the required `user_deposit` is `reduced_bond` per validator.
+- When Node Operators remove validators:
+  - If greater than `base_num` validators exist prior to removing, the Node Operator share before penalties is `reduced_bond`.
+  - If at most `base_num` validators exist prior to removing, the Node Operator share before penalties is `base_bond`.
+- When a validator is added with a `base_bond` deposit, it SHALL receive priority treatment for any queues vis-à-vis validators added with a `reduced_bond` deposit.
+- Bulk validator creation / removal functions SHALL behave the same as multiple individual transactions.
 - The initial settings SHALL be:
-  - `base_mp_num`: 2
-  - `base_mp_bond`: 4 ETH
-  - `satellite_mp_bond`: 1.5 ETH
+  - `base_num`: 2
+  - `base_bond`: 4 ETH
+  - `reduced_bond`: 4 ETH
+- Once RPIP-44 is implemented, `reduced_bond` SHALL be updated to 1.5 ETH
+
+## Penalizable offenses
+This portion of the RPIP SHALL be considered Living. It may be updated by DAO vote.
+
+| Offense   | Penalty              | Added      | Updated    |
+|-----------|----------------------|------------|------------|
+| MEV theft | theft size + 0.2 ETH | 2024-03-29 | 2024-03-29 |
+
+## Rationale
+- Bond sizes were chosen per [prior work](../assets/rpip-42/bond_curves.md).
+  - `base_bond` is chosen to "sufficiently" dissuade MEV theft as a strategy
+  - `reduced_bond` is chosen to "sufficiently" guard against slashing or abandonment risks
+- Validators with `base_bond` deposits are prioritized to promote decentralization; new or smaller Node Operators can get up to `base_num` validators launched ahead of larger Node Operators adding `reduced_bond` validators.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
