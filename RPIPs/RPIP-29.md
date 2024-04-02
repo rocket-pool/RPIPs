@@ -173,7 +173,7 @@ This file SHALL be updated monthly in tandem with the GMC treasury update DAO po
 
 
 ## Withdrawn Grants and Expired Bounties
-View withdrawn grants and expired bounties on the [GMC Treasury sheet] (https://docs.google.com/spreadsheets/d/1dMtHJ4sffBidSN5RphLYC9A5HrsRNqHfqLVn-nJR104/edit#gid=970056090).
+View withdrawn grants and expired bounties on the [GMC Treasury sheet](https://docs.google.com/spreadsheets/d/1dMtHJ4sffBidSN5RphLYC9A5HrsRNqHfqLVn-nJR104/edit#gid=970056090).
 
 ## Copyright
 
