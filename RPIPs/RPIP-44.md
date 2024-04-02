@@ -31,11 +31,11 @@ This proposal specifies when [execution layer triggerable exits as defined in EI
 - The protocol SHOULD use `rewards` and/or `credit` held by the NO to decrease `debt` by the same amount prior to taking action on exits
 - The protocol SHOULD use staked RPL held by the NO to decrease `debt` by the corresponding amount prior to taking action on exits
 - The initial settings SHALL be:
-  - `exit_deficit`: 0.5 ETH
+  - `exit_deficit`: 0.2 ETH
   - `keeper_reward`: 0.01 ETH + approximate gas refund based on precalculated gas and the BASEFEE opcode
 
 ## Rationale
-- `exit_deficit` is about enough for over 3 months covering leakage at 4% apy, using the rule of thumb that losses accrue at half the speed of gains `32*(.04/2)*(3/12)` = .16 ETH. Users that have accrued this much offline time are likely to be unable to recover their validators at all due to incapacitation, lost keys, etc.
+- `exit_deficit` is about months covering leakage at 4% apy, using the rule of thumb that losses accrue at half the speed of gains `32*(.04/2)*(3/12) = .21 ETH`. Users that have accrued this much offline time are likely to be unable to recover their validators at all due to incapacitation, lost keys, etc.
 - `keeper_reward` is set to ensure that users are incentivized to call this function when possible
 - `expected_credit_from_exit` has a known potential shortfall in cases of correlated slashing; that said, upon the completion of the exits, the numbers will be correctly updated. This means there may be a second round of exits in such a case.
 
@@ -43,7 +43,7 @@ This proposal specifies when [execution layer triggerable exits as defined in EI
 
 ### Forced Exits During Inactivity Leaking
 
-The Ethereum staking formula includes additional penalties for offline validators when large portions of the network are offline. This state of accelerated punishment is called ["inactivity leaking"](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/#inactivity-leak). With the RP protocol forcing exits for validators under a 31.9 ETH balance, validators who are offline during an inactivity leaking scenario may be exited even if the validator is only offline for a brief period. In some extreme scenarios, a small number of missed attestations could cause a validator to be ejected from the network. This may be necessary, however, in order to protect the value of rETH during an unusual network state for Ethereum.
+The Ethereum staking formula includes additional penalties for offline validators when large portions of the network are offline. This state of accelerated punishment is called ["inactivity leaking"](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/#inactivity-leak). With the RP protocol forcing exits for validators, NOs who are offline during an inactivity leaking scenario may be exited even if the validator is only offline for a brief period. In some extreme scenarios, a small number of missed attestations could cause a validator to be ejected from the network. This may be necessary, however, in order to protect the value of rETH during an unusual network state for Ethereum.
 
 ## Future Enhancements
 

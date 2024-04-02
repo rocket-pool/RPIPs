@@ -31,6 +31,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
   - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
   - Depending on release schedule, it might be useful to continue paying RPL rewards to legacy minipools. This would slow down a migration of NOs, and thus allow uptake of new NOs.
   - Another possibility discussed is using RPL inflation to fulfill the role currently done by "voter share"
+- Force exits [RPIP-44: Forced exits](RPIP-44.md) : right now some of the logic behind it is per-node and some is per-validator. This needs a bit of rethinking.
 - Cashing out credit as rETH (including using this as a way to exit queue if "stuck")
 - Unstaking RPL, right now this is only allowed (per RPIP-30) down to 15% borrowed ETH. It seems this should probably go to 0?? Needs discussion.
 - Interim solutions (note: we can better consider these _after_ we've established a rough goal and a timeline)
