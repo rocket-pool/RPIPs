@@ -38,7 +38,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
 
 ## Topics not being addressed in this rework
 - MEV penalty improvements - this _is_ important, but the numbers we've seen previously suggest MEV theft has not been a pressing problem.
-- rETH protection - this is moderate priority and significant complexity. While I wish to see it, I don't think it's worth risking timeline on the [components above](#components-currently-being-advocated-for).
+- rETH restitution from underperforming Node Operators - this is moderate priority, significant complexity, and has some different variants possible (see [ArtDemocrat's original proposal](https://dao.rocketpool.net/t/rapid-research-incubator-submission-reth-protection-through-rpl-rerouting-deflation/2599) or [Val's tweak](https://dao.rocketpool.net/t/rapid-research-incubator-submission-reth-protection-through-rpl-rerouting-deflation/2599)). While I wish to see it, I don't think it's worth risking timeline on the [components above](#components-currently-being-advocated-for).
 - Right now voter share is split up amongst potential voters based on amount of RPL eligible to vote. We could do something based on active governance or actual vote power instead of count of RPL?
   - Possible thought: require having a delegate set for eligibility
   - Possible thought: setting a delegate expires after a time period (eg, 1 year)
