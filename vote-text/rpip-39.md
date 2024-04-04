@@ -14,7 +14,7 @@ RPIP-39 will be ratified by the pDAO, empowering the GMC to spend up to 10% of a
 
 ## Rationale
 
-Bounties provide a good middle ground between retros and grants in terms of the risk balance between the DAO and the service provider. However, bounty proposals require more effort from the community to be successful in their goal. This includes both up-front efforts to make an effective proposal, and ongoing efforts to support bounty hunters that lack deep knowledge of Rocket Pool. The existing bounty framework does not recognize this effort, and the GMC is not explicitly empowered to recognize it absent pDAO input. 
+Bounties provide a good middle ground between retroactive payment applications and grant applications in terms of the risk balance between the DAO and the service provider. However, bounty proposals require more effort from the community to be successful in their goal. This includes both up-front efforts to make an effective proposal, and ongoing efforts to support bounty hunters that lack deep knowledge of Rocket Pool. The existing bounty framework does not recognize this effort, and the GMC is not explicitly empowered to recognize it absent pDAO input. 
 
 In practice, this change allows the GMC to incentivize any or all of the following:
 * A higher quantity of bounty proposals.
