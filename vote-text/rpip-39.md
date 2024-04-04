@@ -21,7 +21,7 @@ In practice, this change allows the GMC to incentivize any or all of the followi
 * A higher quality of bounty proposals.
 * Effective support for bounty hunters lacking some Rocket Pool knowledge. 
 
-Together, these should result in a more effective, consistent, and populous bounty program. 
+If used, these incentives may result in a more effective, consistent, and populous bounty program. 
 
 ## Context
 
