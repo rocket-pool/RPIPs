@@ -53,7 +53,12 @@ layout: default
         <tr><th>Discussion</th><td><a href="{{ page["discussions-to"] | uri_escape }}">Link</a></td></tr>
       {% endif %}
       {% if page["vote-to"] != undefined %}
-        <tr><th>Vote</th><td><a href="{{ page["vote-to"] | uri_escape }}">Link</a></td></tr>
+        <tr><th>Vote</th><td>
+        {% assign votes = page["vote-to"] | split: ", " %}
+        {% for vote in votes %}
+          <a href="{{ vote | uri_escape }}">Link</a>{% unless forloop.last %}, {% endunless -%}
+        {% endfor %}
+        </tr></td>
       {% endif %}
       {% if page["vote-date"] != undefined %}
         <tr><th>Vote Date</th><td>{{ page.vote-date | xml_escape }}</td></tr>

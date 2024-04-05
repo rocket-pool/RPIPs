@@ -8,6 +8,9 @@ status: Final
 type: Protocol
 category: Core
 created: 2023-11-10
+vote-to: https://vote.rocketpool.net/#/proposal/0x09a416966b94c739a46a6c886399acb61fe3378429a80193e75dd219fe2d6c2c
+vote-date: 2023-12-20
+vote-result: Passed
 ---
 
 ## Abstract
