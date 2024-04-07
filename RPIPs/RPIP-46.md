@@ -31,12 +31,24 @@ This proposal also includes a small set of items for potential future use:
 - Distributions of revenue from borrowed ETH MUST respect the defined shares
   - If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
   - Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
-- These settings MAY be updated by pDAO vote
-- These settings MAY be updated by an address in the `allowlisted_controllers` array
+- `node_operator_commission_share`, `rpl_burn_share`, `pdao_treasury_share`, `odao_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` MAY be updated by pDAO vote
+- `node_operator_commission_share`, `rpl_burn_share`, `pdao_treasury_share`, and `odao_share` MAY be updated by an address in the `allowlisted_controllers` array
   - This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
+- Updating `voter_share_target`:
+  - A new function SHALL be available to update `voter_share_target`
+  - It MUST revert if it's been called within the last 45 days
+  - If <`voter_share_target` of total RPL is staked and the function succeeds:
+    - `voter_share_target` is increased to `voter_share_target * (1+voter_share_relative_step)`
+    - `rpl_burn_share` is decreased by the difference between the old and new `voter_share_target`
+  - If >`voter_share_target` of total RPL is staked and the function succeeds:
+    - `voter_share_target` is decreased to `voter_share_target / (1+voter_share_relative_step)`
+    - `rpl_burn_share` is increased by the difference between the old and new `voter_share_target`
+  - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share_target`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+- `voter_share_relative_step` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 - The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `rpl_burn_share` by the same amount
   - This power SHALL be usable if `increase_no_share_seal_count` > 0
   - `increase_no_share_seal_count` SHALL be decremented by one upon using this power
+  - This power SHOULD be used if the deposit pool is over half-full for the majority of a 2-week period at the current `node_operator_commission_share`
   - The pDAO MAY change `increase_no_share_seal_count` via vote
 - The initial settings SHALL be:
   - `node_operator_commission_share`: 2.5%
@@ -47,28 +59,14 @@ This proposal also includes a small set of items for potential future use:
   - `increase_no_share_seal_increment`: 0.5%
   - `increase_no_share_seal_count`: 6
   - `allowlisted_controllers`: []
-  - `voter_share_relative_step`: 10%
-
-### Specified heuristics
-- The security council SHOULD use their `increase_no_share_seal_increment` power if:
-  - `increase_no_share_seal_count` > 0  
-  - The security council deems that protocol growth is actively hindered by node operator supply; they may use information such as deposit pool state, rETH premium, etc to make this determination
-- The pDAO SHALL modify voter_share as follows:
-  - If <40% of RPL is contributing vote power in RP, the pDAO SHALL increase `voter_share` by `voter_share_relative_step`
-    - It is SUGGESTED that `rpl_burn_share` is decreased by the same magnitude
-    - The pDAO SHALL NOT increase `voter_share` if ≥40% of RPL is contributing vote power in RP
-      - It is RECOMMENDED that a smart-contract guard rail be enacted preventing this
-  - If >85% of RPL is contributing vote power in RP, the pDAO SHALL decrease `voter_share` by `voter_share_relative_step`
-    - It is SUGGESTED that `rpl_burn_share` is increased by the same magnitude
-  - Example if `voter_share_relative_step` is 10% and current `voter_share` is 5%, the step size used would be `0.05*0.10=.005=0.5%`
-  - After any required vote per this heuristic, the pDAO SHALL wait between 4-6 weeks before initiating another required vote per this heuristic 
-  - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this specified heuristic for `voter_share` SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+  - `voter_share_relative_step`: 15%
+  - `voter_share_target`: 60%
 
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
 
 - Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional. At the same time, if we have significantly more supply than needed, we may freely decrease it. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
-- Consider `voter_share` as a requirement to function. If this is not high enough to attract governance security, the protocol is endangered. This has a [specified heuristic](#specified-heuristics) above to follow. Offset the increase/decrease with a commensurate decrease/increase of `rpl_burn_share`.
+- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively.
 - Finally, consider `rpl_burn_share`. 
   - If rETH demand has been robust enough to reach desired rETH TVL, `rpl_burn_share` can be increased (without other settings changes, this means at the cost of `reth_share`). This is one way to fulfill the soft limits described in [RPIP-17](./RPIP-17.md).
   - If below desired rETH TVL due to lack of rETH demand, `rpl_burn_share` can be decreased. The surplus can either be directed to `reth_share` (without other settings changes) or to `pdao_treasury_share` (with a commensurate increase). Here voters should be considering how to most efficiently generate rETH demand given a fixed amount of funds.
