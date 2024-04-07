@@ -33,6 +33,10 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - If at most `base_num` validators exist prior to removing, the Node Operator share before penalties is `base_bond`.
 - When a validator is added with a `base_bond` deposit, it SHALL receive priority treatment for any queues vis-à-vis validators added with a `reduced_bond` deposit.
 - Bulk validator creation / removal functions SHALL behave the same as multiple individual transactions.
+- It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
+- If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
+- `credit` MUST be usable to create validators in a megapool
+- If (a) the deposit pool is below 10% capacity or (b) `credit` is less than the `required_deposit` if the user were to create a new validator: `credit` MUST be usable to mint rETH to the NO's primary withdrawal address
 - The initial settings SHALL be:
   - `base_num`: 2
   - `base_bond`: 4 ETH
