@@ -19,7 +19,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
 2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive for, eg, 1.5-ETH bond validators.
 3. [RPIP-44: Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
 4. [RPIP-45: RPL Burn](RPIP-45.md) - this is the primary value capture mechanism being proposed.
-5. [RPIP-46: UVC](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
+5. [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
 6. [RPIP-47: Forced delegate upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
 
 ## Topics that need feedback, discussion, or fleshing out
