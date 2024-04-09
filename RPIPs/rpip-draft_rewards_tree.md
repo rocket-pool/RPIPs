@@ -29,8 +29,5 @@ This specification describes what is actually implemented and used by Rocket Poo
 ## Reference Implementation
 This specification (Rewards Calculation v8) is implemented by [Treegen](https://github.com/rocket-pool/treegen/tree/a92de2f75e8188c450653b01af5ab27f97a14ec3), which is the reference implementation. It is also implemented by [Rockettree](https://github.com/xrchz/rockettree/tree/ce9bca3d15ce490804ea8e31ebfd5a24723dc8cf).
 
-## Security Considerations
-Errors, inconsistencies, and omissions in this specification leave the protocol in a difficult position should there arise any disputes over the allocation of rewards.
-
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
