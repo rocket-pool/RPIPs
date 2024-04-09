@@ -1,6 +1,6 @@
 ---
 rpip: #<to be assigned>
-title: Rewards Tree Specification
+title: Current Rewards Tree Specification
 description: Specifies how RPL Inflation and Smoothing Pool rewards are allocated to node operators
 author: Ramana Kumar (@xrchz), Joe Clapis (@jcrtp)
 discussions-to: https://github.com/rocket-pool/rocketpool-research/issues
