@@ -20,8 +20,8 @@ The rewards tree specification is currently developed in the external [Rocket Po
 ## Specification
 The technical specification (v8 in particular) taken from the external [research repository](https://github.com/rocket-pool/rocketpool-research/tree/master/Merkle%20Rewards%20System) is attached as the following assets:
 
-* [Merkle Tree Specification](../assets/rpip-tree/merkle-tree-spec.md)
-* [Rewards Calculation Specification](../assets/rpip-tree/rewards-calculation-spec.md)
+* [Merkle Tree Specification](../assets/rpip-51/merkle-tree-spec.md)
+* [Rewards Calculation Specification](../assets/rpip-51/rewards-calculation-spec.md)
 
 ## Rationale
 This specification describes what is actually implemented and used by Rocket Pool as of April 2024 (that is, for rewards interval 21).
