@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/rpip-39-bounty-incentives/2753
 status: Draft
 type: Meta
 created: 2024-02-16
-requires: 26
+requires: 40
 ---
 
 ## Abstract
