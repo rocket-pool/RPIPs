@@ -96,7 +96,7 @@ The split of the committee stipend budget SHOULD be determined by the voting mem
 
 #### Distribution
 The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members. 
-* Stipends SHOULD be paid from the GMC's budget.
+* Stipends SHALL be paid from the GMC's budget.
 * The GMC Administrator SHOULD determine the period for payouts and communicate this to each committee.
   * By default this is assumed to be monthly, but MAY be increased to ease administrative burden if needed.
 * Stipends SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
