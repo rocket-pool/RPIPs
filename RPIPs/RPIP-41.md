@@ -14,7 +14,7 @@ requires: 10, 40
 
 This RPIP defines stipends for members of pDAO committees. The total stipend budget for a given committee is calculated based on the number of members for that committee, the target hours per month for that committee, and the global stipend rate which is the same for all committees. Committees may split their stipend budget amongst their members in any manner they choose.
 
-Stipends to the members of each committee are paid by the Grants Management Committee.
+Stipends to the members of each committee are paid by the Grants Management Committee from the GMC's budget.
 
 ## Motivation
 This RPIP is primarily motivated by a desire to see the efforts being made by members of pDAO committees to be rewarded monetarily for the time they are committing to Rocket Pool as members of those committees. A secondary yet still important motivation is to help ensure that the pDAO continues to attract sufficient nominees for these committee membership roles in the future.
@@ -95,7 +95,8 @@ The split of the committee stipend budget SHOULD be determined by the voting mem
 * Roles and responsibilities financially compensated through other mechanisms SHOULD be discounted when the committee determines the stipend split.
 
 #### Distribution
-The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members.
+The Grants Management Committee is responsible for distributing the stipends for each committee directly to its members. 
+* Stipends SHOULD be paid from the GMC's budget.
 * The GMC Administrator SHOULD determine the period for payouts and communicate this to each committee.
   * By default this is assumed to be monthly, but MAY be increased to ease administrative burden if needed.
 * Stipends SHOULD be paid out in one of the GMC's accepted payout token options, selected by the recipient.
@@ -124,7 +125,7 @@ Strictly, this does not exist as a thing outside of the GMC. But, the process re
 I have some misgivings over leaving this freedom to each committee because it will mean inconsistent methods across different committees. But, I'm unconvinced that the pDAO mandating a specific method is preferable. The freedom to pick something that works is important, especially at this stage.
 
 **GMC Administration**  
-The GMC will administer the distribution of stipends because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
+The GMC will administer the distribution of stipends and fund them out of the GMC budget because there are no better-suited sub-structures within the DAO. If such a structure is added, it should take over this role from the GMC.
 
 **RPIP Editors and pDAO Treasurer**  
 Both of these positions are intentionally not included in this RPIP because, at the time of writing, they do not fit into the committee framework. The author believes strongly that these positions should be elected and receive the same stipend rate. The author believes moderately strongly that both of these roles should move under the committee framework in the future to solve this problem.  
