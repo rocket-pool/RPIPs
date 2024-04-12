@@ -6,7 +6,7 @@ RPIP-41 defines stipends for members of pDAO committees.
 * The global hourly stipend rate is decided by the pDAO and applies to all committees. The initial stipend rate is set at 30 USD / hr.
 * Committees receive a stipend total of `members * expected hours * global rate`.
 * Committees may split their stipend total amongst their members in any manner they choose.
-* Stipend payouts are managed by the Grants Management Committee (GMC).
+* Stipend payouts are managed by the Grants Management Committee (GMC) and paid from the GMC's budget.
 * Total cost of initial committee stipends is 7020 USD / month. 
 
 ## Outcome If Vote Passes
