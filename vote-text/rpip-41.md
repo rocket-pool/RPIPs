@@ -1,7 +1,7 @@
 
 # RPIP-41: Committee Stipends
 
-RPIP-41 defines stipends for members of pDAO committees.
+RPIP-41 establishes stipends for members of pDAO committees.
 
 * The global hourly stipend rate is decided by the pDAO and applies to all committees. The initial stipend rate is set at 30 USD / hr.
 * Committees receive a stipend total of `members * expected hours * global rate`.
@@ -15,7 +15,7 @@ RPIP-41 will be ratified by the pDAO, empowering the GMC to pay stipends to memb
 
 ## Rationale
 
-Committee members fill important roles within the Rocket Pool DAO. On a moral level, they deserve to be compensated for their time and the value they are providing to the DAO. On a more practical level, previous committee elections have struggled to find sufficient nominees to both:
+Committee members fill important roles within the Rocket Pool DAO. On a moral level, they deserve to be rewarded for the time and value they are providing to the DAO. On a more practical level, previous committee elections have struggled to find sufficient nominees to both:
 * Offer meaningful choice to the pDAO.
 * Provide a sufficient number of substitute members if a committee member is no longer able to volunteer their time. 
 
