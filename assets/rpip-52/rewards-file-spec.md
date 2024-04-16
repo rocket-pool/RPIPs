@@ -6,7 +6,7 @@ This specification serves to define their expected format, naming convention, an
 
 # Contents
 
-The oDAO shall save Rewards Trees in [ssz](https://www.ssz.dev/) format respecting the following specification.
+The oDAO shall save Rewards Trees in [ssz](../assets/rpip-52/simple-serialize.md) format respecting the following specification.
 
 ## Containers
 
@@ -17,8 +17,8 @@ class File(Container):
     magic: Bytes4 # Magic Header identifying this file as a Rewards Tree
                   # Expected value: 0x52 0x50 0x52 0x54
     rewards_file_version: uint64 # Expected value: 3
-    ruleset_version: uint64 # Expected value: 9
-    network: uint64 # Chain ID for the network, e.g., 0 for Mainnet or 17000 for Holešky
+    ruleset_version: uint64 # Expected value: 9 or higher
+    network: uint64 # Chain ID for the network, e.g., 1 for Mainnet or 17000 for Holešky
     index: uint64 # Rewards interval index
     start_time: uint64 # Unix time of the first slot of the interval
     end_time: uint64 # Unix time of the last slot of the interval
@@ -32,7 +32,7 @@ class File(Container):
     network_rewards: List[NetworkReward, 128] # L1 and L2 rewards destinations and aggregate amounts
                                               # Sorted ascending by Network
     node_rewards: List[NodeReward, 9223372036854775807] # Per-node rewards
-                                                        # Sorted ascending by Address (most significant byte first, unsigned)
+                                                        # Sorted in ascending unsigned numerical order by Address
 
 class TotalRewards(Container):
     protocol_dao_rpl: uint256 # Amount of RPL sent to the pDAO (in wei)
@@ -54,6 +54,7 @@ class NodeReward(Container):
     address: Bytes20 # Address of the node that this object describes rewards for
     network: uint64 # The L1 or L2 id that the node will claim on
                     # Corresponds to a NetworkReward.network in the File.network_rewards list
+                    # 0 means L1
     collateral_rpl: uint256 # RPL staking rewards earned by this node operator (in wei)
     oracle_dao_rpl: uint256 # RPL rewards earned by this oDAO member (in wei)
                             # If the node is not in the oDAO the expected value is 0
@@ -69,7 +70,7 @@ The file SHALL be serialized with the binary representation of the above specifi
 The file SHALL be named `rp-rewards-{NETWORK}-{INTERVAL}.ssz` with the following substitutions:
 
   * Substitute the name of the network from the below table for {NETWORK}
-  * Substitute the number of the interval for {INTERVAL}
+  * Substitute the number of the interval, in decimal with no leading zeroes, for {INTERVAL}
 
 ## Networks
 | Network | {NETWORK} |
