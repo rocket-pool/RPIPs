@@ -19,6 +19,7 @@ class File(Container):
     rewards_file_version: uint64 # Expected value: 3
     ruleset_version: uint64 # Expected value: 9 or higher
     network: uint64 # Chain ID for the network, e.g., 1 for Mainnet or 17000 for Holešky
+                    # devnet deploys should use a unique id
     index: uint64 # Rewards interval index
     start_time: uint64 # Unix time of the first slot of the interval
     end_time: uint64 # Unix time of the last slot of the interval
