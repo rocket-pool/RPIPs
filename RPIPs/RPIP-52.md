@@ -1,6 +1,6 @@
 ---
 rpip: 52
-title: Rewards Tree v8 Specification
+title: Rewards Tree v9 Specification
 description: Specifies how RPL Inflation and Smoothing Pool rewards are allocated to node operators
 author: Jacob Shufro (@jshufro), Ramana Kumar (@xrchz), Joe Clapis (@jcrtp)
 discussions-to: https://dao.rocketpool.net/t/rewards-tree-spec-v9/2928
