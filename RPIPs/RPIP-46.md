@@ -37,11 +37,11 @@ This proposal also includes a small set of items for potential future use:
 - Updating `voter_share_target`:
   - A new function SHALL be available to update `voter_share_target`, which MAY be called by anyone
   - It MUST revert if it's been called within the last 45 days
-  - If <`voter_share_target` of total RPL is staked and the function succeeds:
+  - If <`voter_share_target` of total RPL is eligible to vote and the function succeeds:
     - `voter_share_target` is increased to `voter_share_target * (1+voter_share_relative_step)`
     - `rpl_burn_share` is decreased by the difference between the old and new `voter_share_target`
       - If this would reduce `rpl_burn_share` below 0%, the function call MUST revert 
-  - If >`voter_share_target` of total RPL is staked and the function succeeds:
+  - If >`voter_share_target` of total RPL is eligible to vote and the function succeeds:
     - `voter_share_target` is decreased to `voter_share_target / (1+voter_share_relative_step)`
     - `rpl_burn_share` is increased by the difference between the old and new `voter_share_target`
   - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share_target`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
