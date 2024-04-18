@@ -9,6 +9,8 @@ RPIP-41 establishes stipends for members of pDAO committees.
 * Stipend payouts are managed by the Grants Management Committee (GMC) and paid from the GMC's budget.
 * Total cost of initial committee stipends is 7020 USD / month. 
 
+RPIP-41 does not fund committee members retroactively.
+
 ## Outcome If Vote Passes
 
 RPIP-41 will be ratified by the pDAO, empowering the GMC to pay stipends to members of pDAO committees. At the time of this vote, the only pDAO committees within Rocket Pool are the [Grants Management Committee](https://rpips.rocketpool.net/RPIPs/RPIP-40) and the [Incentive Management Committee](https://rpips.rocketpool.net/RPIPs/RPIP-20).
