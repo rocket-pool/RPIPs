@@ -20,48 +20,52 @@ This proposal also includes a small set of items for potential future use:
 - An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
 
 ## Specification
-- There SHALL be the following defined shares with settings: `node_operator_commission_share`, `voter_share`, `rpl_burn_share`, `pdao_treasury_share`, `odao_share`
-  - `node_operator_commission_share`: each NO receives this percentage of commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
-  - `voter_share`: each NO receives a share of revenue based on their vote-eligible staked RPL. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_on_node/total_vote_eligible_RPL`.
-  - `rpl_burn_share`: this share of revenue is used to buy and burn RPL per [RPIP-45](RPIP-45.md).
-  - `pdao_treasury_share`: this share of revenue is sent to the pDAO treasury in the vault
-  - `odao_share`: this share of revenue is sent to a splitter contract that anyone can distribute to oDAO members 
-- `reth_commission` SHALL be defined as the sum of all defined shares that have settings
-- `reth_share` SHALL be defined as `100% - reth_commission`
-- Distributions of revenue from borrowed ETH MUST respect the defined shares
-  - If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
-  - Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
-- `node_operator_commission_share`, `rpl_burn_share`, `pdao_treasury_share`, `odao_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` MAY be updated by pDAO vote
-- `node_operator_commission_share`, `rpl_burn_share`, `pdao_treasury_share`, and `odao_share` MAY be updated by an address in the `allowlisted_controllers` array
-  - This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
-- Updating `voter_share_target`:
-  - A new function SHALL be available to update `voter_share_target`, which MAY be called by anyone
-  - It MUST revert if it's been called within the last 45 days
-  - If <`voter_share_target` of total RPL is eligible to vote and the function succeeds:
-    - `voter_share_target` is increased to `voter_share_target * (1+voter_share_relative_step)`
-    - `rpl_burn_share` is decreased by the difference between the old and new `voter_share_target`
-      - If this would reduce `rpl_burn_share` below 0%, the function call MUST revert 
-  - If >`voter_share_target` of total RPL is eligible to vote and the function succeeds:
-    - `voter_share_target` is decreased to `voter_share_target / (1+voter_share_relative_step)`
-    - `rpl_burn_share` is increased by the difference between the old and new `voter_share_target`
-  - Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share_target`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-- `voter_share_relative_step` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-- The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `rpl_burn_share` by the same amount
-  - This power SHALL be usable if `increase_no_share_seal_count` > 0
-  - `increase_no_share_seal_count` SHALL be decremented by one upon using this power
-  - This power SHOULD be used if the deposit pool is over half-full for the majority of a 2-week period at the current `node_operator_commission_share`
-  - The pDAO MAY change `increase_no_share_seal_count` via vote
-- The initial settings SHALL be:
-  - `node_operator_commission_share`: 2.5%
-  - `voter_share`: 5%
-  - `rpl_burn_share`: 6.5%
-  - `pdao_treasury_share`: 0%
-  - `odao_share`: 0%
-  - `increase_no_share_seal_increment`: 0.5%
-  - `increase_no_share_seal_count`: 6
-  - `allowlisted_controllers`: []
-  - `voter_share_relative_step`: 15%
-  - `voter_share_target`: 60%
+1. Inflation settings SHALL be modified to retain inflation to the DAOs and eliminate inflation to NOs
+   1. `rpl.inflation.interval.rate` SHALL be set to `1000040763630249500` (1.5% per year)
+   2. Node Operators (`rocketClaimNode`) allocation SHALL be set to 0%
+   3. pDAO (`rocketClaimDAO`) allocation SHALL be set to 95%
+   4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
+2. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `voter_share`, `rpl_burn_share`
+   1. `node_operator_commission_share`: each NO receives this percentage of commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
+   2. `voter_share`: each NO receives a share of revenue based on their vote-eligible staked RPL. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_on_node/total_vote_eligible_RPL`.
+   3. `rpl_burn_share`: this share of revenue is used to buy and burn RPL per [RPIP-45](RPIP-45.md). 
+3. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
+4. `reth_share` SHALL be defined as `100% - reth_commission`
+5. Distributions of revenue from borrowed ETH MUST respect the defined shares
+   1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
+   2. Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
+6. `node_operator_commission_share`, `rpl_burn_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` MAY be updated by pDAO vote
+7. `node_operator_commission_share` and `rpl_burn_share`, MAY be updated by an address in the `allowlisted_controllers` array
+   1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
+8. The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `rpl_burn_share` by the same amount
+   1. This power SHALL be usable if `increase_no_share_seal_count` > 0
+   2. `increase_no_share_seal_count` SHALL be decremented by one upon using this power
+   3. This power SHOULD be used if the deposit pool is over half-full for the majority of a 2-week period at the current `node_operator_commission_share`
+   4. The pDAO MAY change `increase_no_share_seal_count` via vote
+9. The initial settings SHALL be:
+   1. `node_operator_commission_share`: 3.5%
+   2. `voter_share`: 5%
+   3. `rpl_burn_share`: 5.5%
+   4. `increase_no_share_seal_increment`: 0.5%
+   5. `increase_no_share_seal_count`: 6
+   6. `allowlisted_controllers`: []
+
+## Specification taking effect with Saturn 2
+1. Updating `voter_share_target`:
+   1. A new function SHALL be available to update `voter_share_target`, which MAY be called by anyone
+   2. It MUST revert if it's been called within the last 45 days
+   3. If <`voter_share_target` of total RPL is eligible to vote and the function succeeds:
+      1. `voter_share_target` is increased to `voter_share_target * (1+voter_share_relative_step)`
+      2. `rpl_burn_share` is decreased by the difference between the old and new `voter_share_target`
+         1.- If this would reduce `rpl_burn_share` below 0%, the function call MUST revert 
+   4. If >`voter_share_target` of total RPL is eligible to vote and the function succeeds:
+      1. `voter_share_target` is decreased to `voter_share_target / (1+voter_share_relative_step)`
+      2. `rpl_burn_share` is increased by the difference between the old and new `voter_share_target`
+   5. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share_target`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+2. `voter_share_relative_step` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+3. The initial settings SHALL be:
+   1. `voter_share_relative_step`: 15%
+   2. `voter_share_target`: 60%
 
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
@@ -75,9 +79,9 @@ This section reflects some of the thinking at the time this RPIP was drafted. Th
 The premise here is that voters (who are all NOs and RPL holders) can operate fairly selfishly. They are strongly incentivized to keep node operation and rETH holding attractive -- these lead to strong TVL and thus capture a lot of value to RPL.
 
 ## Historic revenue share values
-| Date                         | Share Settings                                                                                                                 |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| 2024-03-08<br>(ratified TBD) | `node_operator_commission_share`: 2.5%, `voter_share`: 5%, `rpl_burn_share`: 6.5%, `pdao_treasury_share`: 0%, `odao_share`: 0% |
+| Date                         | Share Settings                                                                     |
+|------------------------------|------------------------------------------------------------------------------------|
+| 2024-03-08<br>(ratified TBD) | `node_operator_commission_share`: 3.5%, `voter_share`: 5%, `rpl_burn_share`: 5.5%  |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
