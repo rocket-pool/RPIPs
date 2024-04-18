@@ -7,7 +7,7 @@ discussions-to: N/A
 status: Living
 type: Informational
 created: 2023-07-19
-requires: 18, 26
+requires: 18, 40
 ---
 
 ## Abstract
