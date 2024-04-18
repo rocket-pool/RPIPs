@@ -135,6 +135,5 @@ Both of these positions are intentionally not included in this RPIP because, at 
 **Retroactive vs Forward Looking**
 This RPIP is forward looking only to reduce initial vote complexity and ongoing 'RPIP legislative debt'. The GMC has existing mechanisms that previous committee members can use to seek retroactive funding if they feel the need to do so. 
 
-
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
