@@ -18,38 +18,31 @@ The overall package is based on, but not exactly the same as the [early-March pr
 1. [RPIP-42: Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that this RPIP also includes (a) the ability to penalize at the node level and (b) the removal of the RPL staking requirement to create validators.
 2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive for, eg, 1.5-ETH bond validators.
 3. [RPIP-44: Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
-4. [RPIP-45: RPL Burn](RPIP-45.md) - this is the primary value capture mechanism being proposed.
+4. RPL value capture: one of [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share` (see [RPIP-46](RPIP-46.md)) - this is the primary value capture mechanism being proposed.
 5. [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
 6. [RPIP-47: Forced delegate upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
 
 ## Topics that need feedback, discussion, or fleshing out
-- Select a value capture method[RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md)
+- Select a value capture method[RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md) vs higher `voter_share` (see [RPIP-46](RPIP-46.md))
   - Probably worth it to do some LP modeling to gain understanding, see [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1224125945191989349)
   - Will need a snapshot, see [forum](https://dao.rocketpool.net/t/tokenomic-rework-vibe-check-surplus-revenue-redistribution/2912/11)
 - 3-transaction deposits for greater queue efficiency (see the 2nd bullet of [this section from the early-March proposal](../assets/rpip-49/readme_tier3.md#other-considerations>))
-- RPL inflation
-  - The simplest possibility is to remove RPL rewards and the corresponding 3.5% of inflation
-  - Depending on release schedule, it might be useful to continue paying RPL rewards to legacy minipools. This would slow down a migration of NOs, and thus allow uptake of new NOs.
-  - Another possibility discussed is using RPL inflation to fulfill the role currently done by "voter share"
-- Cashing out credit as rETH (including using this as a way to exit queue if "stuck")
-- Unstaking RPL, right now this is only allowed (per RPIP-30) down to 15% borrowed ETH. It seems this should probably go to 0?? Needs discussion.
-
 
 ## Deployment plan
 
 ## Saturn 1
-Megapools, Forced delegate upgrades, initial UARS, )RPL value capture)
+Megapools, Forced delegate upgrades, Bond curves (framework), UARS, RPL value capture
   - Allows ETH-only participants
   - Allows NOs to move to Megapools for greater efficiency
   - Allow 4-ETH validators within Megapools for greater efficiency
-  - Some revenue steering heuristics come online
-  - Optional: New RPL value capture comes online (burn, LP, or higher voter_share)
+  - UARS, except for voter_share targeting
+  - RPL value capture online (burn, or LP, or higher voter_share); voter_share could also be an interim option until Saturn 2
 
 ## Saturn 2
-Bond curves, Forced exits, full UARS
-  - Dramatically improve capital efficiency
-  - All revenue steering heuristics come online
-  - Required: New RPL value capture comes online (burn or LP; voter_share wouldn't need anything here)
+Bond curves (low bond), Forced exits, UARS, RPL value capture
+  - Bond curves: Dramatically improve capital efficiency with 1.5 ETH `reduced_bond`
+  - UARS, in toto
+  - RPL value capture update: if voter_share was used as an interim option, update to burn or LP 
 
 Some of the other RPIPs will have specifications that take effect "with Saturn 2", and are designed to be spaced from Saturn 1.
 These specifications should take effect:

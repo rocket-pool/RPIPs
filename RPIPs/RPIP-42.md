@@ -50,7 +50,10 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
 - The initial settings SHALL be:
   - `base_bond_array`: [4, 8]
   - `reduced_bond`: 4 ETH
-- Once RPIP-44 is implemented, `reduced_bond` SHALL be updated to 1.5 ETH
+
+## Specification taking effect with Saturn 2
+- Update `reduced_bond` to 1.5 ETH
+
 
 ## Penalizable offenses
 This portion of the RPIP SHALL be considered Living. It may be updated by DAO vote.
