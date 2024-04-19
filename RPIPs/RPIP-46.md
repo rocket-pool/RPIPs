@@ -16,7 +16,6 @@ Currently, commission determines the payout of revenue split between rETH and ea
 
 This proposal also includes a small set of items for potential future use:
 - Seals that the security council can use to increase the NO share -- this is being used to find a reasonable setting based on the actual market.
-- Shares for the oDAO and pDAO -- if RP grows significantly, we may be able to eliminate RPL inflation to pay these parties and instead use a share of revenue.
 - An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
 
 ## Specification

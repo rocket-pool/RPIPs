@@ -32,7 +32,7 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
 - The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
 - Legacy minipool deposits SHOULD be disabled
 - Node Operators SHALL NOT be required to stake RPL in order to create validators within their megapool
-  - For the purposes of RPL withdrawal, borrrowed ETH within a megapool SHALL not contribute to the "node's borrowed ETH" 
+  - For the purposes of RPL withdrawal (currently defined in [RPIP-30](./RPIP-30.md), borrowed ETH within a megapool SHALL not contribute to the "node's borrowed ETH" 
 - When Node Operators create validators, with `i` validators in the megapool prior to adding:
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
