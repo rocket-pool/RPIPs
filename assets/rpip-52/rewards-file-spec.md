@@ -79,3 +79,18 @@ The file SHALL be named `rp-rewards-{NETWORK}-{INTERVAL}.ssz` with the following
 | Mainnet | mainnet   |
 | Holešky | holesky   |
 | devnet  | devnet    |
+
+# CID Calculation
+
+The Oracle DAO SHALL calculate an IPFS CID when submitting the Merkle Root for consensus to the rocketRewardsContract.
+
+The IPFS CID shall be computed with:
+  * A [Merkle DAG](https://github.com/ipfs/ipfs-docs/blob/main/docs/concepts/merkle-dag.md)
+  * With a [V1 CID Prefix](https://github.com/ipfs/ipfs-docs/blob/main/docs/concepts/content-addressing.md#version-1-v1)
+  * With a [UnixFS](https://github.com/ipfs/specs/blob/main/UNIXFS.md) directory node at the root
+    * With default `mode` (0755)
+    * No `mtime` structure
+  * With a singe leaf node
+    * With default `mode` (0644)
+    * No `mtime` structure
+    * Containing a file, named as described above, containing the SSZ-formatted Rewards Tree
