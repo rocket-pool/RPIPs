@@ -26,7 +26,7 @@ This proposal also includes a small set of items for potential future use:
    4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
 2. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `voter_share`, `rpl_burn_share`
    1. `node_operator_commission_share`: each NO receives this percentage of commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
-   2. `voter_share`: each NO receives a share of revenue based on their vote-eligible staked RPL. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_on_node/total_vote_eligible_RPL`.
+   2. `voter_share`: each NO receives a share of revenue based on their vote-eligible RPL staked in megapools. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_on_node/total_vote_eligible_RPL`.
    3. `rpl_burn_share`: this share of revenue is used to buy and burn RPL per [RPIP-45](RPIP-45.md). 
 3. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 4. `reth_share` SHALL be defined as `100% - reth_commission`

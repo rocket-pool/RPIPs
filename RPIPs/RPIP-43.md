@@ -15,12 +15,23 @@ requires: eip-4788
 This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of node-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level.
 
 ## Specification
-- A Node Operator SHALL be able to deploy a single Megapool contract
+- A Node Operator SHALL be able to deploy a single megapool contract
     - This MAY be combined with the deposit of their first validator
 - A Node Operator SHALL be able to add a validator to their existing megapool contract
 - A Node Operator SHALL be able to exit one or more validator in their megapool contract
 - A Node Operator SHALL be able to distribute rewards from all validator in their megapool at once
   - This MAY be temporarily blocked while validators are exiting
+- RPL MAY be staked to a Megapool
+  - Validators MAY be created within a megapool regardless of RPL staked to the megapool
+- A user MAY set any amount of RPL "Staked" to a Megapool to "Unstaking"
+- Once RPL has been "Unstaking" for `unstaking_period` days, it can be withdrawn (this setting is defined in [RPIP-30](RPIP-30.md))
+- All RPL that was "Unstaking" MUST be withdrawn at one time
+- There SHALL only be a single time stored for "Unstaking" RPL; this means that if a user sets
+  additional RPL to "Unstaking" after some RPL is already "Unstaking", they must wait for
+  `unstaking_period` before any is available to withdraw
+  - All RPL that was already "Unstaking" for `unstaking_period` SHOULD be withdrawn when a user
+    sets additional RPL to "Unstaking"
+- Voting power calculations SHALL NOT be changed based on this RPIP (though do note that they SHALL NOT count "Unstaking" RPL)
 
 ## Reference Implementation
 See <https://github.com/rocket-pool/rocketpool-research/blob/master/Megapools/megapools.md>
