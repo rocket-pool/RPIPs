@@ -94,3 +94,9 @@ The IPFS CID shall be computed with:
     * With default `mode` (0644)
     * No `mtime` structure
     * Containing a file, named as described above, containing the SSZ-formatted Rewards Tree
+
+# Sample Data
+
+A sample .ssz file can be downloaded [here](../assets/rpip-52/rp-rewards-holesky-155.ssz).
+
+It has IPFS CID `bafybeig4ofwnvou4bgehwzrc27nhfczd2cls5gzejsbliibrwm35owmaca`.
