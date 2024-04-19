@@ -50,7 +50,7 @@ These specifications should take effect:
 - When Saturn 2 is released, and the pDAO votes to have a specification take effect (this requires a vote per specification or group of specifications)
 
 ## Topics that can be addressed after main votes, and before Saturn 2 dev
-- Force exits [RPIP-44: Forced exits](RPIP-44.md) : right now some of the logic behind it is per-node and some is per-validator. This needs a bit of rethinking.
+- [RPIP-44: Forced exits](RPIP-44.md) has been written very minimally. We should likely improve it to handle abandonment and/or bad performance. This requires thinking of good rules, a method for retrieving beacon chain balance, and likely an implementation for incentivized keepers.
 - Interim solutions (note: we can better consider these _after_ we've established a rough goal and a timeline)
 
 ## Topics not being addressed in this rework
