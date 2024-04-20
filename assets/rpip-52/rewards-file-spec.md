@@ -31,9 +31,9 @@ class File(Container):
     merkle_root: Bytes32 # Merkle Tree root of the Rewards Tree
     total_rewards: TotalRewards # Aggregate data on values of contained rewards
     network_rewards: List[NetworkReward, 128] # L1 and L2 rewards destinations and aggregate amounts
-                                              # Sorted ascending by Network
+                                              # Sorted ascending by network
     node_rewards: List[NodeReward, 9223372036854775807] # Per-node rewards
-                                                        # Sorted in ascending unsigned numerical order by Address
+                                                        # Sorted in ascending unsigned numerical order by address
 
 class TotalRewards(Container):
     protocol_dao_rpl: uint256 # Amount of RPL sent to the pDAO (in wei)
@@ -90,7 +90,7 @@ The IPFS CID shall be computed with:
   * With a [UnixFS](https://github.com/ipfs/specs/blob/main/UNIXFS.md) directory node at the root
     * With default `mode` (0755)
     * No `mtime` structure
-  * With a singe leaf node
+  * With a single leaf node
     * With default `mode` (0644)
     * No `mtime` structure
     * Containing a file, named as described above, containing the SSZ-formatted Rewards Tree
