@@ -49,10 +49,12 @@ This proposal also includes a small set of items for potential future use:
    5. `increase_no_share_seal_count`: 6
    6. `allowlisted_controllers`: []
 10. Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a mechanism for surplus revenue share
-    1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share` 
-    2. The selected mechanism MAY be implemented in Saturn 1
+    1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share`
+    2. If higher `voter_share` is selected, the entirety of the ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) section below SHALL be deleted
+    3. The selected mechanism MAY be implemented in Saturn 1
        1. If it is not, the revenue SHALL be held in reserve until the mechanism is implemented. In such a case, once the mechanism is implemnented, the revenue SHALL be distributed in the same amount of time it took to build up, or faster.
-    3. The selected mechanism MUST be implemented in Saturn 2
+    4. The selected mechanism MUST be implemented in Saturn 2
+    5. When implemented, `surplus_share` SHOULD be renamed to something more specific
 
 ## Specification taking effect with Saturn 2
 1. Updating `voter_share_target`:
