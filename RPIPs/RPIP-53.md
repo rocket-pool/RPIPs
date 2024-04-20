@@ -3,7 +3,7 @@ rpip: 53
 title: Rewards Tree v10 Specification
 description: Adjusts the rewards file to account for Houston changes, generalizing rewards from nodes to claimers and supporting the RPL withdrawal address
 author: Joe Clapis (@jcrtp), Jacob Shufro (@jshufro)
-discussions-to: TBD
+discussions-to: https://dao.rocketpool.net/t/rewards-tree-spec-v10/2937
 status: Review
 type: Protocol
 created: 2024-04-19
