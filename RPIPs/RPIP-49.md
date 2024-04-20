@@ -18,7 +18,7 @@ The overall package is based on, but not exactly the same as the [early-March pr
 1. [RPIP-42: Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency. Note that this RPIP also includes the ability to penalize at the node level.
 2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive for, eg, 1.5-ETH bond validators. Note that this RPIP also includes the ability to create validators without staking RPL.
 3. [RPIP-44: Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
-4. RPL value capture: one of [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share` (see [RPIP-46](RPIP-46.md)) - this is the primary value capture mechanism being proposed.
+4. Surplus revenue distribution: one of [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share` (see [RPIP-46](RPIP-46.md)) - this is the proposed mechanism to distribute revenue beyond that used for protocol operation
 5. [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
 6. [RPIP-47: Forced delegate upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
 
