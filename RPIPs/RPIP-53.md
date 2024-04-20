@@ -2,9 +2,9 @@
 rpip: 53
 title: Rewards Tree v10 Specification
 description: Adjusts the rewards file to account for Houston changes, generalizing rewards from nodes to claimers and supporting the RPL withdrawal address
-author: Joe Clapis (@jcrtp)
+author: Joe Clapis (@jcrtp), Jacob Shufro (@jshufro)
 discussions-to: TBD
-status: Draft
+status: Review
 type: Protocol
 created: 2024-04-19
 ---
@@ -16,7 +16,10 @@ The incoming Houston upgrade introduces [RPIP-31](https://github.com/rocket-pool
 
 This RPIP proposes to generalize the rewards tree, changing *nodes* to *claimers*. The tree will now specify the amount of RPL and Smoothing Pool ETH available to individual claimers, where:
 - If a node does not have an RPL withdrawal address set, their node address is the claimer address (same as today).
-- If a node *does* have an RPL withdrawal address set, the RPL withdrawal address will be the claimer address. The node's earnings will be added to the claimer's total rewards. The node itself will no longer appear in the rewards tree.   
+- If a node *does* have an RPL withdrawal address set, the node's rewards will be split in two:
+  - One claimer will be the node's primary withdrawal address, which will have the node's ETH portion of the rewards.
+  - The other will be the node's RPL withdrawal address, which will have the node's RPL portion of the rewards.
+  - The node itself will no longer appear in the rewards tree.   
 
 This will improve rewards claiming UX, remove some inconsistencies between the existing ruleset and this new feature, make the rewards system more attractive to users that would actually leverage RPL withdrawal addresses, and will not adversely impact nodes that do not use it.
 
@@ -42,7 +45,7 @@ Note that the RPL withdrawal address, as specified in RPIP-31, is **not** the sa
 ## Specification
 
 The specification is going to be one of two possibilities:
-- Either an amendment to v8 [from the research repo]((https://github.com/rocket-pool/rocketpool-research/blob/master/Merkle%20Rewards%20System/merkle-tree-spec.md)), or
+- Either an amendment to v8 specified in [RPIP-51](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-51.md) by Ramana, or
 - An amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. 
 
 This change itself is orthogonal to the decision of whether or not v9 is ratified, as v9 is a non-functional format change from JSON to SSZ, but the specification *itself* does depend on whether or not v9 is ratified so it can build upon the proper baseline. I'm calling this "v10" because I anticipate v9 will go through and come first. I'm happy to formalize the specification once the decision has been made. In the mean time, I'll propose the changes here at a high-level.
@@ -62,13 +65,14 @@ The `node_rewards` section of the rewards file, which lists the rewards earned b
 
 The structures of `node_rewards` and `claimer_rewards` are identical. It's just a name change; purely a semantic difference. The rules for how elements are added to that list, however, are new.
 
-A claimer (an entry in the `claimer_rewards` list) is determined as follows:
+Claimers are added to the `claimer_rewards` list as follows:
 - Calculate the earnings (RPL and Smoothing Pool) of each node in the network normally.
-- For each node, determine the `claimer` address:
-  - If the node does *not* have an RPL withdrawal address set at the `targetSlot` of the interval (the slot at which rewards are calculated), the claimer is the node's address. This is the same as it is today, so if a node doesn't use the RPL withdrawal address feature then its experience is unchanged.
-  - If a node *does* have an RPL withdrawal address set at the `targetSlot`, the claimer is the node's RPL withdrawal address.
-- Add the node's rewards to the entry in `claimer_rewards` for the `claimer` address. If one does not exist, it is created. Note there is **one entry per claimer**.
-    - *(In other words, the claimer represents the aggregated sum of all rewards earned during the interval by either that node operator, or by node operators that have set their RPL withdrawal address to that particular address.)*
+- For each node, determine the `claimer` entities:
+  - If the node does *not* have an RPL withdrawal address set at the `targetSlot` of the interval (the slot at which rewards are calculated), there will be one `claimer`: the node address. This is the same as it is today, so if a node doesn't use the RPL withdrawal address feature then its experience is unchanged.
+  - If a node *does* have an RPL withdrawal address set at the `targetSlot`, the node's rewards will be split into two claimers:
+    - One `claimer` will be the node's primary withdrawal address. The Smoothing Pool ETH portion of the node's rewards will be added to this claimer.
+    - One `claimer` will be the node's RPL withdrawal address. The RPL portion of the node's rewards (both staking and Oracle DAO) will be added to this claimer.
+- Add the `claimer` entities produced to the `claimer_rewards` list. If the `claimer` does not exist in the list, it is created. If it already exists, the `claimer`'s rewards are added to the existing entry instead. Note there is **one entry per claimer** in the list.
 
 To be clear, "whether or not an RPL withdrawal address is set" looks specifically at the value returned by the [`RocketNodeManager.getNodeRPLWithdrawalAddressIsSet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/node/RocketNodeManager.sol#L121) contract call. It doesn't compare the RPL withdrawal address with the node address or the primary withdrawal address; it simply keys off of the boolean returned by that view.
 
@@ -83,25 +87,26 @@ This change has some obvious benefits:
 4. This **does not** require any contract changes. It works with the Houston variant of [`RocketMerkleDistributorMainnet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/rewards/RocketMerkleDistributorMainnet.sol) (which is where it would apply).
    1. The contract doesn't actually check if the claimer is a registered node or not, despite what you might think. It just checks if the claimer has an RPL withdrawal address set or not, which is why this whole thing works in the first place.
    2. Ostensibly, this behavior is more in-line with how the contracts actually function than the v8 / v9 system.
-5. This will not increase the size of the rewards file. In the "worst case", where *nobody* has an RPL withdrawal address set, the size is the same as it would be without this change. In the "best case", where *everybody* has the RPL withdrawal address set to the same address, the tree would only consist of one entry.
+5. In the "worst case", where everybody has a unique RPL withdrawal address and a unique primary withdrawal address, the size would be doubled. In the "best case", where everybody has the RPL withdrawal address set to the same address, the tree would only consist of two entries. I expect this proposal won't appreciably change the size of the tree in practice since a majority of node operators will likely not set the RPL withdrawal address.
 6. The implementation is actually quite simple. I was able to put the reference implementation together in like half an hour. I wouldn't have any contention about making this the first ruleset after Houston launches once it's cleared the usual cross-implementation testing gamut.
 
 With that being said, there are some important implications that need to be considered:
 
 1. This effectively "locks in" the rewards for an interval to a particular claimer. If you have an RPL withdrawal address set at the time the interval is created, and the address later changes your node's RPL withdrawal address to something else, the new address won't be able to claim the rewards. Only the original RPL withdrawal address will.
    1. This might actually be considered a benefit rather than a drawback, depending on your point of view, but it's worth mentioning nonetheless.
-2. In Atlas, you can use the "Claim and Stake" feature to claim your RPL rewards and restake them for your node within the same operation to save on gas. With this system, if a claimer is an RPL withdrawal address and not a node operator, **it will not be able to stake**. It can only claim. This is because the distributor contract wasn't explicitly designed with this system in mind. It doesn't preclude claiming from non-node-operators thanks to [a backwards compatibiliy quirk](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/RocketStorage.sol#L107), but it does mean we'll have to do a little cleaning up (both semantically and in terms of revert messages) in Saturn.
-   1. If you're wondering why can't the team just implement this cleanup now before Houston launches, it's because there's a code freeze in place and the window of opportunity has simply passed.
-3. If, in some unusual setup, a claimer is both a node address *and* an RPL withdrawal address *for another node*, the claimer will be able to claim and stake both their own rewards and the rewards from the other node onto their own claimer node. This makes the behavior a little more obtuse in odd scenarios such as that so it will have to be documented properly and explained in the Smart Node.
-4. If you use these files to calculate your node's total earnings in a vacuum (not total *claimable* earnings, just total earnings produced in general), this will break your workflow. You'll have to calculate your RPL earnings out of band and look at the minipool performance files to determine your Smoothing Pool ETH earned. This is probably more of a dashboard concern than an individual node operator concern.
+2. In Atlas (as well as in Houston without this proposal), you can use the "Claim and Stake" feature to claim your RPL rewards and restake them for your node within the same operation to save on gas. With this system, if a claimer is an RPL withdrawal address and not a node operator, **it will not be able to stake**. It can only claim. This is because the distributor contract wasn't explicitly designed with this system in mind. It doesn't preclude claiming from non-node-operators thanks to [a backwards compatibiliy quirk](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/RocketStorage.sol#L107), but it does mean we'll have to do a little cleaning up (both semantically and in terms of revert messages) in Saturn.
+   1. On a related note, if a node has an RPL withdrawal address set, the node itself will no longer be able to claim rewards; ETH rewards must be claimed by the node's primary withdrawal address, and RPL rewards must be claimed by the node's RPL withdrawal address.
+3. If the node has an RPL withdrawal address set but the primary withdrawal address *unset* (i.e., the node's primary withdrawal address is the node itself), the RPL withdrawal address will have to claim both the ETH rewards *and* the RPL rewards in two separate transactions. The node will have to trust the RPL withdrawal address to do so on its behalf. 
+4. If, in some unusual setup, a claimer is both a node address *and* an RPL withdrawal address *for another node*, the claimer will be able to claim and stake both their own rewards and the rewards from the other node onto their own claimer node. This makes the behavior a little more obtuse in odd scenarios such as that so it will have to be documented properly and explained in the Smart Node.
+5. If you use these files to calculate your node's total earnings in a vacuum (not total *claimable* earnings, just total earnings produced in general) and you have an RPL withdrawal address set, this will break your workflow. You'll have to calculate your RPL earnings out of band and look at the minipool performance files to determine your Smoothing Pool ETH earned. This is probably more of a dashboard concern than an individual node operator concern.
 
 
 ## Reference Implementation
 
 I've implemented v10 into a Smart Node branch [here](https://github.com/rocket-pool/smartnode/tree/rewards_v10). For comparison, here are the differences between v8 and v10:
 
-- [For the vanilla (non-rolling) generator](https://www.diffchecker.com/XjNDaFaM/)
-- [For the rolling record generator](https://www.diffchecker.com/BqdwzW0E/)
+- [For the vanilla (non-rolling) generator](https://www.diffchecker.com/WeurMZDP/)
+- [For the rolling record generator](https://www.diffchecker.com/WomyRLyw/)
 
 Aside from variable names, the actual functional changes are very small. It just checks to see if a node has an RPL withdrawal address set, and if so, it directs the earnings to the RPL withdrawal address instead of the node address.
 
