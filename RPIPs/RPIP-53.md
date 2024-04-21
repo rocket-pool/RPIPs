@@ -48,9 +48,12 @@ The specification is going to be one of two possibilities:
 - Either an amendment to v8 specified in [RPIP-51](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-51.md) by Ramana, or
 - An amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. 
 
-This change itself is orthogonal to the decision of whether or not v9 is ratified, as v9 is a non-functional format change from JSON to SSZ, but the specification *itself* does depend on whether or not v9 is ratified so it can build upon the proper baseline. I'm calling this "v10" because I anticipate v9 will go through and come first. I'm happy to formalize the specification once the decision has been made. In the mean time, I'll propose the changes here at a high-level.
+The formal specifications for rewards calculation, tree generation, and the corresponding rewards fileare included in [the assets folder](../assets/rpip-53/). More specifically:
+- The [rewards calculation spec](../assets/rpip-53/rewards-calculation-spec.md) from v8
+- The [rewards tree spec](../assets/rpip-53/merkle-tree-spec.md) from v8
+- The [SSZ rewards file spec](../assets/rpip-53/rewards-file-spec.md) from v9
 
-Alternatively I can adjust both the v8 and v9 specs accordingly, just so we have them ready to go. I defer to the community to decide whether or not that's prudent. Anyway, high-level changes for now:
+The first two will always exist; the last one will only exist if RPIP-52 is ratified prior to this. Anyway, here is a capture of what's changed:
 
 
 ### Header Changes
@@ -63,18 +66,36 @@ Alternatively I can adjust both the v8 and v9 specs accordingly, just so we have
 
 The `node_rewards` section of the rewards file, which lists the rewards earned by individual node operators, will be replaced by a more generic `claimer_rewards` section. `claimer_rewards` lists the rewards available to be claimed for the interval *by a claimer*, which may or may not be a node operator.
 
-The structures of `node_rewards` and `claimer_rewards` are identical. It's just a name change; purely a semantic difference. The rules for how elements are added to that list, however, are new.
+The structures of `node_rewards` and `claimer_rewards` are identical. It's just a name change; purely a semantic difference. The rules for how elements are added to that list, however, are new. To determine `claimer_rewards`, here is [the relevant excerpt](../assets/rpip-53/rewards-calculation-spec.md#determining-claimers-and-claimer-rewards) from the rewards calculation spec:
 
-Claimers are added to the `claimer_rewards` list as follows:
-- Calculate the earnings (RPL and Smoothing Pool) of each node in the network normally.
-- For each node, determine the `claimer` entities:
-  - If the node does *not* have an RPL withdrawal address set at the `targetSlot` of the interval (the slot at which rewards are calculated), there will be one `claimer`: the node address. This is the same as it is today, so if a node doesn't use the RPL withdrawal address feature then its experience is unchanged.
-  - If a node *does* have an RPL withdrawal address set at the `targetSlot`, the node's rewards will be split into two claimers:
-    - One `claimer` will be the node's primary withdrawal address. The Smoothing Pool ETH portion of the node's rewards will be added to this claimer.
-    - One `claimer` will be the node's RPL withdrawal address. The RPL portion of the node's rewards (both staking and Oracle DAO) will be added to this claimer.
-- Add the `claimer` entities produced to the `claimer_rewards` list. If the `claimer` does not exist in the list, it is created. If it already exists, the `claimer`'s rewards are added to the existing entry instead. Note there is **one entry per claimer** in the list.
+Start by creating a new, empty list of claimers. For each node determined to be eligible for rewards using the above process:
+- Determine if the node has an RPL withdrawal address set:
+  - ```go
+    isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
+    ```
+- If the node **does not** have an RPL withdrawal address set, there will be a single claimer with the following details:
+  - The address will be the address of the node.
+  - The network will be the rewards network selected by the node. 
+  - The RPL rewards will be the amount of RPL earned by the node for this rewards period.
+  - The ETH rewards will be the amount of ETH earned by the node for this rewards period.
+- If the node **does** have an RPL withdrawal address set, there will be two claimer leaf nodes:
+  - One (the "RPL" claimer) will have the following details:
+    - The address will be the address of the node's RPL withdrawal address.
+    - The network will be the rewards network selected by the node.
+    - The RPL rewards will be the amount of RPL earned by the node for this rewards period - the combined rewards for minipool operator and Oracle DAO rewards.
+    - The ETH rewards will be 0.
+  - One (the "ETH" claimer) will have the following details:
+    - The address will be the address of the node's primary withdrawal address.
+    - The network will be the rewards network selected by the node.
+    - The RPL rewards will be 0.
+    - The ETH rewards will be the amount of ETH earned by the node for this rewards period - its share of earnings from the Smoothing Pool.
+  - There will not be a claimer for the node itself directly, though its address may incidentally match at least one of the above claimers; in that case it is represented indirectly.
+- Add the claimers determined in this step to the cumulative list of claimers:
+  - If the claimer had 0 RPL rewards and 0 ETH rewards, ignore it as though it didn't exist and continue.
+  - If an entry **does not exist** with the claimer's address and network, add this claimer to the list.
+  - If an entry **already exists** with the claimer's address and network, add this claimer's rewards to the existing entry instead.
 
-To be clear, "whether or not an RPL withdrawal address is set" looks specifically at the value returned by the [`RocketNodeManager.getNodeRPLWithdrawalAddressIsSet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/node/RocketNodeManager.sol#L121) contract call. It doesn't compare the RPL withdrawal address with the node address or the primary withdrawal address; it simply keys off of the boolean returned by that view.
+This condensed list is now the formal list of claimers that will be used to construct leaf nodes in the tree.
 
 
 ## Rationale
@@ -87,7 +108,7 @@ This change has some obvious benefits:
 4. This **does not** require any contract changes. It works with the Houston variant of [`RocketMerkleDistributorMainnet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/rewards/RocketMerkleDistributorMainnet.sol) (which is where it would apply).
    1. The contract doesn't actually check if the claimer is a registered node or not, despite what you might think. It just checks if the claimer has an RPL withdrawal address set or not, which is why this whole thing works in the first place.
    2. Ostensibly, this behavior is more in-line with how the contracts actually function than the v8 / v9 system.
-5. In the "worst case", where everybody has a unique RPL withdrawal address and a unique primary withdrawal address, the size would be doubled. In the "best case", where everybody has the RPL withdrawal address set to the same address, the tree would only consist of two entries. I expect this proposal won't appreciably change the size of the tree in practice since a majority of node operators will likely not set the RPL withdrawal address.
+5. In practice I don't expect this will change the size of the rewards tree file much.
 6. The implementation is actually quite simple. I was able to put the reference implementation together in like half an hour. I wouldn't have any contention about making this the first ruleset after Houston launches once it's cleared the usual cross-implementation testing gamut.
 
 With that being said, there are some important implications that need to be considered:
