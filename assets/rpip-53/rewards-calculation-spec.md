@@ -668,6 +668,7 @@ Start by creating a new, empty list of claimers. For each node determined to be 
   - ```go
     isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
     ```
+    - *(Note: if this function is not present in `RocketNodeManager`, then the network deployment has not been upgraded to Houston yet. Set `isRplWithdrawalAddressSet` to `false`.)*
 - If the node **does not** have an RPL withdrawal address set, there will be a single claimer with the following details:
   - The address will be the address of the node.
   - The network will be the rewards network selected by the node. 
