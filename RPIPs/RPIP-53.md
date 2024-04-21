@@ -25,6 +25,8 @@ This will improve rewards claiming UX, remove some inconsistencies between the e
 
 This **does not** require a contract change (ironically, it's more in-line with how the contracts actually behave in Houston) and can be implemented at any time after Houston has launched.
 
+[Rewards spec v9](https://github.com/rocket-pool/RPIPs/pull/174) is required for this proposal, as it builds on top of v9.
+
 
 ## Motivation
 
@@ -44,29 +46,28 @@ Note that the RPL withdrawal address, as specified in RPIP-31, is **not** the sa
 
 ## Specification
 
-The specification is going to be one of two possibilities:
-- Either an amendment to v8 specified in [RPIP-51](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-51.md) by Ramana, or
-- An amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. 
+The specification is an amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. That proposal is **required** to be accepted prior to / at the same time as this one. 
 
 The formal specifications for rewards calculation, tree generation, and the corresponding rewards fileare included in [the assets folder](../assets/rpip-53/). More specifically:
-- The [rewards calculation spec](../assets/rpip-53/rewards-calculation-spec.md) from v8
-- The [rewards tree spec](../assets/rpip-53/merkle-tree-spec.md) from v8
-- The [SSZ rewards file spec](../assets/rpip-53/rewards-file-spec.md) from v9
+- The [rewards calculation spec](../assets/rpip-53/rewards-calculation-spec.md)
+- The [rewards tree spec](../assets/rpip-53/merkle-tree-spec.md)
+- The [SSZ rewards file spec](../assets/rpip-53/rewards-file-spec.md)
 
-The first two will always exist; the last one will only exist if RPIP-52 is ratified prior to this. Anyway, here is a capture of what's changed:
-
-
-### Header Changes
-
-- The `RewardsFileVersion` will change from 3 to 4.
-- The `RulesetVersion` will change from 8 to 9 (or 10 if RPIP-52 is ratified first).
+Here is a capture of what's changed:
 
 
-### Body Changes
+### File Structure Changes
 
-The `node_rewards` section of the rewards file, which lists the rewards earned by individual node operators, will be replaced by a more generic `claimer_rewards` section. `claimer_rewards` lists the rewards available to be claimed for the interval *by a claimer*, which may or may not be a node operator.
+- The `node_rewards` section of the rewards file, which lists the rewards earned by individual node operators, has been renamed to the more generic `claimer_rewards` section.
+- The `NodeReward` class has been renamed to `ClaimerReward`.
+- Both of these are semantic changes that do not impact the SSZ file itself, as field and struct names are not part of the file. Accordingly, tooling can use existing v9 rewards files and new v10 files without modification.
 
-The structures of `node_rewards` and `claimer_rewards` are identical. It's just a name change; purely a semantic difference. The rules for how elements are added to that list, however, are new. To determine `claimer_rewards`, here is [the relevant excerpt](../assets/rpip-53/rewards-calculation-spec.md#determining-claimers-and-claimer-rewards) from the rewards calculation spec:
+As of this ruleset, **the JSON format for rewards trees is now deprecated** and will likely no longer be produced when v11 inevitably arrives. JSON files can still be produced but for compatibility with the existing files, the fields will not be renamed as described above; they will retain their legacy names. As there is no formal specification for the JSON variant of rewards files, there is nothing to revise with respect to specifications but retaining the field names will at least ensure compatibility with existing tooling that was built around them. This will help ensure a smoother transition as existing tooling moves away from JSON and towards SSZ.
+
+
+### Calculation Changes
+
+To determine the contents of `claimer_rewards`, here is [the relevant excerpt](../assets/rpip-53/rewards-calculation-spec.md#determining-claimers-and-claimer-rewards) from the rewards calculation spec:
 
 Start by creating a new, empty list of claimers. For each node determined to be eligible for rewards using the above process:
 - Determine if the node has an RPL withdrawal address set:
@@ -129,7 +130,7 @@ I've implemented v10 into a Smart Node branch [here](https://github.com/rocket-p
 - [For the vanilla (non-rolling) generator](https://www.diffchecker.com/WeurMZDP/)
 - [For the rolling record generator](https://www.diffchecker.com/WomyRLyw/)
 
-Aside from variable names, the actual functional changes are very small. It just checks to see if a node has an RPL withdrawal address set, and if so, it directs the earnings to the RPL withdrawal address instead of the node address.
+Aside from variable names, the actual functional changes are very small. It just checks to see if a node has an RPL withdrawal address set, and if so, it directs the RPL earnings to the RPL withdrawal address and the ETH earnings to the primary withdrawal address instead.
 
 
 ## Copyright

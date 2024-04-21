@@ -17,7 +17,7 @@ class File(Container):
     magic: Bytes4 # Magic Header identifying this file as a Rewards Tree
                   # Expected value: 0x52 0x50 0x52 0x54
     rewards_file_version: uint64 # Expected value: 3
-    ruleset_version: uint64 # Expected value: 9 or higher
+    ruleset_version: uint64 # Expected value: 10 or higher
     network: uint64 # Chain ID for the network, e.g., 1 for Mainnet or 17000 for Holešky
                     # devnet deploys should use a unique id
     index: uint64 # Rewards interval index
