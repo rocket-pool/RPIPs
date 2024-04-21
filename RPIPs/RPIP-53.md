@@ -23,7 +23,7 @@ This RPIP proposes to generalize the rewards tree, changing *nodes* to *claimers
 
 This will improve rewards claiming UX, remove some inconsistencies between the existing ruleset and this new feature, make the rewards system more attractive to users that would actually leverage RPL withdrawal addresses, and will not adversely impact nodes that do not use it.
 
-This **does not** require a contract change (ironically, it's more in-line with how the contracts actually behave in Houston) and can be implemented at any time after Houston has launched.
+This **does not** require a contract change (ironically, it's more in-line with how the contracts actually behave in Houston) and can be implemented at any time, even before Houston has launched if relevant. The spec handles what to do if it hasn't been deployed yet.
 
 [Rewards spec v9](https://github.com/rocket-pool/RPIPs/pull/174) is required for this proposal, as it builds on top of v9.
 
@@ -74,6 +74,7 @@ Start by creating a new, empty list of claimers. For each node determined to be 
   - ```go
     isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
     ```
+    - *(Note: if this function is not present in `RocketNodeManager`, then the network deployment has not been upgraded to Houston yet. Set `isRplWithdrawalAddressSet` to `false`.)*
 - If the node **does not** have an RPL withdrawal address set, there will be a single claimer with the following details:
   - The address will be the address of the node.
   - The network will be the rewards network selected by the node. 
@@ -106,11 +107,11 @@ This change has some obvious benefits:
 1. Nodes without an RPL withdrawal address set at the time of `targetSlot` are unaffected by this change.
 2. Nodes that earned rewards during an interval, but have an RPL withdrawal address set, will not be present in the file. This naturally makes the Smart Node interpret that as being "ineligible to claim" for the interval and will thus hide it from the node operator in the list of intervals presented when claiming rewards.
 3. The RPL withdrawal address is largely targeted at entities that would take advantage of a splitter contract (e.g., whale marriages) or entities building on top of Rocket Pool (e.g., NodeSet). In the situation where multiple nodes have the same RPL withdrawal address assigned, this reduces the number of transactions required for that claimer to claim rewards from one-per-node to just one. It reduces O(n) gas costs down to O(1).
-4. This **does not** require any contract changes. It works with the Houston variant of [`RocketMerkleDistributorMainnet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/rewards/RocketMerkleDistributorMainnet.sol) (which is where it would apply).
+4. This **does not** require any contract changes. It works with the Houston variant of [`RocketMerkleDistributorMainnet`](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/rewards/RocketMerkleDistributorMainnet.sol). If Houston isn't deployed yet, it works fine with the Atlas variant since the behavior doesn't change from v8 and v9.
    1. The contract doesn't actually check if the claimer is a registered node or not, despite what you might think. It just checks if the claimer has an RPL withdrawal address set or not, which is why this whole thing works in the first place.
    2. Ostensibly, this behavior is more in-line with how the contracts actually function than the v8 / v9 system.
 5. In practice I don't expect this will change the size of the rewards tree file much.
-6. The implementation is actually quite simple. I was able to put the reference implementation together in like half an hour. I wouldn't have any contention about making this the first ruleset after Houston launches once it's cleared the usual cross-implementation testing gamut.
+6. The implementation is actually quite simple. I was able to put the reference implementation together in like half an hour. I wouldn't have any contention about enacting this at the same time as v9 (even if that occurs before Houston), as long as it's passed the testing gamut.
 
 With that being said, **if you have an RPL withdrawal address set** at the time of `targetSlot`, there are some important implications that need to be considered:
 
