@@ -39,23 +39,24 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - If `i > base_bond_array.length`: the Node Operator share before penalties is `reduced_bond`.
   - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-1]`.
   - If `i==1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to 0 ETH.
-- When a validator is added with a deposit from `base_bond_array`, it SHALL receive priority treatment for any queues vis-à-vis validators added with a `reduced_bond` deposit.
-- There SHALL be three possible queues for validator deposits to be matched with ETH from the deposit pool
-  - If it is possible to immediately match with ETH from the deposit pool, it SHALL NOT be possible to enter a deposit queue (ie, the deposit should move immediately into the next phase before the end of the transaction) 
-  - The first priority queue SHALL be the `priority_deposit_queue`
-    - Legacy nodes SHALL be defined as nodes with index < 3644
-    - If a legacy node has made fewer than 4 `priority_deposits`, they MAY make a priority deposit that enters the `priority_deposit_queue`
-  - The second priority queue SHALL be the `base_deposit_queue`
-    - When a validator is added with a deposit from `base_bond_array`, it SHALL enter the `base_deposit_queue`
-  - The third priority queue SHALL be the `standard_deposit_queue`; any deposit not enumerated above SHALL enter the standard queue
 - Bulk validator creation / removal functions SHALL behave the same as multiple individual transactions.
-- It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
 - `credit` MUST be usable to mint rETH to the NO's primary withdrawal address 
 - The initial settings SHALL be:
   - `base_bond_array`: [4, 8]
   - `reduced_bond`: 4 ETH
+
+### Deposit queue specification
+- ETH from the deposit pool SHALL be matched with validator deposits first by queue priority, then by FIFO queue order 
+- If it is possible to immediately match with ETH from the deposit pool, the deposit SHALL NOT enter a deposit queue (ie, the deposit should move immediately into the next phase before the end of the transaction) 
+- The first priority queue SHALL be the `priority_deposit_queue`
+  - Legacy nodes SHALL be defined as nodes with index < 3644
+  - If a legacy node has made fewer than 4 `priority_deposits`, they MAY make a priority deposit; in such a case the deposit SHALL enter the `priority_deposit_queue`
+- The second priority queue SHALL be the `base_deposit_queue`
+  - When a validator is added (a) without entering the `priority_deposit_queue` and (b) with a deposit from `base_bond_array`, the deposit SHALL enter the `base_deposit_queue`
+- The third priority queue SHALL be the `standard_deposit_queue`; any deposit not enumerated above SHALL enter the standard queue
+- It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
