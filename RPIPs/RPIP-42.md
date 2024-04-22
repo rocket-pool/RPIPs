@@ -40,9 +40,16 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-1]`.
   - If `i==1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to 0 ETH.
 - When a validator is added with a deposit from `base_bond_array`, it SHALL receive priority treatment for any queues vis-à-vis validators added with a `reduced_bond` deposit.
+- There SHALL be three possible queues for validator deposits to be matched with ETH from the deposit pool
+  - If it is possible to immediately match with ETH from the deposit pool, it SHALL NOT be possible to enter a deposit queue (ie, the deposit should move immediately into the next phase before the end of the transaction) 
+  - The first priority queue SHALL be the `priority_deposit_queue`
+    - Legacy nodes SHALL be defined as nodes with index < 3644
+    - If a legacy node has made fewer than 4 `priority_deposits`, they MAY make a priority deposit that enters the `priority_deposit_queue`
+  - The second priority queue SHALL be the `base_deposit_queue`
+    - When a validator is added with a deposit from `base_bond_array`, it SHALL enter the `base_deposit_queue`
+  - The third priority queue SHALL be the `standard_deposit_queue`; any deposit not enumerated above SHALL enter the standard queue
 - Bulk validator creation / removal functions SHALL behave the same as multiple individual transactions.
 - It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
-- If there is enough ETH in the deposit pool to launch a validator (when added to the NO's deposit), it SHALL NOT be possible to enter the node operator queue (ie, immediately move past the queue and into the next phase)
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
 - `credit` MUST be usable to mint rETH to the NO's primary withdrawal address 
@@ -61,6 +68,9 @@ This portion of the RPIP SHALL be considered Living. It may be updated by DAO vo
 |-----------|----------------------|------------|------------|
 | MEV theft | theft size + 0.2 ETH | 2024-03-29 | 2024-03-29 |
 
+## Implementation thoughts
+- When showing legacy node status, there is not a trivial way to get the node index for a given address. That said, the other direction is trivial using `RocketNodeManager.getNodeAt`, so the work can get moved off-chain. Eg, one can iterate across all possible node indices and then pass in the node index that matches the node's address; the smart contract can confirm the match to demonstrate legacy node status.
+
 ## Rationale
 - Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md).
   - `base_bond_array` is chosen to "sufficiently" dissuade MEV theft as a strategy
@@ -69,6 +79,7 @@ This portion of the RPIP SHALL be considered Living. It may be updated by DAO vo
   - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is, we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support NO commission share under 2.5% .
   - A moderate step would be to simply change base_bond_array to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
   - A larger step would be to pass EL rewards to NOs and charge them for the benefit. See eg: <https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos> or <https://dao.rocketpool.net/t/reimagining-large-block-theft/2146>
+- The priority queues are meant to favor (a) existing NOs and (b) small NOs. The end goal in both cases is to support multiple values enshrined in [RPIP-23](RPIP-23.md) (the pDAO charter): decentralization, protocol safety, and the health of the Ethereum network.
 
 | 2.5% commission                                 | 4% commission                                |
 |-------------------------------------------------|----------------------------------------------|
