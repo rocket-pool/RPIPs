@@ -665,24 +665,36 @@ The final step is to construct a list of **claimers** for the rewards tree.
 
 Start by creating a new, empty list of claimers. For each node determined to be eligible for rewards using the above process:
 - Determine if the node has an RPL withdrawal address set:
-  - ```go
-    isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
+  ```go
+  isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
+  ```
+  - *(Note: if this function is not present in `RocketNodeManager`, then the network deployment has not been upgraded to Houston yet. Set `isRplWithdrawalAddressSet` to `false`.)*
+  - If set, get the RPL withdrawal address:
+    ```go
+    rplWithdrawalAddress := RocketNodeManager.getNodeRPLWithdrawalAddress(nodeAddress)
     ```
-    - *(Note: if this function is not present in `RocketNodeManager`, then the network deployment has not been upgraded to Houston yet. Set `isRplWithdrawalAddressSet` to `false`.)*
-- If the node **does not** have an RPL withdrawal address set, there will be a single claimer with the following details:
-  - The address will be the address of the node.
-  - The network will be the rewards network selected by the node. 
+- Determine the node's primary withdrawal address:
+  ```go
+  primaryWithdrawalAddress := RocketStorage.getNodeWithdrawalAddress(nodeAddress)
+  ```
+- Determine the node's rewards network setting:
+  ```go
+  rewardNetwork := RocketNodeManager.getRewardNetwork(nodeAddress)
+  ```
+- If `isRplWithdrawalAddressSet` is `false`, **or** if `primaryWithdrawalAddress` is equal to `nodeAddress`, there will be a single claimer:
+  - The address will be `nodeAddress`.
+  - The network will be `rewardNetwork`. 
   - The RPL rewards will be the amount of RPL earned by the node for this rewards period.
   - The ETH rewards will be the amount of ETH earned by the node for this rewards period.
-- If the node **does** have an RPL withdrawal address set, there will be two claimer leaf nodes:
+- For all other nodes, there will be two claimers:
   - One (the "RPL" claimer) will have the following details:
-    - The address will be the address of the node's RPL withdrawal address.
-    - The network will be the rewards network selected by the node.
+    - The address will be `rplWithdrawalAddress`.
+    - The network will be `rewardNetwork`.
     - The RPL rewards will be the amount of RPL earned by the node for this rewards period - the combined rewards for minipool operator and Oracle DAO rewards.
     - The ETH rewards will be 0.
   - One (the "ETH" claimer) will have the following details:
-    - The address will be the address of the node's primary withdrawal address.
-    - The network will be the rewards network selected by the node.
+    - The address will be `primaryWithdrawalAddress`.
+    - The network will be `rewardNetwork`.
     - The RPL rewards will be 0.
     - The ETH rewards will be the amount of ETH earned by the node for this rewards period - its share of earnings from the Smoothing Pool.
   - There will not be a claimer for the node itself directly, though its address may incidentally match at least one of the above claimers; in that case it is represented indirectly.
