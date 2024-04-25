@@ -62,12 +62,12 @@ This proposal also includes a small set of items for potential future use:
    1. A new function SHALL be available to update `voter_share_target`, which MAY be called by anyone
    2. It MUST revert if it's been called within the last 45 days
    3. If <`voter_share_target` of total RPL is eligible to vote and the function succeeds:
-      1. `voter_share_target` is increased to `voter_share_target * (1+voter_share_relative_step)`
-      2. `surplus_share` is decreased by the difference between the old and new `voter_share_target`
+      1. `voter_share` is increased to `voter_share * (1+voter_share_relative_step)`
+      2. `surplus_share` is decreased by the difference between the old and new `voter_share`
          1.- If this would reduce `surplus_share` below 0%, the function call MUST revert 
    4. If >`voter_share_target` of total RPL is eligible to vote and the function succeeds:
-      1. `voter_share_target` is decreased to `voter_share_target / (1+voter_share_relative_step)`
-      2. `surplus_share` is increased by the difference between the old and new `voter_share_target`
+      1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
+      2. `surplus_share` is increased by the difference between the old and new `voter_share`
    5. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share_target`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 2. `voter_share_relative_step` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 3. The initial settings SHALL be:
