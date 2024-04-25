@@ -16,7 +16,7 @@ This file previously had an unspecified format- the Oracle DAO simply produced e
 If this RPIP is approved, the Oracle DAO will instead produce files in the manner that it describes.
 
 ## Motivation
-Currently, the Oracle DAO arrives at consensus by submitted both a Merkle Root and an IPFS CID for each interval.
+Currently, the Oracle DAO arrives at consensus by submitting both a Merkle Root and an IPFS CID for each interval.
 The IPFS CID is determined by the implementation, which means the Oracle DAO must all use the same implementation.
 By specifying the format of Rewards Files, we enable future efforts to diversify Oracle DAO Rewards Tree implementations.
 
