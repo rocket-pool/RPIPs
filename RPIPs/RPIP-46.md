@@ -79,13 +79,19 @@ This proposal also includes a small set of items for potential future use:
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
 
-- Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional. At the same time, if we have significantly more supply than needed, we may freely decrease it. Offset the increase/decrease with a commensurate decrease/increase of `surplus_share`.
-- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively.
-- Finally, consider `surplus_share`. 
-  - If rETH demand has been robust enough to reach desired rETH TVL, `surplus_share` can be increased (without other settings changes, this means at the cost of `reth_share`). This is one way to fulfill the soft limits described in [RPIP-17](./RPIP-17.md).
-  - If below desired rETH TVL due to lack of rETH demand, `surplus_share` can be decreased. The surplus can either be directed to `reth_share` (without other settings changes) or to `pdao_treasury_share` (with a commensurate increase). Here voters should be considering how to most efficiently generate rETH demand given a fixed amount of funds.
+Some abstract guidelines:
+- Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional.
+- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively, ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) .
+- Finally, consider `surplus_share`. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
 
-The premise here is that voters (who are all NOs and RPL holders) can operate fairly selfishly. They are strongly incentivized to keep node operation and rETH holding attractive -- these lead to strong TVL and thus capture a lot of value to RPL.
+Some example concrete guidelines:
+- If NO queue is continuously over 500 deposits for 2 weeks and trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply
+  - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
+  - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `surplus_share`
+  - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `surplus_share`
+- If NO queue is continuously over 1000 deposits for 4 weeks and trend is upwards, the pDAO should take action to decrease NO supply
+- If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
+- When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 
 ## Historic revenue share values
 | Date                         | Share Settings                                                                     |
