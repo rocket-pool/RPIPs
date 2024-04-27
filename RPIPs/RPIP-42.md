@@ -31,7 +31,7 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
 
 ## Specification
 - The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
-- Legacy minipool deposits SHOULD be disabled
+- Legacy minipool deposits (ie, deposits not in megapools) SHALL be disabled
 - When Node Operators create validators, with `i` validators in the megapool prior to adding:
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
@@ -48,15 +48,23 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
   - `reduced_bond`: 4 ETH
 
 ### Deposit queue specification
-- ETH from the deposit pool SHALL be matched with validator deposits first by queue priority, then by FIFO queue order 
+ETH from the deposit pool SHALL be matched with validator deposits from queues as follows:
 - If it is possible to immediately match with ETH from the deposit pool, the deposit SHALL NOT enter a deposit queue (ie, the deposit should move immediately into the next phase before the end of the transaction) 
-- The first priority queue SHALL be the `priority_deposit_queue`
-  - Legacy nodes SHALL be defined as nodes with index < 3644
-  - If a legacy node has made fewer than 4 `priority_deposits`, they MAY make a priority deposit; in such a case the deposit SHALL enter the `priority_deposit_queue`
-- The second priority queue SHALL be the `base_deposit_queue`
-  - When a validator is added (a) without entering the `priority_deposit_queue` and (b) with a deposit from `base_bond_array`, the deposit SHALL enter the `base_deposit_queue`
-- The third priority queue SHALL be the `standard_deposit_queue`; any deposit not enumerated above SHALL enter the standard queue
+- There SHALL be a `standard_queue`
+  - When adding a validator, users MAY place their deposit on the `standard_queue`  
+- There SHALL be an `express_queue`
+  - When adding a validator, users MAY place their deposit on the `express_queue` by spending one `express_queue_ticket`
+- When matching ETH from the deposit pool to queued deposits:
+  - ETH SHALL be matched to the oldest deposit in the `express_queue`; this is repeated `express_queue_rate` times
+  - ETH SHALL be matched to the oldest deposit in the `standard_queue`
+  - This sequence SHALL be repeated indefinitely, until both queues are empty
+    - If one queue is empty, those matches SHALL be skipped
+- Each node SHALL be provided `express_queue_tickets` equal to `base_express_queue_tickets` (this includes newly created nodes)
+- Each node SHALL be provided additional `express_queue_tickets` equal to `(bonded ETH in legacy minipools)/4` (this will always be zero for newly created nodes)
 - It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
+- The initial settings SHALL be:
+  - `express_queue_rate`: 2
+  - `base_express_queue_tickets`: 2
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
