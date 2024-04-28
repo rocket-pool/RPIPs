@@ -85,9 +85,9 @@ The file SHALL be named `rp-rewards-{NETWORK}-{INTERVAL}.ssz` with the following
 The Oracle DAO SHALL calculate an IPFS CID when submitting the Merkle Root for consensus to the rocketRewardsContract.
 
 The IPFS CID shall be computed with:
-  * A [Merkle DAG](https://github.com/ipfs/ipfs-docs/blob/main/docs/concepts/merkle-dag.md)
-  * With a [V1 CID Prefix](https://github.com/ipfs/ipfs-docs/blob/main/docs/concepts/content-addressing.md#version-1-v1)
-  * With a [UnixFS](https://github.com/ipfs/specs/blob/main/UNIXFS.md) directory node at the root
+  * A [Merkle DAG](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/merkle-dag.md)
+  * With a [V1 CID Prefix](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/content-addressing.md#version-1-v1)
+  * With a [UnixFS](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md) directory node at the root
     * With default `mode` (0755)
     * No `mtime` structure
   * With a single leaf node
