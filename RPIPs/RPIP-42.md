@@ -55,16 +55,16 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - There SHALL be an `express_queue`
   - When adding a validator, users MAY place their deposit on the `express_queue` by spending one `express_queue_ticket`
 - When matching ETH from the deposit pool to queued deposits:
-  - ETH SHALL be matched to the oldest deposit in the `express_queue`; this is repeated `express_queue_rate` times
-  - ETH SHALL be matched to the oldest deposit in the `standard_queue`
+  - First, ETH SHALL be matched to the oldest deposit in the `express_queue`; this is repeated `express_queue_rate` times
+  - Next, ETH SHALL be matched to the oldest deposit in the `standard_queue`
   - This sequence SHALL be repeated indefinitely, until both queues are empty
     - If one queue is empty, those matches SHALL be skipped
-- Each node SHALL be provided `express_queue_tickets` equal to `base_express_queue_tickets` (this includes newly created nodes)
+- Each node SHALL be provided `express_queue_tickets` equal to `express_queue_tickets_base_provision` (this includes newly created nodes)
 - Each node SHALL be provided additional `express_queue_tickets` equal to `(bonded ETH in legacy minipools)/4` (this will always be zero for newly created nodes)
 - It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
 - The initial settings SHALL be:
   - `express_queue_rate`: 2
-  - `base_express_queue_tickets`: 2
+  - `express_queue_tickets_base_provision`: 2
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
@@ -88,8 +88,11 @@ This portion of the RPIP SHALL be considered Living. It may be updated by DAO vo
   - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is, we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support NO commission share under 2.5% .
   - A moderate step would be to simply change base_bond_array to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
   - A larger step would be to pass EL rewards to NOs and charge them for the benefit. See eg: <https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos> or <https://dao.rocketpool.net/t/reimagining-large-block-theft/2146>
-- The priority queues are meant to favor (a) existing NOs and (b) small NOs. The end goal in both cases is to support multiple values enshrined in [RPIP-23](RPIP-23.md) (the pDAO charter): decentralization, protocol safety, and the health of the Ethereum network.
-
+- The express queue is meant to favor (a) existing NOs and (b) small NOs. The end goal in both cases is to support multiple values enshrined in [RPIP-23](RPIP-23.md) (the pDAO charter): decentralization, protocol safety, and the health of the Ethereum network.
+  - The `express_queue_tickets_base_provision` are enough to get started, and currently matches the length of `base_bond_array`
+  - The tickets from `(bonded ETH in legacy minipools)/4` are enough to fully migrate to 4-ETH deposits during Saturn 1 using the express queue OR to partly migrate to 1.5-ETH deposits after Saturn 2
+  - It's worth emphasizing that the tickets stick around -- ie, a node operator joining during a time when we don't have an NO queue (ie, when RP has an immediate need for NO supply) gets to keep their express queue benefit for a later time if they wish
+  
 | 2.5% commission                                 | 4% commission                                |
 |-------------------------------------------------|----------------------------------------------|
 | ![img.png](../assets/rpip-42/theft_2.5pct.png)  | ![img.png](../assets/rpip-42/theft_4pct.png) |
