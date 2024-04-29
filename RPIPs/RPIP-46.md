@@ -74,7 +74,7 @@ This proposal also includes a small set of items for potential future use:
 3. The initial settings SHALL be:
    1. `voter_share_relative_step`: 15%
    2. `voter_share_target_min`: 55%
-   2. `voter_share_target_max`: 65%
+   3. `voter_share_target_max`: 65%
 
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
@@ -85,13 +85,14 @@ Some abstract guidelines:
 - Finally, consider `surplus_share`. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
 
 Some example concrete guidelines:
-- If NO queue is continuously over 500 deposits for 2 weeks and trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply
+- If NO queue is continuously over 500 deposits for 2 weeks and trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply. This could use one or more of the following tactics:
   - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `surplus_share`
   - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `surplus_share`
 - If NO queue is continuously over 1000 deposits for 4 weeks and trend is upwards, the pDAO should take action to decrease NO supply
 - If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
+- If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
 
 ## Historic revenue share values
 | Date                         | Share Settings                                                                     |
