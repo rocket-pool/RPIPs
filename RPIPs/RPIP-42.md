@@ -49,7 +49,6 @@ This work is based on prior work; a copy can be found [here](../assets/rpip-42/b
 
 ### Deposit queue specification
 ETH from the deposit pool SHALL be matched with validator deposits from queues as follows:
-- If it is possible to immediately match with ETH from the deposit pool, the deposit SHALL NOT enter a deposit queue (ie, the deposit should move immediately into the next phase before the end of the transaction) 
 - There SHALL be a `standard_queue`
   - When adding a validator, users MAY place their deposit on the `standard_queue`  
 - There SHALL be an `express_queue`
@@ -61,10 +60,21 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
     - If one queue is empty, those matches SHALL be skipped
 - Each node SHALL be provided `express_queue_tickets` equal to `express_queue_tickets_base_provision` (this includes newly created nodes)
 - Each node SHALL be provided additional `express_queue_tickets` equal to `(bonded ETH in legacy minipools)/4` (this will always be zero for newly created nodes)
-- It SHALL be possible to exit the node operator queue and receive ETH `credit` for it
 - The initial settings SHALL be:
   - `express_queue_rate`: 2
   - `express_queue_tickets_base_provision`: 2
+
+### Deposit mechanics specification
+- A node operator MUST take 3 actions to start a validator: `deposit`, `prestake`, and `stake`
+- `Deposit` SHALL place all the ETH in the deposit pool (where it can be used in validators as needed) and enters a queue as described [above](#deposit-queue-specification)
+- Until `prestake`, it SHALL be possible to exit the node operator queue and receive ETH `credit` for it
+- `Prestake` SHALL be possible when
+  - The deposit pool contains 31*`number of currently prestaked validators` ETH
+  - The deposit pool contains an additional 1 ETH per match using the process described [above](#deposit-queue-specification)
+- `Prestake` SHALL take 1 ETH from the deposit pool and stake it to the beacon chain
+- If there is enough ETH in the deposit pool to execute `deposit` and `prestake` in the same transaction, they MUST be done in the same transaction
+- There SHALL be a period of time to check for deposit validity
+- `Stake` SHALL take 31 ETH from the deposit pool and stake it to the beacon chain alongside the previous 1 ETH to make a complete validator
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
