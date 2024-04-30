@@ -7,6 +7,7 @@ discussions-to: TBD
 status: Draft
 type: Informational
 created: 2024-03-08
+tags: tokenomics-2024
 ---
 
 ## Intro

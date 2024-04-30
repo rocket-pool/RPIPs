@@ -24,6 +24,7 @@ repository: https://github.com/rocket-pool/RPIPs/
 
 header_pages:
  - all.html
+ - tokenomics-2024.html
  - proposed.html
  - active.html
  - by_type.html
