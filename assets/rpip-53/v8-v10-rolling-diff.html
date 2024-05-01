@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>diff</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="settings" content="whole_filler,use_css,no_foldcolumn,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="none">
+<style>
+<!--
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Statement { color: #af5f00; }
+.Type { color: #008000; }
+.Identifier { color: #008080; }
+.Special { color: #c000c0; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Folded { color: #0000c0; background-color: #a8a8a8; padding-bottom: 1px; }
+.DiffAdd { background-color: #5fd7ff; padding-bottom: 1px; }
+.DiffChange { background-color: #ffd7ff; padding-bottom: 1px; }
+.DiffDelete { color: #8080ff; background-color: #afffff; padding-bottom: 1px; }
+.DiffText { background-color: #ff6060; padding-bottom: 1px; font-weight: bold; }
+-->
+<!--
+table { table-layout: fixed; }
+html, body, table, tbody { width: 100%; margin: 0; padding: 0; }
+table, td, th { border: 1px solid; }
+td { vertical-align: top; }
+th, td { width: 50.0%; }
+td div { overflow: auto; }
+-->
+</style>
+</head>
+<body>
+<table id='vimCodeElement'>
+<tr>
+<th>generator-impl-v8-rolling.go</th>
+<th>generator-impl-v10-rolling.go</th>
+</tr><tr>
+<td><div>
+<pre>
+<span class="Folded">+-- 21 lines: package rewards---------------------------------------------------------------------------------------------------------------------</span>
+	<span class="Constant">&quot;github.com/rocket-pool/smartnode/v2/shared/keys&quot;</span>
+	sharedtypes <span class="Constant">&quot;github.com/rocket-pool/smartnode/v2/shared/types&quot;</span>
+	merkletree <span class="Constant">&quot;github.com/wealdtech/go-merkletree&quot;</span>
+	<span class="Constant">&quot;github.com/wealdtech/go-merkletree/keccak256&quot;</span>
+)
+
+<span class="Comment DiffChange">// Implementation for tree generator ruleset v</span><span class="Comment DiffText">8</span><span class="Comment DiffChange"> with rolling record support</span><span class="DiffChange">                                                                       </span>
+<span class="Statement DiffChange">type</span><span class="DiffChange"> treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling </span><span class="Statement DiffChange">struct</span><span class="DiffChange"> {                                                                                                        </span>
+	networkState         *state.NetworkState
+	rewardsFile          *RewardsFile_v3
+	elSnapshotHeader     *types.Header
+	logger               *slog.Logger
+	rp                   *rocketpool.RocketPool
+	cfg                  *config.SmartNodeConfig
+<span class="Folded">+-- 11 lines: bc                   beacon.IBeaconClient-------------------------------------------------------------------------------------------</span>
+	beaconConfig         beacon.Eth2Config
+	rollingRecord        *RollingRecord
+	nodeDetails          <span class="Type">map</span>[common.Address]*NodeSmoothingDetails
+}
+
+<span class="Comment">// Create a new tree generator</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> newTreeGeneratorImpl_v</span><span class="DiffText">8_rolling(logger *slog.Logger, index </span><span class="Type DiffText">uint64</span><span class="DiffText">, startTime time.Time, endTime time.Time, consensusBlock </span><span class="Type DiffText">uint64</span><span class="DiffText">, elSnapshotHeader *types.Header, intervalsPassed </span><span class="Type DiffText">uint64</span><span class="DiffText">, state *state.NetworkState, rollingRecord *RollingRecord) *treeGeneratorImpl_v8</span><span class="DiffChange">_rolling {</span>
+<span class="DiffChange">	</span><span class="Statement DiffChange">return</span><span class="DiffChange"> &amp;treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling{                                                                                                     </span>
+		rewardsFile: &amp;RewardsFile_v3{
+			RewardsFileHeader: &amp;sharedtypes.RewardsFileHeader{
+				RewardsFileVersion:  <span class="Constant">3</span>,
+<span class="DiffChange">				RulesetVersion:      </span><span class="Constant DiffText">8</span><span class="DiffChange">,                                                                                           </span>
+				Index:               index,
+				StartTime:           startTime.UTC(),
+				EndTime:             endTime.UTC(),
+				ConsensusEndBlock:   consensusBlock,
+				ExecutionEndBlock:   elSnapshotHeader.Number.Uint64(),
+				IntervalsPassed:     intervalsPassed,
+<span class="Folded">+-- 24 lines: InvalidNetworkNodes: map[common.Address]uint64{},-----------------------------------------------------------------------------------</span>
+		networkState:      state,
+		rollingRecord:     rollingRecord,
+	}
+}
+
+<span class="Comment">// Get the version of the ruleset used by this generator</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) getRulesetVersion() </span><span class="Type DiffChange">uint64</span><span class="DiffChange"> {                                                                               </span>
+	<span class="Statement">return</span> r.rewardsFile.RulesetVersion
+}
+
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) generateTree(context context.Context, rp *rocketpool.RocketPool, cfg *config.SmartNodeConfig, bc beacon.IBeaconClient) (sharedtypes.IRewardsFile, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {</span>
+	r.logger.Info(<span class="Constant">&quot;Started rewards tree generation.&quot;</span>, slog.Uint64(keys.RulesetKey, r.rewardsFile.RulesetVersion))
+
+	<span class="Comment">// Provision some struct params</span>
+	r.rp = rp
+	r.cfg = cfg
+	r.bc = bc
+<span class="Folded">+-- 57 lines: r.validNetworkCache = map[uint64]bool{----------------------------------------------------------------------------------------------</span>
+
+	<span class="Statement">return</span> r.rewardsFile, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Quickly calculates an approximate of the staker's share of the smoothing pool balance without processing Beacon performance</span>
+<span class="Comment">// Used for approximate returns in the rETH ratio update</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) approximateStakerShareOfSmoothingPool(context context.Context, rp *rocketpool.RocketPool, cfg *config.SmartNodeConfig, bc beacon.IBeaconClient) (*big.Int, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {</span>
+	r.logger.Info(<span class="Constant">&quot;Approximating rewards tree.&quot;</span>, slog.Uint64(keys.RulesetKey, r.rewardsFile.RulesetVersion))
+
+	r.rp = rp
+	r.cfg = cfg
+	r.bc = bc
+	r.validNetworkCache = <span class="Type">map</span>[<span class="Type">uint64</span>]<span class="Type">bool</span>{
+<span class="Folded">+-- 33 lines: 0: true,----------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> &amp;r.rewardsFile.TotalRewards.PoolStakerSmoothingPoolEth.Int, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Generates a merkle tree from the provided rewards map</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) generateMerkleTree() </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                                                                               </span>
+	<span class="Comment">// Generate the leaf data for each claimer</span>
+	totalData := <span class="Identifier">make</span>([][]<span class="Type">byte</span>, <span class="Constant">0</span>, <span class="Identifier">len</span>(r.rewardsFile.ClaimerRewards))
+	<span class="Statement">for</span> address, rewardsForClaimer := <span class="Statement">range</span> r.rewardsFile.ClaimerRewards {
+		<span class="Comment">// Ignore claimers that didn't receive any rewards</span>
+		<span class="Statement">if</span> rewardsForClaimer.CollateralRpl.Cmp(common.Big0) == <span class="Constant">0</span> &amp;&amp; rewardsForClaimer.OracleDaoRpl.Cmp(common.Big0) == <span class="Constant">0</span> &amp;&amp; rewardsForClaimer.SmoothingPoolEth.Cmp(common.Big0) == <span class="Constant">0</span> {
+			<span class="Statement">continue</span>
+<span class="Folded">+-- 56 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	r.rewardsFile.MerkleTree = tree
+	r.rewardsFile.MerkleRoot = common.BytesToHash(tree.Root()).Hex()
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculates the per-network distribution amounts and the total reward amounts</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) updateNetworksAndTotals() {                                                                                </span>
+	<span class="Comment">// Get the highest network index with valid rewards</span>
+	highestNetworkIndex := <span class="Type">uint64</span>(<span class="Constant">0</span>)
+	<span class="Statement">for</span> network := <span class="Statement">range</span> r.rewardsFile.NetworkRewards {
+		<span class="Statement">if</span> network &gt; highestNetworkIndex {
+			highestNetworkIndex = network
+		}
+<span class="Folded">+-- 10 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+			}
+			r.rewardsFile.NetworkRewards[network] = rewardsForNetwork
+		}
+	}
+}
+
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) calculateNodeRplRewards(                                                                                   </span>
+	collateralRewards *big.Int,
+	nodeEffectiveStake *big.Int,
+	totalEffectiveRplStake *big.Int,
+	nodeWeight *big.Int,
+	totalNodeWeight *big.Int,
+) *big.Int {
+<span class="Folded">+-- 36 lines: if nodeEffectiveStake.Sign() &lt;= 0 || nodeWeight.Sign() &lt;= 0 {-----------------------------------------------------------------------</span>
+
+	<span class="Comment">// Add them together</span>
+	<span class="Statement">return</span> rpip30Rewards.Add(rpip30Rewards, oldRewards)
+}
+
+<span class="Comment">// Calculates the RPL rewards for the given interval</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) calculateRplRewards() </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                                                                              </span>
+	pendingRewards := r.networkState.NetworkDetails.PendingRPLRewards
+	r.logger.Info(<span class="Constant">&quot;Calculated Pending RPL rewards&quot;</span>, slog.String(keys.AmountKey, getRewardsString(pendingRewards)))
+	<span class="Statement">if</span> pendingRewards.Cmp(common.Big0) == <span class="Constant">0</span> {
+		<span class="Statement">return</span> fmt.Errorf(<span class="Constant">&quot;there are no pending RPL rewards, so this interval cannot be used for rewards submission&quot;</span>)
+	}
+
+<span class="Folded">+-- 43 lines: Get baseline Protocol DAO rewards---------------------------------------------------------------------------------------------------</span>
+				totalNodeEffectiveStake,
+				nodeWeights[nodeDetails.NodeAddress],
+				totalNodeWeight,
+			)
+
+			<span class="Comment">// If there are pending rewards, add it to the map</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+			<span class="Statement">if</span> nodeRplRewards.Sign() == <span class="Constant">1</span> {
+<span class="DiffChange">				rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[</span><span class="DiffText">nodeDetails.NodeAddress</span><span class="DiffChange">]                                </span>
+				<span class="Statement">if</span> !exists {
+					<span class="Comment">// Get the network the rewards should go to</span>
+					network := r.networkState.NodeDetails[i].RewardNetwork.Uint64()
+					validNetwork, err := r.validateNetwork(network)
+					<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+						<span class="Statement">return</span> err
+<span class="Folded">+--  6 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+					rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+						RewardNetwork:    network,
+						CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+						OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+						SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					}
+<span class="DiffChange">					r.rewardsFile.ClaimerRewards[</span><span class="DiffText">nodeDetails.NodeAddress</span><span class="DiffChange">] = rewardsForClaimer                                 </span>
+				}
+				rewardsForClaimer.CollateralRpl.Add(&amp;rewardsForClaimer.CollateralRpl.Int, nodeRplRewards)
+
+				<span class="Comment">// Add the rewards to the running total for the specified network</span>
+				rewardsForNetwork, exists := r.rewardsFile.NetworkRewards[rewardsForClaimer.RewardNetwork]
+				<span class="Statement">if</span> !exists {
+<span class="Folded">+-- 63 lines: rewardsForNetwork = &amp;sharedtypes.NetworkRewardsInfo{--------------------------------------------------------------------------------</span>
+
+		<span class="Comment">// Calculate the oDAO rewards for the node: (participation time) * (total oDAO rewards) / (total participation time)</span>
+		individualOdaoRewards := big.NewInt(<span class="Constant">0</span>)
+		individualOdaoRewards.Mul(trueODaoNodeTimes[address], totalODaoRewards)
+		individualOdaoRewards.Div(individualOdaoRewards, totalODaoNodeTime)
+
+<span class="DiffChange">		</span><span class="DiffText">rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[address]</span><span class="DiffChange">                                                                </span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+		<span class="Statement">if</span> !exists {
+			<span class="Comment">// Get the network the rewards should go to</span>
+<span class="DiffChange">			network := </span><span class="DiffText">r.networkState.NodeDetailsByAddress[address]</span><span class="DiffChange">.RewardNetwork.Uint64()                                            </span>
+			validNetwork, err := r.validateNetwork(network)
+			<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+				<span class="Statement">return</span> err
+			}
+			<span class="Statement">if</span> !validNetwork {
+				r.rewardsFile.InvalidNetworkNodes[address] = network
+<span class="Folded">+--  3 lines: network = 0-------------------------------------------------------------------------------------------------------------------------</span>
+			rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+				RewardNetwork:    network,
+				CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+			}
+<span class="DiffChange">			r.rewardsFile.ClaimerRewards[</span><span class="DiffText">address</span><span class="DiffChange">] = rewardsForClaimer                                                                 </span>
+
+		}
+		rewardsForClaimer.OracleDaoRpl.Add(&amp;rewardsForClaimer.OracleDaoRpl.Int, individualOdaoRewards)
+
+		<span class="Comment">// Add the rewards to the running total for the specified network</span>
+		rewardsForNetwork, exists := r.rewardsFile.NetworkRewards[rewardsForClaimer.RewardNetwork]
+<span class="Folded">+-- 27 lines: if !exists {------------------------------------------------------------------------------------------------------------------------</span>
+	r.logger.Info(<span class="Constant">&quot;Calculated true Protocol DAO rewards to account for truncation&quot;</span>, slog.String(keys.AmountKey, getRewardsString(&amp;pDaoRewards.Int)))
+
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculates the ETH rewards for the given interval</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) calculateEthRewards(context context.Context, checkBeaconPerformance </span><span class="Type DiffChange">bool</span><span class="DiffChange">) </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                          </span>
+	<span class="Comment">// Get the Smoothing Pool contract's balance</span>
+	r.smoothingPoolBalance = r.networkState.NetworkDetails.SmoothingPoolBalance
+	r.logger.Info(<span class="Constant">&quot;Retrieved Smoothing Pool balance&quot;</span>, slog.String(keys.AmountKey, getRewardsString(r.smoothingPoolBalance)))
+
+	<span class="Comment">// Ignore the ETH calculation if there are no rewards</span>
+	<span class="Statement">if</span> r.smoothingPoolBalance.Cmp(common.Big0) == <span class="Constant">0</span> {
+<span class="Folded">+-- 27 lines: return nil--------------------------------------------------------------------------------------------------------------------------</span>
+		<span class="Statement">return</span> err
+	}
+
+	<span class="Comment">// Update the rewards maps</span>
+	<span class="Statement">for</span> nodeAddress, nodeInfo := <span class="Statement">range</span> r.nodeDetails {
+		<span class="Statement">if</span> nodeInfo.SmoothingPoolEth.Cmp(common.Big0) &gt; <span class="Constant">0</span> {
+<span class="DiffChange">			</span><span class="DiffText">rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[nodeAddress]</span><span class="DiffChange">                                                    </span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="DiffDelete">--------------------------------------------------------------------------------------------------------------------------------------------------</span>
+			<span class="Statement">if</span> !exists {
+				network := nodeInfo.RewardsNetwork
+				validNetwork, err := r.validateNetwork(network)
+				<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+					<span class="Statement">return</span> err
+				}
+<span class="Folded">+--  5 lines: if !validNetwork {------------------------------------------------------------------------------------------------------------------</span>
+				rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+					RewardNetwork:    network,
+					CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				}
+<span class="DiffChange">				r.rewardsFile.ClaimerRewards[</span><span class="DiffText">nodeAddress</span><span class="DiffChange">] = rewardsForClaimer                                                     </span>
+			}
+			rewardsForClaimer.SmoothingPoolEth.Add(&amp;rewardsForClaimer.SmoothingPoolEth.Int, nodeInfo.SmoothingPoolEth)
+
+			<span class="Comment">// Add minipool rewards to the JSON</span>
+			<span class="Statement">for</span> _, minipoolInfo := <span class="Statement">range</span> nodeInfo.Minipools {
+				successfulAttestations := <span class="Type">uint64</span>(minipoolInfo.AttestationCount)
+<span class="Folded">+-- 35 lines: missingAttestations := uint64(len(minipoolInfo.MissingAttestationSlots))------------------------------------------------------------</span>
+	r.rewardsFile.TotalRewards.NodeOperatorSmoothingPoolEth.Int = *nodeOpEth
+	r.rewardsFile.TotalRewards.TotalSmoothingPoolEth.Int = *r.smoothingPoolBalance
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculate the distribution of Smoothing Pool ETH to each node</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) calculateNodeRewards() (*big.Int, *big.Int, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                                                       </span>
+	<span class="Comment">// Get the list of cheaters</span>
+	cheaters := r.getCheaters()
+
+	<span class="Comment">// Get the latest scores from the rolling record</span>
+	minipools, totalScore, attestationCount := r.rollingRecord.GetScores(cheaters)
+
+<span class="Folded">+-- 55 lines: If there weren't any successful attestations, everything goes to the pool stakers---------------------------------------------------</span>
+	r.logger.Info(<span class="Constant">&quot;Adjusted Pool Staker ETH to account for truncation&quot;</span>, slog.String(keys.AmountKey, truePoolStakerAmount.String()))
+
+	<span class="Statement">return</span> truePoolStakerAmount, totalEthForMinipools, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Validates that the provided network is legal</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) validateNetwork(network </span><span class="Type DiffChange">uint64</span><span class="DiffChange">) (</span><span class="Type DiffChange">bool</span><span class="DiffChange">, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                                                            </span>
+	valid, exists := r.validNetworkCache[network]
+	<span class="Statement">if</span> !exists {
+		<span class="Comment">// Make the oDAO settings binding</span>
+		oMgr, err := oracle.NewOracleDaoManager(r.rp)
+		<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+			<span class="Statement">return</span> <span class="Constant">false</span>, fmt.Errorf(<span class="Constant">&quot;error creating oDAO manager binding: </span><span class="Special">%w</span><span class="Constant">&quot;</span>, err)
+<span class="Folded">+-- 12 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> valid, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Gets the EL header for the given interval's start block</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) getStartBlocksForInterval(context context.Context) (*types.Header, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                                </span>
+	<span class="Comment">// Get the Beacon block for the start slot of the record</span>
+	r.rewardsFile.ConsensusStartBlock = r.rollingRecord.StartSlot
+	r.rewardsFile.MinipoolPerformanceFile.ConsensusStartBlock = r.rollingRecord.StartSlot
+	beaconBlock, exists, err := r.bc.GetBeaconBlock(context, fmt.Sprint(r.rollingRecord.StartSlot))
+	<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+		<span class="Statement">return</span> <span class="Constant">nil</span>, fmt.Errorf(<span class="Constant">&quot;error verifying block from previous interval: </span><span class="Special">%w</span><span class="Constant">&quot;</span>, err)
+<span class="Folded">+-- 12 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> startElHeader, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Detect and flag any cheaters</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">8</span><span class="DiffChange">_rolling) getCheaters() </span><span class="Type DiffChange">map</span><span class="DiffChange">[common.Address]</span><span class="Type DiffChange">bool</span><span class="DiffChange"> {                                                                    </span>
+	cheatingNodes := <span class="Type">map</span>[common.Address]<span class="Type">bool</span>{}
+	three := big.NewInt(<span class="Constant">3</span>)
+
+	<span class="Statement">for</span> _, nd := <span class="Statement">range</span> r.networkState.NodeDetails {
+		<span class="Statement">for</span> _, mpd := <span class="Statement">range</span> r.networkState.MinipoolDetailsByNode[nd.NodeAddress] {
+			<span class="Statement">if</span> mpd.PenaltyCount.Cmp(three) &gt;= <span class="Constant">0</span> {
+<span class="Folded">+--  9 lines: If any minipool has 3+ penalties, ban the entire node-------------------------------------------------------------------------------</span>
+</pre>
+</div></td>
+<td><div>
+<pre>
+<span class="Folded">+-- 21 lines: package rewards---------------------------------------------------------------------------------------------------------------------</span>
+	<span class="Constant">&quot;github.com/rocket-pool/smartnode/v2/shared/keys&quot;</span>
+	sharedtypes <span class="Constant">&quot;github.com/rocket-pool/smartnode/v2/shared/types&quot;</span>
+	merkletree <span class="Constant">&quot;github.com/wealdtech/go-merkletree&quot;</span>
+	<span class="Constant">&quot;github.com/wealdtech/go-merkletree/keccak256&quot;</span>
+)
+
+<span class="Comment DiffChange">// Implementation for tree generator ruleset v</span><span class="Comment DiffText">10</span><span class="Comment DiffChange"> with rolling record support</span><span class="DiffChange">                                                                      </span>
+<span class="Statement DiffChange">type</span><span class="DiffChange"> treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling </span><span class="Statement DiffChange">struct</span><span class="DiffChange"> {                                                                                                       </span>
+	networkState         *state.NetworkState
+	rewardsFile          *RewardsFile_v3
+	elSnapshotHeader     *types.Header
+	logger               *slog.Logger
+	rp                   *rocketpool.RocketPool
+	cfg                  *config.SmartNodeConfig
+<span class="Folded">+-- 11 lines: bc                   beacon.IBeaconClient-------------------------------------------------------------------------------------------</span>
+	beaconConfig         beacon.Eth2Config
+	rollingRecord        *RollingRecord
+	nodeDetails          <span class="Type">map</span>[common.Address]*NodeSmoothingDetails
+}
+
+<span class="Comment">// Create a new tree generator</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> newTreeGeneratorImpl_v</span><span class="DiffText">10_rolling(logger *slog.Logger, index </span><span class="Type DiffText">uint64</span><span class="DiffText">, startTime time.Time, endTime time.Time, consensusBlock </span><span class="Type DiffText">uint64</span><span class="DiffText">, elSnapshotHeader *types.Header, intervalsPassed </span><span class="Type DiffText">uint64</span><span class="DiffText">, state *state.NetworkState, rollingRecord *RollingRecord) *treeGeneratorImpl_v10</span><span class="DiffChange">_rolling {</span>
+<span class="DiffChange">	</span><span class="Statement DiffChange">return</span><span class="DiffChange"> &amp;treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling{                                                                                                    </span>
+		rewardsFile: &amp;RewardsFile_v3{
+			RewardsFileHeader: &amp;sharedtypes.RewardsFileHeader{
+				RewardsFileVersion:  <span class="Constant">3</span>,
+<span class="DiffChange">				RulesetVersion:      </span><span class="Constant DiffText">10</span><span class="DiffChange">,                                                                                          </span>
+				Index:               index,
+				StartTime:           startTime.UTC(),
+				EndTime:             endTime.UTC(),
+				ConsensusEndBlock:   consensusBlock,
+				ExecutionEndBlock:   elSnapshotHeader.Number.Uint64(),
+				IntervalsPassed:     intervalsPassed,
+<span class="Folded">+-- 24 lines: InvalidNetworkNodes: map[common.Address]uint64{},-----------------------------------------------------------------------------------</span>
+		networkState:      state,
+		rollingRecord:     rollingRecord,
+	}
+}
+
+<span class="Comment">// Get the version of the ruleset used by this generator</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) getRulesetVersion() </span><span class="Type DiffChange">uint64</span><span class="DiffChange"> {                                                                              </span>
+	<span class="Statement">return</span> r.rewardsFile.RulesetVersion
+}
+
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) generateTree(context context.Context, rp *rocketpool.RocketPool, cfg *config.SmartNodeConfig, bc beacon.IBeaconClient) (sharedtypes.IRewardsFile, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {</span>
+	r.logger.Info(<span class="Constant">&quot;Started rewards tree generation.&quot;</span>, slog.Uint64(keys.RulesetKey, r.rewardsFile.RulesetVersion))
+
+	<span class="Comment">// Provision some struct params</span>
+	r.rp = rp
+	r.cfg = cfg
+	r.bc = bc
+<span class="Folded">+-- 57 lines: r.validNetworkCache = map[uint64]bool{----------------------------------------------------------------------------------------------</span>
+
+	<span class="Statement">return</span> r.rewardsFile, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Quickly calculates an approximate of the staker's share of the smoothing pool balance without processing Beacon performance</span>
+<span class="Comment">// Used for approximate returns in the rETH ratio update</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) approximateStakerShareOfSmoothingPool(context context.Context, rp *rocketpool.RocketPool, cfg *config.SmartNodeConfig, bc beacon.IBeaconClient) (*big.Int, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {</span>
+	r.logger.Info(<span class="Constant">&quot;Approximating rewards tree.&quot;</span>, slog.Uint64(keys.RulesetKey, r.rewardsFile.RulesetVersion))
+
+	r.rp = rp
+	r.cfg = cfg
+	r.bc = bc
+	r.validNetworkCache = <span class="Type">map</span>[<span class="Type">uint64</span>]<span class="Type">bool</span>{
+<span class="Folded">+-- 33 lines: 0: true,----------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> &amp;r.rewardsFile.TotalRewards.PoolStakerSmoothingPoolEth.Int, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Generates a merkle tree from the provided rewards map</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) generateMerkleTree() </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                                                                              </span>
+	<span class="Comment">// Generate the leaf data for each claimer</span>
+	totalData := <span class="Identifier">make</span>([][]<span class="Type">byte</span>, <span class="Constant">0</span>, <span class="Identifier">len</span>(r.rewardsFile.ClaimerRewards))
+	<span class="Statement">for</span> address, rewardsForClaimer := <span class="Statement">range</span> r.rewardsFile.ClaimerRewards {
+		<span class="Comment">// Ignore claimers that didn't receive any rewards</span>
+		<span class="Statement">if</span> rewardsForClaimer.CollateralRpl.Cmp(common.Big0) == <span class="Constant">0</span> &amp;&amp; rewardsForClaimer.OracleDaoRpl.Cmp(common.Big0) == <span class="Constant">0</span> &amp;&amp; rewardsForClaimer.SmoothingPoolEth.Cmp(common.Big0) == <span class="Constant">0</span> {
+			<span class="Statement">continue</span>
+<span class="Folded">+-- 56 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	r.rewardsFile.MerkleTree = tree
+	r.rewardsFile.MerkleRoot = common.BytesToHash(tree.Root()).Hex()
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculates the per-network distribution amounts and the total reward amounts</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) updateNetworksAndTotals() {                                                                               </span>
+	<span class="Comment">// Get the highest network index with valid rewards</span>
+	highestNetworkIndex := <span class="Type">uint64</span>(<span class="Constant">0</span>)
+	<span class="Statement">for</span> network := <span class="Statement">range</span> r.rewardsFile.NetworkRewards {
+		<span class="Statement">if</span> network &gt; highestNetworkIndex {
+			highestNetworkIndex = network
+		}
+<span class="Folded">+-- 10 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+			}
+			r.rewardsFile.NetworkRewards[network] = rewardsForNetwork
+		}
+	}
+}
+
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) calculateNodeRplRewards(                                                                                  </span>
+	collateralRewards *big.Int,
+	nodeEffectiveStake *big.Int,
+	totalEffectiveRplStake *big.Int,
+	nodeWeight *big.Int,
+	totalNodeWeight *big.Int,
+) *big.Int {
+<span class="Folded">+-- 36 lines: if nodeEffectiveStake.Sign() &lt;= 0 || nodeWeight.Sign() &lt;= 0 {-----------------------------------------------------------------------</span>
+
+	<span class="Comment">// Add them together</span>
+	<span class="Statement">return</span> rpip30Rewards.Add(rpip30Rewards, oldRewards)
+}
+
+<span class="Comment">// Calculates the RPL rewards for the given interval</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) calculateRplRewards() </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                                                                             </span>
+	pendingRewards := r.networkState.NetworkDetails.PendingRPLRewards
+	r.logger.Info(<span class="Constant">&quot;Calculated Pending RPL rewards&quot;</span>, slog.String(keys.AmountKey, getRewardsString(pendingRewards)))
+	<span class="Statement">if</span> pendingRewards.Cmp(common.Big0) == <span class="Constant">0</span> {
+		<span class="Statement">return</span> fmt.Errorf(<span class="Constant">&quot;there are no pending RPL rewards, so this interval cannot be used for rewards submission&quot;</span>)
+	}
+
+<span class="Folded">+-- 43 lines: Get baseline Protocol DAO rewards---------------------------------------------------------------------------------------------------</span>
+				totalNodeEffectiveStake,
+				nodeWeights[nodeDetails.NodeAddress],
+				totalNodeWeight,
+			)
+
+			<span class="Comment">// If there are pending rewards, add it to the map</span>
+<span class="DiffAdd">			claimer := nodeDetails.NodeAddress</span><span class="DiffAdd">                                                                                        </span>
+<span class="DiffAdd">			</span><span class="Statement DiffAdd">if</span><span class="DiffAdd"> nodeDetails.IsRplWithdrawalAddressSet &amp;&amp; nodeDetails.PrimaryWithdrawalAddress != nodeDetails.NodeAddress {             </span>
+<span class="DiffAdd">				</span><span class="Comment DiffAdd">// Add it to the RPL withdrawal address if set</span><span class="DiffAdd">                                                                    </span>
+<span class="DiffAdd">				claimer = nodeDetails.RplWithdrawalAddress</span><span class="DiffAdd">                                                                        </span>
+<span class="DiffAdd">			}</span><span class="DiffAdd">                                                                                                                         </span>
+			<span class="Statement">if</span> nodeRplRewards.Sign() == <span class="Constant">1</span> {
+<span class="DiffChange">				rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[</span><span class="DiffText">claimer</span><span class="DiffChange">]                                                </span>
+				<span class="Statement">if</span> !exists {
+					<span class="Comment">// Get the network the rewards should go to</span>
+					network := r.networkState.NodeDetails[i].RewardNetwork.Uint64()
+					validNetwork, err := r.validateNetwork(network)
+					<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+						<span class="Statement">return</span> err
+<span class="Folded">+--  6 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+					rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+						RewardNetwork:    network,
+						CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+						OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+						SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					}
+<span class="DiffChange">					r.rewardsFile.ClaimerRewards[</span><span class="DiffText">claimer</span><span class="DiffChange">] = rewardsForClaimer                                                 </span>
+				}
+				rewardsForClaimer.CollateralRpl.Add(&amp;rewardsForClaimer.CollateralRpl.Int, nodeRplRewards)
+
+				<span class="Comment">// Add the rewards to the running total for the specified network</span>
+				rewardsForNetwork, exists := r.rewardsFile.NetworkRewards[rewardsForClaimer.RewardNetwork]
+				<span class="Statement">if</span> !exists {
+<span class="Folded">+-- 63 lines: rewardsForNetwork = &amp;sharedtypes.NetworkRewardsInfo{--------------------------------------------------------------------------------</span>
+
+		<span class="Comment">// Calculate the oDAO rewards for the node: (participation time) * (total oDAO rewards) / (total participation time)</span>
+		individualOdaoRewards := big.NewInt(<span class="Constant">0</span>)
+		individualOdaoRewards.Mul(trueODaoNodeTimes[address], totalODaoRewards)
+		individualOdaoRewards.Div(individualOdaoRewards, totalODaoNodeTime)
+
+<span class="DiffChange">		</span><span class="DiffText">claimer := address</span><span class="DiffChange">                                                                                                                </span>
+<span class="DiffAdd">		node := r.networkState.NodeDetailsByAddress[address]</span><span class="DiffAdd">                                                                              </span>
+<span class="DiffAdd">		</span><span class="Statement DiffAdd">if</span><span class="DiffAdd"> node.IsRplWithdrawalAddressSet &amp;&amp; node.PrimaryWithdrawalAddress != node.NodeAddress {                                          </span>
+<span class="DiffAdd">			</span><span class="Comment DiffAdd">// Add it to the RPL withdrawal address if set</span><span class="DiffAdd">                                                                            </span>
+<span class="DiffAdd">			claimer = node.RplWithdrawalAddress</span><span class="DiffAdd">                                                                                       </span>
+<span class="DiffAdd">		}</span><span class="DiffAdd">                                                                                                                                 </span>
+<span class="DiffAdd">		rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[claimer]</span><span class="DiffAdd">                                                                </span>
+		<span class="Statement">if</span> !exists {
+			<span class="Comment">// Get the network the rewards should go to</span>
+<span class="DiffChange">			network := </span><span class="DiffText">node</span><span class="DiffChange">.RewardNetwork.Uint64()                                                                                    </span>
+			validNetwork, err := r.validateNetwork(network)
+			<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+				<span class="Statement">return</span> err
+			}
+			<span class="Statement">if</span> !validNetwork {
+				r.rewardsFile.InvalidNetworkNodes[address] = network
+<span class="Folded">+--  3 lines: network = 0-------------------------------------------------------------------------------------------------------------------------</span>
+			rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+				RewardNetwork:    network,
+				CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+			}
+<span class="DiffChange">			r.rewardsFile.ClaimerRewards[</span><span class="DiffText">claimer</span><span class="DiffChange">] = rewardsForClaimer                                                                 </span>
+
+		}
+		rewardsForClaimer.OracleDaoRpl.Add(&amp;rewardsForClaimer.OracleDaoRpl.Int, individualOdaoRewards)
+
+		<span class="Comment">// Add the rewards to the running total for the specified network</span>
+		rewardsForNetwork, exists := r.rewardsFile.NetworkRewards[rewardsForClaimer.RewardNetwork]
+<span class="Folded">+-- 27 lines: if !exists {------------------------------------------------------------------------------------------------------------------------</span>
+	r.logger.Info(<span class="Constant">&quot;Calculated true Protocol DAO rewards to account for truncation&quot;</span>, slog.String(keys.AmountKey, getRewardsString(&amp;pDaoRewards.Int)))
+
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculates the ETH rewards for the given interval</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) calculateEthRewards(context context.Context, checkBeaconPerformance </span><span class="Type DiffChange">bool</span><span class="DiffChange">) </span><span class="Type DiffChange">error</span><span class="DiffChange"> {                         </span>
+	<span class="Comment">// Get the Smoothing Pool contract's balance</span>
+	r.smoothingPoolBalance = r.networkState.NetworkDetails.SmoothingPoolBalance
+	r.logger.Info(<span class="Constant">&quot;Retrieved Smoothing Pool balance&quot;</span>, slog.String(keys.AmountKey, getRewardsString(r.smoothingPoolBalance)))
+
+	<span class="Comment">// Ignore the ETH calculation if there are no rewards</span>
+	<span class="Statement">if</span> r.smoothingPoolBalance.Cmp(common.Big0) == <span class="Constant">0</span> {
+<span class="Folded">+-- 27 lines: return nil--------------------------------------------------------------------------------------------------------------------------</span>
+		<span class="Statement">return</span> err
+	}
+
+	<span class="Comment">// Update the rewards maps</span>
+	<span class="Statement">for</span> nodeAddress, nodeInfo := <span class="Statement">range</span> r.nodeDetails {
+		<span class="Statement">if</span> nodeInfo.SmoothingPoolEth.Cmp(common.Big0) &gt; <span class="Constant">0</span> {
+<span class="DiffChange">			</span><span class="DiffText">claimer := nodeAddress</span><span class="DiffChange">                                                                                                    </span>
+<span class="DiffAdd">			node := r.networkState.NodeDetailsByAddress[nodeAddress]</span><span class="DiffAdd">                                                                  </span>
+<span class="DiffAdd">			</span><span class="Statement DiffAdd">if</span><span class="DiffAdd"> node.IsRplWithdrawalAddressSet &amp;&amp; node.PrimaryWithdrawalAddress != node.NodeAddress {                                  </span>
+<span class="DiffAdd">				</span><span class="Comment DiffAdd">// Add the ETH to the primary withdrawal address if the RPL withdrawal address is set</span><span class="DiffAdd">                             </span>
+<span class="DiffAdd">				claimer = node.PrimaryWithdrawalAddress</span><span class="DiffAdd">                                                                           </span>
+<span class="DiffAdd">			}</span><span class="DiffAdd">                                                                                                                         </span>
+<span class="DiffAdd"> </span><span class="DiffAdd">                                                                                                                                                 </span>
+<span class="DiffAdd">			rewardsForClaimer, exists := r.rewardsFile.ClaimerRewards[claimer]</span><span class="DiffAdd">                                                        </span>
+			<span class="Statement">if</span> !exists {
+				network := nodeInfo.RewardsNetwork
+				validNetwork, err := r.validateNetwork(network)
+				<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+					<span class="Statement">return</span> err
+				}
+<span class="Folded">+--  5 lines: if !validNetwork {------------------------------------------------------------------------------------------------------------------</span>
+				rewardsForClaimer = &amp;ClaimerRewardsInfo_v3{
+					RewardNetwork:    network,
+					CollateralRpl:    sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					OracleDaoRpl:     sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+					SmoothingPoolEth: sharedtypes.NewQuotedBigInt(<span class="Constant">0</span>),
+				}
+<span class="DiffChange">				r.rewardsFile.ClaimerRewards[</span><span class="DiffText">claimer</span><span class="DiffChange">] = rewardsForClaimer                                                         </span>
+			}
+			rewardsForClaimer.SmoothingPoolEth.Add(&amp;rewardsForClaimer.SmoothingPoolEth.Int, nodeInfo.SmoothingPoolEth)
+
+			<span class="Comment">// Add minipool rewards to the JSON</span>
+			<span class="Statement">for</span> _, minipoolInfo := <span class="Statement">range</span> nodeInfo.Minipools {
+				successfulAttestations := <span class="Type">uint64</span>(minipoolInfo.AttestationCount)
+<span class="Folded">+-- 35 lines: missingAttestations := uint64(len(minipoolInfo.MissingAttestationSlots))------------------------------------------------------------</span>
+	r.rewardsFile.TotalRewards.NodeOperatorSmoothingPoolEth.Int = *nodeOpEth
+	r.rewardsFile.TotalRewards.TotalSmoothingPoolEth.Int = *r.smoothingPoolBalance
+	<span class="Statement">return</span> <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Calculate the distribution of Smoothing Pool ETH to each node</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) calculateNodeRewards() (*big.Int, *big.Int, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                                                      </span>
+	<span class="Comment">// Get the list of cheaters</span>
+	cheaters := r.getCheaters()
+
+	<span class="Comment">// Get the latest scores from the rolling record</span>
+	minipools, totalScore, attestationCount := r.rollingRecord.GetScores(cheaters)
+
+<span class="Folded">+-- 55 lines: If there weren't any successful attestations, everything goes to the pool stakers---------------------------------------------------</span>
+	r.logger.Info(<span class="Constant">&quot;Adjusted Pool Staker ETH to account for truncation&quot;</span>, slog.String(keys.AmountKey, truePoolStakerAmount.String()))
+
+	<span class="Statement">return</span> truePoolStakerAmount, totalEthForMinipools, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Validates that the provided network is legal</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) validateNetwork(network </span><span class="Type DiffChange">uint64</span><span class="DiffChange">) (</span><span class="Type DiffChange">bool</span><span class="DiffChange">, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                                                           </span>
+	valid, exists := r.validNetworkCache[network]
+	<span class="Statement">if</span> !exists {
+		<span class="Comment">// Make the oDAO settings binding</span>
+		oMgr, err := oracle.NewOracleDaoManager(r.rp)
+		<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+			<span class="Statement">return</span> <span class="Constant">false</span>, fmt.Errorf(<span class="Constant">&quot;error creating oDAO manager binding: </span><span class="Special">%w</span><span class="Constant">&quot;</span>, err)
+<span class="Folded">+-- 12 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> valid, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Gets the EL header for the given interval's start block</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) getStartBlocksForInterval(context context.Context) (*types.Header, </span><span class="Type DiffChange">error</span><span class="DiffChange">) {                               </span>
+	<span class="Comment">// Get the Beacon block for the start slot of the record</span>
+	r.rewardsFile.ConsensusStartBlock = r.rollingRecord.StartSlot
+	r.rewardsFile.MinipoolPerformanceFile.ConsensusStartBlock = r.rollingRecord.StartSlot
+	beaconBlock, exists, err := r.bc.GetBeaconBlock(context, fmt.Sprint(r.rollingRecord.StartSlot))
+	<span class="Statement">if</span> err != <span class="Constant">nil</span> {
+		<span class="Statement">return</span> <span class="Constant">nil</span>, fmt.Errorf(<span class="Constant">&quot;error verifying block from previous interval: </span><span class="Special">%w</span><span class="Constant">&quot;</span>, err)
+<span class="Folded">+-- 12 lines: }-----------------------------------------------------------------------------------------------------------------------------------</span>
+	}
+
+	<span class="Statement">return</span> startElHeader, <span class="Constant">nil</span>
+}
+
+<span class="Comment">// Detect and flag any cheaters</span>
+<span class="Statement DiffChange">func</span><span class="DiffChange"> (r *treeGeneratorImpl_v</span><span class="DiffText">10</span><span class="DiffChange">_rolling) getCheaters() </span><span class="Type DiffChange">map</span><span class="DiffChange">[common.Address]</span><span class="Type DiffChange">bool</span><span class="DiffChange"> {                                                                   </span>
+	cheatingNodes := <span class="Type">map</span>[common.Address]<span class="Type">bool</span>{}
+	three := big.NewInt(<span class="Constant">3</span>)
+
+	<span class="Statement">for</span> _, nd := <span class="Statement">range</span> r.networkState.NodeDetails {
+		<span class="Statement">for</span> _, mpd := <span class="Statement">range</span> r.networkState.MinipoolDetailsByNode[nd.NodeAddress] {
+			<span class="Statement">if</span> mpd.PenaltyCount.Cmp(three) &gt;= <span class="Constant">0</span> {
+<span class="Folded">+--  9 lines: If any minipool has 3+ penalties, ban the entire node-------------------------------------------------------------------------------</span>
+</pre>
+</div></td>
+</tr>
+</table>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
+

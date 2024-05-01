@@ -16,9 +16,9 @@ The incoming Houston upgrade introduces [RPIP-31](https://github.com/rocket-pool
 
 Realistically, most node operators won't end up using this feature. It's only really helpful for node operators that don't supply their own RPL when creating a minipool. If you don't fall into this camp, rest assured that *this proposal will have no impact on you*.
 
-Unfortunately, node operators that *do* use this new feature can **no longer trigger rewards claims** from the Merkle rewards system. More specifically they can distribute minipool rewards from the Beacon Chain, but can't claim the rewards produced every 28 days via from the Merkle rewards system. That's not a problem for RPL rewards, since the RPL withdrawal address gets those anyway, but the issue is this includes Smoothing Pool ETH rewards as well. Neither the node not the address that would get the Smoothing Pool ETH (the primary withdrawal address) can actually trigger a claim; *only* the RPL withdrawal address will be able to do it.
+Unfortunately, node operators that *do* use this new feature can **no longer trigger rewards claims** from the Merkle rewards system. More specifically they can distribute minipool rewards from the Beacon Chain, but can't claim the rewards produced every 28 days via the Merkle rewards system. That's not a problem for RPL rewards, since the RPL withdrawal address gets those anyway, but the issue is this includes Smoothing Pool ETH rewards as well. Neither the node nor the address that would get the Smoothing Pool ETH (the primary withdrawal address) can actually trigger a claim; *only* the RPL withdrawal address will be able to do it.
 
-This can't be fixed for nodes that opt into the RPL withdrawal address set if they also use their node as their primary withdrawal address because of technical reasons. However, it *can* be fixed for nodes that opt into it and use an address *other* than their node as the primary withdrawal address. I anticipate that most nodes opting into the RPL withdrawal address feature will fall into this camp.
+This can't be fixed for nodes that opt into setting an RPL withdrawal address if they also use their node as their primary withdrawal address because of technical reasons described in the [Rationale](#rationale) section of the RPIP. However, it *can* be fixed for nodes that opt into it and use an address *other* than their node as the primary withdrawal address. I anticipate that most nodes opting into the RPL withdrawal address feature will fall into this camp.
 
 This RPIP proposes to achieve this by generalizing the rewards tree, changing *nodes* to *claimers*. The tree will now specify the amount of RPL and Smoothing Pool ETH available to individual claimers, where:
 - If a node does not have an RPL withdrawal address set, **or** if it has one but its primary withdrawal address is the same as the node address, their node address is the claimer address (same as today).
@@ -61,7 +61,7 @@ The only nodes affected by this change are ones that explicitly set an **RPL wit
 
 The specification is an amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. That proposal is **required** to be accepted prior to / at the same time as this one. 
 
-The formal specifications for rewards calculation, tree generation, and the corresponding rewards fileare included in [the assets folder](../assets/rpip-53/). More specifically:
+The formal specifications for rewards calculation, tree generation, and the corresponding rewards file are included in [the assets folder](../assets/rpip-53/). More specifically:
 - The [rewards calculation spec](../assets/rpip-53/rewards-calculation-spec.md)
 - The [rewards tree spec](../assets/rpip-53/merkle-tree-spec.md)
 - The [SSZ rewards file spec](../assets/rpip-53/rewards-file-spec.md)
@@ -145,15 +145,17 @@ With that being said, if you have an RPL withdrawal address set and a primary wi
 3. Setting the RPL withdrawal address to a node address may have odd, and sometimes not immediately obvious, consequences due to the way rewards are consolidated. **Be very careful if you intend to do this.**
 4. If you use these files to calculate your node's total earnings in a vacuum (not total *claimable* earnings, just total earnings produced in general), this will break your workflow. You'll have to calculate your RPL earnings out of band and look at the minipool performance files to determine your Smoothing Pool ETH earned. This is probably more of a dashboard concern than an individual node operator concern.
 
-As a note, the rationale for the **or** condition in the logic is purely designed to reduce unnecessary transactions. If nodes without a primary withdrawal address followed the same "breakout" rule that resulted in two sets of claimers, the RPL withdrawal address would have to claim for that node twice: once for itself (the RPL portion) and once for the ETH (the node portion). The node wouldn't be able to claim its own ETH portion since it still has an RPL withdrawal address set, and that's what the contracts key on when determining whether or not a node is eligible to claim - hence why this proposal exists in the first place. The easy way to mitigate this issue is just to set a primary withdrawal address to something other than the node; a practice that every node should be employing anyway if at all possible.
+As a note, the rationale for the **or** condition in the logic is to mitigate an incentivization conflict. If a node without a primary withdrawal address followed the same "breakout" rule that resulted in two sets of claimers, it wouldn't actually be able to claim its own ETH rewards; it has an RPL withdrawal address set, and that's what the contracts key on when determining whether or not a node is eligible to claim. The RPL withdrawal address would have to claim for that node twice: once for itself (the RPL portion) and once for the node's ETH. However, the RPL withdrawal address is actually *disincentivized* from triggering the second claim; it doesn't receive anything from doing so, *and* it has to pay for the gas cost. Thus, to mitigate the incentive issue, nodes with an RPL withdrawal address set but no primary withdrawal address set are excluded from the split-claimer logic.
+
+While this condition is necessary for Houston, it could be revised or even eliminated in Saturn if the Protocol DAO expresses interest in fixing it at the contract level.
 
 
 ## Reference Implementation
 
 I've implemented v10 into a Smart Node branch [here](https://github.com/rocket-pool/smartnode/tree/rewards_v10). For comparison, here are the differences between v8 and v10:
 
-- [For the vanilla (non-rolling) generator](https://www.diffchecker.com/tP55l6Iw/)
-- [For the rolling record generator](https://www.diffchecker.com/acLvVhpq/)
+- [For the vanilla (non-rolling) generator](../assets/rpip-53/v8-v10-vanilla-diff.html)
+- [For the rolling record generator](../assets/rpip-53/v8-v10-rolling-diff.html)
 
 Aside from variable names, the actual functional changes are very small. It just checks to see if a node has an RPL withdrawal address set, and if so, it directs the RPL earnings to the RPL withdrawal address and the ETH earnings to the primary withdrawal address instead.
 
