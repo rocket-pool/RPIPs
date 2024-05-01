@@ -1,57 +1,110 @@
 ---
 rpip: 49
 title: 2024 Tokenomics Rework Info
-description: Allow the revenue from borrowed ETH to be split different ways
-author: Valdorff (@Valdorff)
+description: Provides an introduction and overview to the 2024 community tokenomics rework, its likely contents, and its current status.
+author: Valdorff (@Valdorff), LongForWisdom (@LongForWisdom)
 discussions-to: TBD
-status: Draft
+status: Living
 type: Informational
 created: 2024-03-08
 tags: tokenomics-2024
 ---
 
-## Intro
-This Info RPIP exists to explain an overall tokenomics proposal, the RPIPs it has been split up into, the reasoning between including certain items now vs later, etc.
+## Abstract
+This informational RPIP provides an introduction and overview to the 2024 community tokenomics rework, its likely contents, and its current status. It exists to explain the overall tokenomics proposal as it's currently envisioned by contributing community members. This RPIP lists and briefly describes the rework's components, and links out to the RPIPs that specify those components in greater detail.
 
-The overall package is based on, but not exactly the same as the [early-March proposal from Valdorff's github](../assets/rpip-49/readme.md). This proposal was a significant improvement based off of discussions with many people (thanks to 🏆samus🏆, 🏆sckuzzle, 🏆epineph, knoshua, uisce, langers, NonFungibleYokem, MountainB, luominx, ArtDemocrat and many others). This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus (see [the presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw) or its [powerpoint backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx)).
+The tokenomics rework will likely be split into two protocol upgrades, Saturn I and Saturn II. This RPIP describes the components that are expected to be included within each.
 
-## Components currently being advocated for
-1. [RPIP-42: Bond curves](RPIP-42.md) - this is perhaps the most critical component, as it unlocks dramatically higher capital efficiency (including Eth-only NOs). Note that this RPIP also includes the ability to penalize at the node level.
-2. [RPIP-43: Megapools](RPIP-43.md) - this is needed for the bond curve changes, otherwise gas would be prohibitive for, eg, 1.5-ETH bond validators. Note that this RPIP also includes the ability to create validators without staking RPL.
-3. [RPIP-44: Forced exits](RPIP-44.md) - this is needed for the bond curve changes, to enable node level penalties to be effective.
-4. Surplus revenue distribution: one of [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share` (see [RPIP-46](RPIP-46.md)) - this is the proposed mechanism to distribute revenue beyond that used for protocol operation
-5. [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - this is the mechanism that allows for splitting revenue between various targets (including voters to keep our governance robust). Note that it also has some thinking about how to find an appropriate share for NOs, as well as some future-looking settings that are not intended to be used immediately.
-6. [RPIP-47: Forced delegate upgrades](RPIP-47.md) - this is desirable eventually. Since it reduces the number of things that need to be tested going forward, the thought is we should include it as quickly as possible.
+This Informational RPIP and the tokenomics rework represent the best efforts of the Rocket Pool community contributors involved. Information within this RPIP should not be considered official word from the Rocket Pool core development team. 
 
-## Topics that need feedback, discussion, or fleshing out
-- Select a value capture method [RPL Burn](RPIP-45.md) vs [RPL Buy & LP](RPIP-50.md) vs higher `voter_share` (see [RPIP-46](RPIP-46.md))
-  - Probably worth it to do some LP modeling to gain understanding, see [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1224125945191989349)
-  - Will need a snapshot, see [forum](https://dao.rocketpool.net/t/tokenomic-rework-vibe-check-surplus-revenue-redistribution/2912/11)
+## Contents
 
-## Deployment plan
+### [RPIP-43: Megapools](RPIP-43.md)
 
-## Saturn 1
-Megapools, Forced delegate upgrades, Bond curves (framework), UARS, RPL value capture
-  - Megapools for greater efficiency
-  - Allows 4-ETH bond validators within Megapools for greater capital efficiency
-  - Allows ETH-only NOs
-  - UARS, except for voter_share targeting
-  - RPL value capture online (burn, or LP, or higher voter_share); voter_share could also be an interim option until Saturn 2
+A Megapool is a single contract that can be used as an ethereum withdrawal address for multiple validators.
+* This allows for much more gas-efficient usage of the Rocket Pool protocol for Node Operators.
+* This allows for the application of node-level penalities. 
 
-## Saturn 2
-Bond curves (low bond), Forced exits, UARS, RPL value capture
-  - Bond curves: Dramatically improve capital efficiency with 1.5 ETH `reduced_bond`
-  - UARS, in toto
-  - RPL value capture update: if voter_share was used as an interim option, update to burn or LP 
+Additionally, Megapools are required to facilitate the bond curve changes described in RPIP-42.
 
-Some of the other RPIPs will have specifications that take effect "with Saturn 2", and are designed to be spaced from Saturn 1.
-These specifications should take effect:
-- When Saturn 2 is released, and 4 months have passed since Saturn 1; or
-- When Saturn 2 is released, and the pDAO votes to have a specification take effect (this requires a vote per specification or group of specifications)
+### [RPIP-42: Bond curves](RPIP-42.md)
 
-## Topics that can be addressed after main votes, and before Saturn 2 dev
-- [RPIP-44: Forced exits](RPIP-44.md) has been written very minimally. We should likely improve it to handle abandonment and/or bad performance. This requires thinking of good rules, a method for retrieving beacon chain balance, and likely an implementation for incentivized keepers.
-- Interim solutions (note: we can better consider these _after_ we've established a rough goal and a timeline)
+The changes to bond curves allow Node Operators to provide smaller ETH bonds in a manner which does not impact the security of the Rocket Pool protocol. 
+* This gives Node Operators the option of dramatically increasing their capital efficiency.
+* This allows the Rocket Pool Protocol to support a greater amount of rETH. 
+
+In order for bonds to be lowered securely for the protocol, initial bonds for a node must be larger than the minimum bond. 
+
+### [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
+
+This change allows the ETH revenue income from borrowed ETH to be split between various targets. The four targets are:
+1. The Node Operator borrowing the ETH.
+2. Node Operators generally, proportional to their share of voting RPL.
+3. The surplus share, used to capture value to the RPL token.
+4. The rETH share, going to rETH holders. 
+
+The split is both adjustable by the pDAO, and may adjust automatically according to various heuristics.
+
+### RPL Value Capture
+
+Some form of value capture method will be included in the tokenomics rework package. Three options are being actively debated:
+* [RPL Burn](RPIP-45.md) - Use the surplus share to buy and burn RPL.
+* [RPL Buy & LP](RPIP-50.md) - Use the surplus share to buy RPL and deposit it in a liquidity pool. 
+* Direct the surplus share to Node Operators, proportional to their share of voting RPL.
+
+### [RPIP-44: Forced exits](RPIP-44.md)
+
+This change allows the Rocket Pool protocol to force-exit Node Operators under certain circumstances. It relies on [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) being adopted by the Ethereum Protocol. 
+* This allows Node Operators to easily exit their validators.
+* This allows the Rocket Pool Protocol to exit badly performing or malicious validators.
+
+The ability to force-exit misbehaving validators is a requirement for RPIP-42. 
+
+### [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+
+This change allows the Rocket Pool protocol to force-upgrade Node Operators minipool delegate contracts after a grace period has expired. 
+* This reduces the compatibility debt incurred by the protocol as it is upgraded because it does not need to support all prior iterations. 
+* This means that protocol governance can make changes that benefit the protocol as a whole even if the changes do not benefit all individual Node Operators. 
+
+## Deployment Plan
+
+The tokenomics reworks package will likely be split between two protocol upgrades: Saturn I and Saturn II.
+
+### Saturn I
+
+* [RPIP-43: Megapools](RPIP-43.md)
+* [RPIP-42: Bond curves](RPIP-42.md)
+  * Framework
+  * 4ETH minimum bond
+  * ETH-Only NOs
+* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
+  * All but heuristic adjustments.
+* RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
+* [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+
+### Saturn II
+
+* [RPIP-42: Bond curves](RPIP-42.md)
+  * 1.5ETH minimum bond. 
+* [RPIP-44: Forced exits](RPIP-44.md)
+* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
+  * Heuristic adjustments.
+
+## Current Status
+
+TBC
+
+## Excluded Components
+The below components have been discussed, but are not currently considered to be high enough priority to be included in the tokenomics rework plan.
+* MEV penalty improvements
+* rETH restitution from underperforming Node Operators
+* Adjusting DAO portion of RPL inflation
+
+## Further Links
+* This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus - [Presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw), [Powerpoint Backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx), [Recorded Presentation](https://www.youtube.com/watch?v=nyqrilFtlrc&list=PLKzACASsJiuXc0v6kZambks4cPaSVbekf&index=4)
+
+## Acknowledgements
+The overall tokenomics package is based on the [early-March proposal from Valdorff](../assets/rpip-49/readme.md). The initial drafts have seen a significant improvement as a result of discussions with many people (thanks to 🏆samus🏆, 🏆sckuzzle, 🏆epineph, knoshua, uisce, langers, NonFungibleYokem, MountainB, luominx, ArtDemocrat and many others). This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus (see [the presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw) or its [powerpoint backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx)).
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
