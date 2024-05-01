@@ -12,7 +12,7 @@ This version implements [RPIP-53](../../RPIPs/RPIP-53.md).
 
 ### Changes since `v8`
 
-The following updates have been made from [v8](https://github.com/rocket-pool/RPIPs/blob/main/assets/rpip-51/rewards-calculation-spec.md) of the spec. Note that v9 was just a file spec change, not a ruleset change, and is thus not included in this comparison.
+The following updates have been made from [v8](../rpip-51/rewards-calculation-spec.md) of the spec. Note that v9 was just a file spec change, not a ruleset change, and is thus not included in this comparison.
 
 
 #### Major Updates

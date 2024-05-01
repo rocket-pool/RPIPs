@@ -47,7 +47,35 @@ This is problematic for a few reasons.
 - First, it means the RPL withdrawal address has dominion over claiming Smoothing Pool ETH that it won't ever recieve. The node (or more accurately the node's primary withdrawal address), which *will* receive the ETH, can't trigger the claim.
 - Second, the node is still going to be listed in the rewards file, and thus the rewards for the corresponding interval are still going to show up as a "claimable interval" in the Smart Node despite the user not being able to claim from it, and not being able to actually *receive* any of the rewards from that interval. This can obviously be worked around in the Smart Node but it's exactly that: a workaround. The file itself is still going to have the node operator listed, so anyone (such as a third party) that wants to use it to view or claim rewards has to know about and implement this workaround as well.
 
-In this RPIP, I'm proposing a small change to the rewards file that ameliorates the problems when possible and provides some helpful benefits for people that would actually take advantage of the feature in the first place.
+To make it clear, under the Houston contracts here is the set of rules for claiming rewards:
+
+
+### Vanilla Houston - Rewards for Interval X
+
+*Unless otherwise specified, withdrawal addresses are assessed at the time of the claim, not the time of Interval X.*
+
+| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Claim?   | Who Gets ETH? | Who Gets RPL? |
+| -------------------------- | --------------------------- | ---------------- | ------------- | ------------- |
+| Same as Node               | No                          | Node             | Node          | Node          |
+| Different from Node        | No                          | Node, Primary WA | Primary WA    | Primary WA    |
+| Same as Node               | Yes                         | RPL WA           | Node          | RPL WA        |
+| Different from Node        | Yes                         | RPL WA           | Primary WA    | RPL WA        |
+
+The issue here is with row 3 and 4 (though we can only affect row 4).
+
+In this RPIP, I'm proposing a small change to the rewards file that ameliorates the problems when possible and provides some helpful benefits for people that would actually take advantage of the feature in the first place. Here's what it would look like under the new changes:
+
+
+### RPIP-53 - Rewards for Interval X
+
+*Unless otherwise specified, withdrawal addresses are assessed at the time of the claim, not the time of Interval X.*
+
+| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Claim?                                               | Who Gets ETH? | Who Gets RPL? |
+| -------------------------- | --------------------------- | ------------------------------------------------------------ | ------------- | ------------- |
+| Same as Node               | No                          | Node                                                         | Node          | Node          |
+| Different from Node        | No                          | Node, Primary WA                                             | Primary WA    | Primary WA    |
+| Same as Node               | Yes                         | RPL WA                                                       | Node          | RPL WA        |
+| Different from Node        | Yes                         | Primary WA at Interval X (ETH)<br>RPL WA at Interval X (RPL) | Primary WA    | RPL WA        |
 
 
 ## Important Clarification
