@@ -7,7 +7,7 @@ This document serves as a formal specification for the way that the rewards inte
 
 This describes **v10** of the rewards calculation ruleset.
 
-This version implements [RPIP-53](https://github.com/rocket-pool/RPIPs/blob/rewards_v10/RPIPs/RPIP-53.md).
+This version implements [RPIP-53](../../RPIPs/RPIP-53.md).
 
 
 ### Changes since `v8`
@@ -18,7 +18,7 @@ The following updates have been made from [v8](https://github.com/rocket-pool/RP
 #### Major Updates
 
 - The rewards tree no longer represents an individual Rocket Pool node in each leaf node; this concept has been generalized to a **claimer** which has eligible rewards and can claim them from the system. A claimer *may or may not be* a registered Rocket Pool node.
-- The process for determining claimers and their rewards has been introduced as part of rewards calculation, in [Determining Claimers and Claimer Rewards](#determining-claimers-and-claimer-rewards) section.
+- The process for determining claimers and their rewards has been introduced as part of rewards calculation, in the [Determining Claimers and Claimer Rewards](#determining-claimers-and-claimer-rewards) section.
 
 
 #### Minor Changes

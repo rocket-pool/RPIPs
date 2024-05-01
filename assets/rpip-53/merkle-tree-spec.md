@@ -3,7 +3,7 @@
 Rocket Pool's [Redstone](https://medium.com/rocket-pool/rocket-pool-the-merge-redstone-601d9efd6b4) update introduced a new rewards system based on a Merkle Tree distribution system.
 For each rewards interval, this tree will capture the RPL rewards (both for node operation and Oracle DAO membership) and the ETH rewards (from the Smoothing Pool, if relevant) for all of the nodes in the Rocket Pool network.
 
-In the [Houston](https://github.com/rocket-pool/docs.rocketpool.net/blob/houston/docs/guides/houston/whats-new.md) update, following [RPIP-53](https://github.com/rocket-pool/RPIPs/blob/rewards_v10/RPIPs/RPIP-53.md) the tree was modified slightly to account for the new [RPL withdrawal address](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-31.md) feature.
+In the [Houston](https://medium.com/rocket-pool/rocket-pool-houston-upgrade-fa2de86118ad) update, following [RPIP-53](../../RPIPs/RPIP-53.md) the tree was modified slightly to account for the new [RPL withdrawal address](../../RPIPs/RPIP-31.md) feature.
 
 The following is a specification that formally describes the tree's construction and behavior for rewards specification **version 10** and higher.
 Users should be able to use this specification to independently verify the tree that is produced by the Oracle DAO.
@@ -100,7 +100,7 @@ For example, say there were a claimer with the following values in its metadata:
 - Total RPL: 1.5 RPL (`1500000000000000000` in wei which is `14d1120d7b160000` in hexadecimal)
 - Total ETH: 2.5 ETH (`2500000000000000000` in wei which is `22b1c8c1227a0000` in hexadecimal)
 
-This tree node would have the following metadata byte array (in hexadecimal):
+It would have the following metadata byte array (in hexadecimal):
 
 `0x8b0ef9f1932a2e44c3d27be4c70c3bc07a6a27b3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000014d1120d7b16000000000000000000000000000000000000000000000000000022b1c8c1227a0000`
 

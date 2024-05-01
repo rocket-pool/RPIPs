@@ -12,7 +12,7 @@ created: 2024-04-19
 
 ## Abstract
 
-The incoming Houston upgrade introduces [RPIP-31](https://github.com/rocket-pool/RPIPs/blob/main/RPIPs/RPIP-31.md) - the **RPL withdrawal address**. This is a supplementary setting, different from the "regular" withdrawal address used in Atlas and below, that node operators can opt into. It's intended to specify a "secondary" withdrawal address that the node's RPL rewards will be sent to, whereas the node's ETH rewards will be sent to its "regular" withdrawal address (known in Houston as a **primary** withdrawal address).
+The incoming Houston upgrade introduces [RPIP-31](./RPIP-31.md) - the **RPL withdrawal address**. This is a supplementary setting, different from the "regular" withdrawal address used in Atlas and below, that node operators can opt into. It's intended to specify a "secondary" withdrawal address that the node's RPL rewards will be sent to, whereas the node's ETH rewards will be sent to its "regular" withdrawal address (known in Houston as a **primary** withdrawal address).
 
 Realistically, most node operators won't end up using this feature. It's only really helpful for node operators that don't supply their own RPL when creating a minipool. If you don't fall into this camp, rest assured that *this proposal will have no impact on you*.
 
