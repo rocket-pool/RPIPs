@@ -3,7 +3,7 @@ rpip: 49
 title: 2024 Tokenomics Rework Info
 description: Provides an introduction and overview to the 2024 community tokenomics rework, its likely contents, and its current status.
 author: Valdorff (@Valdorff), LongForWisdom (@LongForWisdom)
-discussions-to: TBD
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Living
 type: Informational
 created: 2024-03-08
@@ -24,6 +24,7 @@ This Informational RPIP and the tokenomics rework represent the best efforts of 
 A Megapool is a single contract that can be used as an ethereum withdrawal address for multiple validators.
 * This allows for much more gas-efficient usage of the Rocket Pool protocol for Node Operators.
 * This allows for the application of node-level penalities. 
+* Importantly, this Megapool specification allows Node Operators to create ETH-only Rocket Pool validators. 
 
 Additionally, Megapools are required to facilitate the bond curve changes described in RPIP-42.
 
@@ -73,10 +74,10 @@ The tokenomics reworks package will likely be split between two protocol upgrade
 ### Saturn I
 
 * [RPIP-43: Megapools](RPIP-43.md)
+  * Including ETH-only validators.
 * [RPIP-42: Bond curves](RPIP-42.md)
   * Framework
   * 4ETH minimum bond
-  * ETH-Only NOs
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * All but heuristic adjustments.
 * RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
