@@ -6,7 +6,7 @@ This specification serves to define their expected format, naming convention, an
 
 # Contents
 
-The oDAO shall save Rewards Trees in [ssz](../assets/rpip-52/simple-serialize.md) format respecting the following specification.
+The oDAO shall save Rewards Trees in [ssz](simple-serialize.md) format respecting the following specification.
 
 ## Containers
 
