@@ -93,6 +93,22 @@ The tokenomics reworks package will likely be split between two protocol upgrade
 
 ## Current Status
 
+### Estimated Process
+
+The below is generally agreed to be the steps to be completed before we can consider this 'decided'.
+
+1. Complete the first draft of the full proposal specifications. 
+2. Seek feedback from highly engaged community members as to the draft specifications. **<-- We are approximately here.**
+3. Create high-level explanations and informational material for the full proposal for consumption by less engaged community.
+4. Make a concerted effort to gather feedback via the forum from less engaged community.
+5. Update the proposal and specifications as needed taking into account community feedback.
+6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
+7. Run a snapshot vote on the full proposal (bar value capture mechanism).
+7. Run a snapshot vote on the value capture mechanism once oustanding blockers are cleared.
+9. Update the proposal to incorporate the value capture mechanism vote result.
+
+### Outstanding Items
+
 TBC
 
 ## Excluded Components
@@ -103,6 +119,7 @@ The below components have been discussed, but are not currently considered to be
 
 ## Further Links
 * This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus - [Presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw), [Powerpoint Backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx), [Recorded Presentation](https://www.youtube.com/watch?v=nyqrilFtlrc&list=PLKzACASsJiuXc0v6kZambks4cPaSVbekf&index=4)
+* Samus is maintaining a google sheet containing notes, feedback and TODOs which can be found [here](https://docs.google.com/spreadsheets/d/1qmGBCPAX-IqcFFjUzBib2Z_NKo_Yh5U00zKnGpyNak4). 
 
 ## Acknowledgements
 The overall tokenomics package is based on the [early-March proposal from Valdorff](../assets/rpip-49/readme.md). The initial drafts have seen a significant improvement as a result of discussions with many people (thanks to 🏆samus🏆, 🏆sckuzzle, 🏆epineph, knoshua, uisce, langers, NonFungibleYokem, MountainB, luominx, ArtDemocrat and many others). This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus (see [the presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw) or its [powerpoint backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx)).
