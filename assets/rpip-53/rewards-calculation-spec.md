@@ -663,7 +663,11 @@ poolStakerEth := smoothingPoolBalance - totalEthForMinipools
 
 The final step is to construct a list of **claimers** for the rewards tree.
 
-Start by creating a new, empty list of claimers. For each node determined to be eligible for rewards using the above process:
+Start by creating a new, empty list of claimers.
+
+Iterate through the list of nodes produced by the above process. **The order does not matter.** The resulting list of claimers and their allocations will be the same.
+
+For each node determined to be eligible for rewards using the above process:
 - Determine if the node has an RPL withdrawal address set:
   ```go
   isRplWithdrawalAddressSet := RocketNodeManager.getNodeRPLWithdrawalAddressIsSet(nodeAddress)
@@ -698,10 +702,7 @@ Start by creating a new, empty list of claimers. For each node determined to be 
     - The RPL rewards will be 0.
     - The ETH rewards will be the amount of ETH earned by the node for this rewards period - its share of earnings from the Smoothing Pool.
   - There will not be a claimer for the node itself directly, though its address may incidentally match at least one of the above claimers; in that case it is represented indirectly.
-- Add the claimers determined in this step to the cumulative list of claimers:
-  - If the claimer had 0 RPL rewards and 0 ETH rewards, ignore it as though it didn't exist and continue.
-  - If an entry **does not exist** with the claimer's address and network, add this claimer to the list.
-  - If an entry **already exists** with the claimer's address and network, add this claimer's rewards to the existing entry instead.
+- For each claimer produced by this process, ensure an entry in the list of claimers exists with that claimer's address. Award the corresponding ETH and RPL to that claimer. 
 
 This condensed list is now the formal list of claimers that will be used to construct leaf nodes in the tree.
 

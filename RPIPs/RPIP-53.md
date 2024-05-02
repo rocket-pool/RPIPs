@@ -165,7 +165,7 @@ With that being said, if you have an RPL withdrawal address set and a primary wi
 
 1. You will no longer be able to claim rewards via your node for that interval. Only your primary withdrawal address can claim your ETH rewards and only your RPL withdrawal address can claim your RPL rewards. In other words, this effectively "locks in" the rewards for an interval to your primary and RPL withdrawal addresses. They're going to be the only addresses that can claim the rewards for that interval, even if your withdrawal addresses change in the future or if you unset the RPL withdrawal address.
 2. Your RPL withdrawal address will not be able to use the "Claim and Stake" function introduced in Atlas to stake RPL on behalf of your node within a single transaction. It will only be able to claim its RPL.
-3. Setting the RPL withdrawal address to a node address may have odd, and sometimes not immediately obvious, consequences due to the way rewards are consolidated. **Be very careful if you intend to do this.**
+3. Setting the RPL withdrawal address to a node address may have odd, and sometimes not immediately obvious, consequences due to the way rewards are consolidated. See [Appendix A](#appendix-a-setting-the-rpl-withdrawal-address-to-a-registered-node) below for more information.
 4. If you use these files to calculate your node's total earnings in a vacuum (not total *claimable* earnings, just total earnings produced in general), this will break your workflow. You'll have to calculate your RPL earnings out of band and look at the minipool performance files to determine your Smoothing Pool ETH earned. This is probably more of a dashboard concern than an individual node operator concern.
 
 As a note, the rationale for the **or** condition in the logic is to mitigate an incentivization conflict. If a node without a primary withdrawal address followed the same "breakout" rule that resulted in two sets of claimers, it wouldn't actually be able to claim its own ETH rewards; it has an RPL withdrawal address set, and that's what the contracts key on when determining whether or not a node is eligible to claim. The RPL withdrawal address would have to claim for that node twice: once for itself (the RPL portion) and once for the node's ETH. However, the RPL withdrawal address is actually *disincentivized* from triggering the second claim; it doesn't receive anything from doing so, *and* it has to pay for the gas cost. Thus, to mitigate the incentive issue, nodes with an RPL withdrawal address set but no primary withdrawal address set are excluded from the split-claimer logic.
@@ -181,6 +181,141 @@ v10 has been implemented into a Smart Node branch [here](https://github.com/rock
 - [For the rolling record generator](../assets/rpip-53/v8-v10-rolling-diff.html)
 
 Aside from variable names, the actual functional changes are very small. It just checks to see if a node has an RPL withdrawal address set, and if so, it directs the RPL earnings to the RPL withdrawal address and the ETH earnings to the primary withdrawal address instead.
+
+
+## Appendix A: Setting the RPL Withdrawal Address to a Registered Node
+
+The results of setting your RPL withdrawal address to a registered node address can be somewhat confusing, so the scenarios are spelled out explicitly here to dispel any uncertainty.
+
+
+### Scenario 1
+
+In this scenario, we have the following setup:
+
+```
+Node A: primary A, RPL B
+Node B: primary C, RPL not set
+```
+
+After a rewards event is triggered, the following claimers will be produced in the tree:
+
+```
+Entry A (A's ETH, A's RPL)
+
+Entry B (B's ETH, B's RPL)
+```
+
+- Eligible claimers for Entry A and Entry B are both determined at the time of claiming.
+
+The entries are straightforward following Houston rules: if the scenario is as described at the time of claiming, then:
+- Entry A can only be claimed by B. A's ETH will go to A, and A's RPL will go to B.
+- Entry B can be claimed by either B or C, and all of the funds will go to C.
+
+Even though B has a primary withdrawal address set (to C), B will still receive the rewards upon claiming. The contract doesn't look at B's withdrawal addresses when it's claiming for A as A's RPL withdrawal address, because the contracts don't check whether or not B is a node during that process.
+This is the same with or without v10, but is included here for posterity. 
+
+
+### Scenario 2
+
+In this scenario, we have the following setup:
+
+```
+Node A: primary A, RPL B
+Node B: primary C, RPL D
+```
+
+After a rewards event is triggered, the following claimers will be produced in the tree:
+
+```
+Entry A (A's ETH, A's RPL)
+
+Entry C (B's ETH)
+
+Entry D (B's RPL)
+```
+
+- Eligible claimers for Entry A are determined at the time of claiming.
+- Entry C will only be claimable by C for all time (unless C becomes a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
+- Likewise, Entry D will only be claimable by D for all time (following the same conditions listed above).
+
+Here ideally the RPL from both A and B would fall under the entry for D but because v10 doesn't require recursively assessing withdrawal addresses, this doesn't happen.
+
+
+### Scenario 3
+
+In this scenario, we have the following setup:
+
+```
+Node A: primary E, RPL B
+Node B: primary C, RPL not set
+```
+
+After a rewards event is triggered, the following claimers will be produced in the tree:
+
+```
+Entry B (A's RPL, B's ETH, B's RPL)
+
+Entry E (A's ETH)
+```
+
+- Eligible claimers for Entry B are determined at the time of claiming.
+- Entry E will only be claimable by E for all time (unless E become a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
+
+Here the RPL from Node A gets merged into the RPL from Node B under Entry B.
+
+
+### Scenario 4
+
+In this scenario, we have the following nodes in the protocol:
+
+```
+Node A: primary E, RPL B
+Node B: primary C, RPL D
+```
+
+After a rewards event is triggered, the following claimers will be produced in the tree:
+
+```
+Entry B (A's RPL)
+
+Entry C (B's ETH)
+
+Entry D (B's RPL)
+
+Entry E (A's ETH)
+```
+
+- Eligible claimers for Entry B are determined at the time of claiming.
+- Entries C, D, and E will only be claimable by C, D, and E respectively for all time (unless any of them becomes a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
+
+Ideally the RPL from Entry B would be aggregated into Entry D, but again, the spec doesn't require recursive traversal of withdrawal addresses so this doesn't happen.
+
+
+### Scenario 5
+
+In this scenario, we have the following nodes in the protocol:
+
+```
+Node A: primary E, RPL B
+Node B: primary C, RPL A
+```
+
+After a rewards event is triggered, the following claimers will be produced in the tree:
+
+```
+Entry A (B's RPL)
+
+Entry B (A's RPL)
+
+Entry C (B's ETH)
+
+Entry E (A's ETH)
+```
+
+- Eligible claimers for Entry A and Entry B are both determined at the time of claiming.
+- Entries C and E will only be claimable by C and E respectively for all time (unless any of them becomes a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
+
+This is a loop situation that would cause problems if recursively traversing withdrawal addresses. A's RPL should go to B, but B's RPL withdrawal address is A, but A's RPL withdrawal address is B, and so on. Since the spec doesn't require recursive traversal, the scenario will not break the workflow for constructing a rewards tree for the interval.
 
 
 ## Copyright
