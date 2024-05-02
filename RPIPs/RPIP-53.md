@@ -16,17 +16,14 @@ The incoming Houston upgrade introduces [RPIP-31](./RPIP-31.md) - the **RPL with
 
 Realistically, most node operators won't end up using this feature. It's only really helpful for node operators that don't supply their own RPL when creating a minipool. If you don't fall into this camp, rest assured that *this proposal will have no impact on you*.
 
-Unfortunately, node operators that *do* use this new feature can **no longer trigger rewards claims** from the Merkle rewards system. More specifically they can distribute minipool rewards from the Beacon Chain, but can't claim the rewards produced every 28 days via the Merkle rewards system. That's not a problem for RPL rewards, since the RPL withdrawal address gets those anyway, but the issue is this includes Smoothing Pool ETH rewards as well. Neither the node nor the address that would get the Smoothing Pool ETH (the primary withdrawal address) can actually trigger a claim; *only* the RPL withdrawal address will be able to do it.
-
-This can't be fixed for nodes that opt into setting an RPL withdrawal address if they also use their node as their primary withdrawal address because of technical reasons described in the [Rationale](#rationale) section of the RPIP. However, it *can* be fixed for nodes that opt into it and use an address *other* than their node as the primary withdrawal address. I anticipate that most nodes opting into the RPL withdrawal address feature will fall into this camp.
-
-This RPIP proposes to achieve this by generalizing the rewards tree, changing *nodes* to *claimers*. The tree will now specify the amount of RPL and Smoothing Pool ETH available to individual claimers, where:
-- If a node does not have an RPL withdrawal address set, **or** if it has one but its primary withdrawal address is the same as the node address, their node address is the claimer address (same as today).
+Unfortunately, the Houston contracts contain a quirk related to actually *claiming* the rewards. Claims for both RPL and Smoothing Pool ETH earnings can only be triggered by the RPL withdrawal address; see the [Motivation](#motivation) section for more details. This RPIP proposes to mitigate the problem by generalizing the rewards tree, changing *nodes* to *claimers*. The tree will now specify the amount of RPL and Smoothing Pool ETH available to individual claimers, where:
+- If a node does not have an RPL withdrawal address set, the node address is the claimer address (same as today).
+- If a node has an RPL withdrawal address set, but its primary withdrawal address is the same as the node address, the node address is the claimer address (same as today, for technical reasons discussed in [Rationale](#rationale)). 
 - If a node has an RPL withdrawal address set and its primary withdrawal address is different from the node address, the node's rewards will be split in two:
   - One claimer will be the node's primary withdrawal address, which will have the node's ETH portion of the rewards.
   - The other will be the node's RPL withdrawal address, which will have the node's RPL portion of the rewards.
 
-This will improve rewards claiming UX, remove some inconsistencies between the existing ruleset and this new feature, make the rewards system more attractive to users that would actually leverage RPL withdrawal addresses, and will not adversely impact nodes that do not use it.
+This change will allow the node's primary withdrawal address to claim the Smoothing Pool ETH rewards without touching the RPL rewards. Doing so will improve the rewards claiming UX, remove some inconsistencies between the existing ruleset and this new feature, make the rewards system more attractive to users that would actually leverage RPL withdrawal addresses, and will not adversely impact nodes that do not use it.
 
 This **does not** require a contract change (ironically, it's more in-line with how the contracts actually behave in Houston) and can be implemented at any time, even before Houston has launched if relevant. The spec handles what to do if it hasn't been deployed yet.
 
@@ -44,7 +41,7 @@ In Atlas, Rocket Pool sends all of the node's rewards (both from the Beacon Chai
 While making sense on paper, the implementation has an unfortunate consequence. If you're a node operator and you have an RPL withdrawal address set, [you can no longer claim rewards](https://github.com/rocket-pool/rocketpool/blob/a747457fc610aa889af0a13cff5d3d00955525a5/contracts/contract/rewards/RocketMerkleDistributorMainnet.sol#L85). This doesn't affect Beacon Chain earnings, but does impact both RPL rewards and Smoothing Pool ETH rewards. Claiming them *must* be done from the RPL withdrawal address. Whether intended or not, the RPL withdrawal address isn't just an RPL withdrawal address in Houston; it's also a "claimer address" that can exclusively claim rewards intervals from the Merkle distributor contract.
 
 This is problematic for a few reasons.
-- First, it means the RPL withdrawal address has dominion over claiming Smoothing Pool ETH that it won't ever recieve. The node (or more accurately the node's primary withdrawal address), which *will* receive the ETH, can't trigger the claim.
+- First, it means the RPL withdrawal address has dominion over claiming Smoothing Pool ETH that it won't ever receive. The node (or more accurately the node's primary withdrawal address), which *will* receive the ETH, can't trigger the claim.
 - Second, the node is still going to be listed in the rewards file, and thus the rewards for the corresponding interval are still going to show up as a "claimable interval" in the Smart Node despite the user not being able to claim from it, and not being able to actually *receive* any of the rewards from that interval. This can obviously be worked around in the Smart Node but it's exactly that: a workaround. The file itself is still going to have the node operator listed, so anyone (such as a third party) that wants to use it to view or claim rewards has to know about and implement this workaround as well.
 
 To make it clear, under the Houston contracts here is the set of rules for claiming rewards:
@@ -54,23 +51,21 @@ To make it clear, under the Houston contracts here is the set of rules for claim
 
 *Unless otherwise specified, withdrawal addresses are assessed at the time of the claim, not the time of Interval X.*
 
-| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Claim?   | Who Gets ETH? | Who Gets RPL? |
-| -------------------------- | --------------------------- | ---------------- | ------------- | ------------- |
-| Same as Node               | No                          | Node             | Node          | Node          |
-| Different from Node        | No                          | Node, Primary WA | Primary WA    | Primary WA    |
-| Same as Node               | Yes                         | RPL WA           | Node          | RPL WA        |
-| Different from Node        | Yes                         | RPL WA           | Primary WA    | RPL WA        |
+| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Trigger Claims? | Who Gets ETH? | Who Gets RPL? |
+| -------------------------- | --------------------------- | ----------------------- | ------------- | ------------- |
+| Same as Node               | No                          | Node                    | Node          | Node          |
+| Different from Node        | No                          | Node, Primary WA        | Primary WA    | Primary WA    |
+| Same as Node               | Yes                         | RPL WA                  | Node          | RPL WA        |
+| Different from Node        | Yes                         | RPL WA                  | Primary WA    | RPL WA        |
 
-The issue here is with row 3 and 4 (though we can only affect row 4).
-
-In this RPIP, I'm proposing a small change to the rewards file that ameliorates the problems when possible and provides some helpful benefits for people that would actually take advantage of the feature in the first place. Here's what it would look like under the new changes:
+The issue here is with row 3 and 4. Row 3 can't be fixed because of technical reasons described in the [Rationale](#rationale) section of the RPIP. However, row 4 *can* be fixed (and I anticipate most nodes opting into the RPL withdrawal address feature will fall into this camp). Thus, this RPIP proposes a small change to the rewards file that ameliorates the problems when possible and provides some helpful benefits for people that would actually take advantage of the feature in the first place. Here's what it would look like under the new changes:
 
 
 ### RPIP-53 - Rewards for Interval X
 
 *Unless otherwise specified, withdrawal addresses are assessed at the time of the claim, not the time of Interval X.*
 
-| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Claim?                                               | Who Gets ETH? | Who Gets RPL? |
+| Primary Withdrawal Address | RPL Withdrawal Address Set? | Who Can Trigger Claims?                                      | Who Gets ETH? | Who Gets RPL? |
 | -------------------------- | --------------------------- | ------------------------------------------------------------ | ------------- | ------------- |
 | Same as Node               | No                          | Node                                                         | Node          | Node          |
 | Different from Node        | No                          | Node, Primary WA                                             | Primary WA    | Primary WA    |
@@ -87,7 +82,7 @@ The only nodes affected by this change are ones that explicitly set an **RPL wit
 
 ## Specification
 
-The specification is an amendment to v9 specified in [candidate RPIP-52](https://github.com/rocket-pool/RPIPs/pull/174) by Patches. That proposal is **required** to be accepted prior to / at the same time as this one. 
+The specification builds on top of v9 specified in [RPIP-52](./RPIP-52.md). That proposal is **required** to be accepted prior to / at the same time as this one.
 
 The formal specifications for rewards calculation, tree generation, and the corresponding rewards file are included in [the assets folder](../assets/rpip-53/). More specifically:
 - The [rewards calculation spec](../assets/rpip-53/rewards-calculation-spec.md)
@@ -180,7 +175,7 @@ While this condition is necessary for Houston, it could be revised or even elimi
 
 ## Reference Implementation
 
-I've implemented v10 into a Smart Node branch [here](https://github.com/rocket-pool/smartnode/tree/rewards_v10). For comparison, here are the differences between v8 and v10:
+v10 has been implemented into a Smart Node branch [here](https://github.com/rocket-pool/smartnode/tree/rewards_v10). For comparison, here are the differences between v8 and v10:
 
 - [For the vanilla (non-rolling) generator](../assets/rpip-53/v8-v10-vanilla-diff.html)
 - [For the rolling record generator](../assets/rpip-53/v8-v10-rolling-diff.html)
