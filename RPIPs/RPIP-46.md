@@ -9,6 +9,7 @@ type: Protocol
 category: Core
 created: 2024-03-08
 requires: potentially rpip-45 or rpip-50
+tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract

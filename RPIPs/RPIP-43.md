@@ -9,6 +9,7 @@ type: Protocol
 category: Core
 created: 2024-03-05
 requires: eip-4788
+tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
