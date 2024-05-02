@@ -24,7 +24,7 @@ This Informational RPIP and the tokenomics rework represent the best efforts of 
 A Megapool is a single contract that can be used as an ethereum withdrawal address for multiple validators.
 * This allows for much more gas-efficient usage of the Rocket Pool protocol for Node Operators.
 * This allows for the application of node-level penalities. 
-* Importantly, this Megapool specification allows Node Operators to create ETH-only Rocket Pool validators. 
+* Importantly, this Megapool specification allows Node Operators to create ETH-only validators. 
 
 Additionally, Megapools are required to facilitate the bond curve changes described in RPIP-42.
 

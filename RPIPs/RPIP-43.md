@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of node-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level.
+This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of node-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level. Note that this proposal allows ETH-only validators.
 
 ## Specification
 - A Node Operator SHALL be able to deploy a single megapool contract
@@ -23,7 +23,7 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 - A Node Operator SHALL be able to distribute rewards from all validator in their megapool at once
   - This MAY be temporarily blocked while validators are exiting
 - RPL MAY be staked to a megapool
-  - Validators MAY be created within a megapool regardless of RPL staked to the megapool
+  - Validators MAY be created within a megapool regardless of RPL staked to the megapool (allowing ETH-only validators)
 - A user MAY set any amount of RPL "Staked" to a megapool to "Unstaking"
 - Once RPL has been "Unstaking" for `unstaking_period` days, it can be withdrawn (this setting is defined in [RPIP-30](RPIP-30.md))
 - All RPL that was "Unstaking" MUST be withdrawn at one time
