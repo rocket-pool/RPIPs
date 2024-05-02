@@ -21,12 +21,12 @@ class File(Container):
     network: uint64 # Chain ID for the network, e.g., 1 for Mainnet or 17000 for Holešky
                     # devnet deploys should use a unique id
     index: uint64 # Rewards interval index
-    start_time: uint64 # Unix time of the first slot of the interval
-    end_time: uint64 # Unix time of the last slot of the interval
+    start_time: uint64 # Unix time of the first slot of the interval (even if empty)
+    end_time: uint64 # Unix time of the last slot of the interval (even if empty)
     consensus_start_block: uint64 # Index of the first non-empty slot of the interval
     consensus_end_block: uint64 # Index of the last non-empty slot of the interval
-    execution_start_block: uint64 # Index of the execution block in ConsensusStartBlock
-    execution_end_block: uint64 # Index of the execution block in ConsensusEndBlock
+    execution_start_block: uint64 # Index of the execution block in consensus_start_block
+    execution_end_block: uint64 # Index of the execution block in consensus_end_block
     intervals_passed: uint64 # Number of rewards intervals contained in the file
     merkle_root: Bytes32 # Merkle Tree root of the Rewards Tree
     total_rewards: TotalRewards # Aggregate data on values of contained rewards
