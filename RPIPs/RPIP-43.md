@@ -1,7 +1,7 @@
 ---
 rpip: 43
 title: Megapools
-description: A single contract per node operator that can be used as an ethereum withdrawal address for multiple validators
+description: A single contract per node operator that can be used as an ethereum withdrawal address for multiple validators. Also allows for ETH-only validators.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft

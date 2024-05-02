@@ -1,7 +1,7 @@
 ---
 rpip: 46
 title: Universal Adjustable Revenue Split
-description: Allow the revenue from borrowed ETH to be split different ways
+description: Allow the revenue from borrowed ETH to be split between fixed targets; the relative split between targets is adjustable.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft

@@ -1,7 +1,7 @@
 ---
 rpip: 50
 title: RPL Buy & LP
-description: Use ETH revenue to provide RPL/rETH liquidity
+description: Direct revenue surplus from borrowed ETH to buy 90:10 RPL/rETH liquidity pool shares. 
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft

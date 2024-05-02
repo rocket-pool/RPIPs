@@ -1,7 +1,7 @@
 ---
 rpip: 47
 title: Enable Forced Delegate Upgrades
-description: Allow for the protocol to make protocol-wide decisions rather than relying on per-operator upgrades
+description: Allows protocol governance to force upgrade Node Operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft

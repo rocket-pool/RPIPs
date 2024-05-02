@@ -1,7 +1,7 @@
 ---
 rpip: 45
 title: RPL Burn
-description: Allow RPL holders to burn RPL in exchange for protocol ETH
+description: Direct revenue surplus from borrowed ETH to buy and burn permissionlessly provided RPL.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft

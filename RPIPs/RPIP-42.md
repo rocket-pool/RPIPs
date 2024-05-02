@@ -1,7 +1,7 @@
 ---
 rpip: 42
 title: Bond Curves
-description: Allow smaller bonds to dramatically increase capital efficiency
+description: Introduce smaller ETH bonds to improve capital efficiency for Node Operators while maintaining protocol safety. 
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
