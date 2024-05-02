@@ -207,7 +207,7 @@ Entry B (B's ETH, B's RPL)
 
 - Eligible claimers for Entry A and Entry B are both determined at the time of claiming.
 
-Note that if this is the scenario at the time of claiming Entry A, then only B can claim Entry A. However, the rewards will go to A and C. B itself won't earn anything and it will have to pay for gas, so this situation only works trustlessly when the owner of B also owns C.
+Note that if this is the scenario at the time of claiming Entry A, then only B can claim Entry A. Even though B has a primary withdrawal address set (to C), B will still receive the rewards upon claiming. The contract doesn't look at B's withdrawal addresses when it's claiming for A as A's RPL withdrawal address, because the contracts don't check whether or not B is a node during that process.
 This is the same with or without v10, but is included here for posterity. 
 
 
@@ -231,7 +231,7 @@ Entry D (B's RPL)
 ```
 
 - Eligible claimers for Entry A are determined at the time of claiming.
-- Entry C will only be claimable by C for all time (unless C become a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
+- Entry C will only be claimable by C for all time (unless C becomes a node operator prior to claiming, in which case the typical node operator rules for Houston apply).
 - Likewise, Entry D will only be claimable by D for all time (following the same conditions listed above).
 
 Here ideally the RPL from both A and B would fall under the entry for D but because v10 doesn't require recursively assessing withdrawal addresses, this doesn't happen.
