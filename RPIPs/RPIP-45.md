@@ -8,6 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
+tags: tokenomics-2024, tokenomics-value-capture-option
 ---
 
 ## Abstract
