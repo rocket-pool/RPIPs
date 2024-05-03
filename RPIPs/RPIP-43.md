@@ -22,8 +22,10 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 - A Node Operator SHALL be able to exit one or more validators in their megapool contract
 - A Node Operator SHALL be able to distribute rewards from all validators in their megapool at once
   - This MAY be temporarily blocked while validators are exiting
+- Legacy minipool deposits (ie, deposits not in megapools) SHALL be disabled
 - RPL MAY be staked to a megapool
   - Validators MAY be created within a megapool regardless of RPL staked to the megapool (note that this means ETH-only node operation is possible)
+- Legacy RPL staking (ie staking RPL to a node rather than to a megapool) SHALL be disabled
 - A user MAY set any amount of RPL "Staked" to a megapool to "Unstaking"
 - Once RPL has been "Unstaking" for `unstaking_period` days, it can be withdrawn (this setting is defined in [RPIP-30](RPIP-30.md))
 - All RPL that was "Unstaking" MUST be withdrawn at one time
