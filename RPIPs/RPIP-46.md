@@ -1,7 +1,7 @@
 ---
 rpip: 46
 title: Universal Adjustable Revenue Split
-description: Allow the revenue from borrowed ETH to be split between fixed targets; the relative split between targets is adjustable.
+description: Allow the revenue from borrowed ETH (aka, rETH commission) to be split between fixed targets; the relative split between targets is adjustable.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: reth (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
+Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: reth (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
 
 This proposal also includes a small set of items for potential future use:
 - Seals that the security council can use to increase the NO share -- this is being used to find a reasonable setting based on the actual market.
@@ -26,7 +26,7 @@ This proposal also includes a small set of items for potential future use:
    3. pDAO (`rocketClaimDAO`) allocation SHALL be set to 95%
    4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
 2. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `voter_share`, `surplus_share`
-   1. `node_operator_commission_share`: each NO receives this percentage of commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
+   1. `node_operator_commission_share`: each NO receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
    2. `voter_share`: each NO receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_in_their_megapool/total_vote_eligible_RPL_in_megapools`.
    3. `surplus_share`: this share of revenue is used to distribute revenue beyond that used for protocol operation (such as the shares above)
 3. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
@@ -53,7 +53,7 @@ This proposal also includes a small set of items for potential future use:
     1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share`
     2. If higher `voter_share` is selected, the entirety of the ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) section below SHALL be deleted
     3. The selected mechanism MAY be implemented in Saturn 1
-       1. If it is not, the revenue SHALL be held in reserve until the mechanism is implemented. In such a case, once the mechanism is implemnented, the revenue SHALL be distributed in the same amount of time it took to build up, or faster.
+       1. If not, the revenue SHALL be held in reserve until the mechanism is implemented. In such a case, once the mechanism is implemented, the revenue SHALL be distributed in the same amount of time it took to build up, or faster.
     4. The selected mechanism MUST be implemented in Saturn 2
     5. When implemented, `surplus_share` SHOULD be renamed to something more specific
 
@@ -70,7 +70,7 @@ This proposal also includes a small set of items for potential future use:
       1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
       2. `surplus_share` is increased by the difference between the old and new `voter_share`
    6. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-2. `voter_share_relative_step`, `voter_share_target_min` and `voter_share_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+2. `voter_share_relative_step`, `voter_share_target_min`, and `voter_share_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 3. The initial settings SHALL be:
    1. `voter_share_relative_step`: 15%
    2. `voter_share_target_min`: 55%
@@ -81,15 +81,15 @@ This section reflects some of the thinking at the time this RPIP was drafted. Th
 
 Some abstract guidelines:
 - Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional.
-- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively, ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) .
+- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively, ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2).
 - Finally, consider `surplus_share`. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
 
 Some example concrete guidelines:
-- If NO queue is continuously over 500 deposits for 2 weeks and trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply. This could use one or more of the following tactics:
+- If the NO queue is continuously over 500 deposits for 2 weeks and the trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply. This could use one or more of the following tactics:
   - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `surplus_share`
   - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `surplus_share`
-- If NO queue is continuously over 1000 deposits for 4 weeks and trend is upwards, the pDAO should take action to decrease NO supply
+- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
 - If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
