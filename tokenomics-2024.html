@@ -12,15 +12,15 @@ nav-title: Tokenomics Rework
 
 <h2>Information and Overview</h2>
 
-{% assign informational-rpips=relevant-rpips|where_exp:"item","item.type == 'Informational'"| sort: "rpip" | reverse %}
+{% assign informational-rpips=relevant-rpips|where_exp:"item","item.type == 'Informational'"| sort: "rpip" %}
 {% include rpiptable_full.html rpips=informational-rpips type_col=false status_col=true description=true%}
 
 <h2>Content RPIPs</h2>
 
-{% assign content-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-content'"| sort: "rpip" | reverse %}
+{% assign content-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-content'"| sort: "rpip" %}
 {% include rpiptable_full.html rpips=content-rpips type_col=false status_col=true description=true%}
 
 <h2>Optional RPIPs</h2>
 
-{% assign optional-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-value-capture-option'"| sort: "rpip" | reverse %}
+{% assign optional-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-value-capture-option'"| sort: "rpip" %}
 {% include rpiptable_full.html rpips=optional-rpips type_col=false status_col=true description=true%}
