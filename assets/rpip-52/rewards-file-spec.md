@@ -27,7 +27,8 @@ class File(Container):
     consensus_end_block: uint64 # Index of the last non-empty slot of the interval
     execution_start_block: uint64 # Index of the execution block in consensus_start_block
     execution_end_block: uint64 # Index of the execution block in consensus_end_block
-    intervals_passed: uint64 # Number of rewards intervals contained in the file
+    intervals_passed: uint64 # Number of rewards intervals contained in the file. Normally 1 for a full interval.
+                             # If this file represents less than a full interval, the value will be 0.
     merkle_root: Bytes32 # Merkle Tree root of the Rewards Tree
     total_rewards: TotalRewards # Aggregate data on values of contained rewards
     network_rewards: List[NetworkReward, 128] # L1 and L2 rewards destinations and aggregate amounts
