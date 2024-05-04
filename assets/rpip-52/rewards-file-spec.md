@@ -97,6 +97,6 @@ The IPFS CID shall be computed with:
 
 # Sample Data
 
-A sample .ssz file can be downloaded [here](../assets/rpip-52/rp-rewards-holesky-155.ssz).
+A sample .ssz file can be downloaded [here](rp-rewards-holesky-155.ssz).
 
 It has IPFS CID `bafybeig4ofwnvou4bgehwzrc27nhfczd2cls5gzejsbliibrwm35owmaca`.
