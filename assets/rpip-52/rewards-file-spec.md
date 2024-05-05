@@ -89,6 +89,7 @@ The IPFS CID shall be computed with:
   * A [Merkle DAG](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/merkle-dag.md)
   * With a [V1 CID Prefix](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/content-addressing.md#version-1-v1)
   * With a [UnixFS](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md) directory node at the root
+    * Importing files with a fixed-size 1048576 byte [chunking strategy](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md#chunking) and a balanced [layout](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md#layout)
     * With default `mode` (0755)
     * No `mtime` structure
   * With a single leaf node
