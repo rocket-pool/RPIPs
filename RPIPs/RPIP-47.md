@@ -19,7 +19,9 @@ This proposal suggests limiting that upgrade choice in the future. Users will be
 
 ## Specification
 - Megapool delegate contracts SHALL have an expiration block (ie, execution layer block)
-- When a new megapool delegate is released, its expiration block is set to "no expiration" and the previous delegate's expiration block is set to `delegate_upgrade_buffer`
+- When a new megapool delegate is released, the contract upgrade SHALL include:
+  - Setting the new megapool delegate's expiration block to "no expiration"
+  - Setting the previous delegate's expiration block to occur `delegate_upgrade_buffer` after the upgrade
 - Interactions with a megapool delegate after its expiration block SHALL revert
 - All protocol upgrades SHALL have a `default_upgrade_delay` delay between when they are passed and when they are executed
 - The security council SHALL have a limited-use power to use a shorter delay of `fast_upgrade_delay`
