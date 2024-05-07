@@ -1,0 +1,26 @@
+---
+layout: page
+title: Tokenomics Rework
+nav-title: Tokenomics Rework
+---
+
+<div class=living>
+ℹ️ <i> These tokenomics RPIPs are currently being developed by the Rocket Pool community. Want to contribute? Check out the <a href="https://discord.com/channels/405159462932971535/1215788197842255972">Discord Thread</a> and <a href="https://dao.rocketpool.net/tag/tokenomics-rework">Forum Threads</a>.</i>
+</div> 
+
+{% assign relevant-rpips=site.pages|where_exp:"item","item.tags contains 'tokenomics-2024'" %}
+
+<h2>Information and Overview</h2>
+
+{% assign informational-rpips=relevant-rpips|where_exp:"item","item.type == 'Informational'"| sort: "rpip" %}
+{% include rpiptable_full.html rpips=informational-rpips type_col=false status_col=true description=true%}
+
+<h2>Content RPIPs</h2>
+
+{% assign content-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-content'"| sort: "rpip" %}
+{% include rpiptable_full.html rpips=content-rpips type_col=false status_col=true description=true%}
+
+<h2>Optional RPIPs</h2>
+
+{% assign optional-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-value-capture-option'"| sort: "rpip" %}
+{% include rpiptable_full.html rpips=optional-rpips type_col=false status_col=true description=true%}

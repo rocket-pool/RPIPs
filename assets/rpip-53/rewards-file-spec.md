@@ -6,7 +6,7 @@ This specification serves to define their expected format, naming convention, an
 
 # Contents
 
-The oDAO shall save Rewards Trees in [ssz](simple-serialize.md) format respecting the following specification.
+The oDAO shall save Rewards Trees in [ssz](../assets/rpip-52/simple-serialize.md) format respecting the following specification.
 
 ## Containers
 
@@ -17,52 +17,52 @@ class File(Container):
     magic: Bytes4 # Magic Header identifying this file as a Rewards Tree
                   # Expected value: 0x52 0x50 0x52 0x54
     rewards_file_version: uint64 # Expected value: 3
-    ruleset_version: uint64 # Expected value: 9 or higher
+    ruleset_version: uint64 # Expected value: 10 or higher
     network: uint64 # Chain ID for the network, e.g., 1 for Mainnet or 17000 for Holešky
                     # devnet deploys should use a unique id
     index: uint64 # Rewards interval index
-    start_time: uint64 # Unix time of the first slot of the interval (even if empty)
-    end_time: uint64 # Unix time of the last slot of the interval (even if empty)
+    start_time: uint64 # Unix time of the first slot of the interval
+    end_time: uint64 # Unix time of the last slot of the interval
     consensus_start_block: uint64 # Index of the first non-empty slot of the interval
     consensus_end_block: uint64 # Index of the last non-empty slot of the interval
-    execution_start_block: uint64 # Index of the execution block in consensus_start_block
-    execution_end_block: uint64 # Index of the execution block in consensus_end_block
-    intervals_passed: uint64 # Number of rewards intervals contained in the file. Normally 1 for a full interval.
-                             # If this file represents less than a full interval, the value will be 0.
+    execution_start_block: uint64 # Index of the execution block in ConsensusStartBlock
+    execution_end_block: uint64 # Index of the execution block in ConsensusEndBlock
+    intervals_passed: uint64 # Number of rewards intervals contained in the file
     merkle_root: Bytes32 # Merkle Tree root of the Rewards Tree
     total_rewards: TotalRewards # Aggregate data on values of contained rewards
     network_rewards: List[NetworkReward, 128] # L1 and L2 rewards destinations and aggregate amounts
                                               # Sorted ascending by network
-    node_rewards: List[NodeReward, 9223372036854775807] # Per-node rewards
-                                                        # Sorted in ascending unsigned numerical order by address
+    claimer_rewards: List[ClaimerReward, 9223372036854775807] # Per-claimer rewards
+                                                              # Sorted in ascending unsigned numerical order by address
 
 class TotalRewards(Container):
     protocol_dao_rpl: uint256 # Amount of RPL sent to the pDAO (in wei)
-    total_collateral_rpl: uint256 # Amount of RPL sent to Node Operators (in wei)
+    total_collateral_rpl: uint256 # Amount of RPL sent to claimers for minipool operation (in wei)
     total_oracle_dao_rpl: uint256 # Amount of RPL sent to oDAO members (in wei)
     total_smoothing_pool_eth: uint256 # Amount of ETH in the Smoothing Pool (in wei)
     pool_staker_smoothing_pool_eth: uint256 # Amount of ETH sent to the rETH contract (in wei)
-    node_operator_smoothing_pool_eth: uint256 # Amount of ETH send to Node Operators in the Smoothing Pool (in wei)
+    node_operator_smoothing_pool_eth: uint256 # Amount of ETH sent to claimers for Smoothing Pool rewards (in wei)
+                                              # The name is retained for backwards compatibility with previous specs
     total_node_weight: uint256 # Total Node Weight as defined by RPIP-30 (in wei)
 
 class NetworkReward(Container):
     network: uint64 # The L1 or L2 id that this object describes rewards for
                     # Currently, only mainnet is supported, with id of 0
-    collateral_rpl: uint256 # Amount of RPL for Node Operators sent to this network (in wei)
-    oracle_dao_rpl: uint256 # Amount of RPL for oDAO Operators sent to this network (in wei)
-    smoothing_pool_eth: uint256 # Amount of ETH for Node Operators sent to this network (in wei)
+    collateral_rpl: uint256 # Amount of RPL sent to this network for minipool operation (in wei)
+    oracle_dao_rpl: uint256 # Amount of RPL sent to this network for Oracle DAO rewards (in wei)
+    smoothing_pool_eth: uint256 # Amount of ETH sent to this network for Smoothing Pool rewards (in wei)
 
-class NodeReward(Container):
-    address: Bytes20 # Address of the node that this object describes rewards for
-    network: uint64 # The L1 or L2 id that the node will claim on
+class ClaimerReward(Container):
+    address: Bytes20 # Address of the claimer that this object describes rewards for
+    network: uint64 # The L1 or L2 id that the claimer will claim on
                     # Corresponds to a NetworkReward.network in the File.network_rewards list
                     # 0 means L1
-    collateral_rpl: uint256 # RPL staking rewards earned by this node operator (in wei)
-    oracle_dao_rpl: uint256 # RPL rewards earned by this oDAO member (in wei)
-                            # If the node is not in the oDAO the expected value is 0
-    smoothing_pool_eth: uint256 # Smoothing Pool ETH earned by this node operator (in wei)
-                                # If the node was not in the smoothing pool during the interval,
-                                # the expected value is 0
+    collateral_rpl: uint256 # RPL staking rewards claimable by this claimer (in wei)
+    oracle_dao_rpl: uint256 # RPL rewards claimable by this claimer (in wei)
+                            # If all nodes corresponding to this claimer are not in the oDAO, the expected value is 0
+    smoothing_pool_eth: uint256 # Smoothing Pool ETH claimable by this claimer (in wei)
+                                # If all nodes corresponding to this claimer were not in the smoothing pool during the
+                                # interval, the expected value is 0
 ```
 
 # Naming
@@ -89,7 +89,6 @@ The IPFS CID shall be computed with:
   * A [Merkle DAG](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/merkle-dag.md)
   * With a [V1 CID Prefix](https://github.com/ipfs/ipfs-docs/blob/d72c43a545da5e58277cbfb3677ec68d0c9ef568/docs/concepts/content-addressing.md#version-1-v1)
   * With a [UnixFS](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md) directory node at the root
-    * Importing files with a fixed-size 1048576 byte [chunking strategy](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md#chunking) and a balanced [layout](https://github.com/ipfs/specs/blob/e4e5754ad4a4bfbb2ebe63f4c27631f573703de0/UNIXFS.md#layout)
     * With default `mode` (0755)
     * No `mtime` structure
   * With a single leaf node
@@ -99,6 +98,6 @@ The IPFS CID shall be computed with:
 
 # Sample Data
 
-A sample .ssz file can be downloaded [here](rp-rewards-holesky-155.ssz).
+A sample .ssz file can be downloaded [here](../assets/rpip-52/rp-rewards-holesky-155.ssz).
 
 It has IPFS CID `bafybeig4ofwnvou4bgehwzrc27nhfczd2cls5gzejsbliibrwm35owmaca`.

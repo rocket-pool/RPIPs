@@ -1,13 +1,14 @@
 ---
 rpip: 45
 title: RPL Burn
-description: Allow RPL holders to burn RPL in exchange for protocol ETH
+description: Direct revenue surplus from borrowed ETH to buy and burn permissionlessly provided RPL.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
+tags: tokenomics-2024, tokenomics-value-capture-option
 ---
 
 ## Abstract
@@ -15,13 +16,13 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 
 
 ## Specification
-- A share of revenue from borrowed ETH SHALL be directed to a smart contract (the burn contract) for the purpose of this burn (see [RPIP-46](RPIP-46.md))
+- A share of the revenue from borrowed ETH SHALL be directed to a smart contract (the burn contract) for this burn (see [RPIP-46](RPIP-46.md))
 - Any user MAY call a function in the burn contract to get ETH from the burn contract in exchange for RPL
 - Any RPL exchanged this way SHALL burned using the RPL token's `burn` or `burnFrom` functions
 - The swap price SHALL be based on an on-chain oracle
 
 ## Implementation thoughts
-There have been previous buy+burn mechanics susceptible to gaming. To that end, here's an example design that focuses on avoiding discontinuties by smoothly unlocking funds that are available for exchange.
+There have been previous buy+burn mechanics susceptible to gaming. To that end, here's an example design that focuses on avoiding discontinuities by smoothly unlocking the funds available for exchange.
 
 ![burn.png](../assets/rpip-45/burn.png)
 
@@ -36,14 +37,14 @@ The way this works is that:
 - The contract will allow burning RPL against `Available = Unlocked + (Unlocking*UnlockingRatio)` ETH
   - `UnlockingRatio = 1 - ((bucket_block - current_block)/bucket_period)`
 - The swap price will be based on a long Uniswap TWAP
-  - For safety, the protocol should ensure we have enough protocol owned liquidity in that Uniswap ETH/RPL pool
+  - For safety, the protocol should ensure we have enough protocol-owned liquidity in that Uniswap ETH/RPL pool
   - The swap price gives `rpl_to_eth_oracle_price * (1 + bonus_per_unlocked_eth * Available)` ETH per RPL
-  - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's not clear if this is necessary, but it seems prudent to include the tool. 
+  - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's unclear if this is necessary, but it seems prudent to include the tool. 
 
 Let's visualize what being able to burn looks like in practice using real RPL price data and a simulated 12-hour TWAP.
 ![twap.png](../assets/rpip-45/twap.png)
 
-We'd expect to burn all our available ETH at the beginning of a downturn (and thereby reduce its severity since that's not market sold). We'd also expect to continue burning against new distributions while price is on a downward slope. On an upward slope, there will be no expected burning until after the top is reached and we turn around for a bit.
+We'd expect to burn all our available ETH at the beginning of a downturn (and thereby reduce its severity since that's not market sold). We'd also expect to continue burning against new distributions while the price is on a downward slope. On an upward slope, burning is not expected until after the top is reached and we turn around for a bit.
 
 ### Security
 - The design intentionally presents a small surface area. Any benefit an attacker can accrue is limited by the fact that no user has a privileged position and that value is streamed in smoothly without any discontinuities.

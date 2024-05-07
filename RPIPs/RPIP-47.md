@@ -1,7 +1,7 @@
 ---
 rpip: 47
 title: Enable Forced Delegate Upgrades
-description: Allow for the protocol to make protocol-wide decisions rather than relying on per-operator upgrades
+description: Allows protocol governance to force upgrade Node Operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
@@ -9,6 +9,7 @@ type: Protocol
 category: Core
 created: 2024-03-08
 requires: 43
+tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
@@ -43,7 +44,7 @@ This proposal suggests limiting that upgrade choice in the future. Users will be
 
 ### Notes
 - `*` Example use: pDAO passes a vote by supermajority with a fast upgrade request; as part of the upgrade, `fast_upgrade_seal_count` is set to 1. The security council has 1 seal. They use it here and the value goes to zero; upon execution, their count is set back to 1 by the upgrade.
-- `**` Example use: Due to a conflict of interest, the pDAO does not want to rely on the security council's judgement for an upcoming upgrade. They directly vote on-chain to set `fast_upgrade_seal_count` to 0.
+- `**` Example use: Due to a conflict of interest, the pDAO does not want to rely on the security council's judgment for an upcoming upgrade. They directly vote on-chain to set `fast_upgrade_seal_count` to 0.
 - Note that the veto process is itself vulnerable to contract upgrades. However... such upgrades, if malicious, can be defended against by using a veto.
 
 ## Copyright
