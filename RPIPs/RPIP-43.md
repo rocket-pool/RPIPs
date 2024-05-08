@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-05
-requires: eip-4788
+requires: 30, eip-4788
 tags: tokenomics-2024, tokenomics-content
 ---
 
@@ -63,23 +63,35 @@ to another RPIP with the details.
 
 ### RPL Staking
 
-This subsection also needs a little work: clarify who a "user" is, clarify
-whether RPL "staked to a megapool" actually requires the RPL to be in the
-megapool balance or whether that is unspecified (eg, could be stored in Rocket
-Vault but accounted to the node), and preface with the two states (Staked and
-Unstaking) that portions of the RPL can be in.
+This RPIP includes a rework of the treatment of RPL staked on Rocket Pool
+nodes. We refer to RPL staked for a node prior to the implementation of this
+RPIP as "legacy staked RPL", and to RPL staked according to the rules described
+in this RPIP as, simply, "staked RPL", or as "megapool staked RPL" if otherwise
+ambiguous.
 
-- RPL MAY be staked to a megapool
-  - Validators MAY be added to a megapool regardless of RPL staked to the megapool (note that this means ETH-only node operation is possible)
-- Legacy RPL staking (ie staking RPL to a node rather than to a megapool) SHALL be disabled
-- A user MAY set any amount of RPL "Staked" to a megapool to "Unstaking"
-- Once RPL has been "Unstaking" for `unstaking_period` days, it can be withdrawn (this setting is defined in [RPIP-30](RPIP-30.md))
-- All RPL that was "Unstaking" MUST be withdrawn at one time
-- There SHALL only be a single time stored for "Unstaking" RPL; this means that if a user sets
-  additional RPL to "Unstaking" after some RPL is already "Unstaking", they must wait for
-  `unstaking_period` before any is available to withdraw
-  - All RPL that was already "Unstaking" for `unstaking_period` SHOULD be withdrawn when a user
-    sets additional RPL to "Unstaking"
+Megapool staked RPL (in the protocol, ie, before being withdrawn) can be in one
+of two states:
+- Staked: the RPL has been deposited and staked (locked) in the protocol, for a
+          node with a megapool deployed
+- Unstaking: the RPL has been marked as intended to be withdrawn
+
+Rules specifying the movement of staked RPL are as follows:
+
+- Legacy RPL staking (ie, increasing a node's legacy staked RPL balance) SHALL
+  be disabled
+- There is no staked RPL requirement for adding validators to a megapool
+- A Node Operator MAY change the state of any amount of staked RPL associated
+  with their node from Staked to Unstaking at any time
+    - The time at which Staked RPL was last changed to Unstaking RPL is called the
+      "last unstake time" for the node
+- Only Unstaking RPL can be withdrawn from the protocol, and only if the last
+  unstake time for the node is at least `unstaking_period` (this parameter is
+  defined in [RPIP-30](RPIP-30.md))
+- If any Unstaking RPL is withdrawn for a node, all Unstaking RPL for that node
+  MUST be withdrawn at once
+- If the last unstake time is at least `unstaking_period` when additional RPL
+  is having its state changed Unstaking, the RPL already in the Unstaking state
+  SHOULD be withdrawn first
 
 ### Vote Eligibility
 
