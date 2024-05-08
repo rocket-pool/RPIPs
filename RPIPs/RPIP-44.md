@@ -31,12 +31,12 @@ Funds (ETH) associated with a megapool SHALL be accounted in (at least) the foll
 
 The following quantity, `deficit`, is derived based on the megapool's balances:
 ```math
-$$ deficit = credit + withdrawn - debt $$
+$$ \mathtt{deficit} = \mathtt{credit} + \mathtt{withdrawn} - \mathtt{debt} $$
 ```
 
 We also introduce a protocol-wide parameter `exit_deficit`, with initial setting
 ```math
-$$ exit_deficit = 0.2 ETH $$
+$$ \mathtt{exit\_deficit} = 0.2\;\mathrm{ETH} $$
 ```
 
 The exit functionality for a megapool is specified as follows:
