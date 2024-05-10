@@ -41,8 +41,10 @@ $$ \mathtt{exit\_deficit} = 0.2\;\mathrm{ETH} $$
 
 The exit functionality for a megapool is specified as follows:
 - A megapool contract SHALL include an `exit` function
-  - This function SHALL accept one or more public keys for validators associated with this megapool that have exited the beacon chain
+  - This function SHALL accept one or more public keys for validators associated with this megapool
   - This function SHALL either remove the specified validators from the megapool or revert
+      - If any of the validators are still active on the beacon chain a successful call of this
+        function MUST also exit those validators from the beacon chain
   - This function MAY be freely called by the Node Operator (as implied by [RPIP-43](RPIP-43.md))
   - This function MAY be called by any account under the condition: `deficit >= exit_deficit`
       - It MUST NOT be possible for accounts other than the Node Operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
