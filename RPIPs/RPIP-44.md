@@ -29,7 +29,7 @@ Funds (ETH) associated with a megapool SHALL be accounted in (at least) the foll
 - Withdrawals (`withdrawn`): Funds received into the megapool via withdrawals from the beacon chain, including both principal and the node's share of rewards, NOT including pool stakers' share of the rewards
 - Penalties (`debt`): Funds lost to penalties as enumerated in [RPIP-42](RPIP-42.md), or repaid from other balances as specified in this RPIP
 
-The following quantity, `deficit`, is derived based on the megapool's balances:
+The following quantity, `deficit`, is derived from the categorised funds above:
 ```math
 $$ \mathtt{deficit} = \mathtt{credit} + \mathtt{withdrawn} - \mathtt{debt} $$
 ```
