@@ -97,8 +97,11 @@ Rules specifying the movement of staked RPL are as follows:
 ### Vote Eligibility
 
 - All nodes are eligible to receive vote power
-- Total RPL staked (to either a megapool or the node) SHALL contribute to vote power up to 150% of the value of total bonded ETH (from both megapools and legacy minipools)
-  - Note that "Unstaking" RPL SHALL NOT be counted
+- For nodes eligible to receive vote power, the sum of legacy staked RPL and
+  megapool staked RPL in the Staked state SHALL contribute to vote power up to
+  150% of the value of total bonded ETH (from both megapools and legacy
+  minipools)
+  - Note that Unstaking RPL SHALL NOT be counted
   - If this RPIP is ratified, a note SHALL be added to the "Eligibility" section of [RPIP-4](./RPIP-4.md) saying that it has been superseded by this section
 
 ## Reference Implementation
