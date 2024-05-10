@@ -43,7 +43,9 @@ megapools SHALL include at least the following:
 Node operators can manage the set of validators in their megapool:
 
 - A Node Operator SHALL be able to add new validators to their megapool
-- A Node Operator SHALL be able to migrate existing validators to their megapool
+- A Node Operator MAY be able to migrate existing validators to their megapool
+     - Note that this would involve updating the validators' BLS withdrawal
+       credentials to the megapool address
 - New and existing validators' withdrawal credentials MUST be checked to
   correctly refer to the megapool address, with the validator status set to
   Deposited or Dissolved accordingly
