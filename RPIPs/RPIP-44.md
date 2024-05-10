@@ -24,14 +24,15 @@ This specification extends the specification of megapools in
 megapool to be done by parties other than the Node Operator.
 
 Funds (ETH) associated with a megapool SHALL be accounted in (at least) the following categories:
-- Credits (`credit`): Funds that can be used towards validator deposits; sources include but are not limited to deposits from the Node Operator, ETH staked on behalf of the node ([RPIP-32](RPIP-32.md)), and ETH already staked on the beacon chain for a migrating validator
-- Deposits (`deposited`): Funds initially received as credits that are currently staked on the beacon chain for validators associated with this megapool
+- Received Funds (`received`): Funds provided that can be used towards validator deposits; sources include deposits from the Node Operator and ETH staked on behalf of the node ([RPIP-32](RPIP-32.md))
+- Credits (`credit`): Funds already in the protocol that can be used towards validator deposits; sources include ETH already staked on the beacon chain for a migrating validator
+- Deposits (`deposited`): Funds currently staked on the beacon chain for validators associated with this megapool
 - Withdrawals (`withdrawn`): Funds received into the megapool via withdrawals from the beacon chain, including both principal and the node's share of rewards, NOT including pool stakers' share of the rewards
 - Penalties (`debt`): Funds lost to penalties as enumerated in [RPIP-42](RPIP-42.md), or repaid from other balances as specified in this RPIP
 
 The following quantity, `deficit`, is derived from the categorised funds above:
 ```math
-$$ \mathtt{deficit} = \mathtt{credit} + \mathtt{withdrawn} - \mathtt{debt} $$
+$$ \mathtt{deficit} = \mathtt{received} + \mathtt{credit} + \mathtt{withdrawn} - \mathtt{debt} $$
 ```
 
 We also introduce a protocol-wide parameter `exit_deficit`, with initial setting
@@ -48,7 +49,7 @@ The exit functionality for a megapool is specified as follows:
   - This function MAY be freely called by the Node Operator (as implied by [RPIP-43](RPIP-43.md))
   - This function MAY be called by any account under the condition: `deficit >= exit_deficit`
       - It MUST NOT be possible for accounts other than the Node Operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
-- The protocol SHALL use the `withdrawn` and `credit` balances to decrease `debt` prior to taking action on exits
+- The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to decrease `debt` prior to taking action on exits
 - The protocol SHOULD use staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
 
 ## Copyright
