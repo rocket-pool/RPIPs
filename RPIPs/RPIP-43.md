@@ -20,8 +20,8 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 ### Megapool Contracts
 
 This specification introduces a type of smart contract called a "megapool" that
-handles Beacon Chain withdrawals for Rocket Pool validators deposited after
-this RPIP is implemented.
+serves as the target of Beacon Chain withdrawal credentials for Rocket Pool
+validators deposited after this RPIP is implemented.
 
 - A Node Operator SHALL be able to deploy at most one megapool contract
     - This MAY be combined with the deposit of their first validator
