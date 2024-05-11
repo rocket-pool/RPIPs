@@ -29,7 +29,9 @@ validators deposited after this RPIP is implemented.
   proxy implementation contract SHALL be called the megapool's "delegate"
 - Legacy minipool deposits (ie, deposits of validators with withdrawal
   credentials that are not a megapool) SHALL be disabled
-    - This SHOULD be achieved in a way that prevents creation of minipools
+- Solo migration into legacy minipools (ie, promotion of vacant minipools)
+  SHALL be disabled; this MAY be achieved by disabling creation of vacant
+  minipools
 
 ### Validator Management
 
