@@ -4,9 +4,18 @@ title: Rewards Tree v10 Specification
 description: Adjusts the rewards file to account for Houston changes, generalizing rewards from nodes to claimers and supporting the RPL withdrawal address
 author: Joe Clapis (@jcrtp), Jacob Shufro (@jshufro)
 discussions-to: https://dao.rocketpool.net/t/rewards-tree-spec-v10/2937
-status: Review
+status: Withdrawn
 type: Protocol
 created: 2024-04-19
+---
+
+
+## Update
+
+In accordance with [the announcement](https://discord.com/channels/405159462932971535/405163979141545995/1239452660034310144) on the Rocket Pool Discord server, the team has brought the Houston contract code in-line with the verbiage of [RPIP-31](./RPIP-31.md) prior to Houston's deployment on Mainnet. As such, this RPIP is no longer required and should be considered obsolete and withdrawn.
+
+The original proposal is preserved below for posterity.
+
 ---
 
 
