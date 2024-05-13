@@ -109,7 +109,7 @@ The below is generally agreed to be the steps to be completed before we can cons
 
 ### Outstanding Items
 
-TBC
+A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
 ## Excluded Components
 The below components have been discussed, but are not currently considered high enough priority to be included in the tokenomics rework plan.
