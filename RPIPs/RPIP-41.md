@@ -8,6 +8,9 @@ status: Final
 type: Meta
 created: 2024-03-04
 requires: 10, 40
+vote-to: https://vote.rocketpool.net/#/proposal/0xe89ab0a846846884b088ba4ec5e37fb4ecb1a3a5b9639c53ee480055570c53d2
+vote-date: 2024-05-10
+vote-result: Passed
 ---
 
 ## Abstract
