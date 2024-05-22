@@ -34,7 +34,7 @@ Currently, the oDAO can apply an unlimited number of penalties without any delay
 There are at most 50,400 blocks in 50,400 slots. At worst, every block that Rocket Pool validators propose is stolen. Currently, Rocket Pool has a network share of ~2.5%. The probability that Rocket Pool validators get more than 1,370 proposals in 50,400 blocks is 0.1%. 2,500 is chosen as initial and minimum setting to keep this probability very low even after significant market share growth.
 
 ### Reduces Risk of Illegitimate Use Significantly
-At 2,5000 penalties per week and currently ~25,000 minipools the worst case impact is reduced to <2% of node operator ETH.
+At 2,500 penalties per week and currently ~25,000 minipools the worst case impact is reduced to <2% of node operator ETH.
 
 The choice of fixed versus moving window is left to the implementer. 
 
