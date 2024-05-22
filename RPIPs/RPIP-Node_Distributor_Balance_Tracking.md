@@ -2,6 +2,7 @@
 rpip: #<to be assigned>
 title: Node Distributor Balance Tracking
 description: Guarantee that anyone can distribute ETH in Node Distributors.
+author: knoshua (@knoshua)
 discussions-to: <URL>
 status: Draft
 type: Protocol
