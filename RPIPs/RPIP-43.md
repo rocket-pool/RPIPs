@@ -61,33 +61,40 @@ Node operators can manage the set of validators in their megapool:
 ### Funds Management
 
 - This RPIP assumes the continued use of separate 32 Ether valdiators. Support for
-  EIP-7251 'Max EB' validators will require additional specification and development
+  EIP-7251 'Max EB' validators will require additional specification and development.
 - The megapool SHALL track the total capital ownership of the validator(s) between
-  the node operator and the rETH stakers
+  the node operator and the rETH stakers.
 - The megapool MUST distinguish between capital funds present in the contract and
-  rewards funds at all times
+  rewards funds at all times.
 - A Node Operator SHALL be able to distribute rewards from all validators in their
-  megapool at once
+  megapool at once.
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
-  pending removal
+  pending removal.
 - When the distribution function in the megapool is called:
-  - The node_operator's share (withdrawn capital and node operator earnings plus
-    commission) shall be sent to the node operator's withdrawal address or held
-    in the megapool as distributed but unclaimed rewards
-  - The rETH holder's share (withdrawn capital and reth earnings minus reth
-    commission) SHALL be sent to the rETH contract or deposit pool depending on
-    the 'excess collateral' level in the rETH contract
-  - The UARS rewards share (voter_share plus surplus_share) SHALL be sent to a
-    contract for further distribution via a merkle rewards distributor
+  - The node operator's share (withdrawn capital and node operator earnings plus
+    `node_operator_commission_share`) shall be sent to the node operator's
+    withdrawal address or held in the megapool as distributed but unclaimed node
+    operator funds.
+  - The rETH holder's share (withdrawn capital and reth earnings minus
+    `reth_commission`) SHALL be sent to the rETH contract or deposit pool depending
+    on the 'excess collateral' level in the rETH contract.
+  - The UARS rewards share (`voter_share` plus `surplus_share`) SHALL be sent to a
+    contract for further distribution via a merkle rewards distributor.
 - Anyone MAY perform a rewards distribution. Rewards distributions not performed
   by the node operator SHALL leave the node operator's share in the megapools as
-  distributed but unclaimed rewards
+  distributed but unclaimed node operator funds.
 - Anyone MAY perform a capital distribution. Distributions not performed by the
   node operator SHALL be subject to a PDAO configured cooldown timer and SHALL
   leave the node operator's share in the megapool as distributed, but unclaimed
-  funds
+  node operator funds.
+- Unclaimed node operator funds MAY either be withdrawn to the node operator's
+  withdrawal address, or be used for redeposit to the beacon chain.
+- Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
+  excluded from capital distribution, but rather be subject to separate functions
+  for `prestake` and `stake` transactions.
 - The megapool MAY be used as the node operator's authorized fee recipient for
-  execution layer rewards if they are not opted into the smoothing pool
+  execution layer rewards if they are not opted into the smoothing pool. These
+  funds shall be subject to rewards distribution.
 
 ### RPL Staking
 
