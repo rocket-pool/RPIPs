@@ -70,23 +70,34 @@ Node operators can manage the set of validators in their megapool:
   megapool at once.
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
   pending removal.
-- When the distribution function in the megapool is called:
-  - The node operator's share (withdrawn capital and node operator earnings plus
-    `node_operator_commission_share`) shall be sent to the node operator's
-    withdrawal address or held in the megapool as distributed but unclaimed node
-    operator funds.
-  - The rETH holder's share (withdrawn capital and reth earnings minus
-    `reth_commission`) SHALL be sent to the rETH contract or deposit pool depending
-    on the 'excess collateral' level in the rETH contract.
-  - The UARS rewards share (`voter_share` plus `surplus_share`) SHALL be sent to a
-    contract for further distribution via a merkle rewards distributor.
-- Anyone MAY perform a rewards distribution. Rewards distributions not performed
-  by the node operator SHALL leave the node operator's share in the megapools as
-  distributed but unclaimed node operator funds.
-- Anyone MAY perform a capital distribution. Distributions not performed by the
-  node operator SHALL be subject to a pDAO configured cooldown timer and SHALL
-  leave the node operator's share in the megapool as distributed, but unclaimed
-  node operator funds.
+- There SHALL be a reward distribution function in the megapool
+  - When called, rewards from the node operator's bonded ETH SHALL be held in
+    the megapool as unclaimed node operator funds.
+  - When called, `node_operator_commission_share` of rewards SHALL be held in 
+      the megapool as unclaimed node operator funds.
+  - When called, `reth_share` of rewards SHALL be sent to the rETH contract
+  - When called, `voter_share` of rewards SHALL be sent to a merkle rewards distributor contract
+  - When called, `surplus_share` of rewards SHALL be sent to an appropriate distributor contract
+  - This function SHALL allow any user to call it
+  - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
+- There SHALL be a capital distribution function in the megapool
+  - When called, capital from the node operator's bonded ETH that has been released from
+    exited validators SHALL be held in the megapool as unclaimed node operator funds.
+  - When called, capital borrowed from the protocol that has been released from
+    exited validators SHALL be sent to the rETH contract.
+  - This function SHALL allow any user to call it [DEFINE COOLDOWN]
+  - If called by the node operator
+    - This function SHOULD claim all unclaimed node operator funds
+    - [BYPASS THE COOLDOWN THING DEFINED]
+- There SHALL be a function to claim unclaimed node operator funds; when called
+  - If unclaimed node operator funds >= penalties
+    - unclaimed node operator funds SHALL be decreased by penalties
+    - penalties SHALL be set to 0
+  - If unclaimed node operator funds < penalties
+    - unclaimed node operator funds SHALL be set to 0
+    - penalties SHALL be decreased by unclaimed node operator funds
+  - unclaimed node operator funds SHALL be transferred to the node operator's withdrawal address
+  - unclaimed node operator funds SHALL be set to 0
 - A Node Operator SHALL be able to withdraw unclaimed node operator funds to
   their withdrawal address
 - A Node Operator MAY be able to use unclaimed node operator funds for redeposit
