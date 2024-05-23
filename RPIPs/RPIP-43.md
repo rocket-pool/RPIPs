@@ -20,7 +20,7 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 ### Megapool Contracts
 
 This specification introduces a type of smart contract called a "megapool" that
-serves as the target of Beacon Chain withdrawal credentials for Rocket Pool
+SHALL serve as the target of Beacon Chain withdrawal credentials for Rocket Pool
 validators deposited after this RPIP is implemented.
 
 - A Node Operator SHALL be able to deploy at most one megapool contract
@@ -60,7 +60,7 @@ Node operators can manage the set of validators in their megapool:
 
 ### Funds Management
 
-- This RPIP assumes the continued use of separate 32 Ether valdiators. Support for
+- This RPIP assumes the continued use of separate 32 Ether validators. Support for
   EIP-7251 'Max EB' validators will require additional specification and development.
 - The megapool SHALL track the total capital ownership of the validator(s) between
   the node operator and the rETH stakers.
@@ -84,11 +84,13 @@ Node operators can manage the set of validators in their megapool:
   by the node operator SHALL leave the node operator's share in the megapools as
   distributed but unclaimed node operator funds.
 - Anyone MAY perform a capital distribution. Distributions not performed by the
-  node operator SHALL be subject to a PDAO configured cooldown timer and SHALL
+  node operator SHALL be subject to a pDAO configured cooldown timer and SHALL
   leave the node operator's share in the megapool as distributed, but unclaimed
   node operator funds.
-- Unclaimed node operator funds MAY either be withdrawn to the node operator's
-  withdrawal address, or be used for redeposit to the beacon chain.
+- A Node Operator SHALL be able to withdraw unclaimed node operator funds to
+  their withdrawal address
+- A Node Operator MAY be able to use unclaimed node operator funds for redeposit
+  to the beacon chain.
 - Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
   excluded from capital distribution, but rather be subject to separate functions
   for `prestake` and `stake` transactions.
