@@ -36,7 +36,8 @@ Given a slot time of 12 seconds, there are 50,400 slots in 7 days.
 There are at most 50,400 blocks in 50,400 slots. At worst, every block that Rocket Pool validators propose is stolen. As of May 2024, Rocket Pool has a network share of ~2.5%. The probability that Rocket Pool validators get more than 1,370 proposals in 50,400 blocks is 0.1%. 2,500 is chosen as initial and minimum setting to keep this probability very low even after significant market share growth.
 
 ### Reduces Risk of Illegitimate Use Significantly
-At 2,5000 penalties per week and currently ~25,000 minipools the worst case impact is reduced to <2% of node operator ETH.
+At 2,5000 penalties per week and as of May 202 ~245,000 minipools the worst case impact is reduced to <2% of node operator ETH.
+
 
 ## Backwards Compatibility
 There are no backwards compatibility concerns with this proposal.
@@ -46,7 +47,7 @@ Since the oDAO is also in control of contract upgrades, a compromised oDAO has t
 
 This RPIP assumes that the oDAO is applying penalties shortly after they occur. Retroactively applying penalties for a long time period might become limited. However, the retroactive approach is already problematic, since there is no guarantee that MEV stealers will stick around to be penalized.
 
-This RPIP assumes that the oDAO applies one penalty per infraction. If for example we wanted to get rid of the two free initial strikes per minipool, this should best ne done through contract changes and not by applying multiple penalties per infraction. 
+This RPIP assumes that the oDAO applies one penalty per infraction. If for example we wanted to get rid of the two free initial strikes per minipool, this should best be done through contract changes and not by applying multiple penalties per infraction. 
 
 
 ## Copyright
