@@ -1,6 +1,6 @@
 ---
 rpip: #<to be assigned>
-title: Node Distributor Balance Tracking
+title: Node Distributor User Fund Unbundling
 description: Guarantee that anyone can distribute ETH in Node Distributors.
 author: knoshua (@knoshua)
 discussions-to: <URL>
