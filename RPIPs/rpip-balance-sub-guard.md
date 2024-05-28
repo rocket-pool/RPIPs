@@ -28,13 +28,15 @@ Currently, the oDAO can change rETH rate arbitrarily within one block. This expo
 
 ### Network Balance Updates
 - The oDAO SHALL NOT be able to be submit a Network Balance update if the time elapsed since the last Network Balance update is less than the Network Submit Balances Frequency.
-- Network Balance updates SHALL NOT be able to change the rETH exchange rate by more than Maximum rETH Delta.
+- The oDAO SHALL NOT be able to change the rETH exchange rate by more than Maximum rETH Delta.
 - If an update would lead to an rETH exchange rate change of more than Maximum rETH Delta, the oDAO SHALL submit an update of Maximum rETH Delta instead.
 
 ## Rationale
 The pDAO can change the limit to a sufficiently high value to effectively disable this guardrail. The minimum guarantees that normal operation of the protocol can not be interfered with through a parameter change.
 
 Limiting the change per update alone is not enough, since multiple updates in one block would be able to undermine it severely. Therefore update frequency is also limited.
+
+A minimum for the Maximum rETH Delta parameter is necessary to make sure that regular updates are possible. I chose 1% as a round number that is large enough to allow for that, even with some volatility in updates because of big MEV blocks, and at the same time significantly reduce impact in the worst case scenario.
 
 
 
