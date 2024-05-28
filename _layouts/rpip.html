@@ -137,7 +137,7 @@ layout: default
     IEEE specification for reference formatting:
     https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
     {% endcomment %}
-    <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}," <em>Rocket Pool Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
+    <p>{% include authorlist.html authors=page.author %}, "RPIP-{{ page.rpip | xml_escape }}: {{ page.title | xml_escape }}{% if page.status == "Draft" or page.status == "Last Call" %} [DRAFT]{% endif %}{% if page.status == "Living" %} [LIVING]{% endif %}," <em>Rocket Pool Improvement Proposals</em>, no. {{ page.rpip | xml_escape }}, {{ page.created | date: "%B %Y" }}. [Online serial]. Available: {{site.url}}/RPIPs/rpip-{{ page.rpip | xml_escape }}.</p>
   </div>
 </div>
 {% comment %}
