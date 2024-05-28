@@ -12,7 +12,7 @@ created: 2024-05-27
 ---
 
 ## Abstract
-This proposal limits how much rETH rate can change with one update. The limit is a protocol parameter controlled by the pDAO. The pDAO can't set it lower than a minimum value. The parameter can't be changed by the Security Council.
+This proposal limits how much the oDAO can change the rETH rate in a single update. The limit is a protocol parameter controlled by the pDAO. The pDAO can't set it lower than a minimum value. The parameter can't be changed by the Security Council.
 This proposal also limits how frequently updates can happen, using an existing protocol parameter that the pDAO controls. 
 
 ## Motivation
@@ -27,7 +27,7 @@ Currently, the oDAO can change rETH rate arbitrarily within one block. This expo
 - The Security Council SHALL NOT be able to change Maximum rETH Delta.
 
 ### Network Balance Updates
-- Network Balance updates SHALL NOT be able to be sumbitted more frequently than specified by the existing protocol parameter Network Submit Balances Frequency.
+- The oDAO SHALL NOT be able to be submit a Network Balance update if the time elapsed since the last Network Balance update is less than the Network Submit Balances Frequency.
 - Network Balance updates SHALL NOT be able to change the rETH exchange rate by more than Maximum rETH Delta.
 - If an update would lead to an rETH exchange rate change of more than Maximum rETH Delta, the oDAO SHALL submit an update of Maximum rETH Delta instead.
 
