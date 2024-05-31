@@ -52,8 +52,8 @@ Megapools will enable multiple validators to share the same Ethereum withdrawal 
 Forced delegate upgrades (with a grace period) will limit the technical debt the Rocket Pool protocol accumulates from previous versions.
 
 <div class="prev-next-container">
-{%if cPrev %}<a href="{{cPrev.url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
-{%if cNext %}<a href="{{cNext.url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
+{%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
+{%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
 
 ---
