@@ -15,6 +15,37 @@ nav-title: Tokenomics Rework
 {% assign informational-rpips=relevant-rpips|where_exp:"item","item.type == 'Informational'"| sort: "rpip" %}
 {% include rpiptable_full.html rpips=informational-rpips type_col=false status_col=true description=true%}
 
+{% assign explainers=site.pages|where_exp:"item","item.dir contains 'tokenomics-explainers'" %}
+
+<style type="text/css">
+    .tokenomics-explainertable{
+      table-layout: fixed;
+      margin-top: 10px;
+    }
+    
+    .tokenomics-explainertable .author {
+      width: 25%;
+    }
+
+</style>
+<table class="tokenomics-explainertable">
+    <thead>
+        <tr>
+            <th class="title">Rework Explainers</th>
+            <th class="author">Author</th>
+        </tr>
+    </thead>
+    {% for page in explainers %}
+        <tr>
+        <td class="title">
+            <a href="{{page.url|relative_url}}">{{page.nav-title|xml_escape}}</a><br/>
+            <i><span class="rpip-table-description">{{page.description|xml_escape}}</i></span>
+        </td>
+        <td class="author">{% include authorlist.html authors=page.author %}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 <h2>Content RPIPs</h2>
 
 {% assign content-rpips=relevant-rpips|where_exp:"item","item.tags contains 'tokenomics-content'"| sort: "rpip" %}
