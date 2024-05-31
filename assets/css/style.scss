@@ -375,8 +375,33 @@ a.page-link:hover {
   justify-content: center;
 }
 
+.other-content-post h2{
+  border-style: none;
+  border-bottom: 1px solid $grey-color-light;
+}
+
 .post-layout {
   padding-right: 90px;
   padding-left: 90px;
   max-width: 900px;
+}
+
+.prev-next-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.prev-next-container a, .prev-next-container span{
+  text-align: right;
+  font-weight: bold;
+  font-size: large;
+}
+
+hr {
+  margin: 12px;
+  border-style: none;
+  border-top: 1px solid $grey-color-light;
 }
