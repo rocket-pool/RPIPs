@@ -369,3 +369,14 @@ a.page-link:hover {
     display: none;
   }
 }
+
+.other-content-post {
+  display: flex;
+  justify-content: center;
+}
+
+.post-layout {
+  padding-right: 90px;
+  padding-left: 90px;
+  max-width: 900px;
+}
