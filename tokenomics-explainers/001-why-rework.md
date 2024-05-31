@@ -43,7 +43,7 @@ Let's assume a minimum RPL LEB8 minipool with 3.8% solo APY[^1].
 - If net RPL performance is flat vs ETH, the operator earns a **9% boost** compared to solo staking rewards.
 - With -5% net RPL performance, the operator sees a **21% drop** compared to solo staking rewards.
 - With +5% net RPL performance, the operator sees a **40% boost** compared to solo staking rewards.
-  
+  
 RPL value change dominates rewards, and given the volatility in crypto, this can very easily outweigh staking rewards.
 
 ### RPL Rewards are not attractive enough for node operators to maintain the minimum
