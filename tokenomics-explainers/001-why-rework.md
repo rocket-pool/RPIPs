@@ -23,23 +23,22 @@ The current bonding style tokenomics can be traced back to the original Rocket P
 However, what many thought was a good idea in 2017 has not turned out exactly as anticipated as protocol size has stalled and even reversed. This rework aims to establish a sustainable future direction for the RPL token, stem the outflow of node operators, and provide a path to reach the protocol’s rETH supply targets.
 
 ## Original idealized concept
-In broad strokes, the current setup is meant to be something like:  
-  
-**Ideal 1** - RPL stake serves as an entry ticket to ETH commission via the minimum staking requirement to start a minipool (10% of borrowed ETH)  
-  
-**Ideal 2** - RPL rewards are attractive enough that node operators want to maintain this minimum staking level, so we expect them to stay at or above the minimum   
-  
-**Ideal 3** - In the long run, the fundamental value of RPL trends to what's needed for all minipools to hit this minimum staking level (ie, RPL market cap should be ~10% of rETH TVL)  
-  
-  
+In broad strokes, the current setup is meant to be something like:  
+  
+**Ideal 1** - RPL stake serves as an entry ticket to ETH commission via the minimum staking requirement to start a minipool (10% of borrowed ETH)  
+  
+**Ideal 2** - RPL rewards are attractive enough that node operators want to maintain this minimum staking level, so we expect them to stay at or above the minimum  
+  
+**Ideal 3** - In the long run, the fundamental value of RPL trends to what's needed for all minipools to hit this minimum staking level (ie, RPL market cap should be ~10% of rETH TVL)  
+  
 Unfortunately, over the last few years, we've seen that these ideals do not play out as anticipated.
 
 ## Issues seen in reality
 
 ### Running minipools is primarily Speculative
 
-Unfortunately, the staking requirement in **Ideal 1** makes the financial success of running minipools overwhelmingly dominated by RPL performance.
-  
+Unfortunately, the staking requirement in **Ideal 1** makes the financial success of running minipools overwhelmingly dominated by RPL performance.  
+  
 Let's assume a minimum RPL LEB8 minipool with 3.8% solo APY[^1].
 - If net RPL performance is flat vs ETH, the operator earns a **9% boost** compared to solo staking rewards.
 - With -5% net RPL performance, the operator sees a **21% drop** compared to solo staking rewards.
@@ -49,18 +48,18 @@ RPL value change dominates rewards, and given the volatility in crypto, this can
 
 ### RPL Rewards are not attractive enough for node operators to maintain the minimum
 
-**Ideal 2** is not universally sufficient for node operators to maintain the minimum staking requirement of 10%. 
-  
-Figure 1 below shows that many node operators simply opt out of topping off their RPL stake.
-  
+**Ideal 2** is not universally sufficient for node operators to maintain the minimum staking requirement of 10%.  
+  
+Figure 1 below shows that many node operators simply opt out of topping off their RPL stake.  
+  
 Further, the metric used for the RPL reward threshold is "RPL staked as a percentage of borrowed ETH", which means there are two ways to requalify for rewards. Top up to increase stake, or exit minipools to reduce borrowed ETH. Some node operators have opted for the second option.
-
+  
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
-
+  
 ### The long-term fundamental value of RPL does not hold up
 
-Mostly due to the issues with the first two ideas, **Ideal 3** also fails.
+Mostly due to the issues with the first two ideas, **Ideal 3** also fails.  
 
 If any large node (or many small nodes) decides to stop topping up its RPL, the fundamental value calculation breaks. Eg, if at maturity the average collateral is 5% of borrowed ETH, then RPL’s value would be half the value of a situation that’s identical except the average collateral is 10% of borrowed ETH. As shown in the Figure 1 above, this effect is definitely present.
 
