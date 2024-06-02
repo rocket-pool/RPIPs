@@ -4,6 +4,16 @@
 
 @import 'minima';
 
+.site-title {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  float: left;
+}
+
 .site-header {
   .wrapper {
     display: flex;
@@ -385,13 +395,12 @@ a.page-link:hover {
 }
 
 .post-layout {
-  padding-right: 90px;
-  padding-left: 90px;
   max-width: 900px;
 }
 
 .prev-next-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: row;
   margin-top: 24px;
@@ -399,7 +408,6 @@ a.page-link:hover {
 }
 
 .prev-next-container a, .prev-next-container span{
-  text-align: right;
   font-weight: bold;
   font-size: large;
 }

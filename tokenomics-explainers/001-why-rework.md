@@ -95,4 +95,4 @@ _Figure 2 - Supply of Node Operator ETH -  [Source](https://dune.com/invis/rp-n
 
 ---
 
-[^1]: ROI is calculated using `((bonded_eth + commision_pct*borrowed_eth)*solo_apy + staked_rpl*net_rpl_performance)/(bonded_eth + staked_rpl)`, where `net_rpl_performance = rpl_reward_apy + rpl_ratio_change`
+[^1]: ROI is calculated using `((bonded_eth + commision_pct * borrowed_eth) * solo_apy + staked_rpl * net_rpl_performance) / (bonded_eth + staked_rpl)`, where `net_rpl_performance = rpl_reward_apy + rpl_ratio_change`

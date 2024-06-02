@@ -58,4 +58,4 @@ Forced delegate upgrades (with a grace period) will limit the technical debt the
 
 ---
 
-[^1]: ROI is calculated using the following formula `(bonded_eth + commission_pct*borrowed_eth)/bonded_eth` 
+[^1]: ROI is calculated using the following formula `(bonded_eth + commission_pct * borrowed_eth) / bonded_eth` 
