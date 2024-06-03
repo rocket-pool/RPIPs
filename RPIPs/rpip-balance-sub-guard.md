@@ -3,7 +3,7 @@ rpip: #<to be assigned>
 title: Balance Submission Guardrail
 description: <Description is one full (short) sentence>
 author: knoshua (@knoshua)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-balance-submission-guardrail/3010
 status: Draft
 type: Protocol
 category (*only required for Protocol ): Core
