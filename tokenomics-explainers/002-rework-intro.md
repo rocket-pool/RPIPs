@@ -6,6 +6,7 @@ description: Describes the contents and benefits of the tokenomics rework at a h
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
 custom-next: none
 custom-prev: /tokenomics-explainers/001-why-rework
+depth: Intro
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -15,10 +16,6 @@ custom-prev: /tokenomics-explainers/001-why-rework
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
-
-## Introduction
-
-Now that we've seen some of the limitations of the original tokenomics structure, let's take a high-level look at how the tokenomics rework addresses these limitations.
 
 ## Items that directly address tokenomics issues
 
@@ -36,9 +33,9 @@ There is **no RPL reward threshold/cliff** with the rework, so we avoid losing r
 
 ## Items addressing other issues
 
-With the rework, smaller ETH bonds will be possible. This **dramatically increases capital efficiency.** Arguably, this is the most important single item because while other items in the rework impact how revenue is distributed; this change increases how much revenue each unit of capital can generate.
+With the rework, smaller ETH bonds will be possible. This **dramatically increases capital efficiency.** Arguably, this is the most important single item in the rework; while other changes impact how revenue is distributed, this change increases how much revenue each unit of capital can generate.
 
-Consider validators receiving a 3.5% commission on borrowed ETH with various bonds[^1]:
+Consider ETH-only validators receiving a 3.5% commission on borrowed ETH with various bonds[^1]:
 * 8 ETH bond: **10.5% boost** compared to solo staking rewards.
 * 4 ETH bond: **24.5% boost** compared to solo staking rewards.
 * 1.5 ETH bond: **71.2% boost** compared to solo staking rewards.
@@ -47,7 +44,7 @@ Node-level penalties and forced validator exits are also included in the rework 
 
 Megapools will enable multiple validators to share the same Ethereum withdrawal address – this **reduces initial and ongoing gas costs** for node operators.
 
-**RPL inflation will be reduced from 5% to 1.5%** because node operators will be rewarded via additional ETH revenue rather than RPL inflation.
+**RPL inflation will be reduced from 5% to 1.5%**, because the current 3.5% inflation used for RPL rewards to NOs is no longer necessary.
 
 Forced delegate upgrades (with a grace period) will limit the technical debt the Rocket Pool protocol accumulates from previous versions.
 

@@ -6,6 +6,7 @@ description: Describes the intentions of the original Rocket Pool tokenomics and
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@Samus), Paladin
 custom-next: /tokenomics-explainers/002-rework-intro
 custom-prev: none
+depth: Intro
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -16,7 +17,7 @@ custom-prev: none
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
 
-## Introduction
+## History
 
 The current bonding style tokenomics can be traced back to the original Rocket Pool whitepaper and ICO in 2017 where RPL was suggested as a requirement for future node operators. Many stakers flocked to this idea, especially after the release of the Rocket Pool Investment Thesis. The vision was realized by the Fire Eyes team in the much-hyped at the time [Article 3](https://medium.com/rocket-pool/rocket-pool-staking-protocol-part-3-3029afb57d4c). Some modifications would follow, but the overall value capture mechanism of the RPL token has remained unchanged since 2017. 
 
@@ -27,7 +28,7 @@ In broad strokes, the current setup is meant to be something like:
   
 **Ideal 1** - RPL stake serves as an entry ticket to ETH commission via the minimum staking requirement to start a minipool (10% of borrowed ETH)  
   
-**Ideal 2** - RPL rewards are attractive enough that node operators want to maintain this minimum staking level, so we expect them to stay at or above the minimum  
+**Ideal 2** - RPL rewards are attractive enough that node operators want to maintain this minimum staking level, so we expect them to stay at or above the minimum by adding RPL as needed
   
 **Ideal 3** - In the long run, the fundamental value of RPL trends to what's needed for all minipools to hit this minimum staking level (ie, RPL market cap should be ~10% of rETH TVL)  
   
@@ -44,7 +45,7 @@ Let's assume a minimum RPL LEB8 minipool with 3.8% solo APY[^1].
 - With -5% net RPL performance, the operator sees a **21% drop** compared to solo staking rewards.
 - With +5% net RPL performance, the operator sees a **40% boost** compared to solo staking rewards.
   
-RPL value change dominates rewards, and given the volatility in crypto, this can very easily outweigh staking rewards.
+RPL value change dominates rewards, and given the volatility in crypto, this is likely to outweigh staking rewards.
 
 ### RPL Rewards are not attractive enough for node operators to maintain the minimum
 
@@ -52,16 +53,14 @@ RPL value change dominates rewards, and given the volatility in crypto, this can
   
 Figure 1 below shows that many node operators simply opt out of topping off their RPL stake.  
   
-Further, the metric used for the RPL reward threshold is "RPL staked as a percentage of borrowed ETH", which means there are two ways to requalify for rewards. Top up to increase stake, or exit minipools to reduce borrowed ETH. Some node operators have opted for the second option.
+Further, the metric used for the RPL reward threshold is "RPL staked as a percentage of borrowed ETH", which means there are two ways to requalify for rewards. Top up to increase staked RPL, or exit minipools to reduce borrowed ETH. Some node operators have opted for the second option.
   
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
   
-### The long-term fundamental value of RPL does not hold up
+### RPL value will be less than what **Ideal 3** suggests
 
-Mostly due to the issues with the first two ideas, **Ideal 3** also fails.  
-
-If any large node (or many small nodes) decides to stop topping up its RPL, the fundamental value calculation breaks. Eg, if at maturity the average collateral is 5% of borrowed ETH, then RPL’s value would be half the value of a situation that’s identical except the average collateral is 10% of borrowed ETH. As shown in the Figure 1 above, this effect is definitely present.
+Because some node operators are not topping off per **Ideal 2**, that means the fundamental value calculation in **Ideal 3** breaks. Eg, if at maturity the average collateral is 5% of borrowed ETH, then RPL’s value would be half the value of a situation that’s identical except the average collateral is 10% of borrowed ETH. As shown in the Figure 1 above, this effect is definitely present.
 
 ### rETH TVL is limited
 
@@ -75,6 +74,8 @@ Third, this speculation is exacerbated at smaller bond sizes. A 10% borrowed-ETH
 - 4 ETH bond + 2.8 ETH worth of RPL (~41% RPL)
 - 1.5 ETH bond + 3.05 ETH worth of RPL (~67% RPL)
 
+All of this combines to reduce rETH TVL, and thus RPL's modeled value.
+
 ### The system is brittle
 
 The 10% borrowed-ETH minimum is something the protocol tries to impose upon the market, but fails to make economic sense at maturity.
@@ -86,7 +87,7 @@ This does present a solution as well – the minimum staked RPL can be reduced. 
 The market has no way to signal that they’re interested in Rocket Pool at a minimum RPL stake set at 8% borrowed ETH versus 10% borrowed ETH. All we’d see is that the market simply stops making minipools (or even starts exiting them) when the overall package is seen as unattractive. We might already be seeing this happen today, as shown by the supply of node operator ETH in Figure 2 below.
 
 <img src="../assets/tokenomics-explainers/001-figure-2.png" alt="Figure 2" width="1000px"></br>
-_Figure 2 - Supply of Node Operator ETH -  [Source](https://dune.com/invis/rp-neth)_
+_Figure 2 - Supply of Node Operator ETH -  [Source](https://dune.com/invis/rp-neth)_
 
 <div class="prev-next-container">
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
