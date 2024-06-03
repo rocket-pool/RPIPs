@@ -2,10 +2,11 @@
 layout: other-content
 title: Foundation of the Tokenomics Rework
 nav-title: Part 3 - Foundation of the Tokenomics Rework
-description: Explains how the tokenomic reworks core components work.
+description: Explains the core components of the tokenomic rework and how these are likely to affect node operators.
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
-custom-next: /tokenomics-explainers/002-rework-intro
-custom-prev: /tokenomics-explainers/004-rework-support
+custom-next: /tokenomics-explainers/004-rework-support
+custom-prev: /tokenomics-explainers/002-rework-intro
+depth: Intermediate
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -16,20 +17,12 @@ custom-prev: /tokenomics-explainers/004-rework-support
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
 
-## Choose your depth
-
-- Intro: [Why Rework Rocket Pool's Tokenomics?](./001-why-rework.md)
-- Intro: [Introduction to the Tokenomics Rework](./002-rework-intro.md)
-- Core: [Foundation of the Tokenomics Rework](./003-rework-foundation.md)
-- Intermediate: [Supporting components of the Tokenomics Rework](./004-rework-support.md)
-- Advanced: [RPIP-49](../RPIPs/RPIP-49.md) tokenomics spec overview and linked RPIPs
-
 ## Protocol Revenue
 For this section we'll make two simplifications throughout:
 
-1: To minimize text/diagram complexity, we assume “RPL buy+burn” as the value capture method for the surplus share. Please see [RPL Value Captur eOptions](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
+To minimize text/diagram complexity, we assume “RPL buy+burn” as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
 
-2: While the proposal actually has 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), we use 8-ETH bonds in this section to get an apples-to-apples comparison against current 8-ETH minipools.
+While the proposal actually has 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), we use 8-ETH bonds in this section to get an apples-to-apples comparison against current 8-ETH minipools.
 
 ### Overview
 There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 3 categories of rewards to distribute this revenue:

@@ -2,10 +2,11 @@
 layout: other-content
 title: Supporting components of the Tokenomics Rework
 nav-title: Part 4 - Supporting components of the Tokenomics Rework
-description: Describes the contents and benefits of the tokenomics rework at a high level in comparison to the original tokenomics. 
+description: Describes some of the supporting components of the rework, and why these are important.
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
-custom-next: none
+custom-next: /tokenomics-explainers/005-glossary
 custom-prev: /tokenomics-explainers/003-rework-foundation
+depth: Intermediate
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -15,14 +16,6 @@ custom-prev: /tokenomics-explainers/003-rework-foundation
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
-
-## Choose your depth
-
-- Intro: [Why Rework Rocket Pool's Tokenomics?](./001-why-rework.md)
-- Intro: [Introduction to the Tokenomics Rework](./002-rework-intro.md)
-- Core: [Foundation of the Tokenomics Rework](./003-rework-foundation.md)
-- Intermediate: [Supporting components of the Tokenomics Rework](./004-rework-support.md)
-- Advanced: [RPIP-49](../RPIPs/RPIP-49.md) tokenomics spec overview and linked RPIPs
 
 ## Anti-sock Puppet Effects
 Rocket Pool currently has modest incentives to sock puppet. Due to the square root scaling, sock puppeting increases voting power. It also allows additional flexibility in RPL staking (eg, you could have some undercollateralized pools on one node and a separate collateralized node receiving RPL rewards).
@@ -59,4 +52,4 @@ With the Saturn Upgrade, existing NOs who want to migrate will need to exit thei
 
 ---
 
-[^1]: *initial specifications are listed for simplicity, but these values could be changed if necessary
+[^1]: Initial specifications are listed for simplicity, but these values could be changed if necessary

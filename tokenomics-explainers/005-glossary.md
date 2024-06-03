@@ -1,11 +1,12 @@
 ---
 layout: other-content
-title: Supporting components of the Tokenomics Rework
-nav-title: Part 4 - Supporting components of the Tokenomics Rework
-description: Describes the contents and benefits of the tokenomics rework at a high level in comparison to the original tokenomics. 
+title: Glossary of Terms
+nav-title: Part 5 - Glossary of Terms
+description: Defines some of the common terminology present in the other explainers.
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
 custom-next: none
 custom-prev: /tokenomics-explainers/004-rework-support
+depth: Intermediate
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -15,16 +16,6 @@ custom-prev: /tokenomics-explainers/004-rework-support
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
-
-## Choose your depth
-
-- Intro: [Why Rework Rocket Pool's Tokenomics?](./001-why-rework.md)
-- Intro: [Introduction to the Tokenomics Rework](./002-rework-intro.md)
-- Core: [Foundation of the Tokenomics Rework](./003-rework-foundation.md)
-- Intermediate: [Supporting components of the Tokenomics Rework](./004-rework-support.md)
-- Advanced: [RPIP-49](../RPIPs/RPIP-49.md) tokenomics spec overview and linked RPIPs
-
-Glossary
 
 **Bonded ETH:** The portion of a validator’s ETH that is provided by the Node Operator. Sometimes called NO ETH or nETH.
 

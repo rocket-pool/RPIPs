@@ -6,6 +6,7 @@ description: Describes the intentions of the original Rocket Pool tokenomics and
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@Samus), Paladin
 custom-next: /tokenomics-explainers/002-rework-intro
 custom-prev: none
+depth: Intro
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -15,14 +16,6 @@ custom-prev: none
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
-
-## Choose your depth
-
-- Intro: [Why Rework Rocket Pool's Tokenomics?](./001-why-rework.md)
-- Intro: [Introduction to the Tokenomics Rework](./002-rework-intro.md)
-- Core: [Foundation of the Tokenomics Rework](./003-rework-foundation.md)
-- Intermediate: [Supporting components of the Tokenomics Rework](./004-rework-support.md)
-- Advanced: [RPIP-49](../RPIPs/RPIP-49.md) tokenomics spec overview and linked RPIPs
 
 ## History
 

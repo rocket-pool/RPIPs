@@ -6,6 +6,7 @@ description: Describes the contents and benefits of the tokenomics rework at a h
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
 custom-next: /tokenomics-explainers/003-rework-foundation
 custom-prev: /tokenomics-explainers/001-why-rework
+depth: Intro
 ---
 
 {% assign cPrev=site.pages | where:"url", page.custom-prev | first %}
@@ -15,14 +16,6 @@ custom-prev: /tokenomics-explainers/001-why-rework
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
 {%if cNext %}<a href="{{cNext.url|relative_url}}">Next - {{cNext.title}}</a>{%else%}<span>Next</span>{% endif %}
 </div>
-
-## Choose your depth
-
-- Intro: [Why Rework Rocket Pool's Tokenomics?](./001-why-rework.md)
-- Intro: [Introduction to the Tokenomics Rework](./002-rework-intro.md)
-- Core: [Foundation of the Tokenomics Rework](./003-rework-foundation.md)
-- Intermediate: [Supporting components of the Tokenomics Rework](./004-rework-support.md)
-- Advanced: [RPIP-49](../RPIPs/RPIP-49.md) tokenomics spec overview and linked RPIPs
 
 ## Items that directly address tokenomics issues
 
