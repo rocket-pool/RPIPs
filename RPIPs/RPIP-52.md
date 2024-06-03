@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/rewards-tree-spec-v9/2928
 status: Final
 type: Protocol
 created: 2024-04-15
+vote-to: https://vote.rocketpool.net/#/proposal/0xf9196fa7e0e82418bbfa69cbd06f0bad796218eac4538b9153cbc78fe924994f
+vote-date: 2024-05-23
+vote-result: Passed
 ---
 
 ## Abstract

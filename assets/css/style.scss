@@ -4,6 +4,16 @@
 
 @import 'minima';
 
+.site-title {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  float: left;
+}
+
 .site-header {
   .wrapper {
     display: flex;
@@ -368,4 +378,42 @@ a.page-link:hover {
   @media (min-width: 1100px) {
     display: none;
   }
+}
+
+.other-content-post {
+  display: flex;
+  justify-content: center;
+}
+
+.other-content-post h2{
+  border-style: none;
+  border-bottom: 1px solid $grey-color-light;
+}
+
+.other-content-post h3{
+  margin-top: 18px;
+}
+
+.post-layout {
+  max-width: 900px;
+}
+
+.prev-next-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.prev-next-container a, .prev-next-container span{
+  font-weight: bold;
+  font-size: large;
+}
+
+hr {
+  margin: 12px;
+  border-style: none;
+  border-top: 1px solid $grey-color-light;
 }
