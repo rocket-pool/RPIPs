@@ -40,7 +40,7 @@ Importantly, the same participant may be eligible to benefit from all 3 categori
 
 One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. By no longer rewarding NOs with RPL (which is currently generated via inflation) the rate of inflation of the RPL token is also reduced which further supports its long-term value.
 
-Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual: (1) technical expertise to perform Node Operator duties, (2) the minimum ETH requirement, (3) the minimum RPL requirement, and (4) ideally a particular ratio of ETH to RPL to maximize validators for a given amount of capital. In reality, there may be demand for more limited forms of participation from individuals who may not meet all three requirements. By structuring the incentives to support that demand, there is greater opportunity to grow the pie of total protocol revenue, which would benefit all participants in the protocol. Some examples include:
+Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual: (1) technical expertise to perform Node Operator duties, (2) the minimum ETH requirement, (3) the minimum RPL requirement, and (4) ideally a particular ratio of ETH to RPL to maximize validators for a given amount of capital. In reality, there may be demand for more limited forms of participation from individuals who may not meet all four requirements. By structuring the incentives to support that demand, there is greater opportunity to grow the pie of total protocol revenue, which would benefit all participants in the protocol. Some examples include:
 - The market can now be opened to ETH Only Node Operators
 - Node Operators can choose the degree of RPL exposure they feel comfortable with (no more cliff)
 - RPL holders benefit directly from protocol revenue and a reduced rate of inflation
@@ -80,7 +80,7 @@ The end result is that the Node Operator would make **0.96x solo staking APY rig
 <img src="../assets/tokenomics-explainers/003-figure-5.png" alt="Figure 5" width="1000px"></br>
 _Figure 5 - Case Study Reference Sankey Diagram_
 
-In this case study, we have 3 NOs. (A) has 8 ETH and no RPL staked. (B) has 8 ETH and 6 ETH worth of RPL staked. (C) has 8 ETH and 15 ETH worth of RPL staked (note that vote-eligible RPL is capped at 150% of bonded ETH).
+In this case study, we have 3 NOs. (A) has 8 ETH and no RPL staked. (B) has 8 ETH and 6 ETH worth of RPL staked. (C) has 8 ETH and 15 ETH worth of RPL staked (note that vote-eligible RPL is capped at 150% of bonded ETH. This leads to NO C earning twice as much from "Voter Share" as NO B).
 
 **Proposal Example, 9 more ETH-Only Node Operators join**  
 <img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
