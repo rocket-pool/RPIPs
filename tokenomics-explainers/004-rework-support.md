@@ -1,7 +1,7 @@
 ---
 layout: other-content
-title: Supporting components of the Tokenomics Rework
-nav-title: Part 4 - Supporting components of the Tokenomics Rework
+title: Supporting Components of the Tokenomics Rework
+nav-title: Part 4 - Supporting Components of the Tokenomics Rework
 description: Describes some of the supporting components of the rework, and why these are important.
 author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
 custom-next: /tokenomics-explainers/005-glossary
@@ -23,7 +23,7 @@ Rocket Pool currently has modest incentives to sock puppet. Due to the square ro
 As shown in [Lower Bonds and Capital Efficiency](./003-rework-foundation.md#lower-bonds-and-capital-efficiency), the bond curves make profitability increase as you have more validators on one node. This will give people a strong reason to avoid sock puppeting behavior. Note also, that getting rid of the cliff also removes one possible reason to engage in sock puppeting.
 
 ## Megapools
-Currently Rocket Pool minipools each have their own Ethereum contract. This results in high gas costs for NOs with several minipools (gas-intensive to launch or distribute rewards for several validators). The Saturn upgrade introduces megapools, where a single megapool contract is used as an Ethereum withdrawal address for multiple validators. This drastically reduces gas costs for launching or distributing rewards for several validators (by almost N times, where N is the number of validators the NO is running).
+Currently, Rocket Pool minipools each have their own Ethereum contract. This results in high gas costs for NOs with several minipools (gas-intensive to launch or distribute rewards for several validators). The Saturn upgrade introduces megapools, where a single megapool contract is used as an Ethereum withdrawal address for multiple validators. This drastically reduces gas costs for launching or distributing rewards for several validators (by almost N times, where N is the number of validators the NO is running).
 
 ## Forced Exits
 Currently, if a minipool is penalized, the protocol has no way to forcibly reclaim that bond. It can set a penalty, which will be enforced on the exit of the underlying validator. This means a rogue NO could continue running their minipool profitably indefinitely after that point in time.
@@ -34,7 +34,7 @@ Saturn 2 includes forced exits, which allow the protocol to initialize the exit 
 Currently, penalties can be applied on a per minipool basis. Consider an NO with 4 LEB8 minipools that steals 30 ETH of MEV in one block. At this time, only that minipool will be penalized, and any other minipools that NO has will be unaffected. This means that Rocket Pool could recover at most the 8 ETH bond from the LEB8 minipool that stole the block. With node level penalties, the bond from all of the minipools could be recovered. Note that while node level penalties could be implemented for minipools, it’s even easier to implement for megapools.
 
 Putting together the bond curve, forced exits, and node level penalties:
-An example comparing Honest APY vs. APY with MEV-theft is shown in Figure 1 below. You can see how the first validator (only a 4 ETH bond) has the significantly highest amount of drag for the protocol, but if a thief was wanting to maximize their APY, they would create 12 validators. At 12 validators the drag for the protocol is significantly reduced (vs at a single validator), and the protocol is much safer since it would have the ability to recover 23ETH of NO bond from the entire megapool, instead of just 4 ETH of NO bond from a single validator.
+An example comparing Honest APY vs. APY with MEV-theft is shown in Figure 1 below. You can see how the first validator (only a 4 ETH bond) has the significantly highest amount of drag for the protocol, but if a thief wanted to maximize their APY, they would create 12 validators. At 12 validators the drag for the protocol is significantly reduced (vs at a single validator), and the protocol is much safer since it would have the ability to recover 23ETH of NO bond from the entire megapool, instead of just 4 ETH of NO bond from a single validator.
 
 <img src="../assets/tokenomics-explainers/004-figure-1.png" alt="Figure 1" width="800px"></br>
 _Figure 1 - Profitability with and without MEV theft_
