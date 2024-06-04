@@ -32,13 +32,13 @@ In broad strokes, the current setup is meant to be something like:
   
 **Ideal 3** - In the long run, the fundamental value of RPL trends to what's needed for all minipools to hit this minimum staking level (ie, RPL market cap should be ~10% of rETH TVL)  
   
-Unfortunately, over the last few years, we've seen that these ideals do not play out as anticipated.
+Over the last few years we've seen that these ideals do not play out as anticipated.
 
 ## Issues seen in reality
 
 ### Running minipools is primarily Speculative
 
-One side effect of the staking requirement in **Ideal 1** is that the financial success of running minipools is overwhelmingly dominated by RPL performance.  
+Unfortunately, one effect of the staking requirement in **Ideal 1** is that the financial success of running minipools is overwhelmingly dominated by RPL performance.  
   
 Let's assume a minimum RPL LEB8 minipool with 3.8% solo APY[^1].
 - If net RPL performance is flat vs ETH, the operator earns a **9% boost** compared to solo staking rewards.
