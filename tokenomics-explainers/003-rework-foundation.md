@@ -27,7 +27,7 @@ custom-prev: /tokenomics-explainers/004-rework-support
 ## Protocol Revenue
 For this section we'll make two simplifications throughout:
 
-1: To minimize text/diagram complexity, we assume “RPL buy+burn” as the value capture method for the surplus share. Please see [RPL Value Captur eOptions](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
+1: To minimize text/diagram complexity, we assume "RPL buy+burn" as the value capture method for the surplus share. Please see [RPL Value Captur eOptions](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
 
 2: While the proposal actually has 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), we use 8-ETH bonds in this section to get an apples-to-apples comparison against current 8-ETH minipools.
 
@@ -95,10 +95,72 @@ _Figure 7 - Case Study ETH-only Growth Sankey Diagram_
 Now we see 9 more NOs identical to (A) join. As you can see, there’s a self-balancing effect. Voter Share value paid to NO B and C increased 4x even though they have the same RPL.	Surplus Share value increased 4x over the same supply of RPL. In short: Node Operators unwilling to take on RPL exposure still grow the protocol’s ability to meet rETH demand, and higher rETH TVL makes RPL exposure more attractive.
 
 ## Lower Bonds and Capital Efficiency
+Zooming _all_ the way out, the total revenue is `reth_commision*reth_tvl_in_validators`. To get total ROI, we divide that by total investment, which is `(bonded_eth + rpl_mcap_in_eth)`. From this we can see that there are 4 ways for total ROI to improve if all else is held equal: (1) increased rETH commission, (2) increased rETH TVL, (3) less bonded ETH, and (4) lower RPL market cap. Lower bonds are important because they are the only way to execute on (3) without decreasing rETH TVL. In fact, lower bonds also help hit (2) by making it possible to service more rETH TVL given the same NO investment.
+
+### ETH-only Validator ROIs (Saturn 1)
+Zooming in to a single operator, the easiest way to look at the impact of lower bonds is by considering ETH-only validators and looking at their ROI. As we can see - we get dramatically higher ROIs for the same commission (or, equivalently, can get the same ROI with dramatically lower commission). The takeaway is simple from a capital efficiency point of view – smaller bonds are better.
+
+<img src="../assets/tokenomics-explainers/003-figure-8.png" alt="Figure 8"></br>
+_Figure 8 - ROI based on NO commission share and ETH bond per validator_
+
+### Proposed Bond Curve’s ROI (Saturn 2)
+Despite the "smaller is better" takeaway from above, there are real limits. Security requires us to have enough bond per validator to align incentives and mitigate damage in cases of slashing, abandonment, and MEV theft. The result is a proposal that starts out with 4 ETH per validator for the first 2 validators; thereafter, the bond is 1.5 ETH per validator. We can see that ROI improves rapidly as a node operator adds validators, and then starts to flatten out. Note that this proposal requires forced exits to be available for security, which is why it cannot be implemented until Saturn 2.
+
+<img src="../assets/tokenomics-explainers/003-figure-9.png" alt="Figure 9"></br>
+_Figure 9 -  ROI based on NO commission share and total bonded ETH_
+
+Keep in mind that if this is extremely attractive, [UARS](#uars-and-listening-to-the-market) allows us to improve the balance by reducing node_operator_commission_share and increasing another share. Similarly, if it’s not attractive enough, node_operator_commission_share can be increased at the cost of decreasing another share. Do note that there’s quite a significant impact to ROI with a small change in share – eg, at 64 ETH bonded, we see a 0.5% change in share causes a ~6% change in ROI.
 
 ## UARS and Listening to the Market
 
+### Current State
+
+**Fixed Commission:**
+Currently, Rocket Pool has an individual validator fixed commission model. This means each validator will always charge the same commission for the lifetime of that validator (or until the Node Operator opts into an upgrade that changes the commission). With the existing system, 100% of the rETH commission goes to Node Operator commission, so the protocol’s average rETH commission only changes slowly, as new validators are added or Node Operators opt to upgrade their validators to a new commission.
+
+**Fixed Protocol Fee:**
+The RPL staking minimum serves as an indirect protocol fee. Since it’s fixed at 10% of borrowed ETH, it represents a fixed fee. The protocol’s average fee is resistant to change, even if we did vote a change in. The impact of such a change would only be realized slowly, as new validators are added, or Node Operators withdraw RPL (which may require exiting and recreating validators in some cases).
+
+### Proposal
+**UARS (Universal Adjustable Revenue Split):**
+One major change in the proposal is that the Revenue Split variables will apply _universally_ across all megapools, and they will be _adjustable_ by the protocol without requiring a validator exit and migration to new validators with a different fixed setting. Universal settings can allow changes that benefit the protocol and the participants in the protocol without perverse incentives (eg, in the Current State, there can be a tragedy of the commons situation where each individual Node Operator would avoid opting into a lower commission, even though they’d all prefer it if _everyone_ opted that way).
+
+**Choosing Revenue Split Sizes:**
+Ultimately the pDAO (Node Operators with staked RPL) controls the Revenue Split variables and has the ability to change them through voting. 
+
+Some abstract guidelines the pDAO should consider when deciding the sizes of the Revenue Splits:
+- Consider **Node Operator Commission Share** as a requirement to function. If this share is not high enough to attract the supply we need, the protocol is non-functional
+- Consider **Voter Share** as a requirement to function. If there is not enough vote-eligible staked RPL, then the protocol can become at risk for governance attacks. There is a method specified that balances Voter Share vs Surplus Share to ensure ~60% of all RPL is vote eligible.
+-  Finally, consider **Surplus Share**. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters generally have an incentive to balance a high surplus_share with making rETH holding attractive.
+
+With these factors in mind, the pDAO should pay attention to the market, and take actions as necessary to ensure healthy sustainable settings.
+
+**Listening to the Market:**
+There are natural checks and balances that allow "non-voting" participants to create market pressures. Some examples:
+- If Node Operators don’t find holding RPL attractive, they may still opt to run ETH-only. This grows total revenue and makes holding RPL more attractive. See [Case Study: ETH-only is Preferred by Node Operators](#case-study-eth-only-is-preferred-by-node-operators).
+- If rETH holders find rETH unattractive, they can sell (or not buy) rETH. This limit to growth also limits the value of RPL.
+- If ETH-Only Node Operators don’t find the commission attractive enough, they can choose a competitor who provides them with higher compensation for their services.
+- If RPL holders don’t find the value capture attractive enough, they can sell (or not buy) RPL; this will decrease the ETH value of RPL, which improves the ROI in ETH terms. 
+
 ## RPL Value Capture Options
+This section describes three potential implementations for how the "Surplus Share" described in [Protocol Revenue](#protocol-revenue) can be used to drive value to RPL.
+
+The current plan is to vote on the full proposal before deciding which "Surplus Share" implementation to use. This lets the dev team start work, and gives the community more time to form consensus after further modeling/research.
+
+Ideally, the preferred implementation can still make it into Saturn 1. If not, it will be in Saturn 2; in such a case, the revenue during the Saturn 1 period will be allowed to build up and then get distributed over a bit of time once Saturn 2 is live.
+
+### Buy + Burn
+For buy + burn, ETH revenue is used to buy RPL on the open market. The RPL is then burnt to permanently remove it from the total supply of RPL. In theory, the market cap of RPL should be unchanged by this, while the supply is reduced, which would mean the price per RPL token increases (by its share of the ETH revenue). The implementation uses a time-averaged market price and avoids large steps in available burn liquidity to limit opportunities for someone to game the system and steal value. 
+
+### Buy + LP
+For buy + LP, ETH revenue is used for single sided deposits into an RPL/rETH Liquidity Pool (note that a single sided deposit is equivalent to an RPL buy followed by an asset-weighted deposit).
+
+The liquidity pool is a weighted pool with 90% RPL weight and 10% rETH weight. This means that ~90% of revenue would go to driving value to RPL directly, while 10% would go to building deep protocol-owned-liquidity for RPL. The other two options do not build liquidity – this means the pDAO would need to fund that liquidity some other way (or not have much).
+
+Unlike Buy + Burn, no time averaging on price is possible since the liquidity pool is a live market. As a result, the implementation will take even more care to avoid large steps.
+
+### Voter Share
+For voter share there is no “Surplus Share”, and instead this ETH revenue is directed to “Voter Share”, which goes to vote-eligible RPL. This means only NOs are natively able to benefit from RPL’s value capture directly. This has some positives (greater average alignment for RPL holders) and some negatives (much smaller total addressable market). Note that it may become possible for non-NOs to benefit via abstractions (eg, Nodeset’s proposed xRPL).
 
 <div class="prev-next-container">
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
