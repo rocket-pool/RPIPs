@@ -12,9 +12,6 @@ nav-title: Tokenomics Rework
 
 <h2>Information and Overview</h2>
 
-{% assign informational-rpips=relevant-rpips|where_exp:"item","item.type == 'Informational'"| sort: "rpip" %}
-{% include rpiptable_full.html rpips=informational-rpips type_col=false status_col=true description=true%}
-
 {% assign explainers=site.pages|where_exp:"item","item.dir contains 'tokenomics-explainers'" %}
 
 <style type="text/css">
@@ -37,7 +34,7 @@ nav-title: Tokenomics Rework
     <thead>
         <tr>
             <th class="depth">Depth</th>
-            <th class="title">Rework Explainers</th>
+            <th class="title">Description</th>
             <th class="author">Author</th>
         </tr>
     </thead>
@@ -51,6 +48,15 @@ nav-title: Tokenomics Rework
         <td class="author">{% include authorlist.html authors=page.author %}</td>
         </tr>
     {% endfor %}
+    {% assign overview=site.pages|where:"rpip","49"| first %}
+    <tr>
+      <td class="depth">Advanced</td>
+      <td class="title">
+          <a href="{{overview.url|relative_url}}">RPIP-49 - 2024 Tokenomics Rework Info and Content RPIPs</a><br/>
+          <i><span class="rpip-table-description">{{overview.description|xml_escape}}</i></span>
+      </td>
+      <td class="author">{% include authorlist.html authors=overview.author %}</td>
+      </tr>
 </table>
 
 <h2>Content RPIPs</h2>
