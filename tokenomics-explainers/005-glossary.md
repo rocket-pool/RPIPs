@@ -3,7 +3,7 @@ layout: other-content
 title: Glossary of Terms
 nav-title: Part 5 - Glossary of Terms
 description: Defines some of the common terminology present in the other explainers.
-author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
+author: Valdorff (@Valdorff), Paladin
 custom-next: none
 custom-prev: /tokenomics-explainers/004-rework-support
 depth: Intermediate

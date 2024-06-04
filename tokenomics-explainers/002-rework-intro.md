@@ -3,7 +3,7 @@ layout: other-content
 title: Introduction to the Tokenomics Rework
 nav-title: Part 2 - Introduction to the Tokenomics Rework
 description: Describes the contents and benefits of the tokenomics rework at a high level in comparison to the original tokenomics. 
-author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
+author: Valdorff (@Valdorff), LongForWisdom (@LongForWisdom), Paladin
 custom-next: /tokenomics-explainers/003-rework-foundation
 custom-prev: /tokenomics-explainers/001-why-rework
 depth: Intro

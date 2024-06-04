@@ -3,7 +3,7 @@ layout: other-content
 title: Why Rework Rocket Pool's Tokenomics?
 nav-title: Part 1 - Why Rework Rocket Pool's Tokenomics?
 description: Describes the intentions of the original Rocket Pool tokenomics and their observed weaknesses since the protocol launched.
-author: Valdorff (@Valdorff), LongForWisdom, Samus (@Samus), Paladin
+author: Valdorff (@Valdorff), LongForWisdom (@LongForWisdom), Jasper
 custom-next: /tokenomics-explainers/002-rework-intro
 custom-prev: none
 depth: Intro

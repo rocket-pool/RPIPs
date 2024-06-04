@@ -3,7 +3,7 @@ layout: other-content
 title: Foundation of the Tokenomics Rework
 nav-title: Part 3 - Foundation of the Tokenomics Rework
 description: Explains the core components of the tokenomic rework and how these are likely to affect node operators.
-author: Valdorff (@Valdorff), LongForWisdom, Samus (@orangesamus), Paladin
+author: Valdorff (@Valdorff), Samus (@orangesamus)
 custom-next: /tokenomics-explainers/004-rework-support
 custom-prev: /tokenomics-explainers/002-rework-intro
 depth: Intermediate
