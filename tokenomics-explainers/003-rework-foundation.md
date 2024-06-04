@@ -123,7 +123,7 @@ Currently, Rocket Pool has an individual validator fixed commission model. This 
 The RPL staking minimum serves as an indirect protocol fee. Since it’s fixed at 10% of borrowed ETH, it represents a fixed fee. The protocol’s average fee is resistant to change, even if we did vote a change in. The impact of such a change would only be realized slowly, as new validators are added, or Node Operators withdraw RPL (which may require exiting and recreating validators in some cases).
 
 ### Proposal
-**UARS (Universal Adjustable Revenue Split):**  
+**UARS (Universal Adjustable Revenue Split)**  
 One major change in the proposal is that the Revenue Split variables will apply _universally_ across all megapools, and they will be _adjustable_ by the protocol without requiring a validator exit and migration to new validators with a different fixed setting. Universal settings can allow changes that benefit the protocol and the participants in the protocol without perverse incentives (eg, in the Current State, there can be a tragedy of the commons situation where each individual Node Operator would avoid opting into a lower commission, even though they’d all prefer it if _everyone_ opted that way).
 
 **Choosing Revenue Split Sizes**  
