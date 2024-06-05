@@ -44,7 +44,7 @@ Node-level penalties and forced validator exits are also included in the rework 
 
 Megapools will enable multiple validators to share the same Ethereum withdrawal address – this **reduces initial and ongoing gas costs** for node operators.
 
-**RPL inflation will be reduced from 5% to 1.5%**, because the current 3.5% inflation used for RPL rewards to NOs is no longer necessary.
+**RPL issuance will be reduced from 5% to 1.5%**, because the current 3.5% inflation used for RPL rewards to NOs is no longer necessary.
 
 Forced delegate upgrades (with a grace period) will limit the technical debt the Rocket Pool protocol accumulates from previous versions.
 
