@@ -91,11 +91,12 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Heuristic adjustments.
 
-## Current Status - 2024-05-28
+## Current Status
+Last Updated: June 4th
 
 Current efforts are primarily focused on two areas.
-1. Creating explanations of the tokenomics rework content at various levels of complexity.
-2. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
+1. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
+2. Make a concerted effort to gather feedback via the forum from the wider community.
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
@@ -103,14 +104,14 @@ A maintained list of open tasks is available via google sheet [here](https://doc
 
 The below is generally agreed to be the steps to be completed before we can consider this 'decided'.
 
-1. Complete the first draft of the full proposal specifications. 
-2. Seek feedback from technically skilled or highly engaged community members on the draft specifications. **<-- We are approximately here.**
-3. Create high-level explanations and informational material for the full proposal for consumption by the wider community.
-4. Make a concerted effort to gather feedback via the forum from the wider community.
+1. **Done** - Complete the first draft of the full proposal specifications. 
+2. **Active** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
+3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
+4. **Active** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. Update the proposal and specifications as needed taking into account wider community feedback.
 6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
 7. Run a snapshot vote on the full proposal (bar value capture mechanism).
-7. Run a snapshot vote on the value capture mechanism once outstanding blockers are cleared.
+8. Run a snapshot vote on the value capture mechanism once outstanding blockers are cleared.
 9. Update the proposal to incorporate the value capture mechanism vote result.
 
 ## Excluded Components
