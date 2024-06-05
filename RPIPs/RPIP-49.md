@@ -95,8 +95,8 @@ The tokenomics rework package will likely be split between two protocol upgrades
 Last Updated: June 4th
 
 Current efforts are primarily focused on two areas.
-1. Creating explanations of the tokenomics rework content at various levels of complexity.
-2. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
+1. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
+2. Make a concerted effort to gather feedback via the forum from the wider community.
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
