@@ -91,7 +91,8 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Heuristic adjustments.
 
-## Current Status - 2024-06-04
+## Current Status 
+Last updated: June 4th
 
 Current efforts are primarily focused on two areas.
 1. Creating explanations of the tokenomics rework content at various levels of complexity.
