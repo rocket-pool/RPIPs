@@ -15,14 +15,23 @@ tags: tokenomics-2024, tokenomics-content
 ## Abstract
 Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backwards compatible with every past minipool delegate.
 
-This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate.
+This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate. To ensure timely availability of protocol funds, after the defined period, anyone may change the megapool's delegate to a minimal 'recovery delegate' that is only capable of exiting validators and distributing funds. 
 
 ## Specification
 - Megapool delegate contracts SHALL have an expiration block (ie, execution layer block)
 - When a new megapool delegate is released, the contract upgrade SHALL include:
   - Setting the new megapool delegate's expiration block to "no expiration"
   - Setting the previous delegate's expiration block to occur `delegate_upgrade_buffer` after the upgrade
-- Interactions with a megapool delegate after its expiration block SHALL revert
+- A limited functionality recovery delegate contract SHALL also be available for use after expiration of the primary delegate with the following capabilities:
+  - Force exiting ALL validators under the megapool. In the Saturn 1 release, this MAY be a non-functional stub
+  - Removal of any pending validators from the Rocket Pool queue
+  - Processing of voluntary exit proofs
+  - Collection of any penalties or deficits
+  - Final distribution of rewards and capital
+- The recovery delegate SHOULD be updated only rarely, and only to support changes to the Ethereum execution layer exit process, or major changes in the Rocket Pool protocol. Simultaneous upgrades to both the recovery delegate and the primary delegate SHOULD be avoided if possible.
+- After the megapool delegate expiration block:
+  - Interactions with the old delegate SHALL revert
+  - The base meagapool contract SHALL allow anyone to call a delegate change transaction to change the megapool to the recovery delegate
 - All protocol upgrades SHALL have a `default_upgrade_delay` delay between when they are passed and when they are executed
 - The security council SHALL have a limited-use power to use a shorter delay of `fast_upgrade_delay`
   - This power SHALL be usable if `fast_upgrade_seal_count` > 0 
