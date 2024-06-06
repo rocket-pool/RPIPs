@@ -39,6 +39,8 @@ depth: Intermediate
 
 **rETH TVL:** Total value locked in rETH. Consider it the “size” of the liquid staking token.
 
+**Sock Puppet or Sybil:** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocketpool is voting, as multiple fake identiies with the same number of RPL has greater voting power than a single identity due to quadratic voting, which incentivizes sock puppets/sybil attacks.
+
 **Solo staking APY:** The yield for staking on a full 32-ETH validator (inclusive of consensus rewards, tips, and MEV rewards)
 
 
