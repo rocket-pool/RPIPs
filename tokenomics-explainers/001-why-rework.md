@@ -36,7 +36,7 @@ Over the last few years we've seen that these ideals do not play out as anticipa
 
 ## Issues seen in reality
 
-### Running minipools is primarily Speculative
+### Running minipools is primarily speculative
 
 Unfortunately, one effect of the staking requirement in **Ideal 1** is that the financial success of running minipools is overwhelmingly dominated by RPL performance.  
   
