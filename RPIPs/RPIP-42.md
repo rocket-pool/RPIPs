@@ -27,18 +27,19 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 
 This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
 
-
-
-This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
-
 ## Specification
+Array indexing in this section is zero-based.
+
 - The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
-- When Node Operators create validators, with `i` validators in the megapool prior to adding:
+- Prior to creating a validator, there MUST be no `debt` from penalties on the megapool
+  - There SHALL be a function provided to pay off `debt` with ETH
+  - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
+- When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
-- When Node Operators remove validators, with `i` validators in the megapool prior to removing:
+- When a Node Operators removes a validator, with `i` validators in the megapool prior to removing:
   - If `i > base_bond_array.length`: the Node Operator share before penalties is `reduced_bond`.
-  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-1]`.
+  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-2]`.
   - If `i==1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to 0 ETH.
 - Bulk validator creation/removal functions SHALL behave the same as multiple individual transactions.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
@@ -100,7 +101,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 
 ## Penalizable offenses
-This portion of the RPIP SHALL be considered Living. It may be updated by a DAO vote.
+This portion of the RPIP SHALL be considered Living. It may be updated by a DAO vote following the existing rules and conventions for RPIP modifications.
 
 | Offense   | Penalty              | Added      | Updated    |
 |-----------|----------------------|------------|------------|
