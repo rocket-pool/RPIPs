@@ -17,6 +17,16 @@ The tokenomics rework will likely be split into two protocol upgrades, Saturn 1 
 
 This Informational RPIP and the tokenomics rework represent the best efforts of the Rocket Pool community contributors involved. Information within this RPIP should not be considered official word from the Rocket Pool core development team. 
 
+## Explainers
+
+The following explainers are being maintained by the community to help make the rework as accessible as possible.
+
+* [Part 1 - Why Rework Rocket Pool's Tokenomics?](/tokenomics-explainers/001-why-rework)
+* [Part 2 - Introduction to the Tokenomics Rework](/tokenomics-explainers/002-rework-intro)
+* [Part 3 - Foundation of the Tokenomics Rework](/tokenomics-explainers/003-rework-foundation)
+* [Part 4 - Supporting Components of the Tokenomics Rework](/tokenomics-explainers/004-rework-support)
+* [Part 5 - Glossary of Terms](/tokenomics-explainers/005-glossary)
+
 ## Contents
 
 ### [RPIP-43: Megapools](RPIP-43.md)
@@ -45,6 +55,8 @@ This change allows the ETH revenue income from borrowed ETH (aka, rETH commissio
 4. The rETH share, going to rETH holders. 
 
 Aspects of the split are managed by the pDAO, the security council, and automatically by a heuristic function. For full details of 'who can do what', please see the full RPIP. 
+
+This RPIP also includes the reduction of RPL issuance from 5% to 1.5%, as RPL rewards to Node Operators have been replaced by UARS.
 
 ### RPL Value Capture
 
@@ -92,11 +104,11 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Heuristic adjustments.
 
 ## Current Status
-Last Updated: June 4th
+Last Updated: June 10th
 
 Current efforts are primarily focused on two areas.
-1. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
-2. Make a concerted effort to gather feedback via the forum from the wider community.
+1. Polishing the explainer document contents and format in response to feedback from the community.
+2. Seeking and reacting to feedback from all parts of the Rocket Pool community and updating the RPIP specifications. 
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
@@ -108,7 +120,7 @@ The below is generally agreed to be the steps to be completed before we can cons
 2. **Active** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
 3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
 4. **Active** - Make a concerted effort to gather feedback via the forum from the wider community.
-5. Update the proposal and specifications as needed taking into account wider community feedback.
+5. **Active** - Update the proposal and specifications as needed taking into account wider community feedback.
 6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
 7. Run a snapshot vote on the full proposal (bar value capture mechanism).
 8. Run a snapshot vote on the value capture mechanism once outstanding blockers are cleared.
