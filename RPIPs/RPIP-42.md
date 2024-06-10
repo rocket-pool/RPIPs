@@ -92,8 +92,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 #### Initial Settings
 - The initial settings SHALL be:
-- `scrub_period`: 12 hours
-- `time_before_dissolve`: 2 weeks
+  - `scrub_period`: 12 hours
+  - `time_before_dissolve`: 2 weeks
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
