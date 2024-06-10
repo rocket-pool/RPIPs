@@ -29,7 +29,7 @@ For the variants of the rework that introduce RPL buy and burn or RPL buy and LP
 - This group receives a share of protocol revenue proportional to their vote-eligible RPL.
 - Vote-eligible RPL maxes out at 150% of bonded ETH.
 
-With the rework, **we do not impose a value onto the market**. Node operators can freely value providing an RPL stake alongside their ETH bond. If the revenues make the speculation worthwhile, node operators can speculate but are not forced to do so.
+With the rework, **we do not impose a fixed level of RPL staking exposure onto the market**. Node operators can freely value providing any level of RPL stake alongside their ETH bond. If the revenues make the speculation worthwhile, node operators can speculate but are not forced to do so.
 
 There is **no RPL reward threshold/cliff** with the rework, so we avoid losing rETH supply from node operators exiting minipools to maintain the staking threshold.
 
