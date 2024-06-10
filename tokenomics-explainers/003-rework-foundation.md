@@ -20,9 +20,9 @@ depth: Intermediate
 ## Protocol Revenue
 For this section we'll make two simplifications throughout:
 
-To minimize text/diagram complexity, we assume "RPL buy+burn" as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
+To minimize text/diagram complexity, **we assume "RPL buy+burn"** as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
 
-While the proposal actually has 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), we use 8-ETH bonds in this section to get an apples-to-apples comparison against current 8-ETH minipools.
+For clarity, **we use 8-ETH bonds in the comparison sections** to get an apples-to-apples contrast against current 8-ETH minipools. The tokenomics rework includes changes to enable 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), later described in the [Lower Bonds and Capital Efficiency](#lower-bonds-and-capital-efficiency) section.
 
 ### Overview
 There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 3 categories of rewards to distribute this revenue:
