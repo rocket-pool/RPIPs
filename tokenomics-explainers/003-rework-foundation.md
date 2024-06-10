@@ -46,7 +46,7 @@ Previously, Rocket Pool targeted a very narrow window of participants to support
 - RPL holders benefit directly from protocol revenue and a reduced rate of inflation
 
 ### Node Operator Perspective
-Let’s examine things from a Node Operator perspective, starting with existing tokenomics. In the diagrams below, blue will represent ETH and orange will represent RPL (with the value still shown in ETH).
+Let’s examine things from a Node Operator perspective, starting with existing tokenomics. In the diagrams below, blue will represent ETH and orange will represent RPL (with the value still shown in ETH). As a reminder, we are using 8-ETH bonds to compare apples-to-apples against the existing tokenomics. The tokenomics rework will include 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds.)
 
 For this sub-section we make three simplifying assumptions. First, a solo staking APY of 4.17% was chosen to help get round numbers – this means each validator generates 1 ETH per year on the 24 borrowed ETH (for context, currently observed solo APY is ~3.8%). Second, where RPL exists, the RPL/ETH market cap is assumed to stay flat. Finally, we assume all users are using the same type of pool. 
 
