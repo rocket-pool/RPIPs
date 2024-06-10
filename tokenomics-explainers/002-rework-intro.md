@@ -27,6 +27,7 @@ For the variants of the rework that introduce RPL buy and burn or RPL buy and LP
 **Staking RPL alongside ETH bonds still has value** with the rework. 
 - This is the only group that has pDAO vote weight.
 - This group receives a share of protocol revenue proportional to their vote-eligible RPL.
+- Vote-eligible RPL maxes out at 150% of bonded ETH.
 
 With the rework, **we do not impose a value onto the market**. Node operators can freely value providing an RPL stake alongside their ETH bond. If the revenues make the speculation worthwhile, node operators can speculate but are not forced to do so.
 
