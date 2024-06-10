@@ -55,14 +55,14 @@ Forced delegate upgrades (with a grace period) will limit the technical debt the
 
 ## Personas
 
-Introduction to the changes through the lens of each persona:
-
-|Persona|Before|After|
+|Persona|Now|With Rework|
 |-|-|-|
-|**rETH holder**|My staking rewards were a function of Ethereum issuance and the 14% commission paid to NOs.|My staking rewards are a function of Ethereum issuance and the total commisision determined by pDAO votes on UARS levels, meaning they may go up or down.|
-|**Speculator / Passive RPL Holder**|Holding RPL was speculation on the liquid staking narrative (unchanged) and on the utility of RPL as a bond (which assumed TVL growth that has now stalled).|In addition to the narrative, holding RPL is speculation that the tokenomics changes will cause TVL to grow and generate "surplus" ETH returns, which will be used to accrue value to RPL (via buy+burn or buy+LP).|
-|**ETH-only Node Operator**|N/A|I don't require RPL to create minipools and have no exposure to it. I receive a 3.5% node operator commission on borrowed ETH. The lower my bond, the higher my rewards relative to solo staking. |
-|**Node Operator who stakes RPL**|I needed RPL to create minipools. I had to remain collateralized at 10% of RPL/ETH to receive RPL rewards. My comission was always 14% on borrowed ETH.|I do not need RPL to create minipools. I will a) receive node operator commission paid in ETH (3.5%). If I *do* stake RPL I will b) receive voter share rewards (5.0%) paid in ETH (with no 10% minimum or cliff) and surplus share rewards (5.5%) paid in ETH. I (and other voters) can vote to change these values as part of UARS, meaning my returns in each category may go up or down. As a NO, holding RPL is now speculation that protocol growth, including from ETH-only NOs, will generate sufficient ETH commission to accrue value to RPL via voter share and surplus share.|
+|**Existing Rocket Pool Node Operator**|I need RPL to create minipools. I have to remain collateralized at 10% of RPL/ETH to receive RPL rewards. My commission is 14% of borrowed ETH.|I do not need RPL to create minipools. I will receive node operator commission paid in ETH (3.5%). If I *do* stake RPL I will also receive voter share rewards (5.0%) paid in ETH (with no 10% minimum or cliff). I will either benefit from surplus share value accrual to RPL (5.5%) or receive an additional (5.5%) of voter share rewards. I will no longer recieve RPL rewards.|
+|**rETH holder**|My staking rewards are a function of Ethereum issuance and the commission paid to NOs. Currently 86% of solo staking rewards.|My staking rewards are a function of Ethereum issuance and the commission paid to the Rocket Pool protocol, and split determined by pDAO vote. Initially unchanged at 86% of solo staking rewards but may be modified by future pDAO votes.|
+|**Passive RPL Holder**|Holding RPL is speculation on the liquid staking narrative and on the utility of RPL as a bond.|In addition to the liquid staking narrative, holding RPL is speculation that the tokenomics changes will cause rETH supply to grow and generate surplus ETH returns, which **may** be used to accrue value to RPL (via buy+burn or buy+LP) or may solely go to NOs staking RPL.|
+|**ETH-only Node Operator**|I cannot operate a node with Rocket Pool|I can now operate a node with Rocket Pool without exposure to RPL. I receive a 3.5% node operator commission on borrowed ETH. The lower my bond, the higher my rewards relative to solo staking. |
+
+
 
 <div class="prev-next-container">
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
