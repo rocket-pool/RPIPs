@@ -25,6 +25,8 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 - We give precedence to small nodes staking some number of initial validators in the Node Operator queue 
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
 
+This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
+
 
 
 This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
@@ -64,16 +66,34 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
   - `express_queue_tickets_base_provision`: 2
 
 ### Deposit mechanics specification
-- A node operator MUST take 3 actions to start a validator: `deposit`, `prestake`, and `stake`
-- `Deposit` SHALL place all the ETH in the deposit pool (where it can be used in validators as needed) and enters a queue as described [above](#deposit-queue-specification)
-- Until `prestake`, it SHALL be possible to exit the node operator queue and receive ETH `credit` for it
-- `Prestake` SHALL be possible when
-  - The deposit pool contains 31*`number of currently prestaked validators` ETH
-  - The deposit pool contains an additional 1 ETH per match using the process described [above](#deposit-queue-specification)
-- `Prestake` SHALL take 1 ETH from the deposit pool and stake it to the beacon chain
-- If there is enough ETH in the deposit pool to execute `deposit` and `prestake` in the same transaction, they MUST be done in the same transaction
-- There SHALL be a period of time to check for deposit validity
-- `Stake` SHALL take 31 ETH from the deposit pool and stake it to the beacon chain alongside the previous 1 ETH to make a complete validator
+- A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
+
+#### `deposit` Transaction
+- `deposit` SHALL place the Node Operator ETH in the deposit pool (where it can be used in validators as needed) and place the validator in a queue as described [above](#deposit-queue-specification)
+- The following values for the validator SHALL be stored on chain:
+    - the public key of the validator
+    - the BLS signature over the public key, the withdrawal credentials (the megapool address of the node operator), and the amount (1 ETH) as required by the deposit contract
+    - the deposit message root as required by the deposit contract
+- The transaction SHALL validate the provided values and revert if they do not match
+- `deposit` SHALL assign deposits as described below 
+
+#### Assigning ETH from the Deposit Pool
+- As ETH enters the deposit pool, it SHALL be assigned to valdiators from the queue by sending 32 ETH to the associated megapool contract
+- The assignment SHALL execute the `Prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
+
+#### `stake` Transaction
+- `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
+- If the beacon chain stake is invalid, the validator SHALL be scrubbed 
+- `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
+- If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the user balance to the deposit pool
+
+#### Exiting Queue
+- Until ETH is assigned to a validator, it SHALL be possible to exit the queue and receive ETH `credit` for it
+
+#### Initial Settings
+- The initial settings SHALL be:
+- `scrub_period`: 12 hours
+- `time_before_dissolve`: 2 weeks
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
