@@ -27,7 +27,7 @@ depth: Intermediate
 
 **LEB, or x-ETH Bond:** Originally minipools used a 16 ETH Bond. As a result, smaller bonds were referred to as  “Lower ETH Bond” minipools, or LEBs. The Atlas release introduced LEB8s. The new proposal suggests 4-ETH bond validators and 1.5-ETH bond validators.
 
-**LP:** Liquidity Provder. An LP deposit two tokens to a liquidity pool. The ratio of the sides determines the price. For example, a pool with 1 ETH and / 170 RPL gives an RPL price of .0058 ETH ($22 @ $3800 ETH/USD). Adding .1 ETH and 0 RPL to the pool would result in 1.1 ETH / 170 RPL = .0064 ($24.58 @ 3800 ETH/USD). In reality, much of that change would be 'arbitraged away', but in the meantime it has provided additional liqudity for RPL buys/sells and exerted upwards pressure on the RPL/ETH price.
+**LP:** Liquidity Pool. A pool of liquidity held by a smart contract that allows for on-chain trading between a pair of tokens. For the purposes of these explainers, an RPL-rETH pair at a ratio of 90:10. 
 
 **Megapools:** A single RP contract serving as the withdrawal address for multiple validators.
 
@@ -41,7 +41,7 @@ depth: Intermediate
 
 **rETH TVL:** Total value locked in rETH. Consider it the “size” of the liquid staking token.
 
-**Sock Puppet or Sybil:** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocketpool is voting, as multiple fake identiies with the same number of RPL has greater voting power than a single identity due to quadratic voting, which incentivizes sock puppets/sybil attacks.
+**Sock Puppeting (aka Sybil Behavior):** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocketpool is voting, as multiple fake identities with the same amount of RPL have greater voting power than a single identity due to quadratic voting.
 
 **Solo staking APY:** The yield for staking on a full 32-ETH validator (inclusive of consensus rewards, tips, and MEV rewards)
 
