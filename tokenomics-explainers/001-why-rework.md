@@ -58,7 +58,7 @@ Further, the metric used for the RPL reward threshold is "RPL staked as a percen
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
   
-### RPL value will be less than what **Ideal 3** suggests
+### RPL value will be less than what Ideal 3 suggests
 
 Because some node operators are not topping off per **Ideal 2**, that means the fundamental value calculation in **Ideal 3** breaks. Eg, if at maturity the average collateral is 5% of borrowed ETH, then RPL’s value would be half the value of a situation that’s identical except the average collateral is 10% of borrowed ETH. As shown in the Figure 1 above, this effect is definitely present.
 
