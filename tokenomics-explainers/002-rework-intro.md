@@ -21,8 +21,7 @@ depth: Intro
 
 With the rework, speculation and node operation are separated. It becomes **possible to run a Rocket Pool node with only an ETH bond.**
 
-For the variants of the rework that introduce RPL buy and burn or RPL buy and LP, it **may be sensible to hold RPL as a standalone investment** at protocol maturity.
-
+For the variants of the rework that introduce RPL buy and burn or RPL buy and LP, it **may be sensible to hold RPL as a standalone investment** at protocol maturity because a share of ETH revenue is used to drive value to the token.
 
 **Staking RPL alongside ETH bonds still has value** with the rework. 
 - This is the only group that has pDAO vote weight.
