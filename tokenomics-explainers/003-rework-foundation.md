@@ -27,8 +27,8 @@ For clarity, **we use 8-ETH bonds in the comparison sections** to get an apples-
 ### Overview
 There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 3 categories of rewards to distribute this revenue:
 - **NOs (ETH) - "Node Operator Commission Share"**. This is paid to all Node Operators in a similar manner as existing validators. One difference is that your eligibility to receive from this share _depends only on your ETH, not on your RPL_ (where previously the Node Operator commission required an initial minimum requirement of both ETH and RPL). This change allows ETH-Only NOs.
-- **NOs (RPL) - "Voter Share"**. This share is collected from all validators, and then distributed to participants based on their proportional share of vote-eligible RPL. If you stake RPL as a Node Operator, your RPL is eligible for voting, so you would receive a proportional share from this pot of revenue. Importantly this revenue grows with rETH supply, where growth would allow the same supply of vote eligible RPL to earn more ETH. 
-- **All RPL - "Surplus Share"**. This share is collected from all validators, and then used to buy back RPL tokens and burn them. This revenue also grows with rETH supply, where growth results in more value being captured by the RPL token. 
+- **NOs (RPL) - "Voter Share"**. This share is collected from all validators and distributed to participants based on their proportional share of vote-eligible RPL. If you stake RPL as a Node Operator, your RPL is eligible for voting, so you would receive a proportional share from this pot of revenue. Importantly this revenue grows with rETH supply, where growth would allow the same supply of vote eligible RPL to earn more ETH. 
+- **All RPL - "Surplus Share"**. This share is collected from all validators and used to buy back RPL tokens and burn them. This revenue also grows with rETH supply, where growth results in more value being captured by the RPL token. 
 
 Importantly, the same participant may be eligible to benefit from all 3 categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which in the current proposal is 3.5%. Their staked RPL earns from the Voter Share and also benefits from the Surplus Share, set to 5% and 5.5% respectively. The Surplus Share includes gold dots to represent a new beneficiary of protocol revenue for some of this slice (unstaked RPL).
 
@@ -38,7 +38,7 @@ Importantly, the same participant may be eligible to benefit from all 3 categori
 </div>
 <br/>
 
-One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. By no longer rewarding NOs with RPL (which is currently generated via inflation) the rate of inflation of the RPL token is also reduced which further supports its long-term value.
+One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. By no longer rewarding NOs with RPL (which is currently generated via inflation), the rate of inflation of the RPL token is also reduced which further supports its long-term value.
 
 Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual:
 1. Technical expertise to perform Node Operator duties
@@ -46,7 +46,7 @@ Previously, Rocket Pool targeted a very narrow window of participants to support
 3. The minimum RPL requirement
 4. Ideally a particular ratio of ETH to RPL to maximize validators for a given amount of capital
 
-In reality, there may be demand for more limited forms of participation from individuals who may not meet all four requirements. By structuring the incentives to support that demand, there is greater opportunity to grow the pie of total protocol revenue, which would benefit all participants in the protocol. Some examples include:
+In reality, there may be demand for more limited forms of participation from individuals who may not meet all four requirements. By structuring the incentives to support that demand, there is a greater opportunity to grow the pie of total protocol revenue, which would benefit all participants in the protocol. Some examples include:
 - The market can now be opened to ETH Only Node Operators
 - Node Operators can choose the degree of RPL exposure they feel comfortable with (no more cliff)
 - RPL holders benefit directly from protocol revenue and a reduced rate of inflation
@@ -54,7 +54,7 @@ In reality, there may be demand for more limited forms of participation from ind
 ### Node Operator Perspective
 Let’s examine things from a Node Operator perspective, starting with existing tokenomics. In the diagrams below, blue will represent ETH and orange will represent RPL (with the value still shown in ETH). As a reminder, we are using 8-ETH bonds to compare apples-to-apples against the existing tokenomics. The tokenomics rework will include 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds.)
 
-For this sub-section we make three simplifying assumptions. First, a solo staking APY of 4.17% was chosen to help get round numbers – this means each validator generates 1 ETH per year on the 24 borrowed ETH (for context, currently observed solo APY is ~3.8%). Second, where RPL exists, the RPL/ETH market cap is assumed to stay flat. Finally, we assume all users are using the same type of pool. 
+For this sub-section, we make three simplifying assumptions. First, a solo staking APY of 4.17% was chosen to help get round numbers – this means each validator generates 1 ETH per year on the 24 borrowed ETH (for context, currently observed solo APY is ~3.8%). Second, where RPL exists, the RPL/ETH market cap is assumed to stay flat. Finally, we assume all users are using the same type of pool. 
 
 **Current minimum LEB8 allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-2.png" alt="Figure 2" width="1000px"></br>

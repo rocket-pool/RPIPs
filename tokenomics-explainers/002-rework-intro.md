@@ -19,7 +19,7 @@ depth: Intro
 
 ## Introduction
 
-Given the issues described in Part 1, we now propose a rework of RPL’s tokenomics. These proposals are a community initiative that are being widely discussed. The proposals not only directly address issues with the current RPL tokenomics, but also include changes that will benefit the Rocket Pool protocol as a whole. We are aiming to both improve the value and utility of Rocket Pool as a protocol, as well as driving new value to the RPL token, ensuring the protocol’s continued development and longevity.
+Given the issues described in Part 1, we now propose a rework of RPL’s tokenomics. These proposals are a community initiative that is being widely discussed. The proposals not only directly address issues with the current RPL tokenomics, but also include changes that will benefit the Rocket Pool protocol as a whole. We are aiming to both improve the value and utility of Rocket Pool as a protocol, as well as drive new value to the RPL token, ensuring the protocol’s continued development and longevity.
 
 ## Items that directly address tokenomics issues
 
@@ -57,9 +57,9 @@ Forced delegate upgrades (with a grace period) will limit the technical debt the
 
 |Persona|Now|With Rework|
 |-|-|-|
-|**Existing Rocket Pool Node Operator**|I need RPL to create minipools. I have to remain collateralized at 10% of RPL/ETH to receive RPL rewards. My commission is 14% of borrowed ETH.|I do not need RPL to create minipools. I will receive node operator commission paid in ETH (3.5%). If I *do* stake RPL I will also receive voter share rewards (5.0%) paid in ETH (with no 10% minimum or cliff). I will either benefit from surplus share value accrual to RPL (5.5%) or receive an additional (5.5%) of voter share rewards. I will no longer recieve RPL rewards.|
-|**rETH holder**|My staking rewards are a function of Ethereum issuance and the commission paid to NOs. Currently 86% of solo staking rewards.|My staking rewards are a function of Ethereum issuance and the commission paid to the Rocket Pool protocol, and split determined by pDAO vote. Initially unchanged at 86% of solo staking rewards but may be modified by future pDAO votes.|
-|**Passive RPL Holder**|Holding RPL is speculation on the liquid staking narrative and on the utility of RPL as a bond.|In addition to the liquid staking narrative, holding RPL is speculation that the tokenomics changes will cause rETH supply to grow and generate surplus ETH returns, which **may** be used to accrue value to RPL (via buy+burn or buy+LP) or may solely go to NOs staking RPL.|
+|**Existing Rocket Pool Node Operator**|I need RPL to create minipools. I have to remain collateralized at 10% of RPL/ETH to receive RPL rewards. My commission is 14% of borrowed ETH.|I do not need RPL to create minipools. I will receive node operator commission paid in ETH (3.5%). If I *do* stake RPL I will also receive voter share rewards (5.0%) paid in ETH (with no 10% minimum or cliff). I will either benefit from surplus share value accrual to RPL (5.5%) or receive an additional (5.5%) of voter share rewards. I will no longer receive RPL rewards.|
+|**rETH holder**|My staking rewards are a function of Ethereum issuance and the commission paid to NOs. Currently 86% of solo staking rewards.|My staking rewards are a function of Ethereum issuance and the commission paid to the Rocket Pool protocol and then split by the pDAO to several targets. Initially unchanged at 86% of solo staking rewards but may be modified by future pDAO votes.|
+|**Passive RPL Holder**|Holding RPL is speculation on the liquid staking narrative and the utility of RPL as a bond.|In addition to the liquid staking narrative, holding RPL is speculation that the tokenomics changes will cause rETH supply to grow and generate surplus ETH returns, which **may** be used to accrue value to RPL (via buy+burn or buy+LP) or may solely go to NOs staking RPL.|
 |**ETH-only Node Operator**|I cannot operate a node with Rocket Pool|I can now operate a node with Rocket Pool without exposure to RPL. I receive a 3.5% node operator commission on borrowed ETH. The lower my bond, the higher my rewards relative to solo staking. |
 
 
