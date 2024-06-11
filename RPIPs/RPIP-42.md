@@ -25,18 +25,21 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 - We give precedence to small nodes staking some number of initial validators in the Node Operator queue 
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
 
-
-
-This work is based on prior work; a copy can be found [here](../assets/rpip-42/bond_curves.md).
+This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
 
 ## Specification
+Array indexing in this section is zero-based.
+
 - The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
-- When Node Operators create validators, with `i` validators in the megapool prior to adding:
+- Prior to creating a validator, there MUST be no `debt` from penalties on the megapool
+  - There SHALL be a function provided to pay off `debt` with ETH
+  - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
+- When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
-- When Node Operators remove validators, with `i` validators in the megapool prior to removing:
+- When a Node Operators removes a validator, with `i` validators in the megapool prior to removing:
   - If `i > base_bond_array.length`: the Node Operator share before penalties is `reduced_bond`.
-  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-1]`.
+  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-2]`.
   - If `i==1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to 0 ETH.
 - Bulk validator creation/removal functions SHALL behave the same as multiple individual transactions.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
@@ -64,23 +67,41 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
   - `express_queue_tickets_base_provision`: 2
 
 ### Deposit mechanics specification
-- A node operator MUST take 3 actions to start a validator: `deposit`, `prestake`, and `stake`
-- `Deposit` SHALL place all the ETH in the deposit pool (where it can be used in validators as needed) and enters a queue as described [above](#deposit-queue-specification)
-- Until `prestake`, it SHALL be possible to exit the node operator queue and receive ETH `credit` for it
-- `Prestake` SHALL be possible when
-  - The deposit pool contains 31*`number of currently prestaked validators` ETH
-  - The deposit pool contains an additional 1 ETH per match using the process described [above](#deposit-queue-specification)
-- `Prestake` SHALL take 1 ETH from the deposit pool and stake it to the beacon chain
-- If there is enough ETH in the deposit pool to execute `deposit` and `prestake` in the same transaction, they MUST be done in the same transaction
-- There SHALL be a period of time to check for deposit validity
-- `Stake` SHALL take 31 ETH from the deposit pool and stake it to the beacon chain alongside the previous 1 ETH to make a complete validator
+- A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
+
+#### `deposit` Transaction
+- `deposit` SHALL place the Node Operator ETH in the deposit pool (where it can be used in validators as needed) and place the validator in a queue as described [above](#deposit-queue-specification)
+- The following values for the validator SHALL be stored on chain:
+    - the public key of the validator
+    - the BLS signature over the public key, the withdrawal credentials (the megapool address of the node operator), and the amount (1 ETH) as required by the deposit contract
+    - the deposit message root as required by the deposit contract
+- The transaction SHALL validate the provided values and revert if they do not match
+- `deposit` SHALL assign deposits as described below 
+
+#### Assigning ETH from the Deposit Pool
+- As ETH enters the deposit pool, it SHALL be assigned to valdiators from the queue by sending 32 ETH to the associated megapool contract
+- The assignment SHALL execute the `Prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
+
+#### `stake` Transaction
+- `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
+- If the beacon chain stake is invalid, the validator SHALL be scrubbed 
+- `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
+- If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the user balance to the deposit pool
+
+#### Exiting Queue
+- Until ETH is assigned to a validator, it SHALL be possible to exit the queue and receive ETH `credit` for it
+
+#### Initial Settings
+- The initial settings SHALL be:
+  - `scrub_period`: 12 hours
+  - `time_before_dissolve`: 2 weeks
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
 
 
 ## Penalizable offenses
-This portion of the RPIP SHALL be considered Living. It may be updated by a DAO vote.
+This portion of the RPIP SHALL be considered Living. It may be updated by a DAO vote following the existing rules and conventions for RPIP modifications.
 
 | Offense   | Penalty              | Added      | Updated    |
 |-----------|----------------------|------------|------------|
