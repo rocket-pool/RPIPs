@@ -29,7 +29,7 @@ depth: Intermediate
 
 **LP:** Liquidity Pool. A pool of liquidity held by a smart contract that allows for on-chain trading between a pair of tokens. For the purposes of these explainers, an RPL-rETH pair at a ratio of 90:10. 
 
-**Megapools:** A single RP contract serving as the withdrawal address for multiple validators.
+**Megapools:** A single Rocket Pool contract serving as the withdrawal address for multiple validators.
 
 **MEV Theft:** When a node operator steals execution-layer rewards for profit. This requires a sophisticated, unethical, and lucky operator. See Node Level Penalties.
 
@@ -41,7 +41,7 @@ depth: Intermediate
 
 **rETH TVL:** Total value locked in rETH. Consider it the “size” of the liquid staking token.
 
-**Sock Puppeting (aka Sybil Behavior):** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocketpool is voting, as multiple fake identities with the same amount of RPL have greater voting power than a single identity due to quadratic voting.
+**Sock Puppeting (aka Sybil Behavior):** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocket Pool is voting, as multiple fake identities with the same amount of RPL have greater voting power than a single identity due to quadratic voting.
 
 **Solo staking APY:** The yield for staking on a full 32-ETH validator (inclusive of consensus rewards, tips, and MEV rewards)
 
