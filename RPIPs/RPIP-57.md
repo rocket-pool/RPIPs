@@ -1,12 +1,12 @@
 ---
-rpip: #<to be assigned>
+rpip: 57
 title: Node Distributor User Fund Unbundling
 description: Guarantee that anyone can distribute ETH in Node Distributors.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-node-distributor-user-fund-unbundling/3008
 status: Draft
 type: Protocol
-category (*only required for Protocol ): Core
+category: Core
 created: 2024-05-20
 ---
 

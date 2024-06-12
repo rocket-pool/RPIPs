@@ -1,12 +1,12 @@
 ---
-rpip: #<to be assigned>
+rpip: 58
 title: MEV penalty guardrail
 description: This proposal introduces a limit on the total number of MEV penalties that the oDAO can apply to minipools in one week.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-mev-penalty-guardrail/3009
 status: Draft
 type: Protocol 
-category (*only required for Protocol ): Core
+category: Core
 created: 2024-05-22
 ---
 
