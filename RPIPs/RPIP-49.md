@@ -82,8 +82,8 @@ This change allows the Rocket Pool protocol to force-upgrade Node Operators mini
 ### [RPIP-59: Deposit Mechanics](RPIP-59.md)
 
 Here we desribe the mechanics of Node Operator deposits and validator creation, including standard and express queues.
-* This provides a preferential migration path for pre-upgrade node operators from their minipools to megapools.
-* This treats post-upgrade new node operators preferentially to post-upgrade existing node operators.
+* This provides a faster queue to help small node operators get started.
+* This provides a faster queue for existing node operators to migrate their minipools to megapools.
 * This allows node operators to optionally exit the queue up until they point their validator is created.
 
 ### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
@@ -103,8 +103,8 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-42: Bond curves](RPIP-42.md)
   * Framework
   * 4ETH minimum bond
-* [RPIP-59: Deposit Mechanics](RPIP-59.md))
-  * Standard and Priority queues.
+* [RPIP-59: Deposit Mechanics](RPIP-59.md)
+  * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * All but heuristic adjustments.
 * RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
