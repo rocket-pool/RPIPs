@@ -19,7 +19,7 @@ depth: Intro
 
 ## Introduction
 
-Given the issues described in Part 1, we now propose a rework of RPL’s tokenomics. These proposals are a community initiative that is being widely discussed. The proposals not only directly address issues with the current RPL tokenomics, but also include changes that will benefit the Rocket Pool protocol as a whole. We are aiming to both improve the value and utility of Rocket Pool as a protocol, as well as drive new value to the RPL token, ensuring the protocol’s continued development and longevity.
+Given the issues described in Part 1, we now propose a rework of RPL’s tokenomics. These proposals are a community initiative and are being widely discussed. The proposals directly address issues with the current RPL tokenomics and include changes that should benefit the Rocket Pool protocol as a whole. We are aiming to improve the value and utility of Rocket Pool as a protocol, as well as drive new value to the RPL token, ensuring the protocol’s continued development and longevity.
 
 ## Items that directly address tokenomics issues
 
