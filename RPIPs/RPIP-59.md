@@ -14,7 +14,7 @@ tags: tokenomics-2024, tokenomics-content
 
 ## Abstract
 
-Defines the queue structures that govern validator deposits and the overall deposit process within Rocket Pool. Both a standard and express queue structure are present. The access to the express queue is managed via tickets. A limited number of tickets are provided to all new nodes, and an amount of tickets are provided to existing nodes at the time of the upgrade based on their amount of bonded ETH. For every one validator that is created from the standard queue, two are created from the express queue. 
+Defines the queue structures that govern validator deposits and the overall deposit process within Rocket Pool. Both a standard and express queue structure are present. Access to the express queue is managed via tickets. A limited number of tickets are provided to all new nodes, and an amount of tickets are provided to existing nodes at the time of the upgrade based on their amount of bonded ETH. The express queue is designed to progress faster than the standard queue.
 
 This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
 
@@ -69,7 +69,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 ## Rationale
 
-- The express queue is meant to favor (a) existing NOs and (b) small NOs. The end goal in both cases is to support multiple values enshrined in [RPIP-23](RPIP-23.md) (the pDAO charter): decentralization, protocol safety, and the health of the Ethereum network.
+- The express queue is meant to favor (a) small NOs and (b) existing NOs. The end goal in both cases is to support multiple values enshrined in [RPIP-23](RPIP-23.md) (the pDAO charter): decentralization, protocol safety, and the health of the Ethereum network.
   - The `express_queue_tickets_base_provision` is enough to get started, and currently matches the length of `base_bond_array`
   - The tickets from `(bonded ETH in legacy minipools)/4` are enough to fully migrate to 4-ETH deposits during Saturn 1 using the express queue OR to partly migrate to 1.5-ETH deposits after Saturn 2
   - It's worth emphasizing that the tickets stick around -- ie, a node operator joining during a time when we don't have an NO queue (ie, when RP has an immediate need for NO supply) gets to keep their express queue benefit for a later time if they wish
