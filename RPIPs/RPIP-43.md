@@ -79,7 +79,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - There SHALL be a reward distribution function in the megapool
   - When called, rewards from the node operator's bonded ETH SHALL be held in
     the megapool as unclaimed node operator funds.
-  - When called, `node_operator_commission_share` of rewards SHALL be held in 
+  - When called, `node_operator_commission_share` of rewards SHALL be held in
       the megapool as unclaimed node operator funds.
   - When called, `reth_share` of rewards SHALL be sent to the rETH contract
   - When called, `voter_share` of rewards SHALL be sent to a merkle rewards
