@@ -71,7 +71,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - The megapool SHALL track the total capital ownership of the validator(s) between
   the node operator and the rETH stakers.
 - The megapool MUST keep track of the capital funds present in the contract.
-  The megapool MAY assume that any other funds present are rewards.
+  The megapool MUST assume that any other funds present are rewards.
 - A Node Operator SHALL be able to distribute rewards from all validators in their
   megapool at once.
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
