@@ -64,8 +64,8 @@ Node operators can manage the set of validators in their megapool:
   EIP-7251 'Max EB' validators will require additional specification and development.
 - The megapool SHALL track the total capital ownership of the validator(s) between
   the node operator and the rETH stakers.
-- The megapool MUST distinguish between capital funds present in the contract and
-  rewards funds at all times.
+- The megapool MUST keep track of the capital funds present in the contract.
+  The megapool MAY assume that any other funds present are rewards.
 - A Node Operator SHALL be able to distribute rewards from all validators in their
   megapool at once.
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
