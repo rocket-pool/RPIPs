@@ -31,10 +31,13 @@ The tokenomics upgrade has not yet been ratified by the Rocket Pool pDAO.
 * [RPIP-42: Bond curves](RPIP-42.md) - Partial Inclusion
   * Framework
   * 4ETH minimum bond
+* [RPIP-59: Deposit Mechanics](RPIP-59.md)
+  * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial Inclusion
   * All but heuristic adjustments.
 * RPL Value Capture - One of: [RPIP-45: RPL Burn](RPIP-45.md) / [RPIP-50: RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+* [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 ## Key Links 
 TBC - Include Audits, Code Repositories, Release Blog Posts, Upgrade contract, etc once they are posted.
