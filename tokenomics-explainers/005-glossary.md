@@ -3,7 +3,7 @@ layout: other-content
 title: Glossary of Terms
 nav-title: Part 5 - Glossary of Terms
 description: Defines some of the common terminology present in the other explainers.
-author: Valdorff (@Valdorff), Paladin
+author: Valdorff (@Valdorff), Paladin (@Paladin147)
 custom-next: none
 custom-prev: /tokenomics-explainers/004-rework-support
 depth: Intermediate
@@ -27,7 +27,9 @@ depth: Intermediate
 
 **LEB, or x-ETH Bond:** Originally minipools used a 16 ETH Bond. As a result, smaller bonds were referred to as  “Lower ETH Bond” minipools, or LEBs. The Atlas release introduced LEB8s. The new proposal suggests 4-ETH bond validators and 1.5-ETH bond validators.
 
-**Megapools:** A single RP contract serving as the withdrawal address for multiple validators.
+**LP:** Liquidity Pool. A pool of liquidity held by a smart contract that allows for on-chain trading between a pair of tokens. For the purposes of these explainers, an RPL-rETH pair at a ratio of 90:10. 
+
+**Megapools:** A single Rocket Pool contract serving as the withdrawal address for multiple validators.
 
 **MEV Theft:** When a node operator steals execution-layer rewards for profit. This requires a sophisticated, unethical, and lucky operator. See Node Level Penalties.
 
@@ -38,6 +40,8 @@ depth: Intermediate
 **Top off:** To (buy and) stake more RPL to keep above the RPL reward threshold. (See Cliff).
 
 **rETH TVL:** Total value locked in rETH. Consider it the “size” of the liquid staking token.
+
+**Sock Puppeting (aka Sybil Behavior):** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocket Pool is voting, as multiple fake identities with the same amount of RPL have greater voting power than a single identity due to quadratic voting.
 
 **Solo staking APY:** The yield for staking on a full 32-ETH validator (inclusive of consensus rewards, tips, and MEV rewards)
 
