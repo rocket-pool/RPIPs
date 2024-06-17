@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-05
-requires: 30, eip-4788
+requires: 30, 46, eip-4788
 tags: tokenomics-2024, tokenomics-content
 ---
 
@@ -60,12 +60,18 @@ Node operators can manage the set of validators in their megapool:
 
 ### Funds Management
 
+In the following, "capital" refers to funds supplied for staking by either the
+node operator or pool stakers, including node operator staked RPL. "Rewards"
+refers to additional funds generated or obtained via staking, including
+consensus rewards, execution rewards, and RPL inflation. The split of rewards
+into shares is defined in [RPIP-46](RPIP-46.md).
+
 - This RPIP assumes the continued use of separate 32 Ether validators. Support for
   EIP-7251 'Max EB' validators will require additional specification and development.
 - The megapool SHALL track the total capital ownership of the validator(s) between
   the node operator and the rETH stakers.
-- The megapool MUST distinguish between capital funds present in the contract and
-  rewards funds at all times.
+- The megapool MUST keep track of the capital funds present in the contract.
+  The megapool MUST assume that any other funds present are rewards.
 - A Node Operator SHALL be able to distribute rewards from all validators in their
   megapool at once.
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
@@ -73,7 +79,7 @@ Node operators can manage the set of validators in their megapool:
 - There SHALL be a reward distribution function in the megapool
   - When called, rewards from the node operator's bonded ETH SHALL be held in
     the megapool as unclaimed node operator funds.
-  - When called, `node_operator_commission_share` of rewards SHALL be held in 
+  - When called, `node_operator_commission_share` of rewards SHALL be held in
       the megapool as unclaimed node operator funds.
   - When called, `reth_share` of rewards SHALL be sent to the rETH contract
   - When called, `voter_share` of rewards SHALL be sent to a merkle rewards
