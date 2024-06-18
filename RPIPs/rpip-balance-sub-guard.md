@@ -12,11 +12,11 @@ created: 2024-05-27
 ---
 
 ## Abstract
-This proposal limits how much the oDAO can change the rETH rate in a single update. The limit is a protocol parameter controlled by the pDAO. The pDAO can't set it lower than a minimum value. The parameter can't be changed by the Security Council.
+This proposal limits how much the oDAO can change the rETH exhange rate (used for minting or burning rETH against ETH) in a single update. The limit is a protocol parameter controlled by the pDAO. The pDAO can't set it lower than a minimum value. The parameter can't be changed by the Security Council.
 This proposal also limits how frequently updates can happen, using an existing protocol parameter that the pDAO controls. 
 
 ## Motivation
-Currently, the oDAO can change rETH rate arbitrarily within one block. This exposes rETH holders: In the worst case, a compromised oDAO can make rETH worthless for any holder and extract any ETH available. During normal operation, the rETH rate doesn't need to change a lot. This proposal aims to reduce oDAO trust by introducing a sensible limit that doesn't interfere with legitimate use of balance updates and removes unnecessary risk from illegitimate use.
+Currently, the oDAO can change rETH exchange rate arbitrarily within one block. This exposes rETH holders: In the worst case, a compromised oDAO can make rETH worthless for any holder and extract any ETH available. During normal operation, the rETH exchange rate doesn't need to change a lot. This proposal aims to reduce oDAO trust by introducing a sensible limit that doesn't interfere with legitimate use of balance updates and removes unnecessary risk from illegitimate use.
 
 ## Specification
 
