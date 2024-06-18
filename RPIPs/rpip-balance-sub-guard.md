@@ -27,7 +27,7 @@ Currently, the oDAO can change rETH exchange rate arbitrarily within one block. 
 - The Security Council SHALL NOT be able to change Maximum rETH Delta.
 
 ### Network Balance Updates
-- The oDAO SHALL NOT be able to be submit a Network Balance update if the time elapsed since the last Network Balance update is less than the Network Submit Balances Frequency.
+- The oDAO SHALL NOT be able to be submit a Network Balance update if the time elapsed since the last Network Balance update is less than 95% of the Network Submit Balances Frequency.
 - The oDAO SHALL NOT be able to change the rETH exchange rate by more than Maximum rETH Delta.
 - If an update would lead to an rETH exchange rate change of more than Maximum rETH Delta, the oDAO SHALL submit an update of Maximum rETH Delta instead.
 
