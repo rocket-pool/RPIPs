@@ -2,7 +2,7 @@
 rpip: 59
 title: Deposit Mechanics
 description: Describes the mechanics of Node Operator deposits and validator creation, including standard and express queues.
-author: Valdorff (@Valdorff)
+author: Valdorff (@Valdorff), knoshua (@knoshua)
 discussions-to: TBD
 status: Draft
 type: Protocol
