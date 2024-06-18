@@ -1,7 +1,7 @@
 ---
 rpip: #<to be assigned>
 title: Balance Submission Guardrail
-description: <Description is one full (short) sentence>
+description: This proposal limits how much the oDAO can change the rETH exhange rate.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-balance-submission-guardrail/3010
 status: Draft
