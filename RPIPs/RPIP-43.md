@@ -77,24 +77,20 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
   pending removal.
 - There SHALL be a reward distribution function in the megapool
-  - When called, rewards from the node operator's bonded ETH SHALL be held in
-    the megapool as unclaimed node operator funds.
-  - When called, `node_operator_commission_share` of rewards SHALL be held in
-      the megapool as unclaimed node operator funds.
   - When called, `reth_share` of rewards SHALL be sent to the rETH contract
   - When called, `voter_share` of rewards SHALL be sent to a merkle rewards
     distributor contract
   - When called, `surplus_share` of rewards SHALL be sent to the appropriate
     surplus disposition contract
+  - When called while the megapool has `debt`, the remainder SHALL be used to repay `debt` by sending to the rETH contract
+   - When called, any remaining funds SHALL be held in the megapool as unclaimed node operator funds. 
   - This function SHALL allow any user to call it
-  - If called by the node operator, this function SHOULD claim all unclaimed
-    node operator funds
+  - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
-  - When called, capital from the node operator's bonded ETH that has been
-    released from exited validators SHALL be held in the megapool as unclaimed
-    node operator funds.
   - When called, capital borrowed from the protocol that has been released from
     exited validators SHALL be sent to the rETH contract.
+  - When called while the megapool has `debt`, the remainder SHALL be used to reduce `debt` by sending to the rETH contract
+  - When called, the remainder SHALL be held in the megapool as unclaimed node operator funds
   - This function SHALL allow any user to call it following a mandatory time
     delay configurable by the pDAO. The delay SHALL be initialized by a
     `startUserDistribute` function. After the delay is complete, any user may
