@@ -14,7 +14,7 @@ tags: tokenomics-2024, tokenomics-content
 
 ## Abstract
 This proposal dramatically increases the LTV used in the protocol (loan to value; the amount of ETH that can be borrowed per unit of bonded ETH). It does this safely by:
-- Enabling node-level penalties to mitigate/discourage MEV theft
+- Enabling megapool-level penalties to mitigate/discourage MEV theft
 - Using forced exits as needed
 - Starting with lower LTV at lower total bonded ETH to mitigate/discourage MEV theft
 - Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment 
@@ -28,7 +28,7 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 ## Specification
 Array indexing in this section is zero-based.
 
-- The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
+- The oDAO SHALL be able to penalize stake at the megapool level when a [Penalizable offense](#penalizable-offenses) is committed
 - Prior to creating a validator, there MUST be no `debt` from penalties on the megapool
   - There SHALL be a function provided to pay off `debt` with ETH
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
