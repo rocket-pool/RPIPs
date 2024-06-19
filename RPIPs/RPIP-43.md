@@ -58,6 +58,12 @@ Node operators can manage the set of validators in their megapool:
      - The check MAY occur after the validator is added initially as Prestaked
 - A Node Operator SHALL be able to remove exited validators from their megapool
 
+### `debt` Variable
+- There SHALL be a `debt` variable that is intialized at 0
+- The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)]) by majority vote
+- There SHALL be a function provided to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract  and the `debt` SHALL be reduced by the amount
+
+
 ### Funds Management
 
 In the following, "capital" refers to funds supplied for staking by either the
@@ -82,14 +88,15 @@ into shares is defined in [RPIP-46](RPIP-46.md).
     distributor contract
   - When called, `surplus_share` of rewards SHALL be sent to the appropriate
     surplus disposition contract
-  - When called while the megapool has `debt`, the remaining rewards SHALL first be used to repay `debt` by sending it to the rETH contract
+  - When called while the megapool has `debt`, the remaining rewards SHALL first be used to pay off `debt`
    - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
   - This function SHALL allow any user to call it
   - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
   - When called, capital borrowed from the protocol that has been released from
     exited validators SHALL be sent to the rETH contract.
-  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to reduce `debt` by sending it to the rETH contract
+    - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
+  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`` by sending it to the rETH contract`
   - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
   - This function SHALL allow any user to call it following a mandatory time
     delay configurable by the pDAO. The delay SHALL be initialized by a
@@ -99,29 +106,14 @@ into shares is defined in [RPIP-46](RPIP-46.md).
     - This function SHOULD claim all unclaimed node operator funds
     - This function SHALL be immediately callable without delay
 - There SHALL be a function to claim unclaimed node operator funds; when called
-  - If unclaimed node operator funds >= penalties
-    - unclaimed node operator funds SHALL be decreased by penalties
-    - penalties SHALL be set to 0
-  - If unclaimed node operator funds < penalties
-    - unclaimed node operator funds SHALL be set to 0
-    - penalties SHALL be decreased by unclaimed node operator funds
-  - Unclaimed node operator funds SHALL be transferred to the node operator's
+  - If `debt` exists, unclaimed node operator funds SHALL first be used to pay off `debt`
+  - Then any remaining unclaimed node operator funds SHALL be transferred to the node operator's
     withdrawal address
   - Unclaimed node operator funds SHALL be set to 0
 - A Node Operator SHALL be able to withdraw unclaimed node operator funds to
   their withdrawal address
 - A Node Operator MAY be able to use unclaimed node operator funds for redeposit
   to the beacon chain.
-- In the event the rETH proportion of the withdrawn capital is insufficient
-  to fully repay the protocol borrowed capital, the shortfall SHALL be repaid
-  from the node operator's capital
-   - If the node operator's capital is insufficient to repay the shortfall, a
-     deficit balance of the shortfall SHALL be recorded
-- If there is a deficit balance > 0:
-   - Any future node operator rewards or capital distributions SHALL be deducted
-     from until the deficit is fully repaid.
-   - There SHALL be a function that allows anyone to directly repay a deficit.
-   - Deficit repayments SHALL be transferred to the rETH contract
 - Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
   excluded from capital distribution, but rather be subject to separate functions
   for `prestake` and `stake` transactions.
