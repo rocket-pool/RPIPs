@@ -120,11 +120,11 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Heuristic adjustments.
 
 ## Current Status
-Last Updated: June 10th
+Last Updated: June 19th
 
-Current efforts are primarily focused on two areas.
-1. Polishing the explainer document contents and format in response to feedback from the community.
-2. Seeking and reacting to feedback from all parts of the Rocket Pool community and updating the RPIP specifications. 
+Current efforts are primarily focused on:
+1. Seeking and reacting to feedback from all parts of the Rocket Pool community.
+2. Updating and polishing the RPIP specifications. 
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
