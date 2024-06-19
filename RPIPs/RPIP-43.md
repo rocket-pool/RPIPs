@@ -96,7 +96,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
   - When called, capital borrowed from the protocol that has been released from
     exited validators SHALL be sent to the rETH contract.
     - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
-  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`` by sending it to the rETH contract`
+  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
   - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
   - This function SHALL allow any user to call it following a mandatory time
     delay configurable by the pDAO. The delay SHALL be initialized by a
