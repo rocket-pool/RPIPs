@@ -14,6 +14,12 @@ tags: tokenomics-2024, tokenomics-value-capture-option
 ## Abstract
 This proposal establishes a contract that holds ETH from protocol revenue and allows it to be used for single-asset deposits in a specified RPL/rETH pool. This serves as a form of market buy and provides significant liquidity depth for RPL buying/selling.
 
+## Motivation
+
+Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. The benefits of improved liquidity are better price discovery and easier entry and exit for market participants. This proposal intends to drive value to the RPL token and create liquidity via a buy and liquidity pooling mechanism. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 - A share of revenue from borrowed ETH SHALL be directed to a smart contract for the purpose of this liquidity provision
 - Once `lp_deposit_threshold` has been reached, any user MAY call a function to:

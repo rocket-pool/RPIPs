@@ -13,11 +13,19 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: reth (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
+Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
 
 This proposal also includes a small set of items for potential future use:
 - Seals that the security council can use to increase the NO share -- this is being used to find a reasonable setting based on the actual market.
 - An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
+
+## Motivation
+
+Universal Adjustable Revenue Split is motivated by the desire for increased flexibility for the Rocket Pool protocol as the Ethereum ecosystem evolves in the future. It's critical that the protocol can respond to the actions of other actors as effectively as possible and UARS helps facilitate this. It is also important that the protocol can balance the demand and supply of rETH to encourage sustainable and continuous growth on both sides of this equation. 
+
+A fixed percentage of RPL inflation is currently being used to fund ongoing maintenance and development of the Rocket Pool protocol, a valuable RPL token means more bang for the same amount of inflation, and UARS supports multiple mechanisms that support RPL value. Competent and aligned governance will also be necessary as the protocol evolves and UARS facilitates this via directing a share of revenue to holders of vote-eligible RPL. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
 
 ## Specification
 1. Inflation settings SHALL be modified to retain inflation to the DAOs and eliminate inflation to NOs

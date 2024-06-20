@@ -20,6 +20,14 @@ The security council may trigger a faster upgrade with a shorter delay, but ther
 
 Additionally the security council may veto contract upgrades. The veto power should not be used lightly, and misuse may result in replacement of the security council by the pDAO.
 
+## Motivation
+
+This RPIP is motivated by the desire to protect participants in the Rocket Pool as best as possible from unfavorable upgrades. Participants should have time to exit the protocol if it changes in a way they do not agree with, _prior_ to those changes coming into effect. 
+
+Secondly, we want to ensure that the protocol has the procedures to act in an accelerated fashion when the situation calls for it, but that this upgrade path has strict limitations and is not misused. The security council is well placed to manage accelerated upgrades but must remain accountable to the pDAO.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 
 ### Protocol upgrades
