@@ -32,7 +32,7 @@ Funds (ETH) associated with a megapool SHALL be accounted in (at least) the foll
 
 The following quantity, `deficit`, is derived from the categorised funds above:
 ```math
-$$ \mathtt{deficit} = \mathtt{received} + \mathtt{credit} + \mathtt{withdrawn} - \mathtt{debt} $$
+$$ \mathtt{deficit} = \mathtt{debt} - \mathtt{received} - \mathtt{credit} -  \mathtt{withdrawn} $$
 ```
 
 We also introduce a protocol-wide parameter `exit_deficit`, with initial setting
