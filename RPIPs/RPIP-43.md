@@ -83,13 +83,14 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
   pending removal.
 - There SHALL be a reward distribution function in the megapool
-  - When called, `reth_share` of rewards SHALL be sent to the rETH contract
-  - When called, `voter_share` of rewards SHALL be sent to a merkle rewards
+  - For this section, we define `borrowed_portion` as the megapool's `borrowed_eth / (bonded_eth + borrowed_eth)`
+  - When called, `reth_share * borrowed_portion` of rewards SHALL be sent to the rETH contract
+  - When called, `voter_share * borrowed_portion` of rewards SHALL be sent to a merkle rewards
     distributor contract
-  - When called, `surplus_share` of rewards SHALL be sent to the appropriate
+  - When called, `surplus_share * borrowed_portion` of rewards SHALL be sent to the appropriate
     surplus disposition contract
-  - When called while the megapool has `debt`, the remaining rewards SHALL first be used to pay off `debt`
-   - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
+  - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
+  - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
   - This function SHALL allow any user to call it
   - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
