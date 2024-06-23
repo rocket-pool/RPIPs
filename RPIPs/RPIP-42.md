@@ -14,7 +14,7 @@ tags: tokenomics-2024, tokenomics-content
 
 ## Abstract
 This proposal dramatically increases the LTV used in the protocol (loan to value; the amount of ETH that can be borrowed per unit of bonded ETH). It does this safely by:
-- Enabling node-level penalties to mitigate/discourage MEV theft
+- Enabling megapool-level penalties to mitigate/discourage MEV theft
 - Using forced exits as needed
 - Starting with lower LTV at lower total bonded ETH to mitigate/discourage MEV theft
 - Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment 
@@ -28,17 +28,16 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 ## Specification
 Array indexing in this section is zero-based.
 
-- The oDAO SHALL be able to penalize stake at the node level when a [Penalizable offense](#penalizable-offenses) is committed
-- Prior to creating a validator, there MUST be no `debt` from penalties on the megapool
-  - There SHALL be a function provided to pay off `debt` with ETH
+- The oDAO SHALL be able to penalize stake at the megapool level when a [Penalizable offense](#penalizable-offenses) is committed by increasing the megapool's `debt` variable defined in [RPIP-43](./RPIP-43.md/#debt-variable)
+- Prior to creating a validator, there MUST be no `debt` on the megapool
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
 - When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
 - When a Node Operators removes a validator, with `i` validators in the megapool prior to removing:
-  - If `i > base_bond_array.length`: the Node Operator share before penalties is `reduced_bond`.
-  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-2]`.
-  - If `i==1`: the Node Operator share before penalties is the amount of ETH that would bring the user's total bond down to 0 ETH.
+  - If `i > base_bond_array.length`: the Node Operator share before `debt` is `reduced_bond`.
+  - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before `debt` is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-2]`.
+  - If `i==1`: the Node Operator share before `debt` is the amount of ETH that would bring the user's total bond down to 0 ETH.
 - Bulk validator creation/removal functions SHALL behave the same as multiple individual transactions.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced), it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool

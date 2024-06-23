@@ -28,8 +28,8 @@ Funds (ETH) associated with a megapool SHALL be accounted in (at least) the foll
 - Credits (`credit`): Funds already in the protocol that can be used towards validator deposits; sources include ETH already staked on the beacon chain for a migrating validator
 - Deposits (`deposited`): Funds currently staked on the beacon chain for validators associated with this megapool
 - Withdrawals (`withdrawn`): Funds received into the megapool via withdrawals from the beacon chain, including both principal and the node's share of rewards, NOT including pool stakers' share of the rewards
-- Penalties (`debt`): Funds lost to penalties as enumerated in [RPIP-42](RPIP-42.md), or repaid from other balances as specified in this RPIP
-
+- Debt (`debt`): Penalties or shortfall from exited validators (see [RPIP-43](RPIP-43.md))
+  
 The following quantity, `deficit`, is derived from the categorised funds above:
 ```math
 $$ \mathtt{deficit} = \mathtt{debt} - \mathtt{received} - \mathtt{credit} -  \mathtt{withdrawn} $$
@@ -49,7 +49,7 @@ The exit functionality for a megapool is specified as follows:
   - This function MAY be freely called by the Node Operator (as implied by [RPIP-43](RPIP-43.md))
   - This function MAY be called by any account under the condition: `deficit >= exit_deficit`
       - It MUST NOT be possible for accounts other than the Node Operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
-- The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to decrease `debt` prior to taking action on exits
+- The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to pay off `debt` prior to taking action on exits
 - The protocol SHOULD use staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
 
 ## Copyright
