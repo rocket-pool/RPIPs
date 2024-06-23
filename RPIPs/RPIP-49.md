@@ -81,16 +81,16 @@ This change allows the Rocket Pool protocol to force-upgrade Node Operators mini
 
 ### [RPIP-59: Deposit Mechanics](RPIP-59.md)
 
-Here we desribe the mechanics of Node Operator deposits and validator creation, including standard and express queues.
+Here we describe the mechanics of Node Operator deposits and validator creation, including standard and express queues.
 * This provides a faster queue to help small node operators get started.
 * This provides a faster queue for existing node operators to migrate their minipools to megapools.
 * This allows node operators to optionally exit the queue up until they point their validator is created.
 
 ### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
-This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect.
-* This helps protect participants in Rocket Pool from malicious upgrades.
-* This allows the security council to react quickly in limited circumstances.
+This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to act in that time.
+* The security council can veto an upgrade to help protect participants in Rocket Pool from malicious upgrades.
+* The security council can speed up an upgrade to help enact critical changes faster when requested by the pDAO.
 
 ## Deployment Plan
 

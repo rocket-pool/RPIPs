@@ -42,5 +42,10 @@ This proposal suggests limiting that upgrade choice in the future. Users will be
   - Final distribution of rewards and capital 
 - The `megapool recovery delegate` SHOULD be updated only rarely, and only to support changes to the Ethereum execution layer exit process, or major changes in the Rocket Pool protocol. Simultaneous upgrades to both the `megapool recovery delegate` and the latest `megapool delegate` SHOULD be avoided if possible.
 
+## Security Considerations
+- Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block in order to build up "Lindy"
+  - If this doesn't happen naturally, it may be possible to incentivize early adopters with GMC funds
+- Note that the recovery delegate can be upgraded instantly, without any period where the NOs decide on whether they're ready to use the latest. This is ok because it can only be used if the main delegate reaches its epiration block, which _is_ a Node Operator decision.
+
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

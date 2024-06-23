@@ -75,8 +75,8 @@ eligible RPL target is a range between `vote_eligible_target_min` and `vote_elig
       1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
       2. `surplus_share` is increased by the difference between the old and new `voter_share`
    6. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-3. `voter_share_relative_step`, `vote_eligible_target_min`, and `vote_eligible_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-4. The initial settings SHALL be:
+2. `voter_share_relative_step`, `vote_eligible_target_min`, and `vote_eligible_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+3. The initial settings SHALL be:
    1. `voter_share_relative_step`: 15%
    2. `vote_eligible_target_min`: 55%
    3. `vote_eligible_target_max`: 65%
@@ -98,6 +98,20 @@ Some example concrete guidelines:
 - If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
+
+## Security Considerations
+- `no_share_seal`s are intended to be used in a particular way, but the security council may misuse them
+  - This can be mitigated by limiting `no_share_seal_count`; eg, it can start high while the market is not well understood, but most of the time thereafter it can be at zero or one
+  - The pDAO may also replace the security council if it misuses its power
+- There is an acknowledged conflict of interest around `voters` controlling `voter_share`
+  - There is an attempt to mitigate abuse by requiring a supermajority; nonetheless, that still depends on enough well-intentioned voters acting to defend the interests of other groups within the Rocket Pool community
+- Attracting desirable vote-eligible share may not be trivial
+  - While we have a heuristic to increase incentives for vote-eligible RPL, it may not move as fast as the market
+  - RP allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
+- Vote-elgibility may not be a strong proxy for "active voters"
+  - The incentives describe only incentivize staking vote-eligible RPL
+  - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
+    - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot 
 
 ## Historic revenue share values
 | Date                         | Share Settings                                                                     |
