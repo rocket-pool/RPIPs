@@ -17,7 +17,7 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 
 ## Motivation
 
-Megapools are motivated by several desires; the desire to lower ongoing costs, to lower the barrier to entry, and to support improved capital efficiency. Both ongoing and upfront costs are reduced by Megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. Megapools support improved capital efficiency indirectly by allowing for a shared stake that can be seized if _any_ of an operator's validators misbehave, whereas, in the current system of disconnected stake-per-minipool, the stake can only be seized from the offending minipool.
+Megapools are motivated by several desires; to lower ongoing costs, to lower the barrier to entry, and to improve penalty handling across what would currently be multiple minipools. Both ongoing and upfront costs are reduced by Megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. The accounting and processing of penalties is easier to handle with a single contract. 
 
 ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
 

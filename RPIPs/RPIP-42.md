@@ -27,7 +27,7 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 
 ## Motivation
 
-The primary motivation for the introduction of smaller ETH bonds in this form is twofold. First, lower ETH bonds allow for the same amount of bonded ETH to support a larger volume of rETH, this helps unlock growth for the protocol, as it has been primarily limited by lack of Node Operators in the months preceding this proposal. Second, lower ETH bonds increase the profitability for Node Operators, allowing the protocol to grow and compete favorably with alternative liquid staking providers.
+The primary motivation for the introduction of smaller ETH bonds in this form is twofold. First, lower ETH bonds allow for the same amount of bonded ETH to support a larger volume of rETH, this helps unlock growth for the protocol, as it has been primarily limited by lack of Node Operators in the months preceding this proposal. Second, lower ETH bonds increase the profitability of Rocket Pool as a protocol, allowing it to grow and compete favorably with alternative liquid staking providers.
 
 The innovation of a bond curve as opposed to a flat smaller allowable ETH bond is motivated by the need to maintain a base-level stake to mitigate MEV theft, slashing penalties, and abandonment; while meeting the core goal of improved capital efficiency.
 

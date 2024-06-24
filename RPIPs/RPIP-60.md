@@ -22,7 +22,7 @@ Additionally the security council may veto contract upgrades. The veto power sho
 
 ## Motivation
 
-This RPIP is motivated by the desire to protect participants in the Rocket Pool as best as possible from unfavorable upgrades. Participants should have time to exit the protocol if it changes in a way they do not agree with, _prior_ to those changes coming into effect. 
+This RPIP is motivated by the desire to protect participants in Rocket Pool as best as possible from unfavorable upgrades. Participants should have time to exit the protocol if it changes in a way they do not agree with, _prior_ to those changes coming into effect. 
 
 Secondly, we want to ensure that the protocol has the procedures to act in an accelerated fashion when the situation calls for it, but that this upgrade path has strict limitations and is not misused. The security council is well placed to manage accelerated upgrades but must remain accountable to the pDAO.
 
