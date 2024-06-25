@@ -85,6 +85,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - to allow anyone to execute `prestake`, the validator specific data is stored 
 - since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
 
+## Considerations
+To avoid idle ETH and ensure the queue progressing smoothly, we recommend that the pDAO funds (for example through the GMC) development and running of assignment bots that assign ETH in the deposit pool to the queue at a reasonable gas price. 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
