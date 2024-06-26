@@ -17,6 +17,14 @@ Currently, Node Operators can choose to upgrade (or not) for their minipool dele
 
 This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate. To ensure timely availability of protocol funds, after the defined period, anyone may change the megapool's delegate to a minimal 'recovery delegate' that is only capable of exiting validators and distributing funds. 
 
+## Motivation
+
+Supporting many iterations of the same basic functionality as the protocol evolves makes protocol development slower, more risky, and more expensive, with no real limit on the degree to which this debt can accumulate. The ability to force upgrades allows the protocol to avoid this tax on efficiency and remain responsive to future development needs.
+
+Additionally, the pDAO must have the ability to effect change in ways that benefit the protocol as a whole, but that may not benefit every individual node operator in isolation. What benefits individuals in the short term can lead to ruin in the long term for both that individual and the collective. The pDAO is unable to protect against this outcome without the ability to force upgrades. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 ### Megapool delegates
 - `Megapool delegate` contracts SHALL have an expiration block (ie, execution layer block)

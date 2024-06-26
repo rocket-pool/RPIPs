@@ -15,6 +15,14 @@ tags: tokenomics-2024, tokenomics-content
 ## Abstract
 This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of node-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level. Note that this proposal also enables ETH-only Node operation.
 
+## Motivation
+
+Megapools are motivated by several desires; to lower ongoing costs, to lower the barrier to entry, and to improve penalty handling across what would currently be multiple minipools. Both ongoing and upfront costs are reduced by Megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. The accounting and processing of penalties is easier to handle with a single contract. 
+
+ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 
 ### Megapool Contracts

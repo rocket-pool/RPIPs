@@ -25,6 +25,14 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 - We give precedence to small nodes staking some number of initial validators in the Node Operator queue (see [RPIP-59](RPIP-59))
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
 
+## Motivation
+
+The primary motivation for the introduction of smaller ETH bonds in this form is twofold. First, lower ETH bonds allow for the same amount of bonded ETH to support a larger volume of rETH, this helps unlock growth for the protocol, as it has been primarily limited by lack of Node Operators in the months preceding this proposal. Second, lower ETH bonds increase the profitability of Rocket Pool as a protocol, allowing it to grow and compete favorably with alternative liquid staking providers.
+
+The innovation of a bond curve is motivated by the need to maintain enough stake to mitigate MEV theft, slashing penalties, and abandonment; while meeting the core goal of improved capital efficiency.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 Array indexing in this section is zero-based.
 

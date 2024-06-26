@@ -17,6 +17,14 @@ This proposal specifies when [execution layer triggerable exits as defined in EI
 
 There is at least one additional use case not addressed in this RPIP, which is to exit badly-performing (eg, abandoned) validators. It is likely the pDAO will wish to supersede this RPIP to include that functionality. However, as it requires modeling and is not a critical component of the tokenomics rework, it is not being addressed at this time. For similar reasons, this RPIP does not include a keeper-based design to reward those that trigger forced exits. Please see a [historical version of RPIP-44](https://github.com/rocket-pool/RPIPs/blob/09d445accaa77f355acae1e943910ad0229a1d2e/RPIPs/RPIP-44.md) for initial but incomplete ideas to address abandonment and a keeper network.
 
+## Motivation
+
+Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool validators. Currently, the protocol has limited recourse against such offending validators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
+
+A secondary motivation is to improve the Node Operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 
 This specification extends the specification of megapools in

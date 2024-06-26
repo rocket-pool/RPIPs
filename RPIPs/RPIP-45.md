@@ -21,6 +21,12 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 - Any RPL exchanged this way SHALL burned using the RPL token's `burn` or `burnFrom` functions
 - The swap price SHALL be based on an on-chain oracle
 
+## Motivation
+
+Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. This proposal intends to drive value to the RPL token via a buy-and-burn mechanism. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Implementation thoughts
 There have been previous buy+burn mechanics susceptible to gaming. To that end, here's an example design that focuses on avoiding discontinuities by smoothly unlocking the funds available for exchange.
 
