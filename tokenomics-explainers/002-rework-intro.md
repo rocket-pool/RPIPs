@@ -45,7 +45,7 @@ Consider ETH-only validators receiving a 3.5% commission on borrowed ETH with va
 * 4 ETH bond: **24.5% boost** compared to solo staking rewards.
 * 1.5 ETH bond: **71.2% boost** compared to solo staking rewards.
 
-Node-level penalties and forced validator exits are also included in the rework and are key to making smaller ETH bonds safe enough to use.
+Megapool-level penalties and forced validator exits are also included in the rework and are key to making smaller ETH bonds safe enough to use.
 
 Megapools will enable multiple validators to share the same Ethereum withdrawal address – this **reduces initial and ongoing gas costs** for node operators.
 

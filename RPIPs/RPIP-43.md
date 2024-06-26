@@ -13,7 +13,15 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of node-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level. Note that this proposal also enables ETH-only Node operation.
+This proposal drastically reduces the gas to add validators and distribute rewards for them. It does so by creating a single contract that can be used as the Ethereum withdrawal address for any number of validators. In addition, the contract will facilitate the application of megapool-level penalties, as opposed to the current state where penalties are assigned and processed at the minipool level. Note that this proposal also enables ETH-only Node operation.
+
+## Motivation
+
+Megapools are motivated by several desires; to lower ongoing costs, to lower the barrier to entry, and to improve penalty handling across what would currently be multiple minipools. Both ongoing and upfront costs are reduced by Megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. The accounting and processing of penalties is easier to handle with a single contract. 
+
+ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
 
 ## Specification
 
@@ -58,6 +66,12 @@ Node operators can manage the set of validators in their megapool:
      - The check MAY occur after the validator is added initially as Prestaked
 - A Node Operator SHALL be able to remove exited validators from their megapool
 
+### `debt` Variable
+- There SHALL be a `debt` variable that is initially set to 0
+- The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)) by majority vote
+- There SHALL be a function to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract and the `debt` SHALL be reduced by the amount
+
+
 ### Funds Management
 
 In the following, "capital" refers to funds supplied for staking by either the
@@ -77,24 +91,22 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - Rewards distribution MAY be temporarily blocked while validators are exiting or
   pending removal.
 - There SHALL be a reward distribution function in the megapool
-  - When called, rewards from the node operator's bonded ETH SHALL be held in
-    the megapool as unclaimed node operator funds.
-  - When called, `node_operator_commission_share` of rewards SHALL be held in
-      the megapool as unclaimed node operator funds.
-  - When called, `reth_share` of rewards SHALL be sent to the rETH contract
-  - When called, `voter_share` of rewards SHALL be sent to a merkle rewards
+  - For this section, we define `borrowed_portion` as the megapool's `borrowed_eth / (bonded_eth + borrowed_eth)`
+  - When called, `reth_share * borrowed_portion` of rewards SHALL be sent to the rETH contract
+  - When called, `voter_share * borrowed_portion` of rewards SHALL be sent to a merkle rewards
     distributor contract
-  - When called, `surplus_share` of rewards SHALL be sent to the appropriate
+  - When called, `surplus_share * borrowed_portion` of rewards SHALL be sent to the appropriate
     surplus disposition contract
+  - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
+  - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
   - This function SHALL allow any user to call it
-  - If called by the node operator, this function SHOULD claim all unclaimed
-    node operator funds
+  - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
-  - When called, capital from the node operator's bonded ETH that has been
-    released from exited validators SHALL be held in the megapool as unclaimed
-    node operator funds.
   - When called, capital borrowed from the protocol that has been released from
     exited validators SHALL be sent to the rETH contract.
+    - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
+  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
+  - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
   - This function SHALL allow any user to call it following a mandatory time
     delay configurable by the pDAO. The delay SHALL be initialized by a
     `startUserDistribute` function. After the delay is complete, any user may
@@ -103,29 +115,14 @@ into shares is defined in [RPIP-46](RPIP-46.md).
     - This function SHOULD claim all unclaimed node operator funds
     - This function SHALL be immediately callable without delay
 - There SHALL be a function to claim unclaimed node operator funds; when called
-  - If unclaimed node operator funds >= penalties
-    - unclaimed node operator funds SHALL be decreased by penalties
-    - penalties SHALL be set to 0
-  - If unclaimed node operator funds < penalties
-    - unclaimed node operator funds SHALL be set to 0
-    - penalties SHALL be decreased by unclaimed node operator funds
-  - Unclaimed node operator funds SHALL be transferred to the node operator's
+  - If `debt` exists, unclaimed node operator funds SHALL first be used to pay off `debt`
+  - Then any remaining unclaimed node operator funds SHALL be transferred to the node operator's
     withdrawal address
   - Unclaimed node operator funds SHALL be set to 0
 - A Node Operator SHALL be able to withdraw unclaimed node operator funds to
   their withdrawal address
 - A Node Operator MAY be able to use unclaimed node operator funds for redeposit
   to the beacon chain.
-- In the event the rETH proportion of the withdrawn capital is insufficient
-  to fully repay the protocol borrowed capital, the shortfall SHALL be repaid
-  from the node operator's capital
-   - If the node operator's capital is insufficient to repay the shortfall, a
-     deficit balance of the shortfall SHALL be recorded
-- If there is a deficit balance > 0:
-   - Any future node operator rewards or capital distributions SHALL be deducted
-     from until the deficit is fully repaid.
-   - There SHALL be a function that allows anyone to directly repay a deficit.
-   - Deficit repayments SHALL be transferred to the rETH contract
 - Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
   excluded from capital distribution, but rather be subject to separate functions
   for `prestake` and `stake` transactions.
