@@ -36,7 +36,7 @@ Over the last few years we've seen that these ideals do not play out as anticipa
 
 ## Issues seen in reality
 
-### Running minipools is primarily Speculative
+### Running minipools is primarily speculative
 
 Unfortunately, one effect of the staking requirement in **Ideal 1** is that the financial success of running minipools is overwhelmingly dominated by RPL performance.  
   
@@ -58,7 +58,7 @@ Further, the metric used for the RPL reward threshold is "RPL staked as a percen
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
   
-### RPL value will be less than what **Ideal 3** suggests
+### RPL value will be less than what Ideal 3 suggests
 
 Because some node operators are not topping off per **Ideal 2**, that means the fundamental value calculation in **Ideal 3** breaks. Eg, if at maturity the average collateral is 5% of borrowed ETH, then RPL’s value would be half the value of a situation that’s identical except the average collateral is 10% of borrowed ETH. As shown in the Figure 1 above, this effect is definitely present.
 
@@ -82,7 +82,7 @@ The 10% borrowed-ETH minimum is something the protocol tries to impose upon the 
 
 Consider a mature case with a 3% solo APY and 1.5% RPL value loss per year due to supply inflation. Using the same assumptions as earlier, this results in a **2.3% drop** compared to solo staking rewards. In such a case, there is no reason to make minipools if you can afford solo validators.
 
-One simple solution to these problems could be to reduce the minimum staked RPL requirement. However, this solution would also reduce the RPL to rETH TVL relationship per **Ideal 3**, which means that the cost to avoiding this brittleness is letting go of a relationship that can be known ahead of time.
+One simple solution to these problems could be to reduce the minimum staked RPL requirement. However, this solution would also reduce the RPL to rETH TVL relationship per **Ideal 3**.
 
 The market has no way to signal that they’re interested in Rocket Pool at a minimum RPL stake set at 8% borrowed ETH versus 10% borrowed ETH. All we’d see is that the market simply stops making minipools (or even starts exiting them) when the overall package is seen as unattractive. We might already be seeing this happen today, as shown by the supply of node operator ETH in Figure 2 below.
 
