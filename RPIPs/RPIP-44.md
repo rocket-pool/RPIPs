@@ -60,5 +60,14 @@ The exit functionality for a megapool is specified as follows:
 - The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to pay off `debt` prior to taking action on exits
 - The protocol SHOULD use staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
 
+## Security Considerations
+- A misbehaving oDAO gains the ability to force exit any validator by applying penalties to increase `deficit` beyond `exit_deficit`. Alongside a malicious protocol upgrade, this would allow for control of all principal.
+  - The penalty application can be limited, eg, by using a maximum rate as suggested in [RPIP-58](RPIP-58.md); however, [RPIP-42](RPIP-42.md) introduces megapool-level penalties which can have arbitrary size. As a result, a new guardrail is included in RPIP-42 to limit penalty application.
+  - The malicious upgrade risk can be reduced, eg, via security council veto as proposed in [RPIP-60](RPIP-60.md)
+- If a bad actor gains control of a node operator key, they are now able to exit validators
+  - This doesn't result in the loss of funds (assuming the NO has set a separate withdrawal address as recommended), so is not too problematic
+  - In many cases, the validator keys are derived from the node operator key; insofar as that's true, the bad actor would already have this power
+- On the positive side, rETH funds can be better protected by reclaiming funds sooner (vs waiting until the node operator opts to exit, if they ever do)
+
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

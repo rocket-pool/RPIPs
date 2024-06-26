@@ -37,6 +37,9 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 Array indexing in this section is zero-based.
 
 - The oDAO SHALL be able to penalize stake at the megapool level when a [Penalizable offense](#penalizable-offenses) is committed by increasing the megapool's `debt` variable defined in [RPIP-43](./RPIP-43.md/#debt-variable)
+  - The oDAO SHALL NOT be able to apply more than `maximum_megapool_eth_penalty` worth of penalties in 50,400 consecutive slots
+  - The pDAO SHALL NOT be able to set `maximum_megapool_eth_penalty` lower than 300 ETH [PLACEHOLDER VALUE]
+  - Note that this does not replace RPIP-58, which applies to legacy minipools
 - Prior to creating a validator, there MUST be no `debt` on the megapool
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
 - When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
@@ -53,6 +56,7 @@ Array indexing in this section is zero-based.
 - The initial settings SHALL be:
   - `base_bond_array`: [4, 8]
   - `reduced_bond`: 4 ETH
+  - `maximum_megapool_eth_penalty`: 612 ETH [PLACEHOLDER VALUE]
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH

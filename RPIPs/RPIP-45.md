@@ -52,7 +52,7 @@ Let's visualize what being able to burn looks like in practice using real RPL pr
 
 We'd expect to burn all our available ETH at the beginning of a downturn (and thereby reduce its severity since that's not market sold). We'd also expect to continue burning against new distributions while the price is on a downward slope. On an upward slope, burning is not expected until after the top is reached and we turn around for a bit.
 
-### Security
+### Security Considerations
 - The design intentionally presents a small surface area. Any benefit an attacker can accrue is limited by the fact that no user has a privileged position and that value is streamed in smoothly without any discontinuities.
 - The cost to attack the oracle depends on:
   - TWAP duration - 12 hours is currently in use by the oDAO and seems quite reasonable
