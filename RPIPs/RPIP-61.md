@@ -6,7 +6,7 @@ author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-balance-submission-guardrail/3010
 status: Review
 type: Protocol
-category (*only required for Protocol ): Core
+category: Core
 created: 2024-05-27
 
 ---
