@@ -18,6 +18,14 @@ Defines the queue structures that govern validator deposits and the overall depo
 
 This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
 
+## Motivation
+
+Given the changes to Rocket Pool proposed as part of the tokenomics rework, it is desirable to introduce a mechanism that allows for the migration of existing node operators from minipools to megapools. Separately, the protocol should aim to treat smaller node operators preferentially where feasible. The express queue helps fulfill both goals, supporting migration and smaller node operators. 
+
+User experience for Node Operators is very important, and these deposit mechanic specifications support some improvements in that area. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 
 ### Deposit queue specification
@@ -85,6 +93,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - to allow anyone to execute `prestake`, the validator specific data is stored 
 - since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
 
+## Considerations
+To avoid idle ETH and ensure the queue progressing smoothly, we recommend that the pDAO funds (for example through the GMC) development and running of assignment bots that assign ETH in the deposit pool to the queue at a reasonable gas price. 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

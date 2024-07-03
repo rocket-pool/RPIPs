@@ -25,10 +25,21 @@ This proposal also explicitly tries to benefit the smallest NOs in a few ways, i
 - We give precedence to small nodes staking some number of initial validators in the Node Operator queue (see [RPIP-59](RPIP-59))
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
 
+## Motivation
+
+The primary motivation for the introduction of smaller ETH bonds in this form is twofold. First, lower ETH bonds allow for the same amount of bonded ETH to support a larger volume of rETH, this helps unlock growth for the protocol, as it has been primarily limited by lack of Node Operators in the months preceding this proposal. Second, lower ETH bonds increase the profitability of Rocket Pool as a protocol, allowing it to grow and compete favorably with alternative liquid staking providers.
+
+The innovation of a bond curve is motivated by the need to maintain enough stake to mitigate MEV theft, slashing penalties, and abandonment; while meeting the core goal of improved capital efficiency.
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+
 ## Specification
 Array indexing in this section is zero-based.
 
 - The oDAO SHALL be able to penalize stake at the megapool level when a [Penalizable offense](#penalizable-offenses) is committed by increasing the megapool's `debt` variable defined in [RPIP-43](./RPIP-43.md/#debt-variable)
+  - The oDAO SHALL NOT be able to apply more than `maximum_megapool_eth_penalty` worth of penalties in 50,400 consecutive slots
+  - The pDAO SHALL NOT be able to set `maximum_megapool_eth_penalty` lower than 300 ETH [PLACEHOLDER VALUE]
+  - Note that this does not replace RPIP-58, which applies to legacy minipools
 - Prior to creating a validator, there MUST be no `debt` on the megapool
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
 - When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
@@ -45,6 +56,7 @@ Array indexing in this section is zero-based.
 - The initial settings SHALL be:
   - `base_bond_array`: [4, 8]
   - `reduced_bond`: 4 ETH
+  - `maximum_megapool_eth_penalty`: 612 ETH [PLACEHOLDER VALUE]
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
