@@ -43,12 +43,12 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - The `megapool recovery delegate` for a megapool SHALL be usable by any address if the current block is greater than the active `megapool delegate`'s expiration block
 - The `megapool recovery delegate` SHALL have the following capabilities:
   - Force exiting ALL validators under the megapool
-    - In the Saturn 1 release, this MAY be a non-functional stub
   - Removal of any pending validators from the Rocket Pool queue
   - Processing of voluntary exit proofs
   - Collection of any penalties or deficits
   - Final distribution of rewards and capital 
 - The `megapool recovery delegate` SHOULD be updated only rarely, and only to support changes to the Ethereum execution layer exit process, or major changes in the Rocket Pool protocol. Simultaneous upgrades to both the `megapool recovery delegate` and the latest `megapool delegate` SHOULD be avoided if possible.
+- In the Saturn 1 release, the `megapool recovery delegate` MAY be an upgradable but otherwise non-functional placeholder contract. 
 
 ## Security Considerations
 - Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block in order to build up "Lindy"
