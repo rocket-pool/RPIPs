@@ -54,11 +54,16 @@ The exit functionality for a megapool is specified as follows:
   - This function SHALL either remove the specified validators from the megapool or revert
       - If any of the validators are still active on the beacon chain a successful call of this
         function MUST also exit those validators from the beacon chain
-  - This function MAY be freely called by the Node Operator (as implied by [RPIP-43](RPIP-43.md))
-  - This function MAY be called by any account under the condition: `deficit >= exit_deficit`
+  - This function MAY be freely called by the Node Operator
+  - This function MAY be called permissionlessly if `deficit >= exit_deficit`
       - It MUST NOT be possible for accounts other than the Node Operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
 - The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to pay off `debt` prior to taking action on exits
-- The protocol SHOULD use staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
+- The protocol MAY use staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
+
+## Rationale
+The accounting categories are an attempt to simplify the tracking of value within a megapool, as well as calculating ownership.
+
+The permissioned exit functionality is meant as a simple convenience. The permissionless exit functionality is meant to avoid ongoing losses to rETH in cases of negligence or maliciousness.
 
 ## Security Considerations
 - A misbehaving oDAO gains the ability to force exit any validator by applying penalties to increase `deficit` beyond `exit_deficit`. Alongside a malicious protocol upgrade, this would allow for control of all principal.
