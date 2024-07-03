@@ -13,11 +13,19 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: reth (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
+Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
 
 This proposal also includes a small set of items for potential future use:
 - Seals that the security council can use to increase the NO share -- this is being used to find a reasonable setting based on the actual market.
 - An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
+
+## Motivation
+
+Universal Adjustable Revenue Split is motivated by the desire for increased flexibility for the Rocket Pool protocol as the Ethereum ecosystem evolves in the future. It's critical that the protocol can respond to the actions of other actors as effectively as possible and UARS helps facilitate this. It is also important that the protocol can balance the demand and supply of rETH to encourage sustainable and continuous growth on both sides of this equation. 
+
+A fixed percentage of RPL inflation is currently being used to fund ongoing maintenance and development of the Rocket Pool protocol, a valuable RPL token means more bang for the same amount of inflation, and UARS supports multiple mechanisms that support RPL value. Competent and aligned governance will also be necessary as the protocol evolves and UARS facilitates this via directing a share of revenue to holders of vote-eligible RPL. 
+
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
 
 ## Specification
 1. Inflation settings SHALL be modified to retain inflation to the DAOs and eliminate inflation to NOs
@@ -58,23 +66,28 @@ This proposal also includes a small set of items for potential future use:
     5. When implemented, `surplus_share` SHOULD be renamed to something more specific
 
 ## Specification taking effect with Saturn 2
+### Updating `voter_share`:
+The `voter_share` SHALL be adjustable, to target a share of voting eligible RPL (including 
+megapool staked RPL and legacy staked RPL) relative to the total supply of RPL minus RPL 
+owned by the protocol in its treasury or as a result of `surplus_share` buy backs. The voting
+eligible RPL target is a range between `vote_eligible_target_min` and `vote_eligible_target_max`
 1. Updating `voter_share`:
    1. A new function SHALL be available to update `voter_share`, which MAY be called by anyone
    2. It MUST revert if it's been called within the last 45 days
-   3. It MUST revert if the total RPL eligible to vote is between `voter_share_target_min` and `voter_share_target_max` (inclusive)
-   4. If <`voter_share_target_min` of total RPL is eligible to vote and the function succeeds:
+   3. It MUST revert if the total RPL eligible to vote is between `vote_eligible_target_min` and `vote_eligible_target_max` (inclusive)
+   4. If <`vote_eligible_target_min` of total RPL is eligible to vote and the function succeeds:
       1. `voter_share` is increased to `voter_share * (1+voter_share_relative_step)`
       2. `surplus_share` is decreased by the difference between the old and new `voter_share`
          1. If this would reduce `surplus_share` below 0%, the function call MUST revert 
-   5. If >`voter_share_target_max` of total RPL is eligible to vote and the function succeeds:
+   5. If >`vote_eligible_target_max` of total RPL is eligible to vote and the function succeeds:
       1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
       2. `surplus_share` is increased by the difference between the old and new `voter_share`
    6. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-2. `voter_share_relative_step`, `voter_share_target_min`, and `voter_share_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+2. `voter_share_relative_step`, `vote_eligible_target_min`, and `vote_eligible_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 3. The initial settings SHALL be:
    1. `voter_share_relative_step`: 15%
-   2. `voter_share_target_min`: 55%
-   3. `voter_share_target_max`: 65%
+   2. `vote_eligible_target_min`: 55%
+   3. `vote_eligible_target_max`: 65%
 
 ## Optional heuristics
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
@@ -93,6 +106,20 @@ Some example concrete guidelines:
 - If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
+
+## Security Considerations
+- `no_share_seal`s are intended to be used in a particular way, but the security council may misuse them
+  - This can be mitigated by limiting `no_share_seal_count`; eg, it can start high while the market is not well understood, but most of the time thereafter it can be at zero or one
+  - The pDAO may also replace the security council if it misuses its power
+- There is an acknowledged conflict of interest around `voters` controlling `voter_share`
+  - There is an attempt to mitigate abuse by requiring a supermajority; nonetheless, that still depends on enough well-intentioned voters acting to defend the interests of other groups within the Rocket Pool community
+- Attracting desirable vote-eligible share may not be trivial
+  - While we have a heuristic to increase incentives for vote-eligible RPL, it may not move as fast as the market
+  - RP allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
+- Vote-elgibility may not be a strong proxy for "active voters"
+  - The incentives describe only incentivize staking vote-eligible RPL
+  - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
+    - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot 
 
 ## Historic revenue share values
 | Date                         | Share Settings                                                                     |

@@ -33,7 +33,7 @@ The following explainers are being maintained by the community to help make the 
 
 A Megapool is a single contract that can be used as an Ethereum withdrawal address for multiple validators.
 * This allows for much more gas-efficient usage of the Rocket Pool protocol for Node Operators.
-* This allows for the application of node-level penalties. 
+* This allows for the application of megapool-level penalties. 
 * Importantly, this RPIP specifies that node operation no longer requires RPL staking (ETH-only node operation). 
 
 Additionally, Megapools are required to facilitate the bond curve changes described in RPIP-42.
@@ -79,6 +79,19 @@ This change allows the Rocket Pool protocol to force-upgrade Node Operators mini
 * This reduces the compatibility debt incurred by the protocol as it is upgraded because it does not need to support all prior iterations. 
 * This means that protocol governance can make changes that benefit the protocol as a whole even if the changes do not benefit each individual Node Operator. 
 
+### [RPIP-59: Deposit Mechanics](RPIP-59.md)
+
+Here we describe the mechanics of Node Operator deposits and validator creation, including standard and express queues.
+* This provides a faster queue to help small node operators get started.
+* This provides a faster queue for existing node operators to migrate their minipools to megapools.
+* This allows node operators to optionally exit the queue up until they point their validator is created.
+
+### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
+
+This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to act in that time.
+* The security council can veto an upgrade to help protect participants in Rocket Pool from malicious upgrades.
+* The security council can speed up an upgrade to help enact critical changes faster when requested by the pDAO.
+
 ## Deployment Plan
 
 The tokenomics rework package will likely be split between two protocol upgrades: Saturn 1 and Saturn 2.
@@ -90,10 +103,13 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-42: Bond curves](RPIP-42.md)
   * Framework
   * 4ETH minimum bond
+* [RPIP-59: Deposit Mechanics](RPIP-59.md)
+  * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * All but heuristic adjustments.
 * RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+* [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 ### Saturn 2
 
