@@ -120,11 +120,11 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Heuristic adjustments.
 
 ## Current Status
-Last Updated: June 19th
+Last Updated: July 3rd
 
 Current efforts are primarily focused on:
-1. Seeking and reacting to feedback from all parts of the Rocket Pool community.
-2. Updating and polishing the RPIP specifications. 
+1. Updating and polishing the RPIP specifications in response to feedback.
+2. Attempting to reduce the scope of the required implementation work to improve time-to-market without overly impacting contents.
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
@@ -133,9 +133,9 @@ A maintained list of open tasks is available via google sheet [here](https://doc
 The below is generally agreed to be the steps to be completed before we can consider this 'decided'.
 
 1. **Done** - Complete the first draft of the full proposal specifications. 
-2. **Active** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
+2. **Done** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
 3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
-4. **Active** - Make a concerted effort to gather feedback via the forum from the wider community.
+4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. **Active** - Update the proposal and specifications as needed taking into account wider community feedback.
 6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
 7. Run a snapshot vote on the full proposal (bar value capture mechanism).
