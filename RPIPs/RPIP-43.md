@@ -69,6 +69,7 @@ Node operators can manage the set of validators in their megapool:
 ### `debt` Variable
 - There SHALL be a `debt` variable that is initially set to 0
 - The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)) by majority vote
+  - If this causes the megapool to meet the criteria for a non-Node Operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction 
 - There SHALL be a function to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract and the `debt` SHALL be reduced by the amount
 
 
@@ -81,7 +82,7 @@ consensus rewards, execution rewards, and RPL inflation. The split of rewards
 into shares is defined in [RPIP-46](RPIP-46.md).
 
 - This RPIP assumes the continued use of separate 32 Ether validators. Support for
-  EIP-7251 'Max EB' validators will require additional specification and development.
+  [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) 'Max EB' validators will require additional specification and development.
 - The megapool SHALL track the total capital ownership of the validator(s) between
   the node operator and the rETH stakers.
 - The megapool MUST keep track of the capital funds present in the contract.
@@ -99,7 +100,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
     surplus disposition contract
   - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
   - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
-  - This function SHALL allow any user to call it
+  - This function SHALL be permissionless
   - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
   - When called, capital borrowed from the protocol that has been released from
@@ -107,10 +108,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
     - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
   - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
   - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
-  - This function SHALL allow any user to call it following a mandatory time
-    delay configurable by the pDAO. The delay SHALL be initialized by a
-    `startUserDistribute` function. After the delay is complete, any user may
-    then call the capital distribution fuction.
+  - This function SHALL be permissionless following a mandatory time delay configurable by the pDAO. The delay SHALL be initialized by a `startUserDistribute` function. After the delay is complete, any user may then call the capital distribution function.
   - If called by the node operator
     - This function SHOULD claim all unclaimed node operator funds
     - This function SHALL be immediately callable without delay
@@ -171,7 +169,18 @@ Rules specifying the movement of staked RPL are as follows:
   150% of the value of total bonded ETH (from both megapools and legacy
   minipools)
   - Note that Unstaking RPL SHALL NOT be counted
-  - If this RPIP is ratified, a note SHALL be added to the "Eligibility" section of [RPIP-4](./RPIP-4.md) saying that it has been superseded by this section
+- RPIP editors SHALL modify the eligibility section of [RPIP-4](./RPIP-4.md) to match the logic described in this section, and include links to both this RPIP, and the legacy version of RPIP-4.
+
+## Rationale
+Megapools are a critical upgrade as we use lower ETH-bond validators because gas costs would otherwise become an increasing drag on revenue.
+A few details about the reasoning behind the spec:
+- Legacy minipools are disabled because (a) uniformity going forward is desirable and (b) they do not participate in the pooled revenue share described in [RPIP-46](RPIP-46.md).
+- The two step unstaking process with an unstaking period recreates the intent in RPIP-30 within the megapool structure.
+- If ETH is sent to a megapool, the spec will count it similarly to any other reward - this makes it quite easy to handle as we don't need to track incoming amounts etc, just the balances.
+
+## Security considerations
+- There is a process for permissionlessly distributing funds that won't go to the NO so that funds are never "stuck". Importantly, this distribution does not distribute the NO's share, but rather accounts for it for later claiming. This prevents potential attacks where the withdrawal address causes transactions to fail on an attempted distribution. 
+- Both megapool staked RPL and legacy staked RPL are eligible for vote. This is particularly critical while most vote comes from legacy staked RPL. If only megapool staked RPL were counted, there would be a vulnerable window with very low total vote power available.
 
 ## Reference Implementation
 See <https://github.com/rocket-pool/rocketpool-research/blob/master/Megapools/megapools.md>
