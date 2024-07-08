@@ -169,13 +169,13 @@ Rules specifying the movement of staked RPL are as follows:
   150% of the value of total bonded ETH (from both megapools and legacy
   minipools)
   - Note that Unstaking RPL SHALL NOT be counted
-- RPIP editors SHALL modify the eligibility section of [RPIP-4](./RPIP-4.md) to match the logic described in this section, and include links to both this RPIP, and the legacy version of RPIP-4.
+- RPIP editors SHALL modify the eligibility section of [RPIP-4](RPIP-4.md) to match the logic described in this section, and include links to both this RPIP, and the legacy version of RPIP-4.
 
 ## Rationale
 Megapools are a critical upgrade as we use lower ETH-bond validators because gas costs would otherwise become an increasing drag on revenue.
 A few details about the reasoning behind the spec:
 - Legacy minipools are disabled because (a) uniformity going forward is desirable and (b) they do not participate in the pooled revenue share described in [RPIP-46](RPIP-46.md).
-- The two step unstaking process with an unstaking period recreates the intent in RPIP-30 within the megapool structure.
+- The two step unstaking process with an unstaking period recreates the intent in [RPIP-30](RPIP-30.md) within the megapool structure.
 - If ETH is sent to a megapool, the spec will count it similarly to any other reward - this makes it quite easy to handle as we don't need to track incoming amounts etc, just the balances.
 
 ## Security considerations
