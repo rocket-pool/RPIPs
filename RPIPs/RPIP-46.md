@@ -72,7 +72,7 @@ megapool staked RPL and legacy staked RPL) relative to the total supply of RPL m
 owned by the protocol in its treasury or as a result of `surplus_share` buy backs. The voting
 eligible RPL target is a range between `vote_eligible_target_min` and `vote_eligible_target_max`
 1. Updating `voter_share`:
-   1. A new function SHALL be available to update `voter_share`, which SHALL be callable by anyone
+   1. A permissionless function SHALL be available to update `voter_share`
    2. It MUST revert if it's been called within the last 45 days
    3. It MUST revert if the total RPL eligible to vote is between `vote_eligible_target_min` and `vote_eligible_target_max` (inclusive)
    4. If <`vote_eligible_target_min` of total RPL is eligible to vote and the function succeeds:
