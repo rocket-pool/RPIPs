@@ -42,7 +42,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 5. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
    2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies 
-6. `node_operator_commission_share`, `surplus_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` SHALL be  be updateable by pDAO vote
+6. `node_operator_commission_share`, `surplus_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` SHALL be updateable by pDAO vote
 7. `node_operator_commission_share` and `surplus_share`, SHALL be updateable by an address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 8. The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `surplus_share` by the same amount
