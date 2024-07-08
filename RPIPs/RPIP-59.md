@@ -31,9 +31,9 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ### Deposit queue specification
 ETH from the deposit pool SHALL be matched with validator deposits from queues as follows:
 - There SHALL be a `standard_queue`
-  - When adding a validator, users SHALL be able to place their deposit on the `standard_queue`  
+  - When adding a validator, users SHALL be able to place their deposit in the `standard_queue`  
 - There SHALL be an `express_queue`
-  - When adding a validator, users SHALL be able to place their deposit on the `express_queue` by spending one `express_queue_ticket`
+  - When adding a validator, users SHALL be able to place their deposit in the `express_queue` by spending one `express_queue_ticket`
 - When matching ETH from the deposit pool to queued deposits:
   - First, ETH SHALL be matched to the oldest deposit in the `express_queue`; this is repeated `express_queue_rate` times
   - Next, ETH SHALL be matched to the oldest deposit in the `standard_queue`
