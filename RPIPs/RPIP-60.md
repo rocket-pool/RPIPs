@@ -35,8 +35,8 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - The security council SHALL have a limited-use power to use a shorter delay of `fast_upgrade_delay`
   - This power SHALL be usable if `fast_upgrade_seal_count` > 0 
   - `fast_upgrade_seal_count` SHALL be decremented by one upon using this power
-  - The pDAO MAY include a change to `fast_upgrade_seal_count` in a voted upgrade*
-  - The pDAO MAY change `fast_upgrade_seal_count` via vote**
+  - The pDAO SHALL be able to include a change to `fast_upgrade_seal_count` in a voted upgrade*
+  - The pDAO SHALL be able to change `fast_upgrade_seal_count` via vote**
   - The security council SHALL use this power if and only if:
     - A vote specifically requested a fast upgrade
     - The vote passed with a supermajority of `fast_upgrade_supermajority` or more

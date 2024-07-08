@@ -42,14 +42,14 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 5. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
    2. Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
-6. `node_operator_commission_share`, `surplus_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` MAY be updated by pDAO vote
-7. `node_operator_commission_share` and `surplus_share`, MAY be updated by an address in the `allowlisted_controllers` array
+6. `node_operator_commission_share`, `surplus_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` SHALL be  be updateable by pDAO vote
+7. `node_operator_commission_share` and `surplus_share`, SHALL be  be updateable by an address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 8. The security council SHALL have a limited-use power to increase the `node_operator_commission_share` by `increase_no_share_seal_increment` and decrease the `surplus_share` by the same amount
    1. This power SHALL be usable if `increase_no_share_seal_count` > 0
    2. `increase_no_share_seal_count` SHALL be decremented by one upon using this power
    3. This power SHOULD be used if the deposit pool is over half-full for the majority of a 2-week period at the current `node_operator_commission_share`
-   4. The pDAO MAY change `increase_no_share_seal_count` via vote
+   4. The pDAO SHALL be able to change `increase_no_share_seal_count` via vote
 9. The initial settings SHALL be:
    1. `node_operator_commission_share`: 3.5%
    2. `voter_share`: 5%
@@ -72,7 +72,7 @@ megapool staked RPL and legacy staked RPL) relative to the total supply of RPL m
 owned by the protocol in its treasury or as a result of `surplus_share` buy backs. The voting
 eligible RPL target is a range between `vote_eligible_target_min` and `vote_eligible_target_max`
 1. Updating `voter_share`:
-   1. A new function SHALL be available to update `voter_share`, which MAY be called by anyone
+   1. A new function SHALL be available to update `voter_share`, which SHALL be callable by anyone
    2. It MUST revert if it's been called within the last 45 days
    3. It MUST revert if the total RPL eligible to vote is between `vote_eligible_target_min` and `vote_eligible_target_max` (inclusive)
    4. If <`vote_eligible_target_min` of total RPL is eligible to vote and the function succeeds:
@@ -83,7 +83,7 @@ eligible RPL target is a range between `vote_eligible_target_min` and `vote_elig
       1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
       2. `surplus_share` is increased by the difference between the old and new `voter_share`
    6. Because this involves _voters_ modifying `voter_share`, there is an acknowledged conflict of interest here. As a result, changing this method of "Updating `voter_share`" SHALL require a supermajority vote with at least 75% of the vote in support of any change.
-2. `voter_share_relative_step`, `vote_eligible_target_min`, and `vote_eligible_target_max` MAY be updated by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
+2. The pDAO SHALL be able to update `voter_share_relative_step`, `vote_eligible_target_min`, and `vote_eligible_target_max` by vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any change.
 3. The initial settings SHALL be:
    1. `voter_share_relative_step`: 15%
    2. `vote_eligible_target_min`: 55%
