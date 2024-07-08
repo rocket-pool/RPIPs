@@ -41,7 +41,7 @@ Array indexing in this section is zero-based.
   - The pDAO SHALL NOT be able to set `maximum_megapool_eth_penalty` lower than 300 ETH [PLACEHOLDER VALUE]
   - Note that this does not replace RPIP-58, which applies to legacy minipools
 - Prior to creating a validator, there MUST be no `debt` on the megapool
-  - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
+  - There MAY! be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
 - When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.

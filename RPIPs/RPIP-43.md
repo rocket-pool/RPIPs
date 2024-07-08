@@ -32,13 +32,13 @@ SHALL serve as the target of Beacon Chain withdrawal credentials for Rocket Pool
 validators deposited after this RPIP is implemented.
 
 - A Node Operator SHALL be able to deploy at most one megapool contract
-    - This MAY be combined with the deposit of their first validator
+    - This MAY! be combined with the deposit of their first validator
 - Megapool contracts MUST be upgradable using a proxy pattern; a megapool's
   proxy implementation contract SHALL be called the megapool's "delegate"
 - Legacy minipool deposits (ie, deposits of validators with withdrawal
   credentials that are not a megapool) SHALL be disabled
 - Solo migration into legacy minipools (ie, promotion of vacant minipools)
-  SHALL be disabled; this MAY be achieved by disabling creation of vacant
+  SHALL be disabled; this MAY! be achieved by disabling creation of vacant
   minipools
 
 ### Validator Management
@@ -57,13 +57,13 @@ megapools SHALL include at least the following:
 Node operators can manage the set of validators in their megapool:
 
 - A Node Operator SHALL be able to add new validators to their megapool
-- A Node Operator MAY be able to migrate existing validators to their megapool
+- A Node Operator MAY! be able to migrate existing validators to their megapool
      - Note that this would involve updating the validators' BLS withdrawal
        credentials to the megapool address
 - New and existing validators' withdrawal credentials MUST be checked to
   correctly refer to the megapool address, with the validator status set to
   Dissolved if the check fails
-     - The check MAY occur after the validator is added initially as Prestaked
+     - The check MAY? occur after the validator is added initially as Prestaked
 - A Node Operator SHALL be able to remove exited validators from their megapool
 
 ### `debt` Variable
@@ -88,7 +88,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
   The megapool MUST assume that any other funds present are rewards.
 - A Node Operator SHALL be able to distribute rewards from all validators in their
   megapool at once.
-- Rewards distribution MAY be temporarily blocked while validators are exiting or
+- Rewards distribution MAY! be temporarily blocked while validators are exiting or
   pending removal.
 - There SHALL be a reward distribution function in the megapool
   - For this section, we define `borrowed_portion` as the megapool's `borrowed_eth / (bonded_eth + borrowed_eth)`
@@ -121,7 +121,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
   - Unclaimed node operator funds SHALL be set to 0
 - A Node Operator SHALL be able to withdraw unclaimed node operator funds to
   their withdrawal address
-- A Node Operator MAY be able to use unclaimed node operator funds for redeposit
+- A Node Operator MAY! be able to use unclaimed node operator funds for redeposit
   to the beacon chain.
 - Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
   excluded from capital distribution, but rather be subject to separate functions

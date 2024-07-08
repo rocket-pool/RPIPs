@@ -40,8 +40,8 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 3. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 4. `reth_share` SHALL be defined as `100% - reth_commission`
 5. Distributions of revenue from borrowed ETH MUST respect the defined shares
-   1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
-   2. Legacy minipools are an exception and MAY continue to support earlier distribution methodologies 
+   1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY! be used where they significantly reduce complexity and/or costs.
+   2. Legacy minipools are an exception and MAY! continue to support earlier distribution methodologies 
 6. `node_operator_commission_share`, `surplus_share`, `increase_no_share_seal_increment`, `increase_no_share_seal_count`, and `allowlisted_controllers` MAY be updated by pDAO vote
 7. `node_operator_commission_share` and `surplus_share`, MAY be updated by an address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
@@ -58,9 +58,9 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
    5. `increase_no_share_seal_count`: 6
    6. `allowlisted_controllers`: []
 10. Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a mechanism for surplus revenue share
-    1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share`
+    1. The choices MAY! include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), or using higher `voter_share`
     2. If higher `voter_share` is selected, the entirety of the ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) section below SHALL be deleted
-    3. The selected mechanism MAY be implemented in Saturn 1
+    3. The selected mechanism MAY! be implemented in Saturn 1
        1. If not, the revenue SHALL be held in reserve until the mechanism is implemented. In such a case, once the mechanism is implemented, the revenue SHALL be distributed in the same amount of time it took to build up, or faster.
     4. The selected mechanism MUST be implemented in Saturn 2
     5. When implemented, `surplus_share` SHOULD be renamed to something more specific

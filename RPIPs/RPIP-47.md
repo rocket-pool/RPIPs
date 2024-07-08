@@ -43,7 +43,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - The `megapool recovery delegate` for a megapool SHALL be usable by any address if the current block is greater than the active `megapool delegate`'s expiration block
 - The `megapool recovery delegate` SHALL have the following capabilities:
   - Force exiting ALL validators under the megapool
-    - In the Saturn 1 release, this MAY be a non-functional stub
+    - In the Saturn 1 release, this MAY! be a non-functional stub
   - Removal of any pending validators from the Rocket Pool queue
   - Processing of voluntary exit proofs
   - Collection of any penalties or deficits
