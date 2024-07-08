@@ -121,7 +121,7 @@ A few details about the reasoning behind the spec:
 - The [surplus revenue share vote](#surplus-revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
 ## Security Considerations
-- `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it and increase it in other ways
+- `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways
   - This can be mitigated by setting `node_operator_commission_share + node_operator_commission_share_council_adder` to the desired value with the adder set to the max allowed value, thus preventing it from being set higher
   - The pDAO may also replace the security council if it misuses its power
 - There is an acknowledged conflict of interest around `voters` controlling `voter_share`
