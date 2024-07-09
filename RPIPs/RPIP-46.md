@@ -15,9 +15,9 @@ tags: tokenomics-2024, tokenomics-content
 ## Abstract
 Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
 
-This proposal also includes a small set of items for potential future use:
-1. Seals that the security council can use to increase the NO share -- this is being used to find a reasonable setting based on the actual market.
-2. An allowlist of controllers that may make changes to the settings, which allows for potential automation in the future
+This proposal also includes:
+1. A security council-controlled settings that can mildly increase the NO share -- this is being used to find a reasonable setting based on the actual market more quickly than the pDAO is able to act
+2. For future use: an allowlist of controllers that may make changes to the settings, which potentially allows for automation
 
 ## Motivation
 
@@ -108,7 +108,6 @@ Some example concrete guidelines:
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `surplus_share`
   - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `surplus_share`
 - If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
-- If `increase_no_share_seal_count` reaches 1, the pDAO should (a) consider adding seals, (b) consider stepping up `no_share` themselves, and (c) consider decreasing `reth_share`
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
 
