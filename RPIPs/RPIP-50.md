@@ -22,7 +22,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ## Specification
 - A share of revenue from borrowed ETH SHALL be directed to a smart contract for the purpose of this liquidity provision
-- Once `lp_deposit_threshold` has been reached, any user MAY call a function to:
+- Once `lp_deposit_threshold` has been reached, any user SHALL be able to call a function to:
   - Convert the ETH to rETH via native mint if possible, or using a specified `backup_reth_pool` 
   - Execute a single-asset deposit of `lp_deposit_threshold` to the `target_pool`
   - The caller SHALL receive a gas refund based on precalculated gas and the BASEFEE opcode

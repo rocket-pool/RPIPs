@@ -17,7 +17,7 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 
 ## Specification
 - A share of the revenue from borrowed ETH SHALL be directed to a smart contract (the burn contract) for this burn (see [RPIP-46](RPIP-46.md))
-- Any user MAY call a function in the burn contract to get ETH from the burn contract in exchange for RPL
+- Any user SHALL be able to call a function in the burn contract to get ETH from the burn contract in exchange for RPL
 - Any RPL exchanged this way SHALL burned using the RPL token's `burn` or `burnFrom` functions
 - The swap price SHALL be based on an on-chain oracle
 
