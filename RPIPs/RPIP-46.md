@@ -47,9 +47,9 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 10. The initial pDAO settings SHALL be:
     1. `node_operator_commission_share`: 3.5%
     2. `node_operator_commission_share_council_adder`: 0%
-    3`surplus_share`: 5.5%
-    4`max_node_operator_commission_share_council_adder`: 1%
-    5`allowlisted_controllers`: []
+    3. `surplus_share`: 5.5%
+    4. `max_node_operator_commission_share_council_adder`: 1%
+    5. `allowlisted_controllers`: []
 
 ### Inflation
 1. Inflation settings SHALL be modified to retain inflation to the DAOs and eliminate inflation to NOs
