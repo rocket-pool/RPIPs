@@ -36,7 +36,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
   - For the pDAO, oDAO, or Security Council to set its value to "no expiration"
 
 ### Upgrade
-- When a new `megapool delegate` is released, a contract upgrade SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + its `upgrade_buffer`
+- When a new `megapool delegate` is released, a contract upgrade SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their active `megapool delegate` to the latest `megapool delegate` at any time
 - After an active `megapool delegate`'s expiration block has passed:
   - The expired `megapool delegate` SHALL NOT be usable by the node operator
