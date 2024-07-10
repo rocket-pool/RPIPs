@@ -56,8 +56,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - `deposit` SHALL assign deposits as described below 
 
 #### Assigning ETH from the Deposit Pool
-- ETH from the deposit pool SHALL be assigned to validators to validator at the front of the queue by sending 32 ETH to the associated megapool contract
-  - rETH mints SHALL assign `ETH_deposit // 32` validators
+- ETH from the deposit pool SHALL be assigned the validator at the front of the queue by sending 32 ETH to the associated megapool contract
+  - rETH mints SHALL assign `floor(ETH_deposit / 32)` validators
   - There MUST be a permissionless function to execute assignments
 - The assignment SHALL execute the `Prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
 - The assignment SHALL remove the validator from the queue 

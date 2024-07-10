@@ -16,7 +16,7 @@ tags: tokenomics-2024, tokenomics-content
 Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
 
 This proposal also includes:
-1. A security council-controlled settings that can mildly increase the NO share -- this is being used to find a reasonable setting based on the actual market more quickly than the pDAO is able to act
+1. A setting controlled by the security council that can mildly increase NO commission -- this can be used to react to market conditions more quickly than the pDAO is able to act
 2. For future use: an allowlist of controllers that may make changes to the settings, which potentially allows for automation
 
 ## Motivation
@@ -32,17 +32,20 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 1. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `node_operator_commission_share_council_adder`, `voter_share`, `surplus_share`
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each NO receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
    2. `voter_share`: each NO receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_in_their_megapool/total_vote_eligible_RPL_in_megapools`.
-   3. `surplus_share`: this share of revenue is used to distribute revenue beyond that used for protocol operation (such as the shares above)
+   3. `surplus_share -  node_operator_commission_share_council_adder`: this share of revenue is used to distribute revenue beyond that used for protocol operation (such as the shares above)
 2. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
    2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies 
-5. `node_operator_commission_share` and `surplus_share`, SHALL be updateable by an address in the `allowlisted_controllers` array
+5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `surplus_share`, SHALL be updateable by an address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
-6. The `node_operator_commission_share_council_adder` setting SHALL only be set to values within 0% and `max_node_operator_commission_share_council_adder` (inclusive)
+6. The `node_operator_commission_share_council_adder` setting SHALL only allow values where:
+   1. 0% ≤ `node_operator_commission_share_council_adder` ≤ `max_node_operator_commission_share_council_adder` 
+   2. `node_operator_commission_share_council_adder` ≤ `surplus_share`
 7. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
 8. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
+    1. The security council SHALL NOT otherwise change `node_operator_commission_share_council_adder`
 9. `voter_share` SHALL NOT be controllable by pDAO vote and SHALL be initialized to 5%
 10. The initial pDAO settings SHALL be:
     1. `node_operator_commission_share`: 3.5%
@@ -60,11 +63,12 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ### Surplus revenue share vote
 Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a mechanism for surplus revenue share
-1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), using higher `voter_share`, and/or additional options
+1. The choices MAY include [RPIP-45: RPL Burn](RPIP-45.md), [RPIP-50: RPL LP](RPIP-50.md), and using higher `voter_share`
 2. If higher `voter_share` is selected:
-   1. The entirety of the ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) section below SHALL be deleted
-   2. `voter_share` SHALL become controllable by pDAO vote; however, it SHALL require a supermajority vote with at least 75% of the vote in support of any increase 
-   3. `voter_share` MAY be updated by an address in the `allowlisted_controllers` array
+   1. The entirety of the ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2) section below SHALL be deleted 
+   2. `voter_share` MAY be updated by an address in the `allowlisted_controllers` array
+   3. `node_operator_commission_share_council_adder` shall be subtracted from `voter_share` instead of `surplus_share`
+   4. `voter_share` SHALL be a pDAO setting (and thus the specification item about it not being controllable by pDAO vote MUST also be removed)
 3. The selected mechanism MAY be implemented in Saturn 1
    1. If not, the revenue SHALL be held in reserve until the mechanism is implemented. In such a case, once the mechanism is implemented, the revenue SHALL be distributed in the same amount of time it took to build up, or faster.
 4. The selected mechanism MUST be implemented in Saturn 2

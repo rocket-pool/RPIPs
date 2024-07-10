@@ -74,7 +74,7 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 ## Rationale
 The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
 
-"Bond reduction" for credit is explicitly supported so that NOs that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond enlargement". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond enlargement. Since the bond curve is based on total bonded ETH, adding more validators would require the NO to join the active bond curve in such a case. 
+"Bond reduction" for credit is explicitly supported so that NOs that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, NOs adding new validators would need to add enough ETH bond to match the "bond increased" curve.
 
 ## Security considerations
 - Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md).
