@@ -126,9 +126,9 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - Newly deposited capital that is awaiting deposit to the beacon chain SHALL be
   excluded from capital distribution, but rather be subject to separate functions
   for `prestake` and `stake` transactions.
-- The megapool MAY be used as the node operator's authorized fee recipient for
-  execution layer rewards if they are not opted into the smoothing pool. These
-  funds shall be subject to rewards distribution.
+- If participating in the smoothing pool, the smoothing pool address SHALL be the only allowed fee recipient.
+- If not participating in the smoothing pool, the allowed fee recipients SHALL be: the megapool's address, the smoothing pool's address (note that this donates EL rewards to other Node Operators),
+  or the rETH token's address (note that this donates EL rewards to rETH holders).
 
 ### RPL Staking
 
@@ -148,7 +148,7 @@ Rules specifying the movement of staked RPL are as follows:
 - Legacy RPL staking (ie, increasing a node's legacy staked RPL balance) SHALL
   be disabled
 - There is no staked RPL requirement for adding validators to a megapool
-- A Node Operator MAY change the state of any amount of megapool staked RPL
+- A Node Operator SHALL be able to change the state of any amount of megapool staked RPL
   associated with their node from Staked to Unstaking at any time
     - The time at which Staked RPL was last changed to Unstaking RPL is called the
       "last unstake time" for the node
