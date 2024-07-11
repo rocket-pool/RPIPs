@@ -1,7 +1,7 @@
 ---
 rpip: 42
 title: Bond Curves
-description: Introduce smaller ETH bonds to improve capital efficiency for Node Operators while maintaining the security of the Rocket Pool protocol. 
+description: Introduce smaller ETH bonds to improve capital efficiency for Node Operators while maintaining the security of the Rocket Pool protocol.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
@@ -17,7 +17,7 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 - Enabling megapool-level penalties to mitigate/discourage MEV theft
 - Using forced exits as needed
 - Starting with lower LTV at lower total bonded ETH to mitigate/discourage MEV theft
-- Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment 
+- Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment
 - Providing increased capital efficiency with greater bond to encourage an NO to stake as large nodes instead of many small nodes
 
 This proposal also explicitly tries to benefit the smallest NOs in a few ways, in line with the pDAO charter values of decentralization and prioritizing Ethereum health (see [RPIP-23](./RPIP-23.md)):
@@ -31,9 +31,17 @@ The primary motivation for the introduction of smaller ETH bonds in this form is
 
 The innovation of a bond curve is motivated by the need to maintain enough stake to mitigate MEV theft, slashing penalties, and abandonment; while meeting the core goal of improved capital efficiency.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework).
 
 ## Specification
+This specification introduces the following pDAO-configurable settings:
+
+| Name                           | Type    | Initial Value             |
+|--------------------------------|---------|---------------------------|
+| `base_bond_array`              | `ETH[]` | `[4, 8]`                  |
+| `maximum_megapool_eth_penalty` | `ETH`   | `612` [PLACEHOLDER VALUE] |
+| `reduced_bond`                 | `ETH`   | `4`                       |
+
 Array indexing in this section is zero-based.
 
 - The oDAO SHALL be able to penalize stake at the megapool level when a [Penalizable offense](#penalizable-offenses) is committed by increasing the megapool's `debt` variable defined in [RPIP-43](./RPIP-43.md/#debt-variable)
@@ -42,21 +50,18 @@ Array indexing in this section is zero-based.
   - Note that this does not replace RPIP-58, which applies to legacy minipools
 - Prior to creating a validator, there MUST be no `debt` on the megapool
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
-- When a Node Operators creates a validator, with `i` validators in the megapool prior to adding: 
+- When a Node Operator creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
   - If `i ≥ base_bond_array.length`:, the required `user_deposit` is `reduced_bond` per validator.
-- When a Node Operators removes a validator, with `i` validators in the megapool prior to removing:
+- When a Node Operator removes a validator, with `i` validators in the megapool prior to removing:
   - If `i > base_bond_array.length`: the Node Operator share before `debt` is `reduced_bond`.
   - If `i ≤ base_bond_array.length` and `i > 1`: the Node Operator share before `debt` is the amount of ETH that would bring the user's total bond down to `base_bond_array[i-2]`.
   - If `i==1`: the Node Operator share before `debt` is the amount of ETH that would bring the user's total bond down to 0 ETH.
-- Bulk validator creation/removal functions SHALL behave the same as multiple individual transactions.
+- Bulk validator creation/removal functions MAY be provided. If they are, they SHALL behave the same as multiple individual transactions.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
-- `credit` MUST be usable to mint rETH to the NO's primary withdrawal address 
-- The initial settings SHALL be:
-  - `base_bond_array`: [4, 8]
-  - `reduced_bond`: 4 ETH
-  - `maximum_megapool_eth_penalty`: 612 ETH [PLACEHOLDER VALUE]
+- `credit` MAY be usable to mint rETH to the NO's primary withdrawal address
+- `base_bond_array` SHALL NOT be allowed to be set to `[]`
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
@@ -72,6 +77,11 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 - When showing legacy node status, there is not a trivial way to get the node index for a given address. That said, the other direction is trivial using `RocketNodeManager.getNodeAt`, so the work can get moved off-chain. Eg, one can iterate across all possible node indices and then pass in the node index that matches the node's address; the smart contract can confirm the match to demonstrate legacy node status.
 
 ## Rationale
+The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
+
+"Bond reduction" for credit is explicitly supported so that NOs that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, NOs adding new validators would need to add enough ETH bond to match the "bond increased" curve.
+
+## Security considerations
 - Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md).
   - `base_bond_array` is chosen to "sufficiently" dissuade MEV theft as a strategy
   - `reduced_bond` is chosen to "sufficiently" guard against slashing or abandonment risks
@@ -84,8 +94,7 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 |-------------------------------------------------|----------------------------------------------|
 | ![img.png](../assets/rpip-42/theft_2.5pct.png)  | ![img.png](../assets/rpip-42/theft_4pct.png) |
 
-- Note that the bond curve has been chosen to ensure that minimum-size sock puppets are _not_ the most efficient for theft. They get the most _advantage_ from theft, but not the highest overall yield from a dishonest strategy.
-- Validators with `base_bond` deposits are prioritized to promote decentralization; new or smaller Node Operators can get up to `base_bond_array.length` validators launched ahead of larger Node Operators adding `reduced_bond` validators.
+- Minimum size sock puppets are most damaging to the protocol (ie, have the greatest drag), so it's important that they are not incentivized. Note that the bond curve has been chosen to ensure that this size is _not_ the most efficient for theft. They get the most _advantage_ from theft, but not the highest overall yield from a dishonest strategy.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
