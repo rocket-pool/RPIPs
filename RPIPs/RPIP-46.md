@@ -33,7 +33,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each NO receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
    2. `voter_share`: each NO receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_in_their_megapool/total_vote_eligible_RPL_in_megapools`.
    3. `surplus_share -  node_operator_commission_share_council_adder`: this share of revenue is used to distribute revenue beyond that used for protocol operation (such as the shares above)
-2. `reth_commission` SHALL be defined as the sum of all defined shares that have settings
+2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share`, and `surplus_share`
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.

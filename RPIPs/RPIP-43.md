@@ -109,9 +109,8 @@ into shares is defined in [RPIP-46](RPIP-46.md).
   - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
   - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
   - This function SHALL support permissionless use, with additional restrictions:
-    - There SHALL be pDAO settings called `userDistributeDelay` (initially set to 30 days) and `userDistributeWindow` (initially set to 60 days)
-    - A permissionless `startUserDistribute` function SHALL record the time when called, as long as there is no previously recorded time _or_ the previously recorded time was longer than `userDistributeWindow` ago
-    - The capital distribution function may be called permissionlessly if `userDistributeDelay` has passed since the `startUserDistribute` call, but `userDistributeWindow` has not yet passed since the `startUserDistribute` call
+    - A permissionless `startUserDistribute` function SHALL record the time when called, as long as there is no previously recorded time _or_ the previously recorded time was longer than `minipool.user.distribute.window.start + minipool.user.distribute.window.length` ago
+    - The capital distribution function may be called permissionlessly if `minipool.user.distribute.window.start` has passed since the recorded `startUserDistribute` call, but `minipool.user.distribute.window.start + minipool.user.distribute.window.length` has not yet passed since the recorded `startUserDistribute` call
   - If called by the node operator
     - This function SHOULD claim all unclaimed node operator funds
     - This function SHALL be immediately callable without delay
