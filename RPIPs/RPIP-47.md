@@ -29,14 +29,14 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ### Upgrade Buffer Enforcement
 - Each `Megapool delegate` contract SHALL have an execution layer `expiration_block` variable which should initialize to "no expiration"
-- Each `Megapool delegate` contract SHALL have a non-modifiable `upgrade_buffer` value.
-  - The `Megapool delegate`'s `upgrade_buffer` SHALL be 120 days.
+- Each `Megapool delegate` contract SHALL have a non-modifiable `upgrade_buffer` value
+  - The `Megapool delegate`'s `upgrade_buffer` SHALL be 120 days
 - The only permitted modification to a `Megapool delegate`'s `expiration_block` variable SHALL be:
-  - For the pDAO, oDAO, or Security Council to set its value to now + its `upgrade_buffer`
-  - For the pDAO, oDAO, or Security Council to set its value to "no expiration"
+  - Any protocol contract may set its value to now + its `upgrade_buffer`
+  - Any protocol contract may set its value to "no expiration"
 
 ### Upgrade
-- When a new `megapool delegate` is released, a contract upgrade SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + their `upgrade_buffer`s
+- When a new `megapool delegate` is released, a protocol contract SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their active `megapool delegate` to the latest `megapool delegate` at any time
 - After an active `megapool delegate`'s expiration block has passed:
   - Functions in the expired megapool delegate SHALL revert when not called by a protocol contract
