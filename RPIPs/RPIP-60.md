@@ -27,8 +27,8 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ## Specification
 
 ### Upgrade Delay
-- All protocol upgrades SHALL have a `default_upgrade_delay` delay between when they are passed and when they are executed
-- The `default_upgrade_delay` SHALL be a pDAO setting and its initial value SHALL be 3 weeks
+- All protocol upgrades SHALL have an `upgrade_delay` delay between when they are passed and when they are executed
+- The `upgrade_delay` SHALL be a pDAO setting and its initial value SHALL be 3 weeks
 
 
 ### Security Council Veto
