@@ -39,8 +39,8 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - When a new `megapool delegate` is released, a contract upgrade SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their active `megapool delegate` to the latest `megapool delegate` at any time
 - After an active `megapool delegate`'s expiration block has passed:
-  - The expired `megapool delegate` SHALL NOT be usable by the node operator
-  - The node operator SHALL NOT be able to claim any rewards using the expired `megapool delegate`
+  - Functions in the expired megapool delegate SHALL revert when not called by a protocol contract
+  - No capital SHALL be distributed to the withdrawal address(es)
   - The expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
 
 ## Rationale
