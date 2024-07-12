@@ -16,7 +16,7 @@ tags: tokenomics-2024, tokenomics-content
 
 Defines the queue structures that govern validator deposits and the overall deposit process for Rocket Pool node operators. The standard and express queue structures give mild priority to existing Rocket Pool Node Operators and initial Node Operator deposits through a ticket system.
 
-This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens only once ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until the validator is dequeued.
+This proposal also changes the deposit mechanics: In case of a queue, the initial stake transaction happens after ETH is assigned. This makes it possible to exit from the queue and receive ETH credit up until that prestake transaction.
 
 ## Motivation
 
@@ -44,29 +44,29 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
   - `express_queue_tickets_base_provision`: 2
 
 ### Deposit mechanics specification
-- A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
+- A node operator MUST take 3 actions to start a validator: `deposit`, `prestake` and `stake`
 
 #### `deposit` Transaction
 - `deposit` SHALL place the Node Operator ETH in the deposit pool (where it can be used in validators as needed) and place the validator in a queue as described [above](#deposit-queue-specification)
-- The following values for the validator SHALL be stored on chain:
-    - the public key of the validator
-    - the BLS signature over the public key, the withdrawal credentials (the megapool address of the node operator), and the amount (1 ETH) as required by the deposit contract
-    - the deposit message root as required by the deposit contract
-- The transaction SHALL validate the provided values and revert if they do not match
 - `deposit` SHALL assign deposits as described below 
 
 #### Assigning ETH from the Deposit Pool
 - ETH from the deposit pool SHALL be assigned the validator at the front of the queue by sending 32 ETH to the associated megapool contract
   - rETH mints SHALL assign `floor(ETH_deposit / 32)` validators
   - There MUST be a permissionless function to execute assignments
-- The assignment SHALL execute the `Prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
 - The assignment SHALL remove the validator from the queue 
+
+#### `prestake` Transaction
+- The `prestake` transaction SHALL stake 1 ETH to the beacon chain
+- `prestake` SHALL be callable by the node operator as long as the megapool has been assigned a validator from the deposit pool
+- There SHALL be a permissionless `unassign` function that returns assigned ETH to the deposit pool that has not been prestaked for longer than `time_before_unassign` since assignment and gives the operator credit for their associated deposits
+  - The node operator SHALL be able to call `unassign` at any time the megapool has ETH assigned to it
 
 #### `stake` Transaction
 - `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
 - If the beacon chain stake is invalid, the validator SHALL be scrubbed 
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
-- If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
+- There SHALL be a permissionless `dissolve` function that returns assigned ETH to the deposit pool that has not been staked for longer than `time_before_dissolve` since `prestake` and dissolves the validator
   - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
 
 #### Exiting Queue
@@ -78,6 +78,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 #### Initial Settings
 - The initial settings SHALL be:
   - `scrub_period`: 12 hours
+  - `time_before_unassign`: 2 weeks
   - `time_before_dissolve`: 2 weeks
 
 ## Rationale
@@ -90,9 +91,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - Validators with `base_bond` deposits are prioritized to promote decentralization; new or smaller Node Operators can get up to `base_bond_array.length` validators launched ahead of larger Node Operators adding `reduced_bond` validators.
 
 ### Deposit Mechanics
-- `prestake` is moved back from `deposit` to assignment to allow for exiting of the queue
-- to allow anyone to execute `prestake`, the validator specific data is stored 
-- since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
+- `prestake` is moved out of `deposit` and made as a separate transaction after assignment to allow for exiting of the queue
+- Social assignments are deactivated to lower rETH minting gas cost and make it more predictable. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
 
 ## Considerations
 To avoid idle ETH and ensure the queue progressing smoothly, we recommend that the pDAO funds (for example through the GMC) development and running of assignment bots that assign ETH in the deposit pool to the queue at a reasonable gas price. 
