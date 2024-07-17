@@ -124,15 +124,16 @@ The tokenomics rework package will likely be split between two protocol upgrades
 Last Updated: July 16th
 
 Current efforts are primarily focused on:
-1. Confirming Core Team is happy with RPIP specification contents and making minor adjustments as needed.
+1. Confirming the Core Team is happy with RPIP specification contents and making minor adjustments as needed.
 2. Polishing the RPIP specifications ready for vote.
 
-A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
+A maintained list of open tasks is available via Google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
-### Still To Ratfiy Prior to Saturn 1
+### Still To Ratify Prior to Saturn 1
 These items are to be considered flexible until ratified explicitly, rather than ratified alongside the tokenomics rework package as a whole. 
 
 * **Saturn 2 Surplus Share Strategy** - Decide and ratify how to manage surplus share in Saturn 2 (we want to decide this before Saturn 1 launches to avoid the incumbent advantage for the voter_share option.)
+  * **Vote Eligible RPL Targets** - Decide and ratify vote-eligible RPL targets if voter_share is not chosen as the surplus share strategy. 
 * **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
 * **Maximum Megapool ETH Penalty** - Decide and ratify a non-placeholder value for the maximum penalty, likely needs community research to find a good value.
 
@@ -146,9 +147,8 @@ The below is generally agreed to be the steps to be completed before we can cons
 4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. **Active** - Update the proposal and specifications as needed taking into account wider community feedback.
 6. Run a forum temperature check vote on the rework package (bar the 'still-to-ratify' list above).
-7. Run a snapshot vote oon the rework package (bar the 'still-to-ratify' list above).
-8. Run a snapshot votes on the 'still-to-ratify' list as outstanding blockers are cleared.
-9. Update the RPIPs to incorporate the results of these votes.
+7. Run a snapshot vote on the rework package as Living RPIPs, acknowledging the existence of the 'still-to-ratify' list above.
+8. Run one or more snapshot vote(s) as blockers are cleared from the 'still-to-ratify' list. The end state will include no remaining blockers and the status of the rework RPIPs set to Final.
 
 ## Excluded Components
 The below components have been discussed, but are not currently considered high enough priority to be included in the tokenomics rework plan.
