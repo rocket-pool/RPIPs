@@ -137,6 +137,8 @@ These items are to be considered flexible until ratified explicitly, rather than
 * **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
 * **Maximum Megapool ETH Penalty** - Decide and ratify a non-placeholder value for the maximum penalty, likely needs community research to find a good value.
 
+Any other significant issues the development team identifies that impact their ability to deliver this upgrade may also be added to this list. The development team should strive to minimize this, communicate clearly if it occurs and keep as close to the spirit of the existing contents when deviation is needed. 
+
 ### Estimated Process
 
 The below is generally agreed to be the steps to be completed before we can consider this 'decided'.
