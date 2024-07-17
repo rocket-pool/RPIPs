@@ -135,7 +135,7 @@ These items are to be considered flexible until ratified explicitly, rather than
 * **Saturn 2 Surplus Share Strategy** - Decide and ratify how to manage surplus share in Saturn 2 (we want to decide this before Saturn 1 launches to avoid the incumbent advantage for the voter_share option.)
   * **Vote Eligible RPL Targets** - Decide and ratify vote-eligible RPL targets if voter_share is not chosen as the surplus share strategy. 
 * **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
-* **Maximum Megapool ETH Penalty** - Decide and ratify a non-placeholder value for the maximum penalty, likely needs community research to find a good value.
+* **Penalty System** - Research, draft and ratify a penalty system. 
 
 Any other significant issues the development team identifies that impact their ability to deliver this upgrade may also be added to this list. The development team should strive to minimize this, communicate clearly if it occurs and keep as close to the spirit of the existing contents when deviation is needed. 
 
