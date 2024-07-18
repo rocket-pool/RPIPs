@@ -1,12 +1,12 @@
 ---
-rpip: #<to be assigned>
+rpip: 61
 title: Balance Submission Guardrail
 description: This proposal limits how much the oDAO can change the rETH exhange rate.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-balance-submission-guardrail/3010
-status: Draft
+status: Review
 type: Protocol
-category (*only required for Protocol ): Core
+category: Core
 created: 2024-05-27
 
 ---
