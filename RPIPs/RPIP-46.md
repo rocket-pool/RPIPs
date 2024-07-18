@@ -105,24 +105,47 @@ For this section, we'll be writing `new_share`. When the revenue share vote is p
    2. `vote_eligible_target_min`: 55%
    3. `vote_eligible_target_max`: 65%
 
-## Optional heuristics [NEEDS UPDATE]
+## Optional heuristics
+Once the revenue share vote concludes, one of the two sections below will be obsolete and should be deleted. If appropriate, `new_share` should be replaced with the proper name of the share.
+
+### If revenue is shared between rETH, NOs, and vote-eligible RPL
 This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
 
 Some abstract guidelines:
 - Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional.
-- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively, ["Specification taking effect with Saturn 2"](#specification-taking-effect-with-saturn-2).
-- Finally, consider `surplus_share`. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
+- Finally, consider `voter_share`. RPL holders are incentivized to maximize something along the lines of `voter_share * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
 
 Some example concrete guidelines:
 - If the NO queue is continuously over 500 deposits for 2 weeks and the trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply. This could use one or more of the following tactics:
   - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
-  - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `surplus_share`
-  - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `surplus_share`
+  - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `voter_share`
+  - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `voter_share`
+  - Eg, rETH demand can be increased by increasing `reth_share` _and_ NO supply can be simultaneously decreased by a counterbalancing decrease to `no_share` 
 - If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
-- If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `surplus_share` (or lower RPL inflation).
+- If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `voter_share` (or lower RPL inflation).
 
-## Rationale [NEEDS UPDATE]
+
+### If revenue includes a new_share beyond the above
+This section reflects some of the thinking at the time this RPIP was drafted. These ideas are explicitly _not_ binding/enforceable, and they may freely change over time/context.
+For this section, we'll be writing `new_share`.
+
+Some abstract guidelines:
+- Consider `node_operator_commission_share` as a requirement to function. If this is not high enough to attract the supply we need, the protocol is non-functional.
+- Consider `voter_share` as a requirement to function. There is a method specified that's intended to attract governance security effectively, ["Implementing the revenue share vote"](#implementing-the-revenue-share-vote).
+- Finally, consider `new_share`. RPL holders are incentivized to maximize something along the lines of `(new_share+voter_share) * rETH_TVL`. This means voters will generally have an incentive to make rETH holding attractive.
+
+Some example concrete guidelines:
+- If the NO queue is continuously over 500 deposits for 2 weeks and the trend is upwards, the pDAO should act to either increase rETH demand or decrease NO supply. This could use one or more of the following tactics:
+  - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
+  - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `new_share`
+  - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `new_share`
+  - Eg, rETH demand can be increased by increasing `reth_share` _and_ NO supply can be simultaneously decreased by a counterbalancing decrease to `no_share`
+- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
+- When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
+- If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `new_share` (or lower RPL inflation).
+
+## Rationale
 UARS is meant to enable the protocol to listen to the market and act effectively across the entire protocol.
 A few details about the reasoning behind the spec:
 - We provide for future automated controller contracts, but do not create any at this time. This is partly because we are fairly naive to the market, and partly in the interest of time to market for the next upgrade.
@@ -130,16 +153,16 @@ A few details about the reasoning behind the spec:
   - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO. 
 - The [surplus revenue share vote](#surplus-revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
-## Security Considerations [NEEDS UPDATE]
+## Security Considerations
 - `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways
   - This can be mitigated by setting `node_operator_commission_share + node_operator_commission_share_council_adder` to the desired value with the adder set to the max allowed value, thus preventing it from being set higher
   - The pDAO may also replace the security council if it misuses its power
-- There is an acknowledged conflict of interest around `voters` controlling `voter_share`
+- If there is a separate `new_share` going to all RPL, there is an acknowledged conflict of interest around `voters` controlling `voter_share`
   - There is an attempt to mitigate abuse by requiring a supermajority; nonetheless, that still depends on enough well-intentioned voters acting to defend the interests of other groups within the Rocket Pool community
 - Attracting desirable vote-eligible share may not be trivial
   - While we have a heuristic to increase incentives for vote-eligible RPL, it may not move as fast as the market
   - RP allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
-- Vote-elgibility may not be a strong proxy for "active voters"
+- Vote-eligibility may not be a strong proxy for "active voters"
   - The incentives describe only incentivize staking vote-eligible RPL
   - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
     - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot 
