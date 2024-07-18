@@ -68,7 +68,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - If the beacon chain stake is invalid, the validator SHALL be scrubbed 
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
 - If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
-  - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator
+  - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
 
 #### Exiting Queue
 - Until ETH is assigned to a validator, it SHALL be possible to exit the queue and receive ETH `credit` for it
