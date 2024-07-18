@@ -28,16 +28,18 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ### Upgrade Delay
 - All protocol upgrades SHALL have an `upgrade_delay` delay between when they are passed and when they are executed
-- The `upgrade_delay` SHALL be a pDAO setting and its initial value SHALL be 3 weeks
+- The `upgrade_delay` SHALL be a pDAO setting and its initial value SHALL be 1 week
 
 
 ### Security Council Veto
 - The security council SHALL have the power to veto contract upgrades (which are proposed by the oDAO)
+  - `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` SHALL be a pDAO setting and its initial value SHALL be 33%
+  - In order to veto a contract upgrade, the above quorum of the security council MUST be met or exceeded
 - Veto powers SHALL NOT be used lightly and SHALL be reserved for cases of vote manipulation, malicious action (eg, oDAO votes in a proposal against the pDAO governance), or contract upgrades that would result in clear damage to the Rocket Pool project
 - When the veto power is exercised, the security council SHOULD immediately publish a Veto Explanation Document that describes why it was exercised
 - Within 24 hours of the veto power being exercised, the security council MUST publish a Veto Explanation Document that describes why it was exercised
 - If possible, the Veto Explanation Document SHOULD suggest alternative similar-but-non-damaging upgrades that could be considered
-- If this veto power is abused, the pDAO SHOULD consider replacing the members of the security council
+- If this veto power is abused, the pDAO SHOULD discuss replacing the members of the security council
 
 ## Security Considerations
 
@@ -52,6 +54,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
   - This is mitigated by the pDAO's ability to replace the security council. While a valid proposal could be blocked once, it could not be blocked indefinitely.
 - The veto process can itself be modified by contract upgrades. However, if a corrupt proposal tries to change the veto process, that can be defended against by using the veto process.
 - The security council veto means that if pDAO governance were captured, protocol upgrades could be stopped at will (by installing a compromised security council). The oDAO would be unable to pass any contract upgrades (without the approval of the compromised security council), and the only way back would be to recapture pDAO governance. While this means there is a real tradeoff, this "inability to upgrade" is seen as less problematic than the "ability to pass any upgrade" that a rogue oDAO would have without the veto.
+- The quorum for this veto is lower than for security council proposals. This is intended to provide additional resilience to, eg, a rogue oDAO that attempts to bribe a security council into not vetoing a corrupt proposal (as fewer bribe-resistant members are needed). This sort of interaction doesn't exist for normal security council proposals, which is what leads to a different desired threshold. 
 
 ## Rationale
 **Veto Explanation Document**  
