@@ -53,7 +53,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
     5. `allowlisted_controllers`: []
 
 ### RPL rewards
-1. The RPL reward system specified in RPIP-30 SHALL continue
+1. The RPL reward system specified in [RPIP-30](RPIP-30.md) SHALL continue
    1. All staked RPL SHALL be counted for this purpose (both "legacy staked RPL" and "megapool staked RPL" as defined in [RPIP-43](RPIP-43.md))
 
 ### Revenue share vote
@@ -151,7 +151,7 @@ A few details about the reasoning behind the spec:
 - We provide for future automated controller contracts, but do not create any at this time. This is partly because we are fairly naive to the market, and partly in the interest of time to market for the next upgrade.
 - The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from the an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
   - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO. 
-- The [surplus revenue share vote](#surplus-revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
+- The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
 ## Security Considerations
 - `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways
