@@ -45,10 +45,10 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 Initially, this specification included a 'recovery delegate' that would provide basic functionality for a node operator. In place of forcing an upgrade to the latest version, validators on expiring delegates would be shifted to the recovery delegate. This was dropped primarily due to scope and implementation complexity reasons.
 
 **Next Version versus Latest Version**  
-Some debate covered whether the upgrade should push validators on expiring delegates to the _latest_ delegate, or the _next_ delegate. The latest was chosen to allow the skipping of bugged delegates to a fixed version and to improve UX (no need to cycle through to get to latest.)
+Some debate covered whether the upgrade should push validators on expiring delegates to the _latest_ delegate, or the _next_ delegate. The latest was chosen to allow the skipping of bugged delegates to a fixed version and to improve UX (no need to cycle through to get to the latest version.)
 
 **All in-use delegates versus previous delegate version**
-Wording covering the update of expiration blocks on a new delegate release was expanded from 'previous delegate version' to 'all in-use delegate versions' to avoid a situation in which a node operator is forceably upgraded to a contract that they have not had sufficient time to examine. SHOULD is used over SHALL to allow flexibility in a situation where protocol governance does not wish to immediately start the timer to force an upgrade from a current version at the point of release of a new version. 
+The wording covering the update of expiration blocks on a new delegate release was expanded from 'previous delegate version' to 'all in-use delegate versions' to avoid a situation in which a node operator is forcibly upgraded to a contract that they have not had sufficient time to examine. SHOULD is used over SHALL to allow flexibility in a situation where protocol governance does not wish to immediately start the timer to force an upgrade from a current version at the point of release of a new version. 
 
 ## Security Considerations
 - Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block to build up "Lindy"
