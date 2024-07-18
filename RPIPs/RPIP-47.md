@@ -33,11 +33,11 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
   - The `Megapool delegate`'s `upgrade_buffer` SHALL be 120 days
 - The only permitted modification to a `Megapool delegate`'s `expiration_block` variable SHALL be for any protocol contract to set its value to now + its `upgrade_buffer`
 
-### Upgrade
-- When a new `megapool delegate` is released, a protocol contract SHOULD update all previous `megapool delegate`s `expiration_block`'s to now + their `upgrade_buffer`s
-- A node operator SHALL be able to upgrade their active `megapool delegate` to the latest `megapool delegate` at any time
+### Upgrade Process
+- When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to now + their `upgrade_buffer`s
+- A node operator SHALL be able to upgrade their `megapool delegate` to the latest `megapool delegate` at any time
 - Functionality MAY be provided to allow a Node Operator to automatically upgrade to the latest `megapool delegate`
-- After an active `megapool delegate`'s `expiration_block` has passed, the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
+- After a `megapool delegate`'s `expiration_block` has passed, any megapools using the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
 
 ## Rationale
 
@@ -46,6 +46,9 @@ Initially, this specification included a 'recovery delegate' that would provide 
 
 **Next Version versus Latest Version**  
 Some debate covered whether the upgrade should push validators on expiring delegates to the _latest_ delegate, or the _next_ delegate. The latest was chosen to allow the skipping of bugged delegates to a fixed version and to improve UX (no need to cycle through to get to latest.)
+
+**All in-use delegates versus previous delegate version**
+Wording covering the update of expiration blocks on a new delegate release was expanded from 'previous delegate version' to 'all in-use delegate versions' to avoid a situation in which a node operator is forceably upgraded to a contract that they have not had sufficient time to examine. SHOULD is used over SHALL to allow flexibility in a situation where protocol governance does not wish to immediately start the timer to force an upgrade from a current version at the point of release of a new version. 
 
 ## Security Considerations
 - Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block to build up "Lindy"
