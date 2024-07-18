@@ -72,7 +72,7 @@ Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a 
    2. Node Operators (`rocketClaimNode`) allocation SHALL be set to 0%
    3. pDAO (`rocketClaimDAO`) allocation SHALL be set to 95%
    4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
-2. There SHALL be no RPL rewards 
+2. There SHALL be no RPL issuance to NOs 
 
 ### Implementing the revenue share vote
 For this section, we'll be writing `new_share`. When the revenue share vote is passed, that will define the share's name and this section SHALL be updated.
@@ -89,7 +89,7 @@ For this section, we'll be writing `new_share`. When the revenue share vote is p
    1. A permissionless function SHALL be available to update `voter_share`
    2. It MUST revert if it's been called within the last 45 days
    3. It MUST revert if the total RPL eligible to vote relative to the circulating supply of RPL is between `vote_eligible_target_min` and `vote_eligible_target_max` (inclusive)
-      1. RPL eligible includes both megapool staked RPL and legacy staked RPL
+      1. RPL eligible to vote includes both megapool staked RPL and legacy staked RPL
       2. The circulating supply of RPL is the total supply of RPL minus RPL owned by the protocol (eg, in treasury or an LP as a result of RPIP-50) 
    4. If <`vote_eligible_target_min` of total RPL is eligible to vote and the function succeeds:
       1. `voter_share` is increased to `voter_share * (1+voter_share_relative_step)`
