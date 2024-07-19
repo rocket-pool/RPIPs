@@ -26,7 +26,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ## Specification
 
-### Deposit queue specification
+### Deposit Queue Specification
 ETH from the deposit pool SHALL be matched with validator deposits from queues as follows:
 - There SHALL be a `standard_queue`
   - When adding a validator, users SHALL be able to place their deposit in the `standard_queue`  
@@ -43,7 +43,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
   - `express_queue_rate`: 2
   - `express_queue_tickets_base_provision`: 2
 
-### Deposit mechanics specification
+### Deposit Mechanics Specification
 - A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 
 #### `deposit` Transaction
@@ -51,15 +51,16 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - The following values for the validator SHALL be stored on chain:
     - the public key of the validator
     - the BLS signature over the public key, the withdrawal credentials (the megapool address of the node operator), and the amount (1 ETH) as required by the deposit contract
-    - the deposit message root as required by the deposit contract
-- The transaction SHALL validate the provided values and revert if they do not match
-- `deposit` SHALL assign deposits as described below 
+- The transaction SHALL validate that:
+  - the public key has length 48
+  - the BLS signature has length 96
+- If possible, `deposit` SHALL assign one validator as described below 
 
 #### Assigning ETH from the Deposit Pool
 - ETH from the deposit pool SHALL be assigned the validator at the front of the queue by sending 32 ETH to the associated megapool contract
   - rETH mints SHALL assign `floor(ETH_deposit / 32)` validators
   - There MUST be a permissionless function to execute assignments
-- The assignment SHALL execute the `Prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
+- The assignment SHALL execute the `prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
 - The assignment SHALL remove the validator from the queue 
 
 #### `stake` Transaction
@@ -91,11 +92,26 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 ### Deposit Mechanics
 - `prestake` is moved back from `deposit` to assignment to allow for exiting of the queue
-- to allow anyone to execute `prestake`, the validator specific data is stored 
-- since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
+- To allow anyone to execute `prestake`, the validator specific data is stored 
+- Since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. Node Operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
 
-## Considerations
-To avoid idle ETH and ensure the queue progressing smoothly, we recommend that the pDAO funds (for example through the GMC) development and running of assignment bots that assign ETH in the deposit pool to the queue at a reasonable gas price. 
+## Security Considerations
+
+### Deposit Queue
+- `express_queue_tickets_base_provision` means that the queue favors sock puppets. It's important to disincentivize small sock puppets as they get higher vote power than desired and would most damage the protocol if they took part in MEV theft ([RPIP-42 security considerations](RPIP-42.md#security-considerations) discusses this further)
+  - Immediately with Saturn 1 there is a drawback to sock puppets in the form of increased gas cost. They need to deploy multiple megapool smart contract instances and they need multiple transactions to claim beacon chain rewards.
+  - With Saturn 2, we update `reduced_bond` to 1.5 ETH, which further disincentivizes sock puppets
+- Setting `express_queue_rate` to 0 disables the express queue and people currently in it are stuck indefinitely. Similarly, setting `express_queue_rate` to a very high value effectively disables the `standard_queue`. However, node operators would be able to exit the queue for `credit`.
+
+### Deposit Mechanics
+- Validation of provided data in `deposit` matches the validation that the beacon chain deposit contract does and therefore ensures that the `prestake` using the data will succeed
+- Disabling social assignments increases the likelihood of ETH accumulating in the deposit pool while validators are waiting in the queue. But the node operators in the queue that would be assigned ETH have a direct incentive to execute the assignments. In addition, we recommend that the pDAO funds (for example through the GMC) development and execution of assignment bots that assign ETH in the deposit pool to the queue at a reasonable gas price.
+- Assigning ETH from the deposit pool based on ETH deposit size could allow for gaming if the gas cost of multiple <32 ETH deposits is lower than a single deposit
+  - To reduce gas of the single deposit, `prestake` could be decoupled from assignment. This would result in 3 necessary transactions to start a validator: `deposit`, `prestake` and `stake`. Analogous to assignments, `prestake`s could be subsidized by the pDAO.  
+  - Alternatively, assignments from ETH deposit could be deactived entirely. This would mean that all assignment and prestake transactions would have to be pDAO reimbursed and/or executed by the node operators.
+- Node operators are still able to perform arbitrage in case of a full deposit pool and a premium on rETH price, since the `deposit` transaction would assign to the validator immediately
+- The coupling of `deposit` and assignment also prevents indirect minting of rETH (by depositing, exiting the queue for credit and redeeming it for rETH) while the deposit pool is full
+
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
