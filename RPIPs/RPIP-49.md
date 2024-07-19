@@ -65,13 +65,15 @@ Some form of value capture method will be included in the tokenomics rework pack
 * [RPL Buy & LP](RPIP-50.md) - Use the surplus share to buy RPL and deposit it in a liquidity pool. 
 * Direct the surplus share to vote-eligible Node Operators, proportional to their share of vote-eligible RPL.
 
+For Saturn 1, the share will be directed to vote-eligible NOs. There will be a vote prior to Saturn 1 going live to determine the preferred strategy starting at Saturn 2.
+
 ### [RPIP-44: Forced exits](RPIP-44.md)
 
-This change allows the Rocket Pool protocol to force-exit Node Operators under certain circumstances. It relies on the adoption of [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) by the Ethereum protocol. 
+This change, planned for Saturn 2, allows the Rocket Pool protocol to force-exit Node Operators under certain circumstances. It relies on the adoption of [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) by the Ethereum protocol. 
 * This allows Node Operators to exit their validators easily.
 * This allows the Rocket Pool protocol to exit malicious validators.
 
-The ability to force-exit misbehaving validators is a requirement for RPIP-42. 
+The ability to force-exit misbehaving validators is a requirement for RPIP-44.
 
 ### [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 
@@ -108,7 +110,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * All but heuristic adjustments.
-* RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
+* RPL Value Capture - Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
@@ -119,6 +121,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Heuristic adjustments.
+* RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
 
 ## Current Status
 Last Updated: July 16th
@@ -136,6 +139,7 @@ These items are to be considered flexible until ratified explicitly, rather than
   * **Vote Eligible RPL Targets** - Decide and ratify vote-eligible RPL targets if voter_share is not chosen as the surplus share strategy. 
 * **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
 * **Penalty System** - Research, draft and ratify a penalty system. 
+* **When the security council should change NO commission** - the proposal delegates a limited ability for the security council to make NO changes and directs them to do so based on a specific metric. When and how the council should act is still an open area of discussion.
 
 Any other significant issues the development team identifies that impact their ability to deliver this upgrade may also be added to this list. The development team should strive to minimize this, communicate clearly if it occurs and keep as close to the spirit of the existing contents when deviation is needed. 
 
