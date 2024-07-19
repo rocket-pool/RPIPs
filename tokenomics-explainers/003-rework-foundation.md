@@ -20,7 +20,7 @@ depth: Intermediate
 ## Protocol Revenue
 For this section we'll make two simplifications throughout:
 
-To minimize text/diagram complexity, **we assume "RPL buy+burn"** as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts.
+To minimize text/diagram complexity, **we assume "Voter Share"** as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts. We assume the proposed initial settings with 5% no_share and 9% voter_share; please keep in mind that the system is meant to listen to the market -- these are likely to change from these initial values.
 
 For clarity, **we use 8-ETH bonds in the comparison sections** to get an apples-to-apples contrast against current 8-ETH minipools. The tokenomics rework includes changes to enable 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), later described in the [Lower Bonds and Capital Efficiency](#lower-bonds-and-capital-efficiency) section.
 
@@ -28,16 +28,17 @@ For clarity, **we use 8-ETH bonds in the comparison sections** to get an apples-
 There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 3 categories of rewards to distribute this revenue:
 - **NOs (ETH) - "Node Operator Commission Share"**. This is paid to all Node Operators in a similar manner as existing validators. One difference is that your eligibility to receive from this share _depends only on your ETH, not on your RPL_ (where previously the Node Operator commission required an initial minimum requirement of both ETH and RPL). This change allows ETH-Only NOs.
 - **NOs (RPL) - "Voter Share"**. This share is collected from all megapool validators and distributed to participants based on their proportional share of vote-eligible RPL. If you stake RPL as a Node Operator, your RPL is eligible for voting, so you would receive a proportional share from this pot of revenue. Importantly this revenue grows with rETH supply, where growth would allow the same supply of vote eligible RPL to earn more ETH. 
-- **All RPL - "Surplus Share"**. This share is collected from all megapool validators and used to buy back RPL tokens and burn them. This revenue also grows with rETH supply, where growth results in more value being captured by the RPL token. 
 
-Importantly, the same participant may be eligible to benefit from all 3 categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which is initially 3.5% in the current proposal. Their staked RPL earns from the Voter Share and also benefits from the Surplus Share, initially set in the current proposal to 5% and 5.5% respectively. The Surplus Share includes gold dots to represent a new beneficiary of protocol revenue for some of this slice (unstaked RPL).
+Importantly, the same participant may be eligible to benefit from all 3 categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which is initially 5% in the current proposal. Their staked RPL earns from the Voter Share, which is initially 9% in the current proposal.
 
+TODO -- update to 5% no_share and 9% voter_share
 <div>
     <img src="../assets/tokenomics-explainers/003-figure-1.png" alt="Figure 1" width="1000px"></br>
     <i>Figure 1 - Current and Proposed tokenomics pies</i>
 </div>
 <br/>
 
+# TODO everything below this
 One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. By no longer rewarding NOs with RPL (which is currently generated via inflation), the rate of inflation of the RPL token is also reduced which further supports its long-term value.
 
 Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual:
@@ -162,6 +163,27 @@ Unlike Buy + Burn, no time averaging on price is possible since the liquidity po
 
 ### Voter Share
 For voter share there is no “Surplus Share”, and instead this ETH revenue is directed to “Voter Share”, which goes to vote-eligible RPL. This means only NOs are natively able to benefit from RPL’s value capture directly. This has some positives (direct ETH received instead of indirect value captured; avoids some complexity in implementing one of the above options) and some negatives (much smaller total addressable market). Note that it may become possible for non-NOs to benefit via abstractions (eg, Nodeset’s proposed xRPL).
+
+# TODO everything above this
+
+### What would plots look like under other options?
+As we noted initially, "Voter Share" was assumed for this explainer.
+
+Here we show the pie charts for "Buy + x" on the left and "Voter Share" on the right. Note the new "Surplus Share" slice, which is drawn as blue with gold dots to show that it's going to both staked RPL held by NOs and a new beneficiary of protocol revenue for some of this slice (unstaked RPL).
+
+TODO -- make and number figure; maybe 5% voter_share and 4% surplus_share?
+<div>
+    <img src="../assets/tokenomics-explainers/003-figure-1.png" alt="Figure 1" width="1000px"></br>
+    <i>Figure - Proposed tokenomics pies for "Buy + x" and "Voter Share" respectively</i>
+</div>
+<br/>
+
+TODO -- make Sankeys similar to current Figure 5, one will be used above already and just be a copy. The other will be a new variant with surplus_share in it. Swap in figures and number.
+<img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
+_Figure  - Case Study ETH-only Growth Sankey Diagram_
+<img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
+_Figure  - Case Study ETH-only Growth Sankey Diagram_
+
 
 <div class="prev-next-container">
 {%if cPrev %}<a href="{{cPrev.url|relative_url}}">Previous - {{cPrev.title}}</a>{%else%}<span>Previous</span>{% endif %}
