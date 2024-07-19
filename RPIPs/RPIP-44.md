@@ -27,9 +27,8 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ## Specification
 
-This specification extends the specification of megapools in
-[RPIP-43](RPIP-43.md) with a facility for removal of validators from the
-megapool to be done by parties other than the Node Operator.
+This specification SHALL be implemented in Saturn 2.
+This specification extends the specification of megapools in [RPIP-43](RPIP-43.md) with a facility for removal of validators from the megapool to be done by parties other than the Node Operator.
 
 Funds (ETH) associated with a megapool SHALL be accounted in (at least) the following categories:
 - Received Funds (`received`): Funds provided that can be used towards validator deposits; sources include deposits from the Node Operator and ETH staked on behalf of the node ([RPIP-32](RPIP-32.md))
@@ -64,6 +63,8 @@ The exit functionality for a megapool is specified as follows:
 The accounting categories are an attempt to simplify the tracking of value within a megapool, as well as calculating ownership.
 
 The permissioned exit functionality is meant as a simple convenience. The permissionless exit functionality is meant to avoid ongoing losses to rETH in cases of negligence or maliciousness.
+
+This functionality is scheduled to be implemented in Saturn 2 for two reasons: (a) that is when we are confident EIP-7002 won't block release, and (b) to minimize the significant scope within Saturn 1. 
 
 ## Security Considerations
 - A misbehaving oDAO gains the ability to force exit any validator by applying penalties to increase `deficit` beyond `exit_deficit`. Alongside a malicious protocol upgrade, this would allow for control of all principal.
