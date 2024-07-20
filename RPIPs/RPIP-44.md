@@ -64,7 +64,7 @@ The accounting categories are an attempt to simplify the tracking of value withi
 
 The permissioned exit functionality is meant as a simple convenience. The permissionless exit functionality is meant to avoid ongoing losses to rETH in cases of negligence or maliciousness.
 
-This functionality is scheduled to be implemented in Saturn 2 for two reasons: (a) that is when we are confident EIP-7002 won't block release, and (b) to minimize the significant scope within Saturn 1. 
+This functionality is scheduled to be implemented in Saturn 2 for two reasons: (a) that is when we are confident [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) won't block release, and (b) to minimize the significant scope within Saturn 1. 
 
 ## Security Considerations
 - A misbehaving oDAO gains the ability to force exit any validator by applying penalties to increase `deficit` beyond `exit_deficit`. Alongside a malicious protocol upgrade, this would allow for control of all principal.

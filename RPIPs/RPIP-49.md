@@ -73,7 +73,7 @@ This change, planned for Saturn 2, allows the Rocket Pool protocol to force-exit
 * This allows Node Operators to exit their validators easily.
 * This allows the Rocket Pool protocol to exit malicious validators.
 
-The ability to force-exit misbehaving validators is a requirement for RPIP-44.
+The ability to force-exit misbehaving validators is a requirement for [RPIP-44](RPIP-44.md).
 
 ### [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 
@@ -109,7 +109,8 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-59: Deposit Mechanics](RPIP-59.md)
   * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * All but heuristic adjustments.
+  * Splits between rETH, NOs, and vote-eligible staked RPL
+  * RPL issuance rewards no longer have a minimum stake required
 * RPL Value Capture - Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
@@ -120,7 +121,10 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * 1.5ETH minimum bond. 
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * Heuristic adjustments.
+  * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
+  * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
+  * RPL inflation reduced to 1.5%  (from 5%)
+  * No more RPL issuance rewards
 * RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
 
 ## Current Status
