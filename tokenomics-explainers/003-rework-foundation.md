@@ -38,8 +38,7 @@ TODO -- update to 5% no_share and 9% voter_share
 </div>
 <br/>
 
-# TODO everything below this
-One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. By no longer rewarding NOs with RPL (which is currently generated via inflation), the rate of inflation of the RPL token is also reduced which further supports its long-term value.
+One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. RPL inflation to NOs will be kept for Saturn 1 to help smooth the transition. With Saturn 2, we stop rewarding NOs with RPL from inflation and are thus able to reduce the rate of inflation of the RPL token from 5% to 1.5% (which supports its long-term value).
 
 Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual:
 1. Technical expertise to perform Node Operator duties
@@ -50,7 +49,8 @@ Previously, Rocket Pool targeted a very narrow window of participants to support
 In reality, there may be demand for more limited forms of participation from individuals who may not meet all four requirements. By structuring the incentives to support that demand, there is a greater opportunity to grow the pie of total protocol revenue, which would benefit all participants in the protocol. Some examples include:
 - The market can now be opened to ETH Only Node Operators
 - Node Operators can choose the degree of RPL exposure they feel comfortable with (no more cliff)
-- RPL holders benefit directly from protocol revenue and a reduced rate of inflation
+- A reduced rate of inflation makes RPL more attractive
+- For some [RPL Value Capture Options](#rpl-value-capture-options), RPL holders benefit directly from protocol revenue
 
 ### Node Operator Perspective
 Let’s examine things from a Node Operator perspective, starting with existing tokenomics. In the diagrams below, blue will represent ETH and orange will represent RPL (with the value still shown in ETH). As a reminder, we are using 8-ETH bonds to compare apples-to-apples against the existing tokenomics. The tokenomics rework will include 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds.)
@@ -65,30 +65,34 @@ The NO earns solo staking APY on their bond (0.334 ETH), 14% commission on the b
 
 The end result is that the Node Operator would make **1.14x solo staking APY right now**. At maturity, RPL would approach ~100% staked, at which point RPL rewards and Inflation to NOs cancel each other out resulting in **1.01x solo staking APY**. Back to the current state, if a Node Operator loses eligibility for RPL rewards (which often happens due to falling RPL/ETH price ratio), the loss of the 0.14ETH in RPL rewards would result in **0.82x solo staking APY**.
 
+TODO -- update to new no_share
 **Proposal using ETH-only allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-3.png" alt="Figure 3" width="1000px"></br>
 _Figure 3 - Proposal ETH-only Sankey Diagram_
 
-The NO earns solo staking APY on their bond (0.334 ETH), and 3.5% commission on the borrowed ETH (0.035 ETH).
+The NO earns solo staking APY on their bond (0.334 ETH), and 5% commission on the borrowed ETH (0.05 ETH).
 
-The end result is that the Node Operator would make **1.11x solo staking APY right now**.
+The end result is that the Node Operator would make **1.15x solo staking APY right now**.
 
+TODO -- update to new no_share and voter_share
 **Proposal using current minimum LEB8 allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-4.png" alt="Figure 4" width="1000px"></br>
 _Figure 4 - Proposal w/minimum LEB8 Allocation Sankey Diagram_
 
-The NO earns solo staking APY on their bond (0.334 ETH), 3.5% commission on the borrowed ETH (0.035 ETH), 5% revenue share on their vote-eligible RPL (0.05 ETH)[^2], and 5.5% revenue share on their RPL (0.033 ETH)[^3]. Meanwhile, they lose RPL value to inflation going to DAO expenses (0.036 ETH). 
+The NO earns solo staking APY on their bond (0.334 ETH), 5% commission on the borrowed ETH (0.05 ETH), and 9% revenue share on their vote-eligible RPL (0.09 ETH)[^2]. Meanwhile, they lose RPL value to inflation going to DAO expenses (0.036 ETH). 
 
-The end result is that the Node Operator would make **0.96x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other NOs. Eg, if half of the validators are ETH-only and half look like this NO, then the voter share reward to this NO would double to 0.1 ETH; that would result in **1.07x solo staking APY**. This dynamic will be explored further in the Case Study below.
+The end result is that the Node Operator would make **1.09x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other NOs. Eg, if half of the validators are ETH-only and half look like this NO, then the voter share reward to this NO would double to 0.1 ETH; that would result in **1.21x solo staking APY**. This dynamic will be explored further in the Case Study below.
 
 #### Case Study: ETH-only is Preferred by Node Operators
 
+TODO -- update to new no_share and voter_share
 **Proposal Example, Reference**  
 <img src="../assets/tokenomics-explainers/003-figure-5.png" alt="Figure 5" width="1000px"></br>
 _Figure 5 - Case Study Reference Sankey Diagram_
 
 In this case study, we have 3 NOs. (A) has 8 ETH and no RPL staked. (B) has 8 ETH and 6 ETH worth of RPL staked. (C) has 8 ETH and 15 ETH worth of RPL staked (note that vote-eligible RPL is capped at 150% of bonded ETH. This leads to NO C earning twice as much from "Voter Share" as NO B).
 
+TODO -- update to new no_share and voter_share
 **Proposal Example, 9 more ETH-Only Node Operators join**  
 <img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
 _Figure 6 - Case Study ETH-only Growth Sankey Diagram_
@@ -101,17 +105,19 @@ Zooming _all_ the way out, the total revenue is `reth_commision*reth_tvl_in_vali
 ### ETH-only Validator ROIs (Saturn 1)
 Zooming in to a single operator, the easiest way to look at the impact of lower bonds is by considering ETH-only validators and looking at their ROI. As we can see - we get dramatically higher ROIs for the same commission (or, equivalently, can get the same ROI with dramatically lower commission). The takeaway is simple from a capital efficiency point of view – smaller bonds are better.
 
+TODO -- update circle and legend text to 5%. make x axis go from 3-7%. ideally samus has the final version of code; if not, searching for "arrowstyle" in discord gives code to make an earlier version of this chart.
 <img src="../assets/tokenomics-explainers/003-figure-7.png" alt="Figure 7"></br>
 _Figure 7 - ROI based on NO commission share and ETH bond per validator_
 
-### Proposed Bond Curve’s ROI (Saturn 2)
+### ETH-only Validator ROIs (w/proposed bond curve in Saturn 2)
 Despite the "smaller is better" takeaway from above, there are real limits. Security requires us to have enough bond per validator to align incentives and mitigate damage in cases of slashing, abandonment, and MEV theft. The result is a proposal that starts out with 4 ETH per validator for the first 2 validators; thereafter, the bond is 1.5 ETH per validator. We can see that ROI improves rapidly as a node operator adds validators, and then starts to flatten out. Note that this proposal requires forced exits to be available for security, which is why it cannot be implemented until Saturn 2.
 
 <img src="../assets/tokenomics-explainers/003-figure-8.png" alt="Figure 8"></br>
 _Figure 8 -  ROI based on NO commission share and total bonded ETH_
 
-Keep in mind that if this is extremely attractive, [UARS](#uars-and-listening-to-the-market) allows us to improve the balance by reducing node_operator_commission_share and increasing another share. Similarly, if it’s not attractive enough, node_operator_commission_share can be increased at the cost of decreasing another share. Do note that there’s quite a significant impact to ROI with a small change in share – eg, at 64 ETH bonded, we see a 0.5% change in share causes a ~6% change in ROI.
+Keep in mind that if this is extremely attractive, [UARS](#uars-and-listening-to-the-market) allows us to improve the balance by reducing node_operator_commission_share and increasing another share. Similarly, if it’s not attractive enough, node_operator_commission_share can be increased at the cost of decreasing another share. Do note that there’s quite a significant impact to ROI with a small change in share – eg, at 64 ETH bonded, we see a 1% change in share causes a ~10% change in ROI.
 
+# TODO everything below this
 ## UARS and Listening to the Market
 
 ### Current State
@@ -194,5 +200,4 @@ _Figure  - Case Study ETH-only Growth Sankey Diagram_
 
 [^1]: RPL rewards are modeled by calculating RPL yield as: `RPL APY = [% RPL inflation to NOs] / [% of staked RPL supply] = 3.5%/60% = 5.83%
 5.83% * 2.4ETH = 0.14ETH`
-[^2]: The example shown assumes this Node Operator represents the average staked RPL exposure of all NOs, so they earn average Voter Share rewards of 5%
-[^3]: The example shown assumes this Node Operator represents the average amount of staked RPL out of all staked RPL holders and that 60% of RPL is staked. Based on that, this Node Operator would earn `60% * 5.5% = 3.3%, or 0.033 ETH`
+[^2]: The example shown assumes this Node Operator represents the average staked RPL exposure of all NOs, so they earn average Voter Share rewards of 9%
