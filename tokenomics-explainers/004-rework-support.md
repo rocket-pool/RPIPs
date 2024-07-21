@@ -20,7 +20,7 @@ depth: Intermediate
 ## Anti-sock Puppet Effects
 Rocket Pool currently has modest incentives to sock puppet. Due to the square root scaling, sock puppeting increases voting power. It also allows additional flexibility in RPL staking (eg, you could have some undercollateralized pools on one node and a separate collateralized node receiving RPL rewards).
 
-As shown in [Lower Bonds and Capital Efficiency](./003-rework-foundation.md#lower-bonds-and-capital-efficiency), the bond curves make profitability increase as you have more validators on one node. This will give people a strong reason to avoid sock puppeting behavior. Note also, that getting rid of the cliff also removes one possible reason to engage in sock puppeting.
+As shown in [Lower Bonds and Capital Efficiency](./003-rework-foundation.md#lower-bonds-and-capital-efficiency), the bond curves make profitability increase as you have more validators on one node. This will give people a strong reason to avoid sock puppeting behavior. Note also, that getting rid of the RPL reward "cliff" also removes one possible reason to engage in sock puppeting.
 
 ## Megapools
 Currently, Rocket Pool minipools each have their own Ethereum contract. This results in high gas costs for NOs with several minipools (gas-intensive to launch or distribute rewards for several validators). The Saturn upgrade introduces megapools, where a single megapool contract is used as an Ethereum withdrawal address for multiple validators. This drastically reduces gas costs for launching or distributing rewards for several validators (by almost N times, where N is the number of validators the NO is running).
@@ -30,8 +30,8 @@ Currently, if a minipool is penalized, the protocol has no way to forcibly recla
 
 Saturn 2 includes forced exits, which allow the protocol to initialize the exit of a validator when certain conditions are met. This would allow the protocol to immediately reclaim a highly penalized bond, and prevent hypothetical rogue NOs from being a drag on the protocol.
 
-## Node Level Penalties
-Currently, penalties can be applied on a per minipool basis. Consider an NO with 4 LEB8 minipools that steals 30 ETH of MEV in one block. At this time, only that minipool will be penalized, and any other minipools that NO has will be unaffected. This means that Rocket Pool could recover at most the 8 ETH bond from the LEB8 minipool that stole the block. With node level penalties, the bond from all of the minipools could be recovered. Note that while node level penalties could be implemented for minipools, it’s even easier to implement for megapools.
+## Megapool Level Penalties
+Currently, penalties can be applied on a per minipool basis. Consider an NO with 4 LEB8 minipools that steals 30 ETH of MEV in one block. At this time, only that minipool will be penalized, and any other minipools that NO has will be unaffected. This means that Rocket Pool could recover at most the 8 ETH bond from the LEB8 minipool that stole the block. With megapool level penalties, the bond from all of the validators in a megapool could be recovered.
 
 Putting together the bond curve, forced exits, and node level penalties:
 An example comparing Honest APY vs. APY with MEV-theft is shown in Figure 1 below. You can see how the first validator (only a 4 ETH bond) has the significantly highest amount of drag for the protocol, but if a thief wanted to maximize their APY, they would create 12 validators. At 12 validators the drag for the protocol is significantly reduced (vs at a single validator), and the protocol is much safer since it would have the ability to recover 23ETH of NO bond from the entire megapool, instead of just 4 ETH of NO bond from a single validator.

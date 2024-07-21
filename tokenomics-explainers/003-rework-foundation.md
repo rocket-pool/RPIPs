@@ -20,16 +20,16 @@ depth: Intermediate
 ## Protocol Revenue
 For this section we'll make two simplifications throughout:
 
-To minimize text/diagram complexity, **we assume "Voter Share"** as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts. We assume the proposed initial settings with 5% no_share and 9% voter_share; please keep in mind that the system is meant to listen to the market -- these are likely to change from these initial values.
+To minimize text/diagram complexity, **we assume "Voter Share"** as the value capture method for the surplus share. Please see [RPL Value Capture Options](#rpl-value-capture-options) for alternatives and a discussion of their impacts. We assume the proposed initial settings with 5% no_share and 9% voter_share; please keep in mind that the system is meant to listen to the market -- therefore these are likely to change over time.
 
 For clarity, **we use 8-ETH bonds in the comparison sections** to get an apples-to-apples contrast against current 8-ETH minipools. The tokenomics rework includes changes to enable 4-ETH bonds (and later a mix of 4-ETH and 1.5-ETH bonds), later described in the [Lower Bonds and Capital Efficiency](#lower-bonds-and-capital-efficiency) section.
 
 ### Overview
-There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 3 categories of rewards to distribute this revenue:
+There is only one source of revenue for the protocol, the fee charged to rETH holders. In the current system, this is 14%, paid to Node Operators (NOs), who are required to bring a bond of both ETH and RPL. The proposed rework changes things by creating 2 categories of rewards to distribute this revenue:
 - **NOs (ETH) - "Node Operator Commission Share"**. This is paid to all Node Operators in a similar manner as existing validators. One difference is that your eligibility to receive from this share _depends only on your ETH, not on your RPL_ (where previously the Node Operator commission required an initial minimum requirement of both ETH and RPL). This change allows ETH-Only NOs.
-- **NOs (RPL) - "Voter Share"**. This share is collected from all megapool validators and distributed to participants based on their proportional share of vote-eligible RPL. If you stake RPL as a Node Operator, your RPL is eligible for voting, so you would receive a proportional share from this pot of revenue. Importantly this revenue grows with rETH supply, where growth would allow the same supply of vote eligible RPL to earn more ETH. 
+- **NOs (RPL) - "Voter Share"**. This share is collected from all megapool validators and distributed to participants based on their proportional share of vote-eligible RPL staked in megapools. If you stake RPL as a Node Operator, your RPL is eligible for voting, so you would receive a proportional share from this pot of revenue. Importantly this revenue grows with rETH supply, where growth would allow the same supply of vote eligible RPL to earn more ETH. 
 
-Importantly, the same participant may be eligible to benefit from all 3 categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which is initially 5% in the current proposal. Their staked RPL earns from the Voter Share, which is initially 9% in the current proposal.
+Importantly, the same participant may be eligible to benefit from both categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which is initially 5% in the current proposal. Their staked RPL earns from the Voter Share, which is initially 9% in the current proposal.
 
 TODO -- update to 5% no_share and 9% voter_share
 <div>
@@ -38,7 +38,7 @@ TODO -- update to 5% no_share and 9% voter_share
 </div>
 <br/>
 
-One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. RPL inflation to NOs will be kept for Saturn 1 to help smooth the transition. With Saturn 2, we stop rewarding NOs with RPL from inflation and are thus able to reduce the rate of inflation of the RPL token from 5% to 1.5% (which supports its long-term value).
+One key difference is the removal of the minimum RPL stake requirement. Previously, this was the primary source of value capture for RPL, and RPL inflation rewards were used as an incentive for NOs to maintain at least the same level of RPL exposure that was initially required. With the proposed rework, RPL inflation to NOs is no longer required since NOs are free to choose any level of RPL exposure they are comfortable with, and RPL value capture instead comes directly from protocol revenue. RPL inflation to NOs will be kept for Saturn 1 to help smooth the transition (the rewards formula will be tweaked to eliminate the cliff by extending the minimum to 0% borrowed from the current 10%). With Saturn 2, we stop rewarding NOs with RPL from inflation and are thus able to reduce the rate of inflation of the RPL token from 5% to 1.5% (which supports its long-term value).
 
 Previously, Rocket Pool targeted a very narrow window of participants to support the protocol by forcing multiple requirements of the same individual:
 1. Technical expertise to perform Node Operator duties
@@ -117,7 +117,6 @@ _Figure 8 -  ROI based on NO commission share and total bonded ETH_
 
 Keep in mind that if this is extremely attractive, [UARS](#uars-and-listening-to-the-market) allows us to improve the balance by reducing node_operator_commission_share and increasing another share. Similarly, if it’s not attractive enough, node_operator_commission_share can be increased at the cost of decreasing another share. Do note that there’s quite a significant impact to ROI with a small change in share – eg, at 64 ETH bonded, we see a 1% change in share causes a ~10% change in ROI.
 
-# TODO everything below this
 ## UARS and Listening to the Market
 
 ### Current State
@@ -136,15 +135,17 @@ One major change in the proposal is that the Revenue Split variables will apply 
 Ultimately the pDAO (Node Operators with staked RPL) controls the Revenue Split variables and has the ability to change them through voting. 
 
 Some abstract guidelines the pDAO should consider when deciding the sizes of the Revenue Splits:
-- Consider **Node Operator Commission Share** as a requirement to function. If this share is not high enough to attract the supply we need, the protocol is non-functional
-- Consider **Voter Share** as a requirement to function. If there is not enough vote-eligible staked RPL, then the protocol can become at risk for governance attacks. There is a method specified that balances Voter Share vs Surplus Share to ensure ~60% of all RPL is vote eligible.
--  Finally, consider **Surplus Share**. RPL holders are incentivized to maximize something along the lines of `surplus_share * rETH_TVL`. This means voters generally have an incentive to balance a high surplus_share with making rETH holding attractive.
+- **Node Operator Commission Share** MUST be high enough to attract rETH supply. If this share is not high enough to attract some supply, the protocol is non-functional. If this share is not high enough to attract enough supply to meet demand, the protocol is kept smaller than it could be. 
+- **rETH Share** MUST be high enough to attract rETH demand. If this share is not high enough to attract some demand, the protocol is non-functional. If this share is not high enough to attract enough demand to meet supply, the protocol is kept smaller than it could be.
+- **Voter Share** can be seen through two lenses
+  - It MUST be high enough that RPL holders choose to stake their RPL. If there is not enough vote-eligible staked RPL, then the protocol can become at risk for governance attacks.
+  - RPL holders are incentivized to maximize something along the lines of `voter_share * rETH_TVL` so that each unit of RPL earns the most ETH. This means voters generally have an incentive to balance a high `voter_share` with growing the protocol (eg, by accepting a lower `voter_share` and spending on rETH supply and/or rETH demand).
 
 With these factors in mind, the pDAO should pay attention to the market, and take actions as necessary to ensure healthy sustainable settings.
 
 **Listening to the Market**  
 There are natural checks and balances that allow "non-voting" participants to create market pressures. Some examples:
-- If Node Operators don’t find holding RPL attractive, they may still opt to run ETH-only. This grows total revenue and makes holding RPL more attractive. See [Case Study: ETH-only is Preferred by Node Operators](#case-study-eth-only-is-preferred-by-node-operators).
+- If Node Operators don’t find holding RPL attractive, they may still opt to run ETH-only. This grows total revenue and makes staking RPL more attractive. See [Case Study: ETH-only is Preferred by Node Operators](#case-study-eth-only-is-preferred-by-node-operators).
 - If rETH holders find rETH unattractive, they can sell (or not buy) rETH. This limit to growth also limits the value of RPL.
 - If ETH-Only Node Operators don’t find the commission attractive enough, they can choose a competitor who provides them with higher compensation for their services.
 - If RPL holders don’t find the value capture attractive enough, they can sell (or not buy) RPL; this will decrease the ETH value of RPL, which improves the ROI in ETH terms. 
@@ -153,24 +154,20 @@ There are natural checks and balances that allow "non-voting" participants to cr
 
 This section describes three potential implementations for how the "Surplus Share" described in [Protocol Revenue](#protocol-revenue) can be used to drive value to RPL.
 
-The current plan is to vote on the full proposal before deciding which "Surplus Share" implementation to use. This lets the dev team start work and gives the community more time to form consensus after further modeling/research.
-
-Ideally, the preferred implementation can still make it into Saturn 1. If not, it will be in Saturn 2; in such a case, the revenue during the Saturn 1 period will be allowed to build up and then get distributed over a bit of time once Saturn 2 is live.
+We will use "Voter Share" as a simple-to-implement option for Saturn 1 so that the dev team can progress. After additional modeling and discussion, but before Saturn 1 goes live, we will vote on the RPL Value Capture Option to use for Saturn 2.
 
 ### Buy + Burn
-For buy + burn, ETH revenue is used to buy RPL on the open market. The RPL is then burnt to permanently remove it from the total supply of RPL. In theory, the market cap of RPL should be unchanged by this, while the supply is reduced, which would mean the price per RPL token increases (by its share of the ETH revenue). The implementation uses a time-averaged market price and avoids large steps in available burn liquidity to limit opportunities for someone to game the system and steal value. 
+For buy + burn, a share of ETH revenue is used to buy RPL on the open market. The RPL is then burnt to permanently remove it from the total supply of RPL. In theory, the market cap of RPL should be unchanged by this, while the supply is reduced, which would mean the price per RPL token increases (by its share of the ETH revenue). The implementation uses a time-averaged market price and avoids large steps in available burn liquidity to limit opportunities for someone to game the system and steal value. 
 
 ### Buy + LP
-For buy + LP, ETH revenue is used for single-sided deposits into an RPL/rETH Liquidity Pool (note that a single-sided deposit is equivalent to an RPL buy followed by an asset-weighted deposit).
+For buy + LP, a share of ETH revenue is used for single-sided deposits into an RPL/rETH Liquidity Pool (note that a single-sided deposit is equivalent to an RPL buy followed by an asset-weighted deposit).
 
 The liquidity pool is a weighted pool with 90% RPL weight and 10% rETH weight. This means that ~90% of revenue would go to driving value to RPL directly, while 10% would go to building deep protocol-owned liquidity for RPL. The other two options do not build liquidity – this means the pDAO would need to fund that liquidity some other way (or not have much).
 
 Unlike Buy + Burn, no time averaging on price is possible since the liquidity pool is a live market. As a result, the implementation will take even more care to avoid large steps.
 
 ### Voter Share
-For voter share there is no “Surplus Share”, and instead this ETH revenue is directed to “Voter Share”, which goes to vote-eligible RPL. This means only NOs are natively able to benefit from RPL’s value capture directly. This has some positives (direct ETH received instead of indirect value captured; avoids some complexity in implementing one of the above options) and some negatives (much smaller total addressable market). Note that it may become possible for non-NOs to benefit via abstractions (eg, Nodeset’s proposed xRPL).
-
-# TODO everything above this
+In this case, no share of ETH revenue is used to buy RPL (which means unstaked RPL does not directly benefit from the ETH revenue). Instead, the equivalent share of ETH revenue is simply used to have a larger `voter_share` which is distributed according to vote-eligible RPL staked to megapools. This means only NOs are natively able to benefit from RPL’s value capture directly. This has some positives (direct ETH received instead of indirect value captured; avoids some complexity in implementing one of the above options) and some negatives (much smaller total addressable market). Note that it may become possible for non-NOs to benefit via abstractions (eg, Nodeset’s proposed xRPL).
 
 ### What would plots look like under other options?
 As we noted initially, "Voter Share" was assumed for this explainer.
