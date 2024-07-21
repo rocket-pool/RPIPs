@@ -74,7 +74,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - Until ETH is assigned to a validator, it SHALL be possible to exit the queue and receive ETH `credit` for it
 
 #### Social Assignments
-- The deposit.assign.socialised.maximum setting SHALL be set to 0
+- The `deposit.assign.socialised.maximum` setting SHALL be set to 0
 
 #### Initial Settings
 - The initial settings SHALL be:
