@@ -27,6 +27,12 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ## Specification
 
 ### Deposit Queue Specification
+This specification introduces the following pDAO protocol parameters:
+| Name                                   | Type | Initial Value |
+|----------------------------------------|------|---------------|
+| `express_queue_rate`                   |      | `2`           |
+| `express_queue_tickets_base_provision` |      | `2`           |
+
 ETH from the deposit pool SHALL be matched with validator deposits from queues as follows:
 - There SHALL be a `standard_queue`
   - When adding a validator, users SHALL be able to place their deposit in the `standard_queue`  
@@ -39,12 +45,15 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
     - If one queue is empty, those matches SHALL be skipped
 - Each node SHALL be provided `express_queue_tickets` equal to `express_queue_tickets_base_provision` (this includes newly created nodes)
 - Each node SHALL be provided additional `express_queue_tickets` equal to `(bonded ETH in legacy minipools)/4` (this will always be zero for newly created nodes)
-- The initial settings SHALL be:
-  - `express_queue_rate`: 2
-  - `express_queue_tickets_base_provision`: 2
 
 ### Deposit Mechanics Specification
-- A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
+This specification introduces the following pDAO protocol parameters:
+| Name                   | Type  | Initial Value |
+|------------------------|-------|---------------|
+| `scrub_period`         | Hours | `12`          |
+| `time_before_dissolve` | Weeks | `2`           |
+
+A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 
 #### `deposit` Transaction
 - `deposit` SHALL place the Node Operator ETH in the deposit pool (where it can be used in validators as needed) and place the validator in a queue as described [above](#deposit-queue-specification)
@@ -74,12 +83,8 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 - Until ETH is assigned to a validator, it SHALL be possible to exit the queue and receive ETH `credit` for it
 
 #### Social Assignments
-- The deposit.assign.socialised.maximum setting SHALL be set to 0
+- The `deposit.assign.socialised.maximum` setting SHALL be set to 0
 
-#### Initial Settings
-- The initial settings SHALL be:
-  - `scrub_period`: 12 hours
-  - `time_before_dissolve`: 2 weeks
 
 ## Rationale
 
