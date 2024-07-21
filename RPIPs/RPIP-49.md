@@ -65,7 +65,7 @@ Some form of value capture method will be included in the tokenomics rework pack
 * [RPL Buy & LP](RPIP-50.md) - Use the surplus share to buy RPL and deposit it in a liquidity pool. 
 * Direct the surplus share to vote-eligible Node Operators, proportional to their share of vote-eligible RPL.
 
-For Saturn 1, the share will be directed to vote-eligible NOs. There will be a vote prior to Saturn 1 going live to determine the preferred strategy starting at Saturn 2.
+For Saturn 1, the share will be directed based on vote-eligible RPL staked in megapools. There will be a vote prior to Saturn 1 going live to determine the preferred strategy starting at Saturn 2.
 
 ### [RPIP-44: Forced exits](RPIP-44.md)
 
@@ -109,7 +109,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-59: Deposit Mechanics](RPIP-59.md)
   * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * Splits between rETH, NOs, and vote-eligible staked RPL
+  * Splits between rETH, NOs, and vote-eligible staked RPL staked in megapools
   * RPL issuance rewards no longer have a minimum stake required
 * RPL Value Capture - Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
@@ -125,7 +125,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
   * RPL inflation reduced to 1.5%  (from 5%)
   * No more RPL issuance rewards
-* RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
+* RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
 Last Updated: July 16th
@@ -143,7 +143,7 @@ These items are to be considered flexible until ratified explicitly, rather than
   * **Vote Eligible RPL Targets** - Decide and ratify vote-eligible RPL targets if voter_share is not chosen as the surplus share strategy. 
 * **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
 * **Penalty System** - Research, draft and ratify a penalty system. 
-* **When the security council should change NO commission** - the proposal delegates a limited ability for the security council to make NO changes and directs them to do so based on a specific metric. When and how the council should act is still an open area of discussion.
+* **When the security council should change NO commission** - the proposal delegates a limited ability for the security council to make UARS changes and directs them to do so based on a specific metric. When and how the council should act is still an open area of discussion.
 
 Any other significant issues the development team identifies that impact their ability to deliver this upgrade may also be added to this list. The development team should strive to minimize this, communicate clearly if it occurs and keep as close to the spirit of the existing contents when deviation is needed. 
 
