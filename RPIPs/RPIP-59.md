@@ -98,7 +98,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 ## Security Considerations
 
 ### Deposit Queue
-- `express_queue_tickets_base_provision` means that the queue favors sock puppets. It's important to disincentivize small sock puppets as they get higher vote power than desired and would most damage the protocol if they took part in MEV theft ([RPIP-42 security considerations](RPIP-42.md#security-considerations) discusses this further)
+- `express_queue_tickets_base_provision` means that the queue favors sock puppets. It's important to disincentivize small sock puppets as they get higher vote power than desired and would most damage the protocol if they took part in MEV theft ([RPIP-42 security considerations](RPIP-42.md#security-considerations) discusses this further).
   - Immediately with Saturn 1 there is a drawback to sock puppets in the form of increased gas cost. They need to deploy multiple megapool smart contract instances and they need multiple transactions to claim beacon chain rewards.
   - With Saturn 2, we update `reduced_bond` to 1.5 ETH, which further disincentivizes sock puppets
 - Setting `express_queue_rate` to 0 disables the express queue and people currently in it are stuck indefinitely. Similarly, setting `express_queue_rate` to a very high value effectively disables the `standard_queue`. However, node operators would be able to exit the queue for `credit`.
