@@ -17,13 +17,23 @@ The tokenomics rework will likely be split into two protocol upgrades, Saturn 1 
 
 This Informational RPIP and the tokenomics rework represent the best efforts of the Rocket Pool community contributors involved. Information within this RPIP should not be considered official word from the Rocket Pool core development team. 
 
+## Explainers
+
+The following explainers are being maintained by the community to help make the rework as accessible as possible.
+
+* [Part 1 - Why Rework Rocket Pool's Tokenomics?](/tokenomics-explainers/001-why-rework)
+* [Part 2 - Introduction to the Tokenomics Rework](/tokenomics-explainers/002-rework-intro)
+* [Part 3 - Foundation of the Tokenomics Rework](/tokenomics-explainers/003-rework-foundation)
+* [Part 4 - Supporting Components of the Tokenomics Rework](/tokenomics-explainers/004-rework-support)
+* [Part 5 - Glossary of Terms](/tokenomics-explainers/005-glossary)
+
 ## Contents
 
 ### [RPIP-43: Megapools](RPIP-43.md)
 
 A Megapool is a single contract that can be used as an Ethereum withdrawal address for multiple validators.
 * This allows for much more gas-efficient usage of the Rocket Pool protocol for Node Operators.
-* This allows for the application of node-level penalties. 
+* This allows for the application of megapool-level penalties. 
 * Importantly, this RPIP specifies that node operation no longer requires RPL staking (ETH-only node operation). 
 
 Additionally, Megapools are required to facilitate the bond curve changes described in RPIP-42.
@@ -46,6 +56,8 @@ This change allows the ETH revenue income from borrowed ETH (aka, rETH commissio
 
 Aspects of the split are managed by the pDAO, the security council, and automatically by a heuristic function. For full details of 'who can do what', please see the full RPIP. 
 
+This RPIP also includes the reduction of RPL issuance from 5% to 1.5%, as RPL rewards to Node Operators have been replaced by UARS.
+
 ### RPL Value Capture
 
 Some form of value capture method will be included in the tokenomics rework package. Three options are being actively debated:
@@ -67,6 +79,19 @@ This change allows the Rocket Pool protocol to force-upgrade Node Operators mini
 * This reduces the compatibility debt incurred by the protocol as it is upgraded because it does not need to support all prior iterations. 
 * This means that protocol governance can make changes that benefit the protocol as a whole even if the changes do not benefit each individual Node Operator. 
 
+### [RPIP-59: Deposit Mechanics](RPIP-59.md)
+
+Here we describe the mechanics of Node Operator deposits and validator creation, including standard and express queues.
+* This provides a faster queue to help small node operators get started.
+* This provides a faster queue for existing node operators to migrate their minipools to megapools.
+* This allows node operators to optionally exit the queue up until they point their validator is created.
+
+### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
+
+This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to act in that time.
+* The security council can veto an upgrade to help protect participants in Rocket Pool from malicious upgrades.
+* The security council can speed up an upgrade to help enact critical changes faster when requested by the pDAO.
+
 ## Deployment Plan
 
 The tokenomics rework package will likely be split between two protocol upgrades: Saturn 1 and Saturn 2.
@@ -78,10 +103,13 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-42: Bond curves](RPIP-42.md)
   * Framework
   * 4ETH minimum bond
+* [RPIP-59: Deposit Mechanics](RPIP-59.md)
+  * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * All but heuristic adjustments.
 * RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+* [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 ### Saturn 2
 
@@ -92,11 +120,11 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Heuristic adjustments.
 
 ## Current Status
-Last Updated: June 4th
+Last Updated: July 3rd
 
-Current efforts are primarily focused on two areas.
-1. Getting technical feedback on the rework content specifications from prominent members of the Rocket Pool community.
-2. Make a concerted effort to gather feedback via the forum from the wider community.
+Current efforts are primarily focused on:
+1. Updating and polishing the RPIP specifications in response to feedback.
+2. Attempting to reduce the scope of the required implementation work to improve time-to-market without overly impacting contents.
 
 A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
 
@@ -105,10 +133,10 @@ A maintained list of open tasks is available via google sheet [here](https://doc
 The below is generally agreed to be the steps to be completed before we can consider this 'decided'.
 
 1. **Done** - Complete the first draft of the full proposal specifications. 
-2. **Active** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
+2. **Done** - Seek feedback from technically skilled or highly engaged community members on the draft specifications. 
 3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
-4. **Active** - Make a concerted effort to gather feedback via the forum from the wider community.
-5. Update the proposal and specifications as needed taking into account wider community feedback.
+4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
+5. **Active** - Update the proposal and specifications as needed taking into account wider community feedback.
 6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
 7. Run a snapshot vote on the full proposal (bar value capture mechanism).
 8. Run a snapshot vote on the value capture mechanism once outstanding blockers are cleared.

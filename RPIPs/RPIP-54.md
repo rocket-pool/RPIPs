@@ -4,7 +4,7 @@ title: Upgrade Informational - Houston
 description: An unoffical community resource to track contents and information about the Houston upgrade.
 author: LongForWisdom (@LongForWisdom)
 discussions-to: N/A
-status: Living
+status: Final
 type: Informational
 created: 2024-05-20
 requires: 31, 32, 33, 35
@@ -18,7 +18,7 @@ This unofficial community RPIP lists the estimated contents of the Rocket Pool H
 
 The intention of this Living Informational RPIP is to collate the release-relevant information for this upcoming release in a single location for reference. While it is created as a community resource, the hope is for the Rocket Pool core development team to adopt this template and format to communicate about upcoming releases as and when it makes sense for them to do so.
 
-## Estimated Included RPIPs
+## Included RPIPs
 * [RPIP-31: RPL Withdrawal Address](RPIP-31.md)
 * [RPIP-32: Stake ETH on behalf of node](RPIP-32.md)
 * [RPIP-33: Implementation of an On-Chain pDAO](RPIP-33.md)
@@ -31,7 +31,7 @@ The intention of this Living Informational RPIP is to collate the release-releva
   * [Sigma Prime](https://rocketpool.net/files/audits/sigma-prime-audit-houston.pdf) (Late November 2023, then a second round March 2024)
   * [Chainsafe](https://rocketpool.net/files/audits/chainsafe-audit-houston.pdf) (Mid January to April 2024)
 * [Houston Branch](https://github.com/rocket-pool/rocketpool/tree/houston), [Houston Hotfix Branch](https://github.com/rocket-pool/rocketpool/tree/houston-hotfix)
-* Upgrade Contract (TBC post mainnet deployment)
+* [Upgrade Contract](https://etherscan.io/address/0x5dC69083B68CDb5c9ca492A0A5eC581e529fb73C)
 
 ## Outstanding Discrepancies
 
