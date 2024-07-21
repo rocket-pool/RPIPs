@@ -69,7 +69,7 @@ Node operators can manage the set of validators in their megapool:
 ### `debt` Variable
 - There SHALL be a `debt` variable that is initially set to 0
 - The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)) by majority vote
-  - If this causes the megapool to meet the criteria for a non-Node operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction 
+  - If this causes the megapool to meet the criteria for a non-node operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction 
 - There SHALL be a function to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract and the `debt` SHALL be reduced by the amount.
 
 
