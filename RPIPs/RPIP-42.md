@@ -34,7 +34,7 @@ The innovation of a bond curve is motivated by the need to maintain enough stake
 This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework).
 
 ## Specification
-This specification introduces the following pDAO-configurable settings:
+This specification introduces the following pDAO protocol parameters:
 
 | Name                           | Type    | Initial Value             |
 |--------------------------------|---------|---------------------------|
@@ -65,7 +65,7 @@ Array indexing in this section is zero-based.
 
 ## Specification taking effect with Saturn 2
 - Update `reduced_bond` to 1.5 ETH
-- `base_bond_array` SHALL be converted to a pDAO setting (and added to the table above)
+- `base_bond_array` SHALL be converted to a pDAO protocol parameter (and added to the table above)
 - `base_bond_array` SHALL NOT be allowed to be set to `[]`
 
 ## Penalizable offenses
