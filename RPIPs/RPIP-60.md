@@ -39,7 +39,7 @@ This specification introduces the following pDAO protocol parameters:
 
 ### Security Council Veto
 - The security council SHALL have the power to veto contract upgrades (which are proposed by the oDAO)
-  - In order to veto a contract upgrade, a portion `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` of the security council MUST be met or exceeded
+  - In order to veto a contract upgrade, a quorum of `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` of the security council MUST be met or exceeded
 - Veto powers SHALL NOT be used lightly and SHALL be reserved for cases of vote manipulation, malicious action (eg, oDAO votes in a proposal against the pDAO governance), or contract upgrades that would result in clear damage to the Rocket Pool project
 - When the veto power is exercised, the security council SHOULD immediately publish a Veto Explanation Document that describes why it was exercised
 - Within 24 hours of the veto power being exercised, the security council MUST publish a Veto Explanation Document that describes why it was exercised
