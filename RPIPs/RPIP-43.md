@@ -21,7 +21,7 @@ Megapools are motivated by several desires; to lower ongoing costs, to lower the
 
 ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
@@ -179,7 +179,7 @@ A few details about the reasoning behind the spec:
 - If ETH is sent to a megapool, the spec will count it similarly to any other reward - this makes it quite easy to handle as we don't need to track incoming amounts etc, just the balances
 
 ## Security considerations
-- There is a process for permissionlessly distributing funds that won't go to the NO so that funds are never "stuck". Importantly, this distribution does not distribute the NO's share, but rather accounts for it for later claiming. This prevents potential attacks where the withdrawal address causes transactions to fail on an attempted distribution. 
+- There is a process for permissionlessly distributing funds that won't go to the node operator so that funds are never "stuck". Importantly, this distribution does not distribute the node operator's share, but rather accounts for it for later claiming. This prevents potential attacks where the withdrawal address causes transactions to fail on an attempted distribution. 
 - Both megapool staked RPL and legacy staked RPL are eligible for vote. This is particularly critical while most vote comes from legacy staked RPL. If only megapool staked RPL were counted, there would be a vulnerable window with very low total vote power available.
 
 ## Reference Implementation

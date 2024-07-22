@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-This proposal specifies when [execution layer triggerable exits as defined in EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) will be used by RP contracts. There are two enumerated use cases. The first is that the node operator may freely request exits of their validators. The second is a keeper mechanism that allows and incentivizes any user to forcibly exit a node operator's validators if that node operator owes the protocol a threshold amount. This helps keep rETH performant and minimizes funds lost to theft.
+This proposal specifies when [execution layer triggerable exits as defined in EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) will be used by Rocket Pool contracts. There are two enumerated use cases. The first is that the node operator may freely request exits of their validators. The second is a keeper mechanism that allows and incentivizes any user to forcibly exit a node operator's validators if that node operator owes the protocol a threshold amount. This helps keep rETH performant and minimizes funds lost to theft.
 
 There is at least one additional use case not addressed in this RPIP, which is to exit badly-performing (eg, abandoned) validators. It is likely the pDAO will wish to supersede this RPIP to include that functionality. However, as it requires modeling and is not a critical component of the tokenomics rework, it is not being addressed at this time. For similar reasons, this RPIP does not include a keeper-based design to reward those that trigger forced exits. Please see a [historical version of RPIP-44](https://github.com/rocket-pool/RPIPs/blob/09d445accaa77f355acae1e943910ad0229a1d2e/RPIPs/RPIP-44.md) for initial but incomplete ideas to address abandonment and a keeper network.
 
@@ -23,7 +23,7 @@ Execution Layer Triggerable Exits are motivated by the need to combat MEV theft 
 
 A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
@@ -71,7 +71,7 @@ This functionality is scheduled to be implemented in Saturn 2 for two reasons: (
   - The penalty application can be limited, eg, by using a maximum rate as suggested in [RPIP-58](RPIP-58.md); however, [RPIP-42](RPIP-42.md) introduces megapool-level penalties which can have arbitrary size. As a result, a new guardrail is included in RPIP-42 to limit penalty application.
   - The malicious upgrade risk can be reduced, eg, via security council veto as proposed in [RPIP-60](RPIP-60.md)
 - If a bad actor gains control of a node operator key, they are now able to exit validators
-  - This doesn't result in the loss of funds (assuming the NO has set a separate withdrawal address as recommended), so is not too problematic
+  - This doesn't result in the loss of funds (assuming the node operator has set a separate withdrawal address as recommended), so is not too problematic
   - In many cases, the validator keys are derived from the node operator key; insofar as that's true, the bad actor would already have this power
 - On the positive side, rETH funds can be better protected by reclaiming funds sooner (vs waiting until the node operator opts to exit, if they ever do)
 
