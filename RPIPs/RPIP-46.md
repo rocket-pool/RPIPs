@@ -36,7 +36,7 @@ This specification introduces the following pDAO protocol parameters:
 | `node_operator_commission_share`                   | pct        | `5`           | reth_commission <= 1                                                                          |
 | `node_operator_commission_share_council_adder`*    | pct        | `0`           | <= `max_node_operator_commission_share_council_adder`; <= `voter_share`; reth_commission <= 1 |
 | `voter_share`                                      | pct        | `9`           | reth_commission <= 1                                                                          |
-| `max_node_operator_commission_share_council_adder` | pct        | `1`           | >= `node_operator_commission_share_council_adder`                                             |
+| `max_node_operator_commission_share_council_adder` | pct        | `1`           |                                                                                               |
 | `allowlisted_controllers`                          | address [] | `[]`          |                                                                                               |
 
 `*` denotes the parameter is updatable by the security council with no delay.
