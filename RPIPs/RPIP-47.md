@@ -36,7 +36,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ### Upgrade Process
 - When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to now + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their `megapool delegate` to the latest `megapool delegate` at any time
-- Functionality MAY be provided to allow a node operator to automatically upgrade to the latest `megapool delegate`
+- Functionality MAY be provided to allow a node operator to automatically use the latest `megapool delegate`
 - After a `megapool delegate`'s `expiration_block` has passed, any megapools using the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
 
 ## Rationale
