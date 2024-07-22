@@ -94,10 +94,8 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - There SHALL be a reward distribution function in the megapool
   - For this section, we define `borrowed_portion` as the megapool's `borrowed_eth / (bonded_eth + borrowed_eth)`
   - When called, `reth_share * borrowed_portion` of rewards SHALL be sent to the rETH contract
-  - When called, `voter_share * borrowed_portion` of rewards SHALL be sent to a merkle rewards
+  - When called, `(voter_share - node_operator_commission_share_council_adder) * borrowed_portion` of rewards SHALL be sent to a merkle rewards
     distributor contract
-  - When called, `surplus_share * borrowed_portion` of rewards SHALL be sent to the appropriate
-    surplus disposition contract
   - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
   - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
   - This function SHALL be permissionless
