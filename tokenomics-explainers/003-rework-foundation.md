@@ -31,7 +31,6 @@ There is only one source of revenue for the protocol, the fee charged to rETH ho
 
 Importantly, the same participant may be eligible to benefit from both categories. As an example take the Node Operator in existing tokenomics, represented in Figure 1 on the left pie chart in blue. You can see how an equivalent participant shows up in blue in the new tokenomics on the right pie chart. Their ETH earns from the Node Operator Commission Share, which is initially 5% in the current proposal. Their staked RPL earns from the Voter Share, which is initially 9% in the current proposal.
 
-TODO -- update to 5% no_share and 9% voter_share
 <div>
     <img src="../assets/tokenomics-explainers/003-figure-1.png" alt="Figure 1" width="1000px"></br>
     <i>Figure 1 - Current and Proposed tokenomics pies</i>
@@ -65,7 +64,6 @@ The NO earns solo staking APY on their bond (0.334 ETH), 14% commission on the b
 
 The end result is that the Node Operator would make **1.14x solo staking APY right now**. At maturity, RPL would approach ~100% staked, at which point RPL rewards and Inflation to NOs cancel each other out resulting in **1.01x solo staking APY**. Back to the current state, if a Node Operator loses eligibility for RPL rewards (which often happens due to falling RPL/ETH price ratio), the loss of the 0.14ETH in RPL rewards would result in **0.82x solo staking APY**.
 
-TODO -- update to new no_share
 **Proposal using ETH-only allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-3.png" alt="Figure 3" width="1000px"></br>
 _Figure 3 - Proposal ETH-only Sankey Diagram_
@@ -74,7 +72,6 @@ The NO earns solo staking APY on their bond (0.334 ETH), and 5% commission on th
 
 The end result is that the Node Operator would make **1.15x solo staking APY right now**.
 
-TODO -- update to new no_share and voter_share
 **Proposal using current minimum LEB8 allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-4.png" alt="Figure 4" width="1000px"></br>
 _Figure 4 - Proposal w/minimum LEB8 Allocation Sankey Diagram_
@@ -85,14 +82,12 @@ The end result is that the Node Operator would make **1.01x solo staking APY rig
 
 #### Case Study: ETH-only is Preferred by Node Operators
 
-TODO -- update to new no_share and voter_share
 **Proposal Example, Reference**  
 <img src="../assets/tokenomics-explainers/003-figure-5.png" alt="Figure 5" width="1000px"></br>
 _Figure 5 - Case Study Reference Sankey Diagram_
 
 In this case study, we have 3 NOs. (A) has 8 ETH and no RPL staked. (B) has 8 ETH and 6 ETH worth of RPL staked. (C) has 8 ETH and 15 ETH worth of RPL staked (note that vote-eligible RPL is capped at 150% of bonded ETH. This leads to NO C earning twice as much from "Voter Share" as NO B).
 
-TODO -- update to new no_share and voter_share
 **Proposal Example, 9 more ETH-Only Node Operators join**  
 <img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
 _Figure 6 - Case Study ETH-only Growth Sankey Diagram_
@@ -105,7 +100,6 @@ Zooming _all_ the way out, the total revenue is `reth_commision*reth_tvl_in_vali
 ### ETH-only Validator ROIs (Saturn 1)
 Zooming in to a single operator, the easiest way to look at the impact of lower bonds is by considering ETH-only validators and looking at their ROI. As we can see - we get dramatically higher ROIs for the same commission (or, equivalently, can get the same ROI with dramatically lower commission). The takeaway is simple from a capital efficiency point of view – smaller bonds are better.
 
-TODO -- update circle and legend text to 5%. make x axis go from 3-7%. ideally samus has the final version of code; if not, searching for "arrowstyle" in discord gives code to make an earlier version of this chart.
 <img src="../assets/tokenomics-explainers/003-figure-7.png" alt="Figure 7"></br>
 _Figure 7 - ROI based on NO commission share and ETH bond per validator_
 
@@ -172,20 +166,19 @@ In this case, no share of ETH revenue is used to buy RPL (which means unstaked R
 ### What would plots look like under other options?
 As we noted initially, "Voter Share" was assumed for this explainer.
 
-Here we show the pie charts for "Buy + x" on the left and "Voter Share" on the right. Note the new "Surplus Share" slice, which is drawn as blue with gold dots to show that it's going to both staked RPL held by NOs and a new beneficiary of protocol revenue for some of this slice (unstaked RPL).
+Here we show the pie charts for "Buy + x" on the left and "Voter Share" on the right. Note the new "Surplus Share" slice, which is drawn as blue with gold dots. The gold dots represent the new beneficiary of protocol revenue (unstaked RPL), and the blue represents the same beneficiary as before (NOs with staked RPL). 
 
-TODO -- make and number figure; maybe 5% voter_share and 4% surplus_share?
 <div>
-    <img src="../assets/tokenomics-explainers/003-figure-1.png" alt="Figure 1" width="1000px"></br>
-    <i>Figure - Proposed tokenomics pies for "Buy + x" and "Voter Share" respectively</i>
+    <img src="../assets/tokenomics-explainers/003-figure-9.png" alt="Figure 9" width="1000px"></br>
+    <i>Figure 9 - Proposed tokenomics pies for "Buy + x" and "Voter Share" respectively</i>
 </div>
 <br/>
 
-TODO -- make Sankeys similar to current Figure 5, one will be used above already and just be a copy. The other will be a new variant with surplus_share in it. Swap in figures and number.
-<img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
-_Figure  - Case Study ETH-only Growth Sankey Diagram_
-<img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
-_Figure  - Case Study ETH-only Growth Sankey Diagram_
+Here we show sankey diagrams of the _Case Study Reference_ example from before but this time including the "Surplus Share" flow, which could be used for Buy + Burn or Buy + LP. This share would benefit all RPL (including both staked and unstaked RPL).
+<img src="../assets/tokenomics-explainers/003-figure-10.png" alt="Figure 10" width="1000px"></br>
+_Figure 10 - Case Study ETH-only Growth Sankey Diagram with Surplus Share_
+<img src="../assets/tokenomics-explainers/003-figure-11.png" alt="Figure 11" width="1000px"></br>
+_Figure 11 - Case Study ETH-only Growth Sankey Diagram_
 
 
 <div class="prev-next-container">
