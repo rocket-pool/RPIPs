@@ -81,7 +81,7 @@ _Figure 4 - Proposal w/minimum LEB8 Allocation Sankey Diagram_
 
 The NO earns solo staking APY on their bond (0.334 ETH), 5% commission on the borrowed ETH (0.05 ETH), and 9% revenue share on their vote-eligible RPL (0.09 ETH)[^2]. Meanwhile, they lose RPL value to inflation going to DAO expenses (0.036 ETH). 
 
-The end result is that the Node Operator would make **1.09x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other NOs. Eg, if half of the validators are ETH-only and half look like this NO, then the voter share reward to this NO would double to 0.1 ETH; that would result in **1.21x solo staking APY**. This dynamic will be explored further in the Case Study below.
+The end result is that the Node Operator would make **1.01x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other NOs. Eg, if half of the validators are ETH-only and half look like this NO, then the voter share reward to this NO would double to 0.18 ETH; that would result in **1.22x solo staking APY**. This dynamic will be explored further in the Case Study below.
 
 #### Case Study: ETH-only is Preferred by Node Operators
 
