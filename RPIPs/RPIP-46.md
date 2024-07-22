@@ -31,13 +31,13 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ### Universal Adjustable Revenue Split
 This specification introduces the following pDAO protocol parameters:
 
-| Name                                               | Type  | Initial Value |
-|----------------------------------------------------|-------|---------------|
-| `node_operator_commission_share`                   | pct   | `5`           |
-| `node_operator_commission_share_council_adder`     | pct   | `0`           |
-| `voter_share`                                      | pct   | `9`           |
-| `max_node_operator_commission_share_council_adder` | pct   | `1`           |
-| `allowlisted_controllers`                          | array | `[]`          |
+| Name                                               | Type       | Initial Value |
+|----------------------------------------------------|------------|---------------|
+| `node_operator_commission_share`                   | pct        | `5`           |
+| `node_operator_commission_share_council_adder`     | pct        | `0`           |
+| `voter_share`                                      | pct        | `9`           |
+| `max_node_operator_commission_share_council_adder` | pct        | `1`           |
+| `allowlisted_controllers`                          | address [] | `[]`          |
 
 1. There SHALL be the following defined revenues:
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each NO receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
