@@ -36,10 +36,10 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ## Specification
 This specification introduces the following pDAO protocol parameters:
 
-| Name                           | Type    | Initial Value             |
-|--------------------------------|---------|---------------------------|
-| `maximum_megapool_eth_penalty` | `ETH`   | `612` [PLACEHOLDER VALUE] |
-| `reduced_bond`                 | `ETH`   | `4`                       |
+| Name                           | Type | Initial Value             | Guard Rails               |
+|--------------------------------|------|---------------------------|---------------------------|
+| `maximum_megapool_eth_penalty` | ETH  | `612` [PLACEHOLDER VALUE] | > 300 [PLACEHOLDER VALUE] |
+| `reduced_bond`                 | ETH  | `4`                       |                           |
 
 Array indexing in this section is zero-based.
 
@@ -60,13 +60,16 @@ Array indexing in this section is zero-based.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
 - `credit` MAY be usable to mint rETH to the NO's primary withdrawal address
-- `base_bond_array` SHALL be set to `[4, 8]`; note that this is NOT a modifiable setting
+- `base_bond_array` SHALL be set to `[4, 8]`; note that this is NOT a pDAO protocol parameter.
 
 
 ## Specification taking effect with Saturn 2
+This specification converts the following to pDAO protocol parameters:
+| Name              | Type   | Initial Value | Guard Rails |
+|-------------------|--------|---------------|-------------|
+| `base_bond_array' | ETH [] | [4, 8]        | != []       |
+
 - Update `reduced_bond` to 1.5 ETH
-- `base_bond_array` SHALL be converted to a pDAO protocol parameter (and added to the table above)
-- `base_bond_array` SHALL NOT be allowed to be set to `[]`
 
 ## Penalizable offenses
 This portion of the RPIP SHALL be considered Living. It may be updated by a DAO vote following the existing rules and conventions for RPIP modifications.
