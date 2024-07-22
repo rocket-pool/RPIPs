@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-This proposal specifies when [execution layer triggerable exits as defined in EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) will be used by RP contracts. There are two enumerated use cases. The first is that the Node operator may freely request exits of their validators. The second is a keeper mechanism that allows and incentivizes any user to forcibly exit a Node Operator's validators if that Node Operator owes the protocol a threshold amount. This helps keep rETH performant and minimizes funds lost to theft.
+This proposal specifies when [execution layer triggerable exits as defined in EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) will be used by RP contracts. There are two enumerated use cases. The first is that the node operator may freely request exits of their validators. The second is a keeper mechanism that allows and incentivizes any user to forcibly exit a node operator's validators if that node operator owes the protocol a threshold amount. This helps keep rETH performant and minimizes funds lost to theft.
 
 There is at least one additional use case not addressed in this RPIP, which is to exit badly-performing (eg, abandoned) validators. It is likely the pDAO will wish to supersede this RPIP to include that functionality. However, as it requires modeling and is not a critical component of the tokenomics rework, it is not being addressed at this time. For similar reasons, this RPIP does not include a keeper-based design to reward those that trigger forced exits. Please see a [historical version of RPIP-44](https://github.com/rocket-pool/RPIPs/blob/09d445accaa77f355acae1e943910ad0229a1d2e/RPIPs/RPIP-44.md) for initial but incomplete ideas to address abandonment and a keeper network.
 
@@ -21,17 +21,17 @@ There is at least one additional use case not addressed in this RPIP, which is t
 
 Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool validators. Currently, the protocol has limited recourse against such offending validators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
 
-A secondary motivation is to improve the Node Operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
+A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
 
 This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
 
 ## Specification
 
 This specification SHALL be implemented in Saturn 2.
-This specification extends the specification of megapools in [RPIP-43](RPIP-43.md) with a facility for removal of validators from the megapool to be done by parties other than the Node Operator.
+This specification extends the specification of megapools in [RPIP-43](RPIP-43.md) with a facility for removal of validators from the megapool to be done by parties other than the node operator.
 
 Funds (ETH) associated with a megapool SHALL be accounted in (at least) the following categories:
-- Received Funds (`received`): Funds provided that can be used towards validator deposits; sources include deposits from the Node Operator and ETH staked on behalf of the node ([RPIP-32](RPIP-32.md))
+- Received Funds (`received`): Funds provided that can be used towards validator deposits; sources include deposits from the node operator and ETH staked on behalf of the node ([RPIP-32](RPIP-32.md))
 - Credits (`credit`): Funds already in the protocol that can be used towards validator deposits; sources include ETH already staked on the beacon chain for a migrating validator
 - Deposits (`deposited`): Funds currently staked on the beacon chain for validators associated with this megapool
 - Withdrawals (`withdrawn`): Funds received into the megapool via withdrawals from the beacon chain, including both principal and the node's share of rewards, NOT including pool stakers' share of the rewards
@@ -53,9 +53,9 @@ The exit functionality for a megapool is specified as follows:
   - This function SHALL either remove the specified validators from the megapool or revert
       - If any of the validators are still active on the beacon chain a successful call of this
         function MUST also exit those validators from the beacon chain
-  - The Node Operator SHALL be able to call this function (as implied by [RPIP-43](RPIP-43.md))
+  - The node operator SHALL be able to call this function (as implied by [RPIP-43](RPIP-43.md))
   - This function MUST be permissionlessly callable under the condition: `deficit >= exit_deficit`
-      - It MUST NOT be possible for accounts other than the Node Operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
+      - It MUST NOT be possible for accounts other than the node operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
 - The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to pay off `debt` prior to taking action on exits
 - The protocol MAY use unstaking and staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
 
