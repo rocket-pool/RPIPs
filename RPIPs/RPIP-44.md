@@ -23,7 +23,7 @@ Execution Layer Triggerable Exits are motivated by the need to combat MEV theft 
 
 A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
