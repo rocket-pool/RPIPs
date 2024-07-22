@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backward compatible with every past minipool delegate.
+Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual node operators, and (b) makes it more challenging to design the protocol as it must remain backward compatible with every past minipool delegate.
 
 This proposal suggests limiting that upgrade choice in the future. Users can opt-in to upgrade or use an "old" delegate for a defined period after a newer version is released. Once the defined period has passed, users will no longer be able to use the old delegate, and they may be permissionlessly upgraded to the latest version. 
 
