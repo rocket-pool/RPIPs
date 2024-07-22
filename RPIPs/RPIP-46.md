@@ -89,7 +89,7 @@ Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a 
 ### RPL issuance rewards and inflation
 1. Inflation settings SHALL be modified to retain inflation to the DAOs and eliminate inflation to NOs
    1. `rpl.inflation.interval.rate` SHALL be set to `1000040763630249500` (1.5% per year)
-   2. Node Operators (`rocketClaimNode`) allocation SHALL be set to 0%
+   2. Node operators (`rocketClaimNode`) allocation SHALL be set to 0%
    3. pDAO (`rocketClaimDAO`) allocation SHALL be set to 95%
    4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
 2. There SHALL be no RPL issuance rewards to NOs 
