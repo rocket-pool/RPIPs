@@ -46,7 +46,9 @@ validators deposited after this RPIP is implemented.
 Megapools keep track of the set of validators associated with them and the
 status of each validator. The possible statuses for validators associated with
 megapools SHALL include at least the following:
-  - Prestaked: a node operator has added this validator to their megapool, but
+  - Initialized: a node operator has added this validator to their megapool, but
+               the validator has not yet been assigned ETH from the deposit pool
+  - Prestaked: this validator has been assgined ETH and the `prestake` transaction has been executed, but
                the validator has not yet had its full activation balance
                deposited to the beacon chain
   - Staked:    this validator has been added to the megapool and is in the
@@ -61,7 +63,7 @@ Node operators can manage the set of validators in their megapool:
        credentials to the megapool address
 - New and existing validators' withdrawal credentials MUST be checked to
   correctly refer to the megapool address
-     - The check MAY occur after the validator is added initially as Prestaked
+     - The check MAY occur after the validator enters the Prestaked status
 - A node operator SHALL be able to remove exited validators from their megapool
 
 ### `debt` Variable
