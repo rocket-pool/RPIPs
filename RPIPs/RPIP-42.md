@@ -18,12 +18,12 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 - Using forced exits as needed
 - Starting with lower LTV at lower total bonded ETH to mitigate/discourage MEV theft
 - Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment
-- Providing increased capital efficiency with greater bond to encourage an NO to stake as large nodes instead of many small nodes
+- Providing increased capital efficiency with greater bond to encourage a node operator to stake as large nodes instead of many small nodes
 
-This proposal also explicitly tries to benefit the smallest NOs in a few ways, in line with the pDAO charter values of decentralization and prioritizing Ethereum health (see [RPIP-23](./RPIP-23.md)):
-- We willingly take on somewhat more MEV-theft risk for the smallest NOs (see [Rationale](#rationale))
-- We give precedence to small nodes staking some number of initial validators in the node operator queue (see [RPIP-59](./RPIP-59.md))
-- There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
+This proposal also explicitly tries to benefit the smallest node operators in a few ways, in line with the pDAO charter values of decentralization and prioritizing Ethereum health (see [RPIP-23](./RPIP-23.md)):
+- We willingly take on somewhat more MEV-theft risk for the smallest node operators (see [Rationale](#rationale))
+- We give precedence to small nodes staking some number of initial validators in the Node Operator queue (see [RPIP-59](./RPIP-59.md))
+- There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small node operators
 
 ## Motivation
 
@@ -57,9 +57,9 @@ Array indexing in this section is zero-based.
   - If `i ≤ base_bond_array.length` and `i > 1`: the node operator share before `debt` is any excess of the user's total bond above `base_bond_array[i-2]`
   - If `i==1`: the node operator share before `debt` is the amount of ETH that would bring the user's total bond down to 0 ETH
 - Bulk validator creation/removal functions MAY be provided. If they are, they SHALL behave the same as multiple individual transactions.
-- If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
+- If a node operator has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
-- `credit` MAY be usable to mint rETH to the NO's primary withdrawal address
+- `credit` MAY be usable to mint rETH to the node operator's primary withdrawal address
 - `base_bond_array` SHALL be set to `[4, 8]`; note that this is NOT a modifiable setting
 
 
@@ -81,16 +81,16 @@ When showing legacy node status, there is not a trivial way to get the node inde
 ## Rationale
 The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
 
-"Bond reduction" for credit is explicitly supported so that NOs that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, NOs adding new validators would need to add enough ETH bond to match the "bond increased" curve.
+"Bond reduction" for credit is explicitly supported so that node operators that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, node operators adding new validators would need to add enough ETH bond to match the "bond increased" curve.
 
 ## Security considerations
 - Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md)
   - `base_bond_array` is chosen to "sufficiently" dissuade MEV theft as a strategy
   - `reduced_bond` is chosen to "sufficiently" guard against slashing or abandonment risks
 - Follow-on work was done in [discord](https://discord.com/channels/405159462932971535/1228753782402318427/1228914436924772352)
-  - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is that we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support NO commission share under 2.5%.
+  - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is that we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support node operator commission share under 2.5%.
   - A moderate step would be to change `base_bond_array` to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
-  - A larger step would be to pass EL rewards to NOs and charge them for the benefit. See eg: [Valdorff's research](https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos) or [Epineph's forum post](https://dao.rocketpool.net/t/reimagining-large-block-theft/2146)
+  - A larger step would be to pass EL rewards to node operators and charge them for the benefit. See eg: [Valdorff's research](https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos) or [Epineph's forum post](https://dao.rocketpool.net/t/reimagining-large-block-theft/2146)
   
 | 2.5% commission                                 | 4% commission                                |
 |-------------------------------------------------|----------------------------------------------|
