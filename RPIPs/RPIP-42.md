@@ -76,7 +76,7 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 | MEV theft | theft size + 0.2 ETH | 2024-03-29 | 2024-03-29 |
 
 ## Implementation thoughts
-- When showing legacy node status, there is not a trivial way to get the node index for a given address. That said, the other direction is trivial using `RocketNodeManager.getNodeAt`, so the work can get moved off-chain. Eg, one can iterate across all possible node indices and then pass in the node index that matches the node's address; the smart contract can confirm the match to demonstrate legacy node status.
+When showing legacy node status, there is not a trivial way to get the node index for a given address. That said, the other direction is trivial using `RocketNodeManager.getNodeAt`, so the work can get moved off-chain. Eg, one can iterate across all possible node indices and then pass in the node index that matches the node's address; the smart contract can confirm the match to demonstrate legacy node status.
 
 ## Rationale
 The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
