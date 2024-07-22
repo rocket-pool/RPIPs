@@ -23,7 +23,7 @@ Supporting many iterations of the same basic functionality as the protocol evolv
 
 Additionally, the pDAO must have the ability to effect change in ways that benefit the protocol as a whole, but that may not benefit every individual node operator in isolation. What benefits individuals in the short term can lead to ruin in the long term for both that individual and the collective. The pDAO is unable to protect against this outcome without the ability to force upgrades. 
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
