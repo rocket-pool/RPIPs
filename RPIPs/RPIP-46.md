@@ -172,7 +172,7 @@ Some example concrete guidelines:
 UARS is meant to enable the protocol to listen to the market and act effectively across the entire protocol.
 A few details about the reasoning behind the spec:
 - We provide for future automated controller contracts, but do not create any at this time. This is partly because we are fairly naive to the market, and partly in the interest of time to market for the next upgrade.
-- The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from the an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
+- The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
   - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO. 
 - The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
@@ -189,7 +189,7 @@ As the core value capture is no longer based on a minimum RPL requirement, Satur
   - While we have a heuristic to increase incentives for vote-eligible RPL, it may not move as fast as the market
   - RP allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
 - Vote-eligibility may not be a strong proxy for "active voters"
-  - The incentives describe only incentivize staking vote-eligible RPL
+  - The incentives are purely for staking vote-eligible RPL, not actual voting
   - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
     - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot 
 
