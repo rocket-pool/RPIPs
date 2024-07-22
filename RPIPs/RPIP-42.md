@@ -56,7 +56,7 @@ Array indexing in this section is zero-based.
   - If `i > base_bond_array.length`: the node operator share before `debt` is any excess of the user's current bond total above `base_bond_array[base_bond_array.length-1] + ( i - 1 - base_bond_array.length) * reduced_bond`.
   - If `i ≤ base_bond_array.length` and `i > 1`: the node operator share before `debt` is any excess of the user's current bond total above `base_bond_array[i-2]`.
   - If `i==1`: the node operator share before `debt` is the amount of ETH that would bring the user's total bond down to 0 ETH.
-- Bulk validator creation/removal functions MAY be provided. If they are, they SHALL behave the same as multiple individual transactions.
+- Bulk validator creation/removal functions MAY be provided. If they are, they SHALL behave the same (with respect to the Rocket Pool protocol state) as multiple individual transactions.
 - If an NO has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
 - `credit` MAY be usable to mint rETH to the NO's primary withdrawal address
