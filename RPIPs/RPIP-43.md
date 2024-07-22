@@ -21,7 +21,7 @@ Megapools are motivated by several desires; to lower ongoing costs, to lower the
 
 ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 

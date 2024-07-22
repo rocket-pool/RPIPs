@@ -22,7 +22,7 @@ This proposal also changes the deposit mechanics: In case of a queue, the initia
 
 These changes are intended to strengthen the protocol by 1) rewarding existing node operators who have shown amazing loyalty to the protocol 2) minimizing governance churn from RPL staked node operators being stuck in queue without voting privileges 3) prioritizing initial deposits to allow easier onboarding of people trialing Rocket Pool before deciding to migrate in full 4) maximizing Rocket Pool's major decentralization advantage over other LSTs - a huge set of small node operators.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 

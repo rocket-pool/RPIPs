@@ -1,7 +1,7 @@
 ---
 rpip: 47
 title: Enable Forced Delegate Upgrades
-description: Allows protocol governance to force upgrade Node Operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
+description: Allows protocol governance to force upgrade node operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
 author: Valdorff (@Valdorff), LongForWisdom(@LongForWisdom)
 discussions-to: TBD
 status: Draft
@@ -13,7 +13,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual node operators, and (b) makes it more challenging to design the protocol as it must remain backward compatible with every past minipool delegate.
+Currently, node operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backward compatible with every past minipool delegate.
 
 This proposal suggests limiting that upgrade choice in the future. Users can opt-in to upgrade or use an "old" delegate for a defined period after a newer version is released. Once the defined period has passed, users will no longer be able to use the old delegate, and they may be permissionlessly upgraded to the latest version. 
 
@@ -23,7 +23,7 @@ Supporting many iterations of the same basic functionality as the protocol evolv
 
 Additionally, the pDAO must have the ability to effect change in ways that benefit the protocol as a whole, but that may not benefit every individual node operator in isolation. What benefits individuals in the short term can lead to ruin in the long term for both that individual and the collective. The pDAO is unable to protect against this outcome without the ability to force upgrades. 
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
@@ -36,7 +36,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ### Upgrade Process
 - When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to now + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their `megapool delegate` to the latest `megapool delegate` at any time
-- Functionality MAY be provided to allow a Node Operator to automatically upgrade to the latest `megapool delegate`
+- Functionality MAY be provided to allow a node operator to automatically use the latest `megapool delegate`
 - After a `megapool delegate`'s `expiration_block` has passed, any megapools using the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
 
 ## Rationale
