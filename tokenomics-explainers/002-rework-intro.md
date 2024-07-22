@@ -53,6 +53,8 @@ Megapools will enable multiple validators to share the same Ethereum withdrawal 
 
 Forced delegate upgrades (with a grace period) will limit the technical debt the Rocket Pool protocol accumulates from previous versions.
 
+A security council veto will decrease the trust assumptions we currently have (it would take two "rogue" parties to force through an illegitimate proposal).
+
 ## Personas
 
 |Persona|Now|With Rework|

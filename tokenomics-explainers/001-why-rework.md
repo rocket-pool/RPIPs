@@ -55,6 +55,7 @@ Figure 1 below shows that many node operators simply opt out of topping off thei
   
 Further, the metric used for the RPL reward threshold is "RPL staked as a percentage of borrowed ETH", which means there are two ways to requalify for rewards. Top up to increase staked RPL, or exit minipools to reduce borrowed ETH. Some node operators have opted for the second option.
   
+TODO -- update to more recent state
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
   
@@ -66,7 +67,7 @@ Because some node operators are not topping off per **Ideal 2**, that means the 
 
 First, operators that exit some of their minipools to get back over the RPL reward threshold damage our ability to supply rETH and grow its TVL.
 
-Second, those who would like to operate for Rocket Pool but are unwilling to speculate on RPL are simply unable to participate because of the RPL speculation built into minipool operation.
+Second, those who would like to operate for Rocket Pool but are unwilling to speculate on RPL (or form a semitrusted partnership with a speculator) are simply unable to participate because of the RPL speculation built into minipool operation.
 
 Third, this speculation is exacerbated at smaller bond sizes. A 10% borrowed-ETH requirement forces greater RPL exposure as ETH bond size is reduced:
 - 16 ETH bond + 1.6 ETH worth of RPL (~9% RPL)
