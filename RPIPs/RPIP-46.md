@@ -187,7 +187,7 @@ As the core value capture is no longer based on a minimum RPL requirement, Satur
   - There is an attempt to mitigate abuse by requiring a supermajority; nonetheless, that still depends on enough well-intentioned voters acting to defend the interests of other groups within the Rocket Pool community
 - Attracting desirable vote-eligible share may not be trivial
   - While we have a heuristic to increase incentives for vote-eligible RPL, it may not move as fast as the market
-  - RP allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
+  - Rocket Pool allows for node operation with a separate RPL and ETH provider; this may limit the desired alignment of the voter
 - Vote-eligibility may not be a strong proxy for "active voters"
   - The incentives describe only incentivize staking vote-eligible RPL
   - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
