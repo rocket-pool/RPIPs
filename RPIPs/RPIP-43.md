@@ -51,8 +51,7 @@ megapools SHALL include at least the following:
                deposited to the beacon chain
   - Staked:    this validator has been added to the megapool and is in the
                `pending_queued` or later state on the beacon chain
-  - Dissolved: this validator's withdrawal credentials have been discovered to
-               be incorrect (ie, not this megapool)
+  - Dissolved: the `stake` transaction for this validator wasn't executed in time (see [RPIP-44](RPIP-59.md))
 
 Node operators can manage the set of validators in their megapool:
 
@@ -61,8 +60,7 @@ Node operators can manage the set of validators in their megapool:
      - Note that this would involve updating the validators' BLS withdrawal
        credentials to the megapool address
 - New and existing validators' withdrawal credentials MUST be checked to
-  correctly refer to the megapool address, with the validator status set to
-  Dissolved if the check fails
+  correctly refer to the megapool address
      - The check MAY occur after the validator is added initially as Prestaked
 - A node operator SHALL be able to remove exited validators from their megapool
 
