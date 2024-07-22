@@ -41,16 +41,6 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - If possible, the Veto Explanation Document SHOULD suggest alternative similar-but-non-damaging upgrades that could be considered
 - If this veto power is abused, the pDAO SHOULD discuss replacing the members of the security council
 
-
-## Rationale
-**Veto Explanation Document**  
-The explanation document is a mechanism intended to help the pDAO hold the security council to account for their decision-making around vetos. It gives more information as to the reasoning behind a veto decision and should help to inform pDAO decision-making post-veto. In an ideal world, the document accompanies the veto. The 24-hour grace period is intended to cover situations in which the security council must act within a limited time window.
-
-**Upgrade Delay Setting**  
-Due to the considerations around slowing down hotfixes [described above](#security-considerations), the initial upgrade delay setting is attempting to be the smallest that allows "enough" time for participants to exit the system ahead of a proposal if they deem that appropriate.
-
-Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade_delay` (initially set to 3 weeks). This is _just_ enough to match the RPL `unstaking_period` (currently 28 days). In normal circumstances, there will be more time available to exit. There is a leadup period to the sentiment poll (currently at least 1 week), there is a pDAO vote period (currently at least 2 weeks), there's a human action required to raise the oDAO proposal, and there are many human actions to place oDAO votes after `proposal.vote.delay.time`. These delays should provide enough breathing room to allow participants to exit ahead of a proposal despite the 28-day unstaking period.
-
 ## Security Considerations
 
 ### Upgrade Delay
@@ -65,6 +55,15 @@ Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade
 - The veto process can itself be modified by contract upgrades. However, if a corrupt proposal tries to change the veto process, that can be defended against by using the veto process.
 - The security council veto means that if pDAO governance were captured, protocol upgrades could be stopped at will (by installing a compromised security council). The oDAO would be unable to pass any contract upgrades (without the approval of the compromised security council), and the only way back would be to recapture pDAO governance. While this means there is a real tradeoff, this "inability to upgrade" is seen as less problematic than the "ability to pass any upgrade" that a rogue oDAO would have without the veto.
 - The quorum for this veto is lower than for security council proposals (controlled by `rocketDAOProtocolSettingsSecurity.members.quorum`). This is intended to provide additional resilience to, eg, a rogue oDAO that attempts to bribe a security council into not vetoing a corrupt proposal (as fewer bribe-resistant members are needed). This sort of interaction doesn't exist for normal security council proposals, which is what leads to a different desired threshold. 
+
+## Rationale
+**Veto Explanation Document**  
+The explanation document is a mechanism intended to help the pDAO hold the security council to account for their decision-making around vetos. It gives more information as to the reasoning behind a veto decision and should help to inform pDAO decision-making post-veto. In an ideal world, the document accompanies the veto. The 24-hour grace period is intended to cover situations in which the security council must act within a limited time window.
+
+**Upgrade Delay Setting**  
+Due to the considerations around slowing down hotfixes [described above](#security-considerations), the initial upgrade delay setting is attempting to be the smallest that allows "enough" time for participants to exit the system ahead of a proposal if they deem that appropriate.
+
+Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade_delay` (initially set to 3 weeks). This is _just_ enough to match the RPL `unstaking_period` (currently 28 days). In normal circumstances, there will be more time available to exit. There is a leadup period to the sentiment poll (currently at least 1 week), there is a pDAO vote period (currently at least 2 weeks), there's a human action required to raise the oDAO proposal, and there are many human actions to place oDAO votes after `proposal.vote.delay.time`. These delays should provide enough breathing room to allow participants to exit ahead of a proposal despite the 28-day unstaking period.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
