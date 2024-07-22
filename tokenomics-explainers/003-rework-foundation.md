@@ -64,31 +64,31 @@ The node operator earns solo staking APY on their bond (0.334 ETH), 14% commissi
 
 The end result is that the node operator would make **1.14x solo staking APY right now**. At maturity, RPL would approach ~100% staked, at which point RPL rewards and Inflation to node operators cancel each other out resulting in **1.01x solo staking APY**. Back to the current state, if a node operator loses eligibility for RPL rewards (which often happens due to falling RPL/ETH price ratio), the loss of the 0.14ETH in RPL rewards would result in **0.82x solo staking APY**.
 
-**Proposal using ETH-Only allocation**  
+**Proposal using current minimum LEB8 allocation**  
 <img src="../assets/tokenomics-explainers/003-figure-3.png" alt="Figure 3" width="1000px"></br>
-_Figure 3 - Proposal ETH-Only Sankey Diagram_
+_Figure 3 - Proposal w/minimum LEB8 Allocation Sankey Diagram_
+
+The node operator earns solo staking APY on their bond (0.334 ETH), 5% commission on the borrowed ETH (0.05 ETH), and 9% revenue share on their vote-eligible RPL (0.09 ETH)[^2]. Meanwhile, they lose RPL value to inflation going to DAO expenses (0.036 ETH). At first glance the only difference from the current LEB8 example is the splitting of rewards into two categeories, and the removal of RPL issuance rewards (reminder: RPL issuance rewards will continue in Saturn 1 but discontinue in Saturn 2).
+
+The end result is that the node operator would make **1.01x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other node operators. Eg, if half of the validators are ETH-Only and half look like this node operator, then the voter share reward to this node operator would double to 0.18 ETH; that would result in **1.22x solo staking APY**. This dynamic will be explored further with the ETH-Only allocation example and the Case Study below.
+
+**Proposal using ETH-Only allocation**  
+<img src="../assets/tokenomics-explainers/003-figure-4.png" alt="Figure 4" width="1000px"></br>
+_Figure 4 - Proposal ETH-Only Sankey Diagram_
 
 The node operator earns solo staking APY on their bond (0.334 ETH), and 5% commission on the borrowed ETH (0.05 ETH).
 
 The end result is that the node operator would make **1.15x solo staking APY right now**.
 
-**Proposal using current minimum LEB8 allocation**  
-<img src="../assets/tokenomics-explainers/003-figure-4.png" alt="Figure 4" width="1000px"></br>
-_Figure 4 - Proposal w/minimum LEB8 Allocation Sankey Diagram_
-
-The node operator earns solo staking APY on their bond (0.334 ETH), 5% commission on the borrowed ETH (0.05 ETH), and 9% revenue share on their vote-eligible RPL (0.09 ETH)[^2]. Meanwhile, they lose RPL value to inflation going to DAO expenses (0.036 ETH). 
-
-The end result is that the node operator would make **1.01x solo staking APY right now**. Note that voter share depends on your exposure to RPL relative to other node operators. Eg, if half of the validators are ETH-Only and half look like this node operator, then the voter share reward to this node operator would double to 0.18 ETH; that would result in **1.22x solo staking APY**. This dynamic will be explored further in the Case Study below.
-
 #### Case Study: ETH-Only is Preferred by Node Operators
 
-**Proposal Example, Reference**  
+**Proposal Case Study, Reference**  
 <img src="../assets/tokenomics-explainers/003-figure-5.png" alt="Figure 5" width="1000px"></br>
 _Figure 5 - Case Study Reference Sankey Diagram_
 
 In this case study, we have 3 node operators (NOs). (A) has 8 ETH and no RPL staked. (B) has 8 ETH and 6 ETH worth of RPL staked. (C) has 8 ETH and 15 ETH worth of RPL staked (note that vote-eligible RPL is capped at 150% of bonded ETH. This leads to NO C earning twice as much from "Voter Share" as NO B).
 
-**Proposal Example, 9 more ETH-Only Node Operators join**  
+**Proposal Case Study, 9 more ETH-Only Node Operators join**  
 <img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
 _Figure 6 - Case Study ETH-Only Growth Sankey Diagram_
 
