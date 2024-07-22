@@ -25,7 +25,7 @@ Universal Adjustable Revenue Split (UARS) is motivated by the desire for increas
 
 A fixed percentage of RPL inflation is currently being used to fund ongoing maintenance and development of the Rocket Pool protocol, a valuable RPL token means more bang for the same amount of inflation, and UARS supports multiple mechanisms that support RPL value. Competent and aligned governance will also be necessary as the protocol evolves and UARS facilitates this via directing a share of revenue to holders of vote-eligible RPL. 
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 ### Universal Adjustable Revenue Split
