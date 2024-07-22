@@ -55,7 +55,7 @@ Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade
 ### Upgrade Delay
 - Emergency response settings changes should be taken directly by the security council (see [RPIP-33](RPIP-33.md)) rather than use the regular governance process
 - The fastest possible upgrade speed is significantly slowed from the previous state. It used to take `proposal.vote.delay.time` (currently 1 week) and will now take an additional `upgrade_delay` (initially set to 1 week). This means that important hotfixes could take longer. It may also mean that emergency pauses (eg, disabling rETH deposits) could last longer until a hotfix takes effect.
-- The fastest possible upgrade speed is now faster than the RPL `unstaking_period` defined in [RPIP-30](RPIP-30.md), and there are edge cases where it may be faster than the time it takes to exit ETH (if the validator exit queue is very full).
+- The fastest possible upgrade speed is now faster than the RPL `unstaking_period` defined in [RPIP-30](RPIP-30.md), and there are edge cases where it may be faster than the time it takes to exit ETH (if the validator exit queue is very full)
 
 ### Security Council Veto
 - The security council veto means it would require both a rogue oDAO and a rogue security council to pass a corrupt proposal
