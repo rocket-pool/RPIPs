@@ -143,7 +143,7 @@ Some example concrete guidelines:
   - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `voter_share`
   - Eg, rETH demand can be increased by increasing `reth_share` _and_ NO supply can be simultaneously decreased by a counterbalancing decrease to `no_share` 
-- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
+- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `voter_share` (or lower RPL inflation).
 
@@ -163,7 +163,7 @@ Some example concrete guidelines:
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `new_share`
   - Eg, NO supply can be decreased by reducing `no_share` alongside a counterbalancing increase to `new_share`
   - Eg, rETH demand can be increased by increasing `reth_share` _and_ NO supply can be simultaneously decreased by a counterbalancing decrease to `no_share`
-- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs.
+- If the NO queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of NOs
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or NO supply (via lower `no_share`). This would result in higher `new_share` (or lower RPL inflation).
 </details>
