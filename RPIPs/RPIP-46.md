@@ -47,7 +47,7 @@ This specification introduces the following pDAO protocol parameters:
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
    2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies 
-5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share`, SHALL be updateable by any address in the `allowlisted_controllers` array
+5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share` SHALL be updateable by any address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 6. The `node_operator_commission_share_council_adder` setting SHALL only allow values where:
    1. 0% ≤ `node_operator_commission_share_council_adder` ≤ `max_node_operator_commission_share_council_adder` 
