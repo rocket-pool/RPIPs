@@ -2,8 +2,9 @@
 rpip: 60
 title: Protocol Upgrade Guardrails
 description: Introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect.
-author: Valdorff (@Valdorff), LongForWisdom (@LongForWisdom)
-discussions-to: TBD
+author: Valdorff (@Valdorff)
+contributor: LongForWisdom (@LongForWisdom), Knoshua (@knoshua)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core
