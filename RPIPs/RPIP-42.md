@@ -84,7 +84,7 @@ The bond curve is an attempt to get close to maximizing capital efficiency while
 "Bond reduction" for credit is explicitly supported so that NOs that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, NOs adding new validators would need to add enough ETH bond to match the "bond increased" curve.
 
 ## Security considerations
-- Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md).
+- Bond sizes were originally ideated per [prior work](../assets/rpip-42/bond_curves.md)
   - `base_bond_array` is chosen to "sufficiently" dissuade MEV theft as a strategy
   - `reduced_bond` is chosen to "sufficiently" guard against slashing or abandonment risks
 - Follow-on work was done in [discord](https://discord.com/channels/405159462932971535/1228753782402318427/1228914436924772352)
