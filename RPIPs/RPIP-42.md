@@ -22,7 +22,7 @@ This proposal dramatically increases the LTV used in the protocol (loan to value
 
 This proposal also explicitly tries to benefit the smallest NOs in a few ways, in line with the pDAO charter values of decentralization and prioritizing Ethereum health (see [RPIP-23](./RPIP-23.md)):
 - We willingly take on somewhat more MEV-theft risk for the smallest NOs (see [Rationale](#rationale))
-- We give precedence to small nodes staking some number of initial validators in the node operator queue (see [RPIP-59](RPIP-59))
+- We give precedence to small nodes staking some number of initial validators in the node operator queue (see [RPIP-59](./RPIP-59.md))
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small NOs
 
 ## Motivation
@@ -31,7 +31,7 @@ The primary motivation for the introduction of smaller ETH bonds in this form is
 
 The innovation of a bond curve is motivated by the need to maintain enough stake to mitigate MEV theft, slashing penalties, and abandonment; while meeting the core goal of improved capital efficiency.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework).
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 This specification introduces the following pDAO protocol parameters:
