@@ -51,9 +51,9 @@ Array indexing in this section is zero-based.
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
 - When a Node Operator creates a validator, with `i` validators in the megapool prior to adding: 
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`.
-  - If `i ≥ base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's bond total up to `base_bond_array[-1] + ( 1 + i - base_bond_array.length) * reduced_bond`
+  - If `i ≥ base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's bond total up to `base_bond_array[base_bond_array.length-1] + ( 1 + i - base_bond_array.length) * reduced_bond`
 - When a Node Operator removes a validator, with `i` validators in the megapool prior to removing:
-  - If `i > base_bond_array.length`: the node operator share before `debt` is any excess of the user's current bond total above `base_bond_array[-1] + ( i - 1 - base_bond_array.length) * reduced_bond`.
+  - If `i > base_bond_array.length`: the node operator share before `debt` is any excess of the user's current bond total above `base_bond_array[base_bond_array.length-1] + ( i - 1 - base_bond_array.length) * reduced_bond`.
   - If `i ≤ base_bond_array.length` and `i > 1`: the node operator share before `debt` is any excess of the user's current bond total above `base_bond_array[i-2]`.
   - If `i==1`: the node operator share before `debt` is the amount of ETH that would bring the user's total bond down to 0 ETH.
 - Bulk validator creation/removal functions MAY be provided. If they are, they SHALL behave the same as multiple individual transactions.
