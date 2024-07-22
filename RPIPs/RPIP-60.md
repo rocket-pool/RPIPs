@@ -22,7 +22,7 @@ This RPIP is motivated by the desire to protect participants in Rocket Pool as b
 
 The security council veto comes from a desire to have a last-resort layer of security against obviously harmful actions.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
 
