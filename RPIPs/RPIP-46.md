@@ -29,7 +29,17 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ## Specification
 ### Universal Adjustable Revenue Split
-1. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `node_operator_commission_share_council_adder`, `voter_share`
+This specification introduces the following pDAO protocol parameters:
+
+| Name                                               | Type       | Initial Value |
+|----------------------------------------------------|------------|---------------|
+| `node_operator_commission_share`                   | pct        | `5`           |
+| `node_operator_commission_share_council_adder`     | pct        | `0`           |
+| `voter_share`                                      | pct        | `9`           |
+| `max_node_operator_commission_share_council_adder` | pct        | `1`           |
+| `allowlisted_controllers`                          | address [] | `[]`          |
+
+1. There SHALL be the following defined revenues:
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each NO receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
    2. `voter_share -  node_operator_commission_share_council_adder`: each NO receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each NO receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`.
 2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, and `voter_share`
@@ -45,12 +55,6 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 7. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
 8. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
     1. The security council SHALL NOT otherwise change `node_operator_commission_share_council_adder`
-9. The initial pDAO settings SHALL be:
-    1. `node_operator_commission_share`: 5%
-    2. `node_operator_commission_share_council_adder`: 0%
-    3. `voter_share`: 9%
-    4. `max_node_operator_commission_share_council_adder`: 1%
-    5. `allowlisted_controllers`: []
 
 ### RPL issuance rewards
 - The `proposed_method_share` specified in [RPIP-30](RPIP-30.md) SHALL no longer be used; instead a new `proposed_method_share` SHALL be defined as follows:
@@ -100,7 +104,7 @@ For this section, we'll be writing `new_share`. When the revenue share vote is p
    4. `new_share -  node_operator_commission_share_council_adder`: this share of revenue is used to [PLACEHOLDER]
    5. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share`, and `new_share`
    6. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `new_share`, SHALL be updateable by any address in the `allowlisted_controllers` array
-2. `voter_share` SHALL no longer be a pDAO setting. the pDAO will not be able to vote changes to it and changes will rely on the method described below.
+2. `voter_share` SHALL no longer be a pDAO protocol parameter. the pDAO will not be able to vote changes to it and changes will rely on the method described below.
 3. Updating `voter_share`:
    1. A permissionless function SHALL be available to update `voter_share`
    2. It MUST revert if it's been called within the last 45 days

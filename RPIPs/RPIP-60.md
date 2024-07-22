@@ -26,15 +26,20 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ## Specification
 
+This specification introduces the following pDAO protocol parameters:
+| Name                                                   | Type  | Initial Value |
+|--------------------------------------------------------|-------|---------------|
+| `upgrade_delay`                                        | Weeks | `1`           |
+| `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` | pct   | `33`          |
+
+
 ### Upgrade Delay
 - All protocol upgrades SHALL have an `upgrade_delay` delay between when they are passed and when they are executed
-- The `upgrade_delay` SHALL be a pDAO setting and its initial value SHALL be 1 week
 
 
 ### Security Council Veto
 - The security council SHALL have the power to veto contract upgrades (which are proposed by the oDAO)
-  - `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` SHALL be a pDAO setting and its initial value SHALL be 33%
-  - In order to veto a contract upgrade, the above quorum of the security council MUST be met or exceeded
+  - In order to veto a contract upgrade, a quorum of `rocketDAOProtocolSettingsSecurity.upgradeveto.quorum` of the security council MUST be met or exceeded
 - Veto powers SHALL NOT be used lightly and SHALL be reserved for cases of vote manipulation, malicious action (eg, oDAO votes in a proposal against the pDAO governance), or contract upgrades that would result in clear damage to the Rocket Pool project
 - When the veto power is exercised, the security council SHOULD immediately publish a Veto Explanation Document that describes why it was exercised
 - Within 24 hours of the veto power being exercised, the security council MUST publish a Veto Explanation Document that describes why it was exercised
