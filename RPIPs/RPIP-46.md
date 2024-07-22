@@ -52,8 +52,7 @@ This specification introduces the following pDAO protocol parameters:
 5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share`, SHALL be updateable by any address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 6. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
-7
-. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
+7. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
     1. The security council SHALL NOT otherwise change `node_operator_commission_share_council_adder`
 
 ### RPL issuance rewards
