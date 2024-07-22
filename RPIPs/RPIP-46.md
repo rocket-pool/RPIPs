@@ -181,7 +181,7 @@ As the core value capture is no longer based on a minimum RPL requirement, Satur
 
 ## Security Considerations
 - `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways
-  - This can be mitigated by setting `node_operator_commission_share + node_operator_commission_share_council_adder` to the desired value with the adder set to the max allowed value, thus preventing it from being set higher
+  - This can be mitigated by setting `node_operator_commission_share` to the desired value, while setting `node_operator_commission_share_council_adder` and `max_node_operator_commission_share_council_adder` to zero, thus disabling the adder functionality
   - The pDAO may also replace the security council if it misuses its power
 - If there is a separate `new_share` going to all RPL, there is an acknowledged conflict of interest around `voters` controlling `voter_share`
   - There is an attempt to mitigate abuse by requiring a supermajority; nonetheless, that still depends on enough well-intentioned voters acting to defend the interests of other groups within the Rocket Pool community
