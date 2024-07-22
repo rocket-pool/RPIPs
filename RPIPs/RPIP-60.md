@@ -48,14 +48,14 @@ The explanation document is a mechanism intended to help the pDAO hold the secur
 **Upgrade Delay Setting**  
 Due to the considerations around slowing down hotfixes [described above](#security-considerations), the initial upgrade delay setting is attempting to be the smallest that allows "enough" time for participants to exit the system ahead of a proposal if they deem that appropriate.
 
-Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade_delay` (initially set to 1 week). This isn't enough to match the RPL `unstaking_period` (currently 28 days). In normal circumstances, there will be more time available to exit. There is a leadup period to the sentiment poll (currently at least 1 week), there is a pDAO vote period (currently at least 2 weeks), there's a human action required to raise the oDAO proposal, and there are many human actions to place oDAO votes after `proposal.vote.delay.time`. These delays should provide enough breathing room to allow participants to exit ahead of a proposal despite the 28-day unstaking period.
+Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade_delay` (initially set to 1 week). This is likely enough time to exit validators and withdraw ETH (barring an extreme exit queue). In normal circumstances, there will be more time available to exit. There is a leadup period to the sentiment poll (currently at least 1 week), there is a pDAO vote period (currently at least 2 weeks), there's often dev time (which can be large), there's a human action required to raise the oDAO proposal, and there are many human actions to place oDAO votes after `proposal.vote.delay.time`. These delays should provide significant breathing room to allow participants to exit their ETH positions ahead of a proposal, and may even provide enough time to exit RPL positions despite the 28-day unstaking period. RPL exiting was not heavily prioritized because it's unclear how a severely damaging protocol change wouldn't be priced in by 28 days anyhow.
 
 ## Security Considerations
 
 ### Upgrade Delay
 - Emergency response settings changes should be taken directly by the security council (see [RPIP-33](RPIP-33.md)) rather than use the regular governance process
-- The fastest possible upgrade speed is significantly slowed from the previous state. It used to take `proposal.vote.delay.time` (currently 1 week) and will now take an additional `upgrade_delay` (initially set to 1 weeks). This means that important hotfixes could take a lot longer. It may also mean that emergency pauses (eg, disabling rETH deposits) could last longer until a hotfix takes effect.
-- The fastest possible upgrade speed is still shorter than the RPL `unstaking_period` defined in [RPIP-30](RPIP-30.md) 
+- The fastest possible upgrade speed is significantly slowed from the previous state. It used to take `proposal.vote.delay.time` (currently 1 week) and will now take an additional `upgrade_delay` (initially set to 1 week). This means that important hotfixes could take longer. It may also mean that emergency pauses (eg, disabling rETH deposits) could last longer until a hotfix takes effect.
+- The fastest possible upgrade speed is now faster than the RPL `unstaking_period` defined in [RPIP-30](RPIP-30.md), and there are edge cases where it may be faster than the time it takes to exit ETH (if the validator exit queue is very full).
 
 ### Security Council Veto
 - The security council veto means it would require both a rogue oDAO and a rogue security council to pass a corrupt proposal
