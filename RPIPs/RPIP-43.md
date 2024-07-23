@@ -48,7 +48,7 @@ status of each validator. The possible statuses for validators associated with
 megapools SHALL include at least the following:
   - Initialized: a node operator has added this validator to their megapool, but
                the validator has not yet been assigned ETH from the deposit pool
-  - Prestaked: this validator has been assgined ETH and the `prestake` transaction has been executed, but
+  - Prestaked: this validator has been assigned ETH and the `prestake` transaction has been executed, but
                the validator has not yet had its full activation balance
                deposited to the beacon chain
   - Staked:    this validator has been added to the megapool and is in the
