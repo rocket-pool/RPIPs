@@ -32,13 +32,15 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 ### Universal Adjustable Revenue Split
 This specification introduces the following pDAO protocol parameters:
 
-| Name                                               | Type       | Initial Value |
-|----------------------------------------------------|------------|---------------|
-| `node_operator_commission_share`                   | pct        | `5`           |
-| `node_operator_commission_share_council_adder`     | pct        | `0`           |
-| `voter_share`                                      | pct        | `9`           |
-| `max_node_operator_commission_share_council_adder` | pct        | `1`           |
-| `allowlisted_controllers`                          | address [] | `[]`          |
+| Name                                               | Type       | Initial Value | Guard Rails                                                                                      |
+|----------------------------------------------------|------------|---------------|--------------------------------------------------------------------------------------------------|
+| `node_operator_commission_share`                   | pct        | `5`           | reth_commission <= 100%                                                                          |
+| `node_operator_commission_share_council_adder`*    | pct        | `0`           | <= `max_node_operator_commission_share_council_adder`; <= `voter_share`; reth_commission <= 100% |
+| `voter_share`                                      | pct        | `9`           | reth_commission <= 100%                                                                          |
+| `max_node_operator_commission_share_council_adder` | pct        | `1`           |                                                                                                  |
+| `allowlisted_controllers`                          | address [] | `[]`          |                                                                                                  |
+
+`*` denotes the parameter is updatable by the security council with no delay.
 
 1. There SHALL be the following defined revenues:
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
@@ -50,11 +52,8 @@ This specification introduces the following pDAO protocol parameters:
    2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies 
 5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share` SHALL be updateable by any address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
-6. The `node_operator_commission_share_council_adder` setting SHALL only allow values where:
-   1. 0% ≤ `node_operator_commission_share_council_adder` ≤ `max_node_operator_commission_share_council_adder` 
-   2. `node_operator_commission_share_council_adder` ≤ `voter_share`
-7. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
-8. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
+6. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
+7. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
     1. The security council SHALL NOT otherwise change `node_operator_commission_share_council_adder`
 
 ### RPL issuance rewards
