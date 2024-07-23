@@ -2,8 +2,8 @@
 rpip: 47
 title: Enable Forced Delegate Upgrades
 description: Allows protocol governance to force upgrade node operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
-author: Valdorff (@Valdorff), LongForWisdom(@LongForWisdom)
-discussions-to: TBD
+author: LongForWisdom(@LongForWisdom), Valdorff (@Valdorff)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core

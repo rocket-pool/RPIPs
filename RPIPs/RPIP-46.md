@@ -3,7 +3,8 @@ rpip: 46
 title: Universal Adjustable Revenue Split
 description: Allow the revenue from borrowed ETH (aka, rETH commission) to be split between fixed targets; the relative split between targets is adjustable.
 author: Valdorff (@Valdorff)
-discussions-to: TBD
+contributor: Sckuzzle (@sckuzzle), Knoshua (@knoshua), Samus (@orangesamus), LongForWisdom (@LongForWisdom)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core

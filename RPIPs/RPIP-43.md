@@ -2,8 +2,9 @@
 rpip: 43
 title: Megapools
 description: A single contract per node operator that can be used as an Ethereum withdrawal address for multiple validators. Also allows for ETH-only node operation.
-author: Valdorff (@Valdorff)
-discussions-to: TBD
+author: Valdorff (@Valdorff), Knoshua (@knoshua), NonFungibleYokem (@yokem55), Ramana (@xrchz)
+contributor: LongForWisdom (@LongForWisdom), Samus (@orangesamus)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core

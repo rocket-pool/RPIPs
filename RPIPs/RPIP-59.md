@@ -2,8 +2,9 @@
 rpip: 59
 title: Deposit Mechanics
 description: Describes the mechanics of node operator deposits and validator creation, including standard and express queues.
-author: Valdorff (@Valdorff), knoshua (@knoshua)
-discussions-to: TBD
+author: knoshua (@knoshua), Valdorff (@Valdorff)
+contributor: LongForWisdom (@LongForWisdom), Samus (@orangesamus), Sckuzzle (@sckuzzle)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core

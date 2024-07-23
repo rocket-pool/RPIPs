@@ -2,8 +2,9 @@
 rpip: 44
 title: Integrating Execution Layer Triggerable Exits
 description: Describes how execution layer triggerable exits (per EIP-7002) will be used within Rocket Pool.
-author: Valdorff (@Valdorff), Mike Leach (@VVander)
-discussions-to: TBD
+author: Ramana (@xrchz), Knoshua (@knoshua)
+contributor: Valdorff (@Valdorff), Mike Leach (@VVander), LongForWisdom (@LongForWisdom), Samus (@orangesamus)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core

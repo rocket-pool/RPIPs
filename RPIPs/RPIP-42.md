@@ -3,7 +3,8 @@ rpip: 42
 title: Bond Curves
 description: Introduce smaller ETH bonds to improve capital efficiency for node operators while maintaining the security of the Rocket Pool protocol.
 author: Valdorff (@Valdorff)
-discussions-to: TBD
+contributor: LongForWisdom (@LongForWisdom), Knoshua (@knoshua), Ramana (@xrchz), Patches (@jshufro), Sckuzzle (@sckuzzle), Samus (@orangesamus)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core
