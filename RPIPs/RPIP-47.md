@@ -1,9 +1,9 @@
 ---
 rpip: 47
 title: Enable Forced Delegate Upgrades
-description: Allows protocol governance to force upgrade Node Operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
-author: Valdorff (@Valdorff)
-discussions-to: TBD
+description: Allows protocol governance to force upgrade node operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
+author: LongForWisdom(@LongForWisdom), Valdorff (@Valdorff)
+discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
 type: Protocol
 category: Core
@@ -13,9 +13,9 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, Node Operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backwards compatible with every past minipool delegate.
+Currently, node operators can choose to upgrade (or not) for their minipool delegate (the contract at the Ethereum withdrawal address that governs how funds are disbursed, among other things). This (a) means the protocol can only effect change in ways that are in the interest of individual NOs, and (b) makes it more challenging to design the protocol as it must remain backward compatible with every past minipool delegate.
 
-This proposal suggests limiting that upgrade choice in the future. Users will be able to opt in to upgrade or use an "old" delegate for a defined period after a newer version. However, once the defined period has passed, they will no longer use the old delegate. To ensure timely availability of protocol funds, after the defined period, anyone may change the megapool's delegate to a minimal 'recovery delegate' that is only capable of exiting validators and distributing funds. 
+This proposal suggests limiting that upgrade choice in the future. Users can opt-in to upgrade or use an "old" delegate for a defined period after a newer version is released. Once the defined period has passed, users will no longer be able to use the old delegate, and they may be permissionlessly upgraded to the latest version. 
 
 ## Motivation
 
@@ -23,37 +23,36 @@ Supporting many iterations of the same basic functionality as the protocol evolv
 
 Additionally, the pDAO must have the ability to effect change in ways that benefit the protocol as a whole, but that may not benefit every individual node operator in isolation. What benefits individuals in the short term can lead to ruin in the long term for both that individual and the collective. The pDAO is unable to protect against this outcome without the ability to force upgrades. 
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
 ## Specification
-### Megapool delegates
-- `Megapool delegate` contracts SHALL have an expiration block (ie, execution layer block)
-- When a new `megapool delegate` is released, the contract upgrade SHALL include:
-  - Setting the new `megapool delegate`'s expiration block to "no expiration"
-  - Setting the previous `megapool delegate`'s expiration block to occur `delegate_upgrade_buffer` after the upgrade
-- A node operator SHALL be able to upgrade their active `megapool delegate` to the latest `megapool delegate` at any time (including after the active `megapool delegate`'s expiration block)
-- After the active `megapool delegate`'s expiration block:
-  - The active `megapool delegate` SHALL NOT be usable by the node operator
-  - The node operator SHALL NOT be able to claim any rewards
-- The initial setting of `delegate_upgrade_buffer` SHALL be 4 months.
 
-### Megapool recovery delegate
-- There SHALL be a single `megapool recovery delegate` contract that is used by all megapools in the protocol
-- The `megapool recovery delegate` for a megapool SHALL NOT be usable by anyone if the current block is less than or equal to the active `megapool delegate`'s expiration block
-- The `megapool recovery delegate` for a megapool SHALL be usable by any address if the current block is greater than the active `megapool delegate`'s expiration block
-- The `megapool recovery delegate` SHALL have the following capabilities:
-  - Force exiting ALL validators under the megapool
-    - In the Saturn 1 release, this MAY be a non-functional stub
-  - Removal of any pending validators from the Rocket Pool queue
-  - Processing of voluntary exit proofs
-  - Collection of any penalties or deficits
-  - Final distribution of rewards and capital 
-- The `megapool recovery delegate` SHOULD be updated only rarely, and only to support changes to the Ethereum execution layer exit process, or major changes in the Rocket Pool protocol. Simultaneous upgrades to both the `megapool recovery delegate` and the latest `megapool delegate` SHOULD be avoided if possible.
+### Upgrade Buffer Enforcement
+- Each `Megapool delegate` contract SHALL have an execution layer `expiration_block` variable which should initialize to "no expiration"
+- Each `Megapool delegate` contract SHALL have a non-modifiable `upgrade_buffer` value
+  - The `Megapool delegate`'s `upgrade_buffer` SHALL be 120 days
+- The only permitted modification to a `Megapool delegate`'s `expiration_block` variable SHALL be for any protocol contract to set its value to now + its `upgrade_buffer`
+
+### Upgrade Process
+- When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to now + their `upgrade_buffer`s
+- A node operator SHALL be able to upgrade their `megapool delegate` to the latest `megapool delegate` at any time
+- Functionality MAY be provided to allow a node operator to automatically use the latest `megapool delegate`
+- After a `megapool delegate`'s `expiration_block` has passed, any megapools using the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
+
+## Rationale
+
+**Direct Upgrade versus Recovery Delegate**  
+Initially, this specification included a 'recovery delegate' that would provide basic functionality for a node operator. In place of forcing an upgrade to the latest version, validators on expiring delegates would be shifted to the recovery delegate. This was dropped primarily due to scope and implementation complexity reasons.
+
+**Next Version versus Latest Version**  
+Some debate covered whether the upgrade should push validators on expiring delegates to the _latest_ delegate, or the _next_ delegate. The latest was chosen to allow the skipping of bugged delegates to a fixed version and to improve UX (no need to cycle through to get to the latest version.)
+
+**All in-use delegates versus previous delegate version**
+The wording covering the update of expiration blocks on a new delegate release was expanded from 'previous delegate version' to 'all in-use delegate versions' to avoid a situation in which a node operator is forcibly upgraded to a contract that they have not had sufficient time to examine. SHOULD is used over SHALL to allow flexibility in a situation where protocol governance does not wish to immediately start the timer to force an upgrade from a current version at the point of release of a new version. 
 
 ## Security Considerations
-- Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block in order to build up "Lindy"
+- Part of the risk mitigation here depends on some users upgrading their megapool delegate well before the expiration block to build up "Lindy"
   - If this doesn't happen naturally, it may be possible to incentivize early adopters with GMC funds
-- Note that the recovery delegate can be upgraded instantly, without any period where the NOs decide on whether they're ready to use the latest. This is ok because it can only be used if the main delegate reaches its epiration block, which _is_ a Node Operator decision.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

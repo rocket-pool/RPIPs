@@ -65,13 +65,15 @@ Some form of value capture method will be included in the tokenomics rework pack
 * [RPL Buy & LP](RPIP-50.md) - Use the surplus share to buy RPL and deposit it in a liquidity pool. 
 * Direct the surplus share to vote-eligible Node Operators, proportional to their share of vote-eligible RPL.
 
+For Saturn 1, the share will be directed based on vote-eligible RPL staked in megapools. There will be a vote prior to Saturn 1 going live to determine the preferred strategy starting at Saturn 2.
+
 ### [RPIP-44: Forced exits](RPIP-44.md)
 
-This change allows the Rocket Pool protocol to force-exit Node Operators under certain circumstances. It relies on the adoption of [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) by the Ethereum protocol. 
+This change, planned for Saturn 2, allows the Rocket Pool protocol to force-exit Node Operators under certain circumstances. It relies on the adoption of [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) by the Ethereum protocol. 
 * This allows Node Operators to exit their validators easily.
 * This allows the Rocket Pool protocol to exit malicious validators.
 
-The ability to force-exit misbehaving validators is a requirement for RPIP-42. 
+The ability to force-exit misbehaving validators is a requirement for [RPIP-44](RPIP-44.md).
 
 ### [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 
@@ -88,9 +90,10 @@ Here we describe the mechanics of Node Operator deposits and validator creation,
 
 ### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
-This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to act in that time.
-* The security council can veto an upgrade to help protect participants in Rocket Pool from malicious upgrades.
-* The security council can speed up an upgrade to help enact critical changes faster when requested by the pDAO.
+This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to veto the upgrade during that delay. The veto is justified if the upgrade meets one of the following criteria:
+* It was subject to vote manipulation
+* It is a malicious action
+* It causes clear damage to the Rocket Pool project
 
 ## Deployment Plan
 
@@ -106,8 +109,9 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-59: Deposit Mechanics](RPIP-59.md)
   * Standard and express queues.
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * All but heuristic adjustments.
-* RPL Value Capture - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
+  * Splits between rETH, node operators, and vote-eligible staked RPL staked in megapools
+  * RPL issuance rewards no longer have a minimum stake required
+* RPL Value Capture - Increased share to voting Node Operators.
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
@@ -117,16 +121,31 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * 1.5ETH minimum bond. 
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * Heuristic adjustments.
+  * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
+  * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
+  * RPL inflation reduced to 1.5%  (from 5%)
+  * No more RPL issuance rewards
+* RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
-Last Updated: July 3rd
+Last Updated: July 16th
 
 Current efforts are primarily focused on:
-1. Updating and polishing the RPIP specifications in response to feedback.
-2. Attempting to reduce the scope of the required implementation work to improve time-to-market without overly impacting contents.
+1. Confirming the Core Team is happy with RPIP specification contents and making minor adjustments as needed.
+2. Polishing the RPIP specifications ready for vote.
 
-A maintained list of open tasks is available via google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
+A maintained list of open tasks is available via Google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744). 
+
+### Still To Ratify Prior to Saturn 1
+These items are to be considered flexible until ratified explicitly, rather than ratified alongside the tokenomics rework package as a whole. 
+
+* **Saturn 2 Surplus Share Strategy** - Decide and ratify how to manage surplus share in Saturn 2 (we want to decide this before Saturn 1 launches to avoid the incumbent advantage for the voter_share option.)
+  * **Vote Eligible RPL Targets** - Decide and ratify vote-eligible RPL targets if voter_share is not chosen as the surplus share strategy. 
+* **Deposit Strategy** - Decide whether to take a 2TX or 3TX deposit strategy for validator creation and ratify choice.
+* **Penalty System** - Research, draft and ratify a penalty system. 
+* **When the security council should change node operator commission** - the proposal delegates a limited ability for the security council to make UARS changes and directs them to do so based on a specific metric. When and how the council should act is still an open area of discussion.
+
+Any other significant issues the development team identifies that impact their ability to deliver this upgrade may also be added to this list. The development team should strive to minimize this, communicate clearly if it occurs and keep as close to the spirit of the existing contents when deviation is needed. 
 
 ### Estimated Process
 
@@ -137,10 +156,9 @@ The below is generally agreed to be the steps to be completed before we can cons
 3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
 4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. **Active** - Update the proposal and specifications as needed taking into account wider community feedback.
-6. Run a forum temperature check vote on the full proposal (bar value capture mechanism).
-7. Run a snapshot vote on the full proposal (bar value capture mechanism).
-8. Run a snapshot vote on the value capture mechanism once outstanding blockers are cleared.
-9. Update the proposal to incorporate the value capture mechanism vote result.
+6. Run a forum temperature check vote on the rework package (bar the 'still-to-ratify' list above).
+7. Run a snapshot vote on the rework package as Living RPIPs, acknowledging the existence of the 'still-to-ratify' list above.
+8. Run one or more snapshot vote(s) as blockers are cleared from the 'still-to-ratify' list. The end state will include no remaining blockers and the status of the rework RPIPs set to Final.
 
 ## Excluded Components
 The below components have been discussed, but are not currently considered high enough priority to be included in the tokenomics rework plan.
@@ -150,10 +168,11 @@ The below components have been discussed, but are not currently considered high 
 
 ## Further Links
 * This proposal was presented at Rocket Pool's "Denver Lift Off" event by Valdorff and Samus - [Presentation](https://docs.google.com/presentation/d/12WRXuZktEtViwBWxFwm8OHpwpgoOpAF01859o0jGkiw), [Powerpoint Backup](../assets/rpip-49/On%20The%20Horizon%20(backup%20version).pptx), [Recorded Presentation](https://www.youtube.com/watch?v=nyqrilFtlrc&list=PLKzACASsJiuXc0v6kZambks4cPaSVbekf&index=4)
-* Samus is maintaining a Google sheet containing notes, feedback, and TODOs which can be found [here](https://docs.google.com/spreadsheets/d/1qmGBCPAX-IqcFFjUzBib2Z_NKo_Yh5U00zKnGpyNak4). 
+* A now-retired Google sheet containing notes, feedback, and TODOs which can be found [here](https://docs.google.com/spreadsheets/d/1qmGBCPAX-IqcFFjUzBib2Z_NKo_Yh5U00zKnGpyNak4). 
+* A [tokenomics Q&A video](https://www.youtube.com/watch?v=p-Q6fQsVBTY), kindly hosted by the Rocket Fuel podcast.
 
 ## Acknowledgements
-The tokenomics package is based on the [early-March proposal from Valdorff](../assets/rpip-49/readme.md). The initial drafts have seen a significant improvement as a result of discussions with many people (thanks to 🏆samus🏆, 🏆sckuzzle, 🏆epineph, 🏆LongForWisdom, knoshua, uisce, langers, NonFungibleYokem, MountainB, luominx, ArtDemocrat, and many others). 
+The tokenomics package is based on the [early-March proposal from Valdorff](../assets/rpip-49/readme.md). The initial drafts have seen a significant improvement as a result of discussions with many people (thanks to 🏆samus🏆, 🏆sckuzzle, 🏆epineph, 🏆LongForWisdom, 🏆knoshua, uisce, langers, NonFungibleYokem, MountainB, luominx, ArtDemocrat, and many others). 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
