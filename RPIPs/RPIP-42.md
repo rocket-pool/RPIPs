@@ -97,9 +97,9 @@ The bond curve is an attempt to get close to maximizing capital efficiency while
   - A moderate step would be to change `base_bond_array` to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
   - A larger step would be to pass EL rewards to node operators and charge them for the benefit. See eg: [Valdorff's research](https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos) or [Epineph's forum post](https://dao.rocketpool.net/t/reimagining-large-block-theft/2146)
   
-| 2.5% commission                                 | 4% commission                                |
+| 2.5% commission                                 | 5% commission                                |
 |-------------------------------------------------|----------------------------------------------|
-| ![img.png](../assets/rpip-42/theft_2.5pct.png)  | ![img.png](../assets/rpip-42/theft_4pct.png) |
+| ![img.png](../assets/rpip-42/theft_2.5pct.png)  | ![img.png](../assets/rpip-42/theft_5pct.png) |
 
 - Minimum size sock puppets are most damaging to the protocol (ie, have the greatest drag), so it's important that they are not incentivized. Note that the bond curve has been chosen to ensure that this size is _not_ the most efficient for theft. They get the most _advantage_ from theft, but not the highest overall yield from a dishonest strategy.
 
