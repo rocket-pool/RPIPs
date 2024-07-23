@@ -25,7 +25,7 @@ Given the issues described in Part 1, we now propose a rework of RPL’s tokenom
 
 With the rework, speculation and node operation are separated. It becomes **possible to run a Rocket Pool node with only an ETH bond.**
 
-For the variants of the rework that introduce RPL buy and burn or RPL buy and LP, it **may be sensible to hold RPL as a standalone investment** at protocol maturity because a share of ETH revenue is used to drive value to the token.
+For the variants of the rework that introduce RPL buy and burn or RPL buy and LP, it **may be sensible to hold RPL as a standalone investment** at protocol maturity because a share of ETH revenue may drive value to the token.
 
 **Staking RPL alongside ETH bonds still has value** with the rework. 
 - This is the only group that has pDAO vote weight.
@@ -40,16 +40,16 @@ There is **no RPL reward threshold/cliff** with the rework, so we avoid losing r
 
 With the rework, smaller ETH bonds will be possible. This **dramatically increases capital efficiency.** Arguably, this is the most important single item in the rework; while other changes impact how revenue is distributed, this change increases how much revenue each unit of capital can generate.
 
-Consider ETH-only validators receiving a 3.5% commission on borrowed ETH with various bonds[^1]:
-* 8 ETH bond: **10.5% boost** compared to solo staking rewards.
-* 4 ETH bond: **24.5% boost** compared to solo staking rewards.
-* 1.5 ETH bond: **71.2% boost** compared to solo staking rewards.
+Consider ETH-Only validators receiving a 5% commission on borrowed ETH with various bonds[^1]:
+* 8 ETH bond: **15% boost** compared to solo staking rewards.
+* 4 ETH bond: **35% boost** compared to solo staking rewards.
+* 1.5 ETH bond: **102% boost** compared to solo staking rewards.
 
 Megapool-level penalties and forced validator exits are also included in the rework and are key to making smaller ETH bonds safe enough to use.
 
 Megapools will enable multiple validators to share the same Ethereum withdrawal address – this **reduces initial and ongoing gas costs** for node operators.
 
-**RPL issuance will be reduced from 5% to 1.5%**, because the current 3.5% issuance used for RPL rewards to NOs is no longer necessary.
+**RPL issuance will be reduced from 5% to 1.5%**, because the current 3.5% issuance used for RPL rewards to node operators is no longer necessary.
 
 Forced delegate upgrades (with a grace period) will limit the technical debt the Rocket Pool protocol accumulates from previous versions.
 
@@ -59,10 +59,10 @@ A security council veto will decrease the trust assumptions we currently have (i
 
 |Persona|Now|With Rework|
 |-|-|-|
-|**Existing Rocket Pool Node Operator**|I need RPL to create minipool validators. I have to remain collateralized at an RPL staked value of at least 10% of my borrowed ETH to receive RPL issuance rewards. My commission is 14% of my borrowed ETH.|I do not need RPL to create megapool validators. My commission is 3.5% of my borrowed ETH. If I choose to stake RPL I will receive additional ETH rewards (5% of borrowed ETH revenue from all megapools) proportional to my share of staked RPL. I do not need to maintain a minimum stake to receive these rewards. I will benefit from value accrual to RPL (5.5% of borrowed ETH revenue from all megapools) or from this revenue being used to increase the rewards for staking RPL. I will no longer receive rewards in RPL. The 3.5%, 5%, and 5.5% revenue splits may be adjusted by future pDAO votes.
+|**Existing Rocket Pool Node Operator**|I need RPL to create minipool validators. I have to remain collateralized at an RPL staked value of at least 10% of my borrowed ETH to receive RPL issuance rewards. My commission is 14% of my borrowed ETH.|I do not need RPL to create megapool validators. My commission is 5% of my borrowed ETH. If I choose to stake RPL I will receive additional ETH rewards (5% of borrowed ETH revenue from all megapools) proportional to my share of staked RPL. I do not need to maintain a minimum stake to receive these rewards. I may benefit from value accrual to RPL (4% of borrowed ETH revenue from all megapools) or from this revenue being used to increase the rewards for staking RPL. I will no longer receive rewards in RPL. The 5%, 5%, and 4% revenue splits may be adjusted by future pDAO votes.
 |**rETH holder**|My staking rewards are a function of solo staking APY and the fee I am charged by Rocket Pool. Currently my rewards are ~86% of solo staking APY since I am charged a fee of ~14%.|My staking rewards are a function of solo staking APY and the fee I am charged by Rocket Pool. Initially my rewards are unchanged at ~86% of solo staking APY since I am still charged a total fee of ~14%. The total fee may be adjusted by future pDAO votes.|
-|**Passive RPL Holder**|Holding RPL is speculation on the liquid staking narrative and the utility of RPL as a bond.|In addition to the liquid staking narrative, holding RPL is speculation that the tokenomics changes will cause rETH supply to grow and generate surplus ETH revenue, which *may* be used to accrue value to RPL (via buy+burn or buy+LP) or may go to NOs staking RPL.|
-|**ETH-only Node Operator**|I cannot operate a node with Rocket Pool|I can now operate a node with Rocket Pool without exposure to RPL. I initially receive a 3.5% node operator commission on my borrowed ETH. The 3.5% commission may be adjusted by future pDAO votes.|
+|**Passive RPL Holder**|Holding RPL is speculation on the liquid staking narrative and the utility of RPL as a bond.|In addition to the liquid staking narrative, holding RPL is speculation that the tokenomics changes will cause rETH supply to grow and generate surplus ETH revenue, which *may* be used to accrue value to RPL (via buy+burn or buy+LP) or may go to node operators staking RPL.|
+|**ETH-Only Node Operator**|I cannot operate a node with Rocket Pool (unless I form a semitrusted partnership with a speculator)|I can now operate a node with Rocket Pool without exposure to RPL. I initially receive a 5% node operator commission on my borrowed ETH. The 5% commission may be adjusted by future pDAO votes.|
 
 
 
