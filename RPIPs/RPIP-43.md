@@ -46,13 +46,14 @@ validators deposited after this RPIP is implemented.
 Megapools keep track of the set of validators associated with them and the
 status of each validator. The possible statuses for validators associated with
 megapools SHALL include at least the following:
-  - Prestaked: a node operator has added this validator to their megapool, but
+  - Initialized: a node operator has added this validator to their megapool, but
+               the validator has not yet been assigned ETH from the deposit pool
+  - Prestaked: this validator has been assigned ETH and the `prestake` transaction has been executed, but
                the validator has not yet had its full activation balance
                deposited to the beacon chain
   - Staked:    this validator has been added to the megapool and is in the
                `pending_queued` or later state on the beacon chain
-  - Dissolved: this validator's withdrawal credentials have been discovered to
-               be incorrect (ie, not this megapool)
+  - Dissolved: the `stake` transaction for this validator wasn't executed in time (see [RPIP-44](RPIP-59.md))
 
 Node operators can manage the set of validators in their megapool:
 
@@ -61,9 +62,8 @@ Node operators can manage the set of validators in their megapool:
      - Note that this would involve updating the validators' BLS withdrawal
        credentials to the megapool address
 - New and existing validators' withdrawal credentials MUST be checked to
-  correctly refer to the megapool address, with the validator status set to
-  Dissolved if the check fails
-     - The check MAY occur after the validator is added initially as Prestaked
+  correctly refer to the megapool address
+     - The check MAY occur after the validator enters the Prestaked status
 - A node operator SHALL be able to remove exited validators from their megapool
 
 ### `debt` Variable
@@ -94,10 +94,8 @@ into shares is defined in [RPIP-46](RPIP-46.md).
 - There SHALL be a reward distribution function in the megapool
   - For this section, we define `borrowed_portion` as the megapool's `borrowed_eth / (bonded_eth + borrowed_eth)`
   - When called, `reth_share * borrowed_portion` of rewards SHALL be sent to the rETH contract
-  - When called, `voter_share * borrowed_portion` of rewards SHALL be sent to a merkle rewards
+  - When called, `(voter_share - node_operator_commission_share_council_adder) * borrowed_portion` of rewards SHALL be sent to a merkle rewards
     distributor contract
-  - When called, `surplus_share * borrowed_portion` of rewards SHALL be sent to the appropriate
-    surplus disposition contract
   - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
   - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
   - This function SHALL be permissionless
