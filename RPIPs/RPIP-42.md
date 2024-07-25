@@ -16,14 +16,14 @@ tags: tokenomics-2024, tokenomics-content
 ## Abstract
 This proposal dramatically increases the LTV used in the protocol (loan to value; the amount of ETH that can be borrowed per unit of bonded ETH). It does this safely by:
 - Enabling megapool-level penalties to mitigate/discourage MEV theft
-- Using forced exits as needed
+- Using forced exits as needed (see the required [RPIP-44](./RPIP-44.md))
 - Starting with lower LTV at lower total bonded ETH to mitigate/discourage MEV theft
 - Retaining sufficient bond per validator regardless of total stake to mitigate against slashing and abandonment
 - Providing increased capital efficiency with greater bond to encourage a node operator to stake as large nodes instead of many small nodes
 
 This proposal also explicitly tries to benefit the smallest node operators in a few ways, in line with the pDAO charter values of decentralization and prioritizing Ethereum health (see [RPIP-23](./RPIP-23.md)):
 - We willingly take on somewhat more MEV-theft risk for the smallest node operators (see [Rationale](#rationale))
-- We give precedence to small nodes staking some number of initial validators in the Node Operator queue (see [RPIP-59](./RPIP-59.md))
+- We give precedence to small nodes staking some number of initial validators in the Node Operator queue (see proposed [RPIP-59](./RPIP-59.md))
 - There is a small but tangible financial benefit for large stakers that stake as few large nodes instead of many small nodes -- this (alongside our vote power, which scales with the square root of vote-eligible RPL) helps preserve the strong governance voice of small node operators
 
 ## Motivation
@@ -80,8 +80,6 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 |-----------|----------------------|------------|------------|
 | MEV theft | theft size + 0.2 ETH | 2024-03-29 | 2024-03-29 |
 
-## Implementation thoughts
-When showing legacy node status, there is not a trivial way to get the node index for a given address. That said, the other direction is trivial using `RocketNodeManager.getNodeAt`, so the work can get moved off-chain. Eg, one can iterate across all possible node indices and then pass in the node index that matches the node's address; the smart contract can confirm the match to demonstrate legacy node status.
 
 ## Rationale
 The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
