@@ -4,7 +4,7 @@ title: MEV Penalty Guardrail
 description: This proposal introduces a limit on the total number of MEV penalties that the oDAO can apply to minipools in one week.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-mev-penalty-guardrail/3009
-status: Review
+status: Final
 type: Protocol 
 category: Core
 created: 2024-05-22
@@ -15,7 +15,7 @@ created: 2024-05-22
 This proposal introduces a global limit on the total number of MEV penalties that the oDAO can apply to minipools in one week. The limit is a protocol parameter controlled by the pDAO. The pDAO can't set it lower than a minimum value. The parameter can't be changed by the Security Council.
 
 ## Motivation
-Currently, the oDAO can apply an unlimited number of penalties without any delay. This exposes node operators: In the worst case, a compromised oDAO can penalize 100% of the ETH that node operators have in minipools. For legitimate use of the penalty system, this is overpowered. The number of proposals in a time interval are limited and therefore also the number of stealing incidents in a time interval are limited. This proposal aims to reduce oDAO trust by introducing a sensible limit that doesn't interfere with legitimate use of the penalty system and removes unnecessary risk from illegitimate use.
+Currently, the oDAO can apply an unlimited number of penalties without any delay. This exposes node operators: In the worst case, a compromised oDAO can penalize 100% of the ETH that node operators have in minipools. For legitimate use of the penalty system, this is overpowered. The number of proposals in a time interval is limited, and therefore the number of stealing incidents in a time interval is also limited. This proposal aims to reduce oDAO trust by introducing a sensible limit that doesn't interfere with legitimate use of the penalty system and removes unnecessary risk from illegitimate use.
 
 ## Specification
 
@@ -45,9 +45,9 @@ There are no backwards compatibility concerns with this proposal.
 ## Security Considerations
 Since the oDAO is also in control of contract upgrades, a compromised oDAO has the power to remove the guardrail introduced here. But contract upgrades are subject to a 7 day delay, which would give node operators an opportunity to react.
 
-This RPIP assumes that the oDAO is applying penalties shortly after they occur. Retroactively applying penalties for a long time period might become limited. However, the retroactive approach is already problematic, since there is no guarantee that MEV stealers will stick around to be penalized.
+This RPIP assumes that the oDAO is applying penalties shortly after they occur. Retroactively applying penalties covering a long time period might become bottlenecked. However, the retroactive approach is already problematic, because there is no guarantee that MEV thieves will stick around to be penalized.
 
-This RPIP assumes that the oDAO applies one penalty per infraction. If for example we wanted to get rid of the two free initial strikes per minipool, this should best be done through contract changes and not by applying multiple penalties per infraction. 
+This RPIP assumes that the oDAO applies one penalty per infraction. If, for example, we wanted to get rid of the two free initial strikes per minipool, this should best be done through contract changes and not by applying multiple penalties per infraction. 
 
 
 ## Copyright
