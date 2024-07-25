@@ -15,7 +15,7 @@ created: 2024-05-20
 A proposal to guarantee that anyone can distribute ETH in Node Distributors (where execution layer rewards for people not in the smoothing pool go). If a withdrawal address is not able to accept the share belonging to the node operator, the value is stored in their balance and only the share belonging to rETH is sent. The node operator can then claim an outstanding balance at a later time.
 
 ## Motivation
-Currently, anyone can call distribution on a Node Distributor. It attempts to send the node operator's share to their withdrawal address and if that fails the entire distribution including sending of rETH share fails. For example, a node operator could set their withdrawal address to a smart contract that doesn't accept ETH or only accepts it when they are personally initiating the distribution. A profit motive for node operators to do this exists when rETH is traded at a discount. Ensuring that everyone can distribute would help support the rETH peg through better arbitrage and better match expectation that anyone can distribute. 
+Currently, anyone can call distribution on a Node Distributor. It attempts to send the node operator's share to their withdrawal address, and if that fails, the entire distribution, including the sending of rETH share, fails. For example, a node operator could set their withdrawal address to a smart contract that doesn't accept ETH or only accepts it when they are personally initiating the distribution. A profit motive for node operators to do this exists when rETH is traded at a discount. Ensuring that everyone can distribute would help support the rETH peg through better arbitrage and better match expectation that anyone can distribute. 
 
 
 ## Specification
