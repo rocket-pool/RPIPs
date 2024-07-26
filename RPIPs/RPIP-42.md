@@ -93,7 +93,7 @@ The bond curve is an attempt to get close to maximizing capital efficiency while
   - `base_bond_array` is chosen to "sufficiently" dissuade MEV theft as a strategy
   - `reduced_bond` is chosen to "sufficiently" guard against slashing or abandonment risks
 - Follow-on work was done in [discord](https://discord.com/channels/405159462932971535/1228753782402318427/1228914436924772352)
-  - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is that we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support node operator commission share under 2.5%.
+  - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5 with a solo staking APY of 4%. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is that we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support node operator commission share under 2.5%.
   - A moderate step would be to change `base_bond_array` to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
   - A larger step would be to pass EL rewards to node operators and charge them for the benefit. See eg: [Valdorff's research](https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos) or [Epineph's forum post](https://dao.rocketpool.net/t/reimagining-large-block-theft/2146)
   
@@ -103,7 +103,7 @@ The bond curve is an attempt to get close to maximizing capital efficiency while
 
 - Minimum size sock puppets are most damaging to the protocol (ie, have the greatest drag), so it's important that they are not incentivized. Note that the bond curve has been chosen to ensure that this size is _not_ the most efficient for theft. They get the most _advantage_ from theft, but not the highest overall yield from a dishonest strategy.
 
-*the above graphs assume a 4% solo staker APY
+
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
