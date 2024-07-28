@@ -20,7 +20,7 @@ There is at least one additional use case not addressed in this RPIP, which is t
 
 ## Motivation
 
-Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool validators. Currently, the protocol has limited recourse against such offending validators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
+Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool node operators. Currently, the protocol has limited recourse against such offending node operators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
 
 A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
 

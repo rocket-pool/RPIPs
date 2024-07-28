@@ -67,7 +67,7 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 - If possible, `deposit` SHALL assign one validator as described below 
 
 #### Assigning ETH from the Deposit Pool
-- ETH from the deposit pool SHALL be assigned the validator at the front of the queue by sending 32 ETH to the associated megapool contract
+- ETH from the deposit pool SHALL be assigned to the validator at the front of the queue by sending 32 ETH to the associated megapool contract
   - rETH mints SHALL assign `floor(ETH_deposit / 32)` validators
   - There MUST be a permissionless function to execute assignments
 - The assignment SHALL execute the `prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
