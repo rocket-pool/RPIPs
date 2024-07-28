@@ -177,7 +177,7 @@ A few details about the reasoning behind the spec:
 - The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
 ### RPL issuance rewards and inflation
-As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. At this point, the bond curve should be creating sufficient attraction that we believe we can get to this desired end state more smoothly.
+As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. At this point, the bond curve should be creating sufficient attraction that we believe we can get to this desired end state more smoothly. <- [what does the "desired end state" refer to here? I'm not sure I understand what this sentence is trying to highlight"]
 
 ## Security Considerations
 - `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways

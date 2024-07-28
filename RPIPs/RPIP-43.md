@@ -32,7 +32,7 @@ This specification introduces a type of smart contract called a "megapool" that
 SHALL serve as the target of beacon chain withdrawal credentials for Rocket Pool
 validators deposited after this RPIP is implemented.
 
-- A node operator SHALL be able to deploy at most one megapool contract
+- A node operator SHALL be able to deploy at most one megapool contract per node
     - This MAY be combined with the deposit of their first validator
 - Megapool contracts MUST be upgradable using a proxy pattern; a megapool's
   proxy implementation contract SHALL be called the megapool's "delegate"
@@ -72,6 +72,7 @@ Node operators can manage the set of validators in their megapool:
 - The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)) by majority vote
   - If this causes the megapool to meet the criteria for a non-node operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction 
 - There SHALL be a function to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract and the `debt` SHALL be reduced by the amount.
+^ does the smoothing pool need to be accounted for here if they are opted into it? ^
 
 
 ### Funds Management
@@ -79,7 +80,7 @@ Node operators can manage the set of validators in their megapool:
 In the following, "capital" refers to funds supplied for staking by either the
 node operator or pool stakers, including node operator staked RPL. "Rewards"
 refers to additional funds generated or obtained via staking, including
-consensus rewards, execution rewards, and RPL inflation. The split of rewards
+consensus rewards, execution rewards, RPL issuance, and `voter_share` rewards. The split of rewards
 into shares is defined in [RPIP-46](RPIP-46.md).
 
 - This RPIP assumes the continued use of separate 32 Ether validators. Support for

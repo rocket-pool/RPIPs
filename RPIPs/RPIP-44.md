@@ -22,7 +22,7 @@ There is at least one additional use case not addressed in this RPIP, which is t
 
 Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool validators. Currently, the protocol has limited recourse against such offending validators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
 
-A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
+A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience (e.g., in the case of abandonment a forced exit by the protocol would be preferable to continuous leakage penalties).
 
 This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
 
@@ -59,6 +59,7 @@ The exit functionality for a megapool is specified as follows:
       - It MUST NOT be possible for accounts other than the node operator to exit more validators than needed to reduce `deficit` below `exit_deficit`
 - The protocol SHALL use the `withdrawn`, `credit`, and `received` balances to pay off `debt` prior to taking action on exits
 - The protocol MAY use unstaking and staked RPL to decrease `debt` by the corresponding amount prior to taking action on exits
+- The protocol MAY use unclaimed rewards to decrease `debt` by the corresponding amount prior to taking action on exits
 
 ## Rationale
 The accounting categories are an attempt to simplify the tracking of value within a megapool, as well as calculating ownership.

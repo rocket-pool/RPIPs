@@ -77,7 +77,7 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 - `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
 - If the beacon chain stake is invalid, the validator SHALL be scrubbed 
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
-- If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
+- If `stake` is not called within `time_before_dissolve` after the ETH was assigned [can `stake` be called by anyone? Just curious if someone could stall the entire queue for 2 weeks at a time if they wanted to (maybe they'd have no reason to and it's nbd...] , the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
   - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
 
 #### Exiting Queue
@@ -85,6 +85,7 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 
 #### Social Assignments
 - The `deposit.assign.socialised.maximum` setting SHALL be set to 0
+^ [I'm guessing this is a standard variable setting somewhere (outside of this RPIP), since I don't see it defined anywhere else here?]
 
 
 ## Rationale
