@@ -120,7 +120,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
   * RPL inflation reduced to 1.5%  (from 5%)
   * RPL issuance to node operators ends
-* RPL Value Capture based on vote outcome - Probably one of: [RPIP-45: RPL Burn](RPIP-45.md) / [RPIP-50: RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators
+* RPL Value Capture based on vote outcome - Probably one of: [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
 Last Updated: July 16th
