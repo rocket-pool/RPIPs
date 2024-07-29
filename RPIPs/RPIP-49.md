@@ -100,32 +100,27 @@ This RPIP introduces a delay after protocol upgrades have been confirmed but pri
 The tokenomics rework package will likely be split between two protocol upgrades: Saturn 1 and Saturn 2.
 
 ### Saturn 1
-
-* [RPIP-43: Megapools](RPIP-43.md)
-  * Including ETH-only validators.
-* [RPIP-42: Bond curves](RPIP-42.md)
-  * Framework
-  * 4ETH minimum bond
-* [RPIP-59: Deposit Mechanics](RPIP-59.md)
-  * Standard and express queues.
-* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
-  * Splits between rETH, node operators, and vote-eligible staked RPL staked in megapools
-  * RPL issuance rewards no longer have a minimum stake required
-* RPL Value Capture - Increased share to voting Node Operators.
+* [RPIP-42: Bond curves](RPIP-42.md) - Partial Inclusion
+  * 4 ETH minimum bond
+* [RPIP-43: Megapools](RPIP-43.md) (includes ETH-only validators)
+* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial Inclusion
+  * UARS introduced with no_share, voter_share, and reth_commission
+  * RPL issuance extended to legacy nodes below cliff
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+* [RPIP-59: Deposit Mechanics](RPIP-59.md) (includes express queue)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 ### Saturn 2
 
-* [RPIP-42: Bond curves](RPIP-42.md)
+* [RPIP-42: Bond curves](RPIP-42.md) - Remainder
   * 1.5ETH minimum bond. 
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
   * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
   * RPL inflation reduced to 1.5%  (from 5%)
-  * No more RPL issuance rewards
-* RPL Value Capture based on vote outcome - [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
+  * RPL issuance to node operators ends
+* RPL Value Capture based on vote outcome - Probably one of: [RPIP-45: RPL Burn](RPIP-45.md) / [RPIP-50: RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators
 
 ## Current Status
 Last Updated: July 16th

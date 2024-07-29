@@ -22,21 +22,17 @@ The intention of this Living Informational RPIP is to collate the release-releva
 
 * [RPIP-30: RPL Staking Rework](RPIP-30.md) - Partial Inclusion
   * Two-step RPL withdrawal process.
+* [RPIP-57: Node Distributor User Fund Unbundling](RPIP-57.md) - Not yet ratified.
+* [RPIP-58: MEV Penalty Guardrail](RPIP-58.md) - Not yet ratified.
+* [RPIP-61: Balance Submission Guardrail](RPIP-61.md) - Not yet ratified.
 
-
-### Tokenomics Rework Content
-The tokenomics upgrade has not yet been ratified by the Rocket Pool pDAO.
-* [RPIP-43: Megapools](RPIP-43.md) - Partial Inclusion
-  * Including ETH-only validators.
-* [RPIP-42: Bond curves](RPIP-42.md) - Partial Inclusion
-  * Framework
-  * 4ETH minimum bond
-* [RPIP-59: Deposit Mechanics](RPIP-59.md)
-  * Standard and express queues.
-* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial Inclusion
-  * All but heuristic adjustments.
-* RPL Value Capture - One of: [RPIP-45: RPL Burn](RPIP-45.md) / [RPIP-50: RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators.
+### RPIP-49 Tokenomics Rework Content
+The RPIP-49 tokenomics rework has not yet been ratified by the Rocket Pool pDAO.
+* [RPIP-42: Bond curves](RPIP-42.md) - Partial
+* [RPIP-43: Megapools](RPIP-43.md)
+* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
+* [RPIP-59: Deposit Mechanics](RPIP-59.md)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 ## Key Links 
