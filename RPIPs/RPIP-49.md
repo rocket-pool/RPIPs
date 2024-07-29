@@ -105,7 +105,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-43: Megapools](RPIP-43.md) (includes ETH-only validators)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial Inclusion
   * UARS introduced with no_share, voter_share, and reth_commission
-  * RPL issuance extended to legacy nodes below cliff
+  * RPL issuance rewards extended to legacy nodes below cliff
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 * [RPIP-59: Deposit Mechanics](RPIP-59.md) (includes express queue)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
@@ -119,7 +119,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
   * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
   * May add in a semi-automated system of controlling voter_share, depending on outcome of Revenue Share vote
   * RPL inflation reduced to 1.5%  (from 5%)
-  * RPL issuance to node operators ends
+  * RPL issuance rewards to node operators end
 * RPL Value Capture based on vote outcome - Probably one of: [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
