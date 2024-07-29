@@ -113,7 +113,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 ### Saturn 2
 
 * [RPIP-42: Bond curves](RPIP-42.md) - Remainder
-  * 1.5ETH minimum bond. 
+  * 1.5 ETH minimum bond. 
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
