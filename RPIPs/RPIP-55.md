@@ -20,8 +20,7 @@ The intention of this Living Informational RPIP is to collate the release-releva
 
 ## Estimated Included RPIPs
 
-* [RPIP-30: RPL Staking Rework](RPIP-30.md) - Partial Inclusion
-  * Two-step RPL withdrawal process.
+* [RPIP-30: RPL Staking Rework](RPIP-30.md) - Remainder
 * [RPIP-57: Node Distributor User Fund Unbundling](RPIP-57.md) - Not yet ratified.
 * [RPIP-58: MEV Penalty Guardrail](RPIP-58.md) - Not yet ratified.
 * [RPIP-61: Balance Submission Guardrail](RPIP-61.md) - Not yet ratified.
