@@ -92,7 +92,7 @@ In this case study, we have 3 node operators (NOs). (A) has 8 ETH and no RPL sta
 <img src="../assets/tokenomics-explainers/003-figure-6.png" alt="Figure 6" width="1000px"></br>
 _Figure 6 - Case Study ETH-Only Growth Sankey Diagram_
 
-Now we see 9 more NOs identical to (A) join. As you can see, there’s a self-balancing effect. Voter Share value paid to NO B and C increased 4x even though they have the same RPL.	Surplus Share value increased 4x over the same supply of RPL. In short: node operators unwilling to take on RPL exposure still grow the protocol’s ability to meet rETH demand, and higher rETH supply makes RPL exposure more attractive.
+Now we see 9 more NOs identical to (A) join. As you can see, there’s a self-balancing effect. Voter Share increased 4x while the amount of staked RPL stayed the same. As a result, NO B and C earn 4x more from Voter Share (even though they have the same RPL). In short: node operators unwilling to take on RPL exposure still grow the protocol’s ability to meet rETH demand, and higher rETH supply makes RPL exposure more attractive.
 
 ## Lower Bonds and Capital Efficiency
 Zooming _all_ the way out, the total revenue is `reth_commision*reth_tvl_in_validators`. To get total ROI, we divide that by total investment, which is `(bonded_eth + rpl_mcap_in_eth)`. From this we can see that there are 4 ways for total ROI to improve if all else is held equal: (1) increased rETH commission, (2) increased rETH supply, (3) less bonded ETH, and (4) lower RPL market cap. Lower bonds are important because they are the only way to execute on (3) without decreasing rETH supply. In fact, lower bonds also help hit (2) by making it possible to service more rETH supply given the same node operator investment.

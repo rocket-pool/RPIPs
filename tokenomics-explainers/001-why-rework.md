@@ -54,8 +54,7 @@ RPL value change dominates rewards, and given the volatility in crypto, this is 
 Figure 1 below shows that many node operators simply opt out of topping off their RPL stake.  
   
 Further, the metric used for the RPL reward threshold is "RPL staked as a percentage of borrowed ETH", which means there are two ways to requalify for rewards. Top up to increase staked RPL, or exit minipools to reduce borrowed ETH. Some node operators have opted for the second option.
-  
-TODO -- update to more recent state
+
 <img src="../assets/tokenomics-explainers/001-figure-1.png" alt="Figure 1" width="1000px"></br>
 _Figure 1 - Rocket Pool Minipool Collateralization - [Source](https://harpocryptes.github.io/)_
   

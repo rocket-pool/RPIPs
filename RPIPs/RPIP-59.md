@@ -9,7 +9,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
-requires: 42, 43, 44
+requires: 43, 44
 tags: tokenomics-2024, tokenomics-content
 ---
 
