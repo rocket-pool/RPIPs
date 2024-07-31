@@ -91,7 +91,7 @@ This RPIP introduces a delay after protocol upgrades have been confirmed but pri
 Some form of value capture method will be included in the tokenomics rework package. Three options are being actively debated:
 * [RPL Burn](RPIP-45.md) - Use the surplus share to buy and burn RPL.
 * [RPL Buy & LP](RPIP-50.md) - Use the surplus share to buy RPL and deposit it in a liquidity pool. 
-* Direct the surplus share to vote-eligible Node Operators, proportional to their share of vote-eligible RP
+* Direct the surplus share to vote-eligible Node Operators, proportional to their share of vote-eligible RP.
 
 For Saturn 1, the share will be directed based on vote-eligible RPL staked in megapools. There will be a vote prior to Saturn 1 going live to determine the preferred strategy starting at Saturn 2.
 
