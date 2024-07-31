@@ -82,9 +82,9 @@ Here we describe the mechanics of Node Operator deposits and validator creation,
 ### [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
 
 This RPIP introduces a delay after protocol upgrades have been confirmed but prior to them coming into effect, and allows the security council to veto the upgrade during that delay. The veto is justified if the upgrade meets one of the following criteria:
-* It was subject to vote manipulation
-* It is a malicious action
-* It causes clear damage to the Rocket Pool project
+* It was subject to vote manipulation.
+* It is a malicious action.
+* It causes clear damage to the Rocket Pool project.
 
 ### RPL Value Capture
 
@@ -114,7 +114,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 ### Saturn 2
 
 * [RPIP-42: Bond curves](RPIP-42.md) - Remainder
-  * 1.5 ETH minimum bond. 
+  * 1.5 ETH minimum bond
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md)
   * Split may add a new share for all RPL, depending on outcome of Revenue Share vote
