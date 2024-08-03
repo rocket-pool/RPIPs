@@ -61,7 +61,7 @@ Array indexing in this section is zero-based.
 - If a node operator has more total bonded ETH in their megapool than would be necessary based on the current settings (eg, `reduced_bond` is reduced) and they have no `debt`, it SHALL be possible to reduce their bonded ETH and receive ETH `credit` for it
 - `credit` MUST be usable to create validators in a megapool
 - `credit` MAY be usable to mint rETH to the node operator's primary withdrawal address
-- `base_bond_array` SHALL be set to `[4, 8]`; note that this is NOT a pDAO protocol parameter.
+- `base_bond_array` SHALL be set to `[4, 8]`; note that this is NOT a pDAO protocol parameter
 
 
 
