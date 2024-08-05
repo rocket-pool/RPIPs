@@ -110,6 +110,7 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * [RPIP-47: Forced delegate upgrades](RPIP-47.md)
 * [RPIP-59: Deposit Mechanics](RPIP-59.md) (includes express queue)
 * [RPIP-60: Protocol Upgrade Guardrails](RPIP-60.md)
+* RPL Value Capture - Increased share to vote-eligible RPL staked in megapools
 
 ### Saturn 2
 
