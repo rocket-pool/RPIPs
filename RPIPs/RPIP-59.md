@@ -117,6 +117,7 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
   - Alternatively, assignments from ETH deposit could be deactived entirely. This would mean that all assignment and prestake transactions would have to be pDAO reimbursed and/or executed by the node operators.
 - Node operators are still able to perform arbitrage in case of a full deposit pool and a premium on rETH price, since the `deposit` transaction would assign to the validator immediately
 - The coupling of `deposit` and assignment also prevents indirect minting of rETH (by depositing, exiting the queue for credit and redeeming it for rETH) while the deposit pool is full
+- There is potential for moderate griefing by creating n validators and never calling `stake`. The griefer keeps n\*31 protocol ETH idle for 2 weeks at the cost of keeping n\*ETH_deposit of their own ETH idle and paying gas to `deposit` and reclaim funds from `dissolve`. The text notes that reclaiming funds MAY require further action from the node operator and MAY require additional temporary ETH. Friction could be added in either of those steps should this variety of griefing prove problematic. Alternatively, a small fee to reclaim funds would also be effective (though that would require a new specification etc.). 
 
 
 ## Copyright

@@ -79,7 +79,7 @@ Node operators can manage the set of validators in their megapool:
 In the following, "capital" refers to funds supplied for staking by either the
 node operator or pool stakers, including node operator staked RPL. "Rewards"
 refers to additional funds generated or obtained via staking, including
-consensus rewards, execution rewards, and RPL inflation. The split of rewards
+consensus rewards, execution rewards, and RPL issuance. The split of rewards
 into shares is defined in [RPIP-46](RPIP-46.md).
 
 - This RPIP assumes the continued use of separate 32 Ether validators. Support for

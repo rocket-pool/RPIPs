@@ -1,7 +1,7 @@
 ---
 rpip: 47
 title: Enable Forced Delegate Upgrades
-description: Allows protocol governance to force upgrade node operators after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
+description: Allows protocol governance to force upgrade megapool delegates after a Rocket Pool protocol upgrade takes place, and a grace period has expired. 
 author: LongForWisdom(@LongForWisdom), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Draft
@@ -31,10 +31,10 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 - Each `Megapool delegate` contract SHALL have an execution layer `expiration_block` variable which should initialize to "no expiration"
 - Each `Megapool delegate` contract SHALL have a non-modifiable `upgrade_buffer` value
   - The `Megapool delegate`'s `upgrade_buffer` SHALL be 120 days
-- The only permitted modification to a `Megapool delegate`'s `expiration_block` variable SHALL be for any protocol contract to set its value to now + its `upgrade_buffer`
+- The only permitted modification to a `Megapool delegate`'s `expiration_block` variable SHALL be for any protocol contract to set its value to the current block + its `upgrade_buffer`
 
 ### Upgrade Process
-- When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to now + their `upgrade_buffer`s
+- When a new `megapool delegate` is released, a protocol contract SHOULD update the `expiration_block` of all in-use `megapool delegate`s to the current block + their `upgrade_buffer`s
 - A node operator SHALL be able to upgrade their `megapool delegate` to the latest `megapool delegate` at any time
 - Functionality MAY be provided to allow a node operator to automatically use the latest `megapool delegate`
 - After a `megapool delegate`'s `expiration_block` has passed, any megapools using the expired `megapool delegate` SHALL be permissionlessly upgradeable to the latest `megapool delegate`
