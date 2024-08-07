@@ -20,13 +20,12 @@ The intention of this Living Informational RPIP is to collate the release-releva
 
 ## Estimated Included RPIPs
 
-### Tokenomics Rework Content
-The tokenomics upgrade has not yet been ratified by the Rocket Pool pDAO.
-* [RPIP-42: Bond curves](RPIP-42.md) - Partial Inclusion
-  * 1.5ETH minimum bond. 
+### RPIP-49 Tokenomics Rework Content
+The RPIP-49 tokenomics rework has not yet been ratified by the Rocket Pool pDAO.
+* [RPIP-42: Bond curves](RPIP-42.md) - Remainder
 * [RPIP-44: Forced exits](RPIP-44.md)
-* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial Inclusion
-  * Heuristic adjustments.
+* [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Remainder
+* RPL Value Capture based on vote outcome - Probably one of: [RPIP-45: RPL Burn](RPIP-45.md) / [RPIP-50: RPL Buy & LP](RPIP-50.md) / Increased share to voting Node Operators
 
 ## Key Links 
 TBC - Include Audits, Code Repositories, Release Blog Posts, Upgrade contract, etc once they are posted.
