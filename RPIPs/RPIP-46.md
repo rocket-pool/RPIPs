@@ -22,11 +22,11 @@ This proposal also includes:
 
 ## Motivation
 
-Universal Adjustable Revenue Split (UARS) is motivated by the desire for increased flexibility for the Rocket Pool protocol as the Ethereum ecosystem evolves in the future. It's critical that the protocol can respond to the actions of other actors as effectively as possible and UARS helps facilitate this. It is also important that the protocol can balance the demand and supply of rETH to encourage sustainable and continuous growth on both sides of this equation. 
+Universal Adjustable Revenue Split (UARS) is motivated by the desire for increased flexibility for the Rocket Pool protocol as the Ethereum ecosystem evolves in the future. It's critical that the protocol can respond to the actions of other actors as effectively as possible and UARS helps facilitate this. It is also important that the protocol can balance the demand and supply of rETH to encourage sustainable and continuous growth on both sides of this equation.
 
-A fixed percentage of RPL inflation is currently being used to fund ongoing maintenance and development of the Rocket Pool protocol, a valuable RPL token means more bang for the same amount of inflation, and UARS supports multiple mechanisms that support RPL value. Competent and aligned governance will also be necessary as the protocol evolves and UARS facilitates this via directing a share of revenue to holders of vote-eligible RPL. 
+A fixed percentage of RPL inflation is currently being used to fund ongoing maintenance and development of the Rocket Pool protocol, a valuable RPL token means more bang for the same amount of inflation, and UARS includes multiple mechanisms that support RPL value. Competent and aligned governance will also be necessary as the protocol evolves and UARS facilitates this via directing a share of revenue to holders of vote-eligible RPL.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 ### Universal Adjustable Revenue Split
@@ -49,7 +49,7 @@ This specification introduces the following pDAO protocol parameters:
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
-   2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies 
+   2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies
 5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share` SHALL be updateable by any address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 6. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
@@ -80,7 +80,7 @@ Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a 
 1. The choices SHALL include the state from Saturn 1
 2. The choices SHOULD include [RPIP-45: RPL Burn](RPIP-45.md) and [RPIP-50: RPL LP](RPIP-50.md)
    1. The choices SHOULD specify a new share (eg, `buy_and_burn_share`) with an initial value
-   2. The choices SHOULD specify a reduction of other shares (eg, `voter_share`) to balance the new share 
+   2. The choices SHOULD specify a reduction of other shares (eg, `voter_share`) to balance the new share
 3. The choices MAY include novel options created for this vote
 4. The selected mechanism MUST be implemented in Saturn 2
 5. If the state from Saturn 1 is chosen, the entirety of the ["Implementing the revenue share vote"](#implementing-the-revenue-share-vote) section below SHALL be deleted
@@ -92,7 +92,7 @@ Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a 
    2. Node operators (`rocketClaimNode`) allocation SHALL be set to 0%
    3. pDAO (`rocketClaimDAO`) allocation SHALL be set to 95%
    4. oDAO (`rocketClaimTrustedNode`) allocation SHALL be set to 5%
-2. There SHALL be no RPL issuance rewards to node operators 
+2. There SHALL be no RPL issuance rewards to node operators
 
 ### Implementing the revenue share vote
 For this section, we'll be writing `new_share`. When the revenue share vote is passed, that will define the share's name and this section SHALL be updated.
@@ -110,11 +110,11 @@ For this section, we'll be writing `new_share`. When the revenue share vote is p
    2. It MUST revert if it's been called within the last 45 days
    3. It MUST revert if the total RPL eligible to vote relative to the circulating supply of RPL is between `vote_eligible_target_min` and `vote_eligible_target_max` (inclusive)
       1. RPL eligible to vote includes both megapool staked RPL and legacy staked RPL
-      2. The circulating supply of RPL is the total supply of RPL minus RPL owned by the protocol (eg, in treasury or an LP as a result of RPIP-50) 
+      2. The circulating supply of RPL is the total supply of RPL minus RPL owned by the protocol (eg, in treasury or an LP as a result of RPIP-50)
    4. If <`vote_eligible_target_min` of total RPL is eligible to vote and the function succeeds:
       1. `voter_share` is increased to `voter_share * (1+voter_share_relative_step)`
       2. `new_share` is decreased by the difference between the old and new `voter_share`
-         1. If this would reduce `new_share` below 0%, the function call MUST revert 
+         1. If this would reduce `new_share` below 0%, the function call MUST revert
    5. If >`vote_eligible_target_max` of total RPL is eligible to vote and the function succeeds:
       1. `voter_share` is decreased to `voter_share / (1+voter_share_relative_step)`
       2. `new_share` is increased by the difference between the old and new `voter_share`
@@ -142,7 +142,7 @@ Some example concrete guidelines:
 - If the node operator queue is continuously over 500 deposits for 2 weeks and the trend is upwards, the pDAO should act to either increase rETH demand or decrease node operator supply. This could use one or more of the following tactics:
   - Eg, rETH demand can be increased by spending more RPL on marketing or partner incentives; that RPL can be sourced by increasing RPL inflation. This is beneficial because it allows targeted intervention to spur rETH demand.
   - Eg, rETH demand can be increased by increasing `reth_share` alongside a counterbalancing decrease to `voter_share`
-  - Eg, rETH demand can be increased by increasing `reth_share` _and_ node operator supply can be simultaneously decreased by a counterbalancing decrease to `no_share` 
+  - Eg, rETH demand can be increased by increasing `reth_share` _and_ node operator supply can be simultaneously decreased by a counterbalancing decrease to `no_share`
 - If the node operator queue is continuously over 1000 deposits for 4 weeks and the trend is upwards, the pDAO should take action to decrease the supply of node operators
 - When there are large changes to the system (eg, Saturn 2 release), do note that some volatility is expected and should be considered when acting
 - If we are approaching the self-limits described in [RPIP-17](RPIP-17.md), the pDAO should act to limit one or both of rETH demand (via reducing RPL inflation spend on rETH demand and/or lower `reth_share`) or node operator supply (via lower `no_share`). This would result in higher `voter_share` (or lower RPL inflation).
@@ -173,11 +173,11 @@ UARS is meant to enable the protocol to listen to the market and act effectively
 A few details about the reasoning behind the spec:
 - We provide for future automated controller contracts, but do not create any at this time. This is partly because we are fairly naive to the market, and partly in the interest of time to market for the next upgrade.
 - The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
-  - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO. 
+  - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO.
 - The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
 
 ### RPL issuance rewards and inflation
-As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. At this point, the bond curve should be creating sufficient attraction that we believe we can get to this desired end state more smoothly.
+As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. Saturn 1 will continue to provide RPL issuance rewards to help facilitate a smoother transition, but with Saturn 2 the bond curve alone should allow voter share to provide sufficient incentive to stake RPL.
 
 ## Security Considerations
 - `node_operator_commission_share_council_adder` is intended to be used in a particular way, but the security council may misuse it in other ways
@@ -191,7 +191,7 @@ As the core value capture is no longer based on a minimum RPL requirement, Satur
 - Vote-eligibility may not be a strong proxy for "active voters"
   - The incentives are purely for staking vote-eligible RPL, not actual voting
   - It will be important to supervise how much of the vote-eligible RPL is actually voting and/or delegating
-    - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot 
+    - There was some discussion around incentivizing voting more directly, but (a) they were complicated and (b) there's a fear that while voting can be incentivized, _informed/thoughtful_ voting cannot
 
 ## Historic revenue share values
 | Date                         | Share Settings                                           |

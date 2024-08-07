@@ -1,7 +1,7 @@
 ---
 rpip: 50
 title: RPL Buy & LP
-description: Direct revenue surplus from borrowed ETH to buy 90:10 RPL/rETH liquidity pool shares. 
+description: Direct revenue surplus from borrowed ETH to buy 90:10 RPL/rETH liquidity pool shares.
 author: Valdorff (@Valdorff)
 discussions-to: TBD
 status: Draft
@@ -16,17 +16,17 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 
 ## Motivation
 
-Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. The benefits of improved liquidity are better price discovery and easier entry and exit for market participants. This proposal intends to drive value to the RPL token and create liquidity via a buy and liquidity pooling mechanism. 
+Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. The benefits of improved liquidity are better price discovery and easier entry and exit for market participants. This proposal intends to drive value to the RPL token and create liquidity via a buy and liquidity pooling mechanism.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework).
 
 ## Specification
 - A share of revenue from borrowed ETH SHALL be directed to a smart contract for the purpose of this liquidity provision
 - Once `lp_deposit_threshold` has been reached, any user SHALL be able to call a function to:
-  - Convert the ETH to rETH via native mint if possible, or using a specified `backup_reth_pool` 
+  - Convert the ETH to rETH via native mint if possible, or using a specified `backup_reth_pool`
   - Execute a single-asset deposit of `lp_deposit_threshold` to the `target_pool`
   - The caller SHALL receive a gas refund based on precalculated gas and the BASEFEE opcode
-  - If the function has been called in the last `lp_deposit_cooldown` blocks, it MUST revert 
+  - If the function has been called in the last `lp_deposit_cooldown` blocks, it MUST revert
 - The initial settings SHALL be:
   - `backup_reth_pool`: `0x1E19CF2D73a72Ef1332C882F20534B6519Be0276`, a Balancer rETH/ETH metastable pool
   - `target_pool`: <ADDRESS TBD>, a Balancer weighted pool with 90% RPL, 10% rETH, and a 0.5% swap fee
@@ -42,7 +42,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
   - It should be modified by governance if those criteria are not being met
 - The pool's swap fee is set on the higher end to discourage thrashing and low-value arbitrage
 - The deposit cooldown is set to prevent multiple distributions in quick succession purely to enable arbitrage
-- The pool is most vulnerable to value extraction attacks when `lp_deposit_threshold` is large relative to the pool size (ie, it significantly moves the price). It is recommended that the pDAO place a large amount of protocol-owned liquidity in the pool to begin with. This liquidity can be removed once the "Buy & LP" process has built up size sufficiently. 
+- The pool is most vulnerable to value extraction attacks when `lp_deposit_threshold` is large relative to the pool size (ie, it significantly moves the price). It is recommended that the pDAO place a large amount of protocol-owned liquidity in the pool to begin with. This liquidity can be removed once the "Buy & LP" process has built up size sufficiently.
 - Some resources for Balancer weighted pools: https://docs.balancer.fi/concepts/pools/weighted.html, https://docs.balancer.fi/reference/math/weighted-math.html, and https://balancer.fi/whitepaper.pdf. If using this solution, some math should be done to understand what size pool and threshold make sense to avoid significant value extraction.
 - The upgradable contract allows flexibility such as, but not limited to:
   - A new pool could be targeted

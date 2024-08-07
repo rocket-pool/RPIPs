@@ -23,9 +23,9 @@ This proposal establishes a contract that holds ETH from protocol revenue and al
 
 ## Motivation
 
-Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. This proposal intends to drive value to the RPL token via a buy-and-burn mechanism. 
+Ongoing protocol development and maintenance of Rocket Pool is funded by RPL inflation. Given this truth, a higher RPL price translates to more resources available for the development and maintenance of the protocol. This proposal intends to drive value to the RPL token via a buy-and-burn mechanism.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework).
 
 ## Implementation thoughts
 There have been previous buy+burn mechanics susceptible to gaming. To that end, here's an example design that focuses on avoiding discontinuities by smoothly unlocking the funds available for exchange.
@@ -45,7 +45,7 @@ The way this works is that:
 - The swap price will be based on a long Uniswap TWAP
   - For safety, the protocol should ensure we have enough protocol-owned liquidity in that Uniswap ETH/RPL pool
   - The swap price gives `rpl_to_eth_oracle_price * (1 + bonus_per_unlocked_eth * Available)` ETH per RPL
-  - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's unclear if this is necessary, but it seems prudent to include the tool. 
+  - `bonus_per_unlocked_eth` should be set to 0 to start; if we see that certain market conditions cause undesirable ETH buildup, this number should be increased. For example, setting it to .00001 would pay out with a 1% bonus per 1000 Available ETH. This prevents a slowly gaining price from indefinitely accumulating ETH. It's unclear if this is necessary, but it seems prudent to include the tool.
 
 Let's visualize what being able to burn looks like in practice using real RPL price data and a simulated 12-hour TWAP.
 ![twap.png](../assets/rpip-45/twap.png)
