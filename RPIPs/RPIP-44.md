@@ -20,11 +20,11 @@ There is at least one additional use case not addressed in this RPIP, which is t
 
 ## Motivation
 
-Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool node operators. Currently, the protocol has limited recourse against such offending node operators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens. 
+Execution Layer Triggerable Exits are motivated by the need to combat MEV theft by malicious Rocket Pool node operators. Currently, the protocol has limited recourse against such offending node operators and the proposed functionality helps to change this. It's important to continue to pursue such improvements to ensure rETH delivers the advertised APY and competes favorably with other liquid staking tokens.
 
 A secondary motivation is to improve the node operator user experience, the ability to request exit of their validators via the protocol is an improvement to the current experience.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 
@@ -37,7 +37,7 @@ Funds (ETH) associated with a megapool SHALL be accounted in (at least) the foll
 - Deposits (`deposited`): Funds currently staked on the beacon chain for validators associated with this megapool
 - Withdrawals (`withdrawn`): Funds received into the megapool via withdrawals from the beacon chain, including both principal and the node's share of rewards, NOT including pool stakers' share of the rewards
 - Debt (`debt`): Penalties or shortfall from exited validators (see [RPIP-43](RPIP-43.md))
-  
+
 The following quantity, `deficit`, is derived from the categorised funds above:
 ```math
 $$ \mathtt{deficit} = \mathtt{debt} - \mathtt{received} - \mathtt{credit} -  \mathtt{withdrawn} $$
@@ -65,7 +65,7 @@ The accounting categories are an attempt to simplify the tracking of value withi
 
 The permissioned exit functionality is meant as a simple convenience. The permissionless exit functionality is meant to avoid ongoing losses to rETH in cases of negligence or maliciousness.
 
-This functionality is scheduled to be implemented in Saturn 2 for two reasons: (a) that is when we are confident [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) won't block release, and (b) to minimize the significant scope within Saturn 1. 
+This functionality is scheduled to be implemented in Saturn 2 for two reasons: (a) that is when we are confident [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002) won't block release, and (b) to minimize the significant scope within Saturn 1.
 
 ## Security Considerations
 - A misbehaving oDAO gains the ability to force exit any validator by applying penalties to increase `deficit` beyond `exit_deficit`. Alongside a malicious protocol upgrade, this would allow for control of all principal.

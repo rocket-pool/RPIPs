@@ -50,7 +50,7 @@ Array indexing in this section is zero-based.
   - Note that this does not replace RPIP-58, which applies to legacy minipools
 - Prior to creating a validator, there MUST be no `debt` on the megapool
   - There MAY be a convenience function to use a single ETH payment to pay off existing `debt` and create an additional validator
-- When a node operator creates a validator, with `i` validators in the megapool prior to adding: 
+- When a node operator creates a validator, with `i` validators in the megapool prior to adding:
   - If `i < base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[i]`
   - If `i ≥ base_bond_array.length`: the required `user_deposit` is the amount of additional ETH to bring the user's total bond up to `base_bond_array[base_bond_array.length-1] + ( 1 + i - base_bond_array.length) * reduced_bond`
 - When a node operator removes a validator, with `i` validators in the megapool prior to removing:
@@ -69,7 +69,7 @@ Array indexing in this section is zero-based.
 This specification converts the following to pDAO protocol parameters:
 | Name              | Type   | Initial Value | Guard Rails |
 |-------------------|--------|---------------|-------------|
-| `base_bond_array' | ETH [] | [4, 8]        | != []       |
+| `base_bond_array` | ETH [] | [4, 8]        | != []       |
 
 - Update `reduced_bond` to 1.5 ETH
 
@@ -82,7 +82,7 @@ This portion of the RPIP SHALL be considered Living. It may be updated by a DAO 
 
 
 ## Rationale
-The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations). 
+The bond curve is an attempt to get close to maximizing capital efficiency while maintaining safety. It balances capital efficiency with slashing, leakage, and MEV theft risks as described in [Security considerations](#security-considerations).
 
 "Bond reduction" for credit is explicitly supported so that node operators that deposited under higher requirements are not permanently disadvantaged. At the same time, there is no equivalent support for "bond increase". This is because those validators are already running and it would need a heavy-handed approach, such as force exiting, to enforce bond increase. Since the bond curve is based on total bonded ETH when depositing, node operators adding new validators would need to add enough ETH bond to match the "bond increased" curve.
 
@@ -94,7 +94,7 @@ The bond curve is an attempt to get close to maximizing capital efficiency while
   - The plots below show `base_bond_array`=[4, 8] and `reduced_bond`=1.5 with a solo staking APY of 4%. As we can see, MEV theft always increases yield and the impact is heightened at low commission. The reality is that we've seen very little of this type of behavior. We may have to change our approach if we see MEV theft increase or if we wish to support node operator commission share under 2.5%.
   - A moderate step would be to change `base_bond_array` to a curve that reduces MEV theft advantage in the current context (commission, MEV landscape...) at the cost of user complexity, eg `[4.2, 6.8. 9.2. 11.4. 13.5. 15.5. 17.4]`
   - A larger step would be to pass EL rewards to node operators and charge them for the benefit. See eg: [Valdorff's research](https://github.com/Valdorff/rp-thoughts/tree/main/leb_safety#negative-commission-aka-assign-execution-layer-rewards-to-nos) or [Epineph's forum post](https://dao.rocketpool.net/t/reimagining-large-block-theft/2146)
-  
+
 | 2.5% commission                                 | 5% commission                                |
 |-------------------------------------------------|----------------------------------------------|
 | ![img.png](../assets/rpip-42/theft_2.5pct.png)  | ![img.png](../assets/rpip-42/theft_5pct.png) |

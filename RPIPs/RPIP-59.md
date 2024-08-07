@@ -23,7 +23,7 @@ This proposal also changes the deposit mechanics: In case of a queue, the initia
 
 These changes are intended to strengthen the protocol by 1) rewarding existing node operators who have shown amazing loyalty to the protocol 2) minimizing governance churn from RPL staked node operators being stuck in queue without voting privileges 3) prioritizing initial deposits to allow easier onboarding of people trialing Rocket Pool before deciding to migrate in full 4) maximizing Rocket Pool's major decentralization advantage over other LSTs - a huge set of small node operators.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 
@@ -64,18 +64,18 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 - The transaction SHALL validate that:
   - the public key has length 48
   - the BLS signature has length 96
-- If possible, `deposit` SHALL assign one validator as described below 
+- If possible, `deposit` SHALL assign one validator as described below
 
 #### Assigning ETH from the Deposit Pool
 - ETH from the deposit pool SHALL be assigned to the validator at the front of the queue by sending 32 ETH to the associated megapool contract
   - rETH mints SHALL assign `floor(ETH_deposit / 32)` validators
   - There MUST be a permissionless function to execute assignments
 - The assignment SHALL execute the `prestake` transaction, staking 1 ETH to the beacon chain using the values provided in the step above
-- The assignment SHALL remove the validator from the queue 
+- The assignment SHALL remove the validator from the queue
 
 #### `stake` Transaction
 - `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
-- If the beacon chain stake is invalid, the validator SHALL be scrubbed 
+- If the beacon chain stake is invalid, the validator SHALL be scrubbed
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
 - If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
   - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
@@ -98,8 +98,8 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 
 ### Deposit Mechanics
 - `prestake` is moved back from `deposit` to assignment to allow for exiting of the queue
-- To allow anyone to execute `prestake`, the validator specific data is stored 
-- Since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. node operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically. 
+- To allow anyone to execute `prestake`, the validator specific data is stored
+- Since adding `prestake` to assignments potentially  increases gas cost for rETH deposits, social assignments are deactivated. node operators will be able to assign to themselves when at the front of the queue. Additionally, the pDAO may fund keepers that execute assignments automatically.
 
 ## Security Considerations
 
@@ -117,7 +117,7 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
   - Alternatively, assignments from ETH deposit could be deactived entirely. This would mean that all assignment and prestake transactions would have to be pDAO reimbursed and/or executed by the node operators.
 - Node operators are still able to perform arbitrage in case of a full deposit pool and a premium on rETH price, since the `deposit` transaction would assign to the validator immediately
 - The coupling of `deposit` and assignment also prevents indirect minting of rETH (by depositing, exiting the queue for credit and redeeming it for rETH) while the deposit pool is full
-- There is potential for moderate griefing by creating n validators and never calling `stake`. The griefer keeps n\*31 protocol ETH idle for 2 weeks at the cost of keeping n\*ETH_deposit of their own ETH idle and paying gas to `deposit` and reclaim funds from `dissolve`. The text notes that reclaiming funds MAY require further action from the node operator and MAY require additional temporary ETH. Friction could be added in either of those steps should this variety of griefing prove problematic. Alternatively, a small fee to reclaim funds would also be effective (though that would require a new specification etc.). 
+- There is potential for moderate griefing by creating n validators and never calling `stake`. The griefer keeps n\*31 protocol ETH idle for 2 weeks at the cost of keeping n\*ETH_deposit of their own ETH idle and paying gas to `deposit` and reclaim funds from `dissolve`. The text notes that reclaiming funds MAY require further action from the node operator and MAY require additional temporary ETH. Friction could be added in either of those steps should this variety of griefing prove problematic. Alternatively, a small fee to reclaim funds would also be effective (though that would require a new specification etc.).
 
 
 ## Copyright

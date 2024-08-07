@@ -9,7 +9,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
-requires: 
+requires:
 tags: tokenomics-2024, tokenomics-content
 ---
 
@@ -19,11 +19,11 @@ Regularly scheduled protocol upgrades now have a delay between when they are pas
 
 ## Motivation
 
-This RPIP is motivated by the desire to protect participants in Rocket Pool as best as possible from unfavorable upgrades. Participants should have time to exit the protocol if it changes in a way they do not agree with, _prior_ to those changes coming into effect. 
+This RPIP is motivated by the desire to protect participants in Rocket Pool as best as possible from unfavorable upgrades. Participants should have time to exit the protocol if it changes in a way they do not agree with, _prior_ to those changes coming into effect.
 
 The security council veto comes from a desire to have a last-resort layer of security against obviously harmful actions.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 
@@ -69,7 +69,7 @@ Any upgrade will have `proposal.vote.delay.time` (currently 1 week) and `upgrade
   - This is mitigated by the pDAO's ability to replace the security council. While a valid proposal could be blocked once, it could not be blocked indefinitely
 - The veto process can itself be modified by contract upgrades. However, if a corrupt proposal tries to change the veto process, that can be defended against by using the veto process.
 - The security council veto means that if pDAO governance were captured, protocol upgrades could be stopped at will (by installing a compromised security council). The oDAO would be unable to pass any contract upgrades (without the approval of the compromised security council), and the only way back would be to recapture pDAO governance. While this means there is a real tradeoff, this "inability to upgrade" is seen as less problematic than the "ability to pass any upgrade" that a rogue oDAO would have without the veto.
-- The quorum for this veto is lower than for security council proposals (controlled by `rocketDAOProtocolSettingsSecurity.members.quorum`). This is intended to provide additional resilience to, eg, a rogue oDAO that attempts to bribe a security council into not vetoing a corrupt proposal (as fewer bribe-resistant members are needed). This sort of interaction doesn't exist for normal security council proposals, which is what leads to a different desired threshold. 
+- The quorum for this veto is lower than for security council proposals (controlled by `rocketDAOProtocolSettingsSecurity.members.quorum`). This is intended to provide additional resilience to, eg, a rogue oDAO that attempts to bribe a security council into not vetoing a corrupt proposal (as fewer bribe-resistant members are needed). This sort of interaction doesn't exist for normal security council proposals, which is what leads to a different desired threshold.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

@@ -18,11 +18,11 @@ This proposal drastically reduces the gas to add validators and distribute rewar
 
 ## Motivation
 
-Megapools are motivated by several desires; to lower ongoing costs, to lower the barrier to entry, and to improve penalty handling across what would currently be multiple minipools. Both ongoing and upfront costs are reduced by megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. The accounting and processing of penalties is easier to handle with a single contract. 
+Megapools are motivated by several desires; to lower ongoing costs, to lower the barrier to entry, and to improve penalty handling across what would currently be multiple minipools. Both ongoing and upfront costs are reduced by megapools due to the efficiency savings achieved by using a single smart contract over multiple minipool contracts. The accounting and processing of penalties is easier to handle with a single contract.
 
 ETH-only node operation is motivated by a desire to support growth in the demand for rETH and further lower the barrier to entry to Rocket Pool.
 
-This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md). 
+This RPIP is part of a set of proposals motivated by a desire to rework Rocket Pool's tokenomics to ensure the protocol’s continued value, development, and longevity. For more details, see the supporting documentation [here](../tokenomics-explainers/001-why-rework.md).
 
 ## Specification
 
@@ -70,7 +70,7 @@ Node operators can manage the set of validators in their megapool:
 ### `debt` Variable
 - There SHALL be a `debt` variable that is initially set to 0
 - The oDAO SHALL be able to increase `debt` to apply penalties (see [RPIP-42](./RPIP-42.md/#penalizable-offenses)) by majority vote
-  - If this causes the megapool to meet the criteria for a non-node operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction 
+  - If this causes the megapool to meet the criteria for a non-node operator initiated exit (see [RPIP-44](RPIP-44.md)), it is RECOMMENDED that an exit is initiated by the same transaction
 - There SHALL be a function to pay off `debt` with ETH. The ETH SHALL be sent to the rETH contract and the `debt` SHALL be reduced by the amount.
 
 
@@ -98,7 +98,7 @@ into shares is defined in [RPIP-46](RPIP-46.md).
   - When called, `(voter_share - node_operator_commission_share_council_adder) * borrowed_portion` of rewards SHALL be sent to a merkle rewards
     distributor contract
   - If `debt` exists when called, the remaining rewards SHALL first be used to pay off `debt`
-  - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds 
+  - When called, any remaining rewards SHALL then be held in the megapool as unclaimed node operator funds
   - This function SHALL be permissionless
   - If called by the node operator, this function SHOULD claim all unclaimed node operator funds
 - There SHALL be a capital distribution function in the megapool
@@ -178,7 +178,7 @@ A few details about the reasoning behind the spec:
 - If ETH is sent to a megapool, the spec will count it similarly to any other reward - this makes it quite easy to handle as we don't need to track incoming amounts etc, just the balances
 
 ## Security considerations
-- There is a process for permissionlessly distributing funds that won't go to the node operator so that funds are never "stuck". Importantly, this distribution does not distribute the node operator's share, but rather accounts for it for later claiming. This prevents potential attacks where the withdrawal address causes transactions to fail on an attempted distribution. 
+- There is a process for permissionlessly distributing funds that won't go to the node operator so that funds are never "stuck". Importantly, this distribution does not distribute the node operator's share, but rather accounts for it for later claiming. This prevents potential attacks where the withdrawal address causes transactions to fail on an attempted distribution.
 - Both megapool staked RPL and legacy staked RPL are eligible for vote. This is particularly critical while most vote comes from legacy staked RPL. If only megapool staked RPL were counted, there would be a vulnerable window with very low total vote power available.
 
 ## Reference Implementation
