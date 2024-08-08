@@ -152,7 +152,7 @@ The below is generally agreed to be the steps to be completed before we can cons
 3. **Done** - Create high-level explanations and informational material for the full proposal for consumption by the wider community.
 4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. **Done** - Update the proposal and specifications as needed taking into account wider community feedback.
-6. **Done** - Run a forum temperature check vote on the rework package (bar the 'still-to-ratify' list above).
+6. **Done** - Run a forum [temperature check poll](https://dao.rocketpool.net/t/rpip-49-tokenomics-rework-update-2-sentiment-poll/3136) on the rework package (bar the 'still-to-ratify' list above).
 7. **Active**  - Run a [snapshot vote](https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d) on the rework package as Living RPIPs, acknowledging the existence of the 'still-to-ratify' list above.
 8. Run one or more snapshot vote(s) as blockers are cleared from the 'still-to-ratify' list. The end state will include no remaining blockers and the status of the rework RPIPs set to Final.
 
