@@ -29,13 +29,13 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.minimum` SHALL be set to 5%
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
-- [Reward Tree Spec v10] SHALL be implemented, which consists of the following changes
+- [Reward Tree Spec v10](../assets/rpip-xx/rewards-calculation-spec.md) SHALL be implemented, which consists of the following changes
   - For minipools that are opted into the smoothing pool, use `commission = max(contract_commission, 10% + 0.4% * min(10, percent_of_borrowed_ETH))` when calculating smoothing pool rewards
   - For the same minipools as above, calculate their individual beacon chain rewards during the rewards period and give them a bonus (`node_reward_bonus`) based on `max(0, commission - contract_commission)`
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
     - Credit modified reward bonuses as `node_reward_bonus * (remaining_balance / total_reward_bonuses)`
-- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md`) MAY be used for reward periods ending before [Reward Tree Spec v10] is available. This SHOULD affect no more than one reward submission after the vote for this proposal ends
+- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10] is available. This SHOULD affect no more than one reward submission after the vote for this proposal ends
 
 ## Rationale
 ### Megapool Conversions
