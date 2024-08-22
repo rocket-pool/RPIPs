@@ -640,7 +640,7 @@ totalEthForMinipools += minipoolEth
 ```
 
 ### Calculating Consensus Reward Bonuses
-If megapools are available, skip this section and award no consensus rewards bonus.
+Once [megapools](../../RPIPs/RPIP-43.md) are available, skip this section and award no consensus reward bonus.
 
 Otherwise, define `totalConsensusBonus`, which will serve to store the cumulative total of the minipools' reward bonuses.
 ```go
