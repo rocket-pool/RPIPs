@@ -21,11 +21,11 @@ The following updates have been made from [v8](./legacy/rewards-calculation-spec
 - For minipools with less than 14% commission, introduce a bonus based on RPL stake and the consensus rewards they earned
 
 #### Minor Changes
+- Simplified `lastReduceTime` condition in Calculating Attestation Performance and Minipool Scores
 
 #### Clarifications
 
-- fixed a typo in Calculating Attestation Performance and Minipool Scores
-
+- Fixed a typo in Calculating Attestation Performance and Minipool Scores
 
 ---
 
@@ -676,7 +676,7 @@ if totalConsensusBonus > remainingBalance {
 ```go
 nodeBonus[node] *= correctionFactor
 ```
-At last, add the reward bonus to the node's ETH claim and add `totalConsensusBonus` to the total claim tally:
+At last, add the reward bonuses to the individual nodes' ETH claims and to the total claim tally:
 ```go
 nodeEth[node] += nodeBonus[node]
 totalEthForMinipools += nodeBonus[node]
