@@ -35,7 +35,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
     - Credit modified reward bonuses as `node_reward_bonus * (remaining_balance / total_reward_bonuses)`
-- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10] is available. This SHOULD affect no more than one reward submission after the vote for this proposal ends
+- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-xx/rewards-calculation-spec.md) is available. This SHOULD affect no more than one reward submission after the vote for this proposal ends
 
 ## Rationale
 ### Megapool Conversions
