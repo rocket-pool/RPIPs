@@ -365,7 +365,7 @@ Otherwise, define `delta = 1 Eth`.
 
 Loop 60 times. In each loop:
 1. Divide delta by 2, `delta = delta / 2`
-1. Square y, `y = y * y /  1 Eth`
+1. Square y, `y = y * y / 1 Eth`
 1. If `y >= 2 Eth`:
     * Add `delta` to `result`, i.e. `result = result + delta`
     * Divide `y` by 2, i.e. `y = y / 2` 
@@ -601,7 +601,7 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     ```
 3. Get the parent's node `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee:
     ```go
-    fee = max(baseFee, 1e17 + 4e15 * min(10e18, percentOfBorrowedETH))
+    fee = 0.1 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth)
     ```
 4. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
     ```go
@@ -640,18 +640,22 @@ totalEthForMinipools += minipoolEth
 ```
 
 ### Calculating Consensus Reward Bonuses
-Once [megapools](../../RPIPs/RPIP-43.md) are available, skip this section and award no consensus reward bonus.
+Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) deployment contract for whether the upgrade has already been performed.
+```go
+rocketUpgradeOneDotFour.executed()
+```
+Should this call not be possible, either because there exists no contract at the address returned by `rocketStorage.getAddress(keccak256("rocketUpgradeOneDotFour"))` or because the contract does not have the expected interface, proceed with the bonus calculation. Should the call return `false`, also proceed with the calculation. In case the call returns `true`, skip this section and do not award a consensus reward bonus to any node.
 
-Otherwise, define `totalConsensusBonus`, which will serve to store the cumulative total of the minipools' reward bonuses.
+Define `totalConsensusBonus`, which will serve to store the cumulative total of the minipools' reward bonuses.
 ```go
 totalConsensusBonus := 0
 ```
 For each minipool, define the time period for which the reward bonus is to be paid out.
 ```go
 rewardStartTime = max(startTime, statusTime, optInTime)
-rewardStartBcSlot := math.Floor((rewardStartTime - genesisTime) / secondsPerSlot)
+rewardStartBcSlot := math.Ceil((rewardStartTime - genesisTime) / secondsPerSlot)
 rewardEndTime = min(endTime, optOutTime)
-rewardEndBcSlot := math.Floor((rewardEndTime - genesisTime) / secondsPerSlot)
+rewardEndBcSlot := math.Ceil((rewardEndTime - genesisTime) / secondsPerSlot)
 ```
 For each slot within the interval, get the list of validator withdrawals (e.g. `/eth/v2/beacon/blocks/<slotIndex>`). Note the `address` and `amount` for withdrawals that correspond to an eligible minipool and add them to the minipool's total. Withdrawals that occur before `rewardStartBcSlot` or after `rewardEndBcSlot` should be ignored.
 ```go
@@ -660,21 +664,18 @@ minipoolWithdrawals[address] += amount
 Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus.
 ```go
 bonusFee := fee - baseFee
-consensusIncome := max(0, endBcBalance + minipoolWithdrawals[minipool.Address] - max(32e18, startBcBalance))
-bonusShare := (1e18 - bond / 32e18) * bonusFee
-minipoolBonus := consensusIncome * bonusShare
+consensusIncome := max(0, endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance))
+bonusShare := bonusFee * (32 Eth - bond) / 32 Eth
+minipoolBonus := consensusIncome * bonusShare / 1 Eth
 nodeBonus[minipool.OwningNode] += minipoolBonus
 totalConsensusBonus += minipoolBonus
 ```
-Should the remaining balance not be sufficient to cover `totalConsensusBonus`, calculate a correction factor and apply it to every node.
+Should the remaining balance not be sufficient to cover `totalConsensusBonus`(), calculate a correction factor and apply it to every node.
 ```go
 remainingBalance := smoothingPoolBalance - totalEthForMinipool
-if totalConsensusBonus > remainingBalance {
-    correctionFactor := remainingBalance / totalConsensusBonus
-}
 ```
 ```go
-nodeBonus[node] *= correctionFactor
+nodeBonus[node] = nodeBonus[node] * remainingBalance / totalConsensusBonus
 ```
 At last, add the reward bonuses to the individual nodes' ETH claims and to the total claim tally:
 ```go
