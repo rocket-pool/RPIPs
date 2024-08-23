@@ -599,12 +599,11 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed.
+3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed. Failure of such a call (e.g. there exists no contract at the address returned by RocketStorage or the contract does not have the expected interface) should be treated as a return value of `false`.
     ```go
     saturnOneExecuted := rocketUpgradeOneDotFour.executed()
     saturnTwoExecuted := rocketUpgradeOneDotFive.executed()
     ```
-Failure of such a call (e.g. there exists no contract at the address returned by RocketStorage or the contract does not have the expected interface) should be treated the same as a return value of `false`.
 4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee:
     ```go
     fee := baseFee
