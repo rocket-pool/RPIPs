@@ -12,7 +12,7 @@ created: 2024-07-25
 
 ## Abstract
 This proposal aims to improve RPL tokenomics in the short term before the changes of RPIP-49 can be implemented. 
-Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until Saturn 1) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
+Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until Saturn 1, in reduced form until Saturn 2) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
 The cliff for RPL rewards is removed by extending rewards linearly below 10%. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
 
 ## Motivation
@@ -30,7 +30,10 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
 - [Reward Tree Spec v10](../assets/rpip-xx/rewards-calculation-spec.md) SHALL be implemented, which consists of the following changes
-  - For minipools that are opted into the smoothing pool, use `commission = max(contract_commission, 10% + 0.4% * min(10, percent_of_borrowed_ETH))` when calculating smoothing pool rewards
+  - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake
+    - Before [Saturn 1](RPIP-55.md): `commission = max(contract_commission, 10% + 0.4% * min(10, percent_of_borrowed_ETH))`
+    - After [Saturn 1](RPIP-55.md), before [Saturn 2](RPIP-56.md): `commission = max(contract_commission, 5% + 0.9% * min(10, percent_of_borrowed_ETH))`
+    - After [Saturn 2](RPIP-56.md): `commission = contract_commission`
   - For the same minipools as above, calculate their individual beacon chain rewards during the rewards period and give them a bonus (`node_reward_bonus`) based on `bonus_commission = commission - contract_commission`
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
