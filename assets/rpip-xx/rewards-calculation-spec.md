@@ -606,14 +606,14 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     ```
 Failure of such a call (e.g. there exists no contract at the address returned by RocketStorage or the contract does not have the expected interface) should be treated the same as a return value of `false`.
 4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee:
-```go
-fee := baseFee
-if !saturnOneExecuted {
-    fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
-} else if !saturnTwoExecuted {
-    fee = max(fee, 0.05 Eth + (0.09 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
-}
-```
+    ```go
+    fee := baseFee
+    if !saturnOneExecuted {
+        fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
+    } else if !saturnTwoExecuted {
+        fee = max(fee, 0.05 Eth + (0.09 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
+    }
+    ```
 5. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
     ```go
     minipoolScore := (1e18 - fee) * bond / 32e18 + fee // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
