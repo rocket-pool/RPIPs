@@ -599,15 +599,26 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Get the parent's node `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee:
+3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed.
     ```go
-    fee = 0.1 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth)
+    saturnOneExecuted := rocketUpgradeOneDotFour.executed()
+    saturnTwoExecuted := rocketUpgradeOneDotFive.executed()
     ```
-4. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
+Failure of such a call (e.g. there exists no contract at the address returned by RocketStorage or the contract does not have the expected interface) should be treated the same as a return value of `false`.
+4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee:
+```go
+fee := baseFee
+if !saturnOneExecuted {
+    fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
+} else if !saturnTwoExecuted {
+    fee = max(fee, 0.05 Eth + (0.09 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
+}
+```
+5. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
     ```go
     minipoolScore := (1e18 - fee) * bond / 32e18 + fee // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
     ```
-5. Add `minipoolScore` to the minipool's running total, and the cumulative total for all minipools:
+6. Add `minipoolScore` to the minipool's running total, and the cumulative total for all minipools:
     ```go
     minipoolScores[minipool.Address] += minipoolScore
     totalMinipoolScore += minipoolScore
@@ -640,11 +651,7 @@ totalEthForMinipools += minipoolEth
 ```
 
 ### Calculating Consensus Reward Bonuses
-Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) deployment contract for whether the upgrade has already been performed.
-```go
-rocketUpgradeOneDotFour.executed()
-```
-Should this call not be possible, either because there exists no contract at the address returned by `rocketStorage.getAddress(keccak256("rocketUpgradeOneDotFour"))` or because the contract does not have the expected interface, proceed with the bonus calculation. Should the call return `false`, also proceed with the calculation. In case the call returns `true`, skip this section and do not award a consensus reward bonus to any node.
+For minipools with `fee == baseFee`, calculation of the reward bonus may be skipped and the result assumed to be `0`.
 
 Define `totalConsensusBonus`, which will serve to store the cumulative total of the minipools' reward bonuses.
 ```go
