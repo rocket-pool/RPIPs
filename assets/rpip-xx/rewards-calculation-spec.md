@@ -599,7 +599,7 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed. Failure of such a call (e.g. there exists no contract at the address returned by RocketStorage or the contract does not have the expected interface) should be treated as a return value of `false`.
+3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed. Failure of such a call (e.g. no contract exists at the address returned by RocketStorage) should be treated as a return value of `false`.
     ```go
     saturnOneExecuted := rocketUpgradeOneDotFour.executed()
     saturnTwoExecuted := rocketUpgradeOneDotFive.executed()
