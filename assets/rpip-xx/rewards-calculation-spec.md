@@ -651,8 +651,8 @@ totalEthForMinipools += minipoolEth
 
 ### Calculating Consensus Reward Bonuses
 
-#### calculateMinipoolBonus
-Consider the following calculations as the function `calculateMinipoolBonus(rewardBaseFee, rewardBond, rewardStartTime, rewardEndTime)`.
+#### getMinipoolBonus
+Consider the following calculations as the function `getMinipoolBonus(rewardBaseFee, rewardBond, rewardStartTime, rewardEndTime)`.
 
 For each minipool, define the slot limits within which the reward bonus is to be paid out.
 ```go
@@ -672,7 +672,7 @@ result := consensusIncome * bonusShare / 1 Eth
 ```
 Return `result`.
 
-Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `calculateMinipoolBonus` to get each minipool's individual bonus.
+Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to get each minipool's individual bonus.
 ```go
 totalConsensusBonus := 0
 ```
@@ -681,10 +681,10 @@ minipoolBonus := 0
 eligibleStartTime := max(startTime, statusTime, optInTime)
 eligibleEndTime := min(endTime, optOutTime)
 if (eligibleStartTime < lastReduceTime) && (lastReduceTime < eligibleEndTime) {
-    minipoolBonus += calculateMinipoolBonus(previousFee, previousBond, eligibleStartTime, lastReduceTime)
-    minipoolBonus += calculateMinipoolBonus(currentFee, currentBond, lastReduceTime, eligibleEndTime)
+    minipoolBonus += getMinipoolBonus(previousFee, previousBond, eligibleStartTime, lastReduceTime)
+    minipoolBonus += getMinipoolBonus(currentFee, currentBond, lastReduceTime, eligibleEndTime)
 } else {
-    minipoolBonus += calculateMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
+    minipoolBonus += getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
 }
 nodeBonus[minipool.OwningNode] += minipoolBonus
 totalConsensusBonus += minipoolBonus
