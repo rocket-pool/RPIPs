@@ -599,17 +599,17 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Query `executed()bool` on the [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) deployment contracts for whether the upgrades have already been performed. Failure of such a call (e.g. no contract exists at the address returned by RocketStorage) should be treated as a return value of `false`.
+3. Define flags `saturnOneActive` and `saturnTwoActive` that signal whether the upgrades to [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) have been performed, respectively. For example, this can be achieved by calling `executed()bool` on the  deployment contracts and interpreting failure of such a call (e.g. no contract exists at the address returned by RocketStorage) as a return value of `false`.
     ```go
-    saturnOneExecuted := rocketUpgradeOneDotFour.executed()
-    saturnTwoExecuted := rocketUpgradeOneDotFive.executed()
+    saturnOneActive := rocketUpgradeOneDotFour.executed()
+    saturnTwoActive := rocketUpgradeOneDotFive.executed()
     ```
-4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee)` for later reference.
+4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee)` with `fee` as the return value for later reference.
     ```go
     fee := baseFee
-    if !saturnOneExecuted {
+    if !saturnOneActive {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
-    } else if !saturnTwoExecuted {
+    } else if !saturnTwoActive {
         fee = max(fee, 0.05 Eth + (0.09 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
