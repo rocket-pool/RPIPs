@@ -31,8 +31,8 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
 - [Reward Tree Spec v10](../assets/rpip-xx/rewards-calculation-spec.md) SHALL be implemented, which consists of the following changes
   - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake
-    - Before [Saturn 1](RPIP-55.md): `commission = max(contract_commission, 10% + 0.4% * min(10, percent_of_borrowed_ETH))`
-    - After [Saturn 1](RPIP-55.md), before [Saturn 2](RPIP-56.md): `commission = max(contract_commission, 5% + 0.9% * min(10, percent_of_borrowed_ETH))`
+    - Before [Saturn 1](RPIP-55.md): `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
+    - After [Saturn 1](RPIP-55.md), before [Saturn 2](RPIP-56.md): `commission = max(contract_commission, 5% + 9% * min(1, percent_of_borrowed_ETH / 10))`
     - After [Saturn 2](RPIP-56.md): `commission = contract_commission`
   - For the same minipools as above, calculate their individual beacon chain rewards during the rewards period and give them a bonus (`node_reward_bonus`) based on `bonus_commission = commission - contract_commission`
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
