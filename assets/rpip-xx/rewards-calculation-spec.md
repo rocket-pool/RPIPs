@@ -604,7 +604,7 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     saturnOneExecuted := rocketUpgradeOneDotFour.executed()
     saturnTwoExecuted := rocketUpgradeOneDotFive.executed()
     ```
-4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getDynamicCommission(baseFee)` for later reference.
+4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee)` for later reference.
     ```go
     fee := baseFee
     if !saturnOneExecuted {
@@ -665,7 +665,7 @@ minipoolWithdrawals[address] += amount
 ```
 Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus.
 ```go
-bonusFee := getDynamicCommission(rewardBaseFee) - rewardBaseFee
+bonusFee := getTotalFee(rewardBaseFee) - rewardBaseFee
 consensusIncome := max(0, endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance))
 bonusShare := bonusFee * (32 Eth - rewardBond) / 32 Eth
 result := consensusIncome * bonusShare / 1 Eth
