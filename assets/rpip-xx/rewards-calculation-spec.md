@@ -672,7 +672,7 @@ result := consensusIncome * bonusShare / 1 Eth
 ```
 Return `result`.
 
-Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to get each minipool's individual bonus.
+Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus.
 ```go
 totalConsensusBonus := 0
 ```
