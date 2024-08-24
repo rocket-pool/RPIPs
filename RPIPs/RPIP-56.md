@@ -21,7 +21,6 @@ The intention of this Living Informational RPIP is to collate the release-releva
 ## Estimated Included RPIPs
 
 ### RPIP-49 Tokenomics Rework Content
-The RPIP-49 tokenomics rework has not yet been ratified by the Rocket Pool pDAO.
 * [RPIP-42: Bond curves](RPIP-42.md) - Remainder
 * [RPIP-44: Forced exits](RPIP-44.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Remainder

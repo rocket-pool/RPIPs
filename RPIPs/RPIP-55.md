@@ -21,12 +21,11 @@ The intention of this Living Informational RPIP is to collate the release-releva
 ## Estimated Included RPIPs
 
 * [RPIP-30: RPL Staking Rework](RPIP-30.md) - Remainder
-* [RPIP-57: Node Distributor User Fund Unbundling](RPIP-57.md) - Not yet ratified.
-* [RPIP-58: MEV Penalty Guardrail](RPIP-58.md) - Not yet ratified.
-* [RPIP-61: Balance Submission Guardrail](RPIP-61.md) - Not yet ratified.
+* [RPIP-57: Node Distributor User Fund Unbundling](RPIP-57.md)
+* [RPIP-58: MEV Penalty Guardrail](RPIP-58.md)
+* [RPIP-61: Balance Submission Guardrail](RPIP-61.md)
 
 ### RPIP-49 Tokenomics Rework Content
-The RPIP-49 tokenomics rework has not yet been ratified by the Rocket Pool pDAO.
 * [RPIP-42: Bond curves](RPIP-42.md) - Partial
 * [RPIP-43: Megapools](RPIP-43.md)
 * [RPIP-46: Universal Adjustable Revenue Split](RPIP-46.md) - Partial
