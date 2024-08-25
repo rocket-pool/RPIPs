@@ -20,7 +20,7 @@ With the DAO having voted for the Saturn upgrade, fundamental value of RPL will 
 Short term increases in TVL are beneficial for the protocol as long as they can be expected to convert to megapools.
 On the other hand, as competition emerges and equivalent or higher yield  is accessible without the need to acquire a protocol token, short term RPL utility is unlikely to still significantly support fundamental value.
 Therefore, node operation is made more attractive by allowing minipool creation without RPL and removing the cliff for RPL rewards.
-Contract commission for these new ETH-only minipools is kept less attractive than megapools under Saturn 1 to encourage migration once dynamic commission is disabled.
+Contract commission for these new ETH-only minipools is kept less attractive than megapools under [Saturn 1](RPIP-55.md) to encourage migration once dynamic commission is disabled.
 In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes and changes to the scrub penalty are implemented. The dynamic commission requires reward tree spec changes that may only be rolled out shortly after.
 
 ## Specification
@@ -53,7 +53,7 @@ Requiring smoothing pool participation to receive dynamic commission provides st
 - [Rocket Lend](https://github.com/rocketlend/protocol) is a Rocket Pool specific lending protocol funded by the GMC. It enables NOs to use their ETH bond as collateral to borrow RPL and stake it on their node. This proposal will likely make borrowing RPL less appealing as the marginal ETH yield it unlocks is reduced. However, the proposal may also onboard new node operators that will be interested in participating in the lending market. As such, Rocket Lend can still serve an important role in increasing capital efficiency for both lenders and borrowers.
 
 ### Security
-- The minimum collateral per minipool is lowered from 10.4 ETH to 8 ETH at time of creation. This is sufficient as it is still significantly higher than the 4 ETH validator bond proposed in RPIP-49.
+- The minimum collateral per minipool is lowered from 10.4 ETH to 8 ETH at time of creation. This is sufficient as it is still significantly higher than the 4 ETH validator bond proposed in [RPIP-49](RPIP-49.md).
 - Without changes to the scrub penalty mechanics, setting the per-minipool minimum RPL stake to 0 would remove the ability to penalize minipools that set incorrect withdrawal credentials. A malicious actor can create many minipools that need to be scrubbed and force the oDAO to scrub all of them without having provided slashable RPL. As long as the oDAO keeps scrubbing minipools, this is purely a griefing attack that is also costly to the attacker. If the oDAO were to run out of gas and not top up their wallets during the scrub period, the attacker could successfully perform a withdrawal credential exploit and steal rETH funds. The proposal therefore includes a change that enables the minipool delegate to apply an equivalent penalty to the node operator's ETH bond instead.
 
 ## Copyright
