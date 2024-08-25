@@ -599,7 +599,7 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Define flags `saturnOneActive` and `saturnTwoActive` that signal whether the upgrades to [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) have been performed, respectively. For example, this can be achieved by calling `executed()bool` on the  deployment contracts and interpreting failure of such a call (e.g. no contract exists at the address returned by RocketStorage) as a return value of `false`.
+3. Define flags `saturnOneActive` and `saturnTwoActive` to signal whether the upgrades to [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) have been performed, respectively. This may be achieved by calling `executed()bool` on the deployment contracts and interpreting failure of such a call (e.g. no contract with this function exists at the address returned by RocketStorage) as a return value of `false`.
     ```go
     saturnOneActive := rocketUpgradeOneDotFour.executed()
     saturnTwoActive := rocketUpgradeOneDotFive.executed()
