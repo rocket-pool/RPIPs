@@ -12,7 +12,7 @@ created: 2024-07-25
 
 ## Abstract
 This proposal aims to improve RPL tokenomics in the short term before the changes of RPIP-49 can be implemented. 
-Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until Saturn 1, in reduced form until Saturn 2) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
+Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until [Saturn 1](RPIP-55.md), in reduced form until [Saturn 2](RPIP-56.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
 The cliff for RPL rewards is removed by extending rewards linearly below 10%. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
 
 ## Motivation
@@ -42,7 +42,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 
 ## Rationale
 ### Megapool Conversions
-The base commission (without dynamic commission) is lowered to 5% such that megapools introduced in RPIP-49 remain significantly more attractive (an ETH-only LEB4 achieves equivalent returns with `no_share` of 2.14%). We expect that operators with these new ETH-only minipools will eventually migrate to megapools and contribute to RPL value capture.
+The base commission (without dynamic commission) is lowered to 5% such that megapools introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive (an ETH-only LEB4 achieves equivalent returns with `no_share` of 2.14%). We expect that operators with these new ETH-only minipools will eventually migrate to megapools and contribute to RPL value capture.
 
 ### Dynamic Commission Eligibility
 Requiring smoothing pool participation to receive dynamic commission provides strong guarantees that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools. In a worst case scenario, every minipool is eligible to receive a total commission of 14% due to their parent node's RPL stake while earning a contract commission of only 5%. This makes 86% of the pool's pETH execution yield available to pay out a reward bonus that comprises 9% of pETH consensus yield. Even so, the balance will remain sufficient as long as execution rewards are less than `86/9 = 9.55` times lower than consensus rewards, or more concretely, provide an APR of at least `2.8/9.55 = 0.29%` with annual consensus layer yield at 2.8%. This is less than half of the current [network average](https://explorer.rated.network/network?network=mainnet&timeWindow=30d&rewardsMetric=average&geoDistType=all&hostDistType=all&soloProDist=stake).
