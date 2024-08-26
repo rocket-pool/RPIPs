@@ -11,7 +11,7 @@ created: 2024-07-25
 ---
 
 ## Abstract
-This proposal aims to improve RPL tokenomics in the short term before the changes of RPIP-49 can be implemented.
+This proposal aims to improve RPL tokenomics in the short term before the changes of [RPIP-49](RPIP-49.md) can be implemented.
 Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until [Saturn 1](RPIP-55.md), in reduced form until [Saturn 2](RPIP-56.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
 The cliff for RPL rewards is removed by extending rewards linearly below 10%. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
 
@@ -43,7 +43,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 
 ## Rationale
 ### Megapool Conversions
-The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in Saturn 1 would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; Saturn 1 starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
+The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
 
 ### Dynamic Commission Eligibility
 Requiring smoothing pool participation to receive dynamic commission provides a strong expectation that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools.
