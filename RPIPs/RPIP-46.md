@@ -196,7 +196,7 @@ As the core value capture is no longer based on a minimum RPL requirement, Satur
 ## Historic revenue share values
 | Date                         | Share Settings                                           |
 |------------------------------|----------------------------------------------------------|
-| 2024-07-17<br>(ratified TBD) | `node_operator_commission_share`: 5%, `voter_share`: 9%  |
+| 2024-07-17<br>(ratified 2024-08-22) | `node_operator_commission_share`: 5%, `voter_share`: 9%  |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
