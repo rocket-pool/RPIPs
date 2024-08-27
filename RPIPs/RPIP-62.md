@@ -29,7 +29,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.minimum` SHALL be set to 5%
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
-- [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented, which consists of the following changes
+- [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations. It consists of the following changes:
   - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake
     - Before [Saturn 1](RPIP-55.md): `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
     - After [Saturn 1](RPIP-55.md), but before [Saturn 2](RPIP-56.md): `commission = max(contract_commission, 5% + 9% * min(1, percent_of_borrowed_ETH / 10))`
@@ -38,8 +38,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
     - Credit modified reward bonuses as `node_reward_bonus * (remaining_balance / total_reward_bonuses)`
--  [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations
-  - [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) is available; this SHOULD affect no more than one reward submission after the vote for this proposal ends
+- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) is available; this SHOULD affect no more than one reward submission after the vote for this proposal ends
 
 ## Rationale
 ### Megapool Conversions
