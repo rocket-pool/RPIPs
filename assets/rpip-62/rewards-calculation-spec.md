@@ -599,18 +599,12 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Define flags `saturnOneActive` and `saturnTwoActive` to signal whether the upgrades to [Saturn 1](../../RPIPs/RPIP-55.md) and [Saturn 2](../../RPIPs/RPIP-56.md) have been performed, respectively. This may be achieved by calling `executed()bool` on the deployment contracts and interpreting failure of such a call (e.g. no contract with this function exists at the address returned by RocketStorage) as a return value of `false`.
-    ```go
-    saturnOneActive := rocketUpgradeOneDotFour.executed()
-    saturnTwoActive := rocketUpgradeOneDotFive.executed()
-    ```
+3. Configure `saturnOneInterval` to be the reward period in which the Saturn 1 upgrade contract (`rocketUpgradeOneDotFour`) was executed. If this has not happened yet, use an interval far into the future (e.g. 1e18 or the data type's maximum value if bounded).
 4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee, percentOfBorrowedETH)` with `fee` as the return value for later reference.
     ```go
     fee := baseFee
-    if !saturnOneActive {
+    if (interval - 4) < saturnOneInterval {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
-    } else if !saturnTwoActive {
-        fee = max(fee, 0.05 Eth + (0.09 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
 5. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
