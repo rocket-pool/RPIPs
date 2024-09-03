@@ -3,7 +3,7 @@ rpip: 62
 title: Tokenomics Rework Prelude
 description: This proposal aims to improve RPL tokenomics in the short term to unlock protocol growth.
 author: knoshua (@knoshua), haloooloolo (@haloooloolo)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-62-tokenomics-rework-prelude/3238
 status: Draft
 type: Protocol
 category: Core
