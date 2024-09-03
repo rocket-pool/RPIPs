@@ -11,8 +11,8 @@ created: 2024-07-25
 ---
 
 ## Abstract
-This proposal aims to improve RPL tokenomics in the short term before the changes of RPIP-49 can be implemented.
-Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until [Saturn 1](RPIP-55.md), in reduced form until [Saturn 2](RPIP-56.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
+This proposal aims to improve RPL tokenomics in the short term before the changes of [RPIP-49](RPIP-49.md) can be implemented.
+Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
 The cliff for RPL rewards is removed by extending rewards linearly below 10%. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
 
 ## Motivation
@@ -29,21 +29,19 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.minimum` SHALL be set to 5%
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
-- [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented, which consists of the following changes
-  - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake
-    - Before [Saturn 1](RPIP-55.md): `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
-    - After [Saturn 1](RPIP-55.md), but before [Saturn 2](RPIP-56.md): `commission = max(contract_commission, 5% + 9% * min(1, percent_of_borrowed_ETH / 10))`
-    - After [Saturn 2](RPIP-56.md): `commission = contract_commission`
+- [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations. It consists of the following changes:
+  - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake:
+    - For reward snapshots prior to [Saturn 1](RPIP-55.md) and the first **4** snaphots thereafter, use `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
+    - For later snapshots, reduce it to `commission = contract_commission`
   - For the same minipools as above, calculate their individual beacon chain rewards during the rewards period and give them a bonus (`node_reward_bonus`) based on `bonus_commission = commission - contract_commission`
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
     - Credit modified reward bonuses as `node_reward_bonus * (remaining_balance / total_reward_bonuses)`
--  [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations
-  - [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) is available; this SHOULD affect no more than one reward submission after the vote for this proposal ends
+- [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) is available; this SHOULD affect no more than one reward submission after the vote for this proposal ends
 
 ## Rationale
 ### Megapool Conversions
-The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in Saturn 1 would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; Saturn 1 starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
+The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
 
 ### Dynamic Commission Eligibility
 Requiring smoothing pool participation to receive dynamic commission provides a strong expectation that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools.
