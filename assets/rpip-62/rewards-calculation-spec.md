@@ -17,8 +17,8 @@ The following updates have been made from [v8](./legacy/rewards-calculation-spec
 
 #### Major Updates
 - The now-obsolete RPIP-30 cycle factor and associated legacy reward calculation are removed
-- For minipools with less than 14% commission, increase the share of execution layer rewards based on RPL stake
-- For minipools with less than 14% commission, introduce a bonus based on RPL stake and the consensus rewards they earned
+- For 8 ETH minipools with less than 14% commission, increase the share of execution layer rewards based on RPL stake
+- For 8 ETH minipools with less than 14% commission, introduce a bonus based on RPL stake and the consensus rewards they earned
 
 #### Minor Changes
 - Simplified `lastReduceTime` condition in Calculating Attestation Performance and Minipool Scores
@@ -605,7 +605,7 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     fee := baseFee
     isEligibleBond := currentBond < 16 Eth
     isEligibleInterval := (interval - 4) < saturnOneInterval
-    if isEligibleInterval && isEligibleBond {
+    if isEligibleBond && isEligibleInterval {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
