@@ -30,9 +30,9 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
 - [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations. It consists of the following changes:
-  - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on RPL stake:
-    - For reward snapshots prior to [Saturn 1](RPIP-55.md) and the first **4** snaphots thereafter, use `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
-    - For later snapshots, reduce it to `commission = contract_commission`
+  - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on ETH bond and RPL stake:
+    - For 8 ETH minipools at reward snapshots prior to [Saturn 1](RPIP-55.md) and the first **4** snaphots thereafter, use `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
+    - For 16 ETH minipools and later snapshots, use `commission = contract_commission`
   - For the same minipools as above, calculate their individual beacon chain rewards during the rewards period and give them a bonus (`node_reward_bonus`) based on `bonus_commission = commission - contract_commission`
   - If the smoothing pool balance is not sufficient to cover the beacon reward bonus for all minipools (`total_reward_bonuses`):
     - Fully credit the adjusted smoothing pool rewards excluding `node_reward_bonus` to all nodes
@@ -47,6 +47,8 @@ The base commission (without dynamic commission) is lowered to 5% such that mega
 Requiring smoothing pool participation to receive dynamic commission provides a strong expectation that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools.
 
 To understand when there wouldn't be enough, we look at a worst case scenario: every minipool is eligible to receive a total commission of 14% due to their parent node's RPL stake while earning a contract commission of only 5%. This makes 86% of the pool's pETH execution yield available to pay out a reward bonus that comprises 9% of pETH consensus yield. In this case, the balance will remain sufficient as long as execution rewards are less than `86/9 = 9.55` times lower than consensus rewards, or more concretely, provide an APR of at least `2.8/9.55 = 0.29%` with annual consensus layer yield at 2.8%. This is less than half of the current [network average](https://explorer.rated.network/network?network=mainnet&timeWindow=30d&rewardsMetric=average&geoDistType=all&hostDistType=all&soloProDist=stake). Even though the expectation is that it won't be used, the specification _does_ provide a fallback definition in case bonus commission cannot be fully covered.
+
+16 ETH minipools are made ineligible for dynamic commission in the interest of further incentivizing rETH capacity.
 
 ## Considerations
 ### Supporting Protocols

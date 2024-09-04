@@ -603,7 +603,9 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
 4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee, percentOfBorrowedETH)` with `fee` as the return value for later reference.
     ```go
     fee := baseFee
-    if (interval - 4) < saturnOneInterval {
+    isEligibleBond := currentBond < 16 Eth
+    isEligibleInterval := (interval - 4) < saturnOneInterval
+    if isEligibleInterval && isEligibleBond {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
@@ -657,33 +659,25 @@ For each slot in the reward interval, get the list of validator withdrawals (e.g
 ```go
 minipoolWithdrawals[address] += amount
 ```
-Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus.
+Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus. In case of negative consensus income, award no bonus.
 ```go
 bonusFee := getTotalFee(rewardBaseFee, percentOfBorrowedETH) - rewardBaseFee
 consensusIncome := endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance)
 bonusShare := bonusFee * (32 Eth - rewardBond) / 32 Eth
-result := consensusIncome * bonusShare / 1 Eth
+result := max(0, consensusIncome * bonusShare / 1 Eth)
 ```
 Return `result`.
 
-Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus. In case of negative consensus income, award no bonus.
+Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus.
 ```go
 totalConsensusBonus := 0
 ```
 ```go
-minipoolBonus := 0
-eligibleStartTime := max(startTime, statusTime, optInTime)
+eligibleStartTime := max(startTime, statusTime, optInTime, lastReduceTime)
 eligibleEndTime := min(endTime, optOutTime)
-if (eligibleStartTime < lastReduceTime) && (lastReduceTime < eligibleEndTime) {
-    minipoolBonus += getMinipoolBonus(previousFee, previousBond, eligibleStartTime, lastReduceTime)
-    minipoolBonus += getMinipoolBonus(currentFee, currentBond, lastReduceTime, eligibleEndTime)
-} else {
-    minipoolBonus += getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
-}
-if minipoolBonus > 0 {
-    nodeBonus[minipool.OwningNode] += minipoolBonus
-    totalConsensusBonus += minipoolBonus
-}
+minipoolBonus := getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
+nodeBonus[minipool.OwningNode] += minipoolBonus
+totalConsensusBonus += minipoolBonus
 ```
 Should the remaining balance not be sufficient to cover `totalConsensusBonus` (`totalConsensusBonus` > `remainingBalance`), calculate a correction factor and apply it to every node.
 ```go
