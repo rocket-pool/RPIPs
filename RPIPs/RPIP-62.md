@@ -41,7 +41,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - [Reward Tree Spec v9](RPIP-52.md) or [Reward Tree Spec v8](RPIP-51.md) MAY be used for reward periods ending before [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) is available; this SHOULD affect no more than one reward submission after the vote for this proposal ends
 
 ### Snapshot Vote
-The following configuration is suggested for a vote:
+The following configuration is suggested for a vote.
 ```
 Title: Tokenomics Rework Prelude (RPIP-62)
 Voting type: Ranked choice voting
