@@ -228,45 +228,24 @@ state := minipool.getStatus()
 Ignore minipools that are not in the `staking` state.
 
 Define `eligibleBorrowedEth` as the total amount of ETH borrowed by the node operator from the staking pool for eligible minipools.
-Define `eligibleBondedEth` as the total amount of ETH the node operator has bonded for its eligible minipools.
-Start with both set to `0`.
+Start with it set to `0`.
 
 For each `staking` minipool, check if it was not exited from the Beacon Chain at the end of the interval:
 
 1. Get the `status` of the validator from the Beacon Chain for `targetBcSlot` (e.g., `/eth/v1/beacon/states/<targetBcSlot>/validators?id=0x<pubkey>`). If the validator did not exist at `targetBcSlot`, ignore it and continue.
 2. Get the `exit_epoch` for the validator.
-3. If the validator's `exit_epoch` is **after** `targetBcSlot`'s epoch (`exit_epoch` > `targetSlotEpoch`), it is eligible.
-   1. Add the amount of ETH borrowed by the node operator for this minipool to `eligibleBorrowedEth`:
-        ```go
-        borrowedEth := minipool.getUserDepositBalance()
-        eligibleBorrowedEth += borrowedEth
-        ```
-   2. Add the amount of ETH bonded by the node operator for this minipool to `eligibleBondedEth`:
-        ```go
-        bondedEth := minipool.getNodeDepositBalance()
-        eligibleBondedEth += bondedEth
-        ```
-
-Next, calculate the minimum and maximum RPL collateral levels based on the ETH/RPL ratio reported by the protocol:
-```go
-ratio := RocketNetworkPrices.getRPLPrice()
-minCollateralFraction := RocketDAOProtocolSettingsNode.getMinimumPerMinipoolStake() // e.g., 10% in wei
-maxCollateralFraction := 1.5e18 // i.e., 150% in wei. Hard-coded by RPIP-30's phase-in rules.
-minCollateral := eligibleBorrowedEth * minCollateralFraction / ratio
-maxCollateral := eligibleBondedEth * maxCollateralFraction / ratio
-``` 
-
-Note that `minCollateral` is based on the amount *borrowed*, and `maxCollateral` is based on the amount *bonded*.
+3. If the validator's `exit_epoch` is **after** `targetBcSlot`'s epoch (`exit_epoch` > `targetSlotEpoch`), it is eligible. Add the amount of ETH borrowed by the node operator for this minipool to `eligibleBorrowedEth`:
+    ```go
+    borrowedEth := minipool.getUserDepositBalance()
+    eligibleBorrowedEth += borrowedEth
+    ```
 
 Now, calculate the node's weight (`nodeWeight`) based on the above:
 
 ```go
+ratio := RocketNetworkPrices.getRPLPrice()
 nodeStake := RocketNodeStaking.getNodeRPLStake(nodeAddress)
-if nodeStake < minCollateral {
-    nodeWeight := 0
-} else {
-    nodeWeight := getNodeWeight(eligibleBorrowedEth, nodeStake, ratio)
-}
+nodeWeight := getNodeWeight(eligibleBorrowedEth, nodeStake, ratio)
 ```
 
 `getNodeWeight()` is defined in the [getNodeWeight section](#getnodeweight).
@@ -315,21 +294,17 @@ if collateralRewards - totalCalculatedCollateralRewards > epsilon {
 
 #### getNodeWeight
 
-Calculate `stakedRplValueInEth`:
-
 ```go
 stakedRplValueInEth = nodeStake * ratio / 1 Eth.
-```
-
-Calculate `percentOfBorrowedEth`:
-
-```go
 percentOfBorrowedEth = stakedRplValueInEth * 100 Eth / eligibleBorrowedEth
+if percentOfBorrowedEth < 10 Eth {
+    return 0 // tbd in Snapshot vote
+} else if percentOfBorrowedEth <= 15 Eth {
+    return 100 * stakedRplValueInEth
+} else {
+    return ((13.6137 Eth + 2 * ln(percentOfBorrowedEth - 13 Eth)) * eligibleBorrowedEth) / 1 Eth
+}
 ```
-
-If `percentOfBorrowedEth <= 15 Eth`, return `100 * stakedRplValueInEth`.
-
-Otherwise, return `((13.6137 Eth + 2 * ln(percentOfBorrowedEth - 13 Eth)) * eligibleBorrowedEth) / 1 Eth`.
 
 `ln` is specified in the next section.
 
@@ -377,7 +352,6 @@ After 60 loops, return `result`.
 Start by acquiring the list of Oracle DAO node addresses using the following contract methods:
 
 ```go
-
 oDaoCount := RocketDAONodeTrusted.getMemberCount()
 oDaoAddresses := address[oDaoCount]
 for i = 0; i < oDaoCount; i++ {
