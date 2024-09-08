@@ -53,8 +53,8 @@ Options:
 ```
 After the conclusion of the Snapshot vote:
 - Sections of this RPIP in the format `<A|B>` SHALL be updated to reflect the chosen option:
-  - If `For - Remove RPL Reward Cliff` is chosen, replace `<A|B>` with `A`
-  - If `For - Maintain RPL Reward Cliff` is chosen, replace `<A|B>` with `B`
+  - If variant A is chosen, replace `<A|B>` with `A`
+  - If variant B is chosen, replace `<A|B>` with `B`
   - If the proposal does not succeed, do not make any edits
 - These edits SHALL be made to this RPIP, even if the RPIP is already in a “Final” state
 
