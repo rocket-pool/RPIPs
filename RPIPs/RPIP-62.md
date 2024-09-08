@@ -44,13 +44,12 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 The following configuration is suggested for a vote:
 ```
 Title: Tokenomics Rework Prelude (RPIP-62)
-Voting type: Approval voting
+Voting type: Ranked choice voting
 
 Options:
-- For - Remove RPL Reward Cliff
-- For - Maintain RPL Reward Cliff
-- Against
-- Abstain
+- For variant A (keep reward cliff)
+- For variant B (remove reward cliff)
+- Against both variants
 ```
 After the conclusion of the Snapshot vote:
 - Sections of this RPIP in the format `<A|B>` SHALL be updated to reflect the chosen option:
