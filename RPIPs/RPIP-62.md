@@ -13,7 +13,7 @@ created: 2024-07-25
 ## Abstract
 This proposal aims to improve RPL tokenomics in the short term before the changes of [RPIP-49](RPIP-49.md) can be implemented.
 Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
-The cliff for RPL rewards is <removed by extending rewards linearly below 10% | explicitly maintained at 10% of borrowed ETH>. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
+The cliff for RPL rewards is <removed by extending rewards linearly below 10% | explicitly maintained at 10%> of borrowed ETH. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
 
 ## Motivation
 With the DAO having voted for the Saturn upgrade, the fundamental value of RPL will primarily be based on megapool TVL.
