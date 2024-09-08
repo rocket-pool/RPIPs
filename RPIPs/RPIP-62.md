@@ -30,7 +30,7 @@ In the interest of acting fast, this proposal minimizes smart contract changes. 
 - `network.node.fee.maximum` SHALL be set to 5%
 - The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
 - [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations. It consists of the following changes:
-  - <Remove | Decouple> the minimum RPL stake to qualify for issuance rewards < | from `node.per.minipool.stake.minimum` by using a constant of 0.1 Eth>
+  - <Remove | Decouple> the minimum RPL stake to qualify for issuance rewards < | from `node.per.minipool.stake.minimum` by setting it to a constant 10%>
   - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on ETH bond and RPL stake:
     - For 8 ETH minipools at reward snapshots prior to [Saturn 1](RPIP-55.md) and the first **4** snaphots thereafter, use `commission = max(contract_commission, 10% + 4% * min(1, percent_of_borrowed_ETH / 10))`
     - For 16 ETH minipools and later snapshots, use `commission = contract_commission`
