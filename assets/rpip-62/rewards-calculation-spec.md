@@ -293,7 +293,7 @@ if collateralRewards - totalCalculatedCollateralRewards > epsilon {
 ```
 
 #### getNodeWeight
-##### Variant A (Maintain Reward Cliff)
+##### Variant A (Keep Reward Cliff)
 ```go
 stakedRplValueInEth = nodeStake * ratio / 1 Eth.
 percentOfBorrowedEth = stakedRplValueInEth * 100 Eth / eligibleBorrowedEth
