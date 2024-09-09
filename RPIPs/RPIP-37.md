@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/t/dev-team-funding/2038
 status: Final 
 type: Meta
 created: 2023-10-31
+vote-to: https://vote.rocketpool.net/#/proposal/0xcf65db682d2392ba723af437168b0fb528567f1765678d2ef88b92a0edc04b12
+vote-date: 2024-02-12
+vote-result: Passed
 ---
 
 ## Abstract

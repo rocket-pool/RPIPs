@@ -24,6 +24,7 @@ repository: https://github.com/rocket-pool/RPIPs/
 
 header_pages:
  - all.html
+ - tokenomics-2024.html
  - proposed.html
  - active.html
  - by_type.html
@@ -31,17 +32,11 @@ header_pages:
 
 # Build settings
 highlighter: rouge
-markdown: GFM
+markdown: CommonMarkGhPages
 theme: minima
-kramdown:
-  input: GFM
-  parse_block_html: false
-  # This is the default, but be explicit as some RPIPs depend on it
-  auto_ids: true
-  # This is to ensure more determistic behaviour
-  auto_id_stripping: true
-  syntax_highlighter: rouge
-  gfm_quirks: [paragraph_end]
+commonmark:
+  options: ["SMART", "FOOTNOTES", "UNSAFE"]
+  extensions: ["strikethrough", "autolink", "table"]
 
 permalink: /:slug
 

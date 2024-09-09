@@ -86,7 +86,7 @@ implementation of the new rewards rules. X=2 is the snapshot after that, etc.
 
 ### Final states
 - For periods X>5, a node's share of reward SHALL be `proposed_method_share`
-- The next significant smart contract upgrades SHALL update the RPL withdrawal process to be a
+- The next significant smart contract upgrades (editor's note 2024-05-15 - this should be the upgrade following Houston) SHALL update the RPL withdrawal process to be a
   2-step process
   - A user MAY set any amount of "Staked" RPL beyond the value of 15% of the node's borrowed ETH to
     "Unstaking"

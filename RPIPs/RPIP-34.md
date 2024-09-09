@@ -174,7 +174,7 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 * **Trigger(s):** 
   * OPTIONAL - Periodic yearly (12 months)
   * The GMC Administrator role is unfilled
-* **Other Requirements:** See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+* **Other Requirements:** See RPIP-40 - Expanded GMC Administrator Role for full requirements.
 
 #### VOP-GMC-ADMINREMOVE
 This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) for more information.
@@ -240,7 +240,7 @@ This is a voted operational process (VOP) definition, see [RPIP-34](RPIP-34.md) 
 * **Vote Type:** Single Choice Plurality (Snapshot)
 * **Trigger(s):** Grant Announcement (within 2 weeks of announcement)
 * **Other Requirements:** 
-  * See RPIP-26 - Expanded GMC Administrator Role for full requirements.
+  * See RPIP-40 - Expanded GMC Administrator Role for full requirements.
   * Promising community sentiment per RPIP-4.
 
 #### VOP-PDAOBUDGET-SPLITCHANGE
