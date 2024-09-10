@@ -33,7 +33,7 @@ While working on the bug bounties we decided to refactor how the voting system b
 
 Additionally, the community discovered that the Protocol DAO quorum guardrail is set too high, as it should be possible to match it with RPIP-4. The community also pointed out some small parameter name inconsistencies. 
 
-There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism. To give us the option to support RPIP-62, the scrub penalty change as been included in this hotfix.
+There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism but in the meantime it is needed. To give us the option to support RPIP-62, the scrub penalty change as been included in this hotfix.
 
 ## Specification
 
