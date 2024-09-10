@@ -86,12 +86,8 @@ The `RocketNetworkVoting.initialiseVotingFor` function allows anyone to initiali
 
 Burning RPL during veto and sending RPL to 0x0 is equivalent from a security perspective.
 
-On a failed scrub check the oDAO vote to scrub a minipool. When the scrub quorum is reached (51% of oDAO) it is dissolved and the penalty is applied. rETH funds **+ the penalty amount (2.4 ETH)** are recycled back into the deposit pool at the time of dissolve. Consequently, rETH user funds are released and the penalty applied immediately. The remaining funds are claimable by the node operator. The penalty amount is equivalent to the amount that would have been slashed from the node operator bond. rETH users have always benefited from scrub penalties so this does not change, except now it is more direct (doesn't need to go through the auction system).
+On a failed scrub check the oDAO vote to scrub a minipool. When the scrub quorum is reached (51% of oDAO) it is dissolved and the penalty is applied. rETH funds **+ the penalty amount (2.4 ETH)** are recycled back into the deposit pool at the time of dissolve. Consequently, rETH user funds are released and the penalty applied immediately. The remaining funds are claimable by the node operator. The penalty amount is equivalent to the amount that would have been slashed from the node operator bond. rETH users have always benefited from scrub penalties so this does not change, except now it is more direct (doesn't need to go through the auction system). The scrub penalty is defined in the smart contracts (set to 2.4 ETH) and not manipulatable by the oDAO. A scrub penalty can only be applied once to a minipool.
 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-
-
-
