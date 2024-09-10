@@ -17,8 +17,8 @@ The following updates have been made from [v8](./legacy/rewards-calculation-spec
 
 #### Major Updates
 - The now-obsolete RPIP-30 cycle factor and associated legacy reward calculation are removed
-- For minipools with less than 14% commission, increase the share of execution layer rewards based on RPL stake
-- For minipools with less than 14% commission, introduce a bonus based on RPL stake and the consensus rewards they earned
+- For 8 ETH minipools with less than 14% commission, increase the share of execution layer rewards based on RPL stake
+- For 8 ETH minipools with less than 14% commission, introduce a bonus based on RPL stake and the consensus rewards they earned
 
 #### Minor Changes
 - Simplified `lastReduceTime` condition in Calculating Attestation Performance and Minipool Scores
@@ -228,45 +228,24 @@ state := minipool.getStatus()
 Ignore minipools that are not in the `staking` state.
 
 Define `eligibleBorrowedEth` as the total amount of ETH borrowed by the node operator from the staking pool for eligible minipools.
-Define `eligibleBondedEth` as the total amount of ETH the node operator has bonded for its eligible minipools.
-Start with both set to `0`.
+Start with it set to `0`.
 
 For each `staking` minipool, check if it was not exited from the Beacon Chain at the end of the interval:
 
 1. Get the `status` of the validator from the Beacon Chain for `targetBcSlot` (e.g., `/eth/v1/beacon/states/<targetBcSlot>/validators?id=0x<pubkey>`). If the validator did not exist at `targetBcSlot`, ignore it and continue.
 2. Get the `exit_epoch` for the validator.
-3. If the validator's `exit_epoch` is **after** `targetBcSlot`'s epoch (`exit_epoch` > `targetSlotEpoch`), it is eligible.
-   1. Add the amount of ETH borrowed by the node operator for this minipool to `eligibleBorrowedEth`:
-        ```go
-        borrowedEth := minipool.getUserDepositBalance()
-        eligibleBorrowedEth += borrowedEth
-        ```
-   2. Add the amount of ETH bonded by the node operator for this minipool to `eligibleBondedEth`:
-        ```go
-        bondedEth := minipool.getNodeDepositBalance()
-        eligibleBondedEth += bondedEth
-        ```
-
-Next, calculate the minimum and maximum RPL collateral levels based on the ETH/RPL ratio reported by the protocol:
-```go
-ratio := RocketNetworkPrices.getRPLPrice()
-minCollateralFraction := RocketDAOProtocolSettingsNode.getMinimumPerMinipoolStake() // e.g., 10% in wei
-maxCollateralFraction := 1.5e18 // i.e., 150% in wei. Hard-coded by RPIP-30's phase-in rules.
-minCollateral := eligibleBorrowedEth * minCollateralFraction / ratio
-maxCollateral := eligibleBondedEth * maxCollateralFraction / ratio
-``` 
-
-Note that `minCollateral` is based on the amount *borrowed*, and `maxCollateral` is based on the amount *bonded*.
+3. If the validator's `exit_epoch` is **after** `targetBcSlot`'s epoch (`exit_epoch` > `targetSlotEpoch`), it is eligible. Add the amount of ETH borrowed by the node operator for this minipool to `eligibleBorrowedEth`:
+    ```go
+    borrowedEth := minipool.getUserDepositBalance()
+    eligibleBorrowedEth += borrowedEth
+    ```
 
 Now, calculate the node's weight (`nodeWeight`) based on the above:
 
 ```go
+ratio := RocketNetworkPrices.getRPLPrice()
 nodeStake := RocketNodeStaking.getNodeRPLStake(nodeAddress)
-if nodeStake < minCollateral {
-    nodeWeight := 0
-} else {
-    nodeWeight := getNodeWeight(eligibleBorrowedEth, nodeStake, ratio)
-}
+nodeWeight := getNodeWeight(eligibleBorrowedEth, nodeStake, ratio)
 ```
 
 `getNodeWeight()` is defined in the [getNodeWeight section](#getnodeweight).
@@ -314,22 +293,28 @@ if collateralRewards - totalCalculatedCollateralRewards > epsilon {
 ```
 
 #### getNodeWeight
-
-Calculate `stakedRplValueInEth`:
-
+##### Variant A (Keep Reward Cliff)
 ```go
 stakedRplValueInEth = nodeStake * ratio / 1 Eth.
-```
-
-Calculate `percentOfBorrowedEth`:
-
-```go
 percentOfBorrowedEth = stakedRplValueInEth * 100 Eth / eligibleBorrowedEth
+if percentOfBorrowedEth < 10 Eth {
+    return 0
+} else if percentOfBorrowedEth <= 15 Eth {
+    return 100 * stakedRplValueInEth
+} else {
+    return ((13.6137 Eth + 2 * ln(percentOfBorrowedEth - 13 Eth)) * eligibleBorrowedEth) / 1 Eth
+}
 ```
-
-If `percentOfBorrowedEth <= 15 Eth`, return `100 * stakedRplValueInEth`.
-
-Otherwise, return `((13.6137 Eth + 2 * ln(percentOfBorrowedEth - 13 Eth)) * eligibleBorrowedEth) / 1 Eth`.
+##### Variant B (Remove Reward Cliff)
+```go
+stakedRplValueInEth = nodeStake * ratio / 1 Eth.
+percentOfBorrowedEth = stakedRplValueInEth * 100 Eth / eligibleBorrowedEth
+if percentOfBorrowedEth <= 15 Eth {
+    return 100 * stakedRplValueInEth
+} else {
+    return ((13.6137 Eth + 2 * ln(percentOfBorrowedEth - 13 Eth)) * eligibleBorrowedEth) / 1 Eth
+}
+```
 
 `ln` is specified in the next section.
 
@@ -377,7 +362,6 @@ After 60 loops, return `result`.
 Start by acquiring the list of Oracle DAO node addresses using the following contract methods:
 
 ```go
-
 oDaoCount := RocketDAONodeTrusted.getMemberCount()
 oDaoAddresses := address[oDaoCount]
 for i = 0; i < oDaoCount; i++ {
@@ -599,11 +583,13 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
         baseFee = previousFee
     }
     ```
-3. Configure `saturnOneInterval` to be the reward period in which the Saturn 1 upgrade contract (`rocketUpgradeOneDotFour`) was executed. If this has not happened yet, use an interval far into the future (e.g. 1e18 or the data type's maximum value if bounded).
+3. Configure `saturnOneInterval` to be the reward period in which the Saturn 1 upgrade contract was executed. If this has not happened yet, use an interval far into the future (e.g. 1e18 or the data type's maximum value if bounded). In detail, `rocketUpgradeOneDotFour.executed()` (signature `0x31a38c89`) shall act as source of truth for upgrade execution. Non-existence of the contract or function should be considered equivalent to a return value of `false`, i.e. not yet executed.
 4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee, percentOfBorrowedETH)` with `fee` as the return value for later reference.
     ```go
     fee := baseFee
-    if (interval - 4) < saturnOneInterval {
+    isEligibleBond := currentBond < 16 Eth
+    isEligibleInterval := (interval - 4) < saturnOneInterval
+    if isEligibleBond && isEligibleInterval {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
@@ -657,33 +643,25 @@ For each slot in the reward interval, get the list of validator withdrawals (e.g
 ```go
 minipoolWithdrawals[address] += amount
 ```
-Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus.
+Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus. In case of negative consensus income, award no bonus.
 ```go
 bonusFee := getTotalFee(rewardBaseFee, percentOfBorrowedETH) - rewardBaseFee
 consensusIncome := endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance)
 bonusShare := bonusFee * (32 Eth - rewardBond) / 32 Eth
-result := consensusIncome * bonusShare / 1 Eth
+result := max(0, consensusIncome * bonusShare / 1 Eth)
 ```
 Return `result`.
 
-Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus. In case of negative consensus income, award no bonus.
+Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus.
 ```go
 totalConsensusBonus := 0
 ```
 ```go
-minipoolBonus := 0
-eligibleStartTime := max(startTime, statusTime, optInTime)
+eligibleStartTime := max(startTime, statusTime, optInTime, lastReduceTime)
 eligibleEndTime := min(endTime, optOutTime)
-if (eligibleStartTime < lastReduceTime) && (lastReduceTime < eligibleEndTime) {
-    minipoolBonus += getMinipoolBonus(previousFee, previousBond, eligibleStartTime, lastReduceTime)
-    minipoolBonus += getMinipoolBonus(currentFee, currentBond, lastReduceTime, eligibleEndTime)
-} else {
-    minipoolBonus += getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
-}
-if minipoolBonus > 0 {
-    nodeBonus[minipool.OwningNode] += minipoolBonus
-    totalConsensusBonus += minipoolBonus
-}
+minipoolBonus := getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
+nodeBonus[minipool.OwningNode] += minipoolBonus
+totalConsensusBonus += minipoolBonus
 ```
 Should the remaining balance not be sufficient to cover `totalConsensusBonus` (`totalConsensusBonus` > `remainingBalance`), calculate a correction factor and apply it to every node.
 ```go
