@@ -7,12 +7,12 @@ This document serves as a formal specification for the way that the rewards inte
 
 This describes **v10** of the rewards calculation ruleset.
 
-This version implements RPIP-[to be assigned]
+This version implements [RPIP-62](../../RPIPs/RPIP-62.md).
 
 
 ### Changes since `v8`
 
-The following updates have been made from [v8](./legacy/rewards-calculation-spec-v8.md) of the spec. Note that v9 was just a file spec change, not a ruleset change, and is thus not included in this comparison.
+The following updates have been made from [v8](../rpip-51/rewards-calculation-spec.md) of the spec. Note that v9 was just a file spec change, not a ruleset change, and is thus not included in this comparison.
 
 
 #### Major Updates
