@@ -684,4 +684,4 @@ poolStakerEth := smoothingPoolBalance - totalEthForMinipools
 
 ## Constructing the Tree
 
-With all of the above values, you can now create the Merkle tree for this interval using the [tree specification](./merkle-tree-spec.md).
+With all of the above values, you can now create the Merkle tree for this interval using the [tree specification](../rpip-53/merkle-tree-spec.md).
