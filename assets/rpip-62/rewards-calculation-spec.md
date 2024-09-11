@@ -7,7 +7,7 @@ This document serves as a formal specification for the way that the rewards inte
 
 This describes **v10** of the rewards calculation ruleset.
 
-This version implements [RPIP-62](../../RPIPs/RPIP-62.md).
+This version implements the reward calculation component of [RPIP-62](../../RPIPs/RPIP-62.md).
 
 
 ### Changes since `v8`
