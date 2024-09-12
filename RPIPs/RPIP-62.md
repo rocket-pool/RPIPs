@@ -8,6 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-07-25
+requires: rpip-63
 ---
 
 ## Abstract
@@ -21,7 +22,7 @@ Short term increases in TVL are beneficial for the protocol as long as they can 
 On the other hand, as competition emerges and an equivalent or higher yield  is accessible without the need to acquire a protocol token, short-term RPL utility is unlikely to continue to significantly support fundamental value.
 Therefore, node operation is made more attractive by allowing minipool creation without RPL < | and removing the cliff for RPL rewards>.
 Contract commission for these new ETH-only minipools is kept less attractive than megapool validators under [Saturn 1](RPIP-55.md) to encourage migration once dynamic commission is disabled.
-In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes (and the Houston Hotfix is implemented as specified in [RPIP-63](RPIP-63.md), which includes changing the scrub penalty to ETH instead of RPL). The dynamic commission requires reward tree spec changes, which would be rolled out alongside the parameter changes or shortly thereafter.
+In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes (and the Houston Hotfix is implemented as specified in [RPIP-63](RPIP-63.md), which includes the requirement of changing the scrub penalty to ETH instead of RPL). The dynamic commission requires reward tree spec changes, which would be rolled out alongside the parameter changes or shortly thereafter.
 
 ## Specification
 - `node.per.minipool.stake.minimum` SHALL be set to 0
