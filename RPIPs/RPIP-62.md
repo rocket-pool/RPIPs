@@ -13,13 +13,13 @@ requires: rpip-63
 
 ## Abstract
 This proposal aims to improve RPL tokenomics in the short term before the changes of [RPIP-49](RPIP-49.md) can be implemented.
-Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
+Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% for zero RPL staked, and scales linearly up to a max of 14% for RPL staked positions worth at least 10% of borrowed ETH.
 The cliff for RPL rewards is <explicitly maintained at 10% | removed by extending rewards linearly below 10%> of borrowed ETH.
 
 ## Motivation
 With the DAO having voted for the Saturn upgrade, the fundamental value of RPL will primarily be based on megapool TVL.
 Short term increases in TVL are beneficial for the protocol as long as they can be expected to convert to megapools.
-On the other hand, as competition emerges and an equivalent or higher yield  is accessible without the need to acquire a protocol token, short-term RPL utility is unlikely to continue to significantly support fundamental value.
+On the other hand, as competition emerges and an equivalent or higher yield is accessible without the need to acquire a protocol token, short-term RPL utility is unlikely to continue to significantly support fundamental value.
 Therefore, node operation is made more attractive by allowing minipool creation without RPL < | and removing the cliff for RPL rewards>.
 Contract commission for these new ETH-only minipools is kept less attractive than megapool validators under [Saturn 1](RPIP-55.md) to encourage migration once dynamic commission is disabled.
 In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes (though this rpip does require changing the scrub penalty to ETH instead of RPL, which is planned for implementation in the Houston Hotfix as specified in [RPIP-63](RPIP-63.md)). The dynamic commission requires reward tree spec changes, which would be rolled out alongside the parameter changes or shortly thereafter.
@@ -60,7 +60,7 @@ After the conclusion of the Snapshot vote:
 
 ## Rationale
 ### Megapool Conversions
-The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
+The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the base commission returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
 
 ### Dynamic Commission Eligibility
 Requiring smoothing pool participation to receive dynamic commission provides a strong expectation that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools.
