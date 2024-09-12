@@ -18,7 +18,7 @@ The Houston hotfix does not introduce new features but does include important ch
 - Resolves Immunefi bug bounty submissions regarding the onchain voting system
 - Improves Protocol DAO quorum default guardrail value (currently set too high)
 - Fixes a couple of issues with Protocol DAO parameters
-- Refactored how the onchain voting system burns a veto'd proposer bond - now actually burns the RPL rather than transferring it to 0x0 address
+- Modifies how the onchain voting system burns a veto'd proposer bond - now actually burns the RPL rather than transferring it to 0x0 address
 - Changes the Scrub Penalty from being RPL based to ETH based
 - Miscellaneous housekeeping of parameter names to ensure consistency 
 
@@ -28,12 +28,12 @@ Soon after the Houston launch, an issue was reported with finalising legacy mini
 
 In the meantime, 3x Immunefi bug bounties were raised regarding the onchain voting system.
 - A medium bug bounty that enabled a node operator to exit RPL stake via the onchain proposal challenge system.
-- Two high bug bounties that enabled someone to steal a proposer's bond by preventing them from responding to challenges 
-While working on the bug bounties we decided to refactor how the voting system burns a veto'd proposer bond. We decided to use RPL's burn function rather than transferring to the 0x0 address so that token supply is recorded accurately. 
+- Two high bug bounties that enabled someone to steal a proposer's bond by preventing them from responding to challenges. 
+While working on the bug bounties we decided to modify how the voting system burns a veto'd proposer bond. We decided to use RPL's burn function rather than transferring to the 0x0 address so that token supply is recorded accurately. 
 
 Additionally, the community discovered that the Protocol DAO quorum guardrail is set too high, as it should be possible to match it with RPIP-4. The community also pointed out some small parameter name inconsistencies. 
 
-There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism but in the meantime it is needed. To give us the option to support RPIP-62, the scrub penalty change as been included in this hotfix.
+There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism but in the meantime it is needed. To give us the option to support RPIP-62, the scrub penalty change has been included in this hotfix.
 
 ## Specification
 
@@ -46,7 +46,7 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 
 - The `RocketDAOProtocolSettingsAuction` `Lot Duration` guardrail SHALL use blocks instead of seconds 
 - When setting the `RocketDAOProtocolSettingsNode` `MinimumPerMinipoolStake` parameter to 0, `RocketNodeStaking` `getNodeETHMatchedLimit` SHALL NOT revert due to division by 0
-- Some other minor fixes to parameter names to make them consistent and remove typos
+- Non-functional fixes to improve parameter names to and remove typos MAY be included
 
 ### Protocol Quorum Guardrail
 
@@ -54,7 +54,7 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 
 ### Immunefi Bug Bounties
 
-- On a successful challenge 20% of the proposers bond SHALL be burnt and the remaining distributed to challengers
+- On a successful challenge 20% of the proposer's bond SHALL be burnt and the remaining distributed to challengers
 - Challenge responses SHALL be restricted to the proposer only
 - If a node's vote power has not be initialised, when they stake or deposit, their vote power SHALL be automatically initialised (the smart node will make users aware of this) - to ensure consistent network snapshots and proposal challenges can be responded to
 - A `RocketNetworkVoting.initialiseVotingFor` function SHALL be present to manually initialise any node operator that may have staked/deposited before initialising their vote power - to ensure consistent network snapshots and proposal challenges can be responded to
