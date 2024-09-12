@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-07-25
-requires: rpip-63
+requires: 63
 ---
 
 ## Abstract
