@@ -56,7 +56,7 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 
 - On a successful challenge 20% of the proposer's bond SHALL be burnt and the remaining distributed to challengers
 - Challenge responses SHALL be restricted to the proposer only
-- If a node's vote power has not be initialised, when they stake or deposit, their vote power SHALL be automatically initialised (the smart node will make users aware of this) - to ensure consistent network snapshots and proposal challenges can be responded to
+- If a node's vote power has not been initialised, when they stake or deposit, their vote power SHALL be automatically initialised (the smart node will make users aware of this) - to ensure consistent network snapshots and proposal challenges can be responded to
 - A `RocketNetworkVoting.initialiseVotingFor` function SHALL be present to manually initialise any node operator that may have staked/deposited before initialising their vote power - to ensure consistent network snapshots and proposal challenges can be responded to
 - Voting with 0 vote power SHALL be prevented
 
