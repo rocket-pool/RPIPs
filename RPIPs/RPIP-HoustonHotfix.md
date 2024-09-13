@@ -90,6 +90,5 @@ On a failed scrub check the oDAO vote to scrub a minipool. When the scrub quorum
 
 Without changes to the scrub penalty mechanics, the pDAO could set the minimum RPL stake to 0, which would remove the ability to penalize minipools that set incorrect withdrawal credentials. A malicious actor can create many minipools that need to be scrubbed and force the oDAO to scrub all of them without having provided slashable RPL. As long as the oDAO keeps scrubbing minipools, this is purely a griefing attack that is also costly to the attacker. If the oDAO were to run out of gas and not top up their wallets during the scrub period, the attacker could successfully perform a withdrawal credential exploit and steal rETH funds.
 
-
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
