@@ -33,7 +33,7 @@ While working on the bug bounties we decided to modify how the voting system bur
 
 Additionally, the community discovered that the Protocol DAO quorum guardrail is set too high, as it should be possible to match it with RPIP-4. The community also pointed out some small parameter name inconsistencies. 
 
-There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism but in the meantime it is needed. To give us the option to support RPIP-62, the scrub penalty change has been included in this hotfix.
+There has also been discussion around a potential tokenomics rework prelude [RPIP-62](https://rpips.rocketpool.net/RPIPs/RPIP-62) that uses a combination of setting changes and reward tree changes, to deliver some of the value of Saturn earlier. One issue with rolling out these changes is that they would break the RPL scrub penalty that prevents a potential security exploit. Ultimately the scrub penalty will be removed in Saturn due to an improved proof-based mechanism but in the meantime it is needed. To give us the option to support RPIP-62 and ensure safety if the pDAO was to set minimum RPL stake to 0, the scrub penalty change has been included in this hotfix.
 
 ## Specification
 
@@ -88,6 +88,7 @@ Burning RPL during veto and sending RPL to 0x0 is equivalent from a security per
 
 On a failed scrub check the oDAO vote to scrub a minipool. When the scrub quorum is reached (51% of oDAO) it is dissolved and the penalty is applied. rETH funds **+ the penalty amount (2.4 ETH)** are recycled back into the deposit pool at the time of dissolve. Consequently, rETH user funds are released and the penalty applied immediately. The remaining funds are claimable by the node operator. The penalty amount is equivalent to the amount that would have been slashed from the node operator bond. rETH users have always benefited from scrub penalties so this does not change, except now it is more direct (doesn't need to go through the auction system). The scrub penalty is defined in the smart contracts (set to 2.4 ETH) and not manipulatable by the oDAO. A scrub penalty can only be applied once to a minipool.
 
+Without changes to the scrub penalty mechanics, the pDAO could set the minimum RPL stake to 0, which would remove the ability to penalize minipools that set incorrect withdrawal credentials. A malicious actor can create many minipools that need to be scrubbed and force the oDAO to scrub all of them without having provided slashable RPL. As long as the oDAO keeps scrubbing minipools, this is purely a griefing attack that is also costly to the attacker. If the oDAO were to run out of gas and not top up their wallets during the scrub period, the attacker could successfully perform a withdrawal credential exploit and steal rETH funds.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
