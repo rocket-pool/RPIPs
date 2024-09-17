@@ -17,6 +17,7 @@ The Houston hotfix does not introduce new features but does include important ch
 - Fix a discovered bug with finalising legacy minipools
 - Resolves Immunefi bug bounty submissions regarding the onchain voting system
 - Improves Protocol DAO quorum default guardrail value (currently set too high)
+- Sets the Protocol DAO quorum to **30%**
 - Fixes a couple of issues with Protocol DAO parameters
 - Modifies how the onchain voting system burns a veto'd proposer bond - now actually burns the RPL rather than transferring it to 0x0 address
 - Changes the Scrub Penalty from being RPL based to ETH based
@@ -48,15 +49,16 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 - When setting the `RocketDAOProtocolSettingsNode` `MinimumPerMinipoolStake` parameter to 0, `RocketNodeStaking` `getNodeETHMatchedLimit` SHALL NOT revert due to division by 0
 - Non-functional fixes to improve parameter names to and remove typos MAY be included
 
-### Protocol Quorum Guardrail
+### Protocol Quorum
 
 - The `RocketDAOProtocolSettingsProposals` `Proposal Quorum` minimum safeguard SHALL be changed from 51% to 15%
+- The `RocketDAOProtocolSettingsProposals` `Proposal Quorum` SHALL be set to 30% - there is currently 50k vote power initialised out of 94k so 30% ensures quorum is above the mandated 15%, as per RPIP-4
 
 ### Immunefi Bug Bounties
 
 - On a successful challenge 20% of the proposer's bond SHALL be burnt and the remaining distributed to challengers
 - Challenge responses SHALL be restricted to the proposer only
-- If a node's vote power has not be initialised, when they stake or deposit, their vote power SHALL be automatically initialised (the smart node will make users aware of this) - to ensure consistent network snapshots and proposal challenges can be responded to
+- If a node's vote power has not been initialised, when they stake or deposit, their vote power SHALL be automatically initialised (the smart node will make users aware of this) - to ensure consistent network snapshots and proposal challenges can be responded to
 - A `RocketNetworkVoting.initialiseVotingFor` function SHALL be present to manually initialise any node operator that may have staked/deposited before initialising their vote power - to ensure consistent network snapshots and proposal challenges can be responded to
 - Voting with 0 vote power SHALL be prevented
 
