@@ -8,27 +8,27 @@ status: Draft
 type: Protocol
 category: Core
 created: 2024-07-25
+requires: 63
 ---
 
 ## Abstract
 This proposal aims to improve RPL tokenomics in the short term before the changes of [RPIP-49](RPIP-49.md) can be implemented.
-Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% and scales linearly with RPL stake up to 14% at 10% of borrowed ETH.
-The cliff for RPL rewards is <explicitly maintained at 10% | removed by extending rewards linearly below 10%> of borrowed ETH. Scrub penalties are changed to be taken out of the node operator's ETH bond instead of slashing RPL.
+Minipools can be created without a minimum RPL requirement and at 5% contract commission. A temporary (until after [Saturn 1](RPIP-55.md)) dynamic commission boost beyond this value is introduced. Total dynamic commission starts at 10% for zero RPL staked, and scales linearly up to a max of 14% for staked RPL positions worth at least 10% of borrowed ETH.
+The cliff for RPL rewards is <explicitly maintained at 10% | removed by extending rewards linearly below 10%> of borrowed ETH.
 
 ## Motivation
 With the DAO having voted for the Saturn upgrade, the fundamental value of RPL will primarily be based on megapool TVL.
 Short term increases in TVL are beneficial for the protocol as long as they can be expected to convert to megapools.
-On the other hand, as competition emerges and an equivalent or higher yield  is accessible without the need to acquire a protocol token, short-term RPL utility is unlikely to continue to significantly support fundamental value.
+On the other hand, as competition emerges and an equivalent or higher yield is accessible without the need to acquire a protocol token, short-term RPL utility is unlikely to continue to significantly support fundamental value.
 Therefore, node operation is made more attractive by allowing minipool creation without RPL < | and removing the cliff for RPL rewards>.
 Contract commission for these new ETH-only minipools is kept less attractive than megapool validators under [Saturn 1](RPIP-55.md) to encourage migration once dynamic commission is disabled.
-In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes and changes to the scrub penalty are implemented. The dynamic commission requires reward tree spec changes, which would be rolled out alongside the parameter changes or shortly thereafter.
+In the interest of acting fast, this proposal minimizes smart contract changes. The suggested parameter changes can be enacted immediately after the vote passes and [RPIP-63](RPIP-63.md) is implemented. The dynamic commission requires reward tree spec changes, which would be rolled out alongside the parameter changes or shortly thereafter.
 
 ## Specification
 - `node.per.minipool.stake.minimum` SHALL be set to 0
 - `network.node.fee.target` SHALL be set to 5%
 - `network.node.fee.minimum` SHALL be set to 5%
 - `network.node.fee.maximum` SHALL be set to 5%
-- The scrub penalty SHALL be set to 2.4 ether and made to be withheld from an offending minipool's bond
 - [Reward Tree Spec v10](../assets/rpip-62/rewards-calculation-spec.md) SHALL be implemented and be used for ongoing reward tree calculations. It consists of the following changes:
   - <Decouple | Remove> the minimum RPL stake to qualify for issuance rewards <from `node.per.minipool.stake.minimum` by setting it to a constant 10% | >
   - For minipools that are opted into the smoothing pool, determine the commission for smoothing pool calculations based on ETH bond and RPL stake:
@@ -60,7 +60,7 @@ After the conclusion of the Snapshot vote:
 
 ## Rationale
 ### Megapool Conversions
-The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
+The base commission (without dynamic commission) is lowered to 5% such that megapool validators introduced in [RPIP-49](RPIP-49.md) remain significantly more attractive. As a reference point, the returns for ETH-only users in [Saturn 1](RPIP-55.md) would match the base commission returns from minipools in this RPIP if `node_operator_commission_share` were set to 2.14%; [Saturn 1](RPIP-55.md) starts `node_operator_commission_share` at 5%. We expect that operators with ETH-only minipools described in this RPIP will eventually migrate to megapools and thus contribute to RPL value capture.
 
 ### Dynamic Commission Eligibility
 Requiring smoothing pool participation to receive dynamic commission provides a strong expectation that the end-of-interval balance will be sufficient to cover the full reward bonus for all qualifying minipools.
@@ -76,7 +76,6 @@ To understand when there wouldn't be enough, we look at a worst case scenario: e
 
 ### Security
 - The minimum collateral per minipool is lowered from 10.4 ETH to 8 ETH at time of creation. This is sufficient as it is still significantly higher than the 4 ETH validator bond proposed in [RPIP-49](RPIP-49.md).
-- Without changes to the scrub penalty mechanics, setting the per-minipool minimum RPL stake to 0 would remove the ability to penalize minipools that set incorrect withdrawal credentials. A malicious actor can create many minipools that need to be scrubbed and force the oDAO to scrub all of them without having provided slashable RPL. As long as the oDAO keeps scrubbing minipools, this is purely a griefing attack that is also costly to the attacker. If the oDAO were to run out of gas and not top up their wallets during the scrub period, the attacker could successfully perform a withdrawal credential exploit and steal rETH funds. The proposal therefore includes a change that enables the minipool delegate to apply an equivalent penalty to the node operator's ETH bond instead.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
