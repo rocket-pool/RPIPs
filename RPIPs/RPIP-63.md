@@ -47,7 +47,7 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 
 - The `RocketDAOProtocolSettingsAuction` `Lot Duration` guardrail SHALL use blocks instead of seconds 
 - When setting the `RocketDAOProtocolSettingsNode` `MinimumPerMinipoolStake` parameter to 0, `RocketNodeStaking` `getNodeETHMatchedLimit` SHALL NOT revert due to division by 0
-- Non-functional fixes to improve parameter names to and remove typos MAY be included
+- Non-functional fixes to improve parameter names and remove typos MAY be included
 
 ### Protocol Quorum
 
