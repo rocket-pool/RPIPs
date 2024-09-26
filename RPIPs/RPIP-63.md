@@ -49,7 +49,7 @@ There has also been discussion around a potential tokenomics rework prelude [RPI
 - When setting the `RocketDAOProtocolSettingsNode` `MinimumPerMinipoolStake` parameter to 0, `RocketNodeStaking` `getNodeETHMatchedLimit` SHALL NOT revert due to division by 0
 - Add `RocketDAOProtocolSettingsAuction` `CreateLotEnabled` SHALL be added to the list of pDAO parameters that can be modified by the Security Council
 - Add `RocketDAOProtocolSettingsAuction` `BidOnLotEnabled` SHALL be added to the list of pDAO parameters that can be modified by the Security Council
-- Non-functional fixes to improve parameter names to and remove typos MAY be included
+- Non-functional fixes to improve parameter names and remove typos MAY be included
 
 ### Protocol Quorum
 
