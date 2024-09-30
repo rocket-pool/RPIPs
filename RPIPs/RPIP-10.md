@@ -4,12 +4,12 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Living
+status: Draft
 type: Meta
 created: 2022-08-09
-vote-to: https://vote.rocketpool.net/#/proposal/0x1852d7ed18998036a9b7251a5d9aaaf0be5e9c9023bf5884d3623f83d9f13d3b
-vote-date: 2023-11-16
-vote-result: Passed
+vote-to: TBD
+vote-date: TBD
+vote-result: TBD
 ---
 
 
@@ -203,9 +203,10 @@ Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-t
 |------------|------------    |------------------------------------------------------------------------------------|---------------------------------------------    |
 | 2023-09-03 | 3584 RPL       | 3 months initial dev funding                                                       | [expense_1](../assets/rpip-10/expense_1.md)     |
 | ~~TBD~~    | ~~0-3909 RPL~~ | ~~Additional dev funding with seat reduction~~                                     | ~~[expense_1](../assets/rpip-10/expense_1.md)~~ |
-| TBD        | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
-| TBD        | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
-| TBD        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
+| 2023-11-29       | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
+| 2023-11-29         | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
+| 2024-02-15        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
+| TBD        | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24** inclusive)   | [expense_4](../assets/rpip-10/expense_4.md)     |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
