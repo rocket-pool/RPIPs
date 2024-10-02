@@ -4,7 +4,7 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Draft
+status: Review
 type: Meta
 created: 2022-08-09
 vote-to: TBD
@@ -154,14 +154,14 @@ update this RPIP:
 1. An author SHALL make edits as desired and create a pull request; the status in the PR SHALL be
    "Draft"
 2. An RPIP editor SHALL review it. If there are no structural issues, the status shall be changed
-   to "Review" 
+   to "Review"
 3. The vote procedure SHALL be followed as if this were an entirely new RPIP. This includes making
    forum posts, appropriate wait times, quorums, etcetera, as detailed elsewhere.
 4. If criteria for a vote are not met, the status SHALL be changed to "No Vote Taken" and the PR
    SHALL be closed.
 5. If there was a vote, then after the vote is concluded:
    1. If the vote passed, the status SHALL be changed to "Living" and the PR SHALL be merged
-   2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed 
+   2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed
 
 ## Rationale
 The main goal is to establish a starting budget and provide for a quick initial state where funds
@@ -177,7 +177,7 @@ annually. For a theoretical run of 1 reward period (28 days), this gives  ~83.6 
 to work with. In light of parallel discussions about tokenomics changes, this amount serves as a
 conservative starting point.
 
-In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see 
+In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see
 [https://dao.rocketpool.net/t/pdao-budget-definition/644](https://dao.rocketpool.net/t/pdao-budget-definition/644) for more context.
 
 6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
