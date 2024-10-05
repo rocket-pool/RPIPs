@@ -5,11 +5,14 @@ description: Introduces a delay after protocol upgrades have been confirmed but 
 author: Valdorff (@Valdorff)
 contributor: LongForWisdom (@LongForWisdom), Knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Draft
+status: Final
 type: Protocol
 category: Core
 created: 2024-03-08
 requires:
+vote-to: https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d
+vote-date: 2024-08-21
+vote-result: Passed
 tags: tokenomics-2024, tokenomics-content
 ---
 
