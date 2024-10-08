@@ -1,5 +1,9 @@
 This expense funds the core protocol development team from **2024-10-25** until **2025-10-24** (inclusive).
 
+The team has completed a prioritization discussion, which has been summarized here: https://discord.com/channels/405159462932971535/405163979141545995/1291631201597263883
+
+They are expected to release a roadmap and timeline for Saturn milestones in the month of October 2024.  
+
 The core protocol development team will provide quarterly updates on the roadmap progress before the following dates:
 - 2025-01-26
 - 2025-04-26
