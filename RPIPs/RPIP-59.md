@@ -5,7 +5,7 @@ description: Describes the mechanics of node operator deposits and validator cre
 author: knoshua (@knoshua), Valdorff (@Valdorff)
 contributor: LongForWisdom (@LongForWisdom), Samus (@orangesamus), Sckuzzle (@sckuzzle)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08

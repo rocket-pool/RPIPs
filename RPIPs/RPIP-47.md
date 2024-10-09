@@ -4,7 +4,7 @@ title: Enable Forced Delegate Upgrades
 description: Allows protocol governance to force upgrade megapool delegates after a Rocket Pool protocol upgrade takes place, and a grace period has expired.
 author: LongForWisdom(@LongForWisdom), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08

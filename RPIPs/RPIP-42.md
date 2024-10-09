@@ -5,7 +5,7 @@ description: Introduce smaller ETH bonds to improve capital efficiency for node 
 author: Valdorff (@Valdorff)
 contributor: LongForWisdom (@LongForWisdom), Knoshua (@knoshua), Ramana (@xrchz), Patches (@jshufro), Sckuzzle (@sckuzzle), Samus (@orangesamus)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08

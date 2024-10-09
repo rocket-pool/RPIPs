@@ -5,7 +5,7 @@ description: A single contract per node operator that can be used as an Ethereum
 author: Valdorff (@Valdorff), Knoshua (@knoshua), NonFungibleYokem (@yokem55), Ramana (@xrchz)
 contributor: LongForWisdom (@LongForWisdom), Samus (@orangesamus)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-05

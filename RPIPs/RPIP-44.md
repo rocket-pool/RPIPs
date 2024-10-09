@@ -5,7 +5,7 @@ description: Describes how execution layer triggerable exits (per EIP-7002) will
 author: Ramana (@xrchz), Knoshua (@knoshua)
 contributor: Valdorff (@Valdorff), Mike Leach (@VVander), LongForWisdom (@LongForWisdom), Samus (@orangesamus)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-05

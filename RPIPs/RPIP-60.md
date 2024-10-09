@@ -5,7 +5,7 @@ description: Introduces a delay after protocol upgrades have been confirmed but 
 author: Valdorff (@Valdorff)
 contributor: LongForWisdom (@LongForWisdom), Knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08

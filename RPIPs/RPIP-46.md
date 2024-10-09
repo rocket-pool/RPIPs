@@ -5,7 +5,7 @@ description: Allow the revenue from borrowed ETH (aka, rETH commission) to be sp
 author: Valdorff (@Valdorff)
 contributor: Sckuzzle (@sckuzzle), Knoshua (@knoshua), Samus (@orangesamus), LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Final
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08
