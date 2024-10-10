@@ -41,6 +41,10 @@ depth: Intermediate
 
 **rETH TVL:** Total value locked in rETH. Consider it the “size” of the liquid staking token.
 
+**Rewards Tree:** RocketPool rewards are combination of consensus rewards, priority fees, MEV and RPL rewards. RPL rewards require offchain data to calculate and thus are calculated offchain and submitted onchain by oDAO oracle nodes. Given they are calculated offchain, the logic is simpler to modify that onchain smart contracts.
+
+**Smoothing Pool:** RocketPool feature to share priority fees via pool mechanism to "smooth" rewards for participants. Node operators not in the smoothing pool are exposed to randomness of being selected (or not) for block production or sync committees.
+
 **Sock Puppeting (aka Sybil Behavior):** A single entity creating and controlling multiple identities (sock puppets), usually for an attack or to gain influence. An example in Rocket Pool is voting, as multiple fake identities with the same amount of RPL have greater voting power than a single identity due to quadratic voting.
 
 **Solo staking APY:** The yield for staking on a full 32-ETH validator (inclusive of consensus rewards, tips, and MEV rewards)
