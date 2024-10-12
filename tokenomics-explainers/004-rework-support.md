@@ -4,7 +4,7 @@ title: Supporting Components of the Tokenomics Rework
 nav-title: Part 4 - Supporting Components of the Tokenomics Rework
 description: Describes some of the supporting components of the rework, and why these are important.
 author: Valdorff (@Valdorff), Samus (@orangesamus)
-custom-next: /tokenomics-explainers/005-glossary
+custom-next: /tokenomics-explainers/005-rework-prelude
 custom-prev: /tokenomics-explainers/003-rework-foundation
 depth: Intermediate
 ---
