@@ -1,11 +1,11 @@
 ---
 layout: other-content
 title: Glossary of Terms
-nav-title: Part 5 - Glossary of Terms
+nav-title: Part 6 - Glossary of Terms
 description: Defines some of the common terminology present in the other explainers.
 author: Valdorff (@Valdorff), Paladin (@Paladin147)
 custom-next: none
-custom-prev: /tokenomics-explainers/004-rework-support
+custom-prev: /tokenomics-explainers/005-rework-prelude
 depth: Intermediate
 ---
 
