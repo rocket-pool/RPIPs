@@ -22,7 +22,7 @@ With the DAO having voted for the Saturn upgrade, the fundamental value of RPL w
 
 ## Contents
 
-### RPL Issuance Rewards:
+### RPL Issuance Rewards
 Saturn 0 will remove the cliff for RPL issuance rewards. This means RPL issuance rewards will be adjusted such that Node Operators earn the maximum APY for staked RPL positions worth 0-15% of borrowed ETH.
 
 <img src="../assets/tokenomics-explainers/005-figure-1.png" alt="Figure 1"></br>
