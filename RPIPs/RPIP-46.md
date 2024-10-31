@@ -5,11 +5,14 @@ description: Allow the revenue from borrowed ETH (aka, rETH commission) to be sp
 author: Valdorff (@Valdorff)
 contributor: Sckuzzle (@sckuzzle), Knoshua (@knoshua), Samus (@orangesamus), LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Draft
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08
 requires: potentially rpip-45 or rpip-50
+vote-to: https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d
+vote-date: 2024-08-21
+vote-result: Passed
 tags: tokenomics-2024, tokenomics-content
 ---
 

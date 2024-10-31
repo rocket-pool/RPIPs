@@ -5,11 +5,14 @@ description: A single contract per node operator that can be used as an Ethereum
 author: Valdorff (@Valdorff), Knoshua (@knoshua), NonFungibleYokem (@yokem55), Ramana (@xrchz)
 contributor: LongForWisdom (@LongForWisdom), Samus (@orangesamus)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Draft
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-05
 requires: 30, 46, eip-4788
+vote-to: https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d
+vote-date: 2024-08-21
+vote-result: Passed
 tags: tokenomics-2024, tokenomics-content
 ---
 

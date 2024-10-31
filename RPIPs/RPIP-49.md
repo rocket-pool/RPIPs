@@ -7,6 +7,9 @@ discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
 status: Living
 type: Informational
 created: 2024-03-08
+vote-to: https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d
+vote-date: 2024-08-21
+vote-result: Passed
 tags: tokenomics-2024
 ---
 
@@ -125,12 +128,10 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * RPL Value Capture based on vote outcome - Probably one of: [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
-Last Updated: August 8th
+Last Updated: October 4th
 
 Current efforts are primarily focused on:
-1. **Voting!** A snapshot vote is now live, and can be found [here](https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d). 
-
-A maintained list of open tasks is available via Google sheet [here](https://docs.google.com/spreadsheets/d/1KDTeFnNl3XLFO37upti6NbT2p2GDYJ4GKH4aJ51gQZA/edit?pli=1#gid=725857744).
+- Defining items in the "Still to Ratify" list below
 
 ### Still To Ratify Prior to Saturn 1
 These items are to be considered flexible until ratified explicitly, rather than ratified alongside the tokenomics rework package as a whole.
@@ -153,7 +154,7 @@ The below is generally agreed to be the steps to be completed before we can cons
 4. **Done** - Make a concerted effort to gather feedback via the forum from the wider community.
 5. **Done** - Update the proposal and specifications as needed taking into account wider community feedback.
 6. **Done** - Run a forum [temperature check poll](https://dao.rocketpool.net/t/rpip-49-tokenomics-rework-update-2-sentiment-poll/3136) on the rework package (bar the 'still-to-ratify' list above).
-7. **Active**  - Run a [snapshot vote](https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d) on the rework package as Living RPIPs, acknowledging the existence of the 'still-to-ratify' list above.
+7. **Done**  - Run a [snapshot vote](https://vote.rocketpool.net/#/proposal/0xb0e1c82fdf83f31de7b8f84767a092fddfb21abb71d81ea3aeec9acdcf43902d) on the rework package as Living RPIPs, acknowledging the existence of the 'still-to-ratify' list above.
 8. Run one or more snapshot vote(s) as blockers are cleared from the 'still-to-ratify' list. The end state will include no remaining blockers and the status of the rework RPIPs set to Final.
 
 ## Excluded Components
