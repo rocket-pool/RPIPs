@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget
 status: Living
 type: Meta
 created: 2022-08-09
-vote-to: https://dao.rocketpool.net/t/2024-core-team-funding-sentiment-poll/3315/10
+vote-to: https://vote.rocketpool.net/#/proposal/0x2c1cf6c335ee8f07cc955133b6e0c5f7e6bc3fd0676c4d06d32f678c06ab3a0e
 vote-date: 2024-10-27
 vote-result: Passed
 ---
