@@ -4,12 +4,12 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Review
+status: Living
 type: Meta
 created: 2022-08-09
-vote-to: TBD
-vote-date: TBD
-vote-result: TBD
+vote-to: https://dao.rocketpool.net/t/2024-core-team-funding-sentiment-poll/3315/10
+vote-date: 2024-10-27
+vote-result: Passed
 ---
 
 
