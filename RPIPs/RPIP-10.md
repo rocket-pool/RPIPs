@@ -206,7 +206,7 @@ Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-t
 | 2023-11-29       | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
 | 2023-11-29         | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
 | 2024-02-15        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
-| TBD        | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24** inclusive)   | [expense_4](../assets/rpip-10/expense_4.md)     |
+| 2024-10-27       | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24** inclusive)   | [expense_4](../assets/rpip-10/expense_4.md)     |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
