@@ -622,10 +622,13 @@ First, define `totalConsensusBonus`, which will serve to store the cumulative to
 ```go
 totalConsensusBonus := 0
 ```
-For each smoothing pool eligible minipool (see [Node Eligibility](#node-eligibility)), define the slot limits within which the reward bonus is to be paid out.
+For each smoothing pool eligible minipool (see [Node Eligibility](#node-eligibility)), define the time range within which the reward bonus is to be paid out.
 ```go
 eligibleStartTime := max(startTime, statusTime, optInTime, lastReduceTime)
 eligibleEndTime := min(endTime, optOutTime)
+```
+If the range is empty (`eligibleStartTime >= eligibleEndTime`), award a `minipoolBonus` of `0`. Otherwise, define slot limits for the bonus calculation.
+```
 rewardStartBcSlot := math.Ceil((eligibleStartTime - genesisTime) / secondsPerSlot)
 rewardEndBcSlot := math.Ceil((eligibleEndTime - genesisTime) / secondsPerSlot)
 ```
