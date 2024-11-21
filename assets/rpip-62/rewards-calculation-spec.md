@@ -630,10 +630,10 @@ For each slot in the reward interval, get the list of validator withdrawals (e.g
 ```go
 minipoolWithdrawals[address] += amount
 ```
-Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus. In case of negative consensus income, award no bonus.
+Calculate the minipool's eligible consensus income and corresponding bonus.
 ```go
 bonusFee := getTotalFee(rewardBaseFee, percentOfBorrowedETH) - rewardBaseFee
-consensusIncome := endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance)
+consensusIncome := minipoolWithdrawals[minipool.Address]
 bonusShare := bonusFee * (32 Eth - rewardBond) / 32 Eth
 result := max(0, consensusIncome * bonusShare / 1 Eth)
 ```
