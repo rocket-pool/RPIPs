@@ -571,10 +571,10 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     }
     ```
 3. Configure `saturnOneInterval` to be the reward period in which the Saturn 1 upgrade contract was executed. If this has not happened yet, use an interval far into the future (e.g. 1e18 or the data type's maximum value if bounded). In detail, `rocketUpgradeOneDotFour.executed()` (signature `0x31a38c89`) shall act as source of truth for upgrade execution. Non-existence of the contract or function should be considered equivalent to a return value of `false`, i.e. not yet executed.
-4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee.
+4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(minipoolFee, minipoolBond)` with `fee` as the return value for later reference.
     ```go
-    fee := baseFee
-    isEligibleBond := bond < 16 Eth
+    fee := minipoolFee
+    isEligibleBond := minipoolBond < 16 Eth
     isEligibleInterval := (currentIndex - 4) < saturnOneInterval
     if isEligibleBond && isEligibleInterval {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
@@ -582,7 +582,9 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     ```
 5. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
     ```go
-    minipoolScore := (1e18 - fee) * bond / 32e18 + fee // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
+    scoreFee := getTotalFee(baseFee, bond)
+    // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
+    minipoolScore := (1e18 - scoreFee) * bond / 32e18 + scoreFee
     ```
 6. Add `minipoolScore` to the minipool's running total, and the cumulative total for all minipools:
     ```go
