@@ -630,7 +630,7 @@ For each slot in the reward interval, get the list of validator withdrawals (e.g
 ```go
 minipoolWithdrawals[address] += amount
 ```
-Calculate the minipool's eligible consensus income and corresponding bonus. In case of negative consensus income, award no bonus.
+Calculate the minipool's eligible consensus income and corresponding bonus.
 ```go
 bonusFee := getTotalFee(rewardBaseFee, percentOfBorrowedETH) - rewardBaseFee
 consensusIncome := minipoolWithdrawals[minipool.Address]
