@@ -634,7 +634,7 @@ If the range is empty (`eligibleStartTime >= eligibleEndTime`), award a `minipoo
 rewardStartBcSlot := math.Ceil((eligibleStartTime - genesisTime) / secondsPerSlot)
 rewardEndBcSlot := math.Ceil((eligibleEndTime - genesisTime) / secondsPerSlot)
 ```
-For each slot in the reward interval, get the list of validator withdrawals (e.g. `/eth/v2/beacon/blocks/<slotIndex>`). Note the `address` and `amount` for withdrawals that correspond to an eligible minipool and add them to the minipool's total. Withdrawals that do not occur in `(rewardStartBcSlot, rewardEndBcSlot]` should be ignored. If the slot is ahead of the validator's `withdrawable_epoch` (e.g. `/eth/v1/beacon/states/<targetBcSlot>/validators?id=0x<pubkey>`), credit the full withdrawal amount.
+For each slot in the reward interval, get the list of validator withdrawals (e.g. `/eth/v2/beacon/blocks/<slotIndex>`). Note the `address` and `amount` for withdrawals that correspond to an eligible minipool and add them to the minipool's total. Withdrawals that do not occur in `(rewardStartBcSlot, rewardEndBcSlot]` should be ignored. If the slot is before the first slot of the validator's `withdrawable_epoch` (e.g. `/eth/v1/beacon/states/<targetBcSlot>/validators?id=0x<pubkey>`), credit the full withdrawal amount.
 ```go
 minipoolWithdrawals[address] += amount
 ```
