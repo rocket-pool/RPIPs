@@ -4,7 +4,7 @@ title: On-Chain pDAO Quora
 description: This proposal defines initial values for the quorum parameters of the on-chain pDAO.
 author: haloooloolo (@haloooloolo)
 discussions-to: https://dao.rocketpool.net/t/on-chain-quorum-initialization-poap/3474
-status: Draft
+status: Final
 type: Protocol
 created: 2025-01-11
 requires: 4, 33
