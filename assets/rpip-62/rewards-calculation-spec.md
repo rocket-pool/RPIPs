@@ -571,18 +571,20 @@ When a successful attestation is found, calculate the `minipoolScore` awarded to
     }
     ```
 3. Configure `saturnOneInterval` to be the reward period in which the Saturn 1 upgrade contract was executed. If this has not happened yet, use an interval far into the future (e.g. 1e18 or the data type's maximum value if bounded). In detail, `rocketUpgradeOneDotFour.executed()` (signature `0x31a38c89`) shall act as source of truth for upgrade execution. Non-existence of the contract or function should be considered equivalent to a return value of `false`, i.e. not yet executed.
-4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(baseFee, percentOfBorrowedETH)` with `fee` as the return value for later reference.
+4. Get the parent node's `percentOfBorrowedETH` (see the  [getNodeWeight section](#getnodeweight)) and adjust the fee. Define this calculation as `getTotalFee(minipoolFee, minipoolBond)` with `fee` as the return value for later reference.
     ```go
-    fee := baseFee
-    isEligibleBond := currentBond < 16 Eth
-    isEligibleInterval := (interval - 4) < saturnOneInterval
+    fee := minipoolFee
+    isEligibleBond := minipoolBond < 16 Eth
+    isEligibleInterval := (currentIndex - 4) < saturnOneInterval
     if isEligibleBond && isEligibleInterval {
         fee = max(fee, 0.10 Eth + (0.04 Eth * min(10 Eth, percentOfBorrowedETH) / 10 Eth))
     }
     ```
 5. Calculate the `minipoolScore` using the minipool's bond amount and node fee:
     ```go
-    minipoolScore := (1e18 - fee) * bond / 32e18 + fee // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
+    scoreFee := getTotalFee(baseFee, bond)
+    // The "ideal" fractional amount of ETH awarded to the NO for this attestation, out of 1
+    minipoolScore := (1e18 - scoreFee) * bond / 32e18 + scoreFee
     ```
 6. Add `minipoolScore` to the minipool's running total, and the cumulative total for all minipools:
     ```go
@@ -618,41 +620,43 @@ totalEthForMinipools += minipoolEth
 
 ### Calculating Consensus Reward Bonuses
 
-#### getMinipoolBonus
-Consider the following calculations as the function `getMinipoolBonus(rewardBaseFee, rewardBond, rewardStartTime, rewardEndTime)`.
-
-For each minipool, define the slot limits within which the reward bonus is to be paid out.
-```go
-rewardStartBcSlot := math.Ceil((rewardStartTime - genesisTime) / secondsPerSlot)
-rewardEndBcSlot := math.Ceil((rewardEndTime - genesisTime) / secondsPerSlot)
-```
-For each slot in the reward interval, get the list of validator withdrawals (e.g. `/eth/v2/beacon/blocks/<slotIndex>`). Note the `address` and `amount` for withdrawals that correspond to an eligible minipool and add them to the minipool's total. Withdrawals that do not occur in `(rewardStartBcSlot, rewardEndBcSlot]` should be ignored.
-```go
-minipoolWithdrawals[address] += amount
-```
-Then, get `startBcBalance` and `endBcBalance` for each minipool by querying for validator balances at `rewardStartBcSlot` and `rewardEndBcSlot`, respectively (e.g. `/eth/v1/beacon/states/<slotIndex>/validator_balances`). Use them to calculate the minipool's eligible consensus income and corresponding bonus. In case of negative consensus income, award no bonus.
-```go
-bonusFee := getTotalFee(rewardBaseFee, percentOfBorrowedETH) - rewardBaseFee
-consensusIncome := endBcBalance + minipoolWithdrawals[minipool.Address] - max(32 Eth, startBcBalance)
-bonusShare := bonusFee * (32 Eth - rewardBond) / 32 Eth
-result := max(0, consensusIncome * bonusShare / 1 Eth)
-```
-Return `result`.
-
-Now, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses, and use `getMinipoolBonus` to calculate each minipool's individual bonus.
+First, define `totalConsensusBonus`, which will serve to store the cumulative total of reward bonuses.
 ```go
 totalConsensusBonus := 0
 ```
+For each smoothing pool eligible minipool (see [Node Eligibility](#node-eligibility)), define the time range within which the reward bonus is to be paid out.
 ```go
 eligibleStartTime := max(startTime, statusTime, optInTime, lastReduceTime)
 eligibleEndTime := min(endTime, optOutTime)
-minipoolBonus := getMinipoolBonus(currentFee, currentBond, eligibleStartTime, eligibleEndTime)
+```
+If the range is empty (`eligibleStartTime >= eligibleEndTime`), award a `minipoolBonus` of `0`. Otherwise, define slot limits for the bonus calculation.
+```
+rewardStartBcSlot := math.Ceil((eligibleStartTime - genesisTime) / secondsPerSlot)
+rewardEndBcSlot := math.Ceil((eligibleEndTime - genesisTime) / secondsPerSlot)
+```
+For each slot in the reward interval, get the list of validator withdrawals (e.g. `/eth/v2/beacon/blocks/<slotIndex>`). Note the `address` and `amount` for withdrawals that correspond to an eligible minipool and add them to the minipool's total. Withdrawals that do not occur in `(rewardStartBcSlot, rewardEndBcSlot]` should be ignored. If the slot is before the first slot of the validator's `withdrawable_epoch` (e.g. `/eth/v1/beacon/states/<targetBcSlot>/validators?id=0x<pubkey>`), credit the full withdrawal amount.
+```go
+minipoolWithdrawals[address] += amount
+```
+Otherwise, only credit what is in excess of the maximum effective balance.
+```go
+minipoolWithdrawals[address] += max(0, amount - 32 Eth)
+```
+Use the cumulative withdrawals to calculate the minipool's eligible consensus income and corresponding bonus.
+```go
+consensusIncome := minipoolWithdrawals[minipool.Address]
+bonusFee := getTotalFee(currentFee, currentBond) - currentFee
+bonusShare := bonusFee * (32 Eth - currentBond) / 32 Eth
+minipoolBonus := max(0, consensusIncome * bonusShare / 1 Eth)
+```
+Add the minipool's bonus to the totals.
+```
 nodeBonus[minipool.OwningNode] += minipoolBonus
 totalConsensusBonus += minipoolBonus
 ```
 Should the remaining balance not be sufficient to cover `totalConsensusBonus` (`totalConsensusBonus` > `remainingBalance`), calculate a correction factor and apply it to every node.
 ```go
-remainingBalance := smoothingPoolBalance - totalEthForMinipool
+remainingBalance := smoothingPoolBalance - totalEthForMinipools
 ```
 ```go
 nodeBonus[node] = nodeBonus[node] * remainingBalance / totalConsensusBonus

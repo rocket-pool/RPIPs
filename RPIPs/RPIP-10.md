@@ -7,8 +7,8 @@ discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget
 status: Living
 type: Meta
 created: 2022-08-09
-vote-to: https://vote.rocketpool.net/#/proposal/0x1852d7ed18998036a9b7251a5d9aaaf0be5e9c9023bf5884d3623f83d9f13d3b
-vote-date: 2023-11-16
+vote-to: https://vote.rocketpool.net/#/proposal/0x2c1cf6c335ee8f07cc955133b6e0c5f7e6bc3fd0676c4d06d32f678c06ab3a0e
+vote-date: 2024-10-27
 vote-result: Passed
 ---
 
@@ -154,14 +154,14 @@ update this RPIP:
 1. An author SHALL make edits as desired and create a pull request; the status in the PR SHALL be
    "Draft"
 2. An RPIP editor SHALL review it. If there are no structural issues, the status shall be changed
-   to "Review" 
+   to "Review"
 3. The vote procedure SHALL be followed as if this were an entirely new RPIP. This includes making
    forum posts, appropriate wait times, quorums, etcetera, as detailed elsewhere.
 4. If criteria for a vote are not met, the status SHALL be changed to "No Vote Taken" and the PR
    SHALL be closed.
 5. If there was a vote, then after the vote is concluded:
    1. If the vote passed, the status SHALL be changed to "Living" and the PR SHALL be merged
-   2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed 
+   2. If the vote failed, the status SHALL be changed to "Vote Failed" and the PR SHALL be closed
 
 ## Rationale
 The main goal is to establish a starting budget and provide for a quick initial state where funds
@@ -177,7 +177,7 @@ annually. For a theoretical run of 1 reward period (28 days), this gives  ~83.6 
 to work with. In light of parallel discussions about tokenomics changes, this amount serves as a
 conservative starting point.
 
-In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see 
+In addition to [https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895](https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895), see
 [https://dao.rocketpool.net/t/pdao-budget-definition/644](https://dao.rocketpool.net/t/pdao-budget-definition/644) for more context.
 
 6/1: Adjustments are being made here to support inflation changes per [RPIP-25](RPIP-25.md). A
@@ -203,9 +203,10 @@ Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-t
 |------------|------------    |------------------------------------------------------------------------------------|---------------------------------------------    |
 | 2023-09-03 | 3584 RPL       | 3 months initial dev funding                                                       | [expense_1](../assets/rpip-10/expense_1.md)     |
 | ~~TBD~~    | ~~0-3909 RPL~~ | ~~Additional dev funding with seat reduction~~                                     | ~~[expense_1](../assets/rpip-10/expense_1.md)~~ |
-| TBD        | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
-| TBD        | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
-| TBD        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
+| 2023-11-29       | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
+| 2023-11-29         | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
+| 2024-02-15        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
+| 2024-10-27       | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24** inclusive)   | [expense_4](../assets/rpip-10/expense_4.md)     |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
