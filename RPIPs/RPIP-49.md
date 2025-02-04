@@ -128,10 +128,14 @@ The tokenomics rework package will likely be split between two protocol upgrades
 * RPL Value Capture based on vote outcome - Probably one of: [RPL Burn](RPIP-45.md) / [RPL Buy & LP](RPIP-50.md) / Increased share to vote-eligible RPL staked in megapools
 
 ## Current Status
-Last Updated: October 4th
+Last Updated: January 25th
 
 Current efforts are primarily focused on:
-- Defining items in the "Still to Ratify" list below
+- Follow-up votes
+
+### Active Follow Up Votes
+- [RPIP-ratifies](RPIP-ratifies.md): ratifies a deposit strategy; fixes an ambiguity
+- [RPIP-rethbuffer](RPIP-rethbuffer.md): a new suggestion to include in Saturn 1
 
 ### Still To Ratify Prior to Saturn 1
 These items are to be considered flexible until ratified explicitly, rather than ratified alongside the tokenomics rework package as a whole.

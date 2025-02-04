@@ -32,6 +32,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ### Deposit Queue Specification
 This specification introduces the following pDAO protocol parameters:
+
 | Name                                   | Type | Initial Value |
 |----------------------------------------|------|---------------|
 | `express_queue_rate`                   |      | `2`           |
@@ -52,6 +53,7 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 ### Deposit Mechanics Specification
 This specification introduces the following pDAO protocol parameters:
+
 | Name                   | Type  | Initial Value |
 |------------------------|-------|---------------|
 | `scrub_period`         | Hours | `12`          |
