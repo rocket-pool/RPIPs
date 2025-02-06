@@ -134,8 +134,9 @@ Current efforts are primarily focused on:
 - Follow-up votes
 
 ### Active Follow Up Votes
-- [RPIP-ratifies](RPIP-ratifies.md): ratifies a deposit strategy; fixes an ambiguity
+- [RPIP-ratifies](RPIP-ratifies.md): ratifies several items that are expected to be non-controversial
 - [RPIP-rethbuffer](RPIP-rethbuffer.md): a new suggestion to include in Saturn 1
+- [RPIP-permissonless_dissolves](RPIP-permissionless_dissolves.md): a new suggestion to include in Saturn 1
 
 ### Still To Ratify Prior to Saturn 1
 These items are to be considered flexible until ratified explicitly, rather than ratified alongside the tokenomics rework package as a whole.
