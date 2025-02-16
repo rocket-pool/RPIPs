@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 66
 title: Saturn Follow-up Vote No. 1
 description: Follow-up vote to tie up loose ends in the Saturn specification
 author: Valdorff (@Valdorff)

@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 65
 title: Prioritize rETH withdrawal buffer
 description: Direct ETH from new mints to the rETH contract to prioritize withdrawal liquidity
 author: Valdorff (@Valdorff)
