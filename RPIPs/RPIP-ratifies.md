@@ -1,7 +1,7 @@
 ---
 rpip:
-title: Saturn Followup Vote No. 1
-description: Followup vote to tie up loose ends in the Saturn specification
+title: Saturn Follow-up Vote No. 1
+description: Follow-up vote to tie up loose ends in the Saturn specification
 author: Valdorff (@Valdorff)
 discussions-to: 
 status: Draft
@@ -16,10 +16,10 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-This RPIP supports a followup vote ratifying plans to tie up loose ends in the Saturn specification. It also provides a platform for community members to raise and discuss any as-yet-unnoticed problems in those plans.
+This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the Saturn specification. It also provides a platform for community members to raise and discuss any as-yet-unnoticed problems in those plans.
 
 ## Specification
-- Megapools SHALL use a 2 transaction deposit strategy
+- Megapools SHALL use a 2-transaction deposit strategy
   - This is already how RPIP-59 is written. This vote will ratify that decision and make no change to the existing text.
 - RPIP-46 SHALL define `vote_eligible_RPL_in_their_megapool` as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`
   - This results in a small change in text to RPIP-46 (which is currently in the Living state)
@@ -30,7 +30,7 @@ This RPIP supports a followup vote ratifying plans to tie up loose ends in the S
 
 ### 2 Tx deposit strategy
 
-Kane had been the strongest voice towards 3 Tx. In discord he recently said:
+Kane had been the strongest voice towards 3 Tx. In Discord he recently said:
 > knoshua's post [here](https://discord.com/channels/405159462932971535/1215788197842255972/1261344716394463392) removed the weak preference i held for the 3 tx option so i don't have any strong desire to argue in favour of it. i no longer think the benefit of removing all assignments from user deposits outweighs the increased simplicity of the 2 tx approach. and the removal of socialised assignments assuage my main concern in that regard anyway.
 
 
@@ -46,7 +46,7 @@ Thanks to @sckuzzle for finding this issue.
 This dev team suggestion prevents setting the parameter so low that Node Operators can't effectively make deposits.
 
 ### scrubbing removal
-Per dev team, there is no need for a scrub process in Saturn due to stake proofs -- as a result, we can simplify this away.
+Per the dev team, there is no need for a scrub process in Saturn due to stake proofs -- as a result, we can simplify this away.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
