@@ -47,7 +47,7 @@ This specification introduces the following pDAO protocol parameters:
 
 1. There SHALL be the following defined revenues:
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
-   2. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`.
+   2. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
 2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share` and `voter_share`
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
