@@ -1,6 +1,6 @@
 ---
 rpip: 67
-title: Permissionless Dissolves
+title: Permissionless Dissolving
 description: Remove a current oDAO duty by making it permissionless
 author: Valdorff (@Valdorff)
 discussions-to: 

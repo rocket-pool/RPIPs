@@ -24,7 +24,7 @@ This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the 
 - RPIP-46 SHALL define `vote_eligible_RPL_in_their_megapool` as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`
   - This results in a small change in text to RPIP-46 (which is currently in the Living state)
 - RPIP-59 SHALL remove scrubbing and `scrub_period` 
-- RPIP-59 SHALL add a minimum value to `time_before_disolve` of 2 days
+- RPIP-59 SHALL add a minimum value to `time_before_dissolve` of 2 days
 
 ## Rationale
 
