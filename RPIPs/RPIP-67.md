@@ -3,8 +3,8 @@ rpip: 67
 title: Permissionless Dissolving
 description: Remove a current oDAO duty by making it permissionless
 author: Valdorff (@Valdorff)
-discussions-to: 
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/saturn-follow-up-votes-1/3504
+status: Final
 type: Protocol
 category: Core
 created: 2025-02-05
