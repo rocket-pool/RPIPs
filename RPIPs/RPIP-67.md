@@ -23,7 +23,7 @@ This RPIP supports a followup vote ratifying plans to tie up loose ends in the S
 #### `stake` Transaction
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
 - After ETH is assigned to a validator, the Node Operator SHALL be able to call a function to dissolve that validator
-- If `stake` has not been called within `time_before_dissolve` after the ETH was assigned to a validator, any user SHALL be able to call a function to dissolve that validator. The user calling this function SHALL receive `dissolve_reward`.
+- If `stake` has not been called within `time_before_dissolve` after the ETH was assigned to a validator, any user SHALL be able to call a function to dissolve that validator. The user calling this function SHALL receive `dissolve_reward` (taken from validator's Node Operator's bond).
 - When a validator is dissolved:
   - Unstaked balance SHALL be returned to the deposit pool
   - The bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
