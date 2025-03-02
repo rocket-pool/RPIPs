@@ -4,7 +4,7 @@ title: Increasing oDAO share of inflation
 description: Increase the oDAO share of inflation to appropriately cover costs
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-inflation-vote/3525
-status: Draft
+status: Final
 type: Protocol
 category: Core
 created: 2025-24-05
