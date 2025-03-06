@@ -32,6 +32,7 @@ This RPIP is part of a set of proposals motivated by a desire to rework Rocket P
 
 ### Deposit Queue Specification
 This specification introduces the following pDAO protocol parameters:
+
 | Name                                   | Type | Initial Value |
 |----------------------------------------|------|---------------|
 | `express_queue_rate`                   |      | `2`           |
@@ -52,10 +53,10 @@ ETH from the deposit pool SHALL be matched with validator deposits from queues a
 
 ### Deposit Mechanics Specification
 This specification introduces the following pDAO protocol parameters:
-| Name                   | Type  | Initial Value |
-|------------------------|-------|---------------|
-| `scrub_period`         | Hours | `12`          |
-| `time_before_dissolve` | Weeks | `2`           |
+
+| Name                   | Type  | Initial Value | Guardrail |
+|------------------------|-------|---------------|-----------|
+| `time_before_dissolve` | Days  | `14`          | `≥2`      |
 
 A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 
@@ -77,8 +78,6 @@ A node operator MUST take 2 actions to start a validator: `deposit` and `stake`
 - The assignment SHALL remove the validator from the queue
 
 #### `stake` Transaction
-- `stake` SHALL revert unless at least `scrub_period` time has passed since ETH was assigned to the validator, to allow for validating the prestake
-- If the beacon chain stake is invalid, the validator SHALL be scrubbed
 - `stake` SHALL stake the remaining 31 ETH to the beacon chain to make a complete validator
 - If `stake` is not called within `time_before_dissolve` after the ETH was assigned, the validator SHALL be dissolved, returning the unstaked balance to the deposit pool
   - If a validator is dissolved the bonded value SHALL be recoverable. This MAY require further action from the node operator. This MAY temporarily require additional ETH from the node operator.
