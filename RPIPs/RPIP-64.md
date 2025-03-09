@@ -8,6 +8,9 @@ status: Final
 type: Protocol
 created: 2025-01-11
 requires: 4, 33
+vote-to: https://vote.rocketpool.net/#/proposal/0x0e3d55efdb9a1780a5a314cd24c61f7167b9ae10ad2bbf85c8dcc7acbe0fb692
+vote-date: 2025-02-17
+vote-result: Passed
 ---
 
 ## Abstract
