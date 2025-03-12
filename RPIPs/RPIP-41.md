@@ -74,7 +74,7 @@ Future committees SHOULD be added to this RPIP and members SHOULD expect to rece
 
 | Date                       | Target Member Count | Target Hours        | Target Monthly Stipend Budget |
 |----------------------------|---------------------|---------------------|------------------------------|
-| 2024-03-04 (RPIP Authored) |                   9 |                  13 |                    $3,510.00 |
+| 2025-02-13 (Voted Change)  |                   9 |                  15 |                    $4,050.00 |
 
 #### Incentives Management Committee
 
