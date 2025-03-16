@@ -1,7 +1,7 @@
 ---
 rpip: 2
 title: Rocket Pool Design Specification
-status: Draft
+status: Stagnant
 type: Informational
 author: Mike Leach (@VVander) <mike@bamboofin.tech>
 discussions-to: https://dao.rocketpool.net/t/rpip-2-formalizing-protocol-changes/367
