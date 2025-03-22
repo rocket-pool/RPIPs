@@ -4,7 +4,7 @@ title: Voted Operational Process Framework
 description: A framework for voting groups in the Rocket Pool DAOs to make operational decisions.
 author: LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/t/rpip-34-voted-operational-processes/2283
-status: Draft
+status: Stagnant
 type: Meta
 created: 2023-10-13
 ---
