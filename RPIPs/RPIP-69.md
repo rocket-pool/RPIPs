@@ -1,5 +1,5 @@
 ---
-rpip: 
+rpip: 69
 title: Increasing GMC share of inflation
 description: Increase the GMC share of inflation to increase growth and efficiency
 author: ShfRyn (@shfryn)
