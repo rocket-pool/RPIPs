@@ -49,7 +49,7 @@ The most favored option in voting was Option A, which increases the GMC share to
 
 The reserve treasury funds more than just excess funds; it covers the development team’s expenses and will likely be required to support the upcoming security council. The development team already consumes 18% of the pDAO share, and reducing the reserve treasury further could impact funding available for future needs.
 
-Additionally, a shift in oDAO allocations within the recently approved [RPIP-68](https://rpips.rocketpool.net/RPIPs/RPIP-68) has reduced the IMC budget. While the IMC has had to cut back, balancing the budget remains a challenge. Some proposals suggest adjusting the splits further to ensure IMC and GMC remain financially sustainable while maintaining a reasonable treasury reserve.
+Additionally, a shift in oDAO allocations within the recently approved [RPIP-68](https://rpips.rocketpool.net/RPIPs/RPIP-68) has reduced the IMC budget. While the IMC has had to cut back, balancing the budget remains a challenge. Some proposals suggested adjusting the splits further to ensure IMC and GMC remain financially sustainable while maintaining a reasonable treasury reserve.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
