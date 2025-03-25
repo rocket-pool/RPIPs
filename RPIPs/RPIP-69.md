@@ -1,6 +1,6 @@
 ---
 rpip: 69
-title: Increasing GMC share of inflation
+title: Increasing GMC Share of Inflation
 description: Increase the GMC share of inflation to increase growth and efficiency
 author: ShfRyn (@shfryn)
 discussions-to: https://dao.rocketpool.net/t/revised-gmc-split-proposal/3430
