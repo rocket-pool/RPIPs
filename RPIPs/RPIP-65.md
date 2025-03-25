@@ -1,6 +1,6 @@
 ---
 rpip: 65
-title: Prioritize rETH withdrawal buffer
+title: Prioritize rETH Withdrawal Buffer
 description: Direct ETH from new mints to the rETH contract to prioritize withdrawal liquidity
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/saturn-follow-up-votes-1/3504
