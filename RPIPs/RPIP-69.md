@@ -4,7 +4,7 @@ title: Increasing GMC Share of Inflation
 description: Increase the GMC share of inflation to increase growth and efficiency
 author: ShfRyn (@shfryn)
 discussions-to: https://dao.rocketpool.net/t/revised-gmc-split-proposal/3430
-status: Draft
+status: Final
 type: Protocol
 category: Core
 created: 2025-24-05
