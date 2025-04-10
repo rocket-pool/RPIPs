@@ -23,7 +23,12 @@ Ronin is proposing a partnership with the Rocket Pool DAO to mint $3M in rETH an
 ## Specification
 - We SHALL request a CCIP bridge fee of $5 for transfer exiting Ronin
 - We SHALL request a CCIP bridge fee of $1 for transfer entering Ronin
-- We SHALL request Chainlink collect the fees and periodically send them to the GMC wallet with gaps no longer than 5 months
+- We SHALL request Chainlink collect the fees and periodically send them to the pDAO treasury wallet with gaps no longer than 5 months
+  - A quick informational how-to:
+    - The current method is to call `rocketVault.transferToken("rocketClaimDAO", tokenContract, amount)` where tokenContract and amount should be based on the token and amount being deposited
+    - The `rocketVault` address can be found using the immutable `rocketStorage` contract at `0x1d8f8f00cfa6758d7bE78336684788Fb0ee0Fa46`. There we call `rocketStorage.getAddress(keccak("contract.addressrocketVault"))` = `rocketStorage.getAddress(0x41c30d91bfaf5fa8d610263b0554366f2159a2b6807bf2fdbeb8f2b21a62f17b)` to get the active `rocketVault` address
+    - Any ERC20 token can be deposited
+    - ETH cannot be deposited, but WETH can be since it's an ERC20 token
 
 ## Rationale
 While the revenue expected from these fees is modest, a number of community members believe it’s important that the pDAO start experimenting with and getting comfortable with alternative revenue sources. To that end, this is a great low-risk entry point for the pDAO.
