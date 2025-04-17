@@ -17,7 +17,7 @@ vote-result:
 ## Abstract
 This is a proposal to ratify a small flat fee on rETH bridging to and from Ronin. This proposal builds on using Chainlink’s CCIP bridge, which is Ronin’s canonical bridge.
 
-Chainlink has already been asked to implement a $2 flat fee for bridging rETH to/from Ronin. Due to time constraints, that did not go through full governance. This vote is to ratify and affirm that fee (on vote passing), OR to reject it and ask Chainlink to remove the fee (on vote failing).
+Chainlink has already been asked to implement a $2 flat fee for bridging rETH to/from Ronin. Due to time constraints, that did not go through full governance. This vote is to ratify and affirm that fee (on vote passing) OR to reject it and ask Chainlink to remove the fee (on vote failing).
 
 ## Motivation
 Ronin is proposing a partnership with the Rocket Pool DAO to mint $3M in rETH and integrate it into their DeFi ecosystem, using Chainlink's CCIP as a canonical bridge from Ethereum mainnet. Facilitating this will help bring rETH demand, and had to be done expediently (which is why an initial fee for the bridge has already been established).
@@ -37,9 +37,9 @@ Given the use of CCIP, there was an opportunity for a new revenue stream for the
 # Rationale
  At this time, only flat fees are available (though it is hoped and expected that percentage-based fees will be available at a later time). It is worth noting that a future vote can change what fees we request Chainlink impose on our behalf.
 
-To get an idea of the revenue, https://dune.com/queries/4755318 shows what it would have looked like for Arbitrum between 2024-10-01 and 2025-02-22 (exclusive). We see that would have generated $316 of revenue, which annualizes to ~$807. Ronin is not Arbitrum, so this should be taken only as rough context.
+To get an idea of the revenue, https://dune.com/queries/4755318 shows what it would have looked like for Arbitrum between 2024-10-01 and 2025-02-22 (exclusive). We see that would have generated $316 of revenue, which annualizes to ~$807. Ronin is not Arbitrum, so this should be taken only as a rough context.
 
-While the revenue expected from these fees is modest, a number of community members believe it’s important that the pDAO start experimenting with and getting comfortable with alternative revenue sources. To that end, this is a great low-risk entry point for the pDAO.
+While the revenue expected from these fees is modest, several community members believe it’s important that the pDAO start experimenting with and getting comfortable with alternative revenue sources. To that end, this is a great low-risk entry point for the pDAO.
 
 ## Security Considerations
 The fees don’t add security considerations to principal balances, or bridging.
