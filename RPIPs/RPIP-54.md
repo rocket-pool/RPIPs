@@ -1,7 +1,7 @@
 ---
 rpip: 54
 title: Upgrade Informational - Houston
-description: An unoffical community resource to track contents and information about the Houston upgrade.
+description: An unofficial community resource to track contents and information about the Houston upgrade.
 author: LongForWisdom (@LongForWisdom)
 discussions-to: N/A
 status: Final
