@@ -308,7 +308,7 @@ Finally:
 
 If the `totalEffectiveRplStake` or `totalNodeWeight` is `0` (i.e., *none* of the nodes are eligible for RPL rewards), add `collateralRewards` to `pDaoRewards`. Otherwise, if *any* node is eligible for rewards, perform the following steps instead.
 
-Now, calculate the the cycle factor, `C`, of RPIP-30's phase-in. Define C to be on the closed range `[1, 6]` and calculate it:
+Now, calculate the cycle factor, `C`, of RPIP-30's phase-in. Define C to be on the closed range `[1, 6]` and calculate it:
 
 ```go
 C := min(6, interval - 18 + 1)
