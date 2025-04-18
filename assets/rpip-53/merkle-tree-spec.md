@@ -73,7 +73,7 @@ The `Keccak256` hash of this would be `0xb079b0168e5beba73f17c52b76a614539b242d8
 
 Start by determining the list of claimers following [the rewards calculation specification](./rewards-calculation-spec.md#determining-claimers-and-claimer-rewards).
 
-Each leaf node of the tree will be the the `Keccak256` hash of a single claimer's metadata.
+Each leaf node of the tree will be the `Keccak256` hash of a single claimer's metadata.
 The structure for this metadata is as follows:
 
 `metadata = address[20] ++ network[32] ++ totalRPL[32] ++ totalETH[32]`
