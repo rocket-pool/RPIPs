@@ -9,8 +9,8 @@ type: Protocol
 category: Core
 created: 2025-24-05
 requires: 10
-vote-to:
-vote-date:
+vote-to: https://node.rocketpool.net/vote/proposal/3
+vote-date: 2025-04-19
 vote-result:
 
 ---
