@@ -1,16 +1,13 @@
 ---
-rpip: 
+rpip: 70
 Title: Ronin Bridge Info
 description: Describing Ronin
 author: Valdorff (@Valdorff)
 discussions-to:
-status: Draft
+status: Review
 type: Info
 created: 2024-04-14
 requires:
-vote-to:
-vote-date:
-vote-result:
 ---
 
 ## Abstract
