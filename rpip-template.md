@@ -50,7 +50,7 @@ Copyright and related rights waived via [CC0](https://creativecommons.org/public
 
 LaTeX rendering between github and the rpips portal at rpips.rocketpool.net can differ. The following recommendations are made so that your equations will appear correctly on both:
 
-LaTeX blocks should be delimted using the below. This should display similarly on both github and the rpips portal.
+LaTeX blocks should be delimited using the below. This should display similarly on both github and the rpips portal.
 
 ```math
 $$
