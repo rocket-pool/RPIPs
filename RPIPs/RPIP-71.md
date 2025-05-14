@@ -1,5 +1,5 @@
 ---
-rpip: #<to be assigned>
+rpip: 71
 title: rETH Withdrawal liquidity via EIP-7002
 description: Enable Rocket Ether stakers to trigger validator exits to access protocol liquidity for unstaking from Rocket Pool.
 author: Ramana (@xrchz)
