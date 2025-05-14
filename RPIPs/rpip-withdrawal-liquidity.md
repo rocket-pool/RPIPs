@@ -22,7 +22,7 @@ We leave the technical implementation details to the discretion of the developme
 
 - That pool stakers can indicate that they wish to exit at the protocol rate
 - That the delay to burn rETH after such a signal is short and bounded except for factors outside of node operator control
-- That the mechanism is implemented in a timely fashion: no later than the completion of the planned Saturn 2 upgrade, and no later than October 2025
+- That the mechanism is implemented in a timely fashion: in particular, we would like this feature included in the Saturn 1 upgrade with the minimal delay to the development roadmap required to accommodate it. We encourage the team to solicit and incorporate paid or voluntary help from the community if it would speed things along.
 
 ## Rationale
 The Rocket Pool DAO is too slow to come up with full specifications for this critical protocol feature, and meanwhile rETH is rapidly losing market share. We need to defer to an aligned and competent team to solve this problem for us.
