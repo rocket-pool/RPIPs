@@ -18,11 +18,19 @@ Rocket ether is by designed fully backed by staked ether, so that pool stakers w
 Rocket ether is an unnecessarily risky product for any investor who might want to have reliable and timely access to their capital, since it can remain locked up on the beacon chain by the permissionless node operator set of Rocket Pool until they choose to exit. This RPIP seeks to remedy this situation and thereby make Rocket ether a more attractive and competitive product in the marketplace of Liquid Staking Tokens.
 
 ## Specification
-We leave the technical implementation details to the discretion of the development team, simply indicating the following desiderata:
+We leave technical implementation details to the discretion of the development team, as long as they conform to the following desiderata:
 
-- That pool stakers can indicate that they wish to exit at the protocol rate
-- That the delay to burn rETH after such a signal is short and bounded except for factors outside of node operator control
-- That the mechanism is implemented in a timely fashion: in particular, we would like this feature included in the Saturn 1 upgrade with the minimal delay to the development roadmap required to accommodate it. We encourage the team to solicit and incorporate paid or voluntary help from the community if it would speed things along.
+- Pool stakers MUST be able to signal that they wish to exit at the protocol rate.
+- The delay to burn rETH after such a signal MUST be short and bounded except for factors outside of protocol control.
+    - There MUST NOT be any required actions by node operators to ensure a short delay.
+- The priority selection of which validators to exit to provide protocol liquidity for pool stakers MAY take the following factors into consideration:
+    - RPL stake of the node that owns the validator.
+    - Performance of the validator, as determined permissionlessly via a beacon chain balance proof.
+    - Size of the node that owns the validator, in terms of total node operator-provided ETH.
+    - Commission percentage for the validator.
+- The mechanism SHOULD be implemented in a timely fashion:
+    - This feature SHOULD be included in the Saturn 2 upgrade with the minimal delay to the development roadmap required to accommodate it.
+    - The team is RECOMMENDED to solicit and incorporate paid or voluntary help from the community if it would speed things along.
 
 ## Rationale
 The Rocket Pool DAO is too slow to come up with full specifications for this critical protocol feature, and meanwhile rETH is rapidly losing market share. We need to defer to an aligned and competent team to solve this problem for us.
