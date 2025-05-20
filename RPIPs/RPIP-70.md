@@ -1,11 +1,11 @@
 ---
 rpip: 70
-Title: Ronin Bridge Info
+title: Ronin Bridge Info
 description: Describing Ronin Bridge
 author: Valdorff (@Valdorff)
 discussions-to: N/A
 status: Final
-type: Info
+type: Informational
 created: 2024-04-14
 requires:
 ---
