@@ -5,7 +5,7 @@ description: Allow the revenue from borrowed ETH (aka, rETH commission) to be sp
 author: Valdorff (@Valdorff)
 contributor: Sckuzzle (@sckuzzle), Knoshua (@knoshua), Samus (@orangesamus), LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Living
+status: Draft
 type: Protocol
 category: Core
 created: 2024-03-08
@@ -38,6 +38,7 @@ This specification introduces the following pDAO protocol parameters:
 | Name                                               | Type       | Initial Value | Guard Rails                                                                                      |
 |----------------------------------------------------|------------|---------------|--------------------------------------------------------------------------------------------------|
 | `node_operator_commission_share`                   | pct        | `5`           | reth_commission <= 100%                                                                          |
+| `pdao_share`                                       | pct        | `0`           | <= node_operator_commission_share                                                                |
 | `node_operator_commission_share_council_adder`*    | pct        | `0`           | <= `max_node_operator_commission_share_council_adder`; <= `voter_share`; reth_commission <= 100% |
 | `voter_share`                                      | pct        | `9`           | reth_commission <= 100%                                                                          |
 | `max_node_operator_commission_share_council_adder` | pct        | `1`           |                                                                                                  |
@@ -46,14 +47,15 @@ This specification introduces the following pDAO protocol parameters:
 `*` denotes the parameter is updatable by the security council with no delay.
 
 1. There SHALL be the following defined revenues:
-   1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
-   2. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
+   1. `node_operator_commission_share - pdao_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is not a protocol revenue (ie, it is not socialized).
+   2. `pdao_share`: a share of node_operator_commission_share that is instead directed to the pDAO treasury as protocol revenue.
+   3. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
 2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share` and `voter_share`
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
    1. If shares change between claims, distributions MUST make an effort to account for the different values. For example, a distribution could use a duration-weighted average share. Approximations MAY be used where they significantly reduce complexity and/or costs.
    2. Legacy minipools are an exception and SHALL continue to support earlier distribution methodologies
-5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `voter_share` SHALL be updateable by any address in the `allowlisted_controllers` array
+5. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, `voter_share`, and `pdao_share` SHALL be updateable by any address in the `allowlisted_controllers` array
    1. This functionality SHALL not be used without a separate pDAO vote to enable a controller and add it to the list
 6. The `node_operator_commission_share_council_adder` setting SHALL be controllable by the security council without requiring a delay
 7. The security council SHOULD increment `node_operator_commission_share_council_adder` by 0.5% if the deposit pool is over half-full for the majority of a 2-week period with a constant `node_operator_commission_share + node_operator_commission_share_council_adder`
@@ -178,6 +180,7 @@ A few details about the reasoning behind the spec:
 - The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
   - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO.
 - The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
+- A `pdao_share` is introduced to allow for a configurable portion of node operator commission to be routed to the pDAO treasury. This enables direct ETH funding for protocol development, operations, or other treasury-controlled initiatives. Setting it to 0% by default ensures backward compatibility while giving flexibility for future use.
 
 ### RPL issuance rewards and inflation
 As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. Saturn 1 will continue to provide RPL issuance rewards to help facilitate a smoother transition, but with Saturn 2 the bond curve alone should allow voter share to provide sufficient incentive to stake RPL.
