@@ -38,7 +38,7 @@ This specification introduces the following pDAO protocol parameters:
 | Name                                               | Type       | Initial Value | Guard Rails                                                                                      |
 |----------------------------------------------------|------------|---------------|--------------------------------------------------------------------------------------------------|
 | `node_operator_commission_share`                   | pct        | `5`           | reth_commission <= 100%                                                                          |
-| `pdao_share`                                       | pct        | `0`           | <= node_operator_commission_share                                                                |
+| `pdao_share`                                       | pct        | `0`           | reth_commission <= 100%                                                                          |
 | `node_operator_commission_share_council_adder`*    | pct        | `0`           | <= `max_node_operator_commission_share_council_adder`; <= `voter_share`; reth_commission <= 100% |
 | `voter_share`                                      | pct        | `9`           | reth_commission <= 100%                                                                          |
 | `max_node_operator_commission_share_council_adder` | pct        | `1`           |                                                                                                  |
@@ -47,8 +47,8 @@ This specification introduces the following pDAO protocol parameters:
 `*` denotes the parameter is updatable by the security council with no delay.
 
 1. There SHALL be the following defined revenues:
-   1. `node_operator_commission_share - pdao_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is not a protocol revenue (ie, it is not socialized).
-   2. `pdao_share`: a share of node_operator_commission_share that is instead directed to the pDAO treasury as protocol revenue.
+   1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is not a protocol revenue (ie, it is not socialized).
+   2. `pdao_share`: allocated directly to the pDAO treasury as protocol revenue.
    3. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
 2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share` and `pdao_share`
 3. `reth_share` SHALL be defined as `100% - reth_commission`
