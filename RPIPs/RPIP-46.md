@@ -5,7 +5,7 @@ description: Allow the revenue from borrowed ETH (aka, rETH commission) to be sp
 author: Valdorff (@Valdorff)
 contributor: Sckuzzle (@sckuzzle), Knoshua (@knoshua), Samus (@orangesamus), LongForWisdom (@LongForWisdom)
 discussions-to: https://dao.rocketpool.net/tag/tokenomics-rework
-status: Draft
+status: Living
 type: Protocol
 category: Core
 created: 2024-03-08
@@ -17,7 +17,7 @@ tags: tokenomics-2024, tokenomics-content
 ---
 
 ## Abstract
-Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between four initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), and a surplus revenue mechanism.
+Currently, the commission determines the payout of revenue split between rETH and each specific minipool. Other parties, such as RPL, gain value indirectly. This proposal allows for splitting revenue between five initial parties: rETH (the main product), node operators (the decentralized operators actually staking), voters (a subset of operators that have vote power), pDAO (the pDAO treasury), and a surplus revenue mechanism.
 
 This proposal also includes:
 1. A setting controlled by the security council that can mildly increase node operator commission -- this can be used to react to market conditions more quickly than the pDAO is able to act
@@ -38,9 +38,9 @@ This specification introduces the following pDAO protocol parameters:
 | Name                                               | Type       | Initial Value | Guard Rails                                                                                      |
 |----------------------------------------------------|------------|---------------|--------------------------------------------------------------------------------------------------|
 | `node_operator_commission_share`                   | pct        | `5`           | reth_commission <= 100%                                                                          |
-| `pdao_share`                                       | pct        | `0`           | reth_commission <= 100%                                                                          |
 | `node_operator_commission_share_council_adder`*    | pct        | `0`           | <= `max_node_operator_commission_share_council_adder`; <= `voter_share`; reth_commission <= 100% |
 | `voter_share`                                      | pct        | `9`           | reth_commission <= 100%                                                                          |
+| `pdao_share`                                       | pct        | `0`           | reth_commission <= 100%                                                                          |
 | `max_node_operator_commission_share_council_adder` | pct        | `1`           |                                                                                                  |
 | `allowlisted_controllers`                          | address [] | `[]`          |                                                                                                  |
 
@@ -48,8 +48,8 @@ This specification introduces the following pDAO protocol parameters:
 
 1. There SHALL be the following defined revenues:
    1. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is not a protocol revenue (ie, it is not socialized).
-   2. `pdao_share`: allocated directly to the pDAO treasury as protocol revenue.
-   3. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
+   2. `voter_share -  node_operator_commission_share_council_adder`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool / total_vote_eligible_RPL_in_megapools`, where `vote_eligible_RPL_in_their_megapool` is defined as `min(1.5*RPL value of megapool bonded_eth, megapool staked rpl)`.
+   3. `pdao_share`: allocated directly to the pDAO treasury as protocol revenue.
 2. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share` and `pdao_share`
 3. `reth_share` SHALL be defined as `100% - reth_commission`
 4. Distributions of revenue from borrowed ETH MUST respect the defined shares
@@ -103,12 +103,13 @@ Prior to the release of Saturn 1, a ranked-choice vote MUST be held to select a 
 For this section, we'll be writing `new_share`. When the revenue share vote is passed, that will define the share's name and this section SHALL be updated.
 
 1. The following updates SHALL be made in the [Universal Adjustable Revenue Split](#universal-adjustable-revenue-split) section of the specification above, with the placeholder description filled in:
-   1. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `node_operator_commission_share_council_adder`, `voter_share`, `new_share`
+   1. There SHALL be the following defined shares with settings: `node_operator_commission_share`, `node_operator_commission_share_council_adder`, `voter_share`, `pdao_share`, `new_share`
    2. `node_operator_commission_share + node_operator_commission_share_council_adder`: each node operator receives this percentage of the commission from the borrowed ETH on validators they run. Unlike the remainder of the shares, this is _not_ a protocol revenue (ie, it is not socialized).
    3. `voter_share`: each node operator receives a share of revenue based on the vote-eligible RPL staked to their megapool. The overall voter share of revenue is based on the setting, and each node operator receives a proportion of that based on `vote_eligible_RPL_in_their_megapool/total_vote_eligible_RPL_in_megapools`.
-   4. `new_share -  node_operator_commission_share_council_adder`: this share of revenue is used to [PLACEHOLDER]
-   5. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share`, and `new_share`
-   6. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `new_share`, SHALL be updateable by any address in the `allowlisted_controllers` array
+   4. `pdao_share`: allocated directly to the pDAO treasury as protocol revenue.
+   5. `new_share -  node_operator_commission_share_council_adder`: this share of revenue is used to [PLACEHOLDER]
+   6. `reth_commission` SHALL be defined as the sum of `node_operator_commission_share`, `voter_share`, `pdao_share`, and `new_share`
+   7. `node_operator_commission_share`, `node_operator_commission_share_council_adder`, and `new_share`, SHALL be updateable by any address in the `allowlisted_controllers` array
 2. `voter_share` SHALL no longer be a pDAO protocol parameter. the pDAO will not be able to vote changes to it and changes will rely on the method described below.
 3. Updating `voter_share`:
    1. A permissionless function SHALL be available to update `voter_share`
@@ -180,7 +181,7 @@ A few details about the reasoning behind the spec:
 - The `node_operator_commission_share_council_adder` allows for much more rapidly tracking the market, especially when we first start UARS and may be quite far from an appropriate `node_operator_commission_share + node_operator_commission_share_council_adder` value
   - Due to the low maximum for the adder, the pDAO would need to act to enable much growth in `node_operator_commission_share + node_operator_commission_share_council_adder`. For example, if the adder is at 1%, the pDAO could vote to set it to 0% and add 1% to `node_operator_commission_share`. This active pDAO participation ensures that this setting tracks closely to the will of the pDAO.
 - The [revenue share vote](#revenue-share-vote) is intended to allow the main body of the tokenomics to move forward, while allowing more time to get information about our options here before choosing a path
-- A `pdao_share` is introduced to allow for a configurable portion of node operator commission to be routed to the pDAO treasury. This enables direct ETH funding for protocol development, operations, or other treasury-controlled initiatives. Setting it to 0% by default ensures backward compatibility while giving flexibility for future use.
+- A `pdao_share` is introduced to allow for a configurable portion of protocol revenue to be routed to the pDAO treasury. This enables direct ETH funding for protocol development, operations, or other treasury-controlled initiatives. Setting it to 0% by default ensures backward compatibility while giving flexibility for future use.
 
 ### RPL issuance rewards and inflation
 As the core value capture is no longer based on a minimum RPL requirement, Saturn 1 removes the minimum to receive RPL issuance rewards. This "cliff" has been an extremely poor piece of UX and anecdotally led to many operators exiting validators. Note that the withdrawal limits are not updated; those had previously aligned with the end of the linear region, and they still do. With Saturn 2, RPL issuance rewards stop entirely. Saturn 1 will continue to provide RPL issuance rewards to help facilitate a smoother transition, but with Saturn 2 the bond curve alone should allow voter share to provide sufficient incentive to stake RPL.
