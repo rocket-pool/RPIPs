@@ -4,7 +4,7 @@ title: Permissionless Dissolving
 description: Remove a current oDAO duty by making it permissionless
 author: Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/saturn-follow-up-votes-1/3504
-status: Draft
+status: Withdrawn
 type: Protocol
 category: Core
 created: 2025-02-05
