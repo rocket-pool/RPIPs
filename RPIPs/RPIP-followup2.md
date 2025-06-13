@@ -27,7 +27,6 @@ This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the 
 | pdao_share  | pct  | 0              | reth_commission <= 100%     |
 
 - Update the defined revenue shares in RPIP-46 to include:
-
 ```md
 - pdao_share:
   a portion of commission revenue directed to the pDAO treasury for protocol use.
@@ -36,21 +35,19 @@ reth_commission SHALL be defined as the sum of node_operator_commission_share, v
 ```
 
 - Update the list of updateable parameters in RPIP-46:
-
 ```md
 node_operator_commission_share, node_operator_commission_share_council_adder, voter_share, and pdao_share
 SHALL be updateable by any address in the allowlisted_controllers array.
 ```
 
 - Add the following rationale to RPIP-46:
-
 ```md
 A pdao_share is introduced to enable a direct stream of ETH to the pDAO treasury. This allows the protocol
 to fund operations, grants, or other community-approved initiatives using rETH commission revenue.
 This share is initially 0% but may be increased in the future based on governance needs.
 ```
 
-- The "stake" Transaction section of RPIP-59 SHALL be replaced with the following:
+- The "`stake` Transaction" section of RPIP-59 SHALL be replaced with the following:
 ```md
 #### `stake` Transaction
 - After ETH is assigned to a validator any user SHALL be able to call the `stake` function
