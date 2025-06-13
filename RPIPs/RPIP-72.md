@@ -4,7 +4,7 @@ title: Saturn Follow-up Vote No. 2
 description: Follow-up vote to tie up loose ends in the Saturn specification
 author: Valdorff (@Valdorff), ShfRyn (@ShfRyn)
 discussions-to:
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2025-05-05
