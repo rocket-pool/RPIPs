@@ -2,7 +2,7 @@
 rpip:
 title: Saturn Follow-up Vote No. 2
 description: Follow-up vote to tie up loose ends in the Saturn specification
-author: Valdorff (@Valdorff)
+author: Valdorff (@Valdorff), ShfRyn (@ShfRyn)
 discussions-to:
 status: Draft
 type: Protocol
@@ -20,6 +20,33 @@ This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the 
 
 ## Specification
 - Ratify the inflation share change from the tokenomics rework vote as meeting supermajority requirements
+- Add a new protocol parameter to RPIP-46:
+
+| Name        | Type | Initial Value | Guard Rails                  |
+|-------------|------|----------------|------------------------------|
+| pdao_share  | pct  | 0              | reth_commission <= 100%     |
+
+- Update the defined revenue shares in RPIP-46 to include:
+```md
+- pdao_share:
+  a portion of commission revenue directed to the pDAO treasury for protocol use.
+
+reth_commission SHALL be defined as the sum of node_operator_commission_share, voter_share, and pdao_share.
+```
+
+- Update the list of updateable parameters in RPIP-46:
+```md
+node_operator_commission_share, node_operator_commission_share_council_adder, voter_share, and pdao_share
+SHALL be updateable by any address in the allowlisted_controllers array.
+```
+
+- Add the following rationale to RPIP-46:
+```md
+A pdao_share is introduced to enable a direct stream of ETH to the pDAO treasury. This allows the protocol
+to fund operations, grants, or other community-approved initiatives using rETH commission revenue.
+This share is initially 0% but may be increased in the future based on governance needs.
+```
+
 - The "`stake` Transaction" section of RPIP-59 SHALL be replaced with the following:
 ```md
 #### `stake` Transaction
@@ -40,9 +67,20 @@ This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the 
       - 1 ETH (which was deposited to beacon chain)
       - `dissolve_reward`
 ```
-- The following line of RPIP-44 ```Dissolved: the `stake` transaction for this validator wasn't executed in time (see [RPIP-44](RPIP-59.md))``` SHALL be replaced by ```Dissolved: the `stake` transaction for this validator was invalid or not executed in time (see [RPIP-59](RPIP-59.md))``` 
+
+- The following line of RPIP-44:
+```md
+Dissolved: the `stake` transaction for this validator wasn't executed in time (see [RPIP-44](RPIP-59.md))
+```
+SHALL be replaced by:
+```md
+Dissolved: the `stake` transaction for this validator was invalid or not executed in time (see [RPIP-59](RPIP-59.md))
+```
+
 - `time_before_dissolve` in RPIP-59 SHALL update to an initial value of 28 days and a guardrail of ≥10 days
+
 - The parameter table in the `Deposit Mechanics Specification` section of RPIP-59 SHALL get a new parameter called `dissolve_reward` with an initial value of `0.01 ETH` and guardrails of `≤0.2 ETH` and `≤(reduced_bond-1)`
+
 - The `reduced_bond` parameter in RPIP-42 SHALL get a guardrail of `≥(dissolve_reward+1)`
 
 ## Rationale
@@ -55,6 +93,8 @@ If this RPIP passes over 75%, that will explicitly indicate that the inflation c
 ### Stake and dissolve
 Making `stake` and `dissolve` permissionless aligns with the pDAO charter's values. Further, it is a simpler design than the earlier designs that required 2 or 3 transactions by the Node Operator. See [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1353984953766907954) for detailed discussion that led to this design.
 
+### Adding `pdao_share`
+This change enables the protocol to direct ETH from rETH commission to the pDAO, establishing a flexible and native mechanism to fund protocol operations and growth. It does not specify which share `pdao_share` must come from, allowing future governance to reallocate as appropriate given current market conditions and protocol priorities.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
