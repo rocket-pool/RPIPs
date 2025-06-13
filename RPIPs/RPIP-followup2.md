@@ -19,34 +19,12 @@ tags: tokenomics-2024, tokenomics-content
 This RPIP supports a follow-up vote ratifying plans to tie up loose ends in the Saturn specification. It also provides a platform for community members to raise and discuss any as-yet-unnoticed problems in those plans.
 
 ## Specification
+This is broken down into a few sub-categories, to make it easier to match to the related portion within the [rationale section](#rationale).
+
+### Inflation share change supermajority
 - Ratify the inflation share change from the tokenomics rework vote as meeting supermajority requirements
-- Add a new protocol parameter to RPIP-46:
 
-| Name        | Type | Initial Value | Guard Rails                  |
-|-------------|------|----------------|------------------------------|
-| pdao_share  | pct  | 0              | reth_commission <= 100%     |
-
-- Update the defined revenue shares in RPIP-46 to include:
-```md
-- pdao_share:
-  a portion of commission revenue directed to the pDAO treasury for protocol use.
-
-reth_commission SHALL be defined as the sum of node_operator_commission_share, voter_share, and pdao_share.
-```
-
-- Update the list of updateable parameters in RPIP-46:
-```md
-node_operator_commission_share, node_operator_commission_share_council_adder, voter_share, and pdao_share
-SHALL be updateable by any address in the allowlisted_controllers array.
-```
-
-- Add the following rationale to RPIP-46:
-```md
-A pdao_share is introduced to enable a direct stream of ETH to the pDAO treasury. This allows the protocol
-to fund operations, grants, or other community-approved initiatives using rETH commission revenue.
-This share is initially 0% but may be increased in the future based on governance needs.
-```
-
+### Stake and dissolve
 - The "`stake` Transaction" section of RPIP-59 SHALL be replaced with the following:
 ```md
 #### `stake` Transaction
@@ -83,6 +61,36 @@ Dissolved: the `stake` transaction for this validator was invalid or not execute
 
 - The `reduced_bond` parameter in RPIP-42 SHALL get a guardrail of `≥(dissolve_reward+1)`
 
+### Adding `pdao_share`
+- Add a new protocol parameter to RPIP-46:
+
+| Name        | Type | Initial Value | Guard Rails                  |
+|-------------|------|----------------|------------------------------|
+| pdao_share  | pct  | 0              | reth_commission <= 100%     |
+
+- Update the defined revenue shares in RPIP-46 to include:
+```md
+- pdao_share:
+  a portion of commission revenue directed to the pDAO treasury for protocol use.
+
+reth_commission SHALL be defined as the sum of node_operator_commission_share, voter_share, and pdao_share.
+```
+
+- Update the list of updateable parameters in RPIP-46:
+```md
+node_operator_commission_share, node_operator_commission_share_council_adder, voter_share, and pdao_share
+SHALL be updateable by any address in the allowlisted_controllers array.
+```
+
+- Add the following rationale to RPIP-46:
+```md
+A pdao_share is introduced to enable a direct stream of ETH to the pDAO treasury. This allows the protocol
+to fund operations, grants, or other community-approved initiatives using rETH commission revenue.
+This share is initially 0% but may be increased in the future based on governance needs.
+```
+
+
+
 ## Rationale
 
 ### Inflation share change supermajority
@@ -90,11 +98,17 @@ In the original tokenomics rework vote (<https://vote.rocketpool.net/#/proposal/
 
 If this RPIP passes over 75%, that will explicitly indicate that the inflation change has met its supermajority requirement.
 
+Note: as this is procedural, there is no associated sentiment poll.
+
 ### Stake and dissolve
 Making `stake` and `dissolve` permissionless aligns with the pDAO charter's values. Further, it is a simpler design than the earlier designs that required 2 or 3 transactions by the Node Operator. See [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1353984953766907954) for detailed discussion that led to this design.
 
+Note: as this was previously noted in ["Still To Ratify Prior to Saturn 1](./RPIP-49.md#still-to-ratify-prior-to-saturn-1), there is no associated sentiment poll.
+
 ### Adding `pdao_share`
 This change enables the protocol to direct ETH from rETH commission to the pDAO, establishing a flexible and native mechanism to fund protocol operations and growth. It does not specify which share `pdao_share` must come from, allowing future governance to reallocate as appropriate given current market conditions and protocol priorities.
+
+Note: This was sentiment polled as summarized on the [forum](https://dao.rocketpool.net/t/protocol-funding-in-saturn-i-and-beyond/3555/12), with the key bit being that "there is strong consensus to at least build in a pdao share".
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
