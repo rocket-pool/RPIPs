@@ -40,10 +40,7 @@ This is broken down into a few sub-categories, to make it easier to match to the
         - the withdrawal credential is _not_ the megapool associated with the Node Operator that called `deposit` using a state proof (note that this requires waiting for the 1 ETH to create a validator on the beacon chain)
         - `time_before_dissolve` has passed since the `deposit` call
     - return the unstaked balance of 31 ETH to the deposit pool
-    - give the user calling this function `dissolve_reward`
-    - give the Node Operator `credit` equal to the bonded value minus
-      - 1 ETH (which was deposited to beacon chain)
-      - `dissolve_reward`
+    - give the Node Operator `credit` equal to the bonded value minus 1 ETH (which was deposited to beacon chain)
 ```
 
 - The following line of RPIP-44:
@@ -56,10 +53,6 @@ Dissolved: the `stake` transaction for this validator was invalid or not execute
 ```
 
 - `time_before_dissolve` in RPIP-59 SHALL update to an initial value of 28 days and a guardrail of ≥10 days
-
-- The parameter table in the `Deposit Mechanics Specification` section of RPIP-59 SHALL get a new parameter called `dissolve_reward` with an initial value of `0.01 ETH` and guardrails of `≤0.2 ETH` and `≤(reduced_bond-1)`
-
-- The `reduced_bond` parameter in RPIP-42 SHALL get a guardrail of `≥(dissolve_reward+1)`
 
 ### Adding `pdao_share`
 - Add a new protocol parameter to RPIP-46:
@@ -125,7 +118,7 @@ If this RPIP passes over 75%, that will explicitly indicate that the inflation c
 Note: as this is procedural, there is no associated sentiment poll.
 
 ### Stake and dissolve
-Making `stake` and `dissolve` permissionless aligns with the pDAO charter's values. Further, it is a simpler design than the earlier designs that required 2 or 3 transactions by the Node Operator. See [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1353984953766907954) for detailed discussion that led to this design.
+Making `stake` and `dissolve` permissionless aligns with the pDAO charter's values. Further, it is a simpler design than the earlier designs that required 2 or 3 transactions by the Node Operator. See [discord](https://discord.com/channels/405159462932971535/1215788197842255972/1353984953766907954) for detailed discussion that led to this design. Note that there is no on-chain reward for the permissionless call; for scope and flexibility reasons this was left off to allow for funding as desired without contract changes (as an example, there could be a GMC bounty that pays out based on 30th percentile gas cost in the last day).
 
 Note: as this was previously noted in ["Still To Ratify Prior to Saturn 1](./RPIP-49.md#still-to-ratify-prior-to-saturn-1), there is no associated sentiment poll.
 
