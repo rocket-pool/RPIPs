@@ -89,7 +89,31 @@ to fund operations, grants, or other community-approved initiatives using rETH c
 This share is initially 0% but may be increased in the future based on governance needs.
 ```
 
-
+### Permissionless distribution refinement
+The following section of RPIP-43
+```md
+- There SHALL be a capital distribution function in the megapool
+  - When called, capital borrowed from the protocol that has been released from
+    exited validators SHALL be sent to the rETH contract.
+    - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
+  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
+  - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
+  - This function SHALL support permissionless use, with additional restrictions:
+    - A permissionless `startUserDistribute` function SHALL record the time when called, as long as there is no previously recorded time _or_ the previously recorded time was longer than `minipool.user.distribute.window.start + minipool.user.distribute.window.length` ago
+    - The capital distribution function may be called permissionlessly if `minipool.user.distribute.window.start` has passed since the recorded `startUserDistribute` call, but `minipool.user.distribute.window.start + minipool.user.distribute.window.length` has not yet passed since the recorded `startUserDistribute` call
+```
+SHALL be replaced by
+```md
+- There SHALL be a capital distribution function in the megapool
+  - When called, capital borrowed from the protocol that has been released from
+    exited validators SHALL be sent to the rETH contract.
+    - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
+    - There SHALL be a permissionless `notify_exit` function that validates an exiting validator, increments the amount of capital that will be released, and updates the epoch when it will be released if necessary (based on withdrawable epoch)
+  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
+  - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
+  - This function SHALL support permissionless use, after a small delay `user.distribute.window.length`
+    - This variable SHALL be initialized to 7 days
+```
 
 ## Rationale
 
@@ -109,6 +133,13 @@ Note: as this was previously noted in ["Still To Ratify Prior to Saturn 1](./RPI
 This change enables the protocol to direct ETH from rETH commission to the pDAO, establishing a flexible and native mechanism to fund protocol operations and growth. It does not specify which share `pdao_share` must come from, allowing future governance to reallocate as appropriate given current market conditions and protocol priorities.
 
 Note: This was sentiment polled as summarized on the [forum](https://dao.rocketpool.net/t/protocol-funding-in-saturn-i-and-beyond/3555/12), with the key bit being that "there is strong consensus to at least build in a pdao share".
+
+### Permissionless distribution refinement
+As the team worked on this feature, they determined that there was no good way to avoid an oDAO duty to notify about all exiting validators in a timely manner.
+Given that notification, it was possible to get to the permissionless distribute with a single transaction to improve UX.
+There is also a correction to avoid using `minipool` namespaced variables.
+
+Note: this is being added as an item the team "identifies that impact their ability to deliver this upgrade", per RPIP-49
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
