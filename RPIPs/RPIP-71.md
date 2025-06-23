@@ -23,7 +23,7 @@ We leave technical implementation details to the discretion of the development t
 - Pool stakers MUST be able to signal that they wish to exit at the protocol rate.
 - The delay to burn rETH after such a signal MUST be short and bounded except for factors outside of protocol control.
     - There MUST NOT be any required actions by node operators to ensure a short delay.
-- The next validator chosen to exit to provide protocol liquidity for pool stakers SHALL be associated with a megapool which meets the criteria below:
+- Any validators exited via this RPIP MUST be associated with a megapool chosen as if by following the selection process afresh for each exit:
     - Definitions
         - `megapool_is_small_condition` SHALL be defined as `16 ETH`
         - For each megapool:
