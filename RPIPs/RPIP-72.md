@@ -98,20 +98,21 @@ The following section of RPIP-43
 SHALL be replaced by
 ```md
 - There SHALL be a capital distribution process in the megapool
-  - A node operator SHALL notify the protocol of an exiting validator `notify_exit`
-    - On notification, distribution of rewards SHALL be prevented after the earliest validator `withdrawal_epoch`, until all exiting validators have been exited 
-    - If a node operator does not notify the protocol of an exiting validator within `time_to_exit_notify` then any oDAO member can challenge that they are exiting
-    - When challenged a node operator SHALL NOT distribute rewards and MUST `notify_exit` or `notify_not_exit` by providing a proof
-    - If a node operator proves exit of a validator then the challenge ends and exiting validators SHALL be incremented
-    - If a node operator proves non-exit of a validator then the challenge will end - SHALL unlock reward distribution if exiting validators is 0
-  - When capital borrowed from the protocol has been released from exited validators the node operator SHALL prove the withdrawal balance `notify_final_balance`, at which:  
-    - Borrowed funds SHALL be sent to the rETH contract.
-    - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
-    - When called while the megapool has `debt`, remaining capital SHALL first be used to pay off `debt`
-    - If called by the node operator, captial SHALL be instantly withdrawn
-    - This function SHALL support permissionless use, after a small delay `user.distribute.window.length`
-      - This variable SHALL be initialized to 7 days
-      - When not called by the node operator, borrowed funds SHALL be sent to rETH contract and the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
+  - There SHALL be a `notify_exit` function, intended to be called by a node operator per validator they exit.
+    - On notification, distribution of rewards SHALL be prevented after the earliest validator `withdrawal_epoch`, until all exiting validators have been exited.
+  - Any oDAO member SHALL be able to create an exit challenge if a node operator does not call `notify_exit` within `time_to_exit_notify` (initialized to 24 hours) of exiting a validator
+    - Until an exit challenge is resolved, a node operator SHALL NOT be able to distribute rewards 
+    - A node operator SHALL be able to resolve an exit challenge by either:
+      - Calling `notify_exit` and paying a `late_notify_fine` (initialized to 0.05 ETH; maximum guardrail of 0.5 ETH). In this case, the validator is considered exiting. 
+      - Providing a proof that the validator in question is _not_ exiting (eg, showing that `withdrawable_epoch` is `FAR_FUTURE_EPOCH`). In this case, the validator will not be considered exiting.
+  - There SHALL be a `notify_final_balance` function, which can be called once exited validators are withdrawable. This function MUST:
+    - Include a proof of the withdrawal balance for the validator (capital)
+    - From the capital, send borrowed funds to the rETH contract
+      - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
+    - Use remaining capital to pay off `debt`, while the megapool has any
+    - Hold remaining capital as unclaimed node operator funds
+      - If called by the node operator, remaining capital SHOULD claim all unclaimed node operator funds
+    - Be callable exclusively by the node operator starting at `withdrawable_epoch` and for `user.distribute.window.length` thereafter (initialized to 7 days). After that exclusive period, this function SHALL be permissionless.
 ```
 
 ## Rationale
