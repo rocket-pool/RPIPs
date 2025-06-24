@@ -82,7 +82,7 @@ to fund operations, grants, or other community-approved initiatives using rETH c
 This share is initially 0% but may be increased in the future based on governance needs.
 ```
 
-### Permissionless distribution refinement
+### Permissionless capital distribution
 The following section of RPIP-43
 ```md
 - There SHALL be a capital distribution function in the megapool
@@ -97,15 +97,21 @@ The following section of RPIP-43
 ```
 SHALL be replaced by
 ```md
-- There SHALL be a capital distribution function in the megapool
-  - When called, capital borrowed from the protocol that has been released from
-    exited validators SHALL be sent to the rETH contract.
+- There SHALL be a capital distribution process in the megapool
+  - A node operator SHALL notify the protocol of an exiting validator `notify_exit`
+    - On notification, distribution of rewards SHALL be prevented after the earliest validator `withdrawal_epoch`, until all exiting validators have been exited 
+    - If a node operator does not notify the protocol of an exiting validator within `time_to_exit_notify` then any oDAO member can challenge that they are exiting
+    - When challenged a node operator SHALL NOT distribute rewards and MUST `notify_exit` or `notify_not_exit` by providing a proof
+    - If a node operator proves exit of a validator then the challenge ends and exiting validators SHALL be incremented
+    - If a node operator proves non-exit of a validator then the challenge will end - SHALL unlock reward distribution if exiting validators is 0
+  - When capital borrowed from the protocol has been released from exited validators the node operator SHALL prove the withdrawal balance `notify_final_balance`, at which:  
+    - Borrowed funds SHALL be sent to the rETH contract.
     - If the capital is insufficient to repay the protocol, the shortfall SHALL be added to `debt`
-    - There SHALL be a permissionless `notify_exit` function that validates an exiting validator, increments the amount of capital that will be released, and updates the epoch when it will be released if necessary (based on withdrawable epoch)
-  - When called while the megapool has `debt`, the remaining capital from exited validators SHALL first be used to pay off `debt`
-  - When called, the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
-  - This function SHALL support permissionless use, after a small delay `user.distribute.window.length`
-    - This variable SHALL be initialized to 7 days
+    - When called while the megapool has `debt`, remaining capital SHALL first be used to pay off `debt`
+    - If called by the node operator, captial SHALL be instantly withdrawn
+    - This function SHALL support permissionless use, after a small delay `user.distribute.window.length`
+      - This variable SHALL be initialized to 7 days
+      - When not called by the node operator, borrowed funds SHALL be sent to rETH contract and the remaining capital SHALL then be held in the megapool as unclaimed node operator funds
 ```
 
 ## Rationale
@@ -127,9 +133,11 @@ This change enables the protocol to direct ETH from rETH commission to the pDAO,
 
 Note: This was sentiment polled as summarized on the [forum](https://dao.rocketpool.net/t/protocol-funding-in-saturn-i-and-beyond/3555/12), with the key bit being that "there is strong consensus to at least build in a pdao share".
 
-### Permissionless distribution refinement
-As the team worked on this feature, they determined that there was no good way to avoid an oDAO duty to notify about all exiting validators in a timely manner.
-Given that notification, it was possible to get to the permissionless distribute with a single transaction to improve UX.
+### Permissionless capital distribution
+As the team worked on this feature, they determined that a notification of exit was required to prevent distribution of capital as rewards. The node operator should be responsible for doing this but the oDAO can be used as a fallback. The designed challenge system, aims to ensure node operators remain responsible but the protocol is secure.
+
+The capital distribution function `notify_final_balance` is callable exclusively by the node operator within a window of time, to support arbitrage opportunities. After this period, it becomes permissionless to support rETH capital consolidation. 
+
 There is also a correction to avoid using `minipool` namespaced variables.
 
 Note: this is being added as an item the team "identifies that impact their ability to deliver this upgrade", per RPIP-49
