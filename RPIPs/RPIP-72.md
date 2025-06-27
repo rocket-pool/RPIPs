@@ -154,6 +154,8 @@ As the team worked on this feature, they determined that a notification of exit 
 
 The capital distribution function `notify_final_balance` is callable exclusively by the node operator within a window of time, to support arbitrage opportunities. After this period, it becomes permissionless to support rETH capital consolidation. 
 
+The challenge design allows distribution to be held up without a proof. This prioritizes protecting rETH funds, even in the failure case where there is a bug in the proof generation. Instead, the proof is used to unlock distribution after a challenge; this causes a delay in such a failure case, but no loss of funds.
+
 There is also a correction to avoid using `minipool` namespaced variables.
 
 Note: this is being added as an item the team "identifies that impact their ability to deliver this upgrade", per RPIP-49
