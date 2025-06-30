@@ -3,7 +3,7 @@ rpip: 72
 title: Saturn Follow-up Vote No. 2
 description: Follow-up vote to tie up loose ends in the Saturn specification
 author: Valdorff (@Valdorff), ShfRyn (@ShfRyn)
-discussions-to:
+discussions-to: https://dao.rocketpool.net/t/saturn-follow-up-votes-2/3657
 status: Final
 type: Protocol
 category: Core
