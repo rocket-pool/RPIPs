@@ -110,13 +110,11 @@ The following section of RPIP-43
 SHALL be replaced by
 ```md
 - There SHALL be a capital distribution process in the megapool
-  - 
   - There SHALL be a permissionless `notify_exit` function, which proves the `withdrawable_epoch` and is intended to be called by a node operator per validator they exit
     - On notification, distribution of rewards SHALL be prevented after the earliest validator `withdrawal_epoch`, until all exiting validators have had `notify_final_balance` called
   - Any oDAO member SHALL be able to create an exit challenge if a node operator does not call `notify_exit` more than `notify_threshold` before `withdrawable_epoch`
     - There MAY be additional restrictions to which oDAO members can challenge (eg, not the oDAO member that most recently challenged)
-    - There MAY be support for batching multiple exit challenges
-    - Until an exit challenge is resolved, a node operator SHALL NOT be able to distribute rewards 
+    - Until all exit challenges on their megapool are resolved, a node operator SHALL NOT be able to distribute rewards 
     - An exit challenge SHALL be resolved when either:
       - `notify_exit` is called successfully, in which case the validator is considered exiting; `debt` SHALL be increased by `late_notify_fine`
       - a proof that the validator in question is _not_ exiting is provided (eg, showing that `withdrawable_epoch` is `FAR_FUTURE_EPOCH`). In this case, the validator will not be considered exiting.
@@ -128,6 +126,7 @@ SHALL be replaced by
     - Hold remaining capital as unclaimed node operator funds
       - If called by the node operator, remaining capital SHOULD claim all unclaimed node operator funds
     - Be callable exclusively by the node operator starting at `withdrawable_epoch` and for `user.distribute.window.length` thereafter. After that exclusive period, this function SHALL be permissionless.
+  - There MAY be support for batching the `notify_exit`, exit challenge creation, or `notify_final_balance` functions
 ```
 
 ## Rationale
