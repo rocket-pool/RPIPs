@@ -1,0 +1,34 @@
+SP Contract Balance [100] Interval End Balance
+SP Contract Balance [1] SP Contract Balance Carryover
+
+Interval End Balance [33] Opted-out Megapool Protocol Share
+Interval End Balance [67] Opted-in Node Share
+
+Opted-out Megapool Protocol Share [33] Voter Share
+Opted-out Megapool Protocol Share [0] PDAO Share
+
+Voter Share [8] Megapool 1
+Voter Share [7] Megapool 2
+Voter Share [5] Megapool 3
+
+Opted-in Node Share [57] rETH Share
+Opted-in Node Share [10] Commission
+
+Commission [2] Voter Share
+Commission [3] Megapool
+Commission [7] Minipool
+
+Megapool [1] Megapool 4
+Megapool [1] Megapool 5
+Megapool [1] Megapool 6
+
+Voter Share [7] Megapool 4
+Voter Share [8] Megapool 5
+
+Minipool [1] Minipool 1
+Minipool [1] Minipool 2
+Minipool [1] Minipool 3
+Minipool [1] Minipool 4
+Minipool [1] Minipool 5
+Minipool [1] Minipool 6
+Minipool [1] Minipool 7
