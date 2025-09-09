@@ -67,10 +67,6 @@ The chosen date balances governance lead time with user notice. Automatic re-ena
 - Existing minipool queue entries will continue until matched.
 - No change to megapool functionality.
 
-## Security Considerations
-
-As of now, the security council is made up only of the core team. This would give them ability to re-open the queue without pDAO intervention.
-
 ## Copyright
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
