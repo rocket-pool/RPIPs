@@ -47,15 +47,15 @@ This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to e
 
 - The Core Team and the pDAO SHOULD explain, in as targeted a way as possible, that those coming to create minipools have other options and are not just turned away:
 
-  - **Smartnode**: Prominent display explaining: _“The Minipool Queue is closed in anticipation of Saturn 1 (launching Oct 29, 2025). Learn more about Megapools and rETH here.”_
+  - **Smartnode**: Prominent display explaining: _“The minipool queue is closed in anticipation of Saturn 1 (launching Oct 29, 2025). Learn more about Megapools and rETH here.”_
   - **Documentation updates**: Minipool docs updated with closure date, rationale, and Saturn 1 resources.
   - **Community comms**: Forum post, Discord announcement. Messaging should frame closure as an **exclusive / transitional event**, not a rejection of new participants.
 
 ## Rationale
 
-Closing the Minipool Queue ahead of Saturn 1 balances three priorities:
+Closing the minipool queue ahead of Saturn 1 balances three priorities:
 
-1. **Preserve deposit pool ETH for Megapools**.
+1. **Preserve deposit pool ETH for megapools**.
 2. **Protect new NOs from starting new minipools**.
 3. **Strengthen the rETH peg by freeing ETH for redemptions**.
 
