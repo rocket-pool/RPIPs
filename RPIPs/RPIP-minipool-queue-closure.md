@@ -33,22 +33,21 @@ This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to e
 
 ### Closure Date
 
-- The minipool queue SHALL be closed on **October 15, 2025** (14 days before Saturn 1 launch), or to the best estimate of 14 days if the launch date changes. A small deviation from that date is allowed for convenience of implementation.
+- The minipool queue SHALL be closed on **October 15, 2025 at 3:00 a.m. UCT [OPEN TO CHANGING TO SOMETHING MORE CONVENIENT FOR TEAM]** (14 days before Saturn 1 launch), or to the best estimate of 14 days if the launch date changes. A small deviation from that date is allowed for convenience of implementation.
 
 ### Scope
 
-- **New minipool deposits**: Disabled at both contract and frontend levels.
-- **Existing minipool queue entries**: Continue processing under current rules.
+- **New minipool deposits**: the parameter `node.deposit.enabled` is set to false
 
 ### Re-Enable Conditions
 
-- If the **Deposit Pool utilization ≥ 80%**, the Security Council SHALL re-enable minipool deposits until utilization falls below this threshold. This safeguard ensures Rocket Pool can accept large ETH inflows without unnecessary governance delays.
+- If the **Deposit Pool utilization ≥ 80%**, the Security Council SHALL re-enable minipool deposits until utilization falls below **20%**. This safeguard ensures Rocket Pool can accept large ETH inflows without unnecessary governance delays.
 
 ### User Communications
 
 - The Core Team and the pDAO SHOULD explain, in as targeted a way as possible, that those coming to create minipools have other options and are not just turned away:
 
-  - **Frontend**: Prominent display explaining: _“The Minipool Queue is closed in anticipation of Saturn 1 (launching Oct 29, 2025). Learn more about Megapools and rETH here.”_
+  - **Smartnode**: Prominent display explaining: _“The Minipool Queue is closed in anticipation of Saturn 1 (launching Oct 29, 2025). Learn more about Megapools and rETH here.”_
   - **Documentation updates**: Minipool docs updated with closure date, rationale, and Saturn 1 resources.
   - **Community comms**: Forum post, Discord announcement. Messaging should frame closure as an **exclusive / transitional event**, not a rejection of new participants.
 
