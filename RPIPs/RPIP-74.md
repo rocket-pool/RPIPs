@@ -1,5 +1,5 @@
 ---
-rpip: <TBD>
+rpip: 74
 title: Minipool Queue Closure Pre-Saturn 1
 description: Close the minipool queue before Saturn 1 in order to direct more ETH deposits to megapools at launch.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
