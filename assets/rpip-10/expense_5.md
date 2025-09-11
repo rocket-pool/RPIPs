@@ -1,8 +1,9 @@
 This expense funds the core protocol development team from **2025-10-25** until **2026-10-24** (inclusive).
 
-The team has completed a prioritization discussion, which has been summarized here: [[TBC]]
+The team has started a [prioritization discussion](https://dao.rocketpool.net/t/protocol-development-roadmap-prioritisation-2025/3709), which was continued with a [request for direction](https://dao.rocketpool.net/t/roadmap-summary-direction-needed/3755).
 
-The team has released a roadmap and timelines, which can be found here: [[TBC]]
+The team then released a roadmap and timelines [TBC].
+
 
 The core protocol development team will provide quarterly updates on the roadmap progress before the following dates:
 - 2026-01-26
