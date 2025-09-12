@@ -11,7 +11,7 @@ The core protocol development team will provide quarterly updates on the roadmap
 - 2026-07-26
 - 2026-10-24
 
-The amount will be paid in a lump-sum payment of: `54683.160115634004`, which is `5%` of RPL inflation over that time.
+The amount will be paid in a lump-sum payment of: `54376.1983684802`*, which is `5%` of RPL inflation over that time.
 
 ### Calculation 
 Calculates the amount of RPL inflation to be spent on core protocol development, by calculating the projected RPL inflation 1 year and multiplying by the percentage of inflation allocated to core protocol development.
@@ -42,5 +42,5 @@ inflation  *  0.05 / 10**18
 54522.380398575624
 ```
 
-Note: Last year's funding interval had a duration of 365 days and funded one day into reward period 41. In order to define this and future funding periods to begin and end with reward periods, this funding period begins the same day the last period's ends.  `146.18` RPL is subtracted from the above figure so as not to pay twice for the same day, giving a final funding amount of `54376.1983684802` RPL.  
+*Note: Last year's funding interval had a duration of 365 days and funded one day into reward period 41. In order to define this and future funding periods to begin and end with reward periods, this funding period begins the same day the last period's ends.  `146.18` RPL is subtracted from the above figure so as not to pay twice for the same day, giving a final funding amount of `54376.1983684802` RPL.  
 
