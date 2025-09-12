@@ -1,4 +1,4 @@
-This expense funds the core protocol development team from **2025-10-25** until **2026-10-24** (inclusive).
+This expense funds the core protocol development team from **2025-10-24** until **2026-10-22** (inclusive).
 
 The team has started a [prioritization discussion](https://dao.rocketpool.net/t/protocol-development-roadmap-prioritisation-2025/3709), which was continued with a [request for direction](https://dao.rocketpool.net/t/roadmap-summary-direction-needed/3755).
 
@@ -24,7 +24,7 @@ $$
 
 Where:
 - $ProtocolFunding$ is the lump-sum payment of RPL to be paid for protocol development funding.
-- $StartSupply$ is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 40 (2025-10-24). So the start supply will be calculated from the block after interval 40. The supply at that block is expected to be `21873264.04 RPL`.
+- $StartSupply$ is the RPL supply at the given start block. The core protocol team have been paid up to reward interval 41 (2025-10-23). So the start supply will be calculated from the block after interval 41. The supply at that block is expected to be `21870340.41 RPL`.
 - $InflationPerDay$ is the standard RPL inflation day rate, queried from the RPL token contract (`getInflationIntervalRate`).
   https://etherscan.io/token/0xd33526068d116ce69f19a9ee46f0bd304f21a51f#readContract 
 - $DevelopmentPercentage$ is set at `5%` of RPL inflation.
@@ -33,12 +33,14 @@ Where:
 Calculated as:
 
 ```python
->>> supply = 21873264046243601583579994
-for _ in range(365):
+>>> supply = 21870340405641693088131008
+for _ in range(364):
   supply *= 1000133680617113500
   supply //= 10**18
-inflation = supply - 21873264046243601583579994
+inflation = supply - 21870340405641693088131008
 inflation  *  0.05 / 10**18
-54683.160115634004
+54522.380398575624
 ```
+
+Note: Last year's funding interval had a duration of 365 days and funded one day into reward period 41. In order to define this and future funding periods to begin and end with reward periods, this funding period begins the same day the last period's ends.  `146.18` RPL is subtracted from the above figure so as not to pay twice for the same day, giving a final funding amount of `54376.1983684802` RPL.  
 
