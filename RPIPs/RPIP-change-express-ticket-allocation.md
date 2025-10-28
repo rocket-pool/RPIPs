@@ -2,7 +2,7 @@
 rpip: <TBD>
 title: Change Express Ticket Allocation for Saturn 1
 description: Change express ticket allocation for a more balanced megapool migration given the current and expected post Saturn 1 modest rETH growth.
-author: Epineph
+author: Epineph, NeverAnIsland (@NeverAnIsland)
 discussions-to: https://dao.rocketpool.net/t/reduce-express-ticket-allocation/3749
 status: Draft
 type: Protocol
@@ -22,14 +22,12 @@ The RPIP proposes to reduce `express_queue_tickets_base_provision` to 0 and incr
 Due to various changes in staking assumptions since the tokenomic changes were initially envisioned, the number of express tickets distributed are likely to greatly outweigh the number of ETH deposits available to be matched, overloading and ultimately defeating the point of the express queue.
 
 ## Specification
-The following changes should be made to the Saturn 1 smart contract upgrade, IF no significant security related concerns are noted during remaining audit:
-
-Rule 1: Reduce `express_queue_tickets_base_provision` from 2 to 0.
-
-Rule 2: Increase `express_queue_rate` from 2 to 4.
+The RPIP editors SHALL modify RPIP-59 as follows
+- Set `express_queue_tickets_base_provision` to 0 (from 2);
+- Set `express_queue_rate` to 4 (from 2).
 
 ## Rationale
-The schema of priority ticket distributions was intended to prevent an outflow of NO operator ETH in the run-up to Saturn 1, which would hazardous to both rETH earnings and RPL value; it would do so by taking away some of the variability.
+The idea behind priority ticket distributions was intended to prevent an outflow of NO operator ETH in the run-up to Saturn 1, which would hazardous to both rETH earnings and RPL value; it would do so by taking away some of the variability.
 
 At that time, a 10% RPL requirement meant we were highly NO limited. The NO demand problem was anticipated to get worse as we got closer to Saturn 1 as there is no direct migration of NO ETH. Moreover, NOs exiting to get access to Saturn benefits would potentially create a huge amount of unproductive ETH for months before Saturn.
 
@@ -50,7 +48,7 @@ The new distribution of express tickets ensure that:
 6. There will be a more diverse group of NOs migrating some stake to megapools, instead of a smaller group migrating all their stake.
 
 ## Considerations
-This is an alteration in tokenomics coming in towards the last minute, and changes towards investing assumptions should not be taken lightly.  However, in this case it seems unlikely that there are NOs who are remain staking in order to get express tickets.  Even if there were NOs who were invested based on the idea they would get tickets, it is highly unlikely that the allocated express tickets will actually be usable.
+This is an alteration of a living RPIP coming in towards the last minute, and changes towards investing assumptions should not be taken lightly.  However, in this case it seems unlikely that there are NOs who are remain staking in order to get express tickets.  Even if there were NOs who were invested based on the idea they would get tickets, it is highly unlikely that the allocated express tickets will actually be usable.
 
 If the number of express tickets is too low to allow sufficient migration (i.e., priority queue empty and many NOs remain in legacy minipools), this can be adjusted during the next smart contract upgrade.
 
