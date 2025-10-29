@@ -17,7 +17,7 @@ tags:
 
 ## Abstract
 
-This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to ensure protocol resources are directed toward megapools, avoid allowing uninformed node operators to create less desirable minipools too close to Saturn 1 launch, and improve the health of the rETH peg. The closure would occur approximately **Oct 15, 2025** (about two weeks prior to Saturn 1’s scheduled launch on **Oct 29, 2025**). The RPIP also defines communication requests and re-enable conditions in case of exceptional deposit pool demand.
+This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to ensure protocol resources are directed toward megapools, avoid allowing uninformed node operators to create less desirable minipools too close to Saturn 1 launch, and improve the health of the rETH peg. The closure would occur by **Dec 08, 2025** (about six weeks prior to Saturn 1’s scheduled launch on **Jan 19, 2026**). The RPIP also defines communication requests and re-enable conditions in case of exceptional deposit pool demand.
 
 ## Motivation
 
@@ -33,7 +33,7 @@ This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to e
 
 ### Closure Date
 
-- The minipool queue SHALL be closed on **October 15, 2025 at 3:00 a.m. UCT [OPEN TO CHANGING TO SOMETHING MORE CONVENIENT FOR TEAM]** (14 days before Saturn 1 launch), or to the best estimate of 14 days if the launch date changes. A small deviation from that date is allowed for convenience of implementation.
+- The minipool queue SHOULD be closed soon after this RPIP is enacted, but SHALL be closed by **December 08, 2025 at 3:00 a.m. UCT** (6 weeks before Saturn 1 launch), or to the best estimate of 6 weeks if the launch date changes. A small deviation from that date is allowed for convenience of implementation.
 
 ### Scope
 
@@ -47,7 +47,7 @@ This RPIP proposes closing the minipool queue ahead of the Saturn 1 upgrade to e
 
 - The Core Team and the pDAO SHOULD explain, in as targeted a way as possible, that those coming to create minipools have other options and are not just turned away:
 
-  - **Smartnode**: Prominent display explaining: _“The minipool queue is closed in anticipation of Saturn 1 (launching Oct 29, 2025). Learn more about Megapools and rETH here.”_
+  - **Smartnode**: Prominent display explaining: _“The minipool queue is closed in anticipation of Saturn 1 (launching Jan 19, 2026). Learn more about Megapools and rETH here.”_
   - **Documentation updates**: Minipool docs updated with closure date, rationale, and Saturn 1 resources.
   - **Community comms**: Forum post, Discord announcement. Messaging should frame closure as an **exclusive / transitional event**, not a rejection of new participants.
 
