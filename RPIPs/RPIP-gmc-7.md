@@ -58,7 +58,7 @@ RPIP-40 added:
 - RPIP-26 superseded RPIP-18 but incorrectly left out the 'Selection and Governance' section. This update restores that missing section.
 
 The motivation for the update in this RPIP is that:
-The Grants and Bounties Management Committee (GMC) was originally expanded to nine members to more efficienctly distribute the workload. It was also used to facilitate subcommittees across multiple categories of applications. Over time, however, the number of applications received has declined, subcommittees are not utilized as much, and spending projections for the upcoming year are lower. Reducing the GMC to seven members aligns its structure with current workload and fiscal needs while maintaining sufficient capacity and diversity for effective governance.
+The Grants and Bounties Management Committee (GMC) was launched in October 2022 with seven (7) members and later expanded in January 2023 to nine (9) members to better distribute workload and facilitate subcommittees across application categories. Over time, however, the number of applications received has declined, subcommittees are not utilized as much, and spending projections for the upcoming year are lower. Reducing the GMC to seven members aligns its structure with current workload and fiscal needs while maintaining sufficient capacity and diversity for effective governance.
 
 ## Specification
 
