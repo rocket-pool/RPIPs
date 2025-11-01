@@ -1,5 +1,5 @@
 ---
-rpip: XX
+rpip: 76
 title: Updating of Grants Management Committee 3 – Membership Reduction
 description: This RPIP supersedes RPIP-40 to reduce the number of Grants and Bounties Management Committee (GMC) members from nine (9) to seven (7).  
 author: ShfRyn (@ShfRyn), Calurduran (@dafuerstman), Valdorff (@Valdorff)
