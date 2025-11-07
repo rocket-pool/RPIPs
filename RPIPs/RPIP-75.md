@@ -4,7 +4,7 @@ title: Change Express Ticket Allocation for Saturn 1
 description: Change express ticket allocation for a more balanced megapool migration given the current and expected post Saturn 1 modest rETH growth.
 author: Epineph, NeverAnIsland (@NeverAnIsland)
 discussions-to: https://dao.rocketpool.net/t/reduce-express-ticket-allocation/3749
-status: Review
+status: Final
 type: Protocol
 category: Core
 created: 2025-10-24
