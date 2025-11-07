@@ -4,7 +4,7 @@ title: Minipool Queue Closure Pre-Saturn 1
 description: Close the minipool queue before Saturn 1 in order to direct more ETH deposits to megapools at launch.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to: https://dao.rocketpool.net/t/new-rpip-74-sentiment-poll-change-to-immediate-queue-closure/3812
-status: Review
+status: Final
 type: Protocol
 category: Core
 created: 2025-09-09
