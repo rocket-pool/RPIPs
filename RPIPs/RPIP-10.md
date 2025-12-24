@@ -4,11 +4,11 @@ title: pDAO Budget Allocation
 description: Describes the planned usage of pDAO budget moving forward
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/pdao-liquidity-committee-and-budget-proposal/895
-status: Review
+status: Living
 type: Meta
 created: 2022-08-09
 vote-to: https://vote.rocketpool.net/#/proposal/0x2c1cf6c335ee8f07cc955133b6e0c5f7e6bc3fd0676c4d06d32f678c06ab3a0e
-vote-date: 2024-10-27
+vote-date: 2025-10-24
 vote-result: Passed
 ---
 
@@ -206,8 +206,8 @@ Current and historic pDAO Treasurers are recorded in [RPIP-36](RPIP-36.md#pdao-t
 | 2023-11-29       | 4643.69        | Compensate IMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
 | 2023-11-29         | 2985.22        | Compensate GMC for lower-than-intended split in past periods                       | [expense_2](../assets/rpip-10/expense_2.md)     |
 | 2024-02-15        | 49420.55 RPL  | Protocol development funding (from **2023-10-26** until **2024-10-24** inclusive)   | [expense_3](../assets/rpip-10/expense_3.md)     |
-| 2024-10-27       | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24** inclusive)   | [expense_4](../assets/rpip-10/expense_4.md)     |
-| TBC       | 54683.16 RPL  | Protocol development funding (from **2025-10-25** until **2026-10-24** inclusive)   | [expense_5](../assets/rpip-10/expense_5.md)     |
+| 2024-10-27       | 52079.20 RPL  | Protocol development funding (from **2024-10-25** until **2025-10-24**)   | [expense_4](../assets/rpip-10/expense_4.md)     |
+| 2025-10-26       | 54683.16 RPL  | Protocol development funding (**2025-10-24** until **2026-10-23**)   | [expense_5](../assets/rpip-10/expense_5.md)     |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
