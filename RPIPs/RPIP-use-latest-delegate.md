@@ -17,11 +17,7 @@ tags:
 
 ## Abstract
 
-This proposal requires minipools to use the **latest protocol-approved delegate smart contract** after upgrading to a specified future Smartnode version. Once upgraded, node operators would no longer be able to permanently pin minipools to older delegate implementations.
-
-The intent is to ensure protocol-wide consistency, enable governance-approved minipool behavior changes, and remove technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
-
----
+This proposal requires that a future specified Smartnode update force minipools to use the **latest delegate smart contract**. Once upgraded, node operators would no longer be able to permanently pin minipools to older delegate implementations. The intent is to ensure protocol-wide consistency, enable governance-approved minipool behavior changes, and remove technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
 
 ## Motivation
 
@@ -30,8 +26,6 @@ A non-trivial number of minipools are persistently underperforming, reducing ove
 While support efforts to remediate underperforming node operators are ongoing, the protocol currently lacks a reliable enforcement mechanism because minipools may permanently opt out of delegate upgrades. This creates a situation where governance-approved protocol logic cannot be universally applied.
 
 This proposal addresses that limitation.
-
----
 
 ## Background
 
@@ -58,9 +52,33 @@ Node operators may currently configure each minipool to either:
 
 This opt-in upgrade model was originally designed to protect node operators from malicious or unsafe upgrades. However, it also allows minipools to permanently avoid protocol changes approved by governance.
 
----
+## Specification
 
-## Problem Statement
+This proposal requires a Smartnode update that enforces the use of the latest delegate for minipools after upgrading.
+
+### Implementation
+
+[is this the exact mechanism to change this? Is it manually changeable back?]
+Upon passage of this RPIP,
+
+- the Smartnode SHALL set the default value of `use-latest-delegate` to `yes` at the devs earliest convenience.
+- the Smartnode SHALL remove the ability to change `use-latest-delegate` via Smartnode configuration.
+
+### Scope
+
+- Applies **only after** upgrading to the specified Smartnode version.
+- Does **not** retroactively modify minipools on older Smartnode versions.
+- Does **not** itself implement forced exits; it enables future governance-approved mechanisms.
+
+### Re-enable Conditions
+
+In the event of an unsafe or bugged delegate update, ???
+
+### Delegate Update Oversight
+
+- Potentially controversial delegate updates SHALL be implemented only after pDAO vetting via vote. [what kind of vote]
+
+## Rationale
 
 Persistently underperforming minipools impose systemic costs:
 
@@ -72,36 +90,9 @@ Persistently underperforming minipools impose systemic costs:
 
 Because minipools can remain indefinitely on older delegate logic, it is difficult or impossible to enforce protocol-wide standards. This limitation does not apply to megapools, which do not use the same delegate model.
 
----
-
-## Specification
-
-This proposal introduces a Smartnode update that enforces the use of the latest delegate for minipools after upgrading.
-
-### Implementation options (non-exclusive)
-
-One of the following (or an equivalent mechanism) would be implemented:
-
-1. Upon Smartnode upgrade, `use-latest-delegate` is set to `yes` and cannot be toggled to `no`.
-2. Upon Smartnode upgrade, `use-latest-delegate` is set to `yes`, with optional ability to toggle back (subject to governance decision).
-
-The exact implementation details are left to the core team and governance process.
-
-### Scope
-
-- Applies **only after** upgrading to the specified Smartnode version.
-- Does **not** retroactively modify minipools on older Smartnode versions.
-- Does **not** itself implement forced exits; it enables future governance-approved mechanisms.
-
----
-
-## Rationale
-
 This change prioritizes protocol-wide consistency and enforceability over permanent opt-out flexibility. As Rocket Pool scales and transitions to Saturn-era architecture, the inability to uniformly apply protocol logic becomes an increasing risk to rETH holders and protocol sustainability.
 
 The delegate upgrade mechanism already exists; this proposal ensures it cannot be indefinitely bypassed.
-
----
 
 ## Backwards Compatibility
 
@@ -109,16 +100,12 @@ The delegate upgrade mechanism already exists; this proposal ensures it cannot b
 - No changes are applied to nodes that do not upgrade.
 - Minipools created after upgrading Smartnode would automatically follow the enforced delegate behavior.
 
----
-
 ## Risks and Considerations
 
 - **Governance risk concentration:** Delegate upgrades become more powerful and require stronger review processes.
 - **Loss of opt-out:** Node operators lose the ability to permanently pin delegates after upgrading.
 - **Trust requirements:** Increased importance of transparent communication, audits, and governance safeguards around delegate changes.
 - **Community alignment:** Some node operators may strongly oppose the change on philosophical grounds.
-
----
 
 ## Security Considerations
 
@@ -131,28 +118,10 @@ This proposal increases the importance of governance integrity and delegate upgr
 
 These safeguards are out of scope for this RPIP but should be discussed alongside it.
 
----
-
-## Governance Path
-
-1. Community discussion (forum + Discord)
-2. Sentiment poll
-3. Snapshot vote
-4. Smartnode implementation (if approved)
-
----
-
-## Open Questions
-
-- Should delegate upgrades require explicit pDAO approval?
-- Should different categories of delegate changes have different governance thresholds?
-- Should any opt-out mechanism remain under narrowly defined conditions?
-- What safeguards are required before enabling enforcement features like forced exits?
-
----
-
 ## Conclusion
 
 This proposal represents a significant philosophical shift, but one driven by observed protocol limitations rather than theory. As Rocket Pool evolves, ensuring consistent, enforceable protocol behavior may be necessary to protect rETH holders and support long-term scalability.
 
-The community is encouraged to scrutinize this proposal carefully and contribute to shaping the governance controls that would accompany it.
+## Copyright
+
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
