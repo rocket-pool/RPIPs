@@ -8,10 +8,6 @@ status: Draft
 type: Protocol
 category: Core
 created: 2026-01-05
-requires:
-vote-to:
-vote-date:
-vote-result:
 tags: [minipools, delegate, smartnode, governance]
 ---
 
@@ -68,7 +64,7 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 - A Smartnode update SHALL enforce the use of the latest delegate for minipools. The exact implementation method is left to the Smartnode development team, subject to this specification.
 
-- The Smartnode update SHOULD be implemented as soon as possible without interfering with Saturn 1 launch.
+- The Smartnode update SHOULD be implemented at the earliest reasonable opportunity that does not interfere with the Saturn 1 launch.
 
 - The Smartnode SHALL remove the ability to change the `use-latest-delegate` flag via Smartnode configuration UI and/or command line interface.
 
