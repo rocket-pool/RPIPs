@@ -54,15 +54,11 @@ This opt-in upgrade model was originally designed to protect node operators from
 
 ## Specification
 
-This proposal requires a Smartnode update that enforces the use of the latest delegate for minipools after upgrading.
-
 ### Implementation
 
-[is this the exact mechanism to change this? Is it manually changeable back?]
-Upon passage of this RPIP,
-
-- the Smartnode SHALL set the default value of `use-latest-delegate` to `yes` at the devs earliest convenience.
-- the Smartnode SHALL remove the ability to change `use-latest-delegate` via Smartnode configuration.
+- A Smartnode update SHALL enforce the use of the latest delegate for minipools. The exact method of this implementation is left to the dev.
+- The Smartnode update SHOULD be implemented as soon as possible without interfering with Saturn 1 launch.
+- the Smartnode SHALL remove the ability to change the `use-latest-delegate` flag via Smartnode configuration UI and/or command line interface.
 
 ### Scope
 
@@ -70,13 +66,9 @@ Upon passage of this RPIP,
 - Does **not** retroactively modify minipools on older Smartnode versions.
 - Does **not** itself implement forced exits; it enables future governance-approved mechanisms.
 
-### Re-enable Conditions
-
-In the event of an unsafe or bugged delegate update, ???
-
 ### Delegate Update Oversight
 
-- Potentially controversial delegate updates SHALL be implemented only after pDAO vetting via vote. [what kind of vote]
+- Potentially controversial delegate updates MUST only be implemented after pDAO vetting via vote. A sentiment poll SHOULD be sufficient to determine if an official vote is required.
 
 ## Rationale
 
@@ -96,9 +88,9 @@ The delegate upgrade mechanism already exists; this proposal ensures it cannot b
 
 ## Backwards Compatibility
 
-- Existing minipools continue operating normally until the node operator upgrades Smartnode.
-- No changes are applied to nodes that do not upgrade.
-- Minipools created after upgrading Smartnode would automatically follow the enforced delegate behavior.
+- Existing minipools continue operating normally until the node operator updates Smartnode.
+- No changes are applied to nodes that do not update.
+- Minipools created after updating Smartnode would automatically follow the enforced delegate behavior.
 
 ## Risks and Considerations
 
@@ -106,17 +98,6 @@ The delegate upgrade mechanism already exists; this proposal ensures it cannot b
 - **Loss of opt-out:** Node operators lose the ability to permanently pin delegates after upgrading.
 - **Trust requirements:** Increased importance of transparent communication, audits, and governance safeguards around delegate changes.
 - **Community alignment:** Some node operators may strongly oppose the change on philosophical grounds.
-
-## Security Considerations
-
-This proposal increases the importance of governance integrity and delegate upgrade review. Mitigations may include:
-
-- Formalized review and audit processes for delegate updates
-- Clear rollout timelines and communication
-- Optional grace periods prior to enforcement
-- Emergency rollback mechanisms (if technically feasible)
-
-These safeguards are out of scope for this RPIP but should be discussed alongside it.
 
 ## Conclusion
 
