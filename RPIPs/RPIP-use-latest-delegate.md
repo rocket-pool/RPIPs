@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/require-minipools-to-use-latest-del
 status: Draft
 type: Protocol
 category: Core
-created: 2025-12-19
+created: 2026-01-05
 requires:
 vote-to:
 vote-date:
