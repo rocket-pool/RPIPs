@@ -1,8 +1,8 @@
-This expense funds the core protocol development team from **2025-10-24** until **2026-10-22** (inclusive).
+This expense funds the core protocol development team from **2025-10-25** until **2026-10-23** (intervals 29 through 41).
 
 The team has started a [prioritization discussion](https://dao.rocketpool.net/t/protocol-development-roadmap-prioritisation-2025/3709), which was continued with a [request for direction](https://dao.rocketpool.net/t/roadmap-summary-direction-needed/3755).
 
-The team then released a roadmap and timelines [TBC].
+The team then released a  [roadmap and timelines](https://dao.rocketpool.net/t/protocol-development-roadmap-update-aug-sept-oct/).
 
 
 The core protocol development team will provide quarterly updates on the roadmap progress before the following dates:
@@ -42,5 +42,7 @@ inflation  *  0.05 / 10**18
 54522.380398575624
 ```
 
-*Note: Last year's funding interval had a duration of 365 days and funded one day into reward period 41. In order to define this and future funding periods to begin and end with reward periods, this funding period begins the same day the last period's ends.  `146.18` RPL is subtracted from the above figure so as not to pay twice for the same day, giving a final funding amount of `54376.1983684802` RPL.  
+
+*Note: Last year's funding interval had a duration of 365 days and funded one day into reward period 29. In order to define this and future funding periods to begin and end with reward periods, this funding period begins the same day the last period's ends.  `146.18` RPL is subtracted from the above figure so as not to pay twice for the same day, giving a final funding amount of `54376.1983684802` RPL.  
+
 
