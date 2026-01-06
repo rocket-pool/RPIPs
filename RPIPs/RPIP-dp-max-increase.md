@@ -19,7 +19,7 @@ tags: [deposit-pool, saturn-1, megapools, parameters]
 
 This RPIP proposes increasing the Deposit Pool maximum balance from 18,000 ETH to 100,000 ETH by updating the on-chain parameter:
 
-`deposit.pool.maximum = 100,000 ETH`
+`deposit.pool.maximum = 100000 ETH`
 
 This RPIP is required to enable such an on-chain vote.
 
@@ -41,7 +41,7 @@ The following parameter SHALL be updated via onchain governance vote upon passag
 
 Parameter: `deposit.pool.maximum`
 
-**Current Value: `18,000 ETH`**
+**Current Value: `18,000` ETH**
 
 **Proposed Value: `100,000` ETH**
 
