@@ -25,11 +25,13 @@ This RPIP is required to enable such an on-chain vote.
 
 ## Motivation
 
-There are two primary motivations for this change:
+There are three primary motivations for this change:
 
 - **Saturn 1 Megapool Readiness**: With the planned launch of Saturn 1 and the introduction of megapools targeted for February 9, it is possible that larger ETH inflows may occur. Increasing the Deposit Pool cap allows ETH to accumulate in advance, ensuring smoother megapool onboarding.
 
 - **Avoiding the RPIP-74 80% Threshold**: The Deposit Pool is approaching levels that risk crossing the 80% utilization threshold defined in RPIP-74, which would automatically re-enable the minipool queue. Increasing the maximum provides operational headroom and reduces the risk of unintentionally toggling queue behavior during a critical transition period.
+
+- **Turning Away Institutional Investors**: If the Deposit Pool were full and there were not minipools queued up to use that ETH, we could risk having to turn away deposits from institutional, or other, investors. This might tarnish the protocol's image in a difficuklt to recover from way.
 
 ## Specification
 
