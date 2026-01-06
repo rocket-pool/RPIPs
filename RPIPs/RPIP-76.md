@@ -8,9 +8,9 @@ status: Final
 type: Meta
 created: 2025-10-21
 requires: 18, 26, 40
-vote-to: TBD
-vote-date: TBD
-vote-result: TBD
+vote-to: https://vote.rocketpool.net/#/proposal/0x8535e1f4ccb58083675bba273df31488f29389b0fe7e96b760b2b82e604f3974
+vote-date: 2025-12-05
+vote-result: Passed
 ---
 
 ## Abstract
