@@ -1,5 +1,4 @@
 ---
-
 rpip:
 title: Increase Deposit Pool Maximum to 100,000 ETH
 description: Increase the Deposit Pool maximum ETH limit to allow additional buffer ahead of Saturn 1 megapool launch.
@@ -14,7 +13,6 @@ vote-to: Change deposit.pool.maximum to 100,000 ETH
 vote-date:
 vote-result:
 tags: [deposit-pool, saturn-1, megapools, parameters]
-
 ---
 
 ## Abstract
@@ -29,13 +27,13 @@ This RPIP is required to enable an on-chain vote to change this parameter.
 
 There are two primary motivations for this change:
 
-**Saturn 1 Megapool Readiness**
-With the planned launch of Saturn 1 and the introduction of megapools targeted for February 9, it is possible that larger ETH inflows may occur. Increasing the Deposit Pool cap allows ETH to accumulate in advance, ensuring smoother megapool onboarding.
+- **Saturn 1 Megapool Readiness**: With the planned launch of Saturn 1 and the introduction of megapools targeted for February 9, it is possible that larger ETH inflows may occur. Increasing the Deposit Pool cap allows ETH to accumulate in advance, ensuring smoother megapool onboarding.
 
-**Avoiding the RPIP-74 80% Threshold**
-The Deposit Pool is approaching levels that risk crossing the 80% utilization threshold defined in RPIP-74, which would automatically re-enable the minipool queue. Increasing the maximum provides operational headroom and reduces the risk of unintentionally toggling queue behavior during a critical transition period.
+- **Avoiding the RPIP-74 80% Threshold**: The Deposit Pool is approaching levels that risk crossing the 80% utilization threshold defined in RPIP-74, which would automatically re-enable the minipool queue. Increasing the maximum provides operational headroom and reduces the risk of unintentionally toggling queue behavior during a critical transition period.
 
 ## Specification
+
+### Scope
 
 The following parameter SHALL be updated via onchain governance vote upon passage of this RPIP:
 
