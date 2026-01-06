@@ -49,7 +49,7 @@ No other parameters or behaviors are modified by this RPIP.
 
 ## Rationale
 
-The change is purely a capacity adjustment to build deposit pool ETH in anticipation of megapools in Saturn 1.
+The change is purely a capacity adjustment to deposit pool ETH in anticipation of megapools in Saturn 1.
 
 Although rETH yield will take a temporary hit with potentially increased deposit pool ETH, the increased capital efficiency of megapools and number of Node Operators waiting to migrate should quickly use up stored ETH.
 
