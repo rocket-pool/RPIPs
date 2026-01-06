@@ -21,7 +21,7 @@ This RPIP proposes increasing the Deposit Pool maximum balance from 18,000 ETH t
 
 `deposit.pool.maximum = 100_000 ETH`
 
-This RPIP is required to enable an on-chain vote to change this parameter.
+This RPIP is required to enable such an on-chain vote.
 
 ## Motivation
 
