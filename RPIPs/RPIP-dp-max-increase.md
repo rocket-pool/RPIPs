@@ -51,7 +51,6 @@ No other parameters or behaviors are modified by this RPIP.
 ## Rationale
 
 - This is a capacity only change--it simply allows more ETH if rETH demand exists.
-
 - The change is fully reversible via future governance if conditions change.
 
 ## Backwards Compatibility
@@ -65,15 +64,14 @@ The maximum for the Deposit Pool primarily exists to limit drag on rETH yield. A
 This is contrary to the protocol’s usual goals, however, in this case:
 
 - The build up is temporary and potentially advantageous to Saturn 1 and megapool launch
-
 - Capital efficiency is greater for megapools, so much so, that we do not expect to be Node Operator limited for a very long time
 
 The core team and pDAO should monitor the yield and the Deposit Pool and propose to decrease the maximum via onchain vote if the situation requires it.
 
 ## References
 
-RPIP-33: Governance-gated parameter changes
-RPIP-74: Minipool queue activation based on Deposit Pool utilization
+- RPIP-33: Governance-gated parameter changes
+- RPIP-74: Minipool queue activation based on Deposit Pool utilization
 
 ## Copyright
 
