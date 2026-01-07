@@ -1,6 +1,6 @@
 ---
 rpip:
-title: Increase Deposit Pool Maximum to 1,000,000 ETH
+title: Increase Deposit Pool Maximum
 description: Increase the Deposit Pool maximum ETH limit to allow additional buffer ahead of Saturn 1 megapool launch.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to:
@@ -17,11 +17,11 @@ tags: [deposit-pool-max, saturn-1, megapools]
 
 ## Abstract
 
-This RPIP proposes increasing the Deposit Pool maximum balance from approximately 18,000 ETH to 1,000,000 ETH by updating the on-chain parameter:
+This RPIP proposes increasing the Deposit Pool maximum balance from approximately 18,000 ETH to 24,311,044 ETH (20% of total ETH) by updating the on-chain parameter:
 
-`deposit.pool.maximum = 1_000_000 ether`
+`deposit.pool.maximum`
 
-This RPIP is required to enable such an on-chain vote.
+This RPIP is required to enable such an on-chain vote. Note that the specific value of 24,311,044 ETH is 20% of total ETH (effectively this is turning off the maximum) and is meant primarily for signalling.
 
 ## Motivation
 
@@ -44,7 +44,7 @@ The following parameter SHALL be updated via onchain governance vote upon passag
 
 - **Parameter**: `deposit.pool.maximum` (uint256)
 - **Current value**: `18319159232066016899376`
-- **Proposed value**: `1_000_000 ether`
+- **Proposed value**: `24_311_044 ether`
 
 No other parameters or behaviors are modified by this RPIP.
 
