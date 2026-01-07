@@ -42,9 +42,9 @@ There are three primary motivations for this change:
 
 The following parameter SHALL be updated via onchain governance vote upon passage of this RPIP:
 
-**Parameter**: `deposit.pool.maximum` (uint256)
-**Current value**: `18319159232066016899376`
-**Proposed value**: `1_000_000 ether`
+- **Parameter**: `deposit.pool.maximum` (uint256)
+- **Current value**: `18319159232066016899376`
+- **Proposed value**: `1_000_000 ether`
 
 No other parameters or behaviors are modified by this RPIP.
 
