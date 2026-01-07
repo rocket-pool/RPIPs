@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2026-01-05
-tags: [minipools, delegate, smartnode, governance]
+tags: [minipools, delegate, smartnode]
 ---
 
 ## Abstract
