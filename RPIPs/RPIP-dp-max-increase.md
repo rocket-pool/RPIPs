@@ -1,6 +1,6 @@
 ---
 rpip:
-title: Increase Deposit Pool Maximum to 100,000 ETH
+title: Increase Deposit Pool Maximum to 1,000,000 ETH
 description: Increase the Deposit Pool maximum ETH limit to allow additional buffer ahead of Saturn 1 megapool launch.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to:
@@ -9,17 +9,17 @@ type: Protocol
 category: Core
 created: 2026-01-06
 requires: RPIP-33
-vote-to: Change deposit.pool.maximum to 100,000 ETH
+vote-to:
 vote-date:
 vote-result:
-tags: [deposit-pool, saturn-1, megapools, parameters]
+tags: [deposit-pool-max, saturn-1, megapools]
 ---
 
 ## Abstract
 
-This RPIP proposes increasing the Deposit Pool maximum balance from 18,000 ETH to 100,000 ETH by updating the on-chain parameter:
+This RPIP proposes increasing the Deposit Pool maximum balance from approximately 18,000 ETH to 1,000,000 ETH by updating the on-chain parameter:
 
-`deposit.pool.maximum = 100000 ETH`
+`deposit.pool.maximum = 1_000_000 ether`
 
 This RPIP is required to enable such an on-chain vote.
 
@@ -27,11 +27,14 @@ This RPIP is required to enable such an on-chain vote.
 
 There are three primary motivations for this change:
 
-- **Saturn 1 Megapool Readiness**: With the planned launch of Saturn 1 and the introduction of megapools targeted for February 9, it is possible that larger ETH inflows may occur. Increasing the Deposit Pool cap allows ETH to accumulate in advance, ensuring smoother megapool onboarding.
+- **Saturn Readiness**
+  With the planned Saturn 1 launch and introduction of megapools (targeted for February 9), larger inflows are possible and in fact, have already been arriving. Increasing the Deposit Pool cap allows ETH to accumulate in advance, supporting smoother megapool onboarding.
 
-- **Avoiding the RPIP-74 80% Threshold**: The Deposit Pool is approaching levels that risk crossing the 80% utilization threshold defined in RPIP-74, which would automatically re-enable the minipool queue. Increasing the maximum provides operational headroom and reduces the risk of unintentionally toggling queue behavior during a critical transition period.
+- **Avoiding RPIP-74 Threshold Effects**
+  The Deposit Pool could potentially cross the 80% utilization threshold defined in RPIP-74, which would trigger re-enabling of the minipool queue. This was fine when launch was months down the road, but is not needed weeks before launch.
 
-- **Avoiding Rejection of Large Deposits**: If the Deposit Pool reaches its maximum capacity while there are no minipools available to absorb additional ETH, the protocol may be forced to temporarily reject new deposits. This could discourage institutional or large-scale participants and negatively impact Rocket Pool’s reputation.
+- **Avoiding Rejection of Large Deposits**
+  If the Deposit Pool reaches its maximum capacity while no minipools are available to absorb additional ETH, the protocol may be forced to reject new deposits. This could discourage institutional or large-scale participants and negatively impact Rocket Pool’s reputation at a critical growth phase.
 
 ## Specification
 
@@ -39,35 +42,38 @@ There are three primary motivations for this change:
 
 The following parameter SHALL be updated via onchain governance vote upon passage of this RPIP:
 
-Parameter: `deposit.pool.maximum`
-
-**Current Value: `18,000` ETH**
-
-**Proposed Value: `100,000` ETH**
+**Parameter**: `deposit.pool.maximum` (uint256)
+**Current value**: `18319159232066016899376`
+**Proposed value**: `1_000_000 ether`
 
 No other parameters or behaviors are modified by this RPIP.
 
 ## Rationale
 
-The change is purely a capacity adjustment to deposit pool ETH in anticipation of megapools in Saturn 1.
+- This is a capacity only change--it simply allows more ETH if rETH demand exists.
 
-Although rETH yield will take a temporary hit with potentially increased deposit pool ETH, the increased capital efficiency of megapools and number of Node Operators waiting to migrate should quickly use up stored ETH.
+- The change is fully reversible via future governance if conditions change.
 
 ## Backwards Compatibility
 
-This change is fully backwards compatible. Existing contracts, minipools, and node operator behavior remain unaffected.
+This change is fully backwards compatible.
 
 ## Security and Other Considerations
 
-No new attack vectors are introduced.
+The maximum for the Deposit Pool primarily exists to limit drag on rETH yield. A large amount of ETH in the pool means a lot of rETH has been minted that gets rewards but the corresponding ETH is not matched to a validator that is earning rewards. Thus yield is reduced.
+
+This is contrary to the protocol’s usual goals, however, in this case:
+
+- The build up is temporary and potentially advantageous to Saturn 1 and megapool launch
+
+- Capital efficiency is greater for megapools, so much so, that we do not expect to be Node Operator limited for a very long time
+
+The core team and pDAO should monitor the yield and the Deposit Pool and propose to decrease the maximum via onchain vote if the situation requires it.
 
 ## References
 
 RPIP-33: Governance-gated parameter changes
-
 RPIP-74: Minipool queue activation based on Deposit Pool utilization
-
-Saturn 1: Upcoming protocol upgrade introducing megapools
 
 ## Copyright
 
