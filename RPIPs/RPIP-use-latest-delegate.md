@@ -13,7 +13,7 @@ tags: [minipools, delegate, smartnode]
 
 ## Abstract
 
-This proposal requires that a future specified Smartnode update force minipools to use the **latest delegate smart contract**. Once upgraded, node operators would no longer be able to permanently pin minipools to older delegate implementations. The intent is to ensure protocol-wide consistency, enable governance-approved minipool behavior changes, and remove technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
+This proposal requires that a future specified Smartnode update enforce the use of the latest delegate smart contract for minipools managed via Smartnode. After upgrading, supported Smartnode configuration would no longer allow minipools to point to older delegate implementations. The intent is to ensure protocol-wide consistency among Smartnode-managed minipools, enable governance-approved minipool behavior changes, and remove technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
 
 ## Motivation
 
@@ -44,7 +44,7 @@ The delegate contract controls, among other things:
 Node operators may currently configure each minipool to either:
 
 - Use the delegate active at the time of creation, then upgrade to future delegates of their choosing, or
-- Use the latest protocol delegate at all times
+- Use the latest delegate at all times
 
 This opt-in upgrade model was originally designed to protect node operators from malicious or unsafe upgrades. However, it also allows minipools to permanently avoid protocol changes approved by governance.
 
@@ -66,7 +66,7 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 - The Smartnode update SHOULD be implemented at the earliest reasonable opportunity that does not interfere with the Saturn 1 launch.
 
-- The Smartnode SHALL remove the ability to change the `use-latest-delegate` flag via Smartnode configuration UI and/or command line interface.
+- The Smartnode SHALL prevent users, via supported Smartnode interfaces, from disabling use of the latest delegate.
 
 ### Scope
 
@@ -94,7 +94,7 @@ Persistently underperforming minipools impose systemic costs:
 
 Because minipools can remain indefinitely on older delegate logic, it is difficult or impossible to enforce protocol-wide standards. This limitation does not apply to megapools, which do not use the same delegate opt-in model.
 
-This change prioritizes protocol-wide consistency and enforceability over permanent opt-out flexibility. As Rocket Pool scales and transitions to Saturn-era architecture, the inability to uniformly apply protocol logic becomes an increasing risk to rETH holders and protocol sustainability.
+This change prioritizes protocol-wide consistency among Smartnode-managed minipools and enforceability over permanent opt-out flexibility. As Rocket Pool scales and transitions to Saturn-era architecture, the inability to uniformly apply protocol logic becomes an increasing risk to rETH holders and protocol sustainability.
 
 The delegate upgrade mechanism already exists; this proposal ensures it cannot be indefinitely bypassed.
 
@@ -122,7 +122,7 @@ Several original justifications for opt-in delegate upgrades have been partially
 
 - **Imperfect enforcement**: Because this change is gated on Smartnode updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smartnode versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
 
-- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency.
+- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among Smartnode-managed minipools.
 
 ## Conclusion
 
