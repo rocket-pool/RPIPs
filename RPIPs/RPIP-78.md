@@ -1,7 +1,7 @@
 ---
 rpip: 78
 title: Increase Deposit Pool Maximum
-description: Increase the Deposit Pool maximum ETH limit to allow additional buffer ahead of Saturn 1 megapool launch.
+description: Increase the Deposit Pool maximum to allow additional buffer ahead of Saturn 1 megapool launch.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to:
 status: Draft
