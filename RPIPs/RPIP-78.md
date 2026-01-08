@@ -17,11 +17,11 @@ tags: [deposit-pool-max, saturn-1, megapools]
 
 ## Abstract
 
-This RPIP proposes increasing the Deposit Pool maximum balance from approximately 18,000 ETH to 6,612,758 ETH (20% of staked ETH at the time this was written) by updating the on-chain parameter:
+This RPIP proposes increasing the Deposit Pool maximum balance from 18,000 ETH to 6,000,000 ETH (nearly 20% of staked ETH at the time this was written) by updating the on-chain parameter:
 
 `deposit.pool.maximum`
 
-This RPIP is required to enable such an on-chain vote. Note that the specific value is 20% of staked ETH (effectively this is turning off the maximum) and is meant primarily for signalling.
+Note that the specific value is effectively uncapping the pool and is meant primarily for signaling.
 
 ## Motivation
 
@@ -40,11 +40,18 @@ There are three primary motivations for this change:
 
 ### Scope
 
-The following parameter SHALL be updated via onchain governance vote upon passage of this RPIP:
+The following parameter SHALL be updated via onchain governance:
 
 - **Parameter**: `deposit.pool.maximum` (uint256)
 - **Current value**: `18000000000000000000000`
-- **Proposed value**: `6_612_758 ether`
+- **Proposed value**: `6000000000000000000000000`
+
+By delivering the payload:
+`proposalSettingUint(
+  "rocketDAOProtocolSettingsDeposit",
+  "deposit.pool.maximum",
+  6000000000000000000000000
+)`
 
 No other parameters or behaviors are modified by this RPIP.
 
