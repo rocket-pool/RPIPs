@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 77
 title: Set Smartnode Default to Use Latest Delegate for Minipools
 description: Update Smartnode so by default minipools use the latest protocol-approved delegate and remove supported Smartnode configuration paths for setting older delegate implementations.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
