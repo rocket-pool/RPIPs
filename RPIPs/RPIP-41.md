@@ -72,6 +72,14 @@ Future committees SHOULD be added to this RPIP and members SHOULD expect to rece
 
 #### Grants Management Committee
 
+##### Current
+
+| Date                       | Target Member Count | Target Hours        | Target Monthly Stipend Budget |
+|----------------------------|---------------------|---------------------|------------------------------|
+| 2025-12-05 (RPIP-76)       |                   7 |                  15 |                    $3,150.00 |
+
+##### Historic
+
 | Date                       | Target Member Count | Target Hours        | Target Monthly Stipend Budget |
 |----------------------------|---------------------|---------------------|------------------------------|
 | 2025-02-13 (Voted Change)  |                   9 |                  15 |                    $4,050.00 |
