@@ -9,9 +9,9 @@ type: Protocol
 category: Core
 created: 2025-09-09
 requires:
-vote-to:
-vote-date:
-vote-result:
+vote-to: https://vote.rocketpool.net/#/proposal/0x9d51f88c2820462691599abfb573417993c09d2cd5901fde7a8e3d68249ca7bc
+vote-date: 2025-12-05
+vote-result: Passed
 tags:
 ---
 

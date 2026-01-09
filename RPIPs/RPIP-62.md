@@ -11,7 +11,7 @@ created: 2024-07-25
 requires: 63
 vote-to: https://vote.rocketpool.net/#/proposal/0x7f6c978251e0ae752c619cc459331e5b3cc081aed13b133159b43fb6194b3304
 vote-date: 2024-10-14
-vote-result: Passed (variant B)
+vote-result: Passed
 ---
 
 ## Abstract
@@ -60,6 +60,8 @@ After the conclusion of the Snapshot vote:
   - If variant B is chosen, replace `<A|B>` with `B`
   - If the proposal does not succeed, do not make any edits
 - These edits SHALL be made to this RPIP, even if the RPIP is already in a “Final” state
+
+Editors note: variant B succeeded and the edits were made as described. [Git history](https://github.com/rocket-pool/RPIPs/commits/main/RPIPs/RPIP-62.md) can be used if desired.
 
 ## Rationale
 ### Megapool Conversions
