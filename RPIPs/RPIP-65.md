@@ -9,9 +9,9 @@ type: Protocol
 category: Core
 created: 2025-02-03
 requires: 
-vote-to:
-vote-date:
-vote-result:
+vote-to: https://vote.rocketpool.net/#/proposal/0x336703585e799cfca97598b9c5edea5c930a77516e88b351c82a6735d28dd913
+vote-date: 2025-03-19
+vote-result: Passed
 ---
 
 ## Abstract
