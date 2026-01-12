@@ -13,35 +13,32 @@ tags: [minipools, delegate, smartnode]
 
 ## Abstract
 
-This proposal specifies that a future Smartnode update will by default set minipools managed via Smartnode to use the latest delegate smart contract and remove supported Smartnode configuration options for setting older delegate implementations. The intent is to ensure protocol-wide consistency among Smartnode-managed minipools, enable governance-approved minipool behavior changes, and remove technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
+This proposal specifies a future Smartnode update will by default set minipools managed via Smartnode to use the latest delegate smart contract and remove supported Smartnode configuration options for setting older delegate implementations. The intent is to improve protocol-wide consistency among minipools, enable pDAO approved minipool changes, and remove some technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
 
 ## Motivation
 
-A non-trivial number of minipools are persistently underperforming, reducing overall rETH yield and harming demand. Reduced rETH demand contributes to difficulties clearing the minipool queue and complicates the protocol’s transition to the Saturn 1 architecture, including megapools, the RPL fee switch, and alternative protocol funding mechanisms.
+A non-trivial number of minipools are persistently underperforming, reducing overall rETH yield and harming demand. Reduced rETH demand complicates the protocol’s transition to the Saturn 1 architecture which includes megapools, the RPL fee switch, and alternative protocol funding mechanisms.
 
-While support efforts to remediate underperforming node operators are ongoing, the protocol currently lacks an enforcement mechanism because minipools may opt out of delegate upgrades. This creates a situation where governance approved protocol logic cannot be universally applied.
+While support efforts to remediate underperforming node operators are ongoing, the protocol currently lacks an enforcement mechanism since, by default, minipools are not set to use the most recent delegate contract and it is easy for minipool operators to opt out of delegate upgrades. This creates a situation where governance approved protocol logic cannot be universally applied. Currently, only 7% of operators have proactively selected to use the latest delegate and many of those who have not are likely not even aware of this option.
 
 ## Background
 
 ### Minipool delegate architecture
 
-Rocket Pool minipools are implemented using a proxy pattern. The minipool contract itself contains minimal logic and instead forwards most calls to a **delegate implementation contract** (the “delegate”).
-
-The delegate contract controls, among other things:
+Rocket Pool minipools are implemented using a proxy pattern. The minipool contract itself contains minimal logic and instead forwards most calls to a **delegate implementation contract** (the "delegate”). The delegate controls, among other things:
 
 - Minipool lifecycle and state transitions
 - Validator launch conditions
 - ETH balance distribution between node operators and rETH holders
 - Penalty and slashing logic
 - Withdrawal, exit, and finalization behavior
-- Trusted-node and governance-authorized actions
 - Bug fixes and protocol rule updates without redeploying minipools
 
 ### `use-latest-delegate` flag
 
 Node operators may currently configure each minipool to either:
 
-- Use the delegate active at the time of creation, then upgrade to future delegates of their choosing, or
+- Use the delegate active at the time of creation (default), then upgrade to future delegates of their choosing, or
 - Use the latest delegate at all times
 
 ### Historical rationale for opt-in delegate upgrades
@@ -58,7 +55,7 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 ### Implementation
 
-- A Smartnode update SHALL set by default the use latest delegate flag to true for minipools. The exact implementation method is left to the Smartnode development team, subject to this specification.
+- A Smartnode update SHALL set by default the use latest delegate flag to true for minipools.
 
 - The Smartnode update SHALL remove supported Smartnode configuration options for setting older delegate implementations.
 
@@ -98,8 +95,6 @@ Because the previous Smartnode behavior did not set the use latest delegate flag
 
 - No changes are applied to nodes that do not update.
 
-- Minipools created after updating Smartnode would automatically follow the default delegate behavior.
-
 - Node operators retain the ability to exit minipools prior to upgrading Smartnode, and governance processes are expected to provide sufficient notice before delegate changes that materially affect operator behavior.
 
 - Node operators can change delegate versions outside the scope of Smartnode UI and/or commandline interfaces.
@@ -108,11 +103,9 @@ Because the previous Smartnode behavior did not set the use latest delegate flag
 
 - **Governance risk concentration:** Delegate upgrades become more powerful and require stronger review processes.
 
-- **Loss of opt-out:** Node operators lose the ability to permanently choose specific delegates after upgrading.
-
 - **Trust requirements:** Increased importance of transparent communication, audits, and governance safeguards around delegate changes.
 
-- **Community alignment:** Some node operators may strongly oppose the change on philosophical grounds.
+- **Community alignment:** Some node operators may strongly oppose the change on philosophical grounds. Even though there are ways around this.
 
 - **Imperfect enforcement**: Because this change is gated on Smartnode updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smartnode versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
 
