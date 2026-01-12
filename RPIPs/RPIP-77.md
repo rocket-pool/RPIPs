@@ -95,8 +95,6 @@ Because the previous Smartnode behavior did not set the use latest delegate flag
 
 - No changes are applied to nodes that do not update.
 
-- Minipools created after updating Smartnode would automatically follow the default delegate behavior.
-
 - Node operators retain the ability to exit minipools prior to upgrading Smartnode, and governance processes are expected to provide sufficient notice before delegate changes that materially affect operator behavior.
 
 - Node operators can change delegate versions outside the scope of Smartnode UI and/or commandline interfaces.
