@@ -537,7 +537,7 @@ For each `staking` minipool in each eligible node, check the `activation_epoch` 
 For each eligible node, determine the **opt-in time** and **opt-out time**.
 These will be used during attestation performance to determine if a given attestation should count towards the Smoothing Pool rewards or not.
 
-Start by retreiving the opt-in status and the last time of status change for the node:
+Start by retrieving the opt-in status and the last time of status change for the node:
 ```go
 isOptedIn := RocketNodeManager.getSmoothingPoolRegistrationState(nodeAddress)
 statusChangeTime := rocketNodeManager.getSmoothingPoolRegistrationChanged(nodeAddress) // The contracts provide the Unix timestamp, in seconds
