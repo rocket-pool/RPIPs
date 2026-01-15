@@ -9,9 +9,9 @@ type: Protocol
 category: Core
 created: 2025-02-03
 requires: 46, 59
-vote-to:
-vote-date:
-vote-result:
+vote-to: https://vote.rocketpool.net/#/proposal/0xa7ba503f5f6916cba3803222aaf006b8dc35854e19fbac2f88f6eed06d0748ee
+vote-date: 2025-03-19
+vote-result: Passed
 tags: tokenomics-2024, tokenomics-content
 ---
 
