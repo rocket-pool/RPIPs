@@ -55,9 +55,9 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 ### Implementation
 
-- Smart Node SHALL monitor the return status of `getUseLatestDelegate()` on minipool contracts whose associated validator possesses a beacon chain status of `active_ongoing`.
+- Smart Node SHALL monitor the return status of `getFinalised()` and `getUseLatestDelegate()` on minipool contracts of its associated node.
 
-- Should `getUseLatestDelegate()` return `false`, Smart Node SHALL attempt to initiate a call of `setUseLatestDelegate(true)` to the minipool contract from the local node wallet.
+- Should `getFinalised()` and `getUseLatestDelegate()` both return `false`, Smart Node SHALL attempt to initiate a call of `setUseLatestDelegate(true)` to the minipool contract from the local node wallet.
 
 - A Smart Node update SHALL remove supported Smart Node configuration options for setting older minipool delegate implementations.
 
