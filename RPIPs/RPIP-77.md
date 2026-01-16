@@ -1,7 +1,7 @@
 ---
 rpip: 77
-title: Set Smartnode Default to Use Latest Delegate for Minipools
-description: Update Smartnode so by default minipools use the latest protocol-approved delegate and remove supported Smartnode configuration paths for setting older delegate implementations.
+title: Set Smart Node Default to Use Latest Delegate for Minipools
+description: Update Smart Node so by default minipools use the latest protocol-approved delegate and remove supported Smart Node configuration paths for setting older delegate implementations.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to: https://dao.rocketpool.net/t/require-minipools-to-use-latest-delegate/3844
 status: Draft
@@ -13,7 +13,7 @@ tags: [minipools, delegate, smartnode]
 
 ## Abstract
 
-This proposal specifies a future Smartnode update will by default set minipools managed via Smartnode to use the latest delegate smart contract and remove supported Smartnode configuration options for setting older delegate implementations. The intent is to improve protocol-wide consistency among minipools, enable pDAO approved minipool changes, and remove some technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
+This proposal specifies a future Smart Node update will by default set minipools managed via Smart Node to use the latest delegate smart contract and remove supported Smart Node configuration options for setting older delegate implementations. The intent is to improve protocol-wide consistency among minipools, enable pDAO approved minipool changes, and remove some technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
 
 ## Motivation
 
@@ -55,23 +55,25 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 ### Implementation
 
-- A Smartnode update SHALL set by default the use latest delegate flag to true for minipools.
+- Smart Node SHALL monitor the return status of `getUseLatestDelegate()` on minipool contracts whose associated validator possesses a beacon chain status of `active_ongoing`.
 
-- The Smartnode update SHALL remove supported Smartnode configuration options for setting older delegate implementations.
+- Should `getUseLatestDelegate()` return `false`, Smart Node SHALL attempt to initiate a call of `setUseLatestDelegate(true)` to the minipool contract from the local node wallet.
 
-- The Smartnode update SHOULD be implemented at the earliest reasonable opportunity that does not interfere with the Saturn 1 launch.
+- A Smart Node update SHALL remove supported Smart Node configuration options for setting older minipool delegate implementations.
+
+- The Smart Node update SHOULD be implemented at the earliest reasonable opportunity that does not interfere with the Saturn 1 launch.
 
 ### Scope
 
-- Applies **only after** upgrading to the specified Smartnode version.
+- Applies **only after** upgrading to the specified Smart Node version.
 
-- Does **not** retroactively modify minipools on older Smartnode versions.
+- Does **not** retroactively modify minipools on older Smart Node versions.
 
 - Does **not** itself implement forced exits; it enables future governance-approved mechanisms.
 
 - Does **not** grant any emergency or unilateral powers to the core team or governance bodies beyond existing delegate upgrade mechanisms.
 
-- Does **not** prevent an older delegate from being used, it just removes the ability to change the use latest delegate option via Smartnode.
+- Does **not** prevent an older delegate from being used, it just removes the ability to change the use latest delegate option via Smart Node.
 
 ### Delegate Update Oversight
 
@@ -87,17 +89,17 @@ Persistently underperforming minipools impose systemic costs:
 - Delayed or constrained Saturn 1 rollout
 - Reduced protocol revenue options (e.g., RPL fee switch, institutional incentives)
 
-Because the previous Smartnode behavior did not set the use latest delegate flag to yes, many Node Operators by default remain on older delegate versions, even if they would be satisfied to be on the most recent deployment. This is an unnecessary obstacle that this proposal corrects. Note that this limitation does not apply to megapools, which do not use the same delegate opt-in model.
+Because the previous Smart Node behavior did not set the use latest delegate flag to yes, many Node Operators by default remain on older delegate versions, even if they would be satisfied to be on the most recent deployment. This is an unnecessary obstacle that this proposal corrects. Note that this limitation does not apply to megapools, which do not use the same delegate opt-in model.
 
 ## Backwards Compatibility
 
-- Existing minipools continue operating normally until the node operator updates Smartnode.
+- Existing minipools continue operating normally until the node operator updates Smart Node.
 
 - No changes are applied to nodes that do not update.
 
-- Node operators retain the ability to exit minipools prior to upgrading Smartnode, and governance processes are expected to provide sufficient notice before delegate changes that materially affect operator behavior.
+- Node operators retain the ability to exit minipools prior to upgrading Smart Node, and governance processes are expected to provide sufficient notice before delegate changes that materially affect operator behavior.
 
-- Node operators can change delegate versions outside the scope of Smartnode UI and/or commandline interfaces.
+- Node operators can change delegate versions outside the scope of Smart Node UI and/or commandline interfaces.
 
 ## Risks and Considerations
 
@@ -107,9 +109,9 @@ Because the previous Smartnode behavior did not set the use latest delegate flag
 
 - **Community alignment:** Some node operators may strongly oppose the change on philosophical grounds. Even though there are ways around this.
 
-- **Imperfect enforcement**: Because this change is gated on Smartnode updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smartnode versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
+- **Imperfect enforcement**: Because this change is gated on Smart Node updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smart Node versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
 
-- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among Smartnode-managed minipools.
+- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among Smart Node-managed minipools.
 
 Several original justifications for opt-in delegate upgrades have been partially mitigated over time. Saturn-era governance introduces additional safeguards, including a Security Council veto, reducing the risk of malicious upgrades. Additionally, long governance lead times and explicit votes may serve as a functional replacement for individual opt-out as an exit mechanism.
 
