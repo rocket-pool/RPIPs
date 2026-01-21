@@ -111,7 +111,7 @@ Because the previous Smart Node behavior did not set the use latest delegate fla
 
 - **Imperfect enforcement**: Because this change is gated on Smart Node updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smart Node versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
 
-- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among Smart Node-managed minipools.
+- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among minipools managed via Smart Node.
 
 Several original justifications for opt-in delegate upgrades have been partially mitigated over time. Saturn-era governance introduces additional safeguards, including a Security Council veto, reducing the risk of malicious upgrades. Additionally, long governance lead times and explicit votes may serve as a functional replacement for individual opt-out as an exit mechanism.
 
