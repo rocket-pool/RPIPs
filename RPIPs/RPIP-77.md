@@ -4,7 +4,7 @@ title: Set Smart Node Default to Use Latest Delegate for Minipools
 description: Update Smart Node so by default minipools use the latest protocol-approved delegate and remove supported Smart Node configuration paths for setting older delegate implementations.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to: https://dao.rocketpool.net/t/require-minipools-to-use-latest-delegate/3844
-status: Draft
+status: Final
 type: Protocol
 category: Core
 created: 2026-01-05
@@ -13,13 +13,13 @@ tags: [minipools, delegate, smartnode]
 
 ## Abstract
 
-This proposal specifies a future Smart Node update will by default set minipools managed via Smart Node to use the latest delegate smart contract and remove supported Smart Node configuration options for setting older delegate implementations. The intent is to improve protocol-wide consistency among minipools, enable pDAO approved minipool changes, and remove some technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
+This proposal specifies that a future Smart Node update will by default set minipools managed via Smart Node to use the latest delegate smart contract and remove supported Smart Node configuration options for setting older delegate implementations. The intent is to improve protocol-wide consistency among minipools, enable pDAO-approved minipool changes, and remove some technical blockers to future enforcement mechanisms (including, but not limited to, forced exits of persistently underperforming minipools).
 
 ## Motivation
 
-A non-trivial number of minipools are persistently underperforming, reducing overall rETH yield and harming demand. Reduced rETH demand complicates the protocol’s transition to the Saturn 1 architecture which includes megapools, the RPL fee switch, and alternative protocol funding mechanisms.
+A non-trivial number of minipools are persistently underperforming, reducing overall rETH yield and harming demand. Reduced rETH demand complicates the protocol’s transition to the Saturn 1 architecture, which includes megapools, the RPL fee switch, and alternative protocol funding mechanisms.
 
-While support efforts to remediate underperforming node operators are ongoing, the protocol currently lacks an enforcement mechanism since, by default, minipools are not set to use the most recent delegate contract and it is easy for minipool operators to opt out of delegate upgrades. This creates a situation where governance approved protocol logic cannot be universally applied. Currently, only 7% of operators have proactively selected to use the latest delegate and many of those who have not are likely not even aware of this option.
+While support efforts to remediate underperforming node operators are ongoing, the protocol currently lacks an enforcement mechanism since minipools are not set to use the most recent delegate contract by default, and it is easy for minipool operators to opt out of delegate upgrades. This creates a situation where governance-approved protocol logic cannot be universally applied. Currently, only 7% of operators have proactively selected to use the latest delegate, and many of those who have not are likely not even aware of this option.
 
 ## Background
 
@@ -73,7 +73,7 @@ This proposal revisits these assumptions in light of changes to Rocket Pool’s 
 
 - Does **not** grant any emergency or unilateral powers to the core team or governance bodies beyond existing delegate upgrade mechanisms.
 
-- Does **not** prevent an older delegate from being used, it just removes the ability to change the use latest delegate option via Smart Node.
+- Does **not** prevent an older delegate from being used at the contract level, it just removes the ability to change the use latest delegate option via Smart Node.
 
 ### Delegate Update Oversight
 
@@ -111,7 +111,7 @@ Because the previous Smart Node behavior did not set the use latest delegate fla
 
 - **Imperfect enforcement**: Because this change is gated on Smart Node updates, some node operators—either due to custom setups or intentional avoidance—may remain on older Smart Node versions and continue using older delegates. This limits immediate coverage and means the proposal should be viewed as a necessary enabling step rather than a complete solution on its own.
 
-- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among Smart Node-managed minipools.
+- **Loss of Lindy delegate stability:** Forcing delegate upgrades sacrifices the ability for minipools to remain indefinitely on a long-lived delegate implementation. While this may increase upgrade churn, it is a deliberate tradeoff in favor of enforceability and protocol-wide consistency among minipools managed via Smart Node.
 
 Several original justifications for opt-in delegate upgrades have been partially mitigated over time. Saturn-era governance introduces additional safeguards, including a Security Council veto, reducing the risk of malicious upgrades. Additionally, long governance lead times and explicit votes may serve as a functional replacement for individual opt-out as an exit mechanism.
 
