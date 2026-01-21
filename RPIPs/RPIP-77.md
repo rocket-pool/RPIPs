@@ -4,7 +4,7 @@ title: Set Smart Node Default to Use Latest Delegate for Minipools
 description: Update Smart Node so by default minipools use the latest protocol-approved delegate and remove supported Smart Node configuration paths for setting older delegate implementations.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to: https://dao.rocketpool.net/t/require-minipools-to-use-latest-delegate/3844
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2026-01-05
