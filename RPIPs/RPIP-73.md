@@ -77,3 +77,6 @@ The Beacon State gives us access to the timeliness flags for each validator and 
 After doing some [empirical analysis](https://badperformers.streamlit.app/) it appears that both target timeliness and source timeliness are quite close matches to actual attestation performance. Target timeliness gives a little bit more leeway to people being offline. The initial threshold of 94% aims to exit people below 90% effectiveness with 95% sensitivity.
 ### Minipool Penalties
 see RPIP-71 Rationale
+
+## Copyright
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
