@@ -33,6 +33,7 @@ This specification introduces the following pDAO protocol parameters:
 | `performance_threshold`        | pct    | 94                |               |
 | `performance_challenge_period` | Hours  | 24                |               |
 | `performance_challenge_bond`   | RPL    | 100               | > 20          |
+
 This specification uses the following pDAO protocol parameters introduced in RPIP-71:
 
 | Name                             | Type  | Initial Value | Guardrail<br> |
