@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/odao-inflation-vote/3525
 status: Final
 type: Protocol
 category: Core
-created: 2025-24-05
+created: 2025-05-24
 requires: 24, 25
 vote-to: https://vote.rocketpool.net/#/proposal/0x28bd6cfa9e8b6bb51f18ac8bae200fda31afabcd658ce4798631b9447379de9e
 vote-date: 2025-03-19
