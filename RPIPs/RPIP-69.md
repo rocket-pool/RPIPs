@@ -7,7 +7,7 @@ discussions-to: https://dao.rocketpool.net/t/revised-gmc-split-proposal/3430
 status: Final
 type: Protocol
 category: Core
-created: 2025-24-05
+created: 2025-05-24
 requires: 10
 vote-to: https://node.rocketpool.net/vote/proposal/3
 vote-date: 2025-04-19
