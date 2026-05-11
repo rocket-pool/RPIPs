@@ -70,8 +70,9 @@ After doing some [empirical analysis](https://badperformers.streamlit.app/) it a
 To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 1321 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
 - Represent epochs as offsets from `start_epoch`. This allows using `uint16[]` for `performance_period` < 292 days, reducing gas cost by a factor of 4. For the proposed initial parameters this would translate to 2642 (non-zero) bytes, but size would increase as `performance_threshold` is lowered.
 - Represent all the epochs as a bitset, with 1 representing a not-timely target attestation, resulting in 2752 bytes of call data. Since zero bytes are 1/4 of the gas, this may still be preferable to the epoch-offset approach.
+- Represent epoch ranges instead of epochs. Eg, [441000, 800, 443000, 521] would represent 800 epochs starting at 441000 and 521 epochs starting at 443000.
 
-The specifications intends to leave this open as an implementation detail. 
+The specification intentionally leaves this open as an implementation detail. 
 
 ## Security Considerations
 
