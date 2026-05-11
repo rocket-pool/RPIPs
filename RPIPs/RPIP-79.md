@@ -1,5 +1,5 @@
 ---
-rpip: "79"
+rpip: 79
 title: Faster Withdrawal Credentials Check
 description: Instead of requiring state proofs for every validator, use a fraud-proof system to protect against malicious withdrawal credentials.
 author: knoshua (@knoshua)
