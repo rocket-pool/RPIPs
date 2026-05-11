@@ -8,7 +8,7 @@ status: Draft
 type: Protocol
 category: Core
 created: 2025-07-30
-requires (*optional): 80
+requires: 80
 ---
 
 
