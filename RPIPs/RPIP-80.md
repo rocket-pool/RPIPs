@@ -3,7 +3,7 @@ rpip: 80
 title: Exit Requests, Triggering Exits, and Minipool Penalties
 description: Specifies the underlying exit mechanism and minipool penalty system used by RPIP-71 and RPIP-73.
 author: knoshua (@knoshua)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-exit-requests-triggering-exits-and-minipool-penalties/3945
 status: Draft
 type: Protocol
 category: Core
@@ -29,8 +29,8 @@ This specification introduces the following pDAO protocol parameters:
 | Name                     | Type  | Initial Value | Guardrail<br> |
 | ------------------------ | ----- | ------------- | ------------- |
 | `cooperative_exit_phase` | Hours | 72            |               |
-| `no_exit_penalty`        | ETH   | 0.1           |               |
-| `no_exit_cooldown`       | Days  | 28            | > 7           |
+| `did_not_exit_penalty`   | ETH   | 0.1           |               |
+| `did_not_exit_cooldown`  | Days  | 28            | > 7           |
 
 ### Delegates Incorporating EIP-7002
 
@@ -46,8 +46,8 @@ This specification introduces the following pDAO protocol parameters:
 
 - The protocol SHALL be able to request a validator to exit for underperformance (RPIP-73) or withdrawal liquidity (RPIP-71). The protocol MAY provide an interface for future protocol contracts to request exits.
 - When a validator is requested to exit, the protocol MUST expose an “exit requested” signal that is observable to the node operator and `requested_eth` SHALL be increased by the expected user capital of that validator.
-- After `no_exit_cooldown` has passed since a request, the validator SHALL no longer be considered requested to exit and can be requested to exit again.
-- Requesting a validator that is already considered requested to exit SHALL not reset the window or add to `requested_eth`.
+- After `did_not_exit_cooldown` has passed since a request, the validator SHALL no longer be considered requested to exit and can be requested to exit again.
+- Requesting a validator that is already considered requested to exit SHALL NOT reset the window or add to `requested_eth`.
 
 ### Triggering Exits
 
@@ -56,9 +56,9 @@ This specification introduces the following pDAO protocol parameters:
 
 ### Penalizing Minipools 
 
-- If a minipools's delegate does not support triggered exits and it has been requested to exit for at least `cooperative_exit_phase`, the protocol SHALL allow anyone to prove that the validator has not exited (beacon state proof: `exit_epoch = FAR_FUTURE_EPOCH`).
-- If such a proof is provided, the penalty of the minipool SHALL be increased by `no_exit_penalty` and `requested_eth` SHALL be decreased by the expected user capital of that validator.
-- Another such proof and penalty SHALL only be possible once `no_exit_cooldown` has passed and the validator was requested to exit another time.
+- If a minipool's delegate does not support triggered exits and it has been requested to exit for at least `cooperative_exit_phase`, the protocol SHALL allow anyone to prove that the validator has not exited (beacon state proof: `exit_epoch = FAR_FUTURE_EPOCH`).
+- If such a proof is provided, the penalty of the minipool SHALL be increased by `did_not_exit_penalty` and `requested_eth` SHALL be decreased by the expected user capital of that validator.
+- Another such proof and penalty SHALL only be possible once `did_not_exit_cooldown` has passed and the validator was requested to exit another time.
 
 ## Rationale
 
@@ -76,11 +76,11 @@ That's why the proposal uses the third option. A penalty for failing to exit is 
 
 ### Limiting Minipool Penalty Frequency 
 
-A validator that was requested to exit  in the last `no_exit_cooldown` days cannot be requested to exit again. This is relevant for the case of minipools that can't be exited and limits the frequency with which penalties can be applied, giving the node operator an opportunity to upgrade instead of quickly ramping up the penalty.
+A validator that was requested to exit  in the last `did_not_exit_cooldown` days cannot be requested to exit again. This is relevant for the case of minipools that can't be exited and limits the frequency with which penalties can be applied, giving the node operator an opportunity to upgrade instead of quickly ramping up the penalty.
 
 ### Penalty Sizing
 
-The specification uses an absolute penalty value, meaning that 16 ETH and 8 ETH minipools receive the same penalty per failed exit. Arguments could be made for scaling either way. If we wanted to ensure that both cases experience the same loss of APR, the penalty for 16 ETH should be scaled up. From the protocol's point of view, the 8 ETH minipool failing to exit 24 ETH of user capital is more damaging than the 16 ETH case and arguably should be penalized more. 
+The specification uses an absolute penalty value, meaning that 16 ETH and 8 ETH minipools receive the same penalty per failed exit. Arguments could be made for scaling either way. From the NO's point of view, the flat penalty is more damaging to their APR for the 8 ETH minipool than the 16 ETH minipool. From the protocol's point of view, the 8 ETH minipool failing to exit 24 ETH of user capital is more damaging than the 16 ETH case and arguably should be penalized more. Therefore, the proposal uses an absolute penalty as the compromise between the two views.
 
 
 ## Security Considerations [TODO]
