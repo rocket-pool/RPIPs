@@ -3,7 +3,7 @@ rpip: 73
 title: rETH Protection From Underperforming Nodes
 description: Force exit significantly underperforming validators to protect rETH from yield loss.
 author: knoshua (@knoshua)
-discussions-to: <URL> TODO
+discussions-to: https://dao.rocketpool.net/t/rpip-73-reth-protection-from-underperforming-nodes/3944
 status: Draft
 type: Protocol
 category: Core
