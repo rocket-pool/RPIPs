@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 80
 title: Exit Requests, Triggering Exits, and Minipool Penalties
 description: Specifies the underlying exit mechanism and minipool penalty system used by RPIP-71 and RPIP-73.
 author: knoshua (@knoshua)
