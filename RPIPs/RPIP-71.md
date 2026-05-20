@@ -15,7 +15,7 @@ requires (*optional): 44
 
 rETH is fully backed by staked ether but currently lacks a direct mechanism for stakers to signal a desire to exit. With the adoption of [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002), Rocket Pool can implement execution-layer-triggered exits that respond to explicit rETH withdrawal requests without requiring coordination with node operators.
 
-This RPIP specifies a Withdrawal Queue and validator selection that avoids introducing a new oDAO duty or a challenge mechanism.
+This RPIP specifies a Withdrawal Queue and validator selection mechanisms for minipools and megapool validators.
 ## Motivation
 
 rETH currently exposes stakers to liquidity risk: although their stake can in principle be withdrawn from the beacon chain, there is no direct protocol mechanism by which rETH holders can access this stake. Instead, they must rely on limited in-protocol liquidity or sell rETH on the open market. This creates a dependence on secondary market liquidity and can make rETH less attractive especially for larger investors and users with time-sensitive liquidity needs.
@@ -24,11 +24,12 @@ rETH currently exposes stakers to liquidity risk: although their stake can in pr
 
 This specification introduces the following pDAO protocol parameters:
 
-| Name                             | Type | Initial Value | Guardrail<br> |
-| -------------------------------- | ---- | ------------- | ------------- |
-| `deposit_pool_collateral_target` | pct  | 1             |               |
-| `staking_delay`                  | Days | 28            | < 7           |
-| `tournament_size`<br>            |      | 4             | < 20          |
+| Name                             | Type    | Initial Value | Guardrail<br>           |
+| -------------------------------- | ------- | ------------- | ----------------------- |
+| `deposit_pool_collateral_target` | pct     | 1             |                         |
+| `megapool_exit_phase`            | boolean | `false`       | can't be set to `false` |
+| `staking_delay`                  | Days    | 28            | < 7                     |
+| `tournament_size`<br>            |         | 4             | < 20                    |
 
 
 This specification changes the following pDAO protocol parameters:
@@ -55,33 +56,31 @@ This specification changes the following pDAO protocol parameters:
 - When a withdrawal request is fulfilled, the Withdrawal Queue SHALL burn the corresponding rETH. The user SHALL receive the stored ETH value at the time of the request or the value at time of rETH burn, whichever is smaller.
 - Any remaining ETH corresponding to that rETH burn SHALL be transferred to the deposit pool.
 
-### Tracking Exiting ETH
-
-- Expected user capital is defined as `32 ETH - validator bond`. (This should be fixed under bond curve changes.)
-- When `notifyExit` is called for a megapool validator that wasn't requested to exit, a variable `exiting_eth` SHALL be increased by the expected user capital of that validator.
-- When `notifyFinalBalance` is called for a megapool validator that wasn't requested to exit, `exiting_eth` SHALL be decreased by the expected user capital. If the megapool validator was requested to exit, `requested_eth` SHALL be decreased instead.
-
 ### Validator Exit Selection
 
 For the purposes of this section, the withdrawal shortfall is defined as the remaining ETH required to fully satisfy all pending Withdrawal Queue requests after accounting for:
-- `requested_eth` (as defined in RPIP‑80),
-- `exiting_eth`,
+- `requested_exit_eth` (defined in RPIP‑80),
+- `voluntary_exit_eth` (defined in RPIP-80),
 - ETH held by the rETH contract, and
 - ETH held by the deposit pool.
 
 If the withdrawal shortfall is at least 32 ETH, additional megapool validators MUST be selected and added to the exit list as defined in this section.
+### If `megapool_exit_phase = false`
 
+- The protocol SHALL allow the oDAO, by majority vote, to request minipools to exit as specified in RPIP-80. The amount necessary to cover the withdrawal shortfall SHALL act as a hard cap on the possible exit requests.
+- The oDAO SHOULD monitor the number of voluntarily exiting minipools and only request exits to cover the withdrawal shortfall after accounting for them.
+- The oDAO SHOULD select minipools by prioritizing higher-commission minipools and SHOULD ignore any minipool that has received a `did_not_exit_penalty` within the last `did_not_exit_cooldown` (defined in RPIP-80). 
+- The oDAO MAY use time until the next validator sweep as a tie-breaker between minipools with equal commission.
+### If `megapool_exit_phase = true`
 #### Eligible megapool validator set
 
-With the upgrade that implements this proposal, the protocol SHALL initialize a set of eligible megapool validators from which validators can be selected for exit under this proposal. A megapool validator MUST satisfy all of the following conditions in order to be included in this set:
+The protocol SHALL initialize a set of eligible megapool validators from which validators can be selected for exit under this proposal. A megapool validator MUST satisfy all of the following conditions in order to be included in this set:
 - `stake` was already called for the validator.
 - The validator is not already exiting.
 
-After the upgrade that implements this RPIP:
 - When `stake` is called for a megapool validator, the protocol SHALL schedule the addition of that validator to the eligible megapool validator set after a pDAO‑configurable `staking_delay`.
-- When an exit request is made for a megapool validator under RPIP‑80, that validator MUST be removed from the eligible megapool validator set.
-- When `notifyExit` is called for a megapool validator that is still in the eligible megapool validator set, that validator MUST be removed from it.
-
+- When an exit request is made for a megapool validator under RPIP‑80, that validator MUST be removed from the eligible megapool validator set or the scheduled inclusion MUST be canceled.
+- When `notifyExit` is called for a megapool validator that is still in the eligible megapool validator set, that validator MUST be removed or the scheduled inclusion MUST be canceled.
 #### Tournament-based selection
 
 Let `N` be the current size of the eligible megapool validator set. Let `k` be `tournament_size` (or `N` if `tournament_size > N`). The protocol SHALL allow to repeatedly select validators while:
@@ -103,7 +102,7 @@ The protocol is potentially exiting validators to fulfill a withdrawal request. 
 
 Changing `network.reth.collateral.target` from 1 to 0 is needed so that ETH from exiting validators flows into the deposit pool rather than remaining as excess collateral in the rETH contract. Including Withdrawal Queue demand in `RocketDepositPool.getExcessBalance()` ensures that ETH freed from exits and new deposits can preferentially be used to satisfy withdrawal requests, rather than being available for rETH burns outside the queue.
 
-The redemption rate at which a request is fulfilled is chosen as the minimum between rate at time of request and time of fulfillment. rETH in the Withdrawal Queue cannot keep earning staking rewards or there would be an incentive to always keep rETH in the queue and mint new rETH once it can be fulfilled, as this improves liquidity of the position without losing rewards. At the same time, being in the Withdrawal Queue should not protect against rETH losing value in extreme slashing scenarios.
+The redemption rate at which a request is fulfilled is chosen as the minimum between the rate at time of request and time of fulfillment. rETH in the Withdrawal Queue cannot keep earning staking rewards or there would be an incentive to always keep rETH in the queue and mint new rETH once it can be fulfilled, as this improves liquidity of the position without losing rewards. At the same time, being in the Withdrawal Queue should not protect against rETH losing value in extreme slashing scenarios.
 
 ### Fulfilling Withdrawal Requests
 
@@ -113,11 +112,22 @@ Setting the collateral target to 0 ensures that fully withdrawn minipool user ET
 
 rETH also uses ETH from the deposit pool for `burn`, based on what `RocketDepositPool.getExcessBalance()` returns. The Deposit Pool contract can be upgraded, but we need to ensure that rETH burns are possible for the Withdrawal Queue and at the same time rejected when someone other than the Withdrawal Queue attempts to burn. This may involve setting a state flag in the deposit pool to change the behavior of `RocketDepositPool.getExcessBalance()` during a burn transaction from the Withdrawal Queue.
 
-## Validator Exit Selection
+### Minipool Exit Phase
 
-The withdrawal shortfall is defined in terms of `requested_eth`, `exiting_eth`, and the ETH held by the rETH contract and deposit pool so that the selection mechanism only triggers when existing sources of liquidity are insufficient to satisfy the Withdrawal Queue as far as feasible (for example, ETH in minipool contracts is not included here). Requiring additional exits only when the shortfall is at least 32 ETH ensures that the mechanism is not forced to exit a whole validator to cover a residual amount that can reasonably be filled by future rewards or natural inflows.
+This design chooses a phased approach in which minipools are exited before moving on to megapools. 
 
-How to initialize the eligible megapool validator set at upgrade time is left as an implementation detail.
+The definition of the withdrawal shortfall aims to only trigger exits when existing sources of liquidity are insufficient to satisfy the Withdrawal Queue as far as feasible (for example, ETH rewards in minipool contracts are not included here). While minipools are still around, we rely on the oDAO to track voluntary minipool exits off-chain, because tracking these on-chain would be challenging. Requiring additional exits only when the shortfall is at least 32 ETH ensures that the mechanism is not forced to exit a whole validator to cover a residual amount that can reasonably be filled by future rewards or natural inflows.
+
+Using the oDAO for minipools also allows us to order exits based on commission, which marginally improves rETH APR in response to rETH demand reduction.
+
+We focus on minipools in the first phase, not only to keep the reliance on the oDAO as short as possible, but also because this aligns with the overall desire to move away from minipools and towards megapools: to support the new RPL tokenomics, the new UARS mechanism, and to reduce complexity of future upgrades.
+
+We also considered a trustless design for minipools. This would increase complexity and come with additional gas cost that the protocol or pDAO would either have to fund in some way or add to oDAO duties. The trusted oDAO duty appears preferable, because of its temporary nature, limited risk, reduced complexity and lower gas cost.    
+
+The `megapool_exit_phase` toggle allows the pDAO to switch to a megapool-centric exit mechanism once minipools are largely exited or known to be unresponsive. This choice is left to the pDAO because we cannot exactly define it ahead of time.
+### Megapool Exit Phase
+
+Once the protocol is in a state of only megapool validators, it becomes feasible to implement exit selection with a trustless and permissionless proposal-and-challenge mechanism. How to initialize the eligible megapool validator set at upgrade time is left as an implementation detail.
 
 The `staking_delay` applied after the `stake` call is meant to ensure that validators are only added to the eligible set after they made it through the beacon chain queue, to avoid requests that would take a long time to be executed. This also protects new validators from immediately being exited.
 
@@ -128,17 +138,19 @@ The tournament‑based mechanism is chosen because maintaining a full global ord
 ### Fulfilling Withdrawal Requests and rETH Updates
 
 Without further changes to the oDAO balance tracking duty that informs the rETH exchange rate, the proposed mechanism leads to a re-distribution of staking rewards from rETH in the Withdrawal Queue to other rETH holders at the time a withdrawal request is fulfilled. Potentially, this could lead to a very large rETH rate increase with the following update that could become "sandwichable": someone could mint a large amount of rETH right before the update and burn it right after to make a profit at the expense of rETH holders.
-However, rETH protects against this type of exploit with a pDAO configurable rETH mint fee that is currently set to 0.05%. This means for example that if 30% of rETH supply are in the Withdrawal Queue for 2 weeks, the resulting rETH rate update still could not be profitably sandwiched when rETH yield for that day is approximately average. If a large request fulfillment coincides with a high yield day for rETH, the threshold for sandwiching to become profitable is lower. For example a day with an 80 ETH MEV block together with 20% of rETH supply in the queue for two weeks can be sandwiched.
+However, rETH protects against this type of exploit with a pDAO configurable rETH mint fee that is currently set to 0.05%. This means for example that if 30% of rETH supply are in the Withdrawal Queue for 2 weeks, the resulting rETH rate update still could not be profitably sandwiched when rETH yield for that day is approximately average. If a large request fulfillment coincides with a high yield day for rETH, the threshold for profitably sandwiching is lower. For example a day with an 80 ETH MEV block together with 20% of rETH supply in the queue for two weeks can be sandwiched.
 If the pDAO wants to protect against even more extreme scenarios, the mint fee could be slightly increased.
 
 ### Protection Against Repeated Minting and Withdrawing
 
 A concern is that a malicious actor could lower the yield of rETH by repeatedly minting and withdrawing rETH, because this would put a share of staked ETH constantly into an unproductive state. The design makes this kind of attack both costly and mostly ineffective. 
 
-There already is a mint fee on rETH, so an attacker would (currently) lose 0.05% per round trip. They also would not earn any yield, since they would get the minimum rate between the time they entered queue and the time their withdrawal request is filled.
+There already is a mint fee on rETH, so an attacker would (currently) lose 0.05% per round trip. They also would not earn any yield, based on how the redemption rate is defined.
 
 Furthermore, the new withdrawal buffer in the deposit pool means that a repeatable attack requires more capital than the buffer size (controlled by `deposit_pool_collateral_target`) and only the amount above the buffer size can create validator churn.
+### oDAO selecting minipools
 
+The oDAO has discretion in selecting minipools during the initial phase and is responsible for factoring in voluntarily exiting minipools to determine how many to exit. However, the withdrawal shortfall limits the amount of exits. At most the oDAO could exit unnecessary minipools equal to currently voluntarily exiting minipools and only if there is also enough withdrawal demand at the same time. So the exposure here is mostly limited to ordering and only a small amount of extra exits. Since the rules are known and the actions are transparent, the oDAO properly executing this duty can be monitored.
 
 ## Open Questions
 
@@ -151,7 +163,7 @@ Another question is if users in queue should be able to do partial withdrawals a
 Without partial filling, users would be able to achieve similar behavior with splitting withdrawal requests into multiple smaller ones. Without partial filling, it may also make sense to limit the ETH per request to avoid users having to wait a long time for their request to be completely filled.
 ### Megapool Exit Criterion
 
-We could simply to random selection, or pick any criterion that can be check on-chain, candidates include:
+We could simply do random selection, or pick any criterion that can be checked on-chain, candidates include:
 
 - lower RPL stake first
 - first in, first out
@@ -170,6 +182,15 @@ Minipools don't immediately make ETH available for rETH burns. ETH first needs t
 Because minipool delegate upgrades are opt-in, this can't be reliably addressed with a delegate upgrade. Potential options include:
 - Lowering the delay before permissionless distribution. Security implications would need to be considered.
 - Automate distribution in smartnode and introduce a penalty for failing to distribute. Unclear how this could work for Allnodes.
+- Allow user Distributions with a final validator balance proof without the delay. This could be implemented by lowering the delay setting, distributing, and setting the delay setting back in one call.
+
+### Restitution for Exited NOs
+
+In contrast to RPIP-73, where node operators are exited for bad performance, under this RPIP we are exiting people that may have been doing a perfectly fine job and we may be choosing them with at least some level of randomness. So one question that has come up is if we should offer some kind of restitution for exited validators. Ideas that have been brought up so far include:
+
+- Giving express tickets for exited validators. This one seems quite easy to do, but may not be all that impactful.
+- Some way for exited node operators to skip ahead of people already in queue.
+- A direct ETH payment, financed from rETH in the withdrawal queue that stops earning rewards. 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
