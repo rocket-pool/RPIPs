@@ -58,7 +58,7 @@ This RPIP allows the pDAO to use the existing on-chain voting system for pDAO pa
 
 ## Deferred/Outstanding
 
-## [RPIP-42: Bond Curves](RPIP_42.md)
+### [RPIP-42: Bond Curves](RPIP_42.md)
 
 This RPIP was included in the [RPIP-49](RPI-49.md) vote and called for lowering the bond requirement for megapool validators to 1.5 ETH after the second one. We want to hold off on this until there is rETH demand that warrants this kind of capacity.
 
