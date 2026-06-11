@@ -28,7 +28,7 @@ This specification introduces the following pDAO protocol parameters:
 | Name                             | Type    | Initial Value | Guardrail<br>           |
 | -------------------------------- | ------- | ------------- | ----------------------- |
 | `deposit_pool_collateral_target` | pct     | 1             |                         |
-| `withdrawal_hysteresis`          | ETH     | 120           | > 32                    |
+| `exit_hysteresis`          | ETH     | 120           | > 32                    |
 | `megapool_exit_phase`            | boolean | `false`       | can't be set to `false` |
 | `staking_delay`                  | days    | 28            | > 7                     |
 | `tournament_size`<br>            | integer | 4             | < 20                    |
@@ -66,11 +66,11 @@ For the purposes of this section, the withdrawal shortfall is defined as the rem
 - ETH held by the rETH contract, and
 - ETH held by the deposit pool.
 
-If the withdrawal shortfall is at least `withdrawal_hysteresis` ETH, additional megapool validators MUST be selected and added to the exit list as defined in this section.
+If the withdrawal shortfall is at least `exit_hysteresis` ETH, additional megapool validators MUST be selected and added to the exit list as defined in this section.
 
 #### If `megapool_exit_phase = false`
 
-- The protocol SHALL allow the oDAO, by majority vote, to request minipools to exit as specified in RPIP-80. The amount necessary to cover the withdrawal shortfall minus  `withdrawal_hysteresis` SHALL act as a hard cap on the possible exit requests.
+- The protocol SHALL allow the oDAO, by majority vote, to request minipools to exit as specified in RPIP-80. The amount necessary to cover the withdrawal shortfall minus  `exit_hysteresis` SHALL act as a hard cap on the possible exit requests.
 - The oDAO SHOULD monitor the number of voluntarily exiting minipools and only request exits after accounting for them.
 - The oDAO SHOULD select minipools by prioritizing higher-commission minipools and SHOULD ignore any minipool that has received a `did_not_exit_penalty` within the last `did_not_exit_cooldown` (defined in RPIP-80). 
 - The oDAO MAY use time until the next validator sweep as a tie-breaker between minipools with equal commission.
@@ -90,7 +90,7 @@ The protocol SHALL initialize a set of eligible megapool validators from which v
 ##### Tournament-based selection
 
 Let `N` be the current size of the eligible megapool validator set. Let `k` be `tournament_size` (or `N` if `tournament_size > N`). The protocol SHALL allow repeated selection of validators while:
-- the withdrawal shortfall is at least `withdrawal_hysteresis` ETH, and
+- the withdrawal shortfall is at least `exit_hysteresis` ETH, and
 - the eligible megapool validator set is non‑empty.
 
 1. The protocol MUST sample `k` distinct validators uniformly at random without replacement from the eligible megapool validator set.
@@ -140,9 +140,9 @@ Setting the collateral target to 0 ensures that fully withdrawn minipool user ET
 
 rETH also uses ETH from the deposit pool for `burn`, based on the value `RocketDepositPool.getExcessBalance()` returns. The Deposit Pool contract can be upgraded, but we need to ensure that rETH burns are possible for the Withdrawal Queue and rejected when someone other than the Withdrawal Queue attempts to burn. This may involve setting a state flag in the deposit pool to change the behavior of `RocketDepositPool.getExcessBalance()` during a burn transaction from the Withdrawal Queue.
 
-### Withdrawal Hysteresis
+### Exit Hysteresis
 
-The design only allows exits when the withdrawal shortfall is at least `withdrawal_hysteresis` ETH.  This ensures that we are not exiting a whole validator to cover a residual amount that can reasonably be filled by future rewards or natural inflows.
+The design only allows exits when the withdrawal shortfall is at least `exit_hysteresis` ETH.  This ensures that we are not exiting a whole validator to cover a residual amount that can reasonably be filled by future rewards or natural inflows.
 
 The initial value is chosen based on the expected time between validator exit and ETH becoming available and the expected rewards earned during that time, using the following values:
 - 890k active validators
@@ -150,7 +150,7 @@ The initial value is chosen based on the expected time between validator exit an
 - 380k ETH in rETH
 - 2.3% rETH APR
 
-With these values, on average it will take ~5 days for ETH to become available and in that time, rETH earns ~120 ETH in rewards. In other words, if the withdrawal shortfall is below 120 ETH, withdrawals will be filled from rewards before ETH from exited validators becomes available. withdrawal_hysteresis is implemented as a tunable parameter so that pDAO can fine-tune it when the assumptions underlying it change significantly.
+With these values, on average it will take ~5 days for ETH to become available and in that time, rETH earns ~120 ETH in rewards. In other words, if the withdrawal shortfall is below 120 ETH, withdrawals will be filled from rewards before ETH from exited validators becomes available. exit_hysteresis is implemented as a tunable parameter so that pDAO can fine-tune it when the assumptions underlying it change significantly.
 
 ### Minipool Exit Phase
 
