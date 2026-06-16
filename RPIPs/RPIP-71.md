@@ -28,7 +28,7 @@ This specification introduces the following pDAO protocol parameters:
 | Name                             | Type    | Initial Value | Guardrail<br>           |
 | -------------------------------- | ------- | ------------- | ----------------------- |
 | `deposit_pool_collateral_target` | pct     | 1             |                         |
-| `exit_hysteresis`          | ETH     | 120           | > 32                    |
+| `exit_hysteresis`                | ETH     | 120           | > 32                    |
 | `megapool_exit_phase`            | boolean | `false`       | can't be set to `false` |
 | `staking_delay`                  | days    | 28            | > 7                     |
 | `tournament_size`<br>            | integer | 4             | < 20                    |
@@ -54,7 +54,7 @@ This specification changes the following pDAO protocol parameters:
 	- Redemption of rETH outside the queue SHALL be prevented to the extent possible.
 	- The protocol SHALL allow the Withdrawal Queue to burn rETH.
 - `network.reth.collateral.target` SHALL be set to 0 and a new buffer for withdrawals SHALL be implemented in the deposit pool, reserving up to `deposit_pool_collateral_target` percent of ETH backing rETH for rETH burns.
-- When megapools distribute rewards, they SHALL send ETH to the deposit pool rather than rETH.
+- When megapools distribute rewards, they SHALL send ETH to the deposit pool rather than the rETH contract.
 - When a withdrawal request is fulfilled, the Withdrawal Queue SHALL burn the corresponding rETH. The user SHALL receive the stored ETH value at the time of the request or at the time of the rETH burn, whichever is smaller.
 - Any remaining ETH corresponding to that rETH burn SHALL be transferred to the deposit pool.
 
@@ -70,12 +70,14 @@ If the withdrawal shortfall is at least `exit_hysteresis` ETH, additional megapo
 
 #### If `megapool_exit_phase = false`
 
-- The protocol SHALL allow the oDAO, by majority vote, to request minipools to exit as specified in RPIP-80. The amount necessary to cover the withdrawal shortfall minus  `exit_hysteresis` SHALL act as a hard cap on the possible exit requests.
+- The protocol SHALL allow the oDAO, by majority vote, to request minipools to exit as specified in RPIP-80. The amount necessary to cover the withdrawal shortfall minus `exit_hysteresis` SHALL act as a hard cap on the possible exit requests.
 - The oDAO SHOULD monitor the number of voluntarily exiting minipools and only request exits after accounting for them.
 - The oDAO SHOULD select minipools by prioritizing higher-commission minipools and SHOULD ignore any minipool that has received a `did_not_exit_penalty` within the last `did_not_exit_cooldown` (defined in RPIP-80). 
 - The oDAO MAY use time until the next validator sweep as a tie-breaker between minipools with equal commission.
 
 #### If `megapool_exit_phase = true`
+
+
 
 ##### Eligible megapool validator set
 
@@ -119,7 +121,6 @@ This section modifies the behavior of the deposit queue defined in [RPIP-59](RPP
 	- That value SHALL be set to 90 days initially.
 	- That value SHALL not be modifiable with a pDAO Proposal.
 	- When a withdrawal is proven for a minipool, the value SHALL be temporarily set to 0 until `distributeBalance` is called.
-
 ## Rationale
 
 ### Withdrawal Queue
@@ -173,6 +174,19 @@ Once the protocol is in a state with only megapool validators, it becomes feasib
 The staking_delay applied after the stake call is meant to ensure that validators are added to the eligible set only after they have made it through the beacon chain queue, to avoid requests that would take a long time to execute. This also protects new validators from immediately being exited.
 
 The tournament‑based mechanism is chosen because maintaining a full global ordering of all eligible validators by the Exit Criterion may not be feasible. By sampling a small, random subset of eligible validators and exiting the validator with the worst Exit Criterion score in that subset, the protocol achieves a decent approximation of a full ordering by the Exit Criterion. For the initial tournament_size = 4, on average we will select someone around the 20th percentile according to the Exit Criterion.
+
+#### Megapool Exit Criterion
+
+No clear consensus on what criterion should be used has emerged yet. Options that have been discussed so far include:
+
+- random
+- lower RPL stake first
+- first in, first out
+- together with increasing bond requirement, exiting from megapools the furthest below bond requirement
+- biasing towards larger nodes
+- bias towards not hitting same node again (this seems to be ~biasing towards smaller nodes)
+
+The pDAO will vote on an exit criterion before Saturn 2 is deployed.
 
 ### Reentry Queue
 
