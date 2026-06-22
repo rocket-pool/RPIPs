@@ -29,6 +29,7 @@ This specification introduces the following pDAO protocol parameters:
 | ------------------------------ | ------ | ----------------- | ------------- |
 | `performance_exits_enabled`*   | bool   | `true`            |               |
 | `performance_period`           | Epochs | 44032 (~200 days) |               |
+| `proof_buffer`                 | Hours  | 24                | > 1           |
 | `performance_threshold`        | pct    | 94                |               |
 | `performance_challenge_period` | Hours  | 24                |               |
 | `performance_challenge_bond`   | RPL    | 100               | > 20          |
@@ -37,16 +38,22 @@ A * designates this parameter as being modifiable by the Security Council withou
 
 ### Performance Challenge Mechanism
 
-- If `performance_exits_enabled` is `true` , the protocol SHALL allow anyone to propose a validator exit by providing a `start_epoch` and `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, start_epoch + performance_period]` and locking `performance_challenge_bond` for `performance_challenge_period`. 
+- If `performance_exits_enabled` is `true` , the protocol SHALL allow anyone to propose a validator exit by:
+	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer` and
+	- providing `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, start_epoch + performance_period]` and
+	- locking `performance_challenge_bond` for `performance_challenge_period`. 
 - The protocol SHALL allow anyone to defeat a proposed exit by proving that for one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation. The person defeating the challenge SHALL be awarded the `performance_challenge_bond`. 
-- If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validator as "requested to exit" as defined by RPIP-80.
+- If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validator as "requested to exit" as defined by [RPIP-80](RPIP-80.md).
 
 ## Rationale
 
 ### Permissionless Exit Mechanism
 
 This specification prioritizes a precisely defined and deterministic metric that can be verified on-chain to determine which validators to exit. Elements of subjectivity, such as committees or off-chain analysis, are avoided.
+
 It uses the **target** timeliness flag as a proxy for attestation performance, which itself is only a proxy for overall performance. Sync committees and block proposals are not factored in at all, accounting for ~15% of rewards (ignoring MEV).
+
+The `proof_buffer` ensures that there is time to detect underperformance and generate proofs for performance challenges. 
 
 ### Offline Exits Implicit
 
