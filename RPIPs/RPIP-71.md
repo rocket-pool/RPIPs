@@ -27,12 +27,14 @@ This specification introduces the following pDAO protocol parameters:
 
 | Name                             | Type    | Initial Value | Guardrail<br>           |
 | -------------------------------- | ------- | ------------- | ----------------------- |
+| `withdrawals_enabled`*           | bool    | `true`        |                         |
 | `deposit_pool_collateral_target` | pct     | 1             |                         |
 | `exit_hysteresis`                | ETH     | 120           | > 32                    |
 | `megapool_exit_phase`            | boolean | `false`       | can't be set to `false` |
 | `staking_delay`                  | days    | 28            | > 7                     |
 | `tournament_size`<br>            | integer | 4             | < 20                    |
 
+A * designates this parameter as being modifiable by the Security Council without a delay.
 
 This specification changes the following pDAO protocol parameters:
 
@@ -43,7 +45,7 @@ This specification changes the following pDAO protocol parameters:
 ### Withdrawal Queue
 
 - A Withdrawal Queue contract MUST exist to provide the interface for pool stakers to request exits at the protocol rate.
-- Starting 28 days after the upgrade that implements this RPIP, the Withdrawal Queue MUST accept rETH deposits from users to create withdrawal requests.
+- Starting 28 days after the upgrade that implements this RPIP and if `withdrawals_enabled = true`, the Withdrawal Queue MUST accept rETH deposits from users to create withdrawal requests.
 - The ETH value of the rETH at the time of a withdrawal request MUST be recorded.
 - Canceling a withdrawal request and exiting the queue SHALL NOT be possible.
 
@@ -55,7 +57,7 @@ This specification changes the following pDAO protocol parameters:
 	- The protocol SHALL allow the Withdrawal Queue to burn rETH.
 - `network.reth.collateral.target` SHALL be set to 0 and a new buffer for withdrawals SHALL be implemented in the deposit pool, reserving up to `deposit_pool_collateral_target` percent of ETH backing rETH for rETH burns.
 - When megapools distribute rewards, they SHALL send ETH to the deposit pool rather than the rETH contract.
-- When a withdrawal request is fulfilled, the Withdrawal Queue SHALL burn the corresponding rETH. The user SHALL receive the stored ETH value at the time of the request or at the time of the rETH burn, whichever is smaller.
+- If `withdrawals_enabled = true` the Withdrawal Queue SHALL be able to fulfill withdrawal requests by burning the corresponding rETH. The user SHALL receive the stored ETH value at the time of the request or at the time of the rETH burn, whichever is smaller.
 - Any remaining ETH corresponding to that rETH burn SHALL be transferred to the deposit pool.
 
 ### Validator Exit Selection
@@ -76,8 +78,6 @@ If the withdrawal shortfall is at least `exit_hysteresis` ETH, additional megapo
 - The oDAO MAY use time until the next validator sweep as a tie-breaker between minipools with equal commission.
 
 #### If `megapool_exit_phase = true`
-
-
 
 ##### Eligible megapool validator set
 
@@ -165,7 +165,7 @@ We focus on minipools in the first phase, not only to keep the reliance on the o
 
 We also considered a trustless design for minipools. This would increase complexity and incur additional gas costs that the protocol or pDAO would either have to fund in some way or add to oDAO's duties. The trusted oDAO duty appears preferable because of its temporary nature, limited risk, reduced complexity and lower gas cost.
 
-The `megapool_exit_phase` toggle allows the pDAO to switch to the second phase once minipools are largely exited or known to be unresponsive. This choice is left to the pDAO because we cannot precisely define it in advance.
+The `megapool_exit_phase` toggle allows the pDAO to switch to the second phase once minipools are largely exited or known to be unresponsive. Once the remaining minipool set largely consists of minipools on old delegates that do not respond to exit requests, the withdrawal mechanism stops working as intended. At that point, the pDAO can consider voting on a final penalty for any remaining minipools. The choice of when to switch to megapools and how to handle remaining minipools is left to the pDAO.
 
 ### Megapool Exit Phase
 
@@ -219,6 +219,12 @@ Furthermore, the new withdrawal buffer in the deposit pool means that a repeatab
 ### oDAO selecting minipools  
 
 The oDAO has discretion in selecting minipools during the initial phase and is responsible for factoring in voluntarily exiting minipools to determine how many to exit. However, the withdrawal shortfall limits the amount of exits. At most, the oDAO could exit unnecessary minipools equal to the currently voluntarily exiting minipools, provided there is sufficient withdrawal demand at the same time. So the exposure here is mostly limited to ordering and a small amount of extra exits. Since the rules are known and the actions are transparent, the oDAO properly executing this duty can be monitored.
+
+### Correlated Slashing Penalties
+
+Ethereum slashes validators for breaking protocol rules that could be part of an attack on the chain. The slashing penalty for a slashed validator increases when many other validators are slashed in the 18 days before and after the slashing. In extreme scenarios (about 5% of validators slashed within a 36 day window), this correlation penalty can lead to the rETH exchange rate going down. Sophisticated rETH holders could anticipate this and use the withdrawal mechanism to avoid any losses, which then would increase losses experienced by rETH holders that are not able to withdraw in time. 
+
+To handle these extreme scenarios fairly, the Security Council is able to temporarily disable withdrawals. This toggle will prevent joining the Withdrawal Queue and redeeming existing withdrawal requests. 
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
