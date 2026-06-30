@@ -25,9 +25,10 @@ This specification introduces the following pDAO protocol parameters:
 
 
 
-- The protocol SHALL allow any node to propose a signaling vote by locking `proposal.bond` RPL. `proposeSignaling` SHALL create a pDAO governance proposal as defined in [RPIP-33](RPIP-33.md), with the following parameters:
+- The protocol SHALL allow any node to propose a signaling vote by locking `proposal.bond` RPL. `proposeSignaling` SHALL create a pDAO governance proposal with the following parameters:
 	- `proposalMessage`: A string explaining what the proposal is about
 	- `blockNumber`: The block number the proposal is being made for
+	- `choices`: calldata encoding the available choices and vote format
 	- `treeNodes`: A merkle pollard generated at `blockNumber` for the voting power state of the DAO
 - There SHALL be a `voteSignaling` method that allows voting on signaling proposals with delegated vote power for `signaling_phase1_time` days after the proposal's `blockNumber`. It SHALL  emit an event with `voteChoice` and have the following parameters:
 	- `proposalID`: ID of the proposal to vote on
@@ -46,9 +47,15 @@ This specification introduces the following pDAO protocol parameters:
 
 New proposal, vote, and override vote methods are introduced to clearly separate signaling votes from votes that contain an executable payload.
 
-Using calldata for the vote supports multiple voting types, including weighted voting (used for Management Committee elections in the past), ranked-choice voting (used for RPIP-62), and approval voting (used for RPIP-8). 
+Using calldata for the proposal and vote supports multiple voting types, including weighted voting (used for Management Committee elections in the past), ranked-choice voting (used for RPIP-62), and approval voting (used for RPIP-8). 
 
 However, this proposal only establishes the on-chain foundation for such signaling votes and the pDAO will need a frontend to enable voting and tallying of vote outcomes.
+
+## Security Considerations
+
+In contrast to the on-chain voting system for parameter changes and treasury spending introduced in [RPIP-33](RPIP-33.md), the signal voting system proposed here has no challenge period between a proposal and start of voting that would allow to defeat proposals that submit an incorrect merkle tree for voting power. This is a conscious choice that allows for a faster voting process. The expectation is that it would fall on a voting frontend would to verify that the used voting power merkle tree is correct and filter out any votes that use incorrect vote power.
+
+The ability to veto proposals (that use correct vote power and would show up on a voting frontend) and burn the bond of the proposer discourages spamming the frontend. While proposals with incorrect vote power may not be vetoable, they would do nothing since the votes have no executable payload and they wouldn't show up on the frontend.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
