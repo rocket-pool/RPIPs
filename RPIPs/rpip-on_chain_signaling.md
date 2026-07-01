@@ -7,13 +7,18 @@ discussions-to: <URL>
 status: Draft
 type: Protocol
 category (*only required for Protocol ): Core
-created: 2025-06-03
+created: 2026-06-03
 ---
 
 ## Abstract
 
-This proposal adds votes without an executable payload and with arbitrary vote choices to the existing on-chain governance system. This lays the foundation for future migration of pDAO signaling votes from Snapshot. 
+This proposal adds votes without an executable payload and with arbitrary vote choices to the existing on-chain governance system. This lays the foundation for future migration of pDAO signaling votes from Snapshot.
 
+## Motivation
+
+In 2025 Snapshot introduced Snapshot Pro that costs $600/month and gives access to premium features. Included in that is access to the voting strategy Rocket Pool uses, because the delegation with override logic is computation-heavy.
+
+This RPIP provides the on-chain basis for a signal voting system that can remove the Snapshot dependency in the future.
 ## Specification
 
 This specification introduces the following pDAO protocol parameters:
@@ -50,6 +55,8 @@ New proposal, vote, and override vote methods are introduced to clearly separate
 Using calldata for the proposal and vote supports multiple voting types, including weighted voting (used for Management Committee elections in the past), ranked-choice voting (used for RPIP-62), and approval voting (used for RPIP-8). 
 
 However, this proposal only establishes the on-chain foundation for such signaling votes and the pDAO will need a frontend to enable voting and tallying of vote outcomes.
+
+We also looked at how the Snapshot voting strategy could be adjusted to avoid needing Snapshot Pro. Delegation without override appears to be sufficient for that. But we have no guarantee that Snapshot won't change the rules in the future and some view the ability to override as fundamental to our governance.
 
 ## Security Considerations
 
