@@ -38,12 +38,14 @@ A * designates this parameter as being modifiable by the Security Council withou
 
 ### Performance Challenge Mechanism
 
-- If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a validator exit by:
+- If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a list of validators to exit by:
 	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer`,
 	- providing `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
-	- providing a state proof that the validator's `activation_epoch <= start_epoch` and
 	- locking `performance_challenge_bond` for `performance_challenge_period`. 
-- The protocol SHALL allow anyone to defeat a proposed exit by proving that for one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation. The person defeating the challenge SHALL be awarded the `performance_challenge_bond`. 
+- The protocol SHALL allow anyone to defeat a proposed exit by either:
+	- proving that for one listed validator and one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation or
+	- proving that `activation_epoch` > `start_epoch` for one listed validator. 
+- The person defeating the challenge SHALL be awarded the `performance_challenge_bond`. 
 - If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validator as "requested to exit" as defined by [RPIP-80](RPIP-80.md).
 
 ## Rationale
