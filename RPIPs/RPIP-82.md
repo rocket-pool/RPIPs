@@ -3,7 +3,7 @@ rpip: 82
 title: Enable pDAO Spending of ETH and ERC-20
 description: Introduce pDAO proposals for one-time and recurring ETH and ERC-20 payments.
 author: knoshua (@knoshua)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-82-enable-pdao-spending-of-eth-and-erc-20/3948
 status: Draft
 type: Protocol
 category (*only required for Protocol ): Core
