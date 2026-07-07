@@ -117,12 +117,15 @@ The RPL inflation-related changes are still planned for Saturn 2. The current vi
 
 ### [RPIP-42: Bond Curves](RPIP_42.md)
 
+**Status**: Included in 2024 Tokenomics Rework vote. Partially implemented in Saturn 1; parameter conversion targeted for Saturn 2, removing lowering of bond from Saturn 2.
 
-**Status**: Included in 2024 Tokenomics Rework vote. Partially implemented in Saturn 1; removing remaining aspects from Saturn 2 not yet voted on.
+For Saturn 2, RPIP-42 specifies that `base_bond_array` is converted to a pDAO parameter with initial value `[4, 8]`.
 
-RPIP-42 specifies that reduced_bond is lowered to 1.5 ETH with Saturn 2. While this further improves the efficiency of megapools and is safe with the introduction of RPIP-44, it is unclear whether the rETH demand will be sufficient to support 1.5 ETH validators immediately. The current thinking is not to lower reduced_bond until there is rETH demand that justifies it.
+RPIP-42 also specifies that reduced_bond is lowered to 1.5 ETH with Saturn 2. While this further improves the efficiency of megapools and is safe with the introduction of RPIP-44, it is unclear whether the rETH demand will be sufficient to support 1.5 ETH validators immediately. The current thinking is not to lower reduced_bond until there is rETH demand that justifies it.
 
 ### [RPIP-83: Increasing Bond Requirement](RPIP-83.md)
+
+**Status:** Draft; Not yet voted on.
 
 RPIP-83 instead proposes increasing the required node-operator bond for each megapool validator to 6 ETH. This change is motivated by the current lack of rETH demand, the desire to reach a “megapool-only” state sooner, and the goal of keeping our large node operator set intact with exits for rETH withdrawal liquidity under RPIP-71. Specifically, RPIP-83 specifies:
 
