@@ -29,7 +29,7 @@ This specification introduces the following pDAO protocol parameters:
 | ------------------------------ | ------ | ----------------- | ------------- |
 | `performance_exits_enabled`*   | bool   | `true`            |               |
 | `performance_period`           | Epochs | 44032 (~200 days) |               |
-| `proof_buffer`                 | Hours  | 24                | > 1           |
+| `proof_buffer`                 | Epochs | 225               | > 10          |
 | `performance_threshold`        | pct    | 94                |               |
 | `performance_challenge_period` | Hours  | 24                |               |
 | `performance_challenge_bond`   | RPL    | 100               | > 20          |
@@ -76,7 +76,7 @@ After conducting some [empirical analysis](https://badperformers.streamlit.app/)
 
 ### Implementation of Epoch Call Data
 
-To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 1321 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
+To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 2642 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
 - Represent epochs as offsets from `start_epoch`. This allows using `uint16[]` for `performance_period` < 292 days, reducing gas cost by a factor of 4. For the proposed initial parameters, this would translate to 2642 (non-zero) bytes, but size would increase as `performance_threshold` is lowered.
 - Represent all the epochs as a bitset, with 1 representing a not-timely target attestation, resulting in 2752 bytes of call data. Since zero bytes are 1/4 of the gas, this may still be preferable to the epoch-offset approach.
 - Represent epoch ranges instead of epochs. Eg, [441000, 800, 443000, 521] would represent 800 epochs starting at 441000 and 521 epochs starting at 443000.
