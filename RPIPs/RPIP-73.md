@@ -41,11 +41,11 @@ A * designates this parameter as being modifiable by the Security Council withou
 - If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a list of validators to exit by:
 	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer`,
 	- providing `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
-	- locking `performance_challenge_bond` for `performance_challenge_period`. 
+	- locking `performance_challenge_bond` for `performance_challenge_period` from staked RPL. Locked RPL SHALL act the same way as regular staked RPL for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for withdrawing RPL.
 - The protocol SHALL allow anyone to defeat an entire proposed list by either:
 	- proving that for one listed validator and one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation or
 	- proving that `activation_epoch` > `start_epoch` for one listed validator. 
-- The person defeating the challenge SHALL be awarded the `performance_challenge_bond`. 
+- The person defeating the challenge SHALL be awarded 80% of the `performance_challenge_bond` and the remaining 20% SHALL be burned. 
 - If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validators as "requested to exit" as defined by [RPIP-80](RPIP-80.md).
 
 ## Rationale
@@ -57,6 +57,8 @@ This specification prioritizes a precisely defined and deterministic metric that
 It uses the **target** timeliness flag as a proxy for attestation performance, which itself is only a proxy for overall performance. Sync committees and block proposals are not factored in at all, accounting for ~15% of rewards (ignoring MEV).
 
 The `proof_buffer` ensures that there is time to detect underperformance and generate proofs for performance challenges. 
+
+In case of a successful challenge, 20% of the `performance_challenge_bond` are burned to prevent someone to effectively exit their staked RPL for free by challenging themselves.
 
 ### Offline Exits Implicit
 
