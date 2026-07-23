@@ -34,7 +34,7 @@ This specification introduces the following pDAO protocol parameters:
 	- `proposalMessage`: A string explaining what the proposal is about
 	- `blockNumber`: The block number the proposal is being made for
 	- `choices`: calldata encoding the available choices and vote format
-	- `treeNodes`: A merkle pollard generated at `blockNumber` for the voting power state of the DAO
+	- `votingPowerRoot`: root of the voting power merkle tree at `blockNumber`
 - There SHALL be a `voteSignaling` method that allows voting on signaling proposals with delegated vote power for `signaling_phase1_time` days after the proposal's `blockNumber`. It SHALL  emit an event with `voteChoice` and have the following parameters:
 	- `proposalID`: ID of the proposal to vote on
 	- `voteChoice`: calldata encoding the vote
