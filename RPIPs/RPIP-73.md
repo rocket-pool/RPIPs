@@ -40,7 +40,7 @@ A * designates this parameter as being modifiable by the Security Council withou
 
 - If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a list of validators to exit by:
 	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer`,
-	- providing `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
+	- providing `performance_period * (1 - performance_treshold)` epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
 	- locking `performance_challenge_bond` for `performance_challenge_period` from staked RPL. Locked RPL SHALL act the same way as regular staked RPL for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for withdrawing RPL.
 - The protocol SHALL allow anyone to defeat an entire proposed list by either:
 	- proving that for one listed validator and one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation or
