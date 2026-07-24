@@ -29,6 +29,7 @@ This specification introduces the following pDAO protocol parameters:
 | ------------------------------ | ------ | ----------------- | ------------- |
 | `performance_exits_enabled`*   | bool   | `true`            |               |
 | `performance_period`           | Epochs | 44032 (~200 days) |               |
+| `proof_buffer`                 | Epochs | 225               | > 10          |
 | `performance_threshold`        | pct    | 94                |               |
 | `performance_challenge_period` | Hours  | 24                |               |
 | `performance_challenge_bond`   | RPL    | 100               | > 20          |
@@ -37,16 +38,27 @@ A * designates this parameter as being modifiable by the Security Council withou
 
 ### Performance Challenge Mechanism
 
-- If `performance_exits_enabled` is `true` , the protocol SHALL allow anyone to propose a validator exit by providing a `start_epoch` and `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, start_epoch + performance_period]` and locking `performance_challenge_bond` for `performance_challenge_period`. 
-- The protocol SHALL allow anyone to defeat a proposed exit by proving that for one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation. The person defeating the challenge SHALL be awarded the `performance_challenge_bond`. 
-- If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validator as "requested to exit" as defined by RPIP-80.
+- If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a list of validators to exit by:
+	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer`,
+	- providing `performance_period * (1 - performance_treshold)` epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
+	- locking `performance_challenge_bond` for `performance_challenge_period` from staked RPL. Locked RPL SHALL act the same way as regular staked RPL for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for withdrawing RPL.
+- The protocol SHALL allow anyone to defeat an entire proposed list by either:
+	- proving that for one listed validator and one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation or
+	- proving that `activation_epoch` > `start_epoch` for one listed validator. 
+- The person defeating the challenge SHALL be awarded 80% of the `performance_challenge_bond` and the remaining 20% SHALL be burned. 
+- If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validators as "requested to exit" as defined by [RPIP-80](RPIP-80.md).
 
 ## Rationale
 
 ### Permissionless Exit Mechanism
 
 This specification prioritizes a precisely defined and deterministic metric that can be verified on-chain to determine which validators to exit. Elements of subjectivity, such as committees or off-chain analysis, are avoided.
+
 It uses the **target** timeliness flag as a proxy for attestation performance, which itself is only a proxy for overall performance. Sync committees and block proposals are not factored in at all, accounting for ~15% of rewards (ignoring MEV).
+
+The `proof_buffer` ensures that there is time to detect underperformance and generate proofs for performance challenges. 
+
+In case of a successful challenge, 20% of the `performance_challenge_bond` are burned to prevent someone to effectively exit their staked RPL for free by challenging themselves.
 
 ### Offline Exits Implicit
 
@@ -66,7 +78,7 @@ After conducting some [empirical analysis](https://badperformers.streamlit.app/)
 
 ### Implementation of Epoch Call Data
 
-To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 1321 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
+To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 2642 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
 - Represent epochs as offsets from `start_epoch`. This allows using `uint16[]` for `performance_period` < 292 days, reducing gas cost by a factor of 4. For the proposed initial parameters, this would translate to 2642 (non-zero) bytes, but size would increase as `performance_threshold` is lowered.
 - Represent all the epochs as a bitset, with 1 representing a not-timely target attestation, resulting in 2752 bytes of call data. Since zero bytes are 1/4 of the gas, this may still be preferable to the epoch-offset approach.
 - Represent epoch ranges instead of epochs. Eg, [441000, 800, 443000, 521] would represent 800 epochs starting at 441000 and 521 epochs starting at 443000.
