@@ -30,7 +30,7 @@ This specification introduces the following pDAO protocol parameters:
 
 
 
-- The protocol SHALL allow any node to propose a signaling vote by locking `proposal.bond` RPL. `proposeSignaling` SHALL create a pDAO governance proposal with the following parameters:
+- The protocol SHALL allow any node to propose a signaling vote. `proposeSignaling` SHALL create a pDAO governance proposal with the following parameters:
 	- `proposalMessage`: A string explaining what the proposal is about
 	- `blockNumber`: The block number the proposal is being made for
 	- `choices`: calldata encoding the available choices and vote format
@@ -38,15 +38,12 @@ This specification introduces the following pDAO protocol parameters:
 - There SHALL be a `voteSignaling` method that allows voting on signaling proposals with delegated vote power for `signaling_phase1_time` days after the proposal's `blockNumber`. It SHALL  emit an event with `voteChoice` and have the following parameters:
 	- `proposalID`: ID of the proposal to vote on
 	- `voteChoice`: calldata encoding the vote
-	- `veto`: whether the voter wants to veto the proposal or not
 	- `votingPower`: Total delegated voting power for the voter at the proposal block
 	- `nodeIndex`:  The index of the node voting
 	- `witness`: A merkle proof into the network voting power tree proving the supplied voting power is correct
 - There SHALL be an `overrideVoteSignaling` method that allows voting on signaling proposals with a node's vote power for `signaling_phase2_time` days, starting `signaling_phase1_time` days after the proposal's `blockNumber`. It SHALL  emit an event with `voteChoice` and have the following parameters:
 	- `proposalID`: ID of the proposal to vote on
 	- `voteChoice`: calldata encoding the vote
-	- `veto`: whether the voter wants to veto the proposal or not
-- If `proposal.veto.quorum` percent of the vote power voted to veto a proposal, the proposal bond of the proposer SHALL be burned.
 
 ## Rationale
 
@@ -62,7 +59,7 @@ We also looked at how the Snapshot voting strategy could be adjusted to avoid th
 
 In contrast to the on-chain voting system for parameter changes and treasury spending introduced in [RPIP-33](RPIP-33.md), the signal voting system proposed here has no challenge period between a proposal and the start of voting that would allow for defeating proposals that submit an incorrect merkle tree for voting power. This is a conscious choice that allows for a faster voting process. The expectation is that it would fall to the voting frontend to verify that the used voting power merkle tree is correct and to filter out any votes that use incorrect vote power.
 
-The ability to veto proposals (that use correct vote power and would appear on the voting frontend) and burn the proposer's bond discourages spamming the frontend. While proposals with incorrect vote power may not be vetoable, they would do nothing, since the votes have no executable payload and wouldn't appear on the frontend.
+In contrast to [RPIP-33](RPIP-33.md), this design also has no bond requirement to propose signaling votes and there is no mechanism to veto proposals to burn that bond. Since these proposals are purely for signaling and have no executable payload, this kind of protection is seen as not necessary. Not having the burn mechanism should speed up the audit process.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
