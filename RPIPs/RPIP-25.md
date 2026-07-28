@@ -4,7 +4,7 @@ title: RPL Inflation Allocation
 description: Describes the planned usage of RPL inflation
 author: jasperthegovghost (@jasperthefriendlyghost), Valdorff (@Valdorff)
 discussions-to: https://dao.rocketpool.net/t/odao-charter-draft-and-more/1832
-status: Final
+status: Living
 type: Meta
 created: 2023-06-02
 vote-to: https://vote.rocketpool.net/#/proposal/0x510383ca82a0096fa670a260692cf7a4097e199ce4f731dc4efd97a21f19f988
@@ -23,16 +23,17 @@ many purposes, which can change over time, so this RPIP will be a Living documen
 changes to how the funds should be directed.
 
 ## Specification
-1. If the RPIP is approved, inflation SHALL be set to:
-   1. Node Operators (`rocketClaimNode`) - 70%
-   2. pDAO (`rocketClaimDAO`) - 22%
-   3. oDAO (`rocketClaimTrustedNode`) - 8%
-2. 2 reward periods after `1.`, pDAO and oDAO allocations SHALL be set to 23%/7% respectively. 
-3. 2 reward periods after `2.`, pDAO and oDAO allocations SHALL be set to 24.1%/5.9% respectively.
-4. 2 reward periods after `3.`, pDAO and oDAO allocations SHALL be set to 25.2%/4.8% respectively.
-5. 2 reward periods after `4.`, pDAO and oDAO allocations SHALL be set to 26.3%/3.7% respectively.
-6. 2 reward periods after `5.`, pDAO and oDAO allocations SHALL be set to 27.4%/2.6% respectively.
-7. 2 reward periods after `6.`, pDAO and oDAO allocations SHALL be set to 28.5%/1.5% respectively.
+The current RPL inflation allocation is:
+
+- Node Operators (`rocketClaimNode`) - 50%
+- pDAO (`rocketClaimDAO`) - 47.5%
+- oDAO (`rocketClaimTrustedNode`) - 2.5%
+
+After Saturn 2, RPL inflation allocation SHALL be set to:
+
+- Node Operators (`rocketClaimNode`) - 0%
+- pDAO (`rocketClaimDAO`) - 95%
+- oDAO (`rocketClaimTrustedNode`) - 5%
 
 ### Updating this RPIP
 This is a "Living" RPIP, so that it can be kept up to date with changes to Inflation Allocation.
@@ -80,6 +81,21 @@ update this RPIP:
 | Date         | Allocation                                                                                                      |
 |--------------|-----------------------------------------------------------------------------------------------------------------|
 | 2021-09-30   | Node Operators (`rocketClaimNode`) - 70%, pDAO (`rocketClaimDAO`) - 15%, oDAO (`rocketClaimTrustedNode`) - 15%  |
+| 2023-11-14   | RPIP-25 approved a staged transition* from 70% Node Operators / 22% pDAO / 8% oDAO to 70% Node Operators / 28.5% 
+| 2025-03-24   | Node Operators (`rocketClaimNode`) - 70%, pDAO (`rocketClaimDAO`) - 27.5%, oDAO (`rocketClaimTrustedNode`) - 2.5%  |
+| 2026-07-10   | Node Operators (`rocketClaimNode`) - 50%, pDAO (`rocketClaimDAO`) - 47.5%, oDAO (`rocketClaimTrustedNode`) - 2.5%  |
+
+*RPIP-25 originally specified the following staged pDAO/oDAO allocation changes, while keeping Node Operators at 70%:
+
+| Transition | Timing | Node Operators | pDAO | oDAO |
+|------------|--------|----------------|------|------|
+| 0 | Initial | 70% | 22% | 8% |
+| 1 | 2 reward periods later | 70% | 23% | 7% |
+| 2 | 2 reward periods later | 70% | 24.1% | 5.9% |
+| 3 | 2 reward periods later | 70% | 25.2% | 4.8% |
+| 4 | 2 reward periods later | 70% | 26.3% | 3.7% |
+| 5 | 2 reward periods later | 70% | 27.4% | 2.6% |
+| 6 | 2 reward periods later | 70% | 28.5% | 1.5% |
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
