@@ -3,7 +3,7 @@ rpip:
 title: pDAO Parameter Guardrail Revisions
 description: Adjust multiple pDAO protocol parameters to remove unnecessary restrictions and improve protocol security.
 author: knoshua (@knoshua)
-discussions-to: <URL>
+discussions-to: https://dao.rocketpool.net/t/rpip-pdao-parameter-guardrail-revisions/4010
 status: Draft
 type: Protocol
 category (*only required for Protocol ): Core
