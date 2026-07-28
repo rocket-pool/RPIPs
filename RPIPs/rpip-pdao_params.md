@@ -3,7 +3,7 @@ rpip:
 title: pDAO Parameters and Guardrails
 description: Updated overview of pDAO Parameters
 author: knoshua (@knoshua)
-discussions-to: https://dao.rocketpool.net/t/rpip-pdao-parameters-and-guardrails/4008
+discussions-to: https://dao.rocketpool.net/t/rpip-pdao-parameters-and-guardrails/4009
 status: Living
 type: Informational
 created: 2026-07-14
