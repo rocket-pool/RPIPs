@@ -11,10 +11,11 @@ created: 2026-07-14
 
 ## Abstract
 
-This RPIP gives an up-to-date (as of Saturn 1) overview of all pDAO-controlled parameters, their guardrails and what lead to the changes compared to the list in RPIP-33. An extra section lists the justifications presented in the Cantina audit that lead to a number of new guardrails.
+This RPIP provides an up-to-date (as of Saturn 1) overview of all pDAO-controlled parameters, their guardrails, and what led to the changes compared to the list in RPIP-33. An extra section lists the justifications presented in the Cantina audit that led to several new guardrails.
+
 ## pDAO Parameter Table
 
-Below is a comprehensive list of protocol parameters (as of the Saturn 1 upgrade) the pDAO SHALL have control over and specifies guardrails in place to prevent altering parameters which may result in inoperability of the protocol. Note that each Setting Contract has an associated namespace (ie, Setting Path need only be unique within a Setting Contract).
+Below is a comprehensive list of protocol parameters (as of the Saturn 1 upgrade) that the pDAO controls, along with the guardrails in place. Note that each Setting Contract has an associated namespace (ie, Setting Path need only be unique within a Setting Contract).
 
 | Setting Contract                   | Setting Path                                          | Type        | Description                                                                                                                                                                                             | Guardrail                                                                       | Change                                                           |
 | ---------------------------------- | ----------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
@@ -91,8 +92,8 @@ Below is a comprehensive list of protocol parameters (as of the Saturn 1 upgrade
 |                                    | proposal.bond                                         | uint256     | How much RPL is locked when creating a proposal                                                                                                                                                         | > 20 RPL                                                                        |                                                                  |
 |                                    | proposal.challenge.bond                               | uint256     | How much RPL is locked when challenging a proposal                                                                                                                                                      | > 2 RPL                                                                         |                                                                  |
 |                                    | proposal.challenge.period                             | uint256     | How long a proposer has to respond to a challenge before the proposal is defeated                                                                                                                       | >= 30 minutes                                                                   |                                                                  |
-|                                    | proposal.quorum                                       | uint256     | The minimum amount of voting power a proposal needs to succeed                                                                                                                                          | >= **15%** & < 75%                                                              | RPIP-33 and RPIP-63                                              |
-|                                    | proposal.veto.quorum                                  | uint256     | The amount of voting power vetoing a proposal require to veto it                                                                                                                                        | >= **20%** & < 75%                                                              | RPIP-33 and RPIP-64                                              |
+|                                    | proposal.quorum                                       | uint256     | The minimum amount of voting power a proposal needs to succeed                                                                                                                                          | >= 15% & < 75%                                                                  | RPIP-33 and RPIP-63                                              |
+|                                    | proposal.veto.quorum                                  | uint256     | The amount of voting power vetoing a proposal require to veto it                                                                                                                                        | >= 20% & < 75%                                                                  | RPIP-33 and RPIP-64                                              |
 |                                    | proposal.max.block.age                                | uint256     | The maximum time in the past (in blocks) a proposal can be submitted for                                                                                                                                | > 128 blocks & < 7200 blocks                                                    |                                                                  |
 |                                    |                                                       |             |                                                                                                                                                                                                         |                                                                                 |                                                                  |
 | rocketDAOProtocolSettingsRewards   | rpl.rewards.claim.period.time                         | uint256     | The period of time between reward tree submissions                                                                                                                                                      |                                                                                 |                                                                  |
@@ -119,13 +120,13 @@ This section lists the reasoning presented in the Cantina Saturn 1 audit that le
 RPIP-59/RPIP-72 define an initial value of 14/28 days and a lower-bound guardrail of 2/10 days, but not an upper guardrail. This allows pDAO to accidentally/intentionally set `megapool.time.before.dissolve` to an arbitrarily large value, which effectively prevents Node Operator or watcher from dissolving their validators if required.
 ### `maximum.megapool.eth.penalty`
 
-Trusted oDAO members are allowed to vote on applying penalties to Megapools when they believe that Megapool validators have committed MEV theft. The amount of maximum ETH penalty that can be applied over a rolling 50400 block window (~1 week) is bounded by the initial value of 612 ETH. RPIP-42 specifies a lower guardrail of >= 300. However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which allows validators to be arbitrarily penalized by oDAO for MEV theft.
+Trusted oDAO members are allowed to vote on applying penalties to Megapools when they believe that Megapool validators have committed MEV theft. The maximum ETH penalty that can be applied over a rolling 50400 block window (~1 week) is bounded by the initial value of 612 ETH. RPIP-42 specifies a lower guardrail of >= 300. However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which allows validators to be arbitrarily penalized by oDAO for MEV theft.
 
 ### `notify.threshold` and `late.notify.fine`
 
-Node operators (NO) are expected to call `notifyExit()` to notify the Megapool that one of its validators is exiting the beaconchain. If NOs notify less than `rocketDAOProtocolSettingsMegapool.getNotifyThreshold()` before their exiting validators' withdrawable time, then they are applied a late notification penalty.
+Node operators (NOs) are expected to call `notifyExit()` to notify the Megapool that one of its validators is exiting the beaconchain. If NOs notify less than `rocketDAOProtocolSettingsMegapool.getNotifyThreshold()` before their exiting validators' withdrawable time, then they are applied a late notification penalty.
 
-RPIP-72 specifies the initial value of `notify.threshold` to be 12 hours and `late.notify.fine` of 0.05 ether . It also specifies a lower guardrail of >= 2 hours for `notify.threshold`. However, it is missing an upper guardrail which allows pDAO to accidentally/maliciously set this to an arbitrarily high value such that all/many exiting validators will be penalized with the late notify fine. 
+RPIP-72 specifies the initial value of `notify.threshold` to be 12 hours and `late.notify.fine` of 0.05 ether. It also specifies a lower guardrail of >= 2 hours for `notify.threshold`. However, it is missing an upper guardrail, which allows pDAO to accidentally/maliciously set this to an arbitrarily high value such that all/many exiting validators will be penalized with the late notify fine. 
 
 The pDAO may be incentivized to intentionally set this to an arbitrarily high value over periods of time when the for-voting members do not plan to exit their validators so that it only impacts other exiting validators.
 
@@ -135,27 +136,27 @@ The pDAO members are incentivized to set `late.notify.fine` to zero so that thei
 
 ### `minipool.maximum.penalty.count`
 
-Trusted oDAO members are allowed to vote on applying penalties to Minipools when they believe that Minipool validators have committed MEV theft. The maximum number of times MEV theft penalty can be applied over a rolling 50400 block window (~1 week) is bounded by the initial value of 2500 times (per RPIP-58).
+Trusted oDAO members are allowed to vote on applying penalties to Minipools when they believe that Minipool validators have committed MEV theft. The maximum number of times an MEV theft penalty can be applied over a rolling 50400 block window (~1 week) is bounded by the initial value of 2500 times (per RPIP-58).
 
-RPIP-58 specifies a lower guardrail of >= 2500 . However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which allows validators to be arbitrarily penalized by oDAO for MEV theft.
+RPIP-58 specifies a lower guardrail of >= 2500. However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which allows validators to be arbitrarily penalized by oDAO for MEV theft.
 ### `network.submit.balances.frequency`
 
-Trusted oDAO members are expected to timely update network balances of total ETH, staking ETH and rETH for various accounting logic in the protocol. The frequency of such updates is controlled by `network.submit.balances.frequency`, which is initialized to 1 days.
+Trusted oDAO members are expected to timely update network balances of total ETH, staking ETH and rETH for various accounting logic in the protocol. The frequency of such updates is controlled by `network.submit.balances.frequency`, which is initialised to 1 day.
 
-RPIP-33 specifies a lower guardrail for `network.submit.balances.frequency` of >= 1 hours. However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which prevents timely network balance updates from oDAO, and when combined with max rETH delta enforcement (as specified in RPIP-61) may lead to rETH-ETH depeg and other accounting issues.
+RPIP-33 specifies a lower guardrail for `network.submit.balances.frequency` of >= 1 hour. However, it fails to specify an upper guardrail. This allows pDAO to accidentally/intentionally vote and change this parameter to any unbounded large value, which prevents timely network balance updates from oDAO, and when combined with max rETH delta enforcement (as specified in RPIP-61) may lead to rETH-ETH depeg and other accounting issues.
 
 ### `network.reth.collateral.target`
 
-The `network.reth.collateral.target` setting is initialized to 0.1 ether, which enforces a target rETH collateralization rate of 10%. This is the amount of ETH deposited that is buffered in `RocketTokenRETH` for any redemptions. Excess ETH above this is sent to the deposit pool to be matched as borrowed ETH for validator staking. In case of shortfalls below this target rate, any bonded ETH from node deposits is sent to this `RocketTokenRETH` buffer.
+The `network.reth.collateral.target` setting is initialised to 0.1 ether, which enforces a target rETH collateralization rate of 10%. This is the amount of ETH deposited that is buffered in `RocketTokenRETH` for any redemptions. Excess ETH above this is sent to the deposit pool to be matched as borrowed ETH for validator staking. In case of shortfalls below this target rate, any bonded ETH from node deposits is sent to this `RocketTokenRETH` buffer.
 
-However, there are no lower/upper guardrails enforced for this setting. If this is set to a very low value, e.g. 0, then there will be no ETH buffered in `RocketTokenRETH` for rETH burns, which means that redemptions will depend on withdrawals from deposit pool of any unborrowed ETH. In edge-case scenarios where all deposit pool ETH may have been borrowed towards staking, redemptions will fail until there is ETH available again from node deposits, rewards or validator exits. Similarly, if this is set to a very large value then there will be lesser ETH available to be borrowed towards staking, which will affect the number of staking validators and therefore the generated rewards/yield.
+However, there are no lower/upper guardrails enforced for this setting. If this is set to a very low value, e.g. 0, then there will be no ETH buffered in `RocketTokenRETH` for rETH burns, which means that redemptions will depend on withdrawals from the deposit pool of any unborrowed ETH. In edge-case scenarios where all deposit pool ETH may have been borrowed towards staking, redemptions will fail until there is ETH available again from node deposits, rewards or validator exits. Similarly, if this is set to a very large value, then there will be lesser ETH available to be borrowed towards staking, which will affect the number of staking validators and therefore the generated rewards/yield.
 ### `reduced.bond`
 
 RPIP-42 specifies a `reduced.bond` initial value of 4 ETH, which is the amount of bonded ETH per validator currently required for staking more than two validators. This is expected to be reduced to 1.5 ETH in the forthcoming upgrade to Saturn 2 after Saturn 1.
 
 However, there are no guardrails enforced on pDAO changes to this setting. pDAO can change this to any value from zero to an arbitrarily large one.
 
-Impact Explanation: Medium, because if this is changed to zero then:
+Impact Explanation: Medium, because if this is changed to zero, then:
 1. Node operators can claim node operator commission share of rewards on such validators with zero bonded ETH.
 2. Increased security risk from slashing and abandonment of such validators.
 3. 100% LTV, which is risky for all aspects of protocol security.
@@ -164,14 +165,14 @@ Likelihood Explanation: Medium, because pDAO has a malicious incentive to reduce
 
 ### `node.unstaking.period` and `node.withdrawal.cooldown`
 
-The implementation initializes `node.unstaking.period` to 28 days. However, the specification is missing guardrails, which allows pDAO to indefinitely block staked RPL withdrawal by setting it to an arbitrarily high value or allow immediate withdrawals by setting it to zero.
+The implementation initialises `node.unstaking.period` to 28 days. However, the specification is missing guardrails, which allows pDAO to indefinitely block staked RPL withdrawal by setting it to an arbitrarily high value or allow immediate withdrawals by setting it to zero.
 ### `upgradeveto.quorum` and `upgrade.delay`
 
-Protocol upgrade settings `upgradeveto.quorum` and `upgrade.delay` are specified in RPIP-60 to be 33 percent and 1 week respectively. However, there are no specified guardrails.
+Protocol upgrade settings `upgradeveto.quorum` and `upgrade.delay` are specified in RPIP-60 to be 33 percent and 1 week, respectively. However, there are no specified guardrails.
 
 This allows a compromised pDAO governance to change them arbitrarily, which will affect protocol upgrades. Example scenarios:
 1. If oDAO proposes a protocol upgrade that is considered by pDAO to be not in their favor (e.g. reduced reward share, greater bonding requirement etc.) then pDAO can simply increase `upgrade.delay` to an arbitrarily large value such that the upgrade proposal never succeeds and is perpetually stuck in `UpgradeProposalState.Pending` state. pDAO can thus stall an upgrade without having to install a compromised Security Council to veto it.
-2. PDAO can also reduce `upgrade.delay` to zero allowing malicious oDAO upgrades to be executed immediately without a window of opportunity for Security Council to veto it.
+2. PDAO can also reduce `upgrade.delay` to zero, allowing malicious oDAO upgrades to be executed immediately without a window of opportunity for the Security Council to veto it.
 
 
 ## Copyright
