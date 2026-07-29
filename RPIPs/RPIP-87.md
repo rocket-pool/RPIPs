@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 87
 title: pDAO Parameter Guardrail Revisions
 description: Adjust multiple pDAO protocol parameters to remove unnecessary restrictions and improve protocol security.
 author: knoshua (@knoshua)
