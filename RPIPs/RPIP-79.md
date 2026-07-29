@@ -9,6 +9,7 @@ type: Protocol
 category (*only required for Protocol ): Core
 created: 2026-04-01
 ---
+
 ## Abstract
 This RPIP proposes to extend the beacon state proof mechanism that protects megapool validator creation from withdrawal-credential front-running with a fraud-proof system using beacon state. This will reduce time in queue for new megapool validators and instead of requiring a proof for every new validator, the protocol would only require one in the event of a withdrawal-credential exploit.
 
@@ -32,13 +33,16 @@ This specification changes the following pDAO protocol parameter guardrails:
 
 - There SHALL be a method `stake_without_state_proof` that performs the remaining 31 ETH stake without requiring a validator state proof.
 - After `prestake` and before `stake` or `stake_without_state_proof` has been called for a megapool validator, the protocol SHALL allow anyone to provide either:
-	1. A beacon state proof showing that `validators` contains a validator with a matching `pubkey` and incorrect `withdrawal_credentials`, or
-	2. A beacon state proof showing that `pending_deposits` contains a validator with a matching `pubkey`, incorrect `withdrawal_credentials`, and a valid `signature`.
+	1. A proof showing that the `signature` used in `prestake` was invalid.
+	2. A beacon state proof showing that `validators` contains a validator with a matching `pubkey` and incorrect `withdrawal_credentials`, or
+	3. A beacon state proof showing that `pending_deposits` contains a validator with a matching `pubkey`, incorrect `withdrawal_credentials`, and a valid `signature`.
 - If one such proof is submitted, the rETH share of the remaining 31 ETH SHALL be returned to the deposit pool. The remaining node operator share SHALL be awarded to the provider of the proof directly, or it MAY be awarded in the form of credit while the full 31 ETH are sent to the deposit pool.
 - If no proof is provided within `prestake_challenge_period`, the protocol SHALL allow anyone to call `stake_without_state_proof`, which SHALL stake the remaining 31 ETH for the validator.
 ## Rationale
 
 The BLS12-381 signature of the validator that is part of a deposit is not verified by the deposit contract, and it is also not verified before a deposit is added to `pending_deposits`. As a result, anyone could “fake front-run” a legitimate validator with a deposit of 1 ETH using the same pubkey together with a fake signature. Such a deposit would be part of the `pending_deposits`, so the signature has to be validated in that case to avoid a griefing vector where someone could spend 1 ETH to have legitimate Rocket Pool validators dissolved. [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) introduced precompiles for BLS12-381 curve operations that allow signature verification.
+
+At the same time, an invalid `signature` used during `prestake` does not result in a first deposit that sets the `withdrawal_credentials` for the validator and leaves the validator vulnerable to the front-running exploit. That's why a proof of invalid `signature` also stops the second deposit.
 
 The lower guardrail for `reduced_bond` is raised to 1.1 ETH to ensure at least a 0.1 ETH reward for a challenger.
 
