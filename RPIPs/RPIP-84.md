@@ -109,7 +109,7 @@ The following changes are ministerial and do not require an additional vote:
 | Role                                                  | Person                     | Platform identity      | Effective date | End date | Authority |
 | ----------------------------------------------------- | -------------------------- | ---------------------- | -------------: | -------: | --------- |
 | Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | N/A |     2022-09-06 |        — | RPIP-4    |
-| Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | `address` |     Upon passage of this RPIP |        — | RPIP-84    |
+| Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | `0x87D92E016B0e93ec59b65086a85b1719F09992e0` |     Upon passage of this RPIP |        — | RPIP-84    |
 
 ## Rationale
 
