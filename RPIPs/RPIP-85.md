@@ -1,5 +1,5 @@
 ---
-rpip:
+rpip: 85
 title: On-Chain Signal Voting
 description: Add support for signaling votes to the on-chain pDAO voting system.
 author: knoshua (@knoshua)
