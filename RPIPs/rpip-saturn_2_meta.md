@@ -115,7 +115,7 @@ For Saturn 2, RPIP-46 specifies that:
 
 The RPL inflation-related changes are still planned for Saturn 2. The current view is that, at this point, rETH demand-related work has higher priority than implementing complex new RPL value-capture mechanisms, and that detailed revenue-share strategies can be revisited after the rETH-focused work of Saturn 2 is delivered.
 
-### [RPIP-42: Bond Curves](RPIP_42.md)
+### [RPIP-42: Bond Curves](RPIP-42.md)
 
 **Status**: Included in 2024 Tokenomics Rework vote. Partially implemented in Saturn 1; parameter conversion targeted for Saturn 2, removing lowering of bond from Saturn 2.
 
