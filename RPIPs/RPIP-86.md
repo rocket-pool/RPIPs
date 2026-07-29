@@ -141,13 +141,13 @@ RPIP-83 instead proposes increasing the required node-operator bond for each meg
 
 [RPIP-72](RPIP-72.md) introduced a pdao_share to UARS (set to 0) that will allow the pDAO to collect a share of the ETH earned by megapool validators in the future, but there is currently no way to spend such ETH in the treasury. RPIP-82 adds this functionality and also allows spending any other ERC-20 token in the treasury.
 
-### RPIP-TBD: On-Chain Signal Voting
+### [RPIP-85: On-Chain Signal Voting](RPIP-85.md)
 
 **Status:** Draft; Not yet voted on.
 
 The Houston upgrade introduced on-chain pDAO voting for parameter changes and treasury spending ([RPIP-33](RPIP-33.md)), but the pDAO still relies on Snapshot voting for other governance votes. This RPIP lays the foundation for on-chain signal voting that, together with a voting frontend, will support arbitrary vote types, including weighted voting (used for IMC and GMC elections), ranked-choice voting, and approval voting.
 
-### RPIP-TBD: pDAO Parameter Guardrail Revisions
+### [RPIP-87: pDAO Parameter Guardrail Revisions](RPIP-87.md)
 
 **Status:** Draft; Not yet voted on.
 
