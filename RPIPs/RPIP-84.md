@@ -70,7 +70,7 @@ RPIP-4 also permits Darren Langley or a party he entrusts to publish votes, but 
   * SHALL require a forum sentiment poll, but
   * SHALL NOT require a separate signaling vote.
 * The proposal SHALL use a standardized no-operation payload that changes no protocol parameter, spends no treasury funds, and performs no Security Council action.
-* Tooling (preferably Smart node) SHALL provide a method to create an Emergency Signaling Platform Change proposal with the required message.
+* Tooling (preferably Smartnode) SHALL provide a method to create an Emergency Signaling Platform Change proposal with the required message.
 * The proposal SHALL use the existing RPIP-33 voting process and passing criteria.
 * An Emergency Signaling Platform Change proposal SHALL be considered passed when, at the end of the RPIP-33 voting process, it is not vetoed, has met quorum, has more voting power For than Against, and the platform to be replaced matches the Recognized Signaling Platform.
 * A passing proposal SHALL take governance effect at the end of voting. Later execution or expiration of its no-operation payload SHALL NOT alter that effect.
@@ -156,7 +156,7 @@ Voters would vote For, Against, Abstain, or Veto on that statement.
 
 The associated calldata would not contain coded messages or lookups to another website. Every Emergency Ballot System proposal would use the same standardized payload. Its only purpose is to allow the existing on-chain proposal lifecycle to complete without changing protocol settings or moving funds.
 
-Proposers should not need to construct this calldata manually. Smart node may implement the EBS workflow in any manner that reliably produces the required message and standardized payload, e.g., via a `rocketpool pdao propose emergency-signaling-platform-change` command that simply takes a proposal message.
+Proposers should not need to construct this calldata manually. Smartnode may implement the EBS workflow in any manner that reliably produces the required message and standardized payload, e.g., via a `rocketpool pdao propose emergency-signaling-platform-change` command that simply takes a proposal message.
 
 The platform change takes effect when the proposal becomes successful under the RPIP-33 voting process, rather than when its no-operation payload is executed. This prevents anyone from changing the order of overlapping EBS results by choosing when to execute them.
 
