@@ -3,11 +3,14 @@ rpip: 84
 title: pDAO Signaling Governance
 description: Establish a platform independent signaling process, adopt RocketDash, and provide an emergency method for changing signaling platforms.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
-discussions-to: TBD
-status: Draft
+discussions-to: https://dao.rocketpool.net/t/pdao-signaling-governance-sentiment-poll/4004
+status: Review
 type: Meta
 created: 2026-07-18
-requires: RPIP-4, RPIP-33
+requires: 4, 33
+vote-to: 
+vote-date: 
+vote-result: 
 ---
 
 ## Abstract
@@ -18,7 +21,7 @@ It also creates an on-chain Emergency Ballot System (EBS) for changing the Recog
 
 ## Motivation
 
-[RPIP-4](RPIP-4.md) established Snapshot as the platform for Rocket Pool governance votes. Snapshot now costs approximately $600 per month. Rocket Pool currently manages this expense by activating and deactivating the service around scheduled votes.
+[RPIP-4](RPIP-4.md) established Snapshot as the platform for Rocket Pool governance votes. Increasing costs make Snapshot no longer cost effective. Rocket Pool currently manages this by activating and deactivating the service around scheduled votes.
 
 The long term intention is for the on-chain pDAO system to support additional forms of governance. Until that work is complete, RocketDash provides a community developed alternative for conducting signaling votes.
 
@@ -45,14 +48,14 @@ RPIP-4 also permits Darren Langley or a party he entrusts to publish votes, but 
 ### Changing the Recognized Signaling Platform
 
 * The pDAO SHALL have the ability to change the Recognized Signaling Platform through a vote conducted on the current Recognized Signaling Platform.
-* A successful platform change vote MAY also appoint a Lead Vote Administrator or Authorized Vote Publishers for the replacement platform.
+* A successful platform change vote MAY appoint a Lead Vote Administrator or Authorized Vote Publishers for the replacement platform.
 * Following a successful vote, the current platform and historical record in this RPIP SHALL be updated without an additional vote.
 
 ### Emergency Ballot System
 
 * [RPIP-33](RPIP-33.md) SHALL recognize an **Emergency Signaling Platform Change** as an allowed on-chain proposal type.
 * Any node eligible to create an on-chain pDAO proposal under RPIP-33 MAY create an Emergency Ballot System proposal.
-* An Emergency Ballot System proposal MAY only:
+* An Emergency Ballot System proposal SHALL only:
 
   * change the Recognized Signaling Platform; and
   * appoint the vote administrators needed to operate the replacement platform.
@@ -69,7 +72,7 @@ RPIP-4 also permits Darren Langley or a party he entrusts to publish votes, but 
 * The proposal SHALL use a standardized no-operation payload that changes no protocol parameter, spends no treasury funds, and performs no Security Council action.
 * Tooling (preferably Smart node) SHALL provide a method to create an Emergency Signaling Platform Change proposal with the required message.
 * The proposal SHALL use the existing RPIP-33 voting process and passing criteria.
-* An Emergency Signalling Platform Change proposal SHALL be considered passed when, at the end of the RPIP-33 voting process, it is not vetoed, has met quorum, has more voting power For than Against, and the platform to be replaced matches the Recognized Signaling Platform.
+* An Emergency Signaling Platform Change proposal SHALL be considered passed when, at the end of the RPIP-33 voting process, it is not vetoed, has met quorum, has more voting power For than Against, and the platform to be replaced matches the Recognized Signaling Platform.
 * A passing proposal SHALL take governance effect at the end of voting. Later execution or expiration of its no-operation payload SHALL NOT alter that effect.
 * If multiple Emergency Signaling Platform Change proposals become successful in the same block, they SHALL be applied in ascending proposal ID order.
 * Following a successful platform change, this RPIP SHALL be updated without an additional vote.
@@ -83,7 +86,7 @@ Substantive changes to the signaling process, platform change process, Emergency
 The following changes are ministerial and do not require an additional vote:
 
 * recording a platform change already approved by the pDAO;
-* recording a change to the Lead Vote Administrator already approved by pDAO vote;
+* recording a change to the Lead Vote Administrator already approved by pDAO;
 * recording the appointment or removal of an Authorized Vote Publisher;
 * adding an end date to a historical entry;
 * correcting platform URLs, account identifiers, or other non-substantive administrative information.
@@ -92,20 +95,21 @@ The following changes are ministerial and do not require an additional vote:
 
 | Platform   | Canonical location                       |            Effective date | Authorization |
 | ---------- | ---------------------------------------- | ------------------------: | ------------- |
-| RocketDash | `https://rocketdash.net/vote`  | Upon passage of this RPIP | RPIP-TBD      |
+| RocketDash | `https://rocketdash.net/vote`  | Upon passage of this RPIP | RPIP-84      |
 
 ## Signaling Platform History
 
 | Platform   |            Effective date |                  End date | Authorization |
 | ---------- | ------------------------: | ------------------------: | ------------- |
 | Snapshot   |                2022-09-06 | Upon passage of this RPIP | RPIP-4        |
-| RocketDash | Upon passage of this RPIP |                         — | RPIP-TBD      |
+| RocketDash | Upon passage of this RPIP |                         — | RPIP-84      |
 
 ## Vote Publisher History
 
 | Role                                                  | Person                     | Platform identity      | Effective date | End date | Authority |
 | ----------------------------------------------------- | -------------------------- | ---------------------- | -------------: | -------: | --------- |
-| Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | `[ACCOUNT OR ADDRESS]` |     2022-09-06 |        — | RPIP-4    |
+| Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | N/A |     2022-09-06 |        — | RPIP-4    |
+| Lead Vote Administrator and Authorized Vote Publisher | Darren Langley (`langers`) | `0x87D92E016B0e93ec59b65086a85b1719F09992e0` |     Upon passage of this RPIP |        — | RPIP-84    |
 
 ## Rationale
 
@@ -133,7 +137,7 @@ The platform table is updated after that decision. Updating the table records th
 
 ### Emergency Ballot System
 
-A signaling system cannot be relied upon to authorize its own replacement after it has become unavailable or untrustworthy. The Emergency Ballot System provides an independent fallback using the existing on-chain pDAO. The EBS is only to be used for signaling platform changes and only when the community has agreed via discussion and sentiment poll that the existing system is no longer trustworthy or useable. 
+A signaling system cannot be relied upon to authorize its own replacement after it has become unavailable or untrustworthy. The Emergency Ballot System provides an independent fallback using the existing on-chain pDAO voting system. The EBS is only to be used for signaling platform changes and only when the community has agreed via discussion and sentiment poll that the existing system is no longer trustworthy or useable. 
 
 An Emergency Ballot System proposal is intended to be readable in the same manner as any other proposal. The proposal message, rather than an encoded calldata value, identifies the proposed platform.
 
