@@ -4,7 +4,7 @@ title: pDAO Signaling Governance
 description: Establish a platform independent signaling process, adopt RocketDash, and provide an emergency method for changing signaling platforms.
 author: Dr Doofus (@DrDoofus-MD-PhD-DDS)
 discussions-to: https://dao.rocketpool.net/t/pdao-signaling-governance-sentiment-poll/4004
-status: Review
+status: Final
 type: Meta
 created: 2026-07-18
 requires: 4, 33
