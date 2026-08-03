@@ -41,9 +41,9 @@ RPIP-4 also permits Darren Langley or a party he entrusts to publish votes, but 
 ### Vote Administration
 
 * The initial **Lead Vote Administrator** under this RPIP SHALL be Darren Langley (`langers`).
-* The Lead Vote Administrator MAY appoint or remove **Authorized Vote Publishers** without a pDAO vote.
+* The Lead Vote Administrator SHALL have the power to appoint or remove **Authorized Vote Publishers** without a pDAO vote.
 * Appointments and removals MUST be publicly announced and recorded in the Vote Publisher History.
-* Only the Lead Vote Administrator and current Authorized Vote Publishers MAY publish official votes on the Recognized Signaling Platform.
+* Only the Lead Vote Administrator and current Authorized Vote Publishers SHALL have the power to publish official votes on the Recognized Signaling Platform.
 
 ### Changing the Recognized Signaling Platform
 
@@ -54,7 +54,7 @@ RPIP-4 also permits Darren Langley or a party he entrusts to publish votes, but 
 ### Emergency Ballot System
 
 * [RPIP-33](RPIP-33.md) SHALL recognize an **Emergency Signaling Platform Change** as an allowed on-chain proposal type.
-* Any node eligible to create an on-chain pDAO proposal under RPIP-33 MAY create an Emergency Ballot System proposal.
+* Any node eligible to create an on-chain pDAO proposal under RPIP-33 SHALL have the power to create an Emergency Ballot System proposal.
 * An Emergency Ballot System proposal SHALL only:
 
   * change the Recognized Signaling Platform; and
