@@ -32,22 +32,25 @@ Currently, there is no overview of the active committees within Rocket Pool, or 
 ### Current Membership
 
 | Member Since | Members        | Comment                                                                                      |
-|--------------|----------------|----------------------------------------------------------------------------------------------|
-|   2024-05-15 | Samus          | Samus added, sponsored by Valdorff                                                           |
-|   2023-04-26 | Ramana         | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
-|   2022-08-16 | Ken            | Part of first batch of editors                                                               |
-|   2022-08-16 | Valdorff       | Part of first batch of editors                                                               |
-|   2022-08-16 | Darren Langley | Part of first batch of editors                                                               |
+| ------------ | -------------- | -------------------------------------------------------------------------------------------- |
+| 2026-05-26   | haloooloolo    | nominated by Dr Doofus                                                                       |
+| 2026-05-26   | knoshua        | nominated by Dr Doofus                                                                       |
+| 2024-05-15   | Samus          | Samus added, sponsored by Valdorff                                                           |
+| 2023-04-26   | Ramana         | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
+| 2022-08-16   | Ken            | Part of first batch of editors                                                               |
+| 2022-08-16   | Valdorff       | Part of first batch of editors                                                               |
+| 2022-08-16   | Darren Langley | Part of first batch of editors                                                               |
 
 
 ### Historic Membership
 
-| Date Changed | Members                                      | Comment                                                                                      |
-|--------------|----------------------------------------------|----------------------------------------------------------------------------------------------|
-|   2024-05-15 | Darren Langley, Valdorff, Ken, Ramana, Samus | Samus added, sponsored by Valdorff                                                           |
-|   2023-04-26 | Darren Langley, Valdorff, Ken, Ramana        | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
-|   2022-08-16 | Wander, Darren Langley, Valdorff, Ken        | Editors added                                                                                |
-|   2022-05-18 | Wander                                       | Informal period                                                                              |
+| Date Changed | Members                                                            | Comment                                                                                      |
+| ------------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| 2026-05-26   | Darren Langley, Valdorff, Ken, Ramana, Samus, haloooloolo, knoshua | nominated by Dr Doofus                                                                       |
+| 2024-05-15   | Darren Langley, Valdorff, Ken, Ramana, Samus                       | Samus added, sponsored by Valdorff                                                           |
+| 2023-04-26   | Darren Langley, Valdorff, Ken, Ramana                              | Wander [resigns](https://dao.rocketpool.net/t/rpip-editor-resignation/1715), Ramana replaces |
+| 2022-08-16   | Wander, Darren Langley, Valdorff, Ken                              | Editors added                                                                                |
+| 2022-05-18   | Wander                                                             | Informal period                                                                              |
 
 ## pDAO Treasurer Role
 
