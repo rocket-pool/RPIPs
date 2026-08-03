@@ -65,7 +65,7 @@ For the purposes of this section, the withdrawal shortfall is defined as the rem
 - ETH held by the rETH contract, and
 - ETH held by the deposit pool.
 
-If the withdrawal shortfall is at least `exit_hysteresis` ETH, additional megapool validators MUST be selected and added to the exit list as defined in this section.
+If the withdrawal shortfall is at least `exit_hysteresis` ETH, additional validators MUST be selected and added to the exit list as defined in this section.
 
 #### If `megapool_exit_phase = false`
 
