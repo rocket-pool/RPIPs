@@ -24,7 +24,7 @@ RPIP-71 proposes to prioritize minipools for liquidity exits. With limited rETH 
 
 - `base_bond_array` SHALL be set to `[6, 12]` and `reduced_bond` SHALL be set to 6 ETH.
 - When a node operator creates a validator, with `i` validators in the megapool prior to adding:
-	- If `0 < i < base_bond_array.length`, the required `user_deposit` SHALL be changed to the minimum between `base_bond_array[i] - bas_bond_array[i-1]` and the bond curve specified in RPIP-42.
+	- If `0 < i < base_bond_array.length`, the required `user_deposit` SHALL be changed to the minimum between `base_bond_array[i] - base_bond_array[i-1]` and the bond curve specified in RPIP-42.
 	- If  `i ≥ base_bond_array.length`, the required `user_deposit` SHALL be changed to the minimum between `reduced_bond` and the bond curve specified in RPIP-42.
 - There SHALL be a `topUpBond` method that allows increasing `nodeBond` to match the current bond curve.
 - When rewards are distributed for a megapool where the `nodeBond` is below the node bond requirement, the `nodeAmount` SHALL first be used to increase the `nodeBond` up to the bond requirement and associated ETH SHALL be send to rETH.
