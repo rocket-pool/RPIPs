@@ -68,17 +68,15 @@ OracleDAO governance is defined as successful on-chain governance proposals vote
 
 ##### Powers
 
-* The oDAO has the power to replace any contract (except RocketStorage) in the Rocket Pool protocol via the oDAO upgrade power.
-* The oDAO has the power to modify any non-protected parameter in the Rocket Pool protocol via the oDAO upgrade power.
+* The oDAO has the power to replace any upgradeable contract (excludes RocketStorage and the token contracts) in the Rocket Pool protocol via the oDAO upgrade power, provided it is not vetoed by the Security Council and the required time delay has elapsed.
+ The oDAO has the power to modify any non-protected parameter in the Rocket Pool protocol via the oDAO upgrade power, provided it is not vetoed by the Security Council and the required time delay has elapsed.
 * The oDAO has the power to call core contract functions protected by the generic ‘onlyLatestNetworkContract’ required via the oDAO upgrade power. This has several implications, most notably:
-  * The ability to withdraw RPL and ether from the RocketVault contract.
-  * The ability to withdraw ether from the RocketSmoothingPool contract.
-  * The ability to set the Minipool penalty within the bounds of the maximum penalty.
+  * The ability to set the Minipool penalty within the bounds of the maximum penalty. A pDAO-controlled guardrail caps how much can be penalised over time.
 * The oDAO has the power to modify oDAO settings via the oDAO settings pathway.
 * The oDAO has the power to take actions that modify the membership of the oDAO.
 * The oDAO has the power to determine the split of RPL inflation on a rewards Merkle tree. [[GitHub](https://github.com/rocket-pool/rocketpool-research/blob/v6/Merkle%20Rewards%20System/rewards-calculation-spec.md)]
-* The oDAO has the power to withdraw ETH at no cost from the deposit pool contract, via manipulation of the rETH exchange rate. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
-* The oDAO has the power to withdraw ETH at no cost from the rETH token contract via manipulation of the rETH exchange rate. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
+* The oDAO has the power to set the protocol's rETH exchange rate, up to the max 2% per day. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
+  * Note that manipulating this value would allow for withdrawing ETH at no cost (from both the deposit pool contract and rETH token contract).
 * The oDAO has the power to approve the canonical rewards Merkle tree at the end of each reward period. [[Etherscan](https://etherscan.io/address/0xA805d68b61956BC92d556F2bE6d18747adAeEe82#code#F1#L165)] This uses a separate governance pathway. 
 
 ##### Authorities
@@ -94,7 +92,7 @@ OracleDAO governance is defined as successful on-chain governance proposals vote
 
 ##### Description
 
-The guardian address is an EOA defined in the RocketStorage contract (but outside the key-value mappings.) It was responsible for the initialization of the protocol. Some of its initial powers have been irrevocably disabled, while others are still active at the time of writing.
+The guardian address is an EOA defined in the RocketStorage contract (but outside the key-value mappings.) It was responsible for the initialization of the protocol. Almost all of its initial powers have been irrevocably disabled.
 
 The guardian address is likely controlled by Rocket Pool Pty Ltd.
 
@@ -103,21 +101,43 @@ The guardian address is likely controlled by Rocket Pool Pty Ltd.
 * The Guardian address has the power to modify pDAO settings via the pDAO settings pathway.
 * The Guardian address has the power to modify the share of RPL inflation via the pDAO bootstrap pathway.
 * The Guardian address has the power to spend the RPL tokens allocated to the pDAO via the pDAO bootstrap pathway.
-* The Guardian address has the power to set the maximum penalty rate for minipools via the RocketMinipoolPenalty contract.
+* The Guardian has the power to set the maximum penalty rate in the RocketMinipoolPenalty contract. This sets the maximum rate at which the oDAO can penalise minipools (megapool validators are excluded); it is currently set to zero.
 
 #### Authorities
 
 No authorities have been assigned to the guardian address by the pDAO. Indirect authorities are inherited from the assumption that the guardian is controlled by Rocket Pool Pty Ltd and are listed in that section.
 
+#### Security Council
+
+##### Description
+The Security Council is an onchain body that acts as a fast-response safety mechanism. Its membership and quorum are controlled by the pDAO.
+
+##### Powers
+* The Security Council has the power to make immediate changes, without the standard proposal delay, to a defined subset of guardrailed pDAO parameters, provided a quorum of council members (set by the security.members.quorum parameter) vote in favour.
+* The Security Council has the power to adjust the protocol’s commission-split contract within bounds defined by the pDAO, serving as a governance safety mechanism.
+* The Security Council can veto protocol upgrades during a mandatory pre-launch delay period.
+
+##### Authorities
+* The Security Council has the authority to act as an emergency responder for the protocol, to contain incidents by utilising temporary pausing powers, subject to removal of individual members or dissolution of the council entirely by the pDAO at any time.
+* Individual members have the authority to resign via a two-step, notice-and-delay exit process rather than leaving unilaterally and immediately.
+
 #### pDAO governance
 
 ##### Description
 
-ProtocolDAO governance is defined as successful governance proposals voted on by Rocket Pool community members running Registered Nodes.
+ProtocolDAO governance is defined as successful governance proposals voted on by Rocket Pool community members running Registered Nodes using a trustless onchain fraud-proof voting system. A node’s voting power is a function of its staked RPL. Proposals require a bond, may be challenged by other node operators, and pass through a mandatory challenge period delay and two-phase voting process before execution.
 
 ##### Powers
 
-The pDAO currently has no direct, on-chain power over the Rocket Pool protocol.
+* The pDAO has the power to raise and execute "Parameter Change"  proposals.
+  * These proposals can modify a defined table of protocol parameters across many categories (deposit, inflation, minipool/megapool, network, node, rewards, proposal, auction, security-council).
+* The pDAO has the power to raise and execute "Treasury Spend"  proposals, which send treasury RPL to a specified address
+* The pDAO has the power to raise and execute "Treasury Contract"  proposals, which allow recurring treasury RPL claims by a specified address
+* The pDAO has the power to raise and execute "Security Council Change"  proposals
+  * These proposals can invite Security Council members
+  * These proposals can remove Security Council members
+  * These proposals can set the Security Council's quorum
+* The pDAO has the power to veto a proposal it deems spam or malicious via a dedicated on-chain veto vote, with a successful veto burning the proposer’s bond
 
 ##### Authorities
 
@@ -136,7 +156,7 @@ Its authorities include, but are not limited to:
 
 ##### Description
 
-Any individual Rocket Pool Registered Node. All Trusted Nodes (oDAO) are also Registered Nodes (pDAO).
+Any individual Rocket Pool Registered Node. All pDAO members must have a Registered Node. All oDAO members must have a registered node.
 
 ##### Powers
 
@@ -152,7 +172,7 @@ There are no protocol-affecting authorities held by individual Registered Nodes.
 
 ##### Description
 
-Rocket Pool Pty Ltd is the legal entity that created and deployed the Rocket Pool Protocol. It retains relevant intellectual property rights and is currently acting as a conservator while powers and authorities are transferred to the less centralized DAO structures.
+Rocket Pool Pty Ltd is the legal entity that created and deployed the Rocket Pool Protocol. It still retains relevant intellectual property rights but has transferred much of its powers and authorities to the DAO structures.
 
 ##### Powers
 
@@ -166,7 +186,7 @@ Rocket Pool Pty Ltd is the legal entity that created and deployed the Rocket Poo
 
 As founder of the protocol, Rocket Pool Pty Ltd has broad implied authority in areas where the pDAO has not claimed or revoked it. 
 
-While the full social authorities for the company are hard to capture due to the autonomy granted to the organization, the following categories are backed up by potential court proceedings:
+While the full social authorities for the company are hard to capture due to the many contributions made by the organisation over the years, the following categories are noteworthy:
 
 * Domain names
     * Important domains include:
@@ -175,6 +195,7 @@ While the full social authorities for the company are hard to capture due to the
         * delegates.rocketpool.net (delegate profiles)
 * Trademarks
 * Sanctioning of the [bug bounty program](https://immunefi.com/bounty/rocketpool/).
+* [RPIP-84](RPIP-84.md) gives a member of Rocket Pool Pty the role of Lead Vote Administrator for the Recognized Signaling Platform for votes that are conducted offchain.
 
 ##### Software Pipeline
 
@@ -205,7 +226,7 @@ RPIP Editors are tasked with ensuring RPIP documents are finalized and correctly
 
 ##### Description
 
-The Grants Management Committee exists to distribute grants and bounties, retrospectively and prospectively, to further the goals of the Rocket Pool protocol. Bound by [[RPIP-26](RPIP-26.md)], this committee must consist of nine members.
+The Grants Management Committee exists to distribute grants and bounties, retrospectively and prospectively, to further the goals of the Rocket Pool protocol. Bound by [RPIP-40], this committee must consist of seven members.
 
 ##### Powers
 
@@ -273,23 +294,27 @@ The pDAO Treasurer has no direct, on-chain power over the Rocket Pool protocol.
 ##### Technical Design of Governance
     
 On the technical side, governance of the Rocket Pool protocol is achieved via several main pathways:
-
-* The pDAO settings pathway (change pDAO settings)
+* The pDAO onchain proposal pathway (parameter changes, treasury spend, Security Council changes)
+* The Security Council pathway (immediate changes to a guardrailed subset of pDAO parameters)
 * The oDAO settings pathway (change oDAO settings)
 * The oDAO upgrade pathway (add/remove/replace contracts)
 * The Guardian initialization pathway (no longer usable)
 
+
 At the time of writing, the ‘owners’ of each pathway are:
 
-* pDAO settings pathway - Guardian address
+* pDAO onchain proposal pathway - pDAO (Registered Nodes with non-zero voting power)
+* Security Council pathway - Security Council (members appointed by the pDAO)
 * oDAO settings pathway - oDAO
 * oDAO upgrade pathway - oDAO
     
 ![](../assets/rpip-x/RocketPoolOnchainGovernancePathways.png)
     
-Usage of the oDAO pathways to do anything requires a majority vote from oDAO members. While a delay is imposed post-proposal-prior-to-vote, there is no post-vote-prior-to-execution time lock present in the Rocket Pool protocol at the time of writing.
+Usage of the oDAO pathways to do anything requires a majority vote from oDAO members. There is an upgrade delay of 7 days of ODAO period, plus 7 days of veto before execution.
 
-The Guardian address has the power (but not authority) to use the pDAO settings pathway at will with no delay.
+pDAO onchain proposals are subject to a bonded propose-and-challenge period, a mandatory pre-vote delay, and a two-phase vote before execution.
+
+Security Council actions take effect immediately once quorum is reached. It is worth emphasizing this is limited to a pre-approved, guardrailed parameter subset.
 
 The settings referred to above are all entries in a key-value store found in the RocketStorage contract.
 
