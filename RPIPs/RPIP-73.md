@@ -4,16 +4,15 @@ title: rETH Protection From Underperforming Nodes
 description: Force exit significantly underperforming validators to protect rETH from yield loss.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-73-reth-protection-from-underperforming-nodes/3944
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2025-07-30
 requires: 80
 ---
-
 ## Abstract
 
-This proposal introduces a permissionless on-chain challenge mechanism to exit minipools and megapool validators that are  significantly underperforming. Target timeliness flags are used to approximate attestation performance.
+This proposal introduces a permissionless on-chain challenge mechanism to exit minipools and megapool validators that are significantly underperforming. Target timeliness flags approximate attestation performance.
 
 ## Motivation
 
@@ -28,7 +27,7 @@ This specification introduces the following pDAO protocol parameters:
 | Name                           | Type   | Initial Value     | Guardrail<br> |
 | ------------------------------ | ------ | ----------------- | ------------- |
 | `performance_exits_enabled`*   | bool   | `true`            |               |
-| `performance_period`           | Epochs | 44032 (~200 days) |               |
+| `performance_period`           | Epochs | 44032 (~200 days) | < 292 days              |
 | `proof_buffer`                 | Epochs | 225               | > 10          |
 | `performance_threshold`        | pct    | 94                |               |
 | `performance_challenge_period` | Hours  | 24                |               |
@@ -36,50 +35,49 @@ This specification introduces the following pDAO protocol parameters:
 
 A * designates this parameter as being modifiable by the Security Council without a delay.
 
-### Performance Challenge Mechanism
-
 - If `performance_exits_enabled` is `true`, the protocol SHALL allow anyone to propose a list of validators to exit by:
 	- providing a `start_epoch` > `current_epoch - performance_period - proof_buffer`,
-	- providing `performance_period * (1 - performance_treshold)` epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
-	- locking `performance_challenge_bond` for `performance_challenge_period` from staked RPL. Locked RPL SHALL act the same way as regular staked RPL for the purposes of rewards, voting and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for withdrawing RPL.
+	- providing `performance_period * (1 - performance_treshold)`epochs within `[start_epoch, min(current_epoch, start_epoch + performance_period)]`,
+	- locking `performance_challenge_bond` for `performance_challenge_period` from staked RPL. Locked RPL SHALL act the same way as regular staked RPL for rewards, voting, and collateral requirements. Locked RPL SHALL NOT be counted towards thresholds for withdrawing RPL.
 - The protocol SHALL allow anyone to defeat an entire proposed list by either:
 	- proving that for one listed validator and one epoch in the challenge, the `previous_epoch_participation` in the Beacon State shows a timely **target** attestation or
 	- proving that `activation_epoch` > `start_epoch` for one listed validator. 
 - The person defeating the challenge SHALL be awarded 80% of the `performance_challenge_bond` and the remaining 20% SHALL be burned. 
 - If a proposed exit is not defeated within `performance_challenge_period`, the protocol SHALL allow anyone to add the validators as "requested to exit" as defined by [RPIP-80](RPIP-80.md).
+- The smartnode SHOULD support notifying node operators when their performance puts them at risk of being exited for underperformance.
 
 ## Rationale
 
 ### Permissionless Exit Mechanism
 
-This specification prioritizes a precisely defined and deterministic metric that can be verified on-chain to determine which validators to exit. Elements of subjectivity, such as committees or off-chain analysis, are avoided.
+This specification prioritizes a precisely defined and deterministic metric that anyone can verify on-chain to determine which validators to exit. It avoids subjective elements, such as committees or off-chain analysis.
 
-It uses the **target** timeliness flag as a proxy for attestation performance, which itself is only a proxy for overall performance. Sync committees and block proposals are not factored in at all, accounting for ~15% of rewards (ignoring MEV).
+It uses the **target** timeliness flag as a proxy for attestation performance, which itself is only a proxy for overall performance. Sync committees and block proposals are not factored in at all, which account for ~15% of rewards (ignoring MEV).
 
-The `proof_buffer` ensures that there is time to detect underperformance and generate proofs for performance challenges. 
+The `proof_buffer` ensures time to detect underperformance and generate proofs for performance challenges. 
 
 In case of a successful challenge, 20% of the `performance_challenge_bond` are burned to prevent someone to effectively exit their staked RPL for free by challenging themselves.
 
 ### Offline Exits Implicit
 
-Earlier discussions considered adding a secondary exit criterion for validators being offline for a certain period. Since being offline implies the target vote is not timely, we would already be exiting people who are offline for 6% over a ~200 day window. A secondary criterion would only be necessary if we wanted to be stricter than that.
+Earlier discussions considered adding a secondary exit criterion for validators being offline for a certain period. Since being offline implies the target vote is not timely, we would already be exiting people who are offline for 6% over a ~200-day window. A secondary criterion would only be necessary if we wanted to be stricter than that.
 
 ### Timeliness Flag Choice
 
 Ethereum attestations consist of:
-	- voting for a source checkpoint
-	- voting for a target checkpoint
-	- voting for a chain head block
-Rewards and penalties are based on correctness and timeliness of these votes. A full explanation of attestation rewards is available at [ETH2book](https://eth2book.info/capella/part2/incentives/rewards/).
+ - voting for a source checkpoint
+ - voting for a target checkpoint
+ - voting for a chain head block
+Rewards and penalties are based on the correctness and timeliness of these votes. A full explanation of attestation rewards is available at [ETH2book](https://eth2book.info/capella/part2/incentives/rewards/).
 
-The Beacon State gives us access to the timeliness flags for each validator and each epoch, so in theory we could construct a challenge mechanism that perfectly maps to attestation performance. Using just one of the timeliness flags instead is simpler to implement and makes exiting validators cheaper.
+The Beacon State gives us access to the timeliness flags for each validator and each epoch, so in theory we could construct a challenge mechanism that perfectly maps to attestation performance. Using just one timeliness flag is simpler to implement and makes exiting validators cheaper.
 
-After conducting some [empirical analysis](https://badperformers.streamlit.app/) it appears that both target timeliness and source timeliness quite closely match actual attestation performance. Target timeliness gives a bit more leeway for people who are offline. The initial threshold of 94% aims to exit people with effectiveness below 90% with 95% sensitivity.
+After conducting some [empirical analysis](https://badperformers.streamlit.app/), it appears that both target timeliness and source timeliness quite closely match actual attestation performance. Target timeliness gives offline people a bit more leeway. The initial threshold of 94% aims to exit people with effectiveness below 90% with 95% sensitivity.
 
 ### Implementation of Epoch Call Data
 
-To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 2642 epochs. To keep gas cost for call data reasonable, a number of optimizations could be considered:
-- Represent epochs as offsets from `start_epoch`. This allows using `uint16[]` for `performance_period` < 292 days, reducing gas cost by a factor of 4. For the proposed initial parameters, this would translate to 2642 (non-zero) bytes, but size would increase as `performance_threshold` is lowered.
+To challenge a validator, a challenger needs to provide `performance_period * (1-performance_threshold)` epochs. For the initial parameters in this proposal, this means 2642 epochs. To keep gas cost for call data reasonable, several optimizations could be considered:
+- Represent epochs as offsets from `start_epoch`. This allows using `uint16[]` for `performance_period` < 292 days, reducing gas cost by a factor of 4. For the proposed initial parameters, this would be 2642 (non-zero) bytes, but the size would increase as `performance_threshold` is lowered.
 - Represent all the epochs as a bitset, with 1 representing a not-timely target attestation, resulting in 2752 bytes of call data. Since zero bytes are 1/4 of the gas, this may still be preferable to the epoch-offset approach.
 - Represent epoch ranges instead of epochs. Eg, [441000, 800, 443000, 521] would represent 800 epochs starting at 441000 and 521 epochs starting at 443000.
 
@@ -87,21 +85,21 @@ The specification intentionally leaves this open as an implementation detail.
 
 ### No Strike System
 
-We considered using a strike system, e.g. measuring performance over shorter periods and requiring multiple periods of underperformance before exiting validators. Compared to the system based solely on missed rewards, this would give more leniency to validators that go offline completely than to those that stay online but miss attestations consistently. 
+We considered using a strike system, e.g., measuring performance over shorter periods and requiring multiple periods of underperformance before exiting validators. Compared to the system based solely on missed rewards, this would give more leniency to validators that go offline completely than to those that stay online but miss attestations consistently. 
 
-As is, the proposal already allows for being offline for about 12 days within a 200 day window and relaxing this further does not appear necessary.
+As is, the proposal already allows being offline for about 12 days within a 200-day window, and relaxing this further does not appear necessary.
 
 ### Choosing Exit Parameters
 
 The chosen `performance_threshold` aims to exit validators with less than 90% effectiveness, which corresponds to roughly the bottom 15% of nodes, responsible for about 70% of lost rewards.
 
-Exiting underperforming validators and redistributing the ETH to more effective node operators creates a period of churn where the staked ETH is entirely unproductive. The length of the beacon chain entry queue at the time this RPIP is implemented is unknown and the pDAO could initially consider lowering `performance_threshold` (leading to fewer validators being exited) if the queue is expected to be long at the launch of the upgrade. 
+Exiting underperforming validators and redistributing the ETH to more effective node operators creates a period of churn where the staked ETH is entirely unproductive. The length of the beacon chain entry queue at the time this RPIP is implemented is unknown, and the pDAO could initially consider lowering `performance_threshold` (leading to fewer validators being exited) if the queue is expected to be long at launch. 
 
 ## Security Considerations
 
 ### Adverse Network Events
 
-In the event of Ethereum-wide attestation degradation, many validators could become exit-eligible under the fixed criterion chosen based on stable network conditions. To avoid exits of validators that are generally performing well, the security council can disable this exit mechanism by setting `performance_exits_enabled` to `false`. Exits can be re-enabled by the pDAO or the Security Council once the period of instability is no longer within `performance_period`.
+If Ethereum-wide attestation degrades, many validators could become exit-eligible under the fixed criterion chosen for stable network conditions. To avoid exits of validators that are generally performing well, the Security Council can turn off this exit mechanism by setting `performance_exits_enabled` to `false`. The pDAO or the Security Council can re-enable exits once the instability period is no longer within `performance_period`.
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
