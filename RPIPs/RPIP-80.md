@@ -4,7 +4,7 @@ title: Exit Requests, Triggering Exits, and Minipool Penalties
 description: Specifies the underlying exit mechanism and minipool penalty system used by RPIP-71 and RPIP-73.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-exit-requests-triggering-exits-and-minipool-penalties/3945
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2026-05-07
@@ -13,14 +13,15 @@ requires (*optional): 44
 
 ## Abstract
 
-This proposal introduces EL-triggered exits for minipools and extends how they are used for megapools. It also specifies a layered "request then enforce" exit flow  and ensures that the total amount of ETH requested to exit is tracked. Lastly, it applies penalties to minipools whose delegate prevents protocol-triggered exits.
+This proposal introduces EL-triggered exits for minipools and extends their use for megapools. It also specifies a layered "request then enforce" exit flow and ensures that the total amount of ETH requested to exit is tracked. Lastly, it penalizes minipools whose delegate prevents protocol-triggered exits.
 
 ## Motivation
 
-Both [RPIP-71: rETH withdrawal liquidity via EIP-7002](RPIP-71.md) and [RPIP-73: rETH Protection From Underperforming Nodes](RPIP-73.md) specify when and which validators to exit for their respective goals. This RPIP provides a unified approach for how to execute those exits.
-A cooperative exit phase minimizes gas spent and allows for SaaS providers to execute exits for their customers. Tracking the total requested ETH ensures that exits for withdrawal liquidity aren't excessive.
+Both [RPIP-71: rETH withdrawal liquidity via EIP-7002](RPIP-71.md) and [RPIP-73: rETH Protection From Underperforming Nodes](RPIP-73.md) specify when and which validators to exit for their respective goals. This RPIP provides a unified approach to executing those exits.
 
-Minipools are complicated by opt-in delegates: operators can choose whether to upgrade to a new delegate or remain on older delegates indefinitely. The design, therefore, cannot assume that all minipools support triggered exits. A penalty in lieu of a triggered exit for minipools on old delegates aims to align node operator incentives with the protocol.
+A cooperative exit phase minimizes gas costs and lets SaaS providers execute exits for their customers. Tracking the total requested ETH ensures that exits for withdrawal liquidity aren't excessive.
+
+Opt-in delegates complicate minipools: operators can choose whether to upgrade to a new delegate or remain on older delegates indefinitely. The design, therefore, cannot assume that all minipools support triggered exits. For minipools on old delegates, a penalty in lieu of a triggered exit aims to align node operator incentives with the protocol.
 
 ## Specification
 
@@ -30,28 +31,29 @@ This specification introduces the following pDAO protocol parameters:
 | --------------------------- | ----- | ------------- | ------------- |
 | `cooperative_exit_phase`    | Hours | 72            |               |
 | `did_not_exit_penalty_base` | ETH   | 0.1           |               |
-| `did_not_exit_base`         | Days  | 28            | > 7           |
+| `did_not_exit_base`         | Days  | 28            | >= 7          |
 | `did_not_exit_backoff`      |       | 1.5           | >= 1          |
 
 ### Delegates Incorporating EIP-7002
 
-- A new minipool delegate SHALL expose an interface that allows initiating an execution-layer-triggered exit under the conditions defined in this specification.
+- A new minipool delegate SHALL expose an interface that allows initiating an execution-layer-triggered exit under the conditions defined in this specification and by the node operator of the minipool.
 - The exit functionality of megapools introduced in RPIP-44 SHALL be extended to allow initiating an execution-layer-triggered exit under the conditions defined in this specification.
 
 ### Tracking Exiting ETH
 
 - The protocol SHALL expose a variable `requested_exit_eth` that tracks ETH expected to exit under this specification and a variable `voluntary_exit_eth` that tracks ETH expected from megapool validators exiting voluntarily.
-- For the purpose of this specification, expected user capital is defined as `32 ETH - validator bond`. (This should be fixed under bond curve changes.)
+- For this specification, expected user capital is defined as `32 ETH - validator bond`. (kept invariant under bond curve changes.)
 - When `notifyExit` is called for a megapool validator that wasn't requested to exit, a variable `voluntary_exit_eth` SHALL be increased by the expected user capital of that validator.
 - When `notifyFinalBalance` is called for a megapool validator that wasn't requested to exit, `voluntary_exit_eth` SHALL be decreased by the expected user capital. If the megapool validator was requested to exit, `requested_exit_eth` SHALL be decreased instead.
 - Once a minipool that was requested to exit has been distributed (either `finalise = true` or `userDistributed = true`), anyone SHALL be able to reduce `requested_exit_eth` by the expected user capital.
 
 ### Exit Requests and Triggering Exits
 
-- When a validator is requested to exit, the protocol MUST expose an “exit requested” signal observable to the node operator and `requested_exit_eth` SHALL be increased by the expected user capital of that validator.
+- When a validator is requested to exit, the protocol MUST expose an "exit requested" signal observable to the node operator and `requested_exit_eth` SHALL be increased by the expected user capital of that validator.
 - After `did_not_exit_base * did_not_exit_backoff ** i` days have passed since the `ith` request, the validator SHALL no longer be considered requested to exit and can be requested to exit again.
 - Requesting a validator that is already considered requested to exit SHALL NOT reset the window or add to `requested_exit_eth`.
 - If a validator's delegate supports EL-triggered exits and it has been requested to exit for at least `cooperative_exit_phase`, the protocol SHALL allow anyone to trigger an exit.
+
 ### Penalizing Minipools 
 
 - If a minipool's delegate does not support triggered exits and it has been requested to exit for at least `cooperative_exit_phase`, the protocol SHALL allow anyone to prove that the validator has not exited (beacon state proof: `exit_epoch = FAR_FUTURE_EPOCH`).
@@ -62,32 +64,38 @@ This specification introduces the following pDAO protocol parameters:
 
 ### Handling of Minipools
 
-Since minipool delegates are opt-in, it is unrealistic to assume that all minipools will support EIP-7002 triggered exits in a timely manner and any design must handle a heterogeneous validator set that includes megapools, exit-capable minipools, and non-exit-capable minipools. Options include:
+Since minipool delegates are opt-in, it is unrealistic to assume all minipools will support EIP-7002-triggered exits in a timely manner, and any design must handle a heterogeneous validator set that includes megapools, exit-capable minipools, and non-exit-capable minipools. Options include:
+
 1. Completely ignoring all minipools.
 2. Restrict exits to only upgraded minipool delegates.
 3. Try to include all minipools for exits and penalize those that refuse to exit.
 
-Rocket Pool is in transition from minipools to megapools as the primary abstraction for new validators. Minipool deposits are already disabled and RPL tokenomics and commission policy are centered around megapools. As long as a large fraction of the backing set remains in minipools, protocol-level control over commission is constrained and every protocol change must account for both architectures, slowing down protocol development. 
+Rocket Pool is in transition from minipools to megapools as the primary abstraction for new validators. Minipool deposits are already disabled, and RPL tokenomics and commission policy are centered around megapools. As long as a large fraction of the backing set remains in minipools, protocol-level control over commission is constrained, and every protocol change must account for both architectures, slowing down protocol development. 
+
 The first option, therefore, appears counterproductive: directly, by reducing the number of megapool validators and indirectly, by making staying on minipools more attractive. 
-The concern with the second option is that it would incentivize operators to deliberately avoid upgrading and potentially seek to disable the use-latest-delegate flag again in order to evade exits. This could lead to a very small set of minipools that support EL-triggered exits, which then would inherit the problems from the first option.
+
+The concern with the second option is that it would incentivize operators to deliberately avoid upgrading and potentially turn off the use-latest-delegate flag again to evade exits. This could lead to a very small set of minipools that support EL-triggered exits, which then would inherit the problems from the first option.
+
 That's why the proposal uses the third option. A penalty for failing to exit is intended to provide an economic incentive for protocol-aligned behavior, such as upgrading to the new delegate or responding to exit requests.
 
 ### Limiting Minipool Penalty Frequency 
 
-A validator that was requested to exit cannot be requested to exit again immediately. This is relevant for minipools that can't be exited and limits the frequency with which penalties can be applied, giving the node operator an opportunity to upgrade rather than quickly ramping up the penalty.
+A validator that was requested to exit cannot be requested to exit again immediately. This matters for minipools that can't be exited and limits how often penalties can be applied, giving the node operator time to upgrade rather than quickly ramping up the penalty.
 
-The time between penalties goes up over time based on `did_not_exit_backoff`, to limit the delay to the withdrawal process of [RPIP-71](RPIP-71.md) by an increasing share of unresponsive minipools. 
+The time between penalties increases over time based on `did_not_exit_backoff`, limiting the delay to the withdrawal process of [RPIP-71](RPIP-71.md) by an increasing share of unresponsive minipools. 
+
 ### Penalty Sizing
 
-The specification uses an absolute penalty value, meaning that 16 ETH and 8 ETH minipools receive the same penalty per failed exit. Arguments could be made for scaling either way. From the NO's point of view, the flat penalty is more damaging to their APR for the 8 ETH minipool than the 16 ETH minipool. From the protocol's point of view, the 8 ETH minipool failing to exit 24 ETH of user capital is more damaging than the 16 ETH case and arguably should be penalized more. Therefore, the proposal uses an absolute penalty as the compromise between the two views.
+The specification uses an absolute penalty value, meaning that 16 ETH and 8 ETH minipools receive the same penalty per failed exit. Arguments can be made for scaling either way. From the NO's point of view, the flat penalty hurts the 8 ETH minipool's APR more than the 16 ETH minipool's. From the protocol's point of view, the 8 ETH minipool failing to exit 24 ETH of user capital is more damaging than the 16 ETH case and arguably should be penalized more. Therefore, the proposal uses an absolute penalty as the compromise between the two views.
 
-The penalty sizing scales with the backoff period, ensuring that the penalty amount per unit of time stays constant.
+The penalty scales with the backoff period, ensuring the penalty per unit time stays constant.
 
 ### Tracking Exiting ETH 
 
-Knowing about `requested_exit_eth` and `voluntary_exit_eth` ensures that we only exit validators for liquidity when expected ETH from other sources is insufficient.
+Tracking `requested_exit_eth` and `voluntary_exit_eth` ensures we exit validators for liquidity only when expected ETH from other sources is insufficient.
 
-It is possible to track voluntarily exiting ETH from megapool validators, since notifying about exits is already part of how megapools work and we can upgrade the megapool delegate. Neither is true for minipools, so minipools are not included in `voluntary_exit_eth`. During the minipool exit phase for withdrawal liquidity, we rely on the oDAO to track voluntarily exiting minipools off-chain to determine how many exits are necessary.
+We can track voluntarily exiting ETH from megapool validators, since notifying about exits is already part of how megapools work and we can upgrade the megapool delegate. Neither is true for minipools, so minipools are not included in `voluntary_exit_eth`. During the minipool exit phase for withdrawal liquidity, we rely on the oDAO to track voluntarily exiting minipools off-chain to determine how many exits are necessary.
 
 ## Copyright
+
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
