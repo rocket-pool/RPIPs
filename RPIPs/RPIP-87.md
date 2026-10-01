@@ -3,8 +3,8 @@ rpip: 87
 title: pDAO Parameter Guardrail Revisions
 description: Adjust multiple pDAO protocol parameters to remove unnecessary restrictions and improve protocol security.
 author: knoshua (@knoshua)
-discussions-to: https://dao.rocketpool.net/t/rpip-pdao-parameter-guardrail-revisions/4010
-status: Draft
+discussions-to: " https://dao.rocketpool.net/t/rpip-pdao-parameter-guardrail-revisions/4010"
+status: Review
 type: Protocol
 category (*only required for Protocol ): Core
 created: 2026-07-15
@@ -53,9 +53,9 @@ $$
 
 ### `proposal.quorum`
 
-This parameter controls the minimum share of the vote power required to participate in a vote for it to pass. It is currently set to 15%, so the lower guardrail of 15% leaves no room to lower it. A lower`proposal.quorum` is not inherently insecure, so this proposal lowers the lower guardrail to 10%. 
+This parameter controls the minimum share of voting power required for a vote to pass. It is currently set to 15%, so the 15% lower guardrail leaves no room to change it. A lower `proposal.quorum` is not inherently insecure, so this proposal lowers the lower guardrail to 10%. 
 
-On the other hand, if a pDAO vote increases `proposal.quorum`, all future votes, including votes to lower `proposal.quorum` again, will need to meet that higher `proposal.quorum`, so there is a risk of pDAO governance being disabled until this parameter can be fixed with a smart contract upgrade. 75% of vote power participating appears very difficult to reach based on historical vote participation, so this proposal lowers the upper guardrail to 30%. 
+On the other hand, if a pDAO vote increases `proposal.quorum`, all future votes, including votes to lower `proposal.quorum` again, will need to meet that higher `proposal.quorum`, so there is a risk of pDAO governance being disabled until this parameter can be fixed with a smart contract upgrade. Based on historical vote participation, reaching 75% of vote power is very difficult, so this proposal lowers the upper guardrail to 30%. 
 
 ### `proposal.veto.quorum`
 
@@ -67,15 +67,15 @@ This parameter controls how much ETH is reserved for rETH burns rather than bein
 
 ### `reduced.bond`
 
-This parameter controls the bond requirement per validator beyond the first few (currently 2) validators, controlled by `base_bond_array`. This proposal links the upper guardrail directly to the last value of `base_bond_array`. The raised lower guardrail is introduced in [RPIP-79](RPIP-79.md).
+This parameter controls the bond requirement per validator beyond the first few (currently 2) validators, controlled by `base_bond_array`. This proposal links the upper guardrail directly to the last value of `base_bond_array`. [RPIP-79](RPIP-79.md) introduces the raised lower guardrail.
 
 ### `megapool.time.before.dissolve`
 
-This parameter controls the time that must be waited after a first deposit before a megapool validator can be dissolved. Because the Cantina audit added a 60-day upper guardrail, we had to apply a hotfix to set this to 365 days via a smart contract upgrade shortly after the Saturn 1 launch. This proposal removes the unnecessary upper guardrail.
+This parameter controls the time that must be waited after a first deposit before a megapool validator can be dissolved. Because the Cantina audit added a 60-day upper guardrail, we applied a hotfix to set this to 365 days via a smart contract upgrade shortly after the Saturn 1 launch. This proposal removes the unnecessary upper guardrail.
 
 ### `upgradeveto.quorum`
 
-This parameter controls the minimum share of the Security Council necessary to veto a contract upgrade. It is currently set to 33%, so the lower guardrail of 33% leaves no room to lower it. A lower `upgradeveto.quorum` is not inherently insecure, so this proposal lowers the lower guardrail to 10%. 
+This parameter controls the minimum Security Council share required to veto a contract upgrade. It is currently set to 33%, so the lower guardrail of 33% leaves no room to lower it. A lower `upgradeveto.quorum` is not inherently insecure, so this proposal lowers the lower guardrail to 10%. 
 
 ## Copyright
 
