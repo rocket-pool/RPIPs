@@ -4,7 +4,7 @@ title: On-Chain Signal Voting
 description: Add support for signaling votes to the on-chain pDAO voting system.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-on-chain-signal-voting/3988
-status: Draft
+status: Stagnant
 type: Protocol
 category (*only required for Protocol ): Core
 created: 2026-06-03
