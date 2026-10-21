@@ -4,7 +4,7 @@ title: Increase Megapool Bond Requirements
 description: Increase bond requirement for megapools and reroute rewards to top-up bond while below bond curve.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-83-increasing-megapool-bond-requirement/3990
-status: Draft
+status: Stagnant
 type: Protocol
 category (*only required for Protocol ): Core
 created: 2025-05-31
