@@ -4,7 +4,7 @@ title: rETH Withdrawal liquidity via EIP-7002
 description: Enable Rocket Ether stakers to trigger validator exits to access protocol liquidity for unstaking from Rocket Pool.
 author: knoshua (@knoshua)
 discussions-to: https://dao.rocketpool.net/t/rpip-71-reth-withdrawal-liquidity/3947
-status: Draft
+status: Review
 type: Protocol
 category: Core
 created: 2025-05-14
