@@ -90,9 +90,9 @@ The protocol SHALL initialize a set of eligible megapool validators from which v
 
 If the `withdrawal_shortfall` is more than `exit_hysteresis` ETH and the eligible megapool validator set is non‑empty, anyone SHALL be able to call a permissionless megapool validator exit function:
 
-- Let `k` = ceiling((`withdrawal_shortfall` -` exit_hysteresis`) / (32 - `reduced_bond`)).
+- Let `k` = ceiling((`withdrawal_shortfall` -` exit_hysteresis`) / (32 - `base_bond_array[0]`)).
 - The protocol MUST select minimum(`k`, `max_exits_per_call`, `eligible_set_size`) distinct validators uniformly at random without replacement from the eligible megapool validator set.
-- The protocol SHALL request those validators to exit, as defined by RPIP-80.
+- The protocol SHALL request the first `k'` validators to exit, as defined by RPIP-80, where `k'` is the number of validators necessary to cover `withdrawal_shortfall` -` exit_hysteresis`.
 
 ### Reentry Queue
 
@@ -167,7 +167,7 @@ Once the protocol has only megapool validators, it becomes feasible to implement
 
 The `staking_delay` applied after the stake call ensures validators are added to the eligible set only after they clear the beacon chain queue, avoiding requests that would take a long time to execute. This also protects new validators from being exited immediately.
 
-The pDAO decided to keep validator selection entirely random, because they favored the simplicity and relative fairness of it over other criteria that were considered. `max_exits_per_call` ensures that gas per call stays manageable.
+The pDAO decided to keep validator selection entirely random, because they favored the simplicity and relative fairness of it over other criteria that were considered. `max_exits_per_call` ensures that gas per call stays manageable. During random selection, the design assumes the least possible ETH returned for rETH and then only exits as many validators as actually necessary, based on the bond of the selected validators.
 
 ### Reentry Queue
 
