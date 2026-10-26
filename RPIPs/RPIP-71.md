@@ -92,8 +92,7 @@ If the `withdrawal_shortfall` is more than `exit_hysteresis` ETH and the eligibl
 
 - Let `k` = ceiling((`withdrawal_shortfall` -` exit_hysteresis`) / (32 - `base_bond_array[0]`)).
 - The protocol MUST select minimum(`k`, `max_exits_per_call`, `eligible_set_size`) distinct validators uniformly at random without replacement from the eligible megapool validator set.
-- The protocol SHALL request the first `k'` validators to exit, as defined by RPIP-80, where `k'` is the number of validators necessary to cover `withdrawal_shortfall` -` exit_hysteresis`.
-
+- The protocol SHALL request the first `k'` of those validators to exit, following the process defined by RPIP-80, where `k'` is the number of validators necessary to cover `withdrawal_shortfall` - `exit_hysteresis`.
 ### Reentry Queue
 
 This section modifies the behavior of the deposit queue defined in [RPIP-59](RPPIP-59.md).
