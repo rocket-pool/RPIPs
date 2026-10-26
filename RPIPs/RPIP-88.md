@@ -1,5 +1,5 @@
 ---
-rpip: TBD
+rpip: 88
 title: Protocol Development
 description: Determines the process around core protocol development and funding
 author: Darren Langley (@langers)
@@ -14,7 +14,7 @@ vote-result:
 ---
 
 ## Abstract
-To ensure the long-term sustainability and continued innovation of the Rocket Pool protocol, this document lays out the high-level roles, responsibilities, processes, and funding for core protocol development.
+To ensure the long-term sustainability and continued innovation of the Rocket Pool protocol, this document lays out the high-level roles, responsibilities, processes, and funding for core protocol development. This RPIP supersedes RPIP-37.
 
 ## Motivation
 
