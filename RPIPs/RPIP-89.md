@@ -2,9 +2,9 @@
 rpip: 89
 title: Powers and Authorities in Rocket Pool
 description: This RPIP aims to provide a comprehensive overview of governance powers and authorities in the Rocket Pool ecosystem.
-author: LongForWisdom (@LongForWisdom), Payton Rose (@prose11), Patrick_J (@patrick-j-govalpha)
+author: Maverick (@maverickrp), Valdorff (@valdorff), LongForWisdom (@LongForWisdom), Payton Rose (@prose11), Patrick_J (@patrick-j-govalpha)
 discussions-to: https://dao.rocketpool.net/t/rocket-pool-powers-and-authorities/2176
-status: Draft
+status: Final
 type: Informational
 created: 2023-11-07
 ---
