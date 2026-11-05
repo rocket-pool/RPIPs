@@ -42,7 +42,7 @@ Power in this document is used to refer to the raw capability to do something. T
 
 A principal or agent has the power to perform action X when every limitation to their role in performing action X is self-applied, rather than being applied by another party.
 
-To give an example, the oDAO has the power to report any rETH price for protocol use. Reguardless of what independent users are seeing for price action in trading pools, the oDAO has the technical permissions needed to update rETH price to whatever they see fit.  
+To give an example, the oDAO has the power to report any rETH price for protocol use. Regardless of what independent users are seeing for price action in trading pools, the oDAO has the technical permissions needed to update rETH price to whatever they see fit.  
 
 Best expressed in the phrase: ‘Are we able to do X?’
 
@@ -69,18 +69,19 @@ OracleDAO governance is defined as successful on-chain governance proposals vote
 ##### Powers
 
 * The oDAO has the power to replace any upgradeable contract (excludes RocketStorage and the token contracts) in the Rocket Pool protocol via the oDAO upgrade power, provided it is not vetoed by the Security Council and the required time delay has elapsed.
- The oDAO has the power to modify any non-protected parameter in the Rocket Pool protocol via the oDAO upgrade power, provided it is not vetoed by the Security Council and the required time delay has elapsed.
-* The oDAO has the power to call core contract functions protected by the generic ‘onlyLatestNetworkContract’ required via the oDAO upgrade power. This has several implications, most notably:
-  * The ability to set the Minipool penalty within the bounds of the maximum penalty. A pDAO-controlled guardrail caps how much can be penalised over time.
+* The oDAO has the power to modify any non-protected parameter in the Rocket Pool protocol via the oDAO upgrade power, provided it is not vetoed by the Security Council and the required time delay has elapsed.
+* The above has several implications, most notably the ability to set the Minipool penalty within the bounds of the maximum penalty. A pDAO-controlled guardrail caps how much can be penalised over time.
 * The oDAO has the power to modify oDAO settings via the oDAO settings pathway.
 * The oDAO has the power to take actions that modify the membership of the oDAO.
 * The oDAO has the power to determine the split of RPL inflation on a rewards Merkle tree. [[GitHub](https://github.com/rocket-pool/rocketpool-research/blob/v6/Merkle%20Rewards%20System/rewards-calculation-spec.md)]
-* The oDAO has the power to set the protocol's rETH exchange rate, up to the max 2% per day. [[Etherscan](https://etherscan.io/address/0xDD3f50F8A6CafbE9b31a427582963f465E745AF8)]
-  * Note that manipulating this value would allow for withdrawing ETH at no cost (from both the deposit pool contract and rETH token contract).
+* The oDAO has the power to set the protocol's rETH exchange rate [[Etherscan](https://etherscan.io/address/0xae78736cd615f374d3085123a210448e74fc6393)].
+  * Note that manipulating this value would allow for withdrawing ETH at the wrong cost (from both the deposit pool contract and rETH token contract).
+  * This is limited to a max of 2% per day based on pDAO settings [[Etherscan; getMaxRethDelta and getSubmitBalancesFrequency](https://etherscan.io/address/0x67Fd03a5095197D1aD1F932BC55E022C420b1153)].
 * The oDAO has the power to approve the canonical rewards Merkle tree at the end of each reward period. [[Etherscan](https://etherscan.io/address/0xA805d68b61956BC92d556F2bE6d18747adAeEe82#code#F1#L165)] This uses a separate governance pathway. 
 
 ##### Authorities
 
+* Once the pDAO has ratified an upgrade, oDAO is granted the authority and is obligated to replace upgradeable contracts in the Rocket Pool protocol via the oDAO upgrade power.
 * oDAO has the authority to veto changes approved by the pDAO if they have reason to believe the changes meet any of the following criteria according to [[RPIP-24](RPIP-24.md#odao-values)]:
   * Malicious
   * Not voted by the pDAO
@@ -98,9 +99,6 @@ The guardian address is likely controlled by Rocket Pool Pty Ltd.
 
 ##### Powers
 
-* The Guardian address has the power to modify pDAO settings via the pDAO settings pathway.
-* The Guardian address has the power to modify the share of RPL inflation via the pDAO bootstrap pathway.
-* The Guardian address has the power to spend the RPL tokens allocated to the pDAO via the pDAO bootstrap pathway.
 * The Guardian has the power to set the maximum penalty rate in the RocketMinipoolPenalty contract. This sets the maximum rate at which the oDAO can penalise minipools (megapool validators are excluded); it is currently set to zero.
 
 #### Authorities
